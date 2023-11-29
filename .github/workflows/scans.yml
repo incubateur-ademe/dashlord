@@ -185,7 +185,7 @@ jobs:
         uses: "betagouv/check-url-action@main"
         if: ${{ matrix.sites.tools.budget_page }}
         with:
-          url: ${{ steps.betagouv.outputs.budget_url }}
+          url: ${{ steps.betagouv.outputs.budget_url || format('{0}/budget', matrix.sites.url) }}
           output: scans/budget_page.json
           exactExpectedRegex: ^budget$
 
