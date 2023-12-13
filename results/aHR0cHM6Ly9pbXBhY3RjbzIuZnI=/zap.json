@@ -1,7 +1,7 @@
 {
 	"@programName": "ZAP",
 	"@version": "2.14.0",
-	"@generated": "Sun, 10 Dec 2023 01:28:32",
+	"@generated": "Wed, 13 Dec 2023 11:23:10",
 	"site":[ 
 		{
 			"@name": "https://impactco2.fr",
@@ -82,9 +82,25 @@
 							"attack": "",
 							"evidence": "<form class=\"sc-d21df51e-0 eFRdzy\">",
 							"otherinfo": "No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 4: \"\" ]."
+						},
+						{
+							"uri": "https://impactco2.fr/transport",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<form>",
+							"otherinfo": "No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 1: \"\" ]."
+						},
+						{
+							"uri": "https://impactco2.fr/transport",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<form>",
+							"otherinfo": "No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 2: \"\" ]."
 						}
 					],
-					"count": "8",
+					"count": "10",
 					"solution": "<p>Phase: Architecture and Design</p><p>Use a vetted library or framework that does not allow this weakness to occur or provides constructs that make this weakness easier to avoid.</p><p>For example, use anti-CSRF packages such as the OWASP CSRFGuard.</p><p></p><p>Phase: Implementation</p><p>Ensure that your application is free of cross-site scripting issues, because most CSRF defenses can be bypassed using attacker-controlled script.</p><p></p><p>Phase: Architecture and Design</p><p>Generate a unique nonce for each form, place the nonce into the form, and verify the nonce upon receipt of the form. Be sure that the nonce is not predictable (CWE-330).</p><p>Note that this can be bypassed using XSS.</p><p></p><p>Identify especially dangerous operations. When the user performs a dangerous operation, send a separate confirmation request to ensure that the user intended to perform that operation.</p><p>Note that this can be bypassed using XSS.</p><p></p><p>Use the ESAPI Session Management control.</p><p>This control includes a component for CSRF.</p><p></p><p>Do not use the GET method for any request that triggers a state change.</p><p></p><p>Phase: Implementation</p><p>Check the HTTP Referer header to see if the request originated from an expected page. This could break legitimate functionality, because users or proxies may have disabled sending the Referer for privacy reasons.</p>",
 					"otherinfo": "<p>No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 1: \"\" ].</p>",
 					"reference": "<p>http://projects.webappsec.org/Cross-Site-Request-Forgery</p><p>https://cwe.mitre.org/data/definitions/352.html</p>",
@@ -112,6 +128,14 @@
 						},
 						{
 							"uri": "https://impactco2.fr/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://impactco2.fr/boisson",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -151,7 +175,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://impactco2.fr/integration",
+							"uri": "https://impactco2.fr/repas",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -176,14 +200,6 @@
 						},
 						{
 							"uri": "https://impactco2.fr/transport",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"uri": "https://impactco2.fr/usagenumerique",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -226,6 +242,14 @@
 							"otherinfo": ""
 						},
 						{
+							"uri": "https://impactco2.fr/boisson",
+							"method": "GET",
+							"param": "x-frame-options",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
 							"uri": "https://impactco2.fr/chauffage",
 							"method": "GET",
 							"param": "x-frame-options",
@@ -258,7 +282,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://impactco2.fr/integration",
+							"uri": "https://impactco2.fr/repas",
 							"method": "GET",
 							"param": "x-frame-options",
 							"attack": "",
@@ -288,14 +312,6 @@
 							"attack": "",
 							"evidence": "",
 							"otherinfo": ""
-						},
-						{
-							"uri": "https://impactco2.fr/usagenumerique",
-							"method": "GET",
-							"param": "x-frame-options",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
 						}
 					],
 					"count": "11",
@@ -317,37 +333,29 @@
 					"desc": "<p>The integrity attribute is missing on a script or link tag served by an external server. The integrity tag prevents an attacker who have gained access to this server from injecting a malicious content. </p>",
 					"instances":[ 
 						{
-							"uri": "https://impactco2.fr/_next/static/chunks/6739-86e9edc13000d293.js",
+							"uri": "https://impactco2.fr/_next/static/chunks/6739-14267ad22650adcf.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "<script id=\"impact-co2\" src=\"'.concat(null===(n=window)||void 0===n?void 0:n.location.origin,'/iframe.js\" data-type=\"habillement/osez-changer\" data-search=\"?theme=default\"></script>",
+							"evidence": "<script name=\"impact-co2\" src=\"'.concat(null===(n=window)||void 0===n?void 0:n.location.origin,'/iframe.js\" data-type=\"habillement/osez-changer\" data-search=\"?theme=default\"></script>",
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://impactco2.fr/_next/static/chunks/pages/_app-e516f063adcadbd0.js",
+							"uri": "https://impactco2.fr/_next/static/chunks/pages/_app-79e3a56318d7fd9c.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "<script id=\"impact-livraison\" src=\"'.concat(null===(t=window)||void 0===t?void 0:t.location.origin,'/iframelivraison.js\" data-search=\"?theme=').concat(e.theme,'\"></script>",
-							"otherinfo": ""
-						},
-						{
-							"uri": "https://impactco2.fr/_next/static/chunks/pages/integration-04e377eb1bffa35e.js",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "<script id=\"impact-co2\" src=\"'.concat(null===(n=window)||void 0===n?void 0:n.location.origin,'/iframe.js\" data-type=\"').concat(e.type,'\" data-search=\"?theme=').concat(e.theme,'\"></script>",
+							"evidence": "<script name=\"impact-co2\" src=\"'.concat(null===(t=window)||void 0===t?void 0:t.location.origin,'/iframe.js\" data-type=\"livraison\" data-search=\"?theme=').concat(e.theme,'\"></script>",
 							"otherinfo": ""
 						}
 					],
-					"count": "3",
+					"count": "2",
 					"solution": "<p>Provide a valid integrity attribute to the tag.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/Security/Subresource_Integrity</p>",
 					"cweid": "345",
 					"wascid": "15",
-					"sourceid": "375"
+					"sourceid": "420"
 				},
 				{
 					"pluginid": "10110",
@@ -360,7 +368,7 @@
 					"desc": "<p>A dangerous JS function seems to be in use that would leave the site vulnerable.</p>",
 					"instances":[ 
 						{
-							"uri": "https://impactco2.fr/_next/static/chunks/pages/_app-e516f063adcadbd0.js",
+							"uri": "https://impactco2.fr/_next/static/chunks/pages/_app-79e3a56318d7fd9c.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -374,7 +382,7 @@
 					"reference": "<p>https://angular.io/guide/security</p>",
 					"cweid": "749",
 					"wascid": "-1",
-					"sourceid": "353"
+					"sourceid": "359"
 				},
 				{
 					"pluginid": "10063",
@@ -403,6 +411,14 @@
 							"otherinfo": ""
 						},
 						{
+							"uri": "https://impactco2.fr/boisson",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
 							"uri": "https://impactco2.fr/chauffage",
 							"method": "GET",
 							"param": "",
@@ -435,7 +451,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://impactco2.fr/integration",
+							"uri": "https://impactco2.fr/repas",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -460,14 +476,6 @@
 						},
 						{
 							"uri": "https://impactco2.fr/transport",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"uri": "https://impactco2.fr/usagenumerique",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -510,6 +518,14 @@
 							"otherinfo": ""
 						},
 						{
+							"uri": "https://impactco2.fr/boisson",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "X-Powered-By: Next.js",
+							"otherinfo": ""
+						},
+						{
 							"uri": "https://impactco2.fr/chauffage",
 							"method": "GET",
 							"param": "",
@@ -542,7 +558,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://impactco2.fr/integration",
+							"uri": "https://impactco2.fr/repas",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -572,14 +588,6 @@
 							"attack": "",
 							"evidence": "X-Powered-By: Next.js",
 							"otherinfo": ""
-						},
-						{
-							"uri": "https://impactco2.fr/usagenumerique",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "X-Powered-By: Next.js",
-							"otherinfo": ""
 						}
 					],
 					"count": "11",
@@ -601,7 +609,7 @@
 					"desc": "<p>A timestamp was disclosed by the application/web server - Unix</p>",
 					"instances":[ 
 						{
-							"uri": "https://impactco2.fr/_next/static/chunks/main-a1dbe1b5cec87803.js",
+							"uri": "https://impactco2.fr/_next/static/chunks/main-51f80cef33204065.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -615,7 +623,7 @@
 					"reference": "<p>http://projects.webappsec.org/w/page/13246936/Information%20Leakage</p>",
 					"cweid": "200",
 					"wascid": "13",
-					"sourceid": "336"
+					"sourceid": "353"
 				},
 				{
 					"pluginid": "10021",
@@ -660,7 +668,15 @@
 							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
 						},
 						{
-							"uri": "https://impactco2.fr/integration",
+							"uri": "https://impactco2.fr/habillement",
+							"method": "GET",
+							"param": "x-content-type-options",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
+						},
+						{
+							"uri": "https://impactco2.fr/repas",
 							"method": "GET",
 							"param": "x-content-type-options",
 							"attack": "",
@@ -706,14 +722,6 @@
 							"attack": "",
 							"evidence": "",
 							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
-						},
-						{
-							"uri": "https://impactco2.fr/usagenumerique",
-							"method": "GET",
-							"param": "x-content-type-options",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
 						}
 					],
 					"count": "11",
@@ -739,93 +747,93 @@
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "/_next/static/0-flUOeUAT5QeFgfkiWPw/_buildManifest",
-							"otherinfo": "\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uCD6Bbs\uFFFD>~U\\x000ey@\\x0013\uFFFD\\x0007\uFFFD\uFFFD\uFFFD\"X\uFFFD?\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\\x001a\uFFFD'\u07B2"
+							"evidence": "/_next/static/E8M5KWc7JjPmts4X8y13W/_buildManifest",
+							"otherinfo": "\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uCD6Bbs\uFFFD<3\uFFFD\uFFFDs\uFFFDc>kl\uFFFD2\uFFFDu\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\\x001a\uFFFD'\u07B2"
 						},
 						{
 							"uri": "https://impactco2.fr/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "/_next/static/0-flUOeUAT5QeFgfkiWPw/_buildManifest",
-							"otherinfo": "\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uCD6Bbs\uFFFD>~U\\x000ey@\\x0013\uFFFD\\x0007\uFFFD\uFFFD\uFFFD\"X\uFFFD?\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\\x001a\uFFFD'\u07B2"
+							"evidence": "/_next/static/E8M5KWc7JjPmts4X8y13W/_buildManifest",
+							"otherinfo": "\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uCD6Bbs\uFFFD<3\uFFFD\uFFFDs\uFFFDc>kl\uFFFD2\uFFFDu\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\\x001a\uFFFD'\u07B2"
+						},
+						{
+							"uri": "https://impactco2.fr/boisson",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "/_next/static/E8M5KWc7JjPmts4X8y13W/_buildManifest",
+							"otherinfo": "\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uCD6Bbs\uFFFD<3\uFFFD\uFFFDs\uFFFDc>kl\uFFFD2\uFFFDu\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\\x001a\uFFFD'\u07B2"
 						},
 						{
 							"uri": "https://impactco2.fr/chauffage",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "/_next/static/0-flUOeUAT5QeFgfkiWPw/_buildManifest",
-							"otherinfo": "\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uCD6Bbs\uFFFD>~U\\x000ey@\\x0013\uFFFD\\x0007\uFFFD\uFFFD\uFFFD\"X\uFFFD?\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\\x001a\uFFFD'\u07B2"
+							"evidence": "/_next/static/E8M5KWc7JjPmts4X8y13W/_buildManifest",
+							"otherinfo": "\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uCD6Bbs\uFFFD<3\uFFFD\uFFFDs\uFFFDc>kl\uFFFD2\uFFFDu\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\\x001a\uFFFD'\u07B2"
 						},
 						{
 							"uri": "https://impactco2.fr/comparateur",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "/_next/static/0-flUOeUAT5QeFgfkiWPw/_buildManifest",
-							"otherinfo": "\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uCD6Bbs\uFFFD>~U\\x000ey@\\x0013\uFFFD\\x0007\uFFFD\uFFFD\uFFFD\"X\uFFFD?\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\\x001a\uFFFD'\u07B2"
+							"evidence": "/_next/static/E8M5KWc7JjPmts4X8y13W/_buildManifest",
+							"otherinfo": "\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uCD6Bbs\uFFFD<3\uFFFD\uFFFDs\uFFFDc>kl\uFFFD2\uFFFDu\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\\x001a\uFFFD'\u07B2"
 						},
 						{
 							"uri": "https://impactco2.fr/fruitsetlegumes",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "/_next/static/0-flUOeUAT5QeFgfkiWPw/_buildManifest",
-							"otherinfo": "\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uCD6Bbs\uFFFD>~U\\x000ey@\\x0013\uFFFD\\x0007\uFFFD\uFFFD\uFFFD\"X\uFFFD?\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\\x001a\uFFFD'\u07B2"
+							"evidence": "/_next/static/E8M5KWc7JjPmts4X8y13W/_buildManifest",
+							"otherinfo": "\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uCD6Bbs\uFFFD<3\uFFFD\uFFFDs\uFFFDc>kl\uFFFD2\uFFFDu\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\\x001a\uFFFD'\u07B2"
 						},
 						{
 							"uri": "https://impactco2.fr/habillement",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "/_next/static/0-flUOeUAT5QeFgfkiWPw/_buildManifest",
-							"otherinfo": "\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uCD6Bbs\uFFFD>~U\\x000ey@\\x0013\uFFFD\\x0007\uFFFD\uFFFD\uFFFD\"X\uFFFD?\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\\x001a\uFFFD'\u07B2"
+							"evidence": "/_next/static/E8M5KWc7JjPmts4X8y13W/_buildManifest",
+							"otherinfo": "\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uCD6Bbs\uFFFD<3\uFFFD\uFFFDs\uFFFDc>kl\uFFFD2\uFFFDu\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\\x001a\uFFFD'\u07B2"
 						},
 						{
-							"uri": "https://impactco2.fr/integration",
+							"uri": "https://impactco2.fr/repas",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "/_next/static/0-flUOeUAT5QeFgfkiWPw/_buildManifest",
-							"otherinfo": "\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uCD6Bbs\uFFFD>~U\\x000ey@\\x0013\uFFFD\\x0007\uFFFD\uFFFD\uFFFD\"X\uFFFD?\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\\x001a\uFFFD'\u07B2"
+							"evidence": "/_next/static/E8M5KWc7JjPmts4X8y13W/_buildManifest",
+							"otherinfo": "\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uCD6Bbs\uFFFD<3\uFFFD\uFFFDs\uFFFDc>kl\uFFFD2\uFFFDu\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\\x001a\uFFFD'\u07B2"
 						},
 						{
 							"uri": "https://impactco2.fr/stats",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "/_next/static/0-flUOeUAT5QeFgfkiWPw/_buildManifest",
-							"otherinfo": "\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uCD6Bbs\uFFFD>~U\\x000ey@\\x0013\uFFFD\\x0007\uFFFD\uFFFD\uFFFD\"X\uFFFD?\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\\x001a\uFFFD'\u07B2"
+							"evidence": "/_next/static/E8M5KWc7JjPmts4X8y13W/_buildManifest",
+							"otherinfo": "\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uCD6Bbs\uFFFD<3\uFFFD\uFFFDs\uFFFDc>kl\uFFFD2\uFFFDu\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\\x001a\uFFFD'\u07B2"
 						},
 						{
 							"uri": "https://impactco2.fr/thematiques",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "/_next/static/0-flUOeUAT5QeFgfkiWPw/_buildManifest",
-							"otherinfo": "\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uCD6Bbs\uFFFD>~U\\x000ey@\\x0013\uFFFD\\x0007\uFFFD\uFFFD\uFFFD\"X\uFFFD?\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\\x001a\uFFFD'\u07B2"
+							"evidence": "/_next/static/E8M5KWc7JjPmts4X8y13W/_buildManifest",
+							"otherinfo": "\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uCD6Bbs\uFFFD<3\uFFFD\uFFFDs\uFFFDc>kl\uFFFD2\uFFFDu\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\\x001a\uFFFD'\u07B2"
 						},
 						{
 							"uri": "https://impactco2.fr/transport",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "/_next/static/0-flUOeUAT5QeFgfkiWPw/_buildManifest",
-							"otherinfo": "\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uCD6Bbs\uFFFD>~U\\x000ey@\\x0013\uFFFD\\x0007\uFFFD\uFFFD\uFFFD\"X\uFFFD?\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\\x001a\uFFFD'\u07B2"
-						},
-						{
-							"uri": "https://impactco2.fr/usagenumerique",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "/_next/static/0-flUOeUAT5QeFgfkiWPw/_buildManifest",
-							"otherinfo": "\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uCD6Bbs\uFFFD>~U\\x000ey@\\x0013\uFFFD\\x0007\uFFFD\uFFFD\uFFFD\"X\uFFFD?\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\\x001a\uFFFD'\u07B2"
+							"evidence": "/_next/static/E8M5KWc7JjPmts4X8y13W/_buildManifest",
+							"otherinfo": "\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uCD6Bbs\uFFFD<3\uFFFD\uFFFDs\uFFFDc>kl\uFFFD2\uFFFDu\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\\x001a\uFFFD'\u07B2"
 						}
 					],
 					"count": "11",
 					"solution": "<p>Manually confirm that the Base64 data does not leak sensitive information, and that the data cannot be aggregated/used to exploit other vulnerabilities.</p>",
-					"otherinfo": "<p>\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uCD6Bbs\uFFFD>~U\\x000ey@\\x0013\uFFFD\\x0007\uFFFD\uFFFD\uFFFD\"X\uFFFD?\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\\x001a\uFFFD'\u07B2</p>",
+					"otherinfo": "<p>\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uCD6Bbs\uFFFD<3\uFFFD\uFFFDs\uFFFDc>kl\uFFFD2\uFFFDu\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\\x001a\uFFFD'\u07B2</p>",
 					"reference": "<p>https://projects.webappsec.org/w/page/13246936/Information%20Leakage</p>",
 					"cweid": "200",
 					"wascid": "13",
@@ -847,7 +855,7 @@
 							"param": "",
 							"attack": "",
 							"evidence": "query",
-							"otherinfo": "The following pattern was used: \\bQUERY\\b and was detected in the element starting with: \"<script id=\"__NEXT_DATA__\" type=\"application/json\" crossorigin=\"\">{\"props\":{\"pageProps\":{}},\"page\":\"/\",\"query\":{},\"buildId\":\"0-f\", see evidence field for the suspicious comment/snippet."
+							"otherinfo": "The following pattern was used: \\bQUERY\\b and was detected in the element starting with: \"<script id=\"__NEXT_DATA__\" type=\"application/json\" crossorigin=\"\">{\"props\":{\"pageProps\":{}},\"page\":\"/\",\"query\":{},\"buildId\":\"E8M\", see evidence field for the suspicious comment/snippet."
 						},
 						{
 							"uri": "https://impactco2.fr/",
@@ -855,7 +863,15 @@
 							"param": "",
 							"attack": "",
 							"evidence": "query",
-							"otherinfo": "The following pattern was used: \\bQUERY\\b and was detected in the element starting with: \"<script id=\"__NEXT_DATA__\" type=\"application/json\" crossorigin=\"\">{\"props\":{\"pageProps\":{}},\"page\":\"/\",\"query\":{},\"buildId\":\"0-f\", see evidence field for the suspicious comment/snippet."
+							"otherinfo": "The following pattern was used: \\bQUERY\\b and was detected in the element starting with: \"<script id=\"__NEXT_DATA__\" type=\"application/json\" crossorigin=\"\">{\"props\":{\"pageProps\":{}},\"page\":\"/\",\"query\":{},\"buildId\":\"E8M\", see evidence field for the suspicious comment/snippet."
+						},
+						{
+							"uri": "https://impactco2.fr/boisson",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "query",
+							"otherinfo": "The following pattern was used: \\bQUERY\\b and was detected in the element starting with: \"<script id=\"__NEXT_DATA__\" type=\"application/json\" crossorigin=\"\">{\"props\":{\"pageProps\":{\"category\":{\"id\":3,\"name\":\"Boisson\",\"em\", see evidence field for the suspicious comment/snippet."
 						},
 						{
 							"uri": "https://impactco2.fr/chauffage",
@@ -890,12 +906,12 @@
 							"otherinfo": "The following pattern was used: \\bQUERY\\b and was detected in the element starting with: \"<script id=\"__NEXT_DATA__\" type=\"application/json\" crossorigin=\"\">{\"props\":{\"pageProps\":{\"category\":{\"id\":5,\"name\":\"Habillement\"\", see evidence field for the suspicious comment/snippet."
 						},
 						{
-							"uri": "https://impactco2.fr/integration",
+							"uri": "https://impactco2.fr/repas",
 							"method": "GET",
 							"param": "",
 							"attack": "",
 							"evidence": "query",
-							"otherinfo": "The following pattern was used: \\bQUERY\\b and was detected in the element starting with: \"<script id=\"__NEXT_DATA__\" type=\"application/json\" crossorigin=\"\">{\"props\":{\"pageProps\":{}},\"page\":\"/integration\",\"query\":{},\"bu\", see evidence field for the suspicious comment/snippet."
+							"otherinfo": "The following pattern was used: \\bQUERY\\b and was detected in the element starting with: \"<script id=\"__NEXT_DATA__\" type=\"application/json\" crossorigin=\"\">{\"props\":{\"pageProps\":{\"category\":{\"id\":2,\"name\":\"Repas\",\"emoj\", see evidence field for the suspicious comment/snippet."
 						},
 						{
 							"uri": "https://impactco2.fr/stats",
@@ -920,19 +936,11 @@
 							"attack": "",
 							"evidence": "query",
 							"otherinfo": "The following pattern was used: \\bQUERY\\b and was detected in the element starting with: \"<script id=\"__NEXT_DATA__\" type=\"application/json\" crossorigin=\"\">{\"props\":{\"pageProps\":{\"category\":{\"id\":4,\"name\":\"Transport\",\"\", see evidence field for the suspicious comment/snippet."
-						},
-						{
-							"uri": "https://impactco2.fr/usagenumerique",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "query",
-							"otherinfo": "The following pattern was used: \\bQUERY\\b and was detected in the element starting with: \"<script id=\"__NEXT_DATA__\" type=\"application/json\" crossorigin=\"\">{\"props\":{\"pageProps\":{\"category\":{\"id\":10,\"name\":\"Usage num\u00E9r\", see evidence field for the suspicious comment/snippet."
 						}
 					],
 					"count": "11",
 					"solution": "<p>Remove all comments that return information that may help an attacker and fix any underlying problems they refer to.</p>",
-					"otherinfo": "<p>The following pattern was used: \\bQUERY\\b and was detected in the element starting with: \"<script id=\"__NEXT_DATA__\" type=\"application/json\" crossorigin=\"\">{\"props\":{\"pageProps\":{}},\"page\":\"/\",\"query\":{},\"buildId\":\"0-f\", see evidence field for the suspicious comment/snippet.</p>",
+					"otherinfo": "<p>The following pattern was used: \\bQUERY\\b and was detected in the element starting with: \"<script id=\"__NEXT_DATA__\" type=\"application/json\" crossorigin=\"\">{\"props\":{\"pageProps\":{}},\"page\":\"/\",\"query\":{},\"buildId\":\"E8M\", see evidence field for the suspicious comment/snippet.</p>",
 					"reference": "",
 					"cweid": "200",
 					"wascid": "13",
@@ -958,6 +966,14 @@
 						},
 						{
 							"uri": "https://impactco2.fr/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<noscript data-n-css=\"\"></noscript>",
+							"otherinfo": "A noScript tag has been found, which is an indication that the application works differently with JavaScript enabled compared to when it is not."
+						},
+						{
+							"uri": "https://impactco2.fr/boisson",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -997,7 +1013,7 @@
 							"otherinfo": "A noScript tag has been found, which is an indication that the application works differently with JavaScript enabled compared to when it is not."
 						},
 						{
-							"uri": "https://impactco2.fr/integration",
+							"uri": "https://impactco2.fr/repas",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1027,14 +1043,6 @@
 							"attack": "",
 							"evidence": "<noscript data-n-css=\"\"></noscript>",
 							"otherinfo": "A noScript tag has been found, which is an indication that the application works differently with JavaScript enabled compared to when it is not."
-						},
-						{
-							"uri": "https://impactco2.fr/usagenumerique",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "<noscript data-n-css=\"\"></noscript>",
-							"otherinfo": "A noScript tag has been found, which is an indication that the application works differently with JavaScript enabled compared to when it is not."
 						}
 					],
 					"count": "11",
@@ -1043,7 +1051,7 @@
 					"reference": "",
 					"cweid": "-1",
 					"wascid": "-1",
-					"sourceid": "6"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "10015",
@@ -1088,11 +1096,19 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://impactco2.fr/integration",
+							"uri": "https://impactco2.fr/fruitsetlegumes",
 							"method": "GET",
 							"param": "cache-control",
 							"attack": "",
-							"evidence": "",
+							"evidence": "s-maxage=31536000, stale-while-revalidate",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://impactco2.fr/habillement",
+							"method": "GET",
+							"param": "cache-control",
+							"attack": "",
+							"evidence": "s-maxage=31536000, stale-while-revalidate",
 							"otherinfo": ""
 						},
 						{
@@ -1129,14 +1145,6 @@
 						},
 						{
 							"uri": "https://impactco2.fr/transport",
-							"method": "GET",
-							"param": "cache-control",
-							"attack": "",
-							"evidence": "s-maxage=31536000, stale-while-revalidate",
-							"otherinfo": ""
-						},
-						{
-							"uri": "https://impactco2.fr/usagenumerique",
 							"method": "GET",
 							"param": "cache-control",
 							"attack": "",
@@ -1367,12 +1375,20 @@
 							"otherinfo": "In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234."
 						},
 						{
-							"uri": "https://impactco2.fr/integration",
+							"uri": "https://impactco2.fr/habillement",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "",
-							"otherinfo": "In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234."
+							"evidence": "s-maxage=31536000",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://impactco2.fr/repas",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "s-maxage=31536000",
+							"otherinfo": ""
 						},
 						{
 							"uri": "https://impactco2.fr/stats",
@@ -1392,14 +1408,6 @@
 						},
 						{
 							"uri": "https://impactco2.fr/transport",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "s-maxage=31536000",
-							"otherinfo": ""
-						},
-						{
-							"uri": "https://impactco2.fr/usagenumerique",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1448,7 +1456,7 @@
 					"reference": "<p>https://datatracker.ietf.org/doc/html/rfc7234</p><p>https://datatracker.ietf.org/doc/html/rfc7231</p><p>https://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html</p>",
 					"cweid": "524",
 					"wascid": "13",
-					"sourceid": "18"
+					"sourceid": "64"
 				},
 				{
 					"pluginid": "10031",
@@ -1475,7 +1483,7 @@
 					"reference": "<p>http://websecuritytool.codeplex.com/wikipage?title=Checks#user-controlled-html-attribute</p>",
 					"cweid": "20",
 					"wascid": "20",
-					"sourceid": "470"
+					"sourceid": "503"
 				}
 			]
 		}
