@@ -1,7 +1,7 @@
 {
 	"@programName": "ZAP",
 	"@version": "2.14.0",
-	"@generated": "Sun, 11 Feb 2024 01:20:42",
+	"@generated": "Sun, 18 Feb 2024 01:20:03",
 	"site":[ 
 		{
 			"@name": "https://carte-verte.beta.gouv.fr",
@@ -36,6 +36,14 @@
 							"otherinfo": "script-src includes unsafe-inline."
 						},
 						{
+							"uri": "https://carte-verte.beta.gouv.fr/accessibilite",
+							"method": "GET",
+							"param": "Content-Security-Policy",
+							"attack": "",
+							"evidence": "default-src 'none'; connect-src 'self' https://*.gouv.fr; font-src 'self'; media-src 'self'; img-src 'self' data:; script-src 'self' 'unsafe-inline' https://stats.beta.gouv.fr; style-src 'self' 'unsafe-inline'; object-src 'self' data:; frame-ancestors 'self'; base-uri 'self' https://*.gouv.fr; form-action 'self' https://*.gouv.fr; block-all-mixed-content ; upgrade-insecure-requests ;",
+							"otherinfo": "script-src includes unsafe-inline."
+						},
+						{
 							"uri": "https://carte-verte.beta.gouv.fr/cgu",
 							"method": "GET",
 							"param": "Content-Security-Policy",
@@ -45,14 +53,6 @@
 						},
 						{
 							"uri": "https://carte-verte.beta.gouv.fr/politique-de-confidentialite",
-							"method": "GET",
-							"param": "Content-Security-Policy",
-							"attack": "",
-							"evidence": "default-src 'none'; connect-src 'self' https://*.gouv.fr; font-src 'self'; media-src 'self'; img-src 'self' data:; script-src 'self' 'unsafe-inline' https://stats.beta.gouv.fr; style-src 'self' 'unsafe-inline'; object-src 'self' data:; frame-ancestors 'self'; base-uri 'self' https://*.gouv.fr; form-action 'self' https://*.gouv.fr; block-all-mixed-content ; upgrade-insecure-requests ;",
-							"otherinfo": "script-src includes unsafe-inline."
-						},
-						{
-							"uri": "https://carte-verte.beta.gouv.fr/private",
 							"method": "GET",
 							"param": "Content-Security-Policy",
 							"attack": "",
@@ -95,6 +95,14 @@
 							"otherinfo": "style-src includes unsafe-inline."
 						},
 						{
+							"uri": "https://carte-verte.beta.gouv.fr/accessibilite",
+							"method": "GET",
+							"param": "Content-Security-Policy",
+							"attack": "",
+							"evidence": "default-src 'none'; connect-src 'self' https://*.gouv.fr; font-src 'self'; media-src 'self'; img-src 'self' data:; script-src 'self' 'unsafe-inline' https://stats.beta.gouv.fr; style-src 'self' 'unsafe-inline'; object-src 'self' data:; frame-ancestors 'self'; base-uri 'self' https://*.gouv.fr; form-action 'self' https://*.gouv.fr; block-all-mixed-content ; upgrade-insecure-requests ;",
+							"otherinfo": "style-src includes unsafe-inline."
+						},
+						{
 							"uri": "https://carte-verte.beta.gouv.fr/cgu",
 							"method": "GET",
 							"param": "Content-Security-Policy",
@@ -104,14 +112,6 @@
 						},
 						{
 							"uri": "https://carte-verte.beta.gouv.fr/politique-de-confidentialite",
-							"method": "GET",
-							"param": "Content-Security-Policy",
-							"attack": "",
-							"evidence": "default-src 'none'; connect-src 'self' https://*.gouv.fr; font-src 'self'; media-src 'self'; img-src 'self' data:; script-src 'self' 'unsafe-inline' https://stats.beta.gouv.fr; style-src 'self' 'unsafe-inline'; object-src 'self' data:; frame-ancestors 'self'; base-uri 'self' https://*.gouv.fr; form-action 'self' https://*.gouv.fr; block-all-mixed-content ; upgrade-insecure-requests ;",
-							"otherinfo": "style-src includes unsafe-inline."
-						},
-						{
-							"uri": "https://carte-verte.beta.gouv.fr/private",
 							"method": "GET",
 							"param": "Content-Security-Policy",
 							"attack": "",
@@ -178,6 +178,14 @@
 							"otherinfo": "The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing."
 						},
 						{
+							"uri": "https://carte-verte.beta.gouv.fr/accessibilite",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "Access-Control-Allow-Origin: *",
+							"otherinfo": "The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing."
+						},
+						{
 							"uri": "https://carte-verte.beta.gouv.fr/cgu",
 							"method": "GET",
 							"param": "",
@@ -195,14 +203,6 @@
 						},
 						{
 							"uri": "https://carte-verte.beta.gouv.fr/politique-de-confidentialite",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "Access-Control-Allow-Origin: *",
-							"otherinfo": "The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing."
-						},
-						{
-							"uri": "https://carte-verte.beta.gouv.fr/private",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -256,10 +256,10 @@
 					"count": "1",
 					"solution": "<p>Manually confirm that the timestamp data is not sensitive, and that the data cannot be aggregated to disclose exploitable patterns.</p>",
 					"otherinfo": "<p>1540483477, which evaluates to: 2018-10-25 16:04:37</p>",
-					"reference": "<p>http://projects.webappsec.org/w/page/13246936/Information%20Leakage</p>",
+					"reference": "<p>https://cwe.mitre.org/data/definitions/200.html</p>",
 					"cweid": "200",
 					"wascid": "13",
-					"sourceid": "91"
+					"sourceid": "79"
 				},
 				{
 					"pluginid": "10094",
@@ -358,7 +358,7 @@
 					"reference": "<p>https://projects.webappsec.org/w/page/13246936/Information%20Leakage</p>",
 					"cweid": "200",
 					"wascid": "13",
-					"sourceid": "101"
+					"sourceid": "92"
 				},
 				{
 					"pluginid": "10027",
@@ -516,7 +516,7 @@
 					"reference": "<p>https://cheatsheetseries.owasp.org/cheatsheets/Session_Management_Cheat_Sheet.html#web-content-caching</p><p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cache-Control</p><p>https://grayduck.mn/2021/09/13/cache-control-recommendations/</p>",
 					"cweid": "525",
 					"wascid": "13",
-					"sourceid": "8"
+					"sourceid": "6"
 				},
 				{
 					"pluginid": "10050",
@@ -533,7 +533,7 @@
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "Age: 4692467",
+							"evidence": "Age: 5297228",
 							"otherinfo": "The presence of the 'Age' header indicates that that a HTTP/1.1 compliant caching server is in use."
 						},
 						{
@@ -541,7 +541,7 @@
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "Age: 4692467",
+							"evidence": "Age: 5297228",
 							"otherinfo": "The presence of the 'Age' header indicates that that a HTTP/1.1 compliant caching server is in use."
 						},
 						{
@@ -549,7 +549,7 @@
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "Age: 1340",
+							"evidence": "Age: 606101",
 							"otherinfo": "The presence of the 'Age' header indicates that that a HTTP/1.1 compliant caching server is in use."
 						},
 						{
@@ -557,7 +557,7 @@
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "Age: 1340",
+							"evidence": "Age: 606101",
 							"otherinfo": "The presence of the 'Age' header indicates that that a HTTP/1.1 compliant caching server is in use."
 						},
 						{
@@ -565,7 +565,7 @@
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "Age: 1340",
+							"evidence": "Age: 606101",
 							"otherinfo": "The presence of the 'Age' header indicates that that a HTTP/1.1 compliant caching server is in use."
 						},
 						{
@@ -573,15 +573,15 @@
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "Age: 1340",
+							"evidence": "Age: 606101",
 							"otherinfo": "The presence of the 'Age' header indicates that that a HTTP/1.1 compliant caching server is in use."
 						},
 						{
-							"uri": "https://carte-verte.beta.gouv.fr/cgu",
+							"uri": "https://carte-verte.beta.gouv.fr/accessibilite",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "Age: 4394867",
+							"evidence": "Age: 4838386",
 							"otherinfo": "The presence of the 'Age' header indicates that that a HTTP/1.1 compliant caching server is in use."
 						},
 						{
@@ -589,15 +589,15 @@
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "Age: 1340",
+							"evidence": "Age: 606101",
 							"otherinfo": "The presence of the 'Age' header indicates that that a HTTP/1.1 compliant caching server is in use."
 						},
 						{
-							"uri": "https://carte-verte.beta.gouv.fr/private",
+							"uri": "https://carte-verte.beta.gouv.fr/politique-de-confidentialite",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "Age: 385",
+							"evidence": "Age: 4838386",
 							"otherinfo": "The presence of the 'Age' header indicates that that a HTTP/1.1 compliant caching server is in use."
 						},
 						{
@@ -605,7 +605,7 @@
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "Age: 4550897",
+							"evidence": "Age: 5155658",
 							"otherinfo": "The presence of the 'Age' header indicates that that a HTTP/1.1 compliant caching server is in use."
 						},
 						{
@@ -613,7 +613,7 @@
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "Age: 349",
+							"evidence": "Age: 605110",
 							"otherinfo": "The presence of the 'Age' header indicates that that a HTTP/1.1 compliant caching server is in use."
 						}
 					],
@@ -666,7 +666,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Dest</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "8"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "90005",
@@ -709,7 +709,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Mode</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "8"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "90005",
@@ -752,7 +752,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Site</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "8"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "90005",
@@ -795,7 +795,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-User</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "8"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "10049",
@@ -808,6 +808,22 @@
 					"desc": "<p>The response contents are storable by caching components such as proxy servers, and may be retrieved directly from the cache, rather than from the origin server by the caching servers, in response to similar requests from other users.  If the response data is sensitive, personal or user-specific, this may result in sensitive information being leaked. In some cases, this may even result in a user gaining complete control of the session of another user, depending on the configuration of the caching components in use in their environment. This is primarily an issue where \"shared\" caching servers such as \"proxy\" caches are configured on the local network. This configuration is typically found in corporate or educational environments, for instance.</p>",
 					"instances":[ 
 						{
+							"uri": "https://carte-verte.beta.gouv.fr/_next/static/css/34529592e7f8d244.css",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "max-age=31536000",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://carte-verte.beta.gouv.fr/_next/static/css/be28571f38a0ae8e.css",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "max-age=31536000",
+							"otherinfo": ""
+						},
+						{
 							"uri": "https://carte-verte.beta.gouv.fr/_next/static/media/d82a8a076d0105b5-s.p.woff2",
 							"method": "GET",
 							"param": "",
@@ -816,13 +832,13 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "1",
+					"count": "3",
 					"solution": "<p>Validate that the response does not contain sensitive, personal or user-specific information.  If it does, consider the use of the following HTTP response headers, to limit, or prevent the content being stored and retrieved from the cache by another user:</p><p>Cache-Control: no-cache, no-store, must-revalidate, private</p><p>Pragma: no-cache</p><p>Expires: 0</p><p>This configuration directs both HTTP 1.0 and HTTP 1.1 compliant caching servers to not store the response, and to not retrieve the response (without validation) from the cache, in response to a similar request. </p>",
 					"otherinfo": "",
 					"reference": "<p>https://datatracker.ietf.org/doc/html/rfc7234</p><p>https://datatracker.ietf.org/doc/html/rfc7231</p><p>https://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html</p>",
 					"cweid": "524",
 					"wascid": "13",
-					"sourceid": "44"
+					"sourceid": "53"
 				},
 				{
 					"pluginid": "10049",
@@ -851,6 +867,14 @@
 							"otherinfo": ""
 						},
 						{
+							"uri": "https://carte-verte.beta.gouv.fr/accessibilite",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "max-age=0",
+							"otherinfo": ""
+						},
+						{
 							"uri": "https://carte-verte.beta.gouv.fr/cgu",
 							"method": "GET",
 							"param": "",
@@ -867,14 +891,6 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://carte-verte.beta.gouv.fr/mentions-legales",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "max-age=0",
-							"otherinfo": ""
-						},
-						{
 							"uri": "https://carte-verte.beta.gouv.fr/politique-de-confidentialite",
 							"method": "GET",
 							"param": "",
@@ -883,15 +899,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://carte-verte.beta.gouv.fr/private",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "max-age=0",
-							"otherinfo": ""
-						},
-						{
-							"uri": "https://carte-verte.beta.gouv.fr/private/",
+							"uri": "https://carte-verte.beta.gouv.fr/robots.txt",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -907,13 +915,13 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "9",
+					"count": "8",
 					"solution": "",
 					"otherinfo": "",
 					"reference": "<p>https://datatracker.ietf.org/doc/html/rfc7234</p><p>https://datatracker.ietf.org/doc/html/rfc7231</p><p>https://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html</p>",
 					"cweid": "524",
 					"wascid": "13",
-					"sourceid": "8"
+					"sourceid": "1"
 				}
 			]
 		}
