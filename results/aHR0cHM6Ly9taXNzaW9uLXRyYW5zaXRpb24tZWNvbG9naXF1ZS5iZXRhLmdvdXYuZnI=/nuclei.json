@@ -1,23 +1,20 @@
 [
   [
     {
-      "template": "dns/caa-fingerprint.yaml",
-      "template-url": "https://templates.nuclei.sh/public/caa-fingerprint",
-      "template-id": "caa-fingerprint",
-      "template-path": "/home/runner/nuclei-templates/dns/caa-fingerprint.yaml",
+      "template": "dns/nameserver-fingerprint.yaml",
+      "template-url": "https://templates.nuclei.sh/public/nameserver-fingerprint",
+      "template-id": "nameserver-fingerprint",
+      "template-path": "/home/runner/nuclei-templates/dns/nameserver-fingerprint.yaml",
       "info": {
-        "name": "CAA Record",
+        "name": "NS Record Detection",
         "author": [
           "pdteam"
         ],
         "tags": [
           "dns",
-          "caa"
+          "ns"
         ],
-        "description": "A CAA record was discovered. A CAA record is used to specify which certificate authorities (CAs) are allowed to issue certificates for a domain.",
-        "reference": [
-          "https://support.dnsimple.com/articles/caa-record/#whats-a-caa-record"
-        ],
+        "description": "An NS record was detected. An NS record delegates a subdomain to a set of name servers.",
         "severity": "info",
         "metadata": {
           "max-request": 1
@@ -32,9 +29,13 @@
       "type": "dns",
       "host": "mission-transition-ecologique.beta.gouv.fr.",
       "matched-at": "mission-transition-ecologique.beta.gouv.fr",
-      "request": ";; opcode: QUERY, status: NOERROR, id: 34051\n;; flags: rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;mission-transition-ecologique.beta.gouv.fr.\tIN\t CAA\n",
-      "response": ";; opcode: QUERY, status: NOERROR, id: 34051\n;; flags: qr rd ra; QUERY: 1, ANSWER: 0, AUTHORITY: 1, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 512\n\n;; QUESTION SECTION:\n;mission-transition-ecologique.beta.gouv.fr.\tIN\t CAA\n\n;; AUTHORITY SECTION:\nmission-transition-ecologique.beta.gouv.fr.\t60\tIN\tSOA\tdns102.ovh.net. tech.ovh.net. 2023111318 86400 3600 3600000 60\n",
-      "timestamp": "2024-02-11T01:45:22.285619899Z",
+      "extracted-results": [
+        "dns102.ovh.net.",
+        "ns102.ovh.net."
+      ],
+      "request": ";; opcode: QUERY, status: NOERROR, id: 16958\n;; flags: rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;mission-transition-ecologique.beta.gouv.fr.\tIN\t NS\n",
+      "response": ";; opcode: QUERY, status: NOERROR, id: 16958\n;; flags: qr rd ra; QUERY: 1, ANSWER: 2, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 512\n\n;; QUESTION SECTION:\n;mission-transition-ecologique.beta.gouv.fr.\tIN\t NS\n\n;; ANSWER SECTION:\nmission-transition-ecologique.beta.gouv.fr.\t3600\tIN\tNS\tdns102.ovh.net.\nmission-transition-ecologique.beta.gouv.fr.\t3600\tIN\tNS\tns102.ovh.net.\n",
+      "timestamp": "2024-02-18T01:47:07.18970184Z",
       "matcher-status": true
     },
     {
@@ -72,12 +73,49 @@
       "matched-at": "mission-transition-ecologique.beta.gouv.fr",
       "extracted-results": [
         "100 mx3.mail.ovh.net.",
-        "1 mx1.mail.ovh.net.",
-        "5 mx2.mail.ovh.net."
+        "5 mx2.mail.ovh.net.",
+        "1 mx1.mail.ovh.net."
       ],
-      "request": ";; opcode: QUERY, status: NOERROR, id: 17229\n;; flags: rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;mission-transition-ecologique.beta.gouv.fr.\tIN\t MX\n",
-      "response": ";; opcode: QUERY, status: NOERROR, id: 17229\n;; flags: qr rd ra; QUERY: 1, ANSWER: 3, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 1232\n\n;; QUESTION SECTION:\n;mission-transition-ecologique.beta.gouv.fr.\tIN\t MX\n\n;; ANSWER SECTION:\nmission-transition-ecologique.beta.gouv.fr.\t3600\tIN\tMX\t100 mx3.mail.ovh.net.\nmission-transition-ecologique.beta.gouv.fr.\t3600\tIN\tMX\t1 mx1.mail.ovh.net.\nmission-transition-ecologique.beta.gouv.fr.\t3600\tIN\tMX\t5 mx2.mail.ovh.net.\n",
-      "timestamp": "2024-02-11T01:45:22.409101365Z",
+      "request": ";; opcode: QUERY, status: NOERROR, id: 424\n;; flags: rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;mission-transition-ecologique.beta.gouv.fr.\tIN\t MX\n",
+      "response": ";; opcode: QUERY, status: NOERROR, id: 424\n;; flags: qr rd ra; QUERY: 1, ANSWER: 3, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 512\n\n;; QUESTION SECTION:\n;mission-transition-ecologique.beta.gouv.fr.\tIN\t MX\n\n;; ANSWER SECTION:\nmission-transition-ecologique.beta.gouv.fr.\t3600\tIN\tMX\t100 mx3.mail.ovh.net.\nmission-transition-ecologique.beta.gouv.fr.\t3600\tIN\tMX\t5 mx2.mail.ovh.net.\nmission-transition-ecologique.beta.gouv.fr.\t3600\tIN\tMX\t1 mx1.mail.ovh.net.\n",
+      "timestamp": "2024-02-18T01:47:07.192120531Z",
+      "matcher-status": true
+    },
+    {
+      "template": "dns/caa-fingerprint.yaml",
+      "template-url": "https://templates.nuclei.sh/public/caa-fingerprint",
+      "template-id": "caa-fingerprint",
+      "template-path": "/home/runner/nuclei-templates/dns/caa-fingerprint.yaml",
+      "info": {
+        "name": "CAA Record",
+        "author": [
+          "pdteam"
+        ],
+        "tags": [
+          "dns",
+          "caa"
+        ],
+        "description": "A CAA record was discovered. A CAA record is used to specify which certificate authorities (CAs) are allowed to issue certificates for a domain.",
+        "reference": [
+          "https://support.dnsimple.com/articles/caa-record/#whats-a-caa-record"
+        ],
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        },
+        "classification": {
+          "cve-id": null,
+          "cwe-id": [
+            "cwe-200"
+          ]
+        }
+      },
+      "type": "dns",
+      "host": "mission-transition-ecologique.beta.gouv.fr.",
+      "matched-at": "mission-transition-ecologique.beta.gouv.fr",
+      "request": ";; opcode: QUERY, status: NOERROR, id: 47868\n;; flags: rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;mission-transition-ecologique.beta.gouv.fr.\tIN\t CAA\n",
+      "response": ";; opcode: QUERY, status: NOERROR, id: 47868\n;; flags: qr rd ra; QUERY: 1, ANSWER: 0, AUTHORITY: 1, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 1232\n\n;; QUESTION SECTION:\n;mission-transition-ecologique.beta.gouv.fr.\tIN\t CAA\n\n;; AUTHORITY SECTION:\nmission-transition-ecologique.beta.gouv.fr.\t60\tIN\tSOA\tdns102.ovh.net. tech.ovh.net. 2023111318 86400 3600 3600000 60\n",
+      "timestamp": "2024-02-18T01:47:07.346064459Z",
       "matcher-status": true
     },
     {
@@ -115,47 +153,48 @@
       "extracted-results": [
         "\"v=spf1 include:mx.ovh.com -all\""
       ],
-      "request": ";; opcode: QUERY, status: NOERROR, id: 18417\n;; flags: rd ad; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;mission-transition-ecologique.beta.gouv.fr.\tIN\t TXT\n",
-      "response": ";; opcode: QUERY, status: NOERROR, id: 18417\n;; flags: qr rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 1232\n\n;; QUESTION SECTION:\n;mission-transition-ecologique.beta.gouv.fr.\tIN\t TXT\n\n;; ANSWER SECTION:\nmission-transition-ecologique.beta.gouv.fr.\t600\tIN\tTXT\t\"v=spf1 include:mx.ovh.com -all\"\n",
-      "timestamp": "2024-02-11T01:45:23.265020544Z",
+      "request": ";; opcode: QUERY, status: NOERROR, id: 57842\n;; flags: rd ad; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;mission-transition-ecologique.beta.gouv.fr.\tIN\t TXT\n",
+      "response": ";; opcode: QUERY, status: NOERROR, id: 57842\n;; flags: qr rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 512\n\n;; QUESTION SECTION:\n;mission-transition-ecologique.beta.gouv.fr.\tIN\t TXT\n\n;; ANSWER SECTION:\nmission-transition-ecologique.beta.gouv.fr.\t600\tIN\tTXT\t\"v=spf1 include:mx.ovh.com -all\"\n",
+      "timestamp": "2024-02-18T01:47:08.101304585Z",
       "matcher-status": true
     },
     {
-      "template": "dns/nameserver-fingerprint.yaml",
-      "template-url": "https://templates.nuclei.sh/public/nameserver-fingerprint",
-      "template-id": "nameserver-fingerprint",
-      "template-path": "/home/runner/nuclei-templates/dns/nameserver-fingerprint.yaml",
+      "template": "http/misconfiguration/http-missing-security-headers.yaml",
+      "template-url": "https://templates.nuclei.sh/public/http-missing-security-headers",
+      "template-id": "http-missing-security-headers",
+      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/http-missing-security-headers.yaml",
       "info": {
-        "name": "NS Record Detection",
+        "name": "HTTP Missing Security Headers",
         "author": [
-          "pdteam"
+          "socketz",
+          "geeknik",
+          "g4l1t0",
+          "convisoappsec",
+          "kurohost",
+          "dawid-czarnecki",
+          "forgedhallpass",
+          "jub0bs"
         ],
         "tags": [
-          "dns",
-          "ns"
+          "misconfig",
+          "headers",
+          "generic"
         ],
-        "description": "An NS record was detected. An NS record delegates a subdomain to a set of name servers.",
+        "description": "This template searches for missing HTTP security headers. The impact of these missing headers can vary.\n",
         "severity": "info",
         "metadata": {
           "max-request": 1
-        },
-        "classification": {
-          "cve-id": null,
-          "cwe-id": [
-            "cwe-200"
-          ]
         }
       },
-      "type": "dns",
-      "host": "mission-transition-ecologique.beta.gouv.fr.",
-      "matched-at": "mission-transition-ecologique.beta.gouv.fr",
-      "extracted-results": [
-        "dns102.ovh.net.",
-        "ns102.ovh.net."
-      ],
-      "request": ";; opcode: QUERY, status: NOERROR, id: 64164\n;; flags: rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;mission-transition-ecologique.beta.gouv.fr.\tIN\t NS\n",
-      "response": ";; opcode: QUERY, status: NOERROR, id: 64164\n;; flags: qr rd ra; QUERY: 1, ANSWER: 2, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 512\n\n;; QUESTION SECTION:\n;mission-transition-ecologique.beta.gouv.fr.\tIN\t NS\n\n;; ANSWER SECTION:\nmission-transition-ecologique.beta.gouv.fr.\t3600\tIN\tNS\tdns102.ovh.net.\nmission-transition-ecologique.beta.gouv.fr.\t3600\tIN\tNS\tns102.ovh.net.\n",
-      "timestamp": "2024-02-11T01:45:23.283831591Z",
+      "matcher-name": "permissions-policy",
+      "type": "http",
+      "host": "https://mission-transition-ecologique.beta.gouv.fr",
+      "matched-at": "https://mission-transition-ecologique.beta.gouv.fr",
+      "request": "GET / HTTP/1.1\r\nHost: mission-transition-ecologique.beta.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 200 OK\r\nConnection: close\r\nTransfer-Encoding: chunked\r\nAccess-Control-Allow-Origin: *\r\nCache-Control: no-cache\r\nContent-Security-Policy: default-src 'none';base-uri 'self';form-action 'self';script-src 'self';script-src-elem 'self' 'unsafe-inline' https://stats.beta.gouv.fr;style-src 'self' 'unsafe-inline';font-src 'self';img-src 'self' data:;object-src 'self';connect-src 'self' https://place-des-entreprises.beta.gouv.fr https://stats.beta.gouv.fr https://sentry.incubateur.net;worker-src 'self' blob:;frame-src 'self' https://place-des-entreprises.beta.gouv.fr;frame-ancestors 'self' https://place-des-entreprises.beta.gouv.fr;\r\nContent-Type: text/html\r\nDate: Sun, 18 Feb 2024 01:47:50 GMT\r\nEtag: W/\"8c1-0k4Sea/XchXfk8xMWHi/FA8z8yo\"\r\nExpect-Ct: default-src 'self' https://sentry.incubateur.net;report-uri https://sentry.incubateur.net/api/137/security/?sentry_key=caf416235f164b448d0ca6369f2053e5;\r\nStrict-Transport-Security: max-age=31536000\r\nX-Content-Type-Options: nosniff\r\nX-Frame-Options: ALLOW-FROM https://place-des-entreprises.beta.gouv.fr\r\nX-Request-Id: 51249c1c-77bf-4b75-aa50-56c855b2d077\r\n\r\n<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <meta charset=\"UTF-8\">\n    <link rel=\"icon\" href=\"/favicon.ico\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>Transition écologique des entreprises</title>\n    <!-- Open Graph meta data -->\n    <meta data-rh=\"true\" property=\"og:url\" content=\"https://mission-transition-ecologique.beta.gouv.fr/\">\n    <meta data-rh=\"true\" property=\"og:type\" content=\"website\">\n    <meta data-rh=\"true\" property=\"og:site_name\" content=\"Transition écologique des entreprises\">\n    <meta data-rh=\"true\" property=\"og:title\" content=\"Transition écologique des entreprises\">\n    <meta data-rh=\"true\" property=\"og:description\" content=\"Des accompagnements et financements pour m'aider à réduire l'impact environnemental de mon entreprise\">\n    <meta data-rh=\"true\" property=\"og:image\" content=\"/images/TEE-preview-image-529-by-298.png\">\n    <!-- Twitter Meta Tags -->\n    <meta data-rh=\"true\" name=\"twitter:card\" content=\"summary_large_image\">\n    <meta data-rh=\"true\" property=\"twitter:domain\" content=\"mission-transition-ecologique.beta.gouv.fr\">\n    <meta data-rh=\"true\" property=\"twitter:url\" content=\"https://mission-transition-ecologique.beta.gouv.fr/\">\n    <meta data-rh=\"true\" name=\"twitter:title\" content=\"Transition écologique des entreprises\">\n    <meta data-rh=\"true\" name=\"twitter:description\" content=\"Des accompagnements et financements pour m'aider à réduire l'impact environnemental de mon entreprise\">\n    <meta data-rh=\"true\" name=\"twitter:image\" content=\"/images/TEE-preview-image-529-by-298.png\">\n    <meta data-rh=\"true\" name=\"twitter:image:alt\" content=\"Transition écologique des entreprises\">\n    <meta data-rh=\"true\" name=\"twitter:image:width\" content=\"529\">\n    <meta data-rh=\"true\" name=\"twitter:image:height\" content=\"298\">\n    <meta data-rh=\"true\" name=\"twitter:site\" content=\"@ademe\">\n    <meta data-rh=\"true\" name=\"twitter:creator\" content=\"@ademe\">\n    <meta data-rh=\"true\" name=\"twitter:creator:id\" content=\"ademe\">\n    <script type=\"module\" crossorigin src=\"/assets/index-RiyWv1Sm.js\"></script>\n    <link rel=\"stylesheet\" crossorigin href=\"/assets/index-8dFp-P0x.css\">\n  </head>\n  <body>\n    <div id=\"app\">\n    </div>\n  </body>\n</html>\n",
+      "ip": "109.232.233.130",
+      "timestamp": "2024-02-18T01:47:50.306185276Z",
+      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://mission-transition-ecologique.beta.gouv.fr'",
       "matcher-status": true
     },
     {
@@ -191,9 +230,9 @@
       "host": "https://mission-transition-ecologique.beta.gouv.fr",
       "matched-at": "https://mission-transition-ecologique.beta.gouv.fr",
       "request": "GET / HTTP/1.1\r\nHost: mission-transition-ecologique.beta.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
-      "response": "HTTP/1.1 200 OK\r\nConnection: close\r\nTransfer-Encoding: chunked\r\nAccess-Control-Allow-Origin: *\r\nCache-Control: no-cache\r\nContent-Security-Policy: default-src 'none';base-uri 'self';form-action 'self';script-src 'self';script-src-elem 'self' 'unsafe-inline' https://stats.beta.gouv.fr;style-src 'self' 'unsafe-inline';font-src 'self';img-src 'self' data:;object-src 'self';connect-src 'self' https://place-des-entreprises.beta.gouv.fr https://stats.beta.gouv.fr;frame-src 'self' https://place-des-entreprises.beta.gouv.fr;frame-ancestors 'self' https://place-des-entreprises.beta.gouv.fr;\r\nContent-Type: text/html\r\nDate: Sun, 11 Feb 2024 01:46:34 GMT\r\nEtag: W/\"1d1-nuytA7ZjyteYSPAAE4QZhFxONic\"\r\nStrict-Transport-Security: max-age=31536000\r\nX-Content-Type-Options: nosniff\r\nX-Frame-Options: ALLOW-FROM https://place-des-entreprises.beta.gouv.fr\r\nX-Request-Id: 27d943ad-590d-4324-ad7d-c64f4fc73bc3\r\n\r\n<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <meta charset=\"UTF-8\">\n    <link rel=\"icon\" href=\"/favicon.ico\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>Transition écologique des entreprises</title>\n    <script type=\"module\" crossorigin src=\"/assets/index-bAfkIJZw.js\"></script>\n    <link rel=\"stylesheet\" crossorigin href=\"/assets/index-p9Q6rwd4.css\">\n  </head>\n  <body>\n    <div id=\"app\">\n    </div>\n  </body>\n</html>\n",
-      "ip": "148.253.75.120",
-      "timestamp": "2024-02-11T01:46:34.687847144Z",
+      "response": "HTTP/1.1 200 OK\r\nConnection: close\r\nTransfer-Encoding: chunked\r\nAccess-Control-Allow-Origin: *\r\nCache-Control: no-cache\r\nContent-Security-Policy: default-src 'none';base-uri 'self';form-action 'self';script-src 'self';script-src-elem 'self' 'unsafe-inline' https://stats.beta.gouv.fr;style-src 'self' 'unsafe-inline';font-src 'self';img-src 'self' data:;object-src 'self';connect-src 'self' https://place-des-entreprises.beta.gouv.fr https://stats.beta.gouv.fr https://sentry.incubateur.net;worker-src 'self' blob:;frame-src 'self' https://place-des-entreprises.beta.gouv.fr;frame-ancestors 'self' https://place-des-entreprises.beta.gouv.fr;\r\nContent-Type: text/html\r\nDate: Sun, 18 Feb 2024 01:47:50 GMT\r\nEtag: W/\"8c1-0k4Sea/XchXfk8xMWHi/FA8z8yo\"\r\nExpect-Ct: default-src 'self' https://sentry.incubateur.net;report-uri https://sentry.incubateur.net/api/137/security/?sentry_key=caf416235f164b448d0ca6369f2053e5;\r\nStrict-Transport-Security: max-age=31536000\r\nX-Content-Type-Options: nosniff\r\nX-Frame-Options: ALLOW-FROM https://place-des-entreprises.beta.gouv.fr\r\nX-Request-Id: 51249c1c-77bf-4b75-aa50-56c855b2d077\r\n\r\n<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <meta charset=\"UTF-8\">\n    <link rel=\"icon\" href=\"/favicon.ico\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>Transition écologique des entreprises</title>\n    <!-- Open Graph meta data -->\n    <meta data-rh=\"true\" property=\"og:url\" content=\"https://mission-transition-ecologique.beta.gouv.fr/\">\n    <meta data-rh=\"true\" property=\"og:type\" content=\"website\">\n    <meta data-rh=\"true\" property=\"og:site_name\" content=\"Transition écologique des entreprises\">\n    <meta data-rh=\"true\" property=\"og:title\" content=\"Transition écologique des entreprises\">\n    <meta data-rh=\"true\" property=\"og:description\" content=\"Des accompagnements et financements pour m'aider à réduire l'impact environnemental de mon entreprise\">\n    <meta data-rh=\"true\" property=\"og:image\" content=\"/images/TEE-preview-image-529-by-298.png\">\n    <!-- Twitter Meta Tags -->\n    <meta data-rh=\"true\" name=\"twitter:card\" content=\"summary_large_image\">\n    <meta data-rh=\"true\" property=\"twitter:domain\" content=\"mission-transition-ecologique.beta.gouv.fr\">\n    <meta data-rh=\"true\" property=\"twitter:url\" content=\"https://mission-transition-ecologique.beta.gouv.fr/\">\n    <meta data-rh=\"true\" name=\"twitter:title\" content=\"Transition écologique des entreprises\">\n    <meta data-rh=\"true\" name=\"twitter:description\" content=\"Des accompagnements et financements pour m'aider à réduire l'impact environnemental de mon entreprise\">\n    <meta data-rh=\"true\" name=\"twitter:image\" content=\"/images/TEE-preview-image-529-by-298.png\">\n    <meta data-rh=\"true\" name=\"twitter:image:alt\" content=\"Transition écologique des entreprises\">\n    <meta data-rh=\"true\" name=\"twitter:image:width\" content=\"529\">\n    <meta data-rh=\"true\" name=\"twitter:image:height\" content=\"298\">\n    <meta data-rh=\"true\" name=\"twitter:site\" content=\"@ademe\">\n    <meta data-rh=\"true\" name=\"twitter:creator\" content=\"@ademe\">\n    <meta data-rh=\"true\" name=\"twitter:creator:id\" content=\"ademe\">\n    <script type=\"module\" crossorigin src=\"/assets/index-RiyWv1Sm.js\"></script>\n    <link rel=\"stylesheet\" crossorigin href=\"/assets/index-8dFp-P0x.css\">\n  </head>\n  <body>\n    <div id=\"app\">\n    </div>\n  </body>\n</html>\n",
+      "ip": "109.232.233.130",
+      "timestamp": "2024-02-18T01:47:50.30623008Z",
       "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://mission-transition-ecologique.beta.gouv.fr'",
       "matcher-status": true
     },
@@ -230,9 +269,9 @@
       "host": "https://mission-transition-ecologique.beta.gouv.fr",
       "matched-at": "https://mission-transition-ecologique.beta.gouv.fr",
       "request": "GET / HTTP/1.1\r\nHost: mission-transition-ecologique.beta.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
-      "response": "HTTP/1.1 200 OK\r\nConnection: close\r\nTransfer-Encoding: chunked\r\nAccess-Control-Allow-Origin: *\r\nCache-Control: no-cache\r\nContent-Security-Policy: default-src 'none';base-uri 'self';form-action 'self';script-src 'self';script-src-elem 'self' 'unsafe-inline' https://stats.beta.gouv.fr;style-src 'self' 'unsafe-inline';font-src 'self';img-src 'self' data:;object-src 'self';connect-src 'self' https://place-des-entreprises.beta.gouv.fr https://stats.beta.gouv.fr;frame-src 'self' https://place-des-entreprises.beta.gouv.fr;frame-ancestors 'self' https://place-des-entreprises.beta.gouv.fr;\r\nContent-Type: text/html\r\nDate: Sun, 11 Feb 2024 01:46:34 GMT\r\nEtag: W/\"1d1-nuytA7ZjyteYSPAAE4QZhFxONic\"\r\nStrict-Transport-Security: max-age=31536000\r\nX-Content-Type-Options: nosniff\r\nX-Frame-Options: ALLOW-FROM https://place-des-entreprises.beta.gouv.fr\r\nX-Request-Id: 27d943ad-590d-4324-ad7d-c64f4fc73bc3\r\n\r\n<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <meta charset=\"UTF-8\">\n    <link rel=\"icon\" href=\"/favicon.ico\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>Transition écologique des entreprises</title>\n    <script type=\"module\" crossorigin src=\"/assets/index-bAfkIJZw.js\"></script>\n    <link rel=\"stylesheet\" crossorigin href=\"/assets/index-p9Q6rwd4.css\">\n  </head>\n  <body>\n    <div id=\"app\">\n    </div>\n  </body>\n</html>\n",
-      "ip": "148.253.75.120",
-      "timestamp": "2024-02-11T01:46:34.687899372Z",
+      "response": "HTTP/1.1 200 OK\r\nConnection: close\r\nTransfer-Encoding: chunked\r\nAccess-Control-Allow-Origin: *\r\nCache-Control: no-cache\r\nContent-Security-Policy: default-src 'none';base-uri 'self';form-action 'self';script-src 'self';script-src-elem 'self' 'unsafe-inline' https://stats.beta.gouv.fr;style-src 'self' 'unsafe-inline';font-src 'self';img-src 'self' data:;object-src 'self';connect-src 'self' https://place-des-entreprises.beta.gouv.fr https://stats.beta.gouv.fr https://sentry.incubateur.net;worker-src 'self' blob:;frame-src 'self' https://place-des-entreprises.beta.gouv.fr;frame-ancestors 'self' https://place-des-entreprises.beta.gouv.fr;\r\nContent-Type: text/html\r\nDate: Sun, 18 Feb 2024 01:47:50 GMT\r\nEtag: W/\"8c1-0k4Sea/XchXfk8xMWHi/FA8z8yo\"\r\nExpect-Ct: default-src 'self' https://sentry.incubateur.net;report-uri https://sentry.incubateur.net/api/137/security/?sentry_key=caf416235f164b448d0ca6369f2053e5;\r\nStrict-Transport-Security: max-age=31536000\r\nX-Content-Type-Options: nosniff\r\nX-Frame-Options: ALLOW-FROM https://place-des-entreprises.beta.gouv.fr\r\nX-Request-Id: 51249c1c-77bf-4b75-aa50-56c855b2d077\r\n\r\n<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <meta charset=\"UTF-8\">\n    <link rel=\"icon\" href=\"/favicon.ico\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>Transition écologique des entreprises</title>\n    <!-- Open Graph meta data -->\n    <meta data-rh=\"true\" property=\"og:url\" content=\"https://mission-transition-ecologique.beta.gouv.fr/\">\n    <meta data-rh=\"true\" property=\"og:type\" content=\"website\">\n    <meta data-rh=\"true\" property=\"og:site_name\" content=\"Transition écologique des entreprises\">\n    <meta data-rh=\"true\" property=\"og:title\" content=\"Transition écologique des entreprises\">\n    <meta data-rh=\"true\" property=\"og:description\" content=\"Des accompagnements et financements pour m'aider à réduire l'impact environnemental de mon entreprise\">\n    <meta data-rh=\"true\" property=\"og:image\" content=\"/images/TEE-preview-image-529-by-298.png\">\n    <!-- Twitter Meta Tags -->\n    <meta data-rh=\"true\" name=\"twitter:card\" content=\"summary_large_image\">\n    <meta data-rh=\"true\" property=\"twitter:domain\" content=\"mission-transition-ecologique.beta.gouv.fr\">\n    <meta data-rh=\"true\" property=\"twitter:url\" content=\"https://mission-transition-ecologique.beta.gouv.fr/\">\n    <meta data-rh=\"true\" name=\"twitter:title\" content=\"Transition écologique des entreprises\">\n    <meta data-rh=\"true\" name=\"twitter:description\" content=\"Des accompagnements et financements pour m'aider à réduire l'impact environnemental de mon entreprise\">\n    <meta data-rh=\"true\" name=\"twitter:image\" content=\"/images/TEE-preview-image-529-by-298.png\">\n    <meta data-rh=\"true\" name=\"twitter:image:alt\" content=\"Transition écologique des entreprises\">\n    <meta data-rh=\"true\" name=\"twitter:image:width\" content=\"529\">\n    <meta data-rh=\"true\" name=\"twitter:image:height\" content=\"298\">\n    <meta data-rh=\"true\" name=\"twitter:site\" content=\"@ademe\">\n    <meta data-rh=\"true\" name=\"twitter:creator\" content=\"@ademe\">\n    <meta data-rh=\"true\" name=\"twitter:creator:id\" content=\"ademe\">\n    <script type=\"module\" crossorigin src=\"/assets/index-RiyWv1Sm.js\"></script>\n    <link rel=\"stylesheet\" crossorigin href=\"/assets/index-8dFp-P0x.css\">\n  </head>\n  <body>\n    <div id=\"app\">\n    </div>\n  </body>\n</html>\n",
+      "ip": "109.232.233.130",
+      "timestamp": "2024-02-18T01:47:50.306246069Z",
       "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://mission-transition-ecologique.beta.gouv.fr'",
       "matcher-status": true
     },
@@ -269,9 +308,9 @@
       "host": "https://mission-transition-ecologique.beta.gouv.fr",
       "matched-at": "https://mission-transition-ecologique.beta.gouv.fr",
       "request": "GET / HTTP/1.1\r\nHost: mission-transition-ecologique.beta.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
-      "response": "HTTP/1.1 200 OK\r\nConnection: close\r\nTransfer-Encoding: chunked\r\nAccess-Control-Allow-Origin: *\r\nCache-Control: no-cache\r\nContent-Security-Policy: default-src 'none';base-uri 'self';form-action 'self';script-src 'self';script-src-elem 'self' 'unsafe-inline' https://stats.beta.gouv.fr;style-src 'self' 'unsafe-inline';font-src 'self';img-src 'self' data:;object-src 'self';connect-src 'self' https://place-des-entreprises.beta.gouv.fr https://stats.beta.gouv.fr;frame-src 'self' https://place-des-entreprises.beta.gouv.fr;frame-ancestors 'self' https://place-des-entreprises.beta.gouv.fr;\r\nContent-Type: text/html\r\nDate: Sun, 11 Feb 2024 01:46:34 GMT\r\nEtag: W/\"1d1-nuytA7ZjyteYSPAAE4QZhFxONic\"\r\nStrict-Transport-Security: max-age=31536000\r\nX-Content-Type-Options: nosniff\r\nX-Frame-Options: ALLOW-FROM https://place-des-entreprises.beta.gouv.fr\r\nX-Request-Id: 27d943ad-590d-4324-ad7d-c64f4fc73bc3\r\n\r\n<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <meta charset=\"UTF-8\">\n    <link rel=\"icon\" href=\"/favicon.ico\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>Transition écologique des entreprises</title>\n    <script type=\"module\" crossorigin src=\"/assets/index-bAfkIJZw.js\"></script>\n    <link rel=\"stylesheet\" crossorigin href=\"/assets/index-p9Q6rwd4.css\">\n  </head>\n  <body>\n    <div id=\"app\">\n    </div>\n  </body>\n</html>\n",
-      "ip": "148.253.75.120",
-      "timestamp": "2024-02-11T01:46:34.687917345Z",
+      "response": "HTTP/1.1 200 OK\r\nConnection: close\r\nTransfer-Encoding: chunked\r\nAccess-Control-Allow-Origin: *\r\nCache-Control: no-cache\r\nContent-Security-Policy: default-src 'none';base-uri 'self';form-action 'self';script-src 'self';script-src-elem 'self' 'unsafe-inline' https://stats.beta.gouv.fr;style-src 'self' 'unsafe-inline';font-src 'self';img-src 'self' data:;object-src 'self';connect-src 'self' https://place-des-entreprises.beta.gouv.fr https://stats.beta.gouv.fr https://sentry.incubateur.net;worker-src 'self' blob:;frame-src 'self' https://place-des-entreprises.beta.gouv.fr;frame-ancestors 'self' https://place-des-entreprises.beta.gouv.fr;\r\nContent-Type: text/html\r\nDate: Sun, 18 Feb 2024 01:47:50 GMT\r\nEtag: W/\"8c1-0k4Sea/XchXfk8xMWHi/FA8z8yo\"\r\nExpect-Ct: default-src 'self' https://sentry.incubateur.net;report-uri https://sentry.incubateur.net/api/137/security/?sentry_key=caf416235f164b448d0ca6369f2053e5;\r\nStrict-Transport-Security: max-age=31536000\r\nX-Content-Type-Options: nosniff\r\nX-Frame-Options: ALLOW-FROM https://place-des-entreprises.beta.gouv.fr\r\nX-Request-Id: 51249c1c-77bf-4b75-aa50-56c855b2d077\r\n\r\n<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <meta charset=\"UTF-8\">\n    <link rel=\"icon\" href=\"/favicon.ico\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>Transition écologique des entreprises</title>\n    <!-- Open Graph meta data -->\n    <meta data-rh=\"true\" property=\"og:url\" content=\"https://mission-transition-ecologique.beta.gouv.fr/\">\n    <meta data-rh=\"true\" property=\"og:type\" content=\"website\">\n    <meta data-rh=\"true\" property=\"og:site_name\" content=\"Transition écologique des entreprises\">\n    <meta data-rh=\"true\" property=\"og:title\" content=\"Transition écologique des entreprises\">\n    <meta data-rh=\"true\" property=\"og:description\" content=\"Des accompagnements et financements pour m'aider à réduire l'impact environnemental de mon entreprise\">\n    <meta data-rh=\"true\" property=\"og:image\" content=\"/images/TEE-preview-image-529-by-298.png\">\n    <!-- Twitter Meta Tags -->\n    <meta data-rh=\"true\" name=\"twitter:card\" content=\"summary_large_image\">\n    <meta data-rh=\"true\" property=\"twitter:domain\" content=\"mission-transition-ecologique.beta.gouv.fr\">\n    <meta data-rh=\"true\" property=\"twitter:url\" content=\"https://mission-transition-ecologique.beta.gouv.fr/\">\n    <meta data-rh=\"true\" name=\"twitter:title\" content=\"Transition écologique des entreprises\">\n    <meta data-rh=\"true\" name=\"twitter:description\" content=\"Des accompagnements et financements pour m'aider à réduire l'impact environnemental de mon entreprise\">\n    <meta data-rh=\"true\" name=\"twitter:image\" content=\"/images/TEE-preview-image-529-by-298.png\">\n    <meta data-rh=\"true\" name=\"twitter:image:alt\" content=\"Transition écologique des entreprises\">\n    <meta data-rh=\"true\" name=\"twitter:image:width\" content=\"529\">\n    <meta data-rh=\"true\" name=\"twitter:image:height\" content=\"298\">\n    <meta data-rh=\"true\" name=\"twitter:site\" content=\"@ademe\">\n    <meta data-rh=\"true\" name=\"twitter:creator\" content=\"@ademe\">\n    <meta data-rh=\"true\" name=\"twitter:creator:id\" content=\"ademe\">\n    <script type=\"module\" crossorigin src=\"/assets/index-RiyWv1Sm.js\"></script>\n    <link rel=\"stylesheet\" crossorigin href=\"/assets/index-8dFp-P0x.css\">\n  </head>\n  <body>\n    <div id=\"app\">\n    </div>\n  </body>\n</html>\n",
+      "ip": "109.232.233.130",
+      "timestamp": "2024-02-18T01:47:50.306262771Z",
       "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://mission-transition-ecologique.beta.gouv.fr'",
       "matcher-status": true
     },
@@ -308,9 +347,9 @@
       "host": "https://mission-transition-ecologique.beta.gouv.fr",
       "matched-at": "https://mission-transition-ecologique.beta.gouv.fr",
       "request": "GET / HTTP/1.1\r\nHost: mission-transition-ecologique.beta.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
-      "response": "HTTP/1.1 200 OK\r\nConnection: close\r\nTransfer-Encoding: chunked\r\nAccess-Control-Allow-Origin: *\r\nCache-Control: no-cache\r\nContent-Security-Policy: default-src 'none';base-uri 'self';form-action 'self';script-src 'self';script-src-elem 'self' 'unsafe-inline' https://stats.beta.gouv.fr;style-src 'self' 'unsafe-inline';font-src 'self';img-src 'self' data:;object-src 'self';connect-src 'self' https://place-des-entreprises.beta.gouv.fr https://stats.beta.gouv.fr;frame-src 'self' https://place-des-entreprises.beta.gouv.fr;frame-ancestors 'self' https://place-des-entreprises.beta.gouv.fr;\r\nContent-Type: text/html\r\nDate: Sun, 11 Feb 2024 01:46:34 GMT\r\nEtag: W/\"1d1-nuytA7ZjyteYSPAAE4QZhFxONic\"\r\nStrict-Transport-Security: max-age=31536000\r\nX-Content-Type-Options: nosniff\r\nX-Frame-Options: ALLOW-FROM https://place-des-entreprises.beta.gouv.fr\r\nX-Request-Id: 27d943ad-590d-4324-ad7d-c64f4fc73bc3\r\n\r\n<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <meta charset=\"UTF-8\">\n    <link rel=\"icon\" href=\"/favicon.ico\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>Transition écologique des entreprises</title>\n    <script type=\"module\" crossorigin src=\"/assets/index-bAfkIJZw.js\"></script>\n    <link rel=\"stylesheet\" crossorigin href=\"/assets/index-p9Q6rwd4.css\">\n  </head>\n  <body>\n    <div id=\"app\">\n    </div>\n  </body>\n</html>\n",
-      "ip": "148.253.75.120",
-      "timestamp": "2024-02-11T01:46:34.68793027Z",
+      "response": "HTTP/1.1 200 OK\r\nConnection: close\r\nTransfer-Encoding: chunked\r\nAccess-Control-Allow-Origin: *\r\nCache-Control: no-cache\r\nContent-Security-Policy: default-src 'none';base-uri 'self';form-action 'self';script-src 'self';script-src-elem 'self' 'unsafe-inline' https://stats.beta.gouv.fr;style-src 'self' 'unsafe-inline';font-src 'self';img-src 'self' data:;object-src 'self';connect-src 'self' https://place-des-entreprises.beta.gouv.fr https://stats.beta.gouv.fr https://sentry.incubateur.net;worker-src 'self' blob:;frame-src 'self' https://place-des-entreprises.beta.gouv.fr;frame-ancestors 'self' https://place-des-entreprises.beta.gouv.fr;\r\nContent-Type: text/html\r\nDate: Sun, 18 Feb 2024 01:47:50 GMT\r\nEtag: W/\"8c1-0k4Sea/XchXfk8xMWHi/FA8z8yo\"\r\nExpect-Ct: default-src 'self' https://sentry.incubateur.net;report-uri https://sentry.incubateur.net/api/137/security/?sentry_key=caf416235f164b448d0ca6369f2053e5;\r\nStrict-Transport-Security: max-age=31536000\r\nX-Content-Type-Options: nosniff\r\nX-Frame-Options: ALLOW-FROM https://place-des-entreprises.beta.gouv.fr\r\nX-Request-Id: 51249c1c-77bf-4b75-aa50-56c855b2d077\r\n\r\n<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <meta charset=\"UTF-8\">\n    <link rel=\"icon\" href=\"/favicon.ico\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>Transition écologique des entreprises</title>\n    <!-- Open Graph meta data -->\n    <meta data-rh=\"true\" property=\"og:url\" content=\"https://mission-transition-ecologique.beta.gouv.fr/\">\n    <meta data-rh=\"true\" property=\"og:type\" content=\"website\">\n    <meta data-rh=\"true\" property=\"og:site_name\" content=\"Transition écologique des entreprises\">\n    <meta data-rh=\"true\" property=\"og:title\" content=\"Transition écologique des entreprises\">\n    <meta data-rh=\"true\" property=\"og:description\" content=\"Des accompagnements et financements pour m'aider à réduire l'impact environnemental de mon entreprise\">\n    <meta data-rh=\"true\" property=\"og:image\" content=\"/images/TEE-preview-image-529-by-298.png\">\n    <!-- Twitter Meta Tags -->\n    <meta data-rh=\"true\" name=\"twitter:card\" content=\"summary_large_image\">\n    <meta data-rh=\"true\" property=\"twitter:domain\" content=\"mission-transition-ecologique.beta.gouv.fr\">\n    <meta data-rh=\"true\" property=\"twitter:url\" content=\"https://mission-transition-ecologique.beta.gouv.fr/\">\n    <meta data-rh=\"true\" name=\"twitter:title\" content=\"Transition écologique des entreprises\">\n    <meta data-rh=\"true\" name=\"twitter:description\" content=\"Des accompagnements et financements pour m'aider à réduire l'impact environnemental de mon entreprise\">\n    <meta data-rh=\"true\" name=\"twitter:image\" content=\"/images/TEE-preview-image-529-by-298.png\">\n    <meta data-rh=\"true\" name=\"twitter:image:alt\" content=\"Transition écologique des entreprises\">\n    <meta data-rh=\"true\" name=\"twitter:image:width\" content=\"529\">\n    <meta data-rh=\"true\" name=\"twitter:image:height\" content=\"298\">\n    <meta data-rh=\"true\" name=\"twitter:site\" content=\"@ademe\">\n    <meta data-rh=\"true\" name=\"twitter:creator\" content=\"@ademe\">\n    <meta data-rh=\"true\" name=\"twitter:creator:id\" content=\"ademe\">\n    <script type=\"module\" crossorigin src=\"/assets/index-RiyWv1Sm.js\"></script>\n    <link rel=\"stylesheet\" crossorigin href=\"/assets/index-8dFp-P0x.css\">\n  </head>\n  <body>\n    <div id=\"app\">\n    </div>\n  </body>\n</html>\n",
+      "ip": "109.232.233.130",
+      "timestamp": "2024-02-18T01:47:50.306277078Z",
       "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://mission-transition-ecologique.beta.gouv.fr'",
       "matcher-status": true
     },
@@ -347,9 +386,9 @@
       "host": "https://mission-transition-ecologique.beta.gouv.fr",
       "matched-at": "https://mission-transition-ecologique.beta.gouv.fr",
       "request": "GET / HTTP/1.1\r\nHost: mission-transition-ecologique.beta.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
-      "response": "HTTP/1.1 200 OK\r\nConnection: close\r\nTransfer-Encoding: chunked\r\nAccess-Control-Allow-Origin: *\r\nCache-Control: no-cache\r\nContent-Security-Policy: default-src 'none';base-uri 'self';form-action 'self';script-src 'self';script-src-elem 'self' 'unsafe-inline' https://stats.beta.gouv.fr;style-src 'self' 'unsafe-inline';font-src 'self';img-src 'self' data:;object-src 'self';connect-src 'self' https://place-des-entreprises.beta.gouv.fr https://stats.beta.gouv.fr;frame-src 'self' https://place-des-entreprises.beta.gouv.fr;frame-ancestors 'self' https://place-des-entreprises.beta.gouv.fr;\r\nContent-Type: text/html\r\nDate: Sun, 11 Feb 2024 01:46:34 GMT\r\nEtag: W/\"1d1-nuytA7ZjyteYSPAAE4QZhFxONic\"\r\nStrict-Transport-Security: max-age=31536000\r\nX-Content-Type-Options: nosniff\r\nX-Frame-Options: ALLOW-FROM https://place-des-entreprises.beta.gouv.fr\r\nX-Request-Id: 27d943ad-590d-4324-ad7d-c64f4fc73bc3\r\n\r\n<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <meta charset=\"UTF-8\">\n    <link rel=\"icon\" href=\"/favicon.ico\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>Transition écologique des entreprises</title>\n    <script type=\"module\" crossorigin src=\"/assets/index-bAfkIJZw.js\"></script>\n    <link rel=\"stylesheet\" crossorigin href=\"/assets/index-p9Q6rwd4.css\">\n  </head>\n  <body>\n    <div id=\"app\">\n    </div>\n  </body>\n</html>\n",
-      "ip": "148.253.75.120",
-      "timestamp": "2024-02-11T01:46:34.68794653Z",
+      "response": "HTTP/1.1 200 OK\r\nConnection: close\r\nTransfer-Encoding: chunked\r\nAccess-Control-Allow-Origin: *\r\nCache-Control: no-cache\r\nContent-Security-Policy: default-src 'none';base-uri 'self';form-action 'self';script-src 'self';script-src-elem 'self' 'unsafe-inline' https://stats.beta.gouv.fr;style-src 'self' 'unsafe-inline';font-src 'self';img-src 'self' data:;object-src 'self';connect-src 'self' https://place-des-entreprises.beta.gouv.fr https://stats.beta.gouv.fr https://sentry.incubateur.net;worker-src 'self' blob:;frame-src 'self' https://place-des-entreprises.beta.gouv.fr;frame-ancestors 'self' https://place-des-entreprises.beta.gouv.fr;\r\nContent-Type: text/html\r\nDate: Sun, 18 Feb 2024 01:47:50 GMT\r\nEtag: W/\"8c1-0k4Sea/XchXfk8xMWHi/FA8z8yo\"\r\nExpect-Ct: default-src 'self' https://sentry.incubateur.net;report-uri https://sentry.incubateur.net/api/137/security/?sentry_key=caf416235f164b448d0ca6369f2053e5;\r\nStrict-Transport-Security: max-age=31536000\r\nX-Content-Type-Options: nosniff\r\nX-Frame-Options: ALLOW-FROM https://place-des-entreprises.beta.gouv.fr\r\nX-Request-Id: 51249c1c-77bf-4b75-aa50-56c855b2d077\r\n\r\n<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <meta charset=\"UTF-8\">\n    <link rel=\"icon\" href=\"/favicon.ico\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>Transition écologique des entreprises</title>\n    <!-- Open Graph meta data -->\n    <meta data-rh=\"true\" property=\"og:url\" content=\"https://mission-transition-ecologique.beta.gouv.fr/\">\n    <meta data-rh=\"true\" property=\"og:type\" content=\"website\">\n    <meta data-rh=\"true\" property=\"og:site_name\" content=\"Transition écologique des entreprises\">\n    <meta data-rh=\"true\" property=\"og:title\" content=\"Transition écologique des entreprises\">\n    <meta data-rh=\"true\" property=\"og:description\" content=\"Des accompagnements et financements pour m'aider à réduire l'impact environnemental de mon entreprise\">\n    <meta data-rh=\"true\" property=\"og:image\" content=\"/images/TEE-preview-image-529-by-298.png\">\n    <!-- Twitter Meta Tags -->\n    <meta data-rh=\"true\" name=\"twitter:card\" content=\"summary_large_image\">\n    <meta data-rh=\"true\" property=\"twitter:domain\" content=\"mission-transition-ecologique.beta.gouv.fr\">\n    <meta data-rh=\"true\" property=\"twitter:url\" content=\"https://mission-transition-ecologique.beta.gouv.fr/\">\n    <meta data-rh=\"true\" name=\"twitter:title\" content=\"Transition écologique des entreprises\">\n    <meta data-rh=\"true\" name=\"twitter:description\" content=\"Des accompagnements et financements pour m'aider à réduire l'impact environnemental de mon entreprise\">\n    <meta data-rh=\"true\" name=\"twitter:image\" content=\"/images/TEE-preview-image-529-by-298.png\">\n    <meta data-rh=\"true\" name=\"twitter:image:alt\" content=\"Transition écologique des entreprises\">\n    <meta data-rh=\"true\" name=\"twitter:image:width\" content=\"529\">\n    <meta data-rh=\"true\" name=\"twitter:image:height\" content=\"298\">\n    <meta data-rh=\"true\" name=\"twitter:site\" content=\"@ademe\">\n    <meta data-rh=\"true\" name=\"twitter:creator\" content=\"@ademe\">\n    <meta data-rh=\"true\" name=\"twitter:creator:id\" content=\"ademe\">\n    <script type=\"module\" crossorigin src=\"/assets/index-RiyWv1Sm.js\"></script>\n    <link rel=\"stylesheet\" crossorigin href=\"/assets/index-8dFp-P0x.css\">\n  </head>\n  <body>\n    <div id=\"app\">\n    </div>\n  </body>\n</html>\n",
+      "ip": "109.232.233.130",
+      "timestamp": "2024-02-18T01:47:50.30629462Z",
       "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://mission-transition-ecologique.beta.gouv.fr'",
       "matcher-status": true
     },
@@ -386,48 +425,9 @@
       "host": "https://mission-transition-ecologique.beta.gouv.fr",
       "matched-at": "https://mission-transition-ecologique.beta.gouv.fr",
       "request": "GET / HTTP/1.1\r\nHost: mission-transition-ecologique.beta.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
-      "response": "HTTP/1.1 200 OK\r\nConnection: close\r\nTransfer-Encoding: chunked\r\nAccess-Control-Allow-Origin: *\r\nCache-Control: no-cache\r\nContent-Security-Policy: default-src 'none';base-uri 'self';form-action 'self';script-src 'self';script-src-elem 'self' 'unsafe-inline' https://stats.beta.gouv.fr;style-src 'self' 'unsafe-inline';font-src 'self';img-src 'self' data:;object-src 'self';connect-src 'self' https://place-des-entreprises.beta.gouv.fr https://stats.beta.gouv.fr;frame-src 'self' https://place-des-entreprises.beta.gouv.fr;frame-ancestors 'self' https://place-des-entreprises.beta.gouv.fr;\r\nContent-Type: text/html\r\nDate: Sun, 11 Feb 2024 01:46:34 GMT\r\nEtag: W/\"1d1-nuytA7ZjyteYSPAAE4QZhFxONic\"\r\nStrict-Transport-Security: max-age=31536000\r\nX-Content-Type-Options: nosniff\r\nX-Frame-Options: ALLOW-FROM https://place-des-entreprises.beta.gouv.fr\r\nX-Request-Id: 27d943ad-590d-4324-ad7d-c64f4fc73bc3\r\n\r\n<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <meta charset=\"UTF-8\">\n    <link rel=\"icon\" href=\"/favicon.ico\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>Transition écologique des entreprises</title>\n    <script type=\"module\" crossorigin src=\"/assets/index-bAfkIJZw.js\"></script>\n    <link rel=\"stylesheet\" crossorigin href=\"/assets/index-p9Q6rwd4.css\">\n  </head>\n  <body>\n    <div id=\"app\">\n    </div>\n  </body>\n</html>\n",
-      "ip": "148.253.75.120",
-      "timestamp": "2024-02-11T01:46:34.687964855Z",
-      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://mission-transition-ecologique.beta.gouv.fr'",
-      "matcher-status": true
-    },
-    {
-      "template": "http/misconfiguration/http-missing-security-headers.yaml",
-      "template-url": "https://templates.nuclei.sh/public/http-missing-security-headers",
-      "template-id": "http-missing-security-headers",
-      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/http-missing-security-headers.yaml",
-      "info": {
-        "name": "HTTP Missing Security Headers",
-        "author": [
-          "socketz",
-          "geeknik",
-          "g4l1t0",
-          "convisoappsec",
-          "kurohost",
-          "dawid-czarnecki",
-          "forgedhallpass",
-          "jub0bs"
-        ],
-        "tags": [
-          "misconfig",
-          "headers",
-          "generic"
-        ],
-        "description": "This template searches for missing HTTP security headers. The impact of these missing headers can vary.\n",
-        "severity": "info",
-        "metadata": {
-          "max-request": 1
-        }
-      },
-      "matcher-name": "permissions-policy",
-      "type": "http",
-      "host": "https://mission-transition-ecologique.beta.gouv.fr",
-      "matched-at": "https://mission-transition-ecologique.beta.gouv.fr",
-      "request": "GET / HTTP/1.1\r\nHost: mission-transition-ecologique.beta.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
-      "response": "HTTP/1.1 200 OK\r\nConnection: close\r\nTransfer-Encoding: chunked\r\nAccess-Control-Allow-Origin: *\r\nCache-Control: no-cache\r\nContent-Security-Policy: default-src 'none';base-uri 'self';form-action 'self';script-src 'self';script-src-elem 'self' 'unsafe-inline' https://stats.beta.gouv.fr;style-src 'self' 'unsafe-inline';font-src 'self';img-src 'self' data:;object-src 'self';connect-src 'self' https://place-des-entreprises.beta.gouv.fr https://stats.beta.gouv.fr;frame-src 'self' https://place-des-entreprises.beta.gouv.fr;frame-ancestors 'self' https://place-des-entreprises.beta.gouv.fr;\r\nContent-Type: text/html\r\nDate: Sun, 11 Feb 2024 01:46:34 GMT\r\nEtag: W/\"1d1-nuytA7ZjyteYSPAAE4QZhFxONic\"\r\nStrict-Transport-Security: max-age=31536000\r\nX-Content-Type-Options: nosniff\r\nX-Frame-Options: ALLOW-FROM https://place-des-entreprises.beta.gouv.fr\r\nX-Request-Id: 27d943ad-590d-4324-ad7d-c64f4fc73bc3\r\n\r\n<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <meta charset=\"UTF-8\">\n    <link rel=\"icon\" href=\"/favicon.ico\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>Transition écologique des entreprises</title>\n    <script type=\"module\" crossorigin src=\"/assets/index-bAfkIJZw.js\"></script>\n    <link rel=\"stylesheet\" crossorigin href=\"/assets/index-p9Q6rwd4.css\">\n  </head>\n  <body>\n    <div id=\"app\">\n    </div>\n  </body>\n</html>\n",
-      "ip": "148.253.75.120",
-      "timestamp": "2024-02-11T01:46:34.687979031Z",
+      "response": "HTTP/1.1 200 OK\r\nConnection: close\r\nTransfer-Encoding: chunked\r\nAccess-Control-Allow-Origin: *\r\nCache-Control: no-cache\r\nContent-Security-Policy: default-src 'none';base-uri 'self';form-action 'self';script-src 'self';script-src-elem 'self' 'unsafe-inline' https://stats.beta.gouv.fr;style-src 'self' 'unsafe-inline';font-src 'self';img-src 'self' data:;object-src 'self';connect-src 'self' https://place-des-entreprises.beta.gouv.fr https://stats.beta.gouv.fr https://sentry.incubateur.net;worker-src 'self' blob:;frame-src 'self' https://place-des-entreprises.beta.gouv.fr;frame-ancestors 'self' https://place-des-entreprises.beta.gouv.fr;\r\nContent-Type: text/html\r\nDate: Sun, 18 Feb 2024 01:47:50 GMT\r\nEtag: W/\"8c1-0k4Sea/XchXfk8xMWHi/FA8z8yo\"\r\nExpect-Ct: default-src 'self' https://sentry.incubateur.net;report-uri https://sentry.incubateur.net/api/137/security/?sentry_key=caf416235f164b448d0ca6369f2053e5;\r\nStrict-Transport-Security: max-age=31536000\r\nX-Content-Type-Options: nosniff\r\nX-Frame-Options: ALLOW-FROM https://place-des-entreprises.beta.gouv.fr\r\nX-Request-Id: 51249c1c-77bf-4b75-aa50-56c855b2d077\r\n\r\n<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <meta charset=\"UTF-8\">\n    <link rel=\"icon\" href=\"/favicon.ico\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>Transition écologique des entreprises</title>\n    <!-- Open Graph meta data -->\n    <meta data-rh=\"true\" property=\"og:url\" content=\"https://mission-transition-ecologique.beta.gouv.fr/\">\n    <meta data-rh=\"true\" property=\"og:type\" content=\"website\">\n    <meta data-rh=\"true\" property=\"og:site_name\" content=\"Transition écologique des entreprises\">\n    <meta data-rh=\"true\" property=\"og:title\" content=\"Transition écologique des entreprises\">\n    <meta data-rh=\"true\" property=\"og:description\" content=\"Des accompagnements et financements pour m'aider à réduire l'impact environnemental de mon entreprise\">\n    <meta data-rh=\"true\" property=\"og:image\" content=\"/images/TEE-preview-image-529-by-298.png\">\n    <!-- Twitter Meta Tags -->\n    <meta data-rh=\"true\" name=\"twitter:card\" content=\"summary_large_image\">\n    <meta data-rh=\"true\" property=\"twitter:domain\" content=\"mission-transition-ecologique.beta.gouv.fr\">\n    <meta data-rh=\"true\" property=\"twitter:url\" content=\"https://mission-transition-ecologique.beta.gouv.fr/\">\n    <meta data-rh=\"true\" name=\"twitter:title\" content=\"Transition écologique des entreprises\">\n    <meta data-rh=\"true\" name=\"twitter:description\" content=\"Des accompagnements et financements pour m'aider à réduire l'impact environnemental de mon entreprise\">\n    <meta data-rh=\"true\" name=\"twitter:image\" content=\"/images/TEE-preview-image-529-by-298.png\">\n    <meta data-rh=\"true\" name=\"twitter:image:alt\" content=\"Transition écologique des entreprises\">\n    <meta data-rh=\"true\" name=\"twitter:image:width\" content=\"529\">\n    <meta data-rh=\"true\" name=\"twitter:image:height\" content=\"298\">\n    <meta data-rh=\"true\" name=\"twitter:site\" content=\"@ademe\">\n    <meta data-rh=\"true\" name=\"twitter:creator\" content=\"@ademe\">\n    <meta data-rh=\"true\" name=\"twitter:creator:id\" content=\"ademe\">\n    <script type=\"module\" crossorigin src=\"/assets/index-RiyWv1Sm.js\"></script>\n    <link rel=\"stylesheet\" crossorigin href=\"/assets/index-8dFp-P0x.css\">\n  </head>\n  <body>\n    <div id=\"app\">\n    </div>\n  </body>\n</html>\n",
+      "ip": "109.232.233.130",
+      "timestamp": "2024-02-18T01:47:50.306314988Z",
       "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://mission-transition-ecologique.beta.gouv.fr'",
       "matcher-status": true
     },
@@ -469,9 +469,9 @@
       "host": "https://mission-transition-ecologique.beta.gouv.fr",
       "matched-at": "https://mission-transition-ecologique.beta.gouv.fr/api/docs/",
       "request": "GET /api/docs/ HTTP/1.1\r\nHost: mission-transition-ecologique.beta.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: text/html\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
-      "response": "HTTP/1.1 200 OK\r\nConnection: close\r\nTransfer-Encoding: chunked\r\nAccess-Control-Allow-Origin: *\r\nContent-Type: text/html; charset=utf-8\r\nDate: Sun, 11 Feb 2024 01:46:44 GMT\r\nEtag: W/\"c22-H8FH9nKD8DeX/nvIRrte6ZjP2a4\"\r\nStrict-Transport-Security: max-age=31536000\r\nX-Powered-By: Express\r\nX-Request-Id: 86216142-0182-46cb-9167-61b3c36d4678\r\n\r\n\n<!-- HTML for static distribution bundle build -->\n<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n  <meta charset=\"UTF-8\">\n  \n  <title>Swagger UI</title>\n  <link rel=\"stylesheet\" type=\"text/css\" href=\"./swagger-ui.css\" >\n  <link rel=\"icon\" type=\"image/png\" href=\"./favicon-32x32.png\" sizes=\"32x32\" /><link rel=\"icon\" type=\"image/png\" href=\"./favicon-16x16.png\" sizes=\"16x16\" />\n  <style>\n    html\n    {\n      box-sizing: border-box;\n      overflow: -moz-scrollbars-vertical;\n      overflow-y: scroll;\n    }\n    *,\n    *:before,\n    *:after\n    {\n      box-sizing: inherit;\n    }\n\n    body {\n      margin:0;\n      background: #fafafa;\n    }\n  </style>\n</head>\n\n<body>\n\n<svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" style=\"position:absolute;width:0;height:0\">\n  <defs>\n    <symbol viewBox=\"0 0 20 20\" id=\"unlocked\">\n      <path d=\"M15.8 8H14V5.6C14 2.703 12.665 1 10 1 7.334 1 6 2.703 6 5.6V6h2v-.801C8 3.754 8.797 3 10 3c1.203 0 2 .754 2 2.199V8H4c-.553 0-1 .646-1 1.199V17c0 .549.428 1.139.951 1.307l1.197.387C5.672 18.861 6.55 19 7.1 19h5.8c.549 0 1.428-.139 1.951-.307l1.196-.387c.524-.167.953-.757.953-1.306V9.199C17 8.646 16.352 8 15.8 8z\"></path>\n    </symbol>\n\n    <symbol viewBox=\"0 0 20 20\" id=\"locked\">\n      <path d=\"M15.8 8H14V5.6C14 2.703 12.665 1 10 1 7.334 1 6 2.703 6 5.6V8H4c-.553 0-1 .646-1 1.199V17c0 .549.428 1.139.951 1.307l1.197.387C5.672 18.861 6.55 19 7.1 19h5.8c.549 0 1.428-.139 1.951-.307l1.196-.387c.524-.167.953-.757.953-1.306V9.199C17 8.646 16.352 8 15.8 8zM12 8H8V5.199C8 3.754 8.797 3 10 3c1.203 0 2 .754 2 2.199V8z\"/>\n    </symbol>\n\n    <symbol viewBox=\"0 0 20 20\" id=\"close\">\n      <path d=\"M14.348 14.849c-.469.469-1.229.469-1.697 0L10 11.819l-2.651 3.029c-.469.469-1.229.469-1.697 0-.469-.469-.469-1.229 0-1.697l2.758-3.15-2.759-3.152c-.469-.469-.469-1.228 0-1.697.469-.469 1.228-.469 1.697 0L10 8.183l2.651-3.031c.469-.469 1.228-.469 1.697 0 .469.469.469 1.229 0 1.697l-2.758 3.152 2.758 3.15c.469.469.469 1.229 0 1.698z\"/>\n    </symbol>\n\n    <symbol viewBox=\"0 0 20 20\" id=\"large-arrow\">\n      <path d=\"M13.25 10L6.109 2.58c-.268-.27-.268-.707 0-.979.268-.27.701-.27.969 0l7.83 7.908c.268.271.268.709 0 .979l-7.83 7.908c-.268.271-.701.27-.969 0-.268-.269-.268-.707 0-.979L13.25 10z\"/>\n    </symbol>\n\n    <symbol viewBox=\"0 0 20 20\" id=\"large-arrow-down\">\n      <path d=\"M17.418 6.109c.272-.268.709-.268.979 0s.271.701 0 .969l-7.908 7.83c-.27.268-.707.268-.979 0l-7.908-7.83c-.27-.268-.27-.701 0-.969.271-.268.709-.268.979 0L10 13.25l7.418-7.141z\"/>\n    </symbol>\n\n\n    <symbol viewBox=\"0 0 24 24\" id=\"jump-to\">\n      <path d=\"M19 7v4H5.83l3.58-3.59L8 6l-6 6 6 6 1.41-1.41L5.83 13H21V7z\"/>\n    </symbol>\n\n    <symbol viewBox=\"0 0 24 24\" id=\"expand\">\n      <path d=\"M10 18h4v-2h-4v2zM3 6v2h18V6H3zm3 7h12v-2H6v2z\"/>\n    </symbol>\n\n  </defs>\n</svg>\n\n<div id=\"swagger-ui\"></div>\n\n<script src=\"./swagger-ui-bundle.js\"> </script>\n<script src=\"./swagger-ui-standalone-preset.js\"> </script>\n<script src=\"./swagger-ui-init.js\"> </script>\n\n\n\n<style>\n  .swagger-ui .topbar .download-url-wrapper { display: none } undefined\n</style>\n</body>\n\n</html>\n",
-      "ip": "148.253.75.120",
-      "timestamp": "2024-02-11T01:46:44.612137987Z",
+      "response": "HTTP/1.1 200 OK\r\nConnection: close\r\nTransfer-Encoding: chunked\r\nAccess-Control-Allow-Origin: *\r\nContent-Type: text/html; charset=utf-8\r\nDate: Sun, 18 Feb 2024 01:47:55 GMT\r\nEtag: W/\"c22-H8FH9nKD8DeX/nvIRrte6ZjP2a4\"\r\nStrict-Transport-Security: max-age=31536000\r\nX-Powered-By: Express\r\nX-Request-Id: 5077fd0a-ba12-4735-a10f-826a2fbd6b40\r\n\r\n\n<!-- HTML for static distribution bundle build -->\n<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n  <meta charset=\"UTF-8\">\n  \n  <title>Swagger UI</title>\n  <link rel=\"stylesheet\" type=\"text/css\" href=\"./swagger-ui.css\" >\n  <link rel=\"icon\" type=\"image/png\" href=\"./favicon-32x32.png\" sizes=\"32x32\" /><link rel=\"icon\" type=\"image/png\" href=\"./favicon-16x16.png\" sizes=\"16x16\" />\n  <style>\n    html\n    {\n      box-sizing: border-box;\n      overflow: -moz-scrollbars-vertical;\n      overflow-y: scroll;\n    }\n    *,\n    *:before,\n    *:after\n    {\n      box-sizing: inherit;\n    }\n\n    body {\n      margin:0;\n      background: #fafafa;\n    }\n  </style>\n</head>\n\n<body>\n\n<svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" style=\"position:absolute;width:0;height:0\">\n  <defs>\n    <symbol viewBox=\"0 0 20 20\" id=\"unlocked\">\n      <path d=\"M15.8 8H14V5.6C14 2.703 12.665 1 10 1 7.334 1 6 2.703 6 5.6V6h2v-.801C8 3.754 8.797 3 10 3c1.203 0 2 .754 2 2.199V8H4c-.553 0-1 .646-1 1.199V17c0 .549.428 1.139.951 1.307l1.197.387C5.672 18.861 6.55 19 7.1 19h5.8c.549 0 1.428-.139 1.951-.307l1.196-.387c.524-.167.953-.757.953-1.306V9.199C17 8.646 16.352 8 15.8 8z\"></path>\n    </symbol>\n\n    <symbol viewBox=\"0 0 20 20\" id=\"locked\">\n      <path d=\"M15.8 8H14V5.6C14 2.703 12.665 1 10 1 7.334 1 6 2.703 6 5.6V8H4c-.553 0-1 .646-1 1.199V17c0 .549.428 1.139.951 1.307l1.197.387C5.672 18.861 6.55 19 7.1 19h5.8c.549 0 1.428-.139 1.951-.307l1.196-.387c.524-.167.953-.757.953-1.306V9.199C17 8.646 16.352 8 15.8 8zM12 8H8V5.199C8 3.754 8.797 3 10 3c1.203 0 2 .754 2 2.199V8z\"/>\n    </symbol>\n\n    <symbol viewBox=\"0 0 20 20\" id=\"close\">\n      <path d=\"M14.348 14.849c-.469.469-1.229.469-1.697 0L10 11.819l-2.651 3.029c-.469.469-1.229.469-1.697 0-.469-.469-.469-1.229 0-1.697l2.758-3.15-2.759-3.152c-.469-.469-.469-1.228 0-1.697.469-.469 1.228-.469 1.697 0L10 8.183l2.651-3.031c.469-.469 1.228-.469 1.697 0 .469.469.469 1.229 0 1.697l-2.758 3.152 2.758 3.15c.469.469.469 1.229 0 1.698z\"/>\n    </symbol>\n\n    <symbol viewBox=\"0 0 20 20\" id=\"large-arrow\">\n      <path d=\"M13.25 10L6.109 2.58c-.268-.27-.268-.707 0-.979.268-.27.701-.27.969 0l7.83 7.908c.268.271.268.709 0 .979l-7.83 7.908c-.268.271-.701.27-.969 0-.268-.269-.268-.707 0-.979L13.25 10z\"/>\n    </symbol>\n\n    <symbol viewBox=\"0 0 20 20\" id=\"large-arrow-down\">\n      <path d=\"M17.418 6.109c.272-.268.709-.268.979 0s.271.701 0 .969l-7.908 7.83c-.27.268-.707.268-.979 0l-7.908-7.83c-.27-.268-.27-.701 0-.969.271-.268.709-.268.979 0L10 13.25l7.418-7.141z\"/>\n    </symbol>\n\n\n    <symbol viewBox=\"0 0 24 24\" id=\"jump-to\">\n      <path d=\"M19 7v4H5.83l3.58-3.59L8 6l-6 6 6 6 1.41-1.41L5.83 13H21V7z\"/>\n    </symbol>\n\n    <symbol viewBox=\"0 0 24 24\" id=\"expand\">\n      <path d=\"M10 18h4v-2h-4v2zM3 6v2h18V6H3zm3 7h12v-2H6v2z\"/>\n    </symbol>\n\n  </defs>\n</svg>\n\n<div id=\"swagger-ui\"></div>\n\n<script src=\"./swagger-ui-bundle.js\"> </script>\n<script src=\"./swagger-ui-standalone-preset.js\"> </script>\n<script src=\"./swagger-ui-init.js\"> </script>\n\n\n\n<style>\n  .swagger-ui .topbar .download-url-wrapper { display: none } undefined\n</style>\n</body>\n\n</html>\n",
+      "ip": "109.232.233.130",
+      "timestamp": "2024-02-18T01:47:55.938897566Z",
       "curl-command": "curl -X 'GET' -H 'Accept: text/html' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://mission-transition-ecologique.beta.gouv.fr/api/docs/'",
       "matcher-status": true
     },
@@ -500,9 +500,9 @@
       "host": "https://mission-transition-ecologique.beta.gouv.fr",
       "matched-at": "https://mission-transition-ecologique.beta.gouv.fr/robots.txt",
       "request": "GET /robots.txt HTTP/1.1\r\nHost: mission-transition-ecologique.beta.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
-      "response": "HTTP/1.1 200 OK\r\nConnection: close\r\nContent-Length: 24\r\nAccess-Control-Allow-Origin: *\r\nCache-Control: no-cache\r\nContent-Security-Policy: default-src 'none';base-uri 'self';form-action 'self';script-src 'self';script-src-elem 'self' 'unsafe-inline' https://stats.beta.gouv.fr;style-src 'self' 'unsafe-inline';font-src 'self';img-src 'self' data:;object-src 'self';connect-src 'self' https://place-des-entreprises.beta.gouv.fr https://stats.beta.gouv.fr;frame-src 'self' https://place-des-entreprises.beta.gouv.fr;frame-ancestors 'self' https://place-des-entreprises.beta.gouv.fr;\r\nContent-Type: text/plain\r\nDate: Sun, 11 Feb 2024 01:46:51 GMT\r\nEtag: W/\"24-1707155067000\"\r\nLast-Modified: Mon, 05 Feb 2024 17:44:27 GMT\r\nStrict-Transport-Security: max-age=31536000\r\nX-Content-Type-Options: nosniff\r\nX-Frame-Options: ALLOW-FROM https://place-des-entreprises.beta.gouv.fr\r\nX-Request-Id: 81e0c1bc-bbf8-4e6d-bf37-44d00a279904\r\n\r\nUser-agent: *\nDisallow:\n",
-      "ip": "148.253.75.120",
-      "timestamp": "2024-02-11T01:46:51.08576694Z",
+      "response": "HTTP/1.1 200 OK\r\nConnection: close\r\nContent-Length: 24\r\nAccess-Control-Allow-Origin: *\r\nCache-Control: no-cache\r\nContent-Security-Policy: default-src 'none';base-uri 'self';form-action 'self';script-src 'self';script-src-elem 'self' 'unsafe-inline' https://stats.beta.gouv.fr;style-src 'self' 'unsafe-inline';font-src 'self';img-src 'self' data:;object-src 'self';connect-src 'self' https://place-des-entreprises.beta.gouv.fr https://stats.beta.gouv.fr https://sentry.incubateur.net;worker-src 'self' blob:;frame-src 'self' https://place-des-entreprises.beta.gouv.fr;frame-ancestors 'self' https://place-des-entreprises.beta.gouv.fr;\r\nContent-Type: text/plain\r\nDate: Sun, 18 Feb 2024 01:47:59 GMT\r\nEtag: W/\"24-1708094820000\"\r\nExpect-Ct: default-src 'self' https://sentry.incubateur.net;report-uri https://sentry.incubateur.net/api/137/security/?sentry_key=caf416235f164b448d0ca6369f2053e5;\r\nLast-Modified: Fri, 16 Feb 2024 14:47:00 GMT\r\nStrict-Transport-Security: max-age=31536000\r\nX-Content-Type-Options: nosniff\r\nX-Frame-Options: ALLOW-FROM https://place-des-entreprises.beta.gouv.fr\r\nX-Request-Id: a3a4ae28-1f24-4a13-9f7c-e55f136e3da1\r\n\r\nUser-agent: *\nDisallow:\n",
+      "ip": "109.232.233.130",
+      "timestamp": "2024-02-18T01:47:59.865870263Z",
       "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://mission-transition-ecologique.beta.gouv.fr/robots.txt'",
       "matcher-status": true
     },
@@ -532,8 +532,8 @@
       "extracted-results": [
         "Let's Encrypt"
       ],
-      "ip": "148.253.75.120",
-      "timestamp": "2024-02-11T01:53:05.610389117Z",
+      "ip": "109.232.233.130",
+      "timestamp": "2024-02-18T01:53:52.496178828Z",
       "matcher-status": true
     },
     {
@@ -562,8 +562,8 @@
       "extracted-results": [
         "mission-transition-ecologique.beta.gouv.fr"
       ],
-      "ip": "148.253.75.120",
-      "timestamp": "2024-02-11T01:53:05.610520052Z",
+      "ip": "109.232.233.130",
+      "timestamp": "2024-02-18T01:53:52.496285197Z",
       "matcher-status": true
     },
     {
@@ -593,8 +593,8 @@
       "extracted-results": [
         "tls12"
       ],
-      "ip": "148.253.75.120",
-      "timestamp": "2024-02-11T01:53:11.643491468Z",
+      "ip": "109.232.233.130",
+      "timestamp": "2024-02-18T01:53:54.706182076Z",
       "matcher-status": true
     },
     {
@@ -624,8 +624,8 @@
       "extracted-results": [
         "tls13"
       ],
-      "ip": "148.253.75.120",
-      "timestamp": "2024-02-11T01:53:11.956602768Z",
+      "ip": "109.232.233.130",
+      "timestamp": "2024-02-18T01:53:54.898144586Z",
       "matcher-status": true
     }
   ]
