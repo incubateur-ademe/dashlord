@@ -127,7 +127,7 @@ td {
 	</h2>
 
 	<h3>
-		Generated on Tue, 27 Feb 2024 16:13:00
+		Generated on Sun, 10 Mar 2024 02:14:19
 	</h3>
 
 	<h3>
@@ -164,7 +164,7 @@ td {
 					<div>Low</div>
 				</td>
 				<td align="center">
-					<div>3</div>
+					<div>5</div>
 				</td>
 			</tr>
 			<tr>
@@ -172,7 +172,7 @@ td {
 					<div>Informational</div>
 				</td>
 				<td align="center">
-					<div>8</div>
+					<div>10</div>
 				</td>
 			</tr>
 			<tr>
@@ -200,12 +200,17 @@ td {
 			<tr>
 				<td><a href="#10202">Absence of Anti-CSRF Tokens</a></td>
 				<td align="center" class="risk-2">Medium</td>
-				<td align="center">1</td>
+				<td align="center">2</td>
 			</tr>
 			<tr>
 				<td><a href="#10055">CSP: style-src unsafe-inline</a></td>
 				<td align="center" class="risk-2">Medium</td>
 				<td align="center">12</td>
+			</tr>
+			<tr>
+				<td><a href="#10044">Big Redirect Detected (Potential Sensitive Information Leak)</a></td>
+				<td align="center" class="risk-1">Low</td>
+				<td align="center">1</td>
 			</tr>
 			<tr>
 				<td><a href="#10063">Permissions Policy Header Not Set</a></td>
@@ -218,6 +223,11 @@ td {
 				<td align="center">11</td>
 			</tr>
 			<tr>
+				<td><a href="#10096">Timestamp Disclosure - Unix</a></td>
+				<td align="center" class="risk-1">Low</td>
+				<td align="center">10</td>
+			</tr>
+			<tr>
 				<td><a href="#10021">X-Content-Type-Options Header Missing</a></td>
 				<td align="center" class="risk-1">Low</td>
 				<td align="center">11</td>
@@ -228,9 +238,14 @@ td {
 				<td align="center">12</td>
 			</tr>
 			<tr>
+				<td><a href="#10024">Information Disclosure - Sensitive Information in URL</a></td>
+				<td align="center" class="risk-0">Informational</td>
+				<td align="center">1</td>
+			</tr>
+			<tr>
 				<td><a href="#10027">Information Disclosure - Suspicious Comments</a></td>
 				<td align="center" class="risk-0">Informational</td>
-				<td align="center">9</td>
+				<td align="center">12</td>
 			</tr>
 			<tr>
 				<td><a href="#10109">Modern Web Application</a></td>
@@ -261,6 +276,11 @@ td {
 				<td><a href="#90005">Sec-Fetch-User Header is Missing</a></td>
 				<td align="center" class="risk-0">Informational</td>
 				<td align="center">3</td>
+			</tr>
+			<tr>
+				<td><a href="#10031">User Controllable HTML Element Attribute (Potential XSS)</a></td>
+				<td align="center" class="risk-0">Informational</td>
+				<td align="center">1</td>
 			</tr>
 		</table>
 		<div class="spacer-lg"></div>
@@ -336,9 +356,40 @@ td {
 						<td width="80%">No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 1: &quot;email&quot; &quot;nom&quot; &quot;prenom&quot; ].</td>
 					</tr>
 				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://www.territoiresentransitions.fr/contact?email=zaproxy%40example.com&amp;message=Zaproxy+alias+impedit+expedita+quisquam+pariatur+exercitationem.+Nemo+rerum+eveniet+dolores+rem+quia+dignissimos.&amp;nom=ZAP&amp;objet=1&amp;prenom=ZAP">https://www.territoiresentransitions.fr/contact?email=zaproxy%40example.com&amp;message=Zaproxy+alias+impedit+expedita+quisquam+pariatur+exercitationem.+Nemo+rerum+eveniet+dolores+rem+quia+dignissimos.&amp;nom=ZAP&amp;objet=1&amp;prenom=ZAP</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">&lt;form&gt;</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 1: &quot;email&quot; &quot;nom&quot; &quot;prenom&quot; ].</td>
+					</tr>
+				
 				<tr>
 					<td width="20%">Instances</td>
-					<td width="80%">1</td>
+					<td width="80%">2</td>
 				</tr>
 				<tr>
 					<td width="20%">Solution</td>
@@ -457,7 +508,7 @@ td {
 					<tr>
 						<td width="20%"
 							class="indent2">Evidence</td>
-						<td width="80%">default-src &#39;self&#39;; script-src &#39;self&#39; &#39;nonce-NTY0NTJlNmMtNzQ5NC00NzAwLTgzMzMtYzI4NTUzZGRiYTE3&#39; &#39;strict-dynamic&#39;;; style-src &#39;self&#39; &#39;unsafe-inline&#39;; img-src &#39;self&#39; blob: data: ytimg.com https://phenomenal-trust-ee3da2c906.media.strapiapp.com; font-src &#39;self&#39;; object-src &#39;none&#39;; connect-src &#39;self&#39; https://rlarzronkgoyvtdkltqy.supabase.co https://phenomenal-trust-ee3da2c906.strapiapp.com ws://localhost:3000; base-uri &#39;self&#39;; form-action &#39;self&#39;; frame-ancestors &#39;none&#39;; frame-src youtube.com www.youtube.com dailymotion.com www.dailymotion.com; block-all-mixed-content; upgrade-insecure-requests;</td>
+						<td width="80%">default-src &#39;self&#39;; script-src &#39;self&#39; &#39;nonce-ZDhlOWU2YmUtZWNjYi00MWUxLTkxZDMtYmRlZjUxMjk4YTg0&#39; &#39;strict-dynamic&#39;;; style-src &#39;self&#39; &#39;unsafe-inline&#39;; img-src &#39;self&#39; blob: data: ytimg.com https://phenomenal-trust-ee3da2c906.media.strapiapp.com; font-src &#39;self&#39;; object-src &#39;none&#39;; connect-src &#39;self&#39; https://rlarzronkgoyvtdkltqy.supabase.co https://phenomenal-trust-ee3da2c906.strapiapp.com ws://localhost:3000; base-uri &#39;self&#39;; form-action &#39;self&#39;; frame-ancestors &#39;none&#39;; frame-src youtube.com www.youtube.com dailymotion.com www.dailymotion.com; block-all-mixed-content; upgrade-insecure-requests;</td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -488,7 +539,7 @@ td {
 					<tr>
 						<td width="20%"
 							class="indent2">Evidence</td>
-						<td width="80%">default-src &#39;self&#39;; script-src &#39;self&#39; &#39;nonce-OGQ3NmQ2YWUtNmY4Mi00ZmVlLWE4MTAtMjJmN2Q3YThlNDMw&#39; &#39;strict-dynamic&#39;;; style-src &#39;self&#39; &#39;unsafe-inline&#39;; img-src &#39;self&#39; blob: data: ytimg.com https://phenomenal-trust-ee3da2c906.media.strapiapp.com; font-src &#39;self&#39;; object-src &#39;none&#39;; connect-src &#39;self&#39; https://rlarzronkgoyvtdkltqy.supabase.co https://phenomenal-trust-ee3da2c906.strapiapp.com ws://localhost:3000; base-uri &#39;self&#39;; form-action &#39;self&#39;; frame-ancestors &#39;none&#39;; frame-src youtube.com www.youtube.com dailymotion.com www.dailymotion.com; block-all-mixed-content; upgrade-insecure-requests;</td>
+						<td width="80%">default-src &#39;self&#39;; script-src &#39;self&#39; &#39;nonce-ZmFkNzBiYzAtMjdkZi00ZGY3LWEyYTMtZWNjZWM5ZmNlZTM4&#39; &#39;strict-dynamic&#39;;; style-src &#39;self&#39; &#39;unsafe-inline&#39;; img-src &#39;self&#39; blob: data: ytimg.com https://phenomenal-trust-ee3da2c906.media.strapiapp.com; font-src &#39;self&#39;; object-src &#39;none&#39;; connect-src &#39;self&#39; https://rlarzronkgoyvtdkltqy.supabase.co https://phenomenal-trust-ee3da2c906.strapiapp.com ws://localhost:3000; base-uri &#39;self&#39;; form-action &#39;self&#39;; frame-ancestors &#39;none&#39;; frame-src youtube.com www.youtube.com dailymotion.com www.dailymotion.com; block-all-mixed-content; upgrade-insecure-requests;</td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -519,7 +570,7 @@ td {
 					<tr>
 						<td width="20%"
 							class="indent2">Evidence</td>
-						<td width="80%">default-src &#39;self&#39;; script-src &#39;self&#39; &#39;nonce-NmUyOTAwMzctMDE1ZS00NDgyLWEyY2MtNmIzOTFmNTVkYjM2&#39; &#39;strict-dynamic&#39;;; style-src &#39;self&#39; &#39;unsafe-inline&#39;; img-src &#39;self&#39; blob: data: ytimg.com https://phenomenal-trust-ee3da2c906.media.strapiapp.com; font-src &#39;self&#39;; object-src &#39;none&#39;; connect-src &#39;self&#39; https://rlarzronkgoyvtdkltqy.supabase.co https://phenomenal-trust-ee3da2c906.strapiapp.com ws://localhost:3000; base-uri &#39;self&#39;; form-action &#39;self&#39;; frame-ancestors &#39;none&#39;; frame-src youtube.com www.youtube.com dailymotion.com www.dailymotion.com; block-all-mixed-content; upgrade-insecure-requests;</td>
+						<td width="80%">default-src &#39;self&#39;; script-src &#39;self&#39; &#39;nonce-MmE5M2RjM2MtYjQzZS00ZmY1LWE5ZDEtNzFlNTVkZDE1OGQ4&#39; &#39;strict-dynamic&#39;;; style-src &#39;self&#39; &#39;unsafe-inline&#39;; img-src &#39;self&#39; blob: data: ytimg.com https://phenomenal-trust-ee3da2c906.media.strapiapp.com; font-src &#39;self&#39;; object-src &#39;none&#39;; connect-src &#39;self&#39; https://rlarzronkgoyvtdkltqy.supabase.co https://phenomenal-trust-ee3da2c906.strapiapp.com ws://localhost:3000; base-uri &#39;self&#39;; form-action &#39;self&#39;; frame-ancestors &#39;none&#39;; frame-src youtube.com www.youtube.com dailymotion.com www.dailymotion.com; block-all-mixed-content; upgrade-insecure-requests;</td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -550,7 +601,7 @@ td {
 					<tr>
 						<td width="20%"
 							class="indent2">Evidence</td>
-						<td width="80%">default-src &#39;self&#39;; script-src &#39;self&#39; &#39;nonce-MjhlYzQ2NTUtYWYxNS00NDc1LWFlNDctMjZiMDFhNzc5ZTlk&#39; &#39;strict-dynamic&#39;;; style-src &#39;self&#39; &#39;unsafe-inline&#39;; img-src &#39;self&#39; blob: data: ytimg.com https://phenomenal-trust-ee3da2c906.media.strapiapp.com; font-src &#39;self&#39;; object-src &#39;none&#39;; connect-src &#39;self&#39; https://rlarzronkgoyvtdkltqy.supabase.co https://phenomenal-trust-ee3da2c906.strapiapp.com ws://localhost:3000; base-uri &#39;self&#39;; form-action &#39;self&#39;; frame-ancestors &#39;none&#39;; frame-src youtube.com www.youtube.com dailymotion.com www.dailymotion.com; block-all-mixed-content; upgrade-insecure-requests;</td>
+						<td width="80%">default-src &#39;self&#39;; script-src &#39;self&#39; &#39;nonce-M2VmYzM3NWQtZDVjYy00M2I5LTg0NDgtYWFkMTkyYTM4NGE5&#39; &#39;strict-dynamic&#39;;; style-src &#39;self&#39; &#39;unsafe-inline&#39;; img-src &#39;self&#39; blob: data: ytimg.com https://phenomenal-trust-ee3da2c906.media.strapiapp.com; font-src &#39;self&#39;; object-src &#39;none&#39;; connect-src &#39;self&#39; https://rlarzronkgoyvtdkltqy.supabase.co https://phenomenal-trust-ee3da2c906.strapiapp.com ws://localhost:3000; base-uri &#39;self&#39;; form-action &#39;self&#39;; frame-ancestors &#39;none&#39;; frame-src youtube.com www.youtube.com dailymotion.com www.dailymotion.com; block-all-mixed-content; upgrade-insecure-requests;</td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -581,7 +632,100 @@ td {
 					<tr>
 						<td width="20%"
 							class="indent2">Evidence</td>
-						<td width="80%">default-src &#39;self&#39;; script-src &#39;self&#39; &#39;nonce-NmZlY2Q1ZTUtODNmMC00NzBhLWEyMWMtNTJkOWQzYWNiNjhl&#39; &#39;strict-dynamic&#39;;; style-src &#39;self&#39; &#39;unsafe-inline&#39;; img-src &#39;self&#39; blob: data: ytimg.com https://phenomenal-trust-ee3da2c906.media.strapiapp.com; font-src &#39;self&#39;; object-src &#39;none&#39;; connect-src &#39;self&#39; https://rlarzronkgoyvtdkltqy.supabase.co https://phenomenal-trust-ee3da2c906.strapiapp.com ws://localhost:3000; base-uri &#39;self&#39;; form-action &#39;self&#39;; frame-ancestors &#39;none&#39;; frame-src youtube.com www.youtube.com dailymotion.com www.dailymotion.com; block-all-mixed-content; upgrade-insecure-requests;</td>
+						<td width="80%">default-src &#39;self&#39;; script-src &#39;self&#39; &#39;nonce-OTgwNjBjZGItNjRkMy00NDdhLTg2MWMtNWUzNGEzYTY4Yzk3&#39; &#39;strict-dynamic&#39;;; style-src &#39;self&#39; &#39;unsafe-inline&#39;; img-src &#39;self&#39; blob: data: ytimg.com https://phenomenal-trust-ee3da2c906.media.strapiapp.com; font-src &#39;self&#39;; object-src &#39;none&#39;; connect-src &#39;self&#39; https://rlarzronkgoyvtdkltqy.supabase.co https://phenomenal-trust-ee3da2c906.strapiapp.com ws://localhost:3000; base-uri &#39;self&#39;; form-action &#39;self&#39;; frame-ancestors &#39;none&#39;; frame-src youtube.com www.youtube.com dailymotion.com www.dailymotion.com; block-all-mixed-content; upgrade-insecure-requests;</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">style-src includes unsafe-inline.</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://www.territoiresentransitions.fr/cgu">https://www.territoiresentransitions.fr/cgu</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%">content-security-policy</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">default-src &#39;self&#39;; script-src &#39;self&#39; &#39;nonce-MWFhZDM3YTQtM2M0ZC00YzhhLWFjYzUtYzQ1NTZlYzhkZmNh&#39; &#39;strict-dynamic&#39;;; style-src &#39;self&#39; &#39;unsafe-inline&#39;; img-src &#39;self&#39; blob: data: ytimg.com https://phenomenal-trust-ee3da2c906.media.strapiapp.com; font-src &#39;self&#39;; object-src &#39;none&#39;; connect-src &#39;self&#39; https://rlarzronkgoyvtdkltqy.supabase.co https://phenomenal-trust-ee3da2c906.strapiapp.com ws://localhost:3000; base-uri &#39;self&#39;; form-action &#39;self&#39;; frame-ancestors &#39;none&#39;; frame-src youtube.com www.youtube.com dailymotion.com www.dailymotion.com; block-all-mixed-content; upgrade-insecure-requests;</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">style-src includes unsafe-inline.</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://www.territoiresentransitions.fr/contact">https://www.territoiresentransitions.fr/contact</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%">content-security-policy</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">default-src &#39;self&#39;; script-src &#39;self&#39; &#39;nonce-MDYwMzNhMTMtZTAwNS00YjliLWI5ZTMtNWMxNjA2YWY0MmE0&#39; &#39;strict-dynamic&#39;;; style-src &#39;self&#39; &#39;unsafe-inline&#39;; img-src &#39;self&#39; blob: data: ytimg.com https://phenomenal-trust-ee3da2c906.media.strapiapp.com; font-src &#39;self&#39;; object-src &#39;none&#39;; connect-src &#39;self&#39; https://rlarzronkgoyvtdkltqy.supabase.co https://phenomenal-trust-ee3da2c906.strapiapp.com ws://localhost:3000; base-uri &#39;self&#39;; form-action &#39;self&#39;; frame-ancestors &#39;none&#39;; frame-src youtube.com www.youtube.com dailymotion.com www.dailymotion.com; block-all-mixed-content; upgrade-insecure-requests;</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">style-src includes unsafe-inline.</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://www.territoiresentransitions.fr/cookies">https://www.territoiresentransitions.fr/cookies</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%">content-security-policy</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">default-src &#39;self&#39;; script-src &#39;self&#39; &#39;nonce-ZWIwMTUyZTEtZDA4Yy00NDU5LTk0YTktYjIyNDJmZTBmODhj&#39; &#39;strict-dynamic&#39;;; style-src &#39;self&#39; &#39;unsafe-inline&#39;; img-src &#39;self&#39; blob: data: ytimg.com https://phenomenal-trust-ee3da2c906.media.strapiapp.com; font-src &#39;self&#39;; object-src &#39;none&#39;; connect-src &#39;self&#39; https://rlarzronkgoyvtdkltqy.supabase.co https://phenomenal-trust-ee3da2c906.strapiapp.com ws://localhost:3000; base-uri &#39;self&#39;; form-action &#39;self&#39;; frame-ancestors &#39;none&#39;; frame-src youtube.com www.youtube.com dailymotion.com www.dailymotion.com; block-all-mixed-content; upgrade-insecure-requests;</td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -612,7 +756,7 @@ td {
 					<tr>
 						<td width="20%"
 							class="indent2">Evidence</td>
-						<td width="80%">default-src &#39;self&#39;; script-src &#39;self&#39; &#39;nonce-MjZlZWE2MzYtN2RkNC00NzdhLTg3YzItMjFiMzQyMDZmZDM2&#39; &#39;strict-dynamic&#39;;; style-src &#39;self&#39; &#39;unsafe-inline&#39;; img-src &#39;self&#39; blob: data: ytimg.com https://phenomenal-trust-ee3da2c906.media.strapiapp.com; font-src &#39;self&#39;; object-src &#39;none&#39;; connect-src &#39;self&#39; https://rlarzronkgoyvtdkltqy.supabase.co https://phenomenal-trust-ee3da2c906.strapiapp.com ws://localhost:3000; base-uri &#39;self&#39;; form-action &#39;self&#39;; frame-ancestors &#39;none&#39;; frame-src youtube.com www.youtube.com dailymotion.com www.dailymotion.com; block-all-mixed-content; upgrade-insecure-requests;</td>
+						<td width="80%">default-src &#39;self&#39;; script-src &#39;self&#39; &#39;nonce-YWViZjRmYWItM2Q1Yy00MTMyLTg3YzAtZmM0MjMzYmNiODYx&#39; &#39;strict-dynamic&#39;;; style-src &#39;self&#39; &#39;unsafe-inline&#39;; img-src &#39;self&#39; blob: data: ytimg.com https://phenomenal-trust-ee3da2c906.media.strapiapp.com; font-src &#39;self&#39;; object-src &#39;none&#39;; connect-src &#39;self&#39; https://rlarzronkgoyvtdkltqy.supabase.co https://phenomenal-trust-ee3da2c906.strapiapp.com ws://localhost:3000; base-uri &#39;self&#39;; form-action &#39;self&#39;; frame-ancestors &#39;none&#39;; frame-src youtube.com www.youtube.com dailymotion.com www.dailymotion.com; block-all-mixed-content; upgrade-insecure-requests;</td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -643,69 +787,7 @@ td {
 					<tr>
 						<td width="20%"
 							class="indent2">Evidence</td>
-						<td width="80%">default-src &#39;self&#39;; script-src &#39;self&#39; &#39;nonce-MGI3ZmIyZjItMzQwYS00NGQ1LWIyMGItZTQ0OGNiZjgyNDg2&#39; &#39;strict-dynamic&#39;;; style-src &#39;self&#39; &#39;unsafe-inline&#39;; img-src &#39;self&#39; blob: data: ytimg.com https://phenomenal-trust-ee3da2c906.media.strapiapp.com; font-src &#39;self&#39;; object-src &#39;none&#39;; connect-src &#39;self&#39; https://rlarzronkgoyvtdkltqy.supabase.co https://phenomenal-trust-ee3da2c906.strapiapp.com ws://localhost:3000; base-uri &#39;self&#39;; form-action &#39;self&#39;; frame-ancestors &#39;none&#39;; frame-src youtube.com www.youtube.com dailymotion.com www.dailymotion.com; block-all-mixed-content; upgrade-insecure-requests;</td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Other Info</td>
-						<td width="80%">style-src includes unsafe-inline.</td>
-					</tr>
-				
-					<tr>
-						<td width="20%"
-							class="indent1">URL</td>
-						<td width="80%"><a href="https://www.territoiresentransitions.fr/outil-numerique">https://www.territoiresentransitions.fr/outil-numerique</a></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Method</td>
-						<td width="80%">GET</td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Parameter</td>
-						<td width="80%">content-security-policy</td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Attack</td>
-						<td width="80%"></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Evidence</td>
-						<td width="80%">default-src &#39;self&#39;; script-src &#39;self&#39; &#39;nonce-MjIwNmMyZDAtYTI5Yy00MTQ2LThiOTMtZGFiMzZkN2ExZDAw&#39; &#39;strict-dynamic&#39;;; style-src &#39;self&#39; &#39;unsafe-inline&#39;; img-src &#39;self&#39; blob: data: ytimg.com https://phenomenal-trust-ee3da2c906.media.strapiapp.com; font-src &#39;self&#39;; object-src &#39;none&#39;; connect-src &#39;self&#39; https://rlarzronkgoyvtdkltqy.supabase.co https://phenomenal-trust-ee3da2c906.strapiapp.com ws://localhost:3000; base-uri &#39;self&#39;; form-action &#39;self&#39;; frame-ancestors &#39;none&#39;; frame-src youtube.com www.youtube.com dailymotion.com www.dailymotion.com; block-all-mixed-content; upgrade-insecure-requests;</td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Other Info</td>
-						<td width="80%">style-src includes unsafe-inline.</td>
-					</tr>
-				
-					<tr>
-						<td width="20%"
-							class="indent1">URL</td>
-						<td width="80%"><a href="https://www.territoiresentransitions.fr/programme">https://www.territoiresentransitions.fr/programme</a></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Method</td>
-						<td width="80%">GET</td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Parameter</td>
-						<td width="80%">content-security-policy</td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Attack</td>
-						<td width="80%"></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Evidence</td>
-						<td width="80%">default-src &#39;self&#39;; script-src &#39;self&#39; &#39;nonce-MWNlZmNlOTEtNzlhNS00MzY0LThiNjYtNmQ5MjdiMDU1MTMw&#39; &#39;strict-dynamic&#39;;; style-src &#39;self&#39; &#39;unsafe-inline&#39;; img-src &#39;self&#39; blob: data: ytimg.com https://phenomenal-trust-ee3da2c906.media.strapiapp.com; font-src &#39;self&#39;; object-src &#39;none&#39;; connect-src &#39;self&#39; https://rlarzronkgoyvtdkltqy.supabase.co https://phenomenal-trust-ee3da2c906.strapiapp.com ws://localhost:3000; base-uri &#39;self&#39;; form-action &#39;self&#39;; frame-ancestors &#39;none&#39;; frame-src youtube.com www.youtube.com dailymotion.com www.dailymotion.com; block-all-mixed-content; upgrade-insecure-requests;</td>
+						<td width="80%">default-src &#39;self&#39;; script-src &#39;self&#39; &#39;nonce-NGYzMzgyYTMtMzEyOS00M2RmLThlMjktYWFkMGFkMzQwOTBi&#39; &#39;strict-dynamic&#39;;; style-src &#39;self&#39; &#39;unsafe-inline&#39;; img-src &#39;self&#39; blob: data: ytimg.com https://phenomenal-trust-ee3da2c906.media.strapiapp.com; font-src &#39;self&#39;; object-src &#39;none&#39;; connect-src &#39;self&#39; https://rlarzronkgoyvtdkltqy.supabase.co https://phenomenal-trust-ee3da2c906.strapiapp.com ws://localhost:3000; base-uri &#39;self&#39;; form-action &#39;self&#39;; frame-ancestors &#39;none&#39;; frame-src youtube.com www.youtube.com dailymotion.com www.dailymotion.com; block-all-mixed-content; upgrade-insecure-requests;</td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -736,38 +818,7 @@ td {
 					<tr>
 						<td width="20%"
 							class="indent2">Evidence</td>
-						<td width="80%">default-src &#39;self&#39;; script-src &#39;self&#39; &#39;nonce-MGQ4MTRhYzgtNzVjNS00YzZlLTljNzUtNWU4NTk3ZjhiMzg0&#39; &#39;strict-dynamic&#39;;; style-src &#39;self&#39; &#39;unsafe-inline&#39;; img-src &#39;self&#39; blob: data: ytimg.com https://phenomenal-trust-ee3da2c906.media.strapiapp.com; font-src &#39;self&#39;; object-src &#39;none&#39;; connect-src &#39;self&#39; https://rlarzronkgoyvtdkltqy.supabase.co https://phenomenal-trust-ee3da2c906.strapiapp.com ws://localhost:3000; base-uri &#39;self&#39;; form-action &#39;self&#39;; frame-ancestors &#39;none&#39;; frame-src youtube.com www.youtube.com dailymotion.com www.dailymotion.com; block-all-mixed-content; upgrade-insecure-requests;</td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Other Info</td>
-						<td width="80%">style-src includes unsafe-inline.</td>
-					</tr>
-				
-					<tr>
-						<td width="20%"
-							class="indent1">URL</td>
-						<td width="80%"><a href="https://www.territoiresentransitions.fr/sitemap.xml">https://www.territoiresentransitions.fr/sitemap.xml</a></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Method</td>
-						<td width="80%">GET</td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Parameter</td>
-						<td width="80%">content-security-policy</td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Attack</td>
-						<td width="80%"></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Evidence</td>
-						<td width="80%">default-src &#39;self&#39;; script-src &#39;self&#39; &#39;nonce-ODRkNjI5MzAtZmY5ZS00ZTllLWI5ZmQtODkyYzFjZjI3ZWM5&#39; &#39;strict-dynamic&#39;;; style-src &#39;self&#39; &#39;unsafe-inline&#39;; img-src &#39;self&#39; blob: data: ytimg.com https://phenomenal-trust-ee3da2c906.media.strapiapp.com; font-src &#39;self&#39;; object-src &#39;none&#39;; connect-src &#39;self&#39; https://rlarzronkgoyvtdkltqy.supabase.co https://phenomenal-trust-ee3da2c906.strapiapp.com ws://localhost:3000; base-uri &#39;self&#39;; form-action &#39;self&#39;; frame-ancestors &#39;none&#39;; frame-src youtube.com www.youtube.com dailymotion.com www.dailymotion.com; block-all-mixed-content; upgrade-insecure-requests;</td>
+						<td width="80%">default-src &#39;self&#39;; script-src &#39;self&#39; &#39;nonce-Y2Y4Y2E5MDEtNjQ2Yi00YTM1LTljNmMtOGJhYThmMjUxMGRh&#39; &#39;strict-dynamic&#39;;; style-src &#39;self&#39; &#39;unsafe-inline&#39;; img-src &#39;self&#39; blob: data: ytimg.com https://phenomenal-trust-ee3da2c906.media.strapiapp.com; font-src &#39;self&#39;; object-src &#39;none&#39;; connect-src &#39;self&#39; https://rlarzronkgoyvtdkltqy.supabase.co https://phenomenal-trust-ee3da2c906.strapiapp.com ws://localhost:3000; base-uri &#39;self&#39;; form-action &#39;self&#39;; frame-ancestors &#39;none&#39;; frame-src youtube.com www.youtube.com dailymotion.com www.dailymotion.com; block-all-mixed-content; upgrade-insecure-requests;</td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -798,7 +849,7 @@ td {
 					<tr>
 						<td width="20%"
 							class="indent2">Evidence</td>
-						<td width="80%">default-src &#39;self&#39;; script-src &#39;self&#39; &#39;nonce-MjFlNTFkMjQtNDE5OC00ZmQwLWJhMTQtZTJmYzJhMDcyZDEy&#39; &#39;strict-dynamic&#39;;; style-src &#39;self&#39; &#39;unsafe-inline&#39;; img-src &#39;self&#39; blob: data: ytimg.com https://phenomenal-trust-ee3da2c906.media.strapiapp.com; font-src &#39;self&#39;; object-src &#39;none&#39;; connect-src &#39;self&#39; https://rlarzronkgoyvtdkltqy.supabase.co https://phenomenal-trust-ee3da2c906.strapiapp.com ws://localhost:3000; base-uri &#39;self&#39;; form-action &#39;self&#39;; frame-ancestors &#39;none&#39;; frame-src youtube.com www.youtube.com dailymotion.com www.dailymotion.com; block-all-mixed-content; upgrade-insecure-requests;</td>
+						<td width="80%">default-src &#39;self&#39;; script-src &#39;self&#39; &#39;nonce-MjE0MDEzZmYtMmI1OC00MzlhLWExZWItMjdlM2ZjZTM1NDBh&#39; &#39;strict-dynamic&#39;;; style-src &#39;self&#39; &#39;unsafe-inline&#39;; img-src &#39;self&#39; blob: data: ytimg.com https://phenomenal-trust-ee3da2c906.media.strapiapp.com; font-src &#39;self&#39;; object-src &#39;none&#39;; connect-src &#39;self&#39; https://rlarzronkgoyvtdkltqy.supabase.co https://phenomenal-trust-ee3da2c906.strapiapp.com ws://localhost:3000; base-uri &#39;self&#39;; form-action &#39;self&#39;; frame-ancestors &#39;none&#39;; frame-src youtube.com www.youtube.com dailymotion.com www.dailymotion.com; block-all-mixed-content; upgrade-insecure-requests;</td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -849,6 +900,89 @@ td {
 					<td width="20%">Plugin Id</td>
 					<td width="80%"><a
 						href="https://www.zaproxy.org/docs/alerts/10055/">10055</a></td>
+				</tr>
+			</table>
+			<div class="spacer"></div>
+		
+			<table class="results">
+				<tr height="24">
+					<th width="20%" class="risk-1"><a
+						id="10044"></a>
+						<div>Low</div></th>
+					<th class="risk-1">Big Redirect Detected (Potential Sensitive Information Leak)</th>
+				</tr>
+				<tr>
+					<td width="20%">Description</td>
+					<td width="80%">
+							<div>The server has responded with a redirect that seems to provide a large response. This may indicate that although the server sent a redirect it also responded with body content (which may include sensitive details, PII, etc.).</div>
+							
+						</td>
+				</tr>
+				<TR vAlign="top">
+					<TD colspan="2"></TD>
+				</TR>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://www.territoiresentransitions.fr/actus/95">https://www.territoiresentransitions.fr/actus/95</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">Location header URI length: 63 [/actus/95/forum-ouvert-remise-des-labels-retour-sur-la-jnc-2022].
+Predicted response size: 363.
+Response Body Length: 10,555.</td>
+					</tr>
+				
+				<tr>
+					<td width="20%">Instances</td>
+					<td width="80%">1</td>
+				</tr>
+				<tr>
+					<td width="20%">Solution</td>
+					<td width="80%">
+							<div>Ensure that no sensitive information is leaked via redirect responses. Redirect responses should have almost no content.</div>
+							
+						</td>
+				</tr>
+				<tr>
+					<td width="20%">Reference</td>
+					<td width="80%"></td>
+				</tr>
+				<tr>
+					<td width="20%">CWE Id</td>
+					<td width="80%"><a
+						href="https://cwe.mitre.org/data/definitions/201.html">201</a></td>
+				</tr>
+				<tr>
+					<td width="20%">WASC Id</td>
+					<td width="80%">13</td>
+				</tr>
+				<tr>
+					<td width="20%">Plugin Id</td>
+					<td width="80%"><a
+						href="https://www.zaproxy.org/docs/alerts/10044/">10044</a></td>
 				</tr>
 			</table>
 			<div class="spacer"></div>
@@ -998,6 +1132,99 @@ td {
 					<tr>
 						<td width="20%"
 							class="indent1">URL</td>
+						<td width="80%"><a href="https://www.territoiresentransitions.fr/cgu">https://www.territoiresentransitions.fr/cgu</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://www.territoiresentransitions.fr/contact">https://www.territoiresentransitions.fr/contact</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://www.territoiresentransitions.fr/cookies">https://www.territoiresentransitions.fr/cookies</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
 						<td width="80%"><a href="https://www.territoiresentransitions.fr/faq">https://www.territoiresentransitions.fr/faq</a></td>
 					</tr>
 					<tr>
@@ -1060,100 +1287,7 @@ td {
 					<tr>
 						<td width="20%"
 							class="indent1">URL</td>
-						<td width="80%"><a href="https://www.territoiresentransitions.fr/outil-numerique">https://www.territoiresentransitions.fr/outil-numerique</a></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Method</td>
-						<td width="80%">GET</td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Parameter</td>
-						<td width="80%"></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Attack</td>
-						<td width="80%"></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Evidence</td>
-						<td width="80%"></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Other Info</td>
-						<td width="80%"></td>
-					</tr>
-				
-					<tr>
-						<td width="20%"
-							class="indent1">URL</td>
-						<td width="80%"><a href="https://www.territoiresentransitions.fr/programme">https://www.territoiresentransitions.fr/programme</a></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Method</td>
-						<td width="80%">GET</td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Parameter</td>
-						<td width="80%"></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Attack</td>
-						<td width="80%"></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Evidence</td>
-						<td width="80%"></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Other Info</td>
-						<td width="80%"></td>
-					</tr>
-				
-					<tr>
-						<td width="20%"
-							class="indent1">URL</td>
 						<td width="80%"><a href="https://www.territoiresentransitions.fr/robots.txt">https://www.territoiresentransitions.fr/robots.txt</a></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Method</td>
-						<td width="80%">GET</td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Parameter</td>
-						<td width="80%"></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Attack</td>
-						<td width="80%"></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Evidence</td>
-						<td width="80%"></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Other Info</td>
-						<td width="80%"></td>
-					</tr>
-				
-					<tr>
-						<td width="20%"
-							class="indent1">URL</td>
-						<td width="80%"><a href="https://www.territoiresentransitions.fr/sitemap.xml">https://www.territoiresentransitions.fr/sitemap.xml</a></td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -1404,6 +1538,99 @@ td {
 					<tr>
 						<td width="20%"
 							class="indent1">URL</td>
+						<td width="80%"><a href="https://www.territoiresentransitions.fr/cgu">https://www.territoiresentransitions.fr/cgu</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">x-powered-by: Next.js</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://www.territoiresentransitions.fr/contact">https://www.territoiresentransitions.fr/contact</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">x-powered-by: Next.js</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://www.territoiresentransitions.fr/cookies">https://www.territoiresentransitions.fr/cookies</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">x-powered-by: Next.js</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
 						<td width="80%"><a href="https://www.territoiresentransitions.fr/faq">https://www.territoiresentransitions.fr/faq</a></td>
 					</tr>
 					<tr>
@@ -1466,100 +1693,7 @@ td {
 					<tr>
 						<td width="20%"
 							class="indent1">URL</td>
-						<td width="80%"><a href="https://www.territoiresentransitions.fr/outil-numerique">https://www.territoiresentransitions.fr/outil-numerique</a></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Method</td>
-						<td width="80%">GET</td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Parameter</td>
-						<td width="80%"></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Attack</td>
-						<td width="80%"></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Evidence</td>
-						<td width="80%">x-powered-by: Next.js</td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Other Info</td>
-						<td width="80%"></td>
-					</tr>
-				
-					<tr>
-						<td width="20%"
-							class="indent1">URL</td>
-						<td width="80%"><a href="https://www.territoiresentransitions.fr/programme">https://www.territoiresentransitions.fr/programme</a></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Method</td>
-						<td width="80%">GET</td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Parameter</td>
-						<td width="80%"></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Attack</td>
-						<td width="80%"></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Evidence</td>
-						<td width="80%">x-powered-by: Next.js</td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Other Info</td>
-						<td width="80%"></td>
-					</tr>
-				
-					<tr>
-						<td width="20%"
-							class="indent1">URL</td>
 						<td width="80%"><a href="https://www.territoiresentransitions.fr/robots.txt">https://www.territoiresentransitions.fr/robots.txt</a></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Method</td>
-						<td width="80%">GET</td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Parameter</td>
-						<td width="80%"></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Attack</td>
-						<td width="80%"></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Evidence</td>
-						<td width="80%">x-powered-by: Next.js</td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Other Info</td>
-						<td width="80%"></td>
-					</tr>
-				
-					<tr>
-						<td width="20%"
-							class="indent1">URL</td>
-						<td width="80%"><a href="https://www.territoiresentransitions.fr/sitemap.xml">https://www.territoiresentransitions.fr/sitemap.xml</a></td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -1659,6 +1793,369 @@ td {
 			<table class="results">
 				<tr height="24">
 					<th width="20%" class="risk-1"><a
+						id="10096"></a>
+						<div>Low</div></th>
+					<th class="risk-1">Timestamp Disclosure - Unix</th>
+				</tr>
+				<tr>
+					<td width="20%">Description</td>
+					<td width="80%">
+							<div>A timestamp was disclosed by the application/web server - Unix</div>
+							
+						</td>
+				</tr>
+				<TR vAlign="top">
+					<TD colspan="2"></TD>
+				</TR>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://www.territoiresentransitions.fr/_next/static/chunks/4395-19f7723622ba00de.js">https://www.territoiresentransitions.fr/_next/static/chunks/4395-19f7723622ba00de.js</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">1433087999</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">1433087999, which evaluates to: 2015-05-31 15:59:59</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://www.territoiresentransitions.fr/_next/static/chunks/4395-19f7723622ba00de.js">https://www.territoiresentransitions.fr/_next/static/chunks/4395-19f7723622ba00de.js</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">1604231423</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">1604231423, which evaluates to: 2020-11-01 11:50:23</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://www.territoiresentransitions.fr/_next/static/chunks/4395-19f7723622ba00de.js">https://www.territoiresentransitions.fr/_next/static/chunks/4395-19f7723622ba00de.js</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">1687547391</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">1687547391, which evaluates to: 2023-06-23 19:09:51</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://www.territoiresentransitions.fr/_next/static/chunks/4395-19f7723622ba00de.js">https://www.territoiresentransitions.fr/_next/static/chunks/4395-19f7723622ba00de.js</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">1714657791</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">1714657791, which evaluates to: 2024-05-02 13:49:51</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://www.territoiresentransitions.fr/_next/static/chunks/4395-19f7723622ba00de.js">https://www.territoiresentransitions.fr/_next/static/chunks/4395-19f7723622ba00de.js</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">1724754687</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">1724754687, which evaluates to: 2024-08-27 10:31:27</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://www.territoiresentransitions.fr/_next/static/chunks/4395-19f7723622ba00de.js">https://www.territoiresentransitions.fr/_next/static/chunks/4395-19f7723622ba00de.js</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">1768516095</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">1768516095, which evaluates to: 2026-01-15 22:28:15</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://www.territoiresentransitions.fr/_next/static/chunks/4395-19f7723622ba00de.js">https://www.territoiresentransitions.fr/_next/static/chunks/4395-19f7723622ba00de.js</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">1784335871</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">1784335871, which evaluates to: 2026-07-18 00:51:11</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://www.territoiresentransitions.fr/_next/static/chunks/4395-19f7723622ba00de.js">https://www.territoiresentransitions.fr/_next/static/chunks/4395-19f7723622ba00de.js</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">1804477439</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">1804477439, which evaluates to: 2027-03-08 03:43:59</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://www.territoiresentransitions.fr/_next/static/chunks/4395-19f7723622ba00de.js">https://www.territoiresentransitions.fr/_next/static/chunks/4395-19f7723622ba00de.js</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">1887473919</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">1887473919, which evaluates to: 2029-10-23 18:18:39</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://www.territoiresentransitions.fr/_next/static/chunks/4395-19f7723622ba00de.js">https://www.territoiresentransitions.fr/_next/static/chunks/4395-19f7723622ba00de.js</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">2005441023</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">2005441023, which evaluates to: 2033-07-20 02:57:03</td>
+					</tr>
+				
+				<tr>
+					<td width="20%">Instances</td>
+					<td width="80%">10</td>
+				</tr>
+				<tr>
+					<td width="20%">Solution</td>
+					<td width="80%">
+							<div>Manually confirm that the timestamp data is not sensitive, and that the data cannot be aggregated to disclose exploitable patterns.</div>
+							
+						</td>
+				</tr>
+				<tr>
+					<td width="20%">Reference</td>
+					<td width="80%">
+							<a href="https://cwe.mitre.org/data/definitions/200.html">https://cwe.mitre.org/data/definitions/200.html</a>
+							
+						</td>
+				</tr>
+				<tr>
+					<td width="20%">CWE Id</td>
+					<td width="80%"><a
+						href="https://cwe.mitre.org/data/definitions/200.html">200</a></td>
+				</tr>
+				<tr>
+					<td width="20%">WASC Id</td>
+					<td width="80%">13</td>
+				</tr>
+				<tr>
+					<td width="20%">Plugin Id</td>
+					<td width="80%"><a
+						href="https://www.zaproxy.org/docs/alerts/10096/">10096</a></td>
+				</tr>
+			</table>
+			<div class="spacer"></div>
+		
+			<table class="results">
+				<tr height="24">
+					<th width="20%" class="risk-1"><a
 						id="10021"></a>
 						<div>Low</div></th>
 					<th class="risk-1">X-Content-Type-Options Header Missing</th>
@@ -1741,7 +2238,7 @@ At &quot;High&quot; threshold this scan rule will not alert on client or server 
 					<tr>
 						<td width="20%"
 							class="indent1">URL</td>
-						<td width="80%"><a href="https://www.territoiresentransitions.fr/_next/static/css/21fb2bb4a721f641.css">https://www.territoiresentransitions.fr/_next/static/css/21fb2bb4a721f641.css</a></td>
+						<td width="80%"><a href="https://www.territoiresentransitions.fr/_next/static/css/6e03d5fca0b042af.css">https://www.territoiresentransitions.fr/_next/static/css/6e03d5fca0b042af.css</a></td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -1837,6 +2334,102 @@ At &quot;High&quot; threshold this scan rule will not alert on client or server 
 					<tr>
 						<td width="20%"
 							class="indent1">URL</td>
+						<td width="80%"><a href="https://www.territoiresentransitions.fr/cgu">https://www.territoiresentransitions.fr/cgu</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%">x-content-type-options</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.
+At &quot;High&quot; threshold this scan rule will not alert on client or server error responses.</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://www.territoiresentransitions.fr/contact">https://www.territoiresentransitions.fr/contact</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%">x-content-type-options</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.
+At &quot;High&quot; threshold this scan rule will not alert on client or server error responses.</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://www.territoiresentransitions.fr/cookies">https://www.territoiresentransitions.fr/cookies</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%">x-content-type-options</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.
+At &quot;High&quot; threshold this scan rule will not alert on client or server error responses.</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
 						<td width="80%"><a href="https://www.territoiresentransitions.fr/faq">https://www.territoiresentransitions.fr/faq</a></td>
 					</tr>
 					<tr>
@@ -1869,103 +2462,7 @@ At &quot;High&quot; threshold this scan rule will not alert on client or server 
 					<tr>
 						<td width="20%"
 							class="indent1">URL</td>
-						<td width="80%"><a href="https://www.territoiresentransitions.fr/favicon.ico">https://www.territoiresentransitions.fr/favicon.ico</a></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Method</td>
-						<td width="80%">GET</td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Parameter</td>
-						<td width="80%">x-content-type-options</td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Attack</td>
-						<td width="80%"></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Evidence</td>
-						<td width="80%"></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Other Info</td>
-						<td width="80%">This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.
-At &quot;High&quot; threshold this scan rule will not alert on client or server error responses.</td>
-					</tr>
-				
-					<tr>
-						<td width="20%"
-							class="indent1">URL</td>
 						<td width="80%"><a href="https://www.territoiresentransitions.fr/mentions">https://www.territoiresentransitions.fr/mentions</a></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Method</td>
-						<td width="80%">GET</td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Parameter</td>
-						<td width="80%">x-content-type-options</td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Attack</td>
-						<td width="80%"></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Evidence</td>
-						<td width="80%"></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Other Info</td>
-						<td width="80%">This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.
-At &quot;High&quot; threshold this scan rule will not alert on client or server error responses.</td>
-					</tr>
-				
-					<tr>
-						<td width="20%"
-							class="indent1">URL</td>
-						<td width="80%"><a href="https://www.territoiresentransitions.fr/outil-numerique">https://www.territoiresentransitions.fr/outil-numerique</a></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Method</td>
-						<td width="80%">GET</td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Parameter</td>
-						<td width="80%">x-content-type-options</td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Attack</td>
-						<td width="80%"></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Evidence</td>
-						<td width="80%"></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Other Info</td>
-						<td width="80%">This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.
-At &quot;High&quot; threshold this scan rule will not alert on client or server error responses.</td>
-					</tr>
-				
-					<tr>
-						<td width="20%"
-							class="indent1">URL</td>
-						<td width="80%"><a href="https://www.territoiresentransitions.fr/programme">https://www.territoiresentransitions.fr/programme</a></td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -2108,12 +2605,12 @@ At &quot;High&quot; threshold this scan rule will not alert on client or server 
 					<tr>
 						<td width="20%"
 							class="indent2">Evidence</td>
-						<td width="80%">nonce-OGQ3NmQ2YWUtNmY4Mi00ZmVlLWE4MTAtMjJmN2Q3YThlNDMw</td>
+						<td width="80%">nonce-ZDhlOWU2YmUtZWNjYi00MWUxLTkxZDMtYmRlZjUxMjk4YTg0</td>
 					</tr>
 					<tr>
 						<td width="20%"
 							class="indent2">Other Info</td>
-						<td width="80%">���{�CsfCfR�fc�&quot;�FfVR���#&amp;cvCv�SC3</td>
+						<td width="80%">���{�C�S�Sf&amp;R�V66&quot;�CSӓC2�&amp;FVcS#���</td>
 					</tr>
 				
 					<tr>
@@ -2139,12 +2636,12 @@ At &quot;High&quot; threshold this scan rule will not alert on client or server 
 					<tr>
 						<td width="20%"
 							class="indent2">Evidence</td>
-						<td width="80%">nonce-NTY0NTJlNmMtNzQ5NC00NzAwLTgzMzMtYzI4NTUzZGRiYTE3</td>
+						<td width="80%">nonce-ZmFkNzBiYzAtMjdkZi00ZGY3LWEyYTMtZWNjZWM5ZmNlZTM4</td>
 					</tr>
 					<tr>
 						<td width="20%"
 							class="indent2">Other Info</td>
-						<td width="80%">���{�ScCS&amp;Sf2�sC�B�CsӃ332�3#�SS6FF&amp;</td>
+						<td width="80%">���{�fCs&amp;3�#vFb�FFcr�&amp;2�V66V3�f6VS3</td>
 					</tr>
 				
 					<tr>
@@ -2170,12 +2667,12 @@ At &quot;High&quot; threshold this scan rule will not alert on client or server 
 					<tr>
 						<td width="20%"
 							class="indent2">Evidence</td>
-						<td width="80%">nonce-NmUyOTAwMzctMDE1ZS00NDgyLWEyY2MtNmIzOTFmNTVkYjM2</td>
+						<td width="80%">nonce-MmE5M2RjM2MtYjQzZS00ZmY1LWE5ZDEtNzFlNTVkZDE1OGQ4</td>
 					</tr>
 					<tr>
 						<td width="20%"
 							class="indent2">Other Info</td>
-						<td width="80%">���{�fS#�3r�VR�CC�&quot;�&amp;62�f#3�cSVF#3</td>
+						<td width="80%">���{�&amp;�6F362�#C6R�FfcR��C�sSSVFCS�C</td>
 					</tr>
 				
 					<tr>
@@ -2201,12 +2698,12 @@ At &quot;High&quot; threshold this scan rule will not alert on client or server 
 					<tr>
 						<td width="20%"
 							class="indent2">Evidence</td>
-						<td width="80%">nonce-MjhlYzQ2NTUtYWYxNS00NDc1LWFlNDctMjZiMDFhNzc5ZTlk</td>
+						<td width="80%">nonce-M2VmYzM3NWQtZDVjYy00M2I5LTg0NDgtYWFkMTkyYTM4NGE5</td>
 					</tr>
 					<tr>
 						<td width="20%"
 							class="indent2">Other Info</td>
-						<td width="80%">���{�#�V3CcSR�cR�CCsR�SCr�#f#ss�S�</td>
+						<td width="80%">���{�6Vf33sVB�CV62�C6#�ӃCC��C�&amp;3�F</td>
 					</tr>
 				
 					<tr>
@@ -2232,12 +2729,105 @@ At &quot;High&quot; threshold this scan rule will not alert on client or server 
 					<tr>
 						<td width="20%"
 							class="indent2">Evidence</td>
-						<td width="80%">nonce-NmZlY2Q1ZTUtODNmMC00NzBhLWEyMWMtNTJkOWQzYWNiNjhl</td>
+						<td width="80%">nonce-OTgwNjBjZGItNjRkMy00NDdhLTg2MWMtNWUzNGEzYTY4Yzk3</td>
 					</tr>
 					<tr>
 						<td width="20%"
 							class="indent2">Other Info</td>
-						<td width="80%">���{�ffV6CVSRӃ6c�Cs�#2�S&amp;C�C66#c�</td>
+						<td width="80%">���{㓃c6F&quot;�cFC2�CCvӃc2�VS3F6c�3�</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://www.territoiresentransitions.fr/cgu">https://www.territoiresentransitions.fr/cgu</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">nonce-MWFhZDM3YTQtM2M0ZC00YzhhLWFjYzUtYzQ1NTZlYzhkZmNh</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">���{�C3vB�63FB�F3��63R�3CSSfV3�Ff6</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://www.territoiresentransitions.fr/contact">https://www.territoiresentransitions.fr/contact</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">nonce-MDYwMzNhMTMtZTAwNS00YjliLWI5ZTMtNWMxNjA2YWY0MmE0</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">���{�c362�SR�F#�&quot;�#�S2�V3cfcC&amp;</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://www.territoiresentransitions.fr/cookies">https://www.territoiresentransitions.fr/cookies</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">nonce-ZWIwMTUyZTEtZDA4Yy00NDU5LTk0YTktYjIyNDJmZTBmODhj</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">���{�V#S&amp;S�C�2�CCS�ӓF��###C&amp;fSc��</td>
 					</tr>
 				
 					<tr>
@@ -2263,12 +2853,12 @@ At &quot;High&quot; threshold this scan rule will not alert on client or server 
 					<tr>
 						<td width="20%"
 							class="indent2">Evidence</td>
-						<td width="80%">nonce-MjZlZWE2MzYtN2RkNC00NzdhLTg3YzItMjFiMzQyMDZmZDM2</td>
+						<td width="80%">nonce-YWViZjRmYWItM2Q1Yy00MTMyLTg3YzAtZmM0MjMzYmNiODYx</td>
 					</tr>
 					<tr>
 						<td width="20%"
 							class="indent2">Other Info</td>
-						<td width="80%">���{�#fVVc3b�vFCB�CsvӃv3&quot;�##3C#ffC3</td>
+						<td width="80%">���{�V&amp;cFf&quot;�6CV2�C3&quot;Ӄv3�f3C#36&amp;6#�c</td>
 					</tr>
 				
 					<tr>
@@ -2294,74 +2884,12 @@ At &quot;High&quot; threshold this scan rule will not alert on client or server 
 					<tr>
 						<td width="20%"
 							class="indent2">Evidence</td>
-						<td width="80%">nonce-MGI3ZmIyZjItMzQwYS00NGQ1LWIyMGItZTQ0OGNiZjgyNDg2</td>
+						<td width="80%">nonce-NGYzMzgyYTMtMzEyOS00M2RmLThlMjktYWFkMGFkMzQwOTBi</td>
 					</tr>
 					<tr>
 						<td width="20%"
 							class="indent2">Other Info</td>
-						<td width="80%">���{�#vf#&amp;c&quot;�3C�CFCR�##&quot;�SCC�6&amp;c�#C�</td>
-					</tr>
-				
-					<tr>
-						<td width="20%"
-							class="indent1">URL</td>
-						<td width="80%"><a href="https://www.territoiresentransitions.fr/outil-numerique">https://www.territoiresentransitions.fr/outil-numerique</a></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Method</td>
-						<td width="80%">GET</td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Parameter</td>
-						<td width="80%"></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Attack</td>
-						<td width="80%"></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Evidence</td>
-						<td width="80%">nonce-MjIwNmMyZDAtYTI5Yy00MTQ2LThiOTMtZGFiMzZkN2ExZDAw</td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Other Info</td>
-						<td width="80%">���{�##f3&amp;C�#�2�CCbӆ#�2�F#3fCvC</td>
-					</tr>
-				
-					<tr>
-						<td width="20%"
-							class="indent1">URL</td>
-						<td width="80%"><a href="https://www.territoiresentransitions.fr/programme">https://www.territoiresentransitions.fr/programme</a></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Method</td>
-						<td width="80%">GET</td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Parameter</td>
-						<td width="80%"></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Attack</td>
-						<td width="80%"></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Evidence</td>
-						<td width="80%">nonce-MWNlZmNlOTEtNzlhNS00MzY0LThiNjYtNmQ5MjdiMDU1MTMw</td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Other Info</td>
-						<td width="80%">���{�6Vf6S��s�R�C3cBӆ#cb�fC�#v#SS3</td>
+						<td width="80%">���{�Fc33�&amp;2�3#��C6FbӆS#��CC3C�</td>
 					</tr>
 				
 					<tr>
@@ -2387,43 +2915,12 @@ At &quot;High&quot; threshold this scan rule will not alert on client or server 
 					<tr>
 						<td width="20%"
 							class="indent2">Evidence</td>
-						<td width="80%">nonce-MGQ4MTRhYzgtNzVjNS00YzZlLTljNzUtNWU4NTk3ZjhiMzg0</td>
+						<td width="80%">nonce-Y2Y4Y2E5MDEtNjQ2Yi00YTM1LTljNmMtOGJhYThmMjUxMGRh</td>
 					</tr>
 					<tr>
 						<td width="20%"
 							class="indent2">Other Info</td>
-						<td width="80%">���{�C�F3��sV3R�F3fRӖ3sR�VS�S�vc�#3�</td>
-					</tr>
-				
-					<tr>
-						<td width="20%"
-							class="indent1">URL</td>
-						<td width="80%"><a href="https://www.territoiresentransitions.fr/sitemap.xml">https://www.territoiresentransitions.fr/sitemap.xml</a></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Method</td>
-						<td width="80%">GET</td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Parameter</td>
-						<td width="80%"></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Attack</td>
-						<td width="80%"></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Evidence</td>
-						<td width="80%">nonce-ODRkNjI5MzAtZmY5ZS00ZTllLWI5ZmQtODkyYzFjZjI3ZWM5</td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Other Info</td>
-						<td width="80%">���{�FCc#�3�fc�R�FS�R�#�fBӃ�&amp;36c#vV3</td>
+						<td width="80%">���{�6c�6��cCf&quot;�F3RӖ3f2ӆ&amp;�c#SF</td>
 					</tr>
 				
 					<tr>
@@ -2449,12 +2946,12 @@ At &quot;High&quot; threshold this scan rule will not alert on client or server 
 					<tr>
 						<td width="20%"
 							class="indent2">Evidence</td>
-						<td width="80%">nonce-MjFlNTFkMjQtNDE5OC00ZmQwLWJhMTQtZTJmYzJhMDcyZDEy</td>
+						<td width="80%">nonce-MjE0MDEzZmYtMmI1OC00MzlhLWExZWItMjdlM2ZjZTM1NDBh</td>
 					</tr>
 					<tr>
 						<td width="20%"
 							class="indent2">Other Info</td>
-						<td width="80%">���{�#SSC#B�C���FfC�&amp;B�S&amp;f3&amp;s&amp;C</td>
+						<td width="80%">���{�#C6fb�&amp;#S��C3��V&quot;�#vS6f6S3SC</td>
 					</tr>
 				
 				<tr>
@@ -2488,6 +2985,87 @@ At &quot;High&quot; threshold this scan rule will not alert on client or server 
 					<td width="20%">Plugin Id</td>
 					<td width="80%"><a
 						href="https://www.zaproxy.org/docs/alerts/10094/">10094</a></td>
+				</tr>
+			</table>
+			<div class="spacer"></div>
+		
+			<table class="results">
+				<tr height="24">
+					<th width="20%" class="risk-0"><a
+						id="10024"></a>
+						<div>Informational</div></th>
+					<th class="risk-0">Information Disclosure - Sensitive Information in URL</th>
+				</tr>
+				<tr>
+					<td width="20%">Description</td>
+					<td width="80%">
+							<div>The request appeared to contain sensitive information leaked in the URL. This can violate PCI and most organizational compliance policies. You can configure the list of strings for this check to add or remove values specific to your environment.</div>
+							
+						</td>
+				</tr>
+				<TR vAlign="top">
+					<TD colspan="2"></TD>
+				</TR>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://www.territoiresentransitions.fr/contact?email=zaproxy%40example.com&amp;message=Zaproxy+alias+impedit+expedita+quisquam+pariatur+exercitationem.+Nemo+rerum+eveniet+dolores+rem+quia+dignissimos.&amp;nom=ZAP&amp;objet=1&amp;prenom=ZAP">https://www.territoiresentransitions.fr/contact?email=zaproxy%40example.com&amp;message=Zaproxy+alias+impedit+expedita+quisquam+pariatur+exercitationem.+Nemo+rerum+eveniet+dolores+rem+quia+dignissimos.&amp;nom=ZAP&amp;objet=1&amp;prenom=ZAP</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%">email</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">zaproxy@example.com</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">The URL contains email address(es).</td>
+					</tr>
+				
+				<tr>
+					<td width="20%">Instances</td>
+					<td width="80%">1</td>
+				</tr>
+				<tr>
+					<td width="20%">Solution</td>
+					<td width="80%">
+							<div>Do not pass sensitive information in URIs.</div>
+							
+						</td>
+				</tr>
+				<tr>
+					<td width="20%">Reference</td>
+					<td width="80%"></td>
+				</tr>
+				<tr>
+					<td width="20%">CWE Id</td>
+					<td width="80%"><a
+						href="https://cwe.mitre.org/data/definitions/200.html">200</a></td>
+				</tr>
+				<tr>
+					<td width="20%">WASC Id</td>
+					<td width="80%">13</td>
+				</tr>
+				<tr>
+					<td width="20%">Plugin Id</td>
+					<td width="80%"><a
+						href="https://www.zaproxy.org/docs/alerts/10024/">10024</a></td>
 				</tr>
 			</table>
 			<div class="spacer"></div>
@@ -2538,7 +3116,7 @@ At &quot;High&quot; threshold this scan rule will not alert on client or server 
 					<tr>
 						<td width="20%"
 							class="indent2">Other Info</td>
-						<td width="80%">The following pattern was used: \bBUGS\b and was detected in the element starting with: &quot;&lt;script nonce=&quot;NTY0NTJlNmMtNzQ5NC00NzAwLTgzMzMtYzI4NTUzZGRiYTE3&quot;&gt;self.__next_f.push([1,&quot;7:[[\&quot;$\&quot;,\&quot;section\&quot;,null,{\&quot;id\&quot;:\&quot;$un&quot;, see evidence field for the suspicious comment/snippet.</td>
+						<td width="80%">The following pattern was used: \bBUGS\b and was detected in the element starting with: &quot;&lt;script nonce=&quot;ZDhlOWU2YmUtZWNjYi00MWUxLTkxZDMtYmRlZjUxMjk4YTg0&quot;&gt;self.__next_f.push([1,&quot;7:[[\&quot;$\&quot;,\&quot;section\&quot;,null,{\&quot;id\&quot;:\&quot;$un&quot;, see evidence field for the suspicious comment/snippet.</td>
 					</tr>
 				
 					<tr>
@@ -2569,7 +3147,7 @@ At &quot;High&quot; threshold this scan rule will not alert on client or server 
 					<tr>
 						<td width="20%"
 							class="indent2">Other Info</td>
-						<td width="80%">The following pattern was used: \bBUGS\b and was detected in the element starting with: &quot;&lt;script nonce=&quot;OGQ3NmQ2YWUtNmY4Mi00ZmVlLWE4MTAtMjJmN2Q3YThlNDMw&quot;&gt;self.__next_f.push([1,&quot;7:[[\&quot;$\&quot;,\&quot;section\&quot;,null,{\&quot;id\&quot;:\&quot;$un&quot;, see evidence field for the suspicious comment/snippet.</td>
+						<td width="80%">The following pattern was used: \bBUGS\b and was detected in the element starting with: &quot;&lt;script nonce=&quot;ZmFkNzBiYzAtMjdkZi00ZGY3LWEyYTMtZWNjZWM5ZmNlZTM4&quot;&gt;self.__next_f.push([1,&quot;7:[[\&quot;$\&quot;,\&quot;section\&quot;,null,{\&quot;id\&quot;:\&quot;$un&quot;, see evidence field for the suspicious comment/snippet.</td>
 					</tr>
 				
 					<tr>
@@ -2600,13 +3178,44 @@ At &quot;High&quot; threshold this scan rule will not alert on client or server 
 					<tr>
 						<td width="20%"
 							class="indent2">Other Info</td>
-						<td width="80%">The following pattern was used: \bBUGS\b and was detected in the element starting with: &quot;&lt;script nonce=&quot;NmUyOTAwMzctMDE1ZS00NDgyLWEyY2MtNmIzOTFmNTVkYjM2&quot;&gt;self.__next_f.push([1,&quot;7:[[\&quot;$\&quot;,\&quot;section\&quot;,null,{\&quot;id\&quot;:\&quot;$un&quot;, see evidence field for the suspicious comment/snippet.</td>
+						<td width="80%">The following pattern was used: \bBUGS\b and was detected in the element starting with: &quot;&lt;script nonce=&quot;MmE5M2RjM2MtYjQzZS00ZmY1LWE5ZDEtNzFlNTVkZDE1OGQ4&quot;&gt;self.__next_f.push([1,&quot;7:[[\&quot;$\&quot;,\&quot;section\&quot;,null,{\&quot;id\&quot;:\&quot;$un&quot;, see evidence field for the suspicious comment/snippet.</td>
 					</tr>
 				
 					<tr>
 						<td width="20%"
 							class="indent1">URL</td>
-						<td width="80%"><a href="https://www.territoiresentransitions.fr/_next/static/chunks/1dd3208c-7d25955e92a40529.js">https://www.territoiresentransitions.fr/_next/static/chunks/1dd3208c-7d25955e92a40529.js</a></td>
+						<td width="80%"><a href="https://www.territoiresentransitions.fr/_next/static/chunks/3040-1622766a2fbdffd8.js">https://www.territoiresentransitions.fr/_next/static/chunks/3040-1622766a2fbdffd8.js</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">query</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">The following pattern was used: \bQUERY\b and was detected in the element starting with: &quot;&quot;use strict&quot;;(self.webpackChunk_N_E=self.webpackChunk_N_E||[]).push([[3040],{68379:function(e,t,n){Object.defineProperty(t,&quot;__es&quot;, see evidence field for the suspicious comment/snippet.</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://www.territoiresentransitions.fr/_next/static/chunks/314-93b7327341fd69b2.js">https://www.territoiresentransitions.fr/_next/static/chunks/314-93b7327341fd69b2.js</a></td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -2631,7 +3240,7 @@ At &quot;High&quot; threshold this scan rule will not alert on client or server 
 					<tr>
 						<td width="20%"
 							class="indent2">Other Info</td>
-						<td width="80%">The following pattern was used: \bSELECT\b and was detected in the element starting with: &quot;&quot;use strict&quot;;(self.webpackChunk_N_E=self.webpackChunk_N_E||[]).push([[1293],{510:function(e,t,n){var r,l=n(7653),a=n(69397),o={u&quot;, see evidence field for the suspicious comment/snippet.</td>
+						<td width="80%">The following pattern was used: \bSELECT\b and was detected in the element starting with: &quot;&quot;use strict&quot;;(self.webpackChunk_N_E=self.webpackChunk_N_E||[]).push([[314],{69673:function(t,e,n){n.d(e,{ht:function(){return S}&quot;, see evidence field for the suspicious comment/snippet.</td>
 					</tr>
 				
 					<tr>
@@ -2699,7 +3308,7 @@ At &quot;High&quot; threshold this scan rule will not alert on client or server 
 					<tr>
 						<td width="20%"
 							class="indent1">URL</td>
-						<td width="80%"><a href="https://www.territoiresentransitions.fr/_next/static/chunks/app/page-7f06aeff7c6d006e.js">https://www.territoiresentransitions.fr/_next/static/chunks/app/page-7f06aeff7c6d006e.js</a></td>
+						<td width="80%"><a href="https://www.territoiresentransitions.fr/_next/static/chunks/5594-9a2261600c99b82b.js">https://www.territoiresentransitions.fr/_next/static/chunks/5594-9a2261600c99b82b.js</a></td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -2719,12 +3328,74 @@ At &quot;High&quot; threshold this scan rule will not alert on client or server 
 					<tr>
 						<td width="20%"
 							class="indent2">Evidence</td>
-						<td width="80%">db</td>
+						<td width="80%">from</td>
 					</tr>
 					<tr>
 						<td width="20%"
 							class="indent2">Other Info</td>
-						<td width="80%">The following pattern was used: \bDB\b and was detected in the element starting with: &quot;(self.webpackChunk_N_E=self.webpackChunk_N_E||[]).push([[1931],{26729:function(e,t,r){Promise.resolve().then(r.bind(r,23663)),Pr&quot;, see evidence field for the suspicious comment/snippet.</td>
+						<td width="80%">The following pattern was used: \bFROM\b and was detected in the element starting with: &quot;(self.webpackChunk_N_E=self.webpackChunk_N_E||[]).push([[5594],{95938:function(e,t,n){&quot;use strict&quot;;n.d(t,{S1:function(){return t&quot;, see evidence field for the suspicious comment/snippet.</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://www.territoiresentransitions.fr/_next/static/chunks/5818-f2c6a3aedaa1e44b.js">https://www.territoiresentransitions.fr/_next/static/chunks/5818-f2c6a3aedaa1e44b.js</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">query</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">The following pattern was used: \bQUERY\b and was detected in the element starting with: &quot;(self.webpackChunk_N_E=self.webpackChunk_N_E||[]).push([[5818],{50564:function(e,t,s){&quot;use strict&quot;;var i=function(){if(&quot;undefine&quot;, see evidence field for the suspicious comment/snippet.</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://www.territoiresentransitions.fr/_next/static/chunks/8758-da8f39f42669d949.js">https://www.territoiresentransitions.fr/_next/static/chunks/8758-da8f39f42669d949.js</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">from</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">The following pattern was used: \bFROM\b and was detected in the element starting with: &quot;&quot;use strict&quot;;(self.webpackChunk_N_E=self.webpackChunk_N_E||[]).push([[8758],{88758:function(e,t,n){let r;n.r(t),n.d(t,{Composite&quot;, see evidence field for the suspicious comment/snippet.</td>
 					</tr>
 				
 					<tr>
@@ -2755,7 +3426,7 @@ At &quot;High&quot; threshold this scan rule will not alert on client or server 
 					<tr>
 						<td width="20%"
 							class="indent2">Other Info</td>
-						<td width="80%">The following pattern was used: \bADMIN\b and was detected in the element starting with: &quot;&lt;script nonce=&quot;OGQzNTI2MzMtNDNkOC00MTQ3LWFjZjQtNjA3OGFjNDYyNTkz&quot;&gt;self.__next_f.push([1,&quot;7:[\&quot;$\&quot;,\&quot;section\&quot;,null,{\&quot;id\&quot;:\&quot;$und&quot;, see evidence field for the suspicious comment/snippet.</td>
+						<td width="80%">The following pattern was used: \bADMIN\b and was detected in the element starting with: &quot;&lt;script nonce=&quot;MWFhZDM3YTQtM2M0ZC00YzhhLWFjYzUtYzQ1NTZlYzhkZmNh&quot;&gt;self.__next_f.push([1,&quot;7:[\&quot;$\&quot;,\&quot;section\&quot;,null,{\&quot;id\&quot;:\&quot;$und&quot;, see evidence field for the suspicious comment/snippet.</td>
 					</tr>
 				
 					<tr>
@@ -2786,12 +3457,12 @@ At &quot;High&quot; threshold this scan rule will not alert on client or server 
 					<tr>
 						<td width="20%"
 							class="indent2">Other Info</td>
-						<td width="80%">The following pattern was used: \bBUGS\b and was detected in the element starting with: &quot;&lt;script nonce=&quot;MjIwNmMyZDAtYTI5Yy00MTQ2LThiOTMtZGFiMzZkN2ExZDAw&quot;&gt;self.__next_f.push([1,&quot;8:[\&quot;$\&quot;,\&quot;div\&quot;,null,{\&quot;className\&quot;:\&quot;g&quot;, see evidence field for the suspicious comment/snippet.</td>
+						<td width="80%">The following pattern was used: \bBUGS\b and was detected in the element starting with: &quot;&lt;script nonce=&quot;OGVlYzM4Y2UtNjcwMS00MzdhLTk0YjgtMTRmYjRhY2FmN2Rj&quot;&gt;self.__next_f.push([1,&quot;8:[\&quot;$\&quot;,\&quot;div\&quot;,null,{\&quot;className\&quot;:\&quot;g&quot;, see evidence field for the suspicious comment/snippet.</td>
 					</tr>
 				
 				<tr>
 					<td width="20%">Instances</td>
-					<td width="80%">9</td>
+					<td width="80%">12</td>
 				</tr>
 				<tr>
 					<td width="20%">Solution</td>
@@ -2966,6 +3637,99 @@ At &quot;High&quot; threshold this scan rule will not alert on client or server 
 					<tr>
 						<td width="20%"
 							class="indent1">URL</td>
+						<td width="80%"><a href="https://www.territoiresentransitions.fr/cgu">https://www.territoiresentransitions.fr/cgu</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">&lt;a target=&quot;_self&quot; aria-controls=&quot;modal-header__menu&quot; class=&quot;fr-nav__link&quot; href=&quot;/&quot;&gt;Accueil&lt;/a&gt;</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">Links have been found with a target of &#39;_self&#39; - this is often used by modern frameworks to force a full page reload.</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://www.territoiresentransitions.fr/contact">https://www.territoiresentransitions.fr/contact</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">&lt;a target=&quot;_self&quot; aria-controls=&quot;modal-header__menu&quot; class=&quot;fr-nav__link&quot; href=&quot;/&quot;&gt;Accueil&lt;/a&gt;</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">Links have been found with a target of &#39;_self&#39; - this is often used by modern frameworks to force a full page reload.</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://www.territoiresentransitions.fr/cookies">https://www.territoiresentransitions.fr/cookies</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">&lt;a target=&quot;_self&quot; aria-controls=&quot;modal-header__menu&quot; class=&quot;fr-nav__link&quot; href=&quot;/&quot;&gt;Accueil&lt;/a&gt;</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">Links have been found with a target of &#39;_self&#39; - this is often used by modern frameworks to force a full page reload.</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
 						<td width="80%"><a href="https://www.territoiresentransitions.fr/faq">https://www.territoiresentransitions.fr/faq</a></td>
 					</tr>
 					<tr>
@@ -3028,100 +3792,7 @@ At &quot;High&quot; threshold this scan rule will not alert on client or server 
 					<tr>
 						<td width="20%"
 							class="indent1">URL</td>
-						<td width="80%"><a href="https://www.territoiresentransitions.fr/outil-numerique">https://www.territoiresentransitions.fr/outil-numerique</a></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Method</td>
-						<td width="80%">GET</td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Parameter</td>
-						<td width="80%"></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Attack</td>
-						<td width="80%"></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Evidence</td>
-						<td width="80%">&lt;a target=&quot;_self&quot; aria-controls=&quot;modal-header__menu&quot; class=&quot;fr-nav__link&quot; href=&quot;/&quot;&gt;Accueil&lt;/a&gt;</td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Other Info</td>
-						<td width="80%">Links have been found with a target of &#39;_self&#39; - this is often used by modern frameworks to force a full page reload.</td>
-					</tr>
-				
-					<tr>
-						<td width="20%"
-							class="indent1">URL</td>
-						<td width="80%"><a href="https://www.territoiresentransitions.fr/programme">https://www.territoiresentransitions.fr/programme</a></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Method</td>
-						<td width="80%">GET</td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Parameter</td>
-						<td width="80%"></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Attack</td>
-						<td width="80%"></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Evidence</td>
-						<td width="80%">&lt;a target=&quot;_self&quot; aria-controls=&quot;modal-header__menu&quot; class=&quot;fr-nav__link&quot; href=&quot;/&quot;&gt;Accueil&lt;/a&gt;</td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Other Info</td>
-						<td width="80%">Links have been found with a target of &#39;_self&#39; - this is often used by modern frameworks to force a full page reload.</td>
-					</tr>
-				
-					<tr>
-						<td width="20%"
-							class="indent1">URL</td>
 						<td width="80%"><a href="https://www.territoiresentransitions.fr/robots.txt">https://www.territoiresentransitions.fr/robots.txt</a></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Method</td>
-						<td width="80%">GET</td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Parameter</td>
-						<td width="80%"></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Attack</td>
-						<td width="80%"></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Evidence</td>
-						<td width="80%">&lt;a target=&quot;_self&quot; aria-controls=&quot;modal-header__menu&quot; class=&quot;fr-nav__link&quot; href=&quot;/&quot;&gt;Accueil&lt;/a&gt;</td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Other Info</td>
-						<td width="80%">Links have been found with a target of &#39;_self&#39; - this is often used by modern frameworks to force a full page reload.</td>
-					</tr>
-				
-					<tr>
-						<td width="20%"
-							class="indent1">URL</td>
-						<td width="80%"><a href="https://www.territoiresentransitions.fr/sitemap.xml">https://www.territoiresentransitions.fr/sitemap.xml</a></td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -3356,6 +4027,99 @@ At &quot;High&quot; threshold this scan rule will not alert on client or server 
 					<tr>
 						<td width="20%"
 							class="indent1">URL</td>
+						<td width="80%"><a href="https://www.territoiresentransitions.fr/cgu">https://www.territoiresentransitions.fr/cgu</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">no-store</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://www.territoiresentransitions.fr/contact">https://www.territoiresentransitions.fr/contact</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">no-store</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://www.territoiresentransitions.fr/cookies">https://www.territoiresentransitions.fr/cookies</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">no-store</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
 						<td width="80%"><a href="https://www.territoiresentransitions.fr/faq">https://www.territoiresentransitions.fr/faq</a></td>
 					</tr>
 					<tr>
@@ -3418,100 +4182,7 @@ At &quot;High&quot; threshold this scan rule will not alert on client or server 
 					<tr>
 						<td width="20%"
 							class="indent1">URL</td>
-						<td width="80%"><a href="https://www.territoiresentransitions.fr/outil-numerique">https://www.territoiresentransitions.fr/outil-numerique</a></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Method</td>
-						<td width="80%">GET</td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Parameter</td>
-						<td width="80%"></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Attack</td>
-						<td width="80%"></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Evidence</td>
-						<td width="80%">no-store</td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Other Info</td>
-						<td width="80%"></td>
-					</tr>
-				
-					<tr>
-						<td width="20%"
-							class="indent1">URL</td>
-						<td width="80%"><a href="https://www.territoiresentransitions.fr/programme">https://www.territoiresentransitions.fr/programme</a></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Method</td>
-						<td width="80%">GET</td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Parameter</td>
-						<td width="80%"></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Attack</td>
-						<td width="80%"></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Evidence</td>
-						<td width="80%">no-store</td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Other Info</td>
-						<td width="80%"></td>
-					</tr>
-				
-					<tr>
-						<td width="20%"
-							class="indent1">URL</td>
 						<td width="80%"><a href="https://www.territoiresentransitions.fr/robots.txt">https://www.territoiresentransitions.fr/robots.txt</a></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Method</td>
-						<td width="80%">GET</td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Parameter</td>
-						<td width="80%"></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Attack</td>
-						<td width="80%"></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Evidence</td>
-						<td width="80%">no-store</td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Other Info</td>
-						<td width="80%"></td>
-					</tr>
-				
-					<tr>
-						<td width="20%"
-							class="indent1">URL</td>
-						<td width="80%"><a href="https://www.territoiresentransitions.fr/sitemap.xml">https://www.territoiresentransitions.fr/sitemap.xml</a></td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -3665,7 +4336,7 @@ At &quot;High&quot; threshold this scan rule will not alert on client or server 
 					<tr>
 						<td width="20%"
 							class="indent1">URL</td>
-						<td width="80%"><a href="https://www.territoiresentransitions.fr">https://www.territoiresentransitions.fr</a></td>
+						<td width="80%"><a href="https://www.territoiresentransitions.fr/actus">https://www.territoiresentransitions.fr/actus</a></td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -3727,7 +4398,7 @@ At &quot;High&quot; threshold this scan rule will not alert on client or server 
 					<tr>
 						<td width="20%"
 							class="indent1">URL</td>
-						<td width="80%"><a href="https://www.territoiresentransitions.fr/sitemap.xml">https://www.territoiresentransitions.fr/sitemap.xml</a></td>
+						<td width="80%"><a href="https://www.territoiresentransitions.fr/stats">https://www.territoiresentransitions.fr/stats</a></td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -3811,7 +4482,7 @@ At &quot;High&quot; threshold this scan rule will not alert on client or server 
 					<tr>
 						<td width="20%"
 							class="indent1">URL</td>
-						<td width="80%"><a href="https://www.territoiresentransitions.fr">https://www.territoiresentransitions.fr</a></td>
+						<td width="80%"><a href="https://www.territoiresentransitions.fr/actus">https://www.territoiresentransitions.fr/actus</a></td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -3873,7 +4544,7 @@ At &quot;High&quot; threshold this scan rule will not alert on client or server 
 					<tr>
 						<td width="20%"
 							class="indent1">URL</td>
-						<td width="80%"><a href="https://www.territoiresentransitions.fr/sitemap.xml">https://www.territoiresentransitions.fr/sitemap.xml</a></td>
+						<td width="80%"><a href="https://www.territoiresentransitions.fr/stats">https://www.territoiresentransitions.fr/stats</a></td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -3957,7 +4628,7 @@ At &quot;High&quot; threshold this scan rule will not alert on client or server 
 					<tr>
 						<td width="20%"
 							class="indent1">URL</td>
-						<td width="80%"><a href="https://www.territoiresentransitions.fr">https://www.territoiresentransitions.fr</a></td>
+						<td width="80%"><a href="https://www.territoiresentransitions.fr/actus">https://www.territoiresentransitions.fr/actus</a></td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -4019,7 +4690,7 @@ At &quot;High&quot; threshold this scan rule will not alert on client or server 
 					<tr>
 						<td width="20%"
 							class="indent1">URL</td>
-						<td width="80%"><a href="https://www.territoiresentransitions.fr/sitemap.xml">https://www.territoiresentransitions.fr/sitemap.xml</a></td>
+						<td width="80%"><a href="https://www.territoiresentransitions.fr/stats">https://www.territoiresentransitions.fr/stats</a></td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -4103,7 +4774,7 @@ At &quot;High&quot; threshold this scan rule will not alert on client or server 
 					<tr>
 						<td width="20%"
 							class="indent1">URL</td>
-						<td width="80%"><a href="https://www.territoiresentransitions.fr">https://www.territoiresentransitions.fr</a></td>
+						<td width="80%"><a href="https://www.territoiresentransitions.fr/actus">https://www.territoiresentransitions.fr/actus</a></td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -4165,7 +4836,7 @@ At &quot;High&quot; threshold this scan rule will not alert on client or server 
 					<tr>
 						<td width="20%"
 							class="indent1">URL</td>
-						<td width="80%"><a href="https://www.territoiresentransitions.fr/sitemap.xml">https://www.territoiresentransitions.fr/sitemap.xml</a></td>
+						<td width="80%"><a href="https://www.territoiresentransitions.fr/stats">https://www.territoiresentransitions.fr/stats</a></td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -4224,6 +4895,102 @@ At &quot;High&quot; threshold this scan rule will not alert on client or server 
 					<td width="20%">Plugin Id</td>
 					<td width="80%"><a
 						href="https://www.zaproxy.org/docs/alerts/90005/">90005</a></td>
+				</tr>
+			</table>
+			<div class="spacer"></div>
+		
+			<table class="results">
+				<tr height="24">
+					<th width="20%" class="risk-0"><a
+						id="10031"></a>
+						<div>Informational</div></th>
+					<th class="risk-0">User Controllable HTML Element Attribute (Potential XSS)</th>
+				</tr>
+				<tr>
+					<td width="20%">Description</td>
+					<td width="80%">
+							<div>This check looks at user-supplied input in query string parameters and POST data to identify where certain HTML attribute values might be controlled. This provides hot-spot detection for XSS (cross-site scripting) that will require further review by a security analyst to determine exploitability.</div>
+							
+						</td>
+				</tr>
+				<TR vAlign="top">
+					<TD colspan="2"></TD>
+				</TR>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://www.territoiresentransitions.fr/contact?email=zaproxy%40example.com&amp;message=Zaproxy+alias+impedit+expedita+quisquam+pariatur+exercitationem.+Nemo+rerum+eveniet+dolores+rem+quia+dignissimos.&amp;nom=ZAP&amp;objet=1&amp;prenom=ZAP">https://www.territoiresentransitions.fr/contact?email=zaproxy%40example.com&amp;message=Zaproxy+alias+impedit+expedita+quisquam+pariatur+exercitationem.+Nemo+rerum+eveniet+dolores+rem+quia+dignissimos.&amp;nom=ZAP&amp;objet=1&amp;prenom=ZAP</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%">objet</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:
+
+https://www.territoiresentransitions.fr/contact?email=zaproxy%40example.com&amp;message=Zaproxy+alias+impedit+expedita+quisquam+pariatur+exercitationem.+Nemo+rerum+eveniet+dolores+rem+quia+dignissimos.&amp;nom=ZAP&amp;objet=1&amp;prenom=ZAP
+
+appears to include user input in: 
+
+a(n) [meta] tag [content] attribute 
+
+The user input found was:
+objet=1
+
+The user-controlled value was:
+width=device-width, initial-scale=1</td>
+					</tr>
+				
+				<tr>
+					<td width="20%">Instances</td>
+					<td width="80%">1</td>
+				</tr>
+				<tr>
+					<td width="20%">Solution</td>
+					<td width="80%">
+							<div>Validate all input and sanitize output it before writing to any HTML attributes.</div>
+							
+						</td>
+				</tr>
+				<tr>
+					<td width="20%">Reference</td>
+					<td width="80%">
+							<a href="https://cheatsheetseries.owasp.org/cheatsheets/Input_Validation_Cheat_Sheet.html">https://cheatsheetseries.owasp.org/cheatsheets/Input_Validation_Cheat_Sheet.html</a>
+							
+						</td>
+				</tr>
+				<tr>
+					<td width="20%">CWE Id</td>
+					<td width="80%"><a
+						href="https://cwe.mitre.org/data/definitions/20.html">20</a></td>
+				</tr>
+				<tr>
+					<td width="20%">WASC Id</td>
+					<td width="80%">20</td>
+				</tr>
+				<tr>
+					<td width="20%">Plugin Id</td>
+					<td width="80%"><a
+						href="https://www.zaproxy.org/docs/alerts/10031/">10031</a></td>
 				</tr>
 			</table>
 			<div class="spacer"></div>
