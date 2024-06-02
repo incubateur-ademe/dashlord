@@ -3,8 +3,8 @@
               "id"           : "service",
               "ip"           : "www.territoiresentransitions.fr/172.67.24.44",
               "port"         : "443",
-              "severity"     : "INFO",
-              "finding"      : "HTTP"
+              "severity"     : "DEBUG",
+              "finding"      : "Couldn't determine service, skipping all HTTP checks"
           }
 ,         {
               "id"           : "pre_128cipher",
@@ -345,8 +345,8 @@
               "id"           : "cert_expirationStatus",
               "ip"           : "www.territoiresentransitions.fr/172.67.24.44",
               "port"         : "443",
-              "severity"     : "OK",
-              "finding"      : "82 >= 60 days"
+              "severity"     : "MEDIUM",
+              "finding"      : "expires < 60 days (40)"
           }
 ,         {
               "id"           : "cert_notBefore",
@@ -359,7 +359,7 @@
               "id"           : "cert_notAfter",
               "ip"           : "www.territoiresentransitions.fr/172.67.24.44",
               "port"         : "443",
-              "severity"     : "OK",
+              "severity"     : "MEDIUM",
               "finding"      : "2024-07-12 19:17"
           }
 ,         {
@@ -538,20 +538,6 @@
               "finding"      : "intermediate certificate(s) is/are ok"
           }
 ,         {
-              "id"           : "HTTP_status_code",
-              "ip"           : "www.territoiresentransitions.fr/172.67.24.44",
-              "port"         : "443",
-              "severity"     : "WARN",
-              "finding"      : "HTTP header request failed"
-          }
-,         {
-              "id"           : "scanProblem",
-              "ip"           : "www.territoiresentransitions.fr/172.67.24.44",
-              "port"         : "443",
-              "severity"     : "WARN",
-              "finding"      : "HTTP header was repeatedly zero."
-          }
-,         {
               "id"           : "heartbleed",
               "ip"           : "www.territoiresentransitions.fr/172.67.24.44",
               "port"         : "443",
@@ -573,10 +559,10 @@
               "id"           : "ticketbleed",
               "ip"           : "www.territoiresentransitions.fr/172.67.24.44",
               "port"         : "443",
-              "severity"     : "OK",
+              "severity"     : "INFO",
               "cve"          : "CVE-2016-9244",
               "cwe"          : "CWE-200",
-              "finding"      : "not vulnerable"
+              "finding"      : "not applicable, not HTTP"
           }
 ,         {
               "id"           : "ROBOT",
@@ -611,16 +597,7 @@
               "severity"     : "OK",
               "cve"          : "CVE-2012-4929",
               "cwe"          : "CWE-310",
-              "finding"      : "not vulnerable"
-          }
-,         {
-              "id"           : "BREACH",
-              "ip"           : "www.territoiresentransitions.fr/172.67.24.44",
-              "port"         : "443",
-              "severity"     : "MEDIUM",
-              "cve"          : "CVE-2013-3587",
-              "cwe"          : "CWE-310",
-              "finding"      : "potentially VULNERABLE, gzip HTTP compression detected  - only supplied '/' tested"
+              "finding"      : "not vulnerable (not using HTTP anyway)"
           }
 ,         {
               "id"           : "POODLE_SSL",
@@ -1250,7 +1227,7 @@
               "ip"           : "www.territoiresentransitions.fr/104.22.78.190",
               "port"         : "443",
               "severity"     : "INFO",
-              "finding"      : "supported"
+              "finding"      : "not supported"
           }
 ,         {
               "id"           : "TLS_timestamp",
@@ -1389,8 +1366,8 @@
               "id"           : "cert_expirationStatus",
               "ip"           : "www.territoiresentransitions.fr/104.22.78.190",
               "port"         : "443",
-              "severity"     : "OK",
-              "finding"      : "82 >= 60 days"
+              "severity"     : "MEDIUM",
+              "finding"      : "expires < 60 days (40)"
           }
 ,         {
               "id"           : "cert_notBefore",
@@ -1403,7 +1380,7 @@
               "id"           : "cert_notAfter",
               "ip"           : "www.territoiresentransitions.fr/104.22.78.190",
               "port"         : "443",
-              "severity"     : "OK",
+              "severity"     : "MEDIUM",
               "finding"      : "2024-07-12 19:17"
           }
 ,         {
@@ -1585,8 +1562,8 @@
               "id"           : "HTTP_status_code",
               "ip"           : "www.territoiresentransitions.fr/104.22.78.190",
               "port"         : "443",
-              "severity"     : "WARN",
-              "finding"      : "Unexpected 524  @ '/'"
+              "severity"     : "INFO",
+              "finding"      : "200 OK ('/')"
           }
 ,         {
               "id"           : "HTTP_clock_skew",
@@ -1600,14 +1577,28 @@
               "ip"           : "www.territoiresentransitions.fr/104.22.78.190",
               "port"         : "443",
               "severity"     : "INFO",
-              "finding"      : "1713667378"
+              "finding"      : "1717295235"
           }
 ,         {
-              "id"           : "HSTS",
+              "id"           : "HSTS_time",
               "ip"           : "www.territoiresentransitions.fr/104.22.78.190",
               "port"         : "443",
-              "severity"     : "LOW",
-              "finding"      : "not offered"
+              "severity"     : "OK",
+              "finding"      : "730 days (=63072000 seconds) > 15552000 seconds"
+          }
+,         {
+              "id"           : "HSTS_subdomains",
+              "ip"           : "www.territoiresentransitions.fr/104.22.78.190",
+              "port"         : "443",
+              "severity"     : "OK",
+              "finding"      : "includes subdomains"
+          }
+,         {
+              "id"           : "HSTS_preload",
+              "ip"           : "www.territoiresentransitions.fr/104.22.78.190",
+              "port"         : "443",
+              "severity"     : "OK",
+              "finding"      : "domain IS marked for preloading"
           }
 ,         {
               "id"           : "HPKP",
@@ -1628,35 +1619,28 @@
               "ip"           : "www.territoiresentransitions.fr/104.22.78.190",
               "port"         : "443",
               "severity"     : "INFO",
-              "finding"      : "No application banner found"
+              "finding"      : "x-powered-by: Next.js"
           }
 ,         {
               "id"           : "cookie_count",
               "ip"           : "www.territoiresentransitions.fr/104.22.78.190",
               "port"         : "443",
               "severity"     : "INFO",
-              "finding"      : "0 at '/' (30x detected, better try target URL of 30x)"
+              "finding"      : "0 at '/'"
           }
 ,         {
-              "id"           : "X-Frame-Options",
+              "id"           : "Content-Security-Policy",
               "ip"           : "www.territoiresentransitions.fr/104.22.78.190",
               "port"         : "443",
               "severity"     : "OK",
-              "finding"      : "SAMEORIGIN"
-          }
-,         {
-              "id"           : "Referrer-Policy",
-              "ip"           : "www.territoiresentransitions.fr/104.22.78.190",
-              "port"         : "443",
-              "severity"     : "INFO",
-              "finding"      : "same-origin"
+              "finding"      : "default-src 'self'; script-src 'self' 'nonce-MThiYzZlN2ItNGQ5My00ZjMxLWEyMWItYWY4MzE0ZTJmODEw' 'strict-dynamic'; *.axept.io *.posthog.com; style-src 'self' 'unsafe-inline'; img-src 'self' blob: data: ytimg.com https://phenomenal-trust-ee3da2c906.media.strapiapp.com; font-src 'self'; object-src 'none'; connect-src 'self' https://rlarzronkgoyvtdkltqy.supabase.co https://phenomenal-trust-ee3da2c906.strapiapp.com ws://localhost:3000 *.posthog.com *.axept.io; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; frame-src youtube.com www.youtube.com dailymotion.com www.dailymotion.com; block-all-mixed-content; upgrade-insecure-requests;"
           }
 ,         {
               "id"           : "Cache-Control",
               "ip"           : "www.territoiresentransitions.fr/104.22.78.190",
               "port"         : "443",
               "severity"     : "INFO",
-              "finding"      : "private, max-age=0, no-store, no-cache, must-revalidate, post-check=0, pre-check=0"
+              "finding"      : "private, no-cache, no-store, max-age=0, must-revalidate"
           }
 ,         {
               "id"           : "banner_reverseproxy",
@@ -2156,14 +2140,7 @@
               "ip"           : "www.territoiresentransitions.fr/104.22.78.190",
               "port"         : "443",
               "severity"     : "OK",
-              "finding"      : "A"
-          }
-,         {
-              "id"           : "grade_cap_reason_1",
-              "ip"           : "www.territoiresentransitions.fr/104.22.78.190",
-              "port"         : "443",
-              "severity"     : "INFO",
-              "finding"      : "Grade capped to A. HSTS is not offered"
+              "finding"      : "A+"
           }
 ,         {
               "id"           : "service",
@@ -2511,8 +2488,8 @@
               "id"           : "cert_expirationStatus",
               "ip"           : "www.territoiresentransitions.fr/104.22.79.190",
               "port"         : "443",
-              "severity"     : "OK",
-              "finding"      : "82 >= 60 days"
+              "severity"     : "MEDIUM",
+              "finding"      : "expires < 60 days (40)"
           }
 ,         {
               "id"           : "cert_notBefore",
@@ -2525,7 +2502,7 @@
               "id"           : "cert_notAfter",
               "ip"           : "www.territoiresentransitions.fr/104.22.79.190",
               "port"         : "443",
-              "severity"     : "OK",
+              "severity"     : "MEDIUM",
               "finding"      : "2024-07-12 19:17"
           }
 ,         {
@@ -2707,8 +2684,8 @@
               "id"           : "HTTP_status_code",
               "ip"           : "www.territoiresentransitions.fr/104.22.79.190",
               "port"         : "443",
-              "severity"     : "WARN",
-              "finding"      : "Unexpected 524  @ '/'"
+              "severity"     : "INFO",
+              "finding"      : "200 OK ('/')"
           }
 ,         {
               "id"           : "HTTP_clock_skew",
@@ -2722,14 +2699,28 @@
               "ip"           : "www.territoiresentransitions.fr/104.22.79.190",
               "port"         : "443",
               "severity"     : "INFO",
-              "finding"      : "1713667538"
+              "finding"      : "1717295291"
           }
 ,         {
-              "id"           : "HSTS",
+              "id"           : "HSTS_time",
               "ip"           : "www.territoiresentransitions.fr/104.22.79.190",
               "port"         : "443",
-              "severity"     : "LOW",
-              "finding"      : "not offered"
+              "severity"     : "OK",
+              "finding"      : "730 days (=63072000 seconds) > 15552000 seconds"
+          }
+,         {
+              "id"           : "HSTS_subdomains",
+              "ip"           : "www.territoiresentransitions.fr/104.22.79.190",
+              "port"         : "443",
+              "severity"     : "OK",
+              "finding"      : "includes subdomains"
+          }
+,         {
+              "id"           : "HSTS_preload",
+              "ip"           : "www.territoiresentransitions.fr/104.22.79.190",
+              "port"         : "443",
+              "severity"     : "OK",
+              "finding"      : "domain IS marked for preloading"
           }
 ,         {
               "id"           : "HPKP",
@@ -2750,35 +2741,28 @@
               "ip"           : "www.territoiresentransitions.fr/104.22.79.190",
               "port"         : "443",
               "severity"     : "INFO",
-              "finding"      : "No application banner found"
+              "finding"      : "x-powered-by: Next.js"
           }
 ,         {
               "id"           : "cookie_count",
               "ip"           : "www.territoiresentransitions.fr/104.22.79.190",
               "port"         : "443",
               "severity"     : "INFO",
-              "finding"      : "0 at '/' (30x detected, better try target URL of 30x)"
+              "finding"      : "0 at '/'"
           }
 ,         {
-              "id"           : "X-Frame-Options",
+              "id"           : "Content-Security-Policy",
               "ip"           : "www.territoiresentransitions.fr/104.22.79.190",
               "port"         : "443",
               "severity"     : "OK",
-              "finding"      : "SAMEORIGIN"
-          }
-,         {
-              "id"           : "Referrer-Policy",
-              "ip"           : "www.territoiresentransitions.fr/104.22.79.190",
-              "port"         : "443",
-              "severity"     : "INFO",
-              "finding"      : "same-origin"
+              "finding"      : "default-src 'self'; script-src 'self' 'nonce-ZThmMDI5NDctYjJiOC00ODMxLWFjYmQtMzEzODkzODlhM2Q2' 'strict-dynamic'; *.axept.io *.posthog.com; style-src 'self' 'unsafe-inline'; img-src 'self' blob: data: ytimg.com https://phenomenal-trust-ee3da2c906.media.strapiapp.com; font-src 'self'; object-src 'none'; connect-src 'self' https://rlarzronkgoyvtdkltqy.supabase.co https://phenomenal-trust-ee3da2c906.strapiapp.com ws://localhost:3000 *.posthog.com *.axept.io; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; frame-src youtube.com www.youtube.com dailymotion.com www.dailymotion.com; block-all-mixed-content; upgrade-insecure-requests;"
           }
 ,         {
               "id"           : "Cache-Control",
               "ip"           : "www.territoiresentransitions.fr/104.22.79.190",
               "port"         : "443",
               "severity"     : "INFO",
-              "finding"      : "private, max-age=0, no-store, no-cache, must-revalidate, post-check=0, pre-check=0"
+              "finding"      : "private, no-cache, no-store, max-age=0, must-revalidate"
           }
 ,         {
               "id"           : "banner_reverseproxy",
@@ -3278,20 +3262,13 @@
               "ip"           : "www.territoiresentransitions.fr/104.22.79.190",
               "port"         : "443",
               "severity"     : "OK",
-              "finding"      : "A"
-          }
-,         {
-              "id"           : "grade_cap_reason_1",
-              "ip"           : "www.territoiresentransitions.fr/104.22.79.190",
-              "port"         : "443",
-              "severity"     : "INFO",
-              "finding"      : "Grade capped to A. HSTS is not offered"
+              "finding"      : "A+"
           }
 ,         {
               "id"           : "scanTime",
               "ip"           : "www.territoiresentransitions.fr/104.22.79.190",
               "port"         : "443",
               "severity"     : "INFO",
-              "finding"      : "389"
+              "finding"      : "168"
           }
 ]
