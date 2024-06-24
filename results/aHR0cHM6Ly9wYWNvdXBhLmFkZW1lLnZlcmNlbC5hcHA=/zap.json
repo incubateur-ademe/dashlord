@@ -1,0 +1,1159 @@
+{
+	"@programName": "ZAP",
+	"@version": "2.15.0",
+	"@generated": "Mon, 24 Jun 2024 18:17:21",
+	"site":[ 
+		{
+			"@name": "https://pacoupa.ademe.vercel.app",
+			"@host": "pacoupa.ademe.vercel.app",
+			"@port": "443",
+			"@ssl": "true",
+			"alerts": [ 
+				{
+					"pluginid": "10202",
+					"alertRef": "10202",
+					"alert": "Absence of Anti-CSRF Tokens",
+					"name": "Absence of Anti-CSRF Tokens",
+					"riskcode": "2",
+					"confidence": "1",
+					"riskdesc": "Medium (Low)",
+					"desc": "<p>No Anti-CSRF tokens were found in a HTML submission form.</p><p>A cross-site request forgery is an attack that involves forcing a victim to send an HTTP request to a target destination without their knowledge or intent in order to perform an action as the victim. The underlying cause is application functionality using predictable URL/form actions in a repeatable way. The nature of the attack is that CSRF exploits the trust that a web site has for a user. By contrast, cross-site scripting (XSS) exploits the trust that a user has for a web site. Like XSS, CSRF attacks are not necessarily cross-site, but they can be. Cross-site request forgery is also known as CSRF, XSRF, one-click attack, session riding, confused deputy, and sea surf.</p><p></p><p>CSRF attacks are effective in a number of situations, including:</p><p>    * The victim has an active session on the target site.</p><p>    * The victim is authenticated via HTTP auth on the target site.</p><p>    * The victim is on the same local network as the target site.</p><p></p><p>CSRF has primarily been used to perform an action against a target site using the victim's privileges, but recent techniques have been discovered to disclose information by gaining access to the response. The risk of information disclosure is dramatically increased when the target site is vulnerable to XSS, because XSS can be used as a platform for CSRF, allowing the attack to operate within the bounds of the same-origin policy.</p>",
+					"instances":[ 
+						{
+							"uri": "https://pacoupa.ademe.vercel.app/simulation/etapes",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<form noValidate=\"\">",
+							"otherinfo": "No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 1: \"ban-autocomplete\" ]."
+						},
+						{
+							"uri": "https://pacoupa.ademe.vercel.app/simulation/etapes?adresse=ZAP",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<form noValidate=\"\">",
+							"otherinfo": "No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 1: \"ban-autocomplete\" ]."
+						}
+					],
+					"count": "2",
+					"solution": "<p>Phase: Architecture and Design</p><p>Use a vetted library or framework that does not allow this weakness to occur or provides constructs that make this weakness easier to avoid.</p><p>For example, use anti-CSRF packages such as the OWASP CSRFGuard.</p><p></p><p>Phase: Implementation</p><p>Ensure that your application is free of cross-site scripting issues, because most CSRF defenses can be bypassed using attacker-controlled script.</p><p></p><p>Phase: Architecture and Design</p><p>Generate a unique nonce for each form, place the nonce into the form, and verify the nonce upon receipt of the form. Be sure that the nonce is not predictable (CWE-330).</p><p>Note that this can be bypassed using XSS.</p><p></p><p>Identify especially dangerous operations. When the user performs a dangerous operation, send a separate confirmation request to ensure that the user intended to perform that operation.</p><p>Note that this can be bypassed using XSS.</p><p></p><p>Use the ESAPI Session Management control.</p><p>This control includes a component for CSRF.</p><p></p><p>Do not use the GET method for any request that triggers a state change.</p><p></p><p>Phase: Implementation</p><p>Check the HTTP Referer header to see if the request originated from an expected page. This could break legitimate functionality, because users or proxies may have disabled sending the Referer for privacy reasons.</p>",
+					"otherinfo": "<p>No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 1: \"ban-autocomplete\" ].</p>",
+					"reference": "<p>https://cheatsheetseries.owasp.org/cheatsheets/Cross-Site_Request_Forgery_Prevention_Cheat_Sheet.html</p><p>https://cwe.mitre.org/data/definitions/352.html</p>",
+					"cweid": "352",
+					"wascid": "9",
+					"sourceid": "155"
+				},
+				{
+					"pluginid": "10055",
+					"alertRef": "10055-5",
+					"alert": "CSP: script-src unsafe-inline",
+					"name": "CSP: script-src unsafe-inline",
+					"riskcode": "2",
+					"confidence": "3",
+					"riskdesc": "Medium (High)",
+					"desc": "<p>Content Security Policy (CSP) is an added layer of security that helps to detect and mitigate certain types of attacks. Including (but not limited to) Cross Site Scripting (XSS), and data injection attacks. These attacks are used for everything from data theft to site defacement or distribution of malware. CSP provides a set of standard HTTP headers that allow website owners to declare approved sources of content that browsers should be allowed to load on that page \u2014 covered types are JavaScript, CSS, HTML frames, fonts, images and embeddable objects such as Java applets, ActiveX, audio and video files.</p>",
+					"instances":[ 
+						{
+							"uri": "https://pacoupa.ademe.vercel.app",
+							"method": "GET",
+							"param": "Content-Security-Policy",
+							"attack": "",
+							"evidence": "default-src https://tally.so; connect-src 'self' https://*.gouv.fr https://api-adresse.data.gouv.fr https://vercel.live; font-src 'self'; media-src 'self'; img-src 'self' data:; script-src 'self' 'unsafe-inline' https://stats.beta.gouv.fr https://tally.so https://vercel.live; style-src 'self' 'unsafe-inline'; object-src 'self' data:; frame-ancestors 'self' https://tally.so; base-uri 'self' https://*.gouv.fr; form-action 'self' https://*.gouv.fr; block-all-mixed-content ; upgrade-insecure-requests ; frame-src https://tally.so;",
+							"otherinfo": "script-src includes unsafe-inline."
+						},
+						{
+							"uri": "https://pacoupa.ademe.vercel.app/",
+							"method": "GET",
+							"param": "Content-Security-Policy",
+							"attack": "",
+							"evidence": "default-src https://tally.so; connect-src 'self' https://*.gouv.fr https://api-adresse.data.gouv.fr https://vercel.live; font-src 'self'; media-src 'self'; img-src 'self' data:; script-src 'self' 'unsafe-inline' https://stats.beta.gouv.fr https://tally.so https://vercel.live; style-src 'self' 'unsafe-inline'; object-src 'self' data:; frame-ancestors 'self' https://tally.so; base-uri 'self' https://*.gouv.fr; form-action 'self' https://*.gouv.fr; block-all-mixed-content ; upgrade-insecure-requests ; frame-src https://tally.so;",
+							"otherinfo": "script-src includes unsafe-inline."
+						},
+						{
+							"uri": "https://pacoupa.ademe.vercel.app/accessibilite",
+							"method": "GET",
+							"param": "Content-Security-Policy",
+							"attack": "",
+							"evidence": "default-src https://tally.so; connect-src 'self' https://*.gouv.fr https://api-adresse.data.gouv.fr https://vercel.live; font-src 'self'; media-src 'self'; img-src 'self' data:; script-src 'self' 'unsafe-inline' https://stats.beta.gouv.fr https://tally.so https://vercel.live; style-src 'self' 'unsafe-inline'; object-src 'self' data:; frame-ancestors 'self' https://tally.so; base-uri 'self' https://*.gouv.fr; form-action 'self' https://*.gouv.fr; block-all-mixed-content ; upgrade-insecure-requests ; frame-src https://tally.so;",
+							"otherinfo": "script-src includes unsafe-inline."
+						},
+						{
+							"uri": "https://pacoupa.ademe.vercel.app/cgu",
+							"method": "GET",
+							"param": "Content-Security-Policy",
+							"attack": "",
+							"evidence": "default-src https://tally.so; connect-src 'self' https://*.gouv.fr https://api-adresse.data.gouv.fr https://vercel.live; font-src 'self'; media-src 'self'; img-src 'self' data:; script-src 'self' 'unsafe-inline' https://stats.beta.gouv.fr https://tally.so https://vercel.live; style-src 'self' 'unsafe-inline'; object-src 'self' data:; frame-ancestors 'self' https://tally.so; base-uri 'self' https://*.gouv.fr; form-action 'self' https://*.gouv.fr; block-all-mixed-content ; upgrade-insecure-requests ; frame-src https://tally.so;",
+							"otherinfo": "script-src includes unsafe-inline."
+						},
+						{
+							"uri": "https://pacoupa.ademe.vercel.app/simulation",
+							"method": "GET",
+							"param": "Content-Security-Policy",
+							"attack": "",
+							"evidence": "default-src https://tally.so; connect-src 'self' https://*.gouv.fr https://api-adresse.data.gouv.fr https://vercel.live; font-src 'self'; media-src 'self'; img-src 'self' data:; script-src 'self' 'unsafe-inline' https://stats.beta.gouv.fr https://tally.so https://vercel.live; style-src 'self' 'unsafe-inline'; object-src 'self' data:; frame-ancestors 'self' https://tally.so; base-uri 'self' https://*.gouv.fr; form-action 'self' https://*.gouv.fr; block-all-mixed-content ; upgrade-insecure-requests ; frame-src https://tally.so;",
+							"otherinfo": "script-src includes unsafe-inline."
+						}
+					],
+					"count": "5",
+					"solution": "<p>Ensure that your web server, application server, load balancer, etc. is properly configured to set the Content-Security-Policy header.</p>",
+					"otherinfo": "<p>script-src includes unsafe-inline.</p>",
+					"reference": "<p>https://www.w3.org/TR/CSP/</p><p>https://caniuse.com/#search=content+security+policy</p><p>https://content-security-policy.com/</p><p>https://github.com/HtmlUnit/htmlunit-csp</p><p>https://developers.google.com/web/fundamentals/security/csp#policy_applies_to_a_wide_variety_of_resources</p>",
+					"cweid": "693",
+					"wascid": "15",
+					"sourceid": "1"
+				},
+				{
+					"pluginid": "10055",
+					"alertRef": "10055-6",
+					"alert": "CSP: style-src unsafe-inline",
+					"name": "CSP: style-src unsafe-inline",
+					"riskcode": "2",
+					"confidence": "3",
+					"riskdesc": "Medium (High)",
+					"desc": "<p>Content Security Policy (CSP) is an added layer of security that helps to detect and mitigate certain types of attacks. Including (but not limited to) Cross Site Scripting (XSS), and data injection attacks. These attacks are used for everything from data theft to site defacement or distribution of malware. CSP provides a set of standard HTTP headers that allow website owners to declare approved sources of content that browsers should be allowed to load on that page \u2014 covered types are JavaScript, CSS, HTML frames, fonts, images and embeddable objects such as Java applets, ActiveX, audio and video files.</p>",
+					"instances":[ 
+						{
+							"uri": "https://pacoupa.ademe.vercel.app",
+							"method": "GET",
+							"param": "Content-Security-Policy",
+							"attack": "",
+							"evidence": "default-src https://tally.so; connect-src 'self' https://*.gouv.fr https://api-adresse.data.gouv.fr https://vercel.live; font-src 'self'; media-src 'self'; img-src 'self' data:; script-src 'self' 'unsafe-inline' https://stats.beta.gouv.fr https://tally.so https://vercel.live; style-src 'self' 'unsafe-inline'; object-src 'self' data:; frame-ancestors 'self' https://tally.so; base-uri 'self' https://*.gouv.fr; form-action 'self' https://*.gouv.fr; block-all-mixed-content ; upgrade-insecure-requests ; frame-src https://tally.so;",
+							"otherinfo": "style-src includes unsafe-inline."
+						},
+						{
+							"uri": "https://pacoupa.ademe.vercel.app/",
+							"method": "GET",
+							"param": "Content-Security-Policy",
+							"attack": "",
+							"evidence": "default-src https://tally.so; connect-src 'self' https://*.gouv.fr https://api-adresse.data.gouv.fr https://vercel.live; font-src 'self'; media-src 'self'; img-src 'self' data:; script-src 'self' 'unsafe-inline' https://stats.beta.gouv.fr https://tally.so https://vercel.live; style-src 'self' 'unsafe-inline'; object-src 'self' data:; frame-ancestors 'self' https://tally.so; base-uri 'self' https://*.gouv.fr; form-action 'self' https://*.gouv.fr; block-all-mixed-content ; upgrade-insecure-requests ; frame-src https://tally.so;",
+							"otherinfo": "style-src includes unsafe-inline."
+						},
+						{
+							"uri": "https://pacoupa.ademe.vercel.app/accessibilite",
+							"method": "GET",
+							"param": "Content-Security-Policy",
+							"attack": "",
+							"evidence": "default-src https://tally.so; connect-src 'self' https://*.gouv.fr https://api-adresse.data.gouv.fr https://vercel.live; font-src 'self'; media-src 'self'; img-src 'self' data:; script-src 'self' 'unsafe-inline' https://stats.beta.gouv.fr https://tally.so https://vercel.live; style-src 'self' 'unsafe-inline'; object-src 'self' data:; frame-ancestors 'self' https://tally.so; base-uri 'self' https://*.gouv.fr; form-action 'self' https://*.gouv.fr; block-all-mixed-content ; upgrade-insecure-requests ; frame-src https://tally.so;",
+							"otherinfo": "style-src includes unsafe-inline."
+						},
+						{
+							"uri": "https://pacoupa.ademe.vercel.app/cgu",
+							"method": "GET",
+							"param": "Content-Security-Policy",
+							"attack": "",
+							"evidence": "default-src https://tally.so; connect-src 'self' https://*.gouv.fr https://api-adresse.data.gouv.fr https://vercel.live; font-src 'self'; media-src 'self'; img-src 'self' data:; script-src 'self' 'unsafe-inline' https://stats.beta.gouv.fr https://tally.so https://vercel.live; style-src 'self' 'unsafe-inline'; object-src 'self' data:; frame-ancestors 'self' https://tally.so; base-uri 'self' https://*.gouv.fr; form-action 'self' https://*.gouv.fr; block-all-mixed-content ; upgrade-insecure-requests ; frame-src https://tally.so;",
+							"otherinfo": "style-src includes unsafe-inline."
+						},
+						{
+							"uri": "https://pacoupa.ademe.vercel.app/simulation",
+							"method": "GET",
+							"param": "Content-Security-Policy",
+							"attack": "",
+							"evidence": "default-src https://tally.so; connect-src 'self' https://*.gouv.fr https://api-adresse.data.gouv.fr https://vercel.live; font-src 'self'; media-src 'self'; img-src 'self' data:; script-src 'self' 'unsafe-inline' https://stats.beta.gouv.fr https://tally.so https://vercel.live; style-src 'self' 'unsafe-inline'; object-src 'self' data:; frame-ancestors 'self' https://tally.so; base-uri 'self' https://*.gouv.fr; form-action 'self' https://*.gouv.fr; block-all-mixed-content ; upgrade-insecure-requests ; frame-src https://tally.so;",
+							"otherinfo": "style-src includes unsafe-inline."
+						}
+					],
+					"count": "5",
+					"solution": "<p>Ensure that your web server, application server, load balancer, etc. is properly configured to set the Content-Security-Policy header.</p>",
+					"otherinfo": "<p>style-src includes unsafe-inline.</p>",
+					"reference": "<p>https://www.w3.org/TR/CSP/</p><p>https://caniuse.com/#search=content+security+policy</p><p>https://content-security-policy.com/</p><p>https://github.com/HtmlUnit/htmlunit-csp</p><p>https://developers.google.com/web/fundamentals/security/csp#policy_applies_to_a_wide_variety_of_resources</p>",
+					"cweid": "693",
+					"wascid": "15",
+					"sourceid": "1"
+				},
+				{
+					"pluginid": "10098",
+					"alertRef": "10098",
+					"alert": "Cross-Domain Misconfiguration",
+					"name": "Cross-Domain Misconfiguration",
+					"riskcode": "2",
+					"confidence": "2",
+					"riskdesc": "Medium (Medium)",
+					"desc": "<p>Web browser data loading may be possible, due to a Cross Origin Resource Sharing (CORS) misconfiguration on the web server</p>",
+					"instances":[ 
+						{
+							"uri": "https://pacoupa.ademe.vercel.app",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "Access-Control-Allow-Origin: *",
+							"otherinfo": "The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing."
+						},
+						{
+							"uri": "https://pacoupa.ademe.vercel.app/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "Access-Control-Allow-Origin: *",
+							"otherinfo": "The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing."
+						},
+						{
+							"uri": "https://pacoupa.ademe.vercel.app/_next/static/media/d82a8a076d0105b5-s.p.woff2",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "Access-Control-Allow-Origin: *",
+							"otherinfo": "The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing."
+						},
+						{
+							"uri": "https://pacoupa.ademe.vercel.app/accessibilite",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "Access-Control-Allow-Origin: *",
+							"otherinfo": "The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing."
+						},
+						{
+							"uri": "https://pacoupa.ademe.vercel.app/cgu",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "Access-Control-Allow-Origin: *",
+							"otherinfo": "The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing."
+						},
+						{
+							"uri": "https://pacoupa.ademe.vercel.app/img/ademe-logo-2022-1.svg",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "Access-Control-Allow-Origin: *",
+							"otherinfo": "The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing."
+						},
+						{
+							"uri": "https://pacoupa.ademe.vercel.app/img/ademe.svg",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "Access-Control-Allow-Origin: *",
+							"otherinfo": "The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing."
+						},
+						{
+							"uri": "https://pacoupa.ademe.vercel.app/mentions-legales",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "Access-Control-Allow-Origin: *",
+							"otherinfo": "The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing."
+						},
+						{
+							"uri": "https://pacoupa.ademe.vercel.app/robots.txt",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "Access-Control-Allow-Origin: *",
+							"otherinfo": "The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing."
+						},
+						{
+							"uri": "https://pacoupa.ademe.vercel.app/simulation",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "Access-Control-Allow-Origin: *",
+							"otherinfo": "The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing."
+						},
+						{
+							"uri": "https://pacoupa.ademe.vercel.app/sitemap.xml",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "Access-Control-Allow-Origin: *",
+							"otherinfo": "The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing."
+						}
+					],
+					"count": "11",
+					"solution": "<p>Ensure that sensitive data is not available in an unauthenticated manner (using IP address white-listing, for instance).</p><p>Configure the \"Access-Control-Allow-Origin\" HTTP header to a more restrictive set of domains, or remove all CORS headers entirely, to allow the web browser to enforce the Same Origin Policy (SOP) in a more restrictive manner.</p>",
+					"otherinfo": "<p>The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing.</p>",
+					"reference": "<p>https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.html5_overly_permissive_cors_policy</p>",
+					"cweid": "264",
+					"wascid": "14",
+					"sourceid": "1"
+				},
+				{
+					"pluginid": "90003",
+					"alertRef": "90003",
+					"alert": "Sub Resource Integrity Attribute Missing",
+					"name": "Sub Resource Integrity Attribute Missing",
+					"riskcode": "2",
+					"confidence": "3",
+					"riskdesc": "Medium (High)",
+					"desc": "<p>The integrity attribute is missing on a script or link tag served by an external server. The integrity tag prevents an attacker who have gained access to this server from injecting a malicious content. </p>",
+					"instances":[ 
+						{
+							"uri": "https://pacoupa.ademe.vercel.app",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<link rel=\"preload\" href=\"https://tally.so/widgets/embed.js\" as=\"script\"/>",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://pacoupa.ademe.vercel.app/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<link rel=\"preload\" href=\"https://tally.so/widgets/embed.js\" as=\"script\"/>",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://pacoupa.ademe.vercel.app/accessibilite",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<link rel=\"preload\" href=\"https://tally.so/widgets/embed.js\" as=\"script\"/>",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://pacoupa.ademe.vercel.app/cgu",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<link rel=\"preload\" href=\"https://tally.so/widgets/embed.js\" as=\"script\"/>",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://pacoupa.ademe.vercel.app/mentions-legales",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<link rel=\"preload\" href=\"https://tally.so/widgets/embed.js\" as=\"script\"/>",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://pacoupa.ademe.vercel.app/politique-de-confidentialite",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<link rel=\"preload\" href=\"https://tally.so/widgets/embed.js\" as=\"script\"/>",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://pacoupa.ademe.vercel.app/politique-de-confidentialite.",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<link rel=\"preload\" href=\"https://tally.so/widgets/embed.js\" as=\"script\"/>",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://pacoupa.ademe.vercel.app/politique-des-cookies",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<link rel=\"preload\" href=\"https://tally.so/widgets/embed.js\" as=\"script\"/>",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://pacoupa.ademe.vercel.app/simulation",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<link rel=\"preload\" href=\"https://tally.so/widgets/embed.js\" as=\"script\"/>",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://pacoupa.ademe.vercel.app/simulation/etapes",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<link rel=\"preload\" href=\"https://tally.so/widgets/embed.js\" as=\"script\"/>",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://pacoupa.ademe.vercel.app/simulation/etapes?adresse=ZAP",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<link rel=\"preload\" href=\"https://tally.so/widgets/embed.js\" as=\"script\"/>",
+							"otherinfo": ""
+						}
+					],
+					"count": "11",
+					"solution": "<p>Provide a valid integrity attribute to the tag.</p>",
+					"otherinfo": "",
+					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/Security/Subresource_Integrity</p>",
+					"cweid": "345",
+					"wascid": "15",
+					"sourceid": "1"
+				},
+				{
+					"pluginid": "10096",
+					"alertRef": "10096",
+					"alert": "Timestamp Disclosure - Unix",
+					"name": "Timestamp Disclosure - Unix",
+					"riskcode": "1",
+					"confidence": "1",
+					"riskdesc": "Low (Low)",
+					"desc": "<p>A timestamp was disclosed by the application/web server - Unix</p>",
+					"instances":[ 
+						{
+							"uri": "https://pacoupa.ademe.vercel.app/_next/static/chunks/760-84e8b44dfb55cfa9.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1540483477",
+							"otherinfo": "1540483477, which evaluates to: 2018-10-25 16:04:37"
+						},
+						{
+							"uri": "https://pacoupa.ademe.vercel.app/_next/static/chunks/921-a3d564729e18d5b5.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1540483477",
+							"otherinfo": "1540483477, which evaluates to: 2018-10-25 16:04:37"
+						}
+					],
+					"count": "2",
+					"solution": "<p>Manually confirm that the timestamp data is not sensitive, and that the data cannot be aggregated to disclose exploitable patterns.</p>",
+					"otherinfo": "<p>1540483477, which evaluates to: 2018-10-25 16:04:37</p>",
+					"reference": "<p>https://cwe.mitre.org/data/definitions/200.html</p>",
+					"cweid": "200",
+					"wascid": "13",
+					"sourceid": "121"
+				},
+				{
+					"pluginid": "10094",
+					"alertRef": "10094-3",
+					"alert": "Base64 Disclosure",
+					"name": "Base64 Disclosure",
+					"riskcode": "0",
+					"confidence": "2",
+					"riskdesc": "Informational (Medium)",
+					"desc": "<p>Base64 encoded data was disclosed by the application/web server. Note: in the interests of performance not all base64 strings in the response were analyzed individually, the entire response should be looked at by the analyst/security team/developer(s).</p>",
+					"instances":[ 
+						{
+							"uri": "https://pacoupa.ademe.vercel.app",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "PacoupaFooter_footerPacoupa__Ppt_6",
+							"otherinfo": "=\uFFFD(\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD^\uFFFD\uFFFD\uFFFD\u05EB=\uFFFD(\uFFFD\uFFFD\uFFFD\uFFFD\uFFFDm\uFFFD"
+						},
+						{
+							"uri": "https://pacoupa.ademe.vercel.app/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "PacoupaFooter_footerPacoupa__Ppt_6",
+							"otherinfo": "=\uFFFD(\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD^\uFFFD\uFFFD\uFFFD\u05EB=\uFFFD(\uFFFD\uFFFD\uFFFD\uFFFD\uFFFDm\uFFFD"
+						},
+						{
+							"uri": "https://pacoupa.ademe.vercel.app/_next/static/chunks/app/layout-c32b828b40bd4f7c.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "PacoupaFooter_footerPacoupa__Ppt_6",
+							"otherinfo": "=\uFFFD(\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD^\uFFFD\uFFFD\uFFFD\u05EB=\uFFFD(\uFFFD\uFFFD\uFFFD\uFFFD\uFFFDm\uFFFD"
+						},
+						{
+							"uri": "https://pacoupa.ademe.vercel.app/_next/static/css/098408217f5e6a4e.css",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "2H9v2H7V5H4v4h16V5h-3v2h-2V5zm5",
+							"otherinfo": "\uFFFDo\uFFFD~\uFFFD\uFFFD~/\uFFFD\\x001dzW\uFFFD~\uFFFD\uFFFD\uFFFD\uFFFDey\uFFFDn"
+						},
+						{
+							"uri": "https://pacoupa.ademe.vercel.app/_next/static/css/e880ca898ef76ae9.css",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "core-styles-module_show__Nt9eE",
+							"otherinfo": "r\uFFFD\uFFFD\uFFFD\uFFFDr\uFFFD\uFFFD>\uFFFD\uFFFDn\uFFFD\uFFFD\uC18C?\uFFFD\uFFFD}x"
+						},
+						{
+							"uri": "https://pacoupa.ademe.vercel.app/accessibilite",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "PacoupaFooter_footerPacoupa__Ppt_6",
+							"otherinfo": "=\uFFFD(\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD^\uFFFD\uFFFD\uFFFD\u05EB=\uFFFD(\uFFFD\uFFFD\uFFFD\uFFFD\uFFFDm\uFFFD"
+						},
+						{
+							"uri": "https://pacoupa.ademe.vercel.app/cgu",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "PacoupaFooter_footerPacoupa__Ppt_6",
+							"otherinfo": "=\uFFFD(\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD^\uFFFD\uFFFD\uFFFD\u05EB=\uFFFD(\uFFFD\uFFFD\uFFFD\uFFFD\uFFFDm\uFFFD"
+						},
+						{
+							"uri": "https://pacoupa.ademe.vercel.app/mentions-legales",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "PacoupaFooter_footerPacoupa__Ppt_6",
+							"otherinfo": "=\uFFFD(\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD^\uFFFD\uFFFD\uFFFD\u05EB=\uFFFD(\uFFFD\uFFFD\uFFFD\uFFFD\uFFFDm\uFFFD"
+						},
+						{
+							"uri": "https://pacoupa.ademe.vercel.app/politique-de-confidentialite",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "PacoupaFooter_footerPacoupa__Ppt_6",
+							"otherinfo": "=\uFFFD(\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD^\uFFFD\uFFFD\uFFFD\u05EB=\uFFFD(\uFFFD\uFFFD\uFFFD\uFFFD\uFFFDm\uFFFD"
+						},
+						{
+							"uri": "https://pacoupa.ademe.vercel.app/politique-des-cookies",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "PacoupaFooter_footerPacoupa__Ppt_6",
+							"otherinfo": "=\uFFFD(\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD^\uFFFD\uFFFD\uFFFD\u05EB=\uFFFD(\uFFFD\uFFFD\uFFFD\uFFFD\uFFFDm\uFFFD"
+						},
+						{
+							"uri": "https://pacoupa.ademe.vercel.app/simulation",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "PacoupaFooter_footerPacoupa__Ppt_6",
+							"otherinfo": "=\uFFFD(\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD^\uFFFD\uFFFD\uFFFD\u05EB=\uFFFD(\uFFFD\uFFFD\uFFFD\uFFFD\uFFFDm\uFFFD"
+						}
+					],
+					"count": "11",
+					"solution": "<p>Manually confirm that the Base64 data does not leak sensitive information, and that the data cannot be aggregated/used to exploit other vulnerabilities.</p>",
+					"otherinfo": "<p>=\uFFFD(\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD^\uFFFD\uFFFD\uFFFD\u05EB=\uFFFD(\uFFFD\uFFFD\uFFFD\uFFFD\uFFFDm\uFFFD</p>",
+					"reference": "<p>https://projects.webappsec.org/w/page/13246936/Information%20Leakage</p>",
+					"cweid": "200",
+					"wascid": "13",
+					"sourceid": "6"
+				},
+				{
+					"pluginid": "10027",
+					"alertRef": "10027",
+					"alert": "Information Disclosure - Suspicious Comments",
+					"name": "Information Disclosure - Suspicious Comments",
+					"riskcode": "0",
+					"confidence": "1",
+					"riskdesc": "Informational (Low)",
+					"desc": "<p>The response appears to contain suspicious comments which may help an attacker. Note: Matches made within script blocks or files are against the entire content not only comments.</p>",
+					"instances":[ 
+						{
+							"uri": "https://pacoupa.ademe.vercel.app/_next/static/chunks/263-49a9b04960f3e208.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "from",
+							"otherinfo": "The following pattern was used: \\bFROM\\b and was detected 2 times, the first in the element starting with: \" * The buffer module from node.js, for the browser.\", see evidence field for the suspicious comment/snippet."
+						},
+						{
+							"uri": "https://pacoupa.ademe.vercel.app/_next/static/chunks/271-136dc3ccd7af0dfa.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "select",
+							"otherinfo": "The following pattern was used: \\bSELECT\\b and was detected in the element starting with: \"(self.webpackChunk_N_E=self.webpackChunk_N_E||[]).push([[271],{39350:function(e,t,r){\"use strict\";r.d(t,{Z:function(){return g}}\", see evidence field for the suspicious comment/snippet."
+						},
+						{
+							"uri": "https://pacoupa.ademe.vercel.app/_next/static/chunks/730-24d0423a3d340357.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "select",
+							"otherinfo": "The following pattern was used: \\bSELECT\\b and was detected in the element starting with: \"(self.webpackChunk_N_E=self.webpackChunk_N_E||[]).push([[730],{99538:function(e,t,r){\"use strict\";r.d(t,{F4:function(){return u}\", see evidence field for the suspicious comment/snippet."
+						},
+						{
+							"uri": "https://pacoupa.ademe.vercel.app/_next/static/chunks/749-81bfa09d9d662009.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "from",
+							"otherinfo": "The following pattern was used: \\bFROM\\b and was detected in the element starting with: \"\"use strict\";(self.webpackChunk_N_E=self.webpackChunk_N_E||[]).push([[749],{81749:function(e,t,n){Object.defineProperty(t,\"__esM\", see evidence field for the suspicious comment/snippet."
+						},
+						{
+							"uri": "https://pacoupa.ademe.vercel.app/_next/static/chunks/760-84e8b44dfb55cfa9.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "where",
+							"otherinfo": "The following pattern was used: \\bWHERE\\b and was detected in the element starting with: \"(self.webpackChunk_N_E=self.webpackChunk_N_E||[]).push([[760],{56335:function(e,t,r){\"use strict\";r.d(t,{Z:function(){return F}}\", see evidence field for the suspicious comment/snippet."
+						},
+						{
+							"uri": "https://pacoupa.ademe.vercel.app/_next/static/chunks/799-4db7d7813a3d957a.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "from",
+							"otherinfo": "The following pattern was used: \\bFROM\\b and was detected in the element starting with: \"\"use strict\";(self.webpackChunk_N_E=self.webpackChunk_N_E||[]).push([[799],{18799:function(e,t,n){let r;n.d(t,{A:function(){retu\", see evidence field for the suspicious comment/snippet."
+						},
+						{
+							"uri": "https://pacoupa.ademe.vercel.app/_next/static/chunks/921-a3d564729e18d5b5.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "query",
+							"otherinfo": "The following pattern was used: \\bQUERY\\b and was detected in the element starting with: \"(self.webpackChunk_N_E=self.webpackChunk_N_E||[]).push([[921],{58921:function(e,t,r){\"use strict\";var n=this&&this.__importDefau\", see evidence field for the suspicious comment/snippet."
+						},
+						{
+							"uri": "https://pacoupa.ademe.vercel.app/_next/static/chunks/938-08aa1c3299746731.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "bug",
+							"otherinfo": "The following pattern was used: \\bBUG\\b and was detected in the element starting with: \"(self.webpackChunk_N_E=self.webpackChunk_N_E||[]).push([[938],{85844:function(e,t){\"use strict\";function r(){return\"\"}Object.def\", see evidence field for the suspicious comment/snippet."
+						},
+						{
+							"uri": "https://pacoupa.ademe.vercel.app/_next/static/chunks/994-1c4a6d9c399cad12.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "from",
+							"otherinfo": "The following pattern was used: \\bFROM\\b and was detected 2 times, the first in the element starting with: \"*/!function(){\"use strict\";var n={}.hasOwnProperty;function o(){for(var e=\"\",t=0;t<arguments.length;t++){var r=arguments[t];r&&(\", see evidence field for the suspicious comment/snippet."
+						},
+						{
+							"uri": "https://pacoupa.ademe.vercel.app/_next/static/chunks/app/layout-c32b828b40bd4f7c.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "query",
+							"otherinfo": "The following pattern was used: \\bQUERY\\b and was detected in the element starting with: \"(self.webpackChunk_N_E=self.webpackChunk_N_E||[]).push([[185],{72431:function(){},88956:function(e,n,o){Promise.resolve().then(o\", see evidence field for the suspicious comment/snippet."
+						},
+						{
+							"uri": "https://pacoupa.ademe.vercel.app/_next/static/chunks/fd9d1056-dacde58deb351f73.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "select",
+							"otherinfo": "The following pattern was used: \\bSELECT\\b and was detected in the element starting with: \"\"use strict\";(self.webpackChunk_N_E=self.webpackChunk_N_E||[]).push([[971],{84417:function(e,t,n){var r,l=n(2265),a=n(8261),o={u\", see evidence field for the suspicious comment/snippet."
+						},
+						{
+							"uri": "https://pacoupa.ademe.vercel.app/_next/static/chunks/polyfills-c67a75d1b6f99dc8.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "query",
+							"otherinfo": "The following pattern was used: \\bQUERY\\b and was detected in the element starting with: \"!function(){var t=\"undefined\"!=typeof globalThis?globalThis:\"undefined\"!=typeof window?window:\"undefined\"!=typeof global?global:\", see evidence field for the suspicious comment/snippet."
+						}
+					],
+					"count": "12",
+					"solution": "<p>Remove all comments that return information that may help an attacker and fix any underlying problems they refer to.</p>",
+					"otherinfo": "<p>The following pattern was used: \\bFROM\\b and was detected 2 times, the first in the element starting with: \" * The buffer module from node.js, for the browser.\", see evidence field for the suspicious comment/snippet.</p>",
+					"reference": "",
+					"cweid": "200",
+					"wascid": "13",
+					"sourceid": "165"
+				},
+				{
+					"pluginid": "10015",
+					"alertRef": "10015",
+					"alert": "Re-examine Cache-control Directives",
+					"name": "Re-examine Cache-control Directives",
+					"riskcode": "0",
+					"confidence": "1",
+					"riskdesc": "Informational (Low)",
+					"desc": "<p>The cache-control header has not been set properly or is missing, allowing the browser and proxies to cache content. For static assets like css, js, or image files this might be intended, however, the resources should be reviewed to ensure that no sensitive content will be cached.</p>",
+					"instances":[ 
+						{
+							"uri": "https://pacoupa.ademe.vercel.app",
+							"method": "GET",
+							"param": "cache-control",
+							"attack": "",
+							"evidence": "public, max-age=0, must-revalidate",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://pacoupa.ademe.vercel.app/",
+							"method": "GET",
+							"param": "cache-control",
+							"attack": "",
+							"evidence": "public, max-age=0, must-revalidate",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://pacoupa.ademe.vercel.app/accessibilite",
+							"method": "GET",
+							"param": "cache-control",
+							"attack": "",
+							"evidence": "public, max-age=0, must-revalidate",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://pacoupa.ademe.vercel.app/cgu",
+							"method": "GET",
+							"param": "cache-control",
+							"attack": "",
+							"evidence": "public, max-age=0, must-revalidate",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://pacoupa.ademe.vercel.app/mentions-legales",
+							"method": "GET",
+							"param": "cache-control",
+							"attack": "",
+							"evidence": "public, max-age=0, must-revalidate",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://pacoupa.ademe.vercel.app/politique-de-confidentialite",
+							"method": "GET",
+							"param": "cache-control",
+							"attack": "",
+							"evidence": "public, max-age=0, must-revalidate",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://pacoupa.ademe.vercel.app/politique-des-cookies",
+							"method": "GET",
+							"param": "cache-control",
+							"attack": "",
+							"evidence": "public, max-age=0, must-revalidate",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://pacoupa.ademe.vercel.app/robots.txt",
+							"method": "GET",
+							"param": "cache-control",
+							"attack": "",
+							"evidence": "public, max-age=0, must-revalidate",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://pacoupa.ademe.vercel.app/simulation",
+							"method": "GET",
+							"param": "cache-control",
+							"attack": "",
+							"evidence": "public, max-age=0, must-revalidate",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://pacoupa.ademe.vercel.app/simulation/etapes",
+							"method": "GET",
+							"param": "cache-control",
+							"attack": "",
+							"evidence": "public, max-age=0, must-revalidate",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://pacoupa.ademe.vercel.app/sitemap.xml",
+							"method": "GET",
+							"param": "cache-control",
+							"attack": "",
+							"evidence": "public, max-age=0, must-revalidate",
+							"otherinfo": ""
+						}
+					],
+					"count": "11",
+					"solution": "<p>For secure content, ensure the cache-control HTTP header is set with \"no-cache, no-store, must-revalidate\". If an asset should be cached consider setting the directives \"public, max-age, immutable\".</p>",
+					"otherinfo": "",
+					"reference": "<p>https://cheatsheetseries.owasp.org/cheatsheets/Session_Management_Cheat_Sheet.html#web-content-caching</p><p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cache-Control</p><p>https://grayduck.mn/2021/09/13/cache-control-recommendations/</p>",
+					"cweid": "525",
+					"wascid": "13",
+					"sourceid": "1"
+				},
+				{
+					"pluginid": "10050",
+					"alertRef": "10050-2",
+					"alert": "Retrieved from Cache",
+					"name": "Retrieved from Cache",
+					"riskcode": "0",
+					"confidence": "2",
+					"riskdesc": "Informational (Medium)",
+					"desc": "<p>The content was retrieved from a shared cache. If the response data is sensitive, personal or user-specific, this may result in sensitive information being leaked. In some cases, this may even result in a user gaining complete control of the session of another user, depending on the configuration of the caching components in use in their environment. This is primarily an issue where caching servers such as \"proxy\" caches are configured on the local network. This configuration is typically found in corporate or educational environments, for instance. </p>",
+					"instances":[ 
+						{
+							"uri": "https://pacoupa.ademe.vercel.app",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "Age: 12622",
+							"otherinfo": "The presence of the 'Age' header indicates that a HTTP/1.1 compliant caching server is in use."
+						},
+						{
+							"uri": "https://pacoupa.ademe.vercel.app",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "Age: 12623",
+							"otherinfo": "The presence of the 'Age' header indicates that a HTTP/1.1 compliant caching server is in use."
+						},
+						{
+							"uri": "https://pacoupa.ademe.vercel.app/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "Age: 12623",
+							"otherinfo": "The presence of the 'Age' header indicates that a HTTP/1.1 compliant caching server is in use."
+						},
+						{
+							"uri": "https://pacoupa.ademe.vercel.app/_next/static/media/d82a8a076d0105b5-s.p.woff2",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "Age: 369",
+							"otherinfo": "The presence of the 'Age' header indicates that a HTTP/1.1 compliant caching server is in use."
+						},
+						{
+							"uri": "https://pacoupa.ademe.vercel.app/accessibilite",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "Age: 0",
+							"otherinfo": "The presence of the 'Age' header indicates that a HTTP/1.1 compliant caching server is in use."
+						},
+						{
+							"uri": "https://pacoupa.ademe.vercel.app/cgu",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "Age: 0",
+							"otherinfo": "The presence of the 'Age' header indicates that a HTTP/1.1 compliant caching server is in use."
+						},
+						{
+							"uri": "https://pacoupa.ademe.vercel.app/img/ademe-logo-2022-1.svg",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "Age: 368",
+							"otherinfo": "The presence of the 'Age' header indicates that a HTTP/1.1 compliant caching server is in use."
+						},
+						{
+							"uri": "https://pacoupa.ademe.vercel.app/img/ademe.svg",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "Age: 369",
+							"otherinfo": "The presence of the 'Age' header indicates that a HTTP/1.1 compliant caching server is in use."
+						},
+						{
+							"uri": "https://pacoupa.ademe.vercel.app/mentions-legales",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "Age: 0",
+							"otherinfo": "The presence of the 'Age' header indicates that a HTTP/1.1 compliant caching server is in use."
+						},
+						{
+							"uri": "https://pacoupa.ademe.vercel.app/robots.txt",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "Age: 307",
+							"otherinfo": "The presence of the 'Age' header indicates that a HTTP/1.1 compliant caching server is in use."
+						},
+						{
+							"uri": "https://pacoupa.ademe.vercel.app/simulation",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "Age: 0",
+							"otherinfo": "The presence of the 'Age' header indicates that a HTTP/1.1 compliant caching server is in use."
+						},
+						{
+							"uri": "https://pacoupa.ademe.vercel.app/sitemap.xml",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "Age: 307",
+							"otherinfo": "The presence of the 'Age' header indicates that a HTTP/1.1 compliant caching server is in use."
+						}
+					],
+					"count": "12",
+					"solution": "<p>Validate that the response does not contain sensitive, personal or user-specific information.  If it does, consider the use of the following HTTP response headers, to limit, or prevent the content being stored and retrieved from the cache by another user:</p><p>Cache-Control: no-cache, no-store, must-revalidate, private</p><p>Pragma: no-cache</p><p>Expires: 0</p><p>This configuration directs both HTTP 1.0 and HTTP 1.1 compliant caching servers to not store the response, and to not retrieve the response (without validation) from the cache, in response to a similar request.</p>",
+					"otherinfo": "<p>The presence of the 'Age' header indicates that a HTTP/1.1 compliant caching server is in use.</p>",
+					"reference": "<p>https://tools.ietf.org/html/rfc7234</p><p>https://tools.ietf.org/html/rfc7231</p><p>https://www.rfc-editor.org/rfc/rfc9110.html</p>",
+					"cweid": "-1",
+					"wascid": "-1",
+					"sourceid": "1"
+				},
+				{
+					"pluginid": "90005",
+					"alertRef": "90005-3",
+					"alert": "Sec-Fetch-Dest Header is Missing",
+					"name": "Sec-Fetch-Dest Header is Missing",
+					"riskcode": "0",
+					"confidence": "3",
+					"riskdesc": "Informational (High)",
+					"desc": "<p>Specifies how and where the data would be used. For instance, if the value is audio, then the requested resource must be audio data and not any other type of resource.</p>",
+					"instances":[ 
+						{
+							"uri": "https://pacoupa.ademe.vercel.app",
+							"method": "GET",
+							"param": "Sec-Fetch-Dest",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://pacoupa.ademe.vercel.app/robots.txt",
+							"method": "GET",
+							"param": "Sec-Fetch-Dest",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://pacoupa.ademe.vercel.app/sitemap.xml",
+							"method": "GET",
+							"param": "Sec-Fetch-Dest",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						}
+					],
+					"count": "3",
+					"solution": "<p>Ensure that Sec-Fetch-Dest header is included in request headers.</p>",
+					"otherinfo": "",
+					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Dest</p>",
+					"cweid": "352",
+					"wascid": "9",
+					"sourceid": "1"
+				},
+				{
+					"pluginid": "90005",
+					"alertRef": "90005-2",
+					"alert": "Sec-Fetch-Mode Header is Missing",
+					"name": "Sec-Fetch-Mode Header is Missing",
+					"riskcode": "0",
+					"confidence": "3",
+					"riskdesc": "Informational (High)",
+					"desc": "<p>Allows to differentiate between requests for navigating between HTML pages and requests for loading resources like images, audio etc.</p>",
+					"instances":[ 
+						{
+							"uri": "https://pacoupa.ademe.vercel.app",
+							"method": "GET",
+							"param": "Sec-Fetch-Mode",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://pacoupa.ademe.vercel.app/robots.txt",
+							"method": "GET",
+							"param": "Sec-Fetch-Mode",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://pacoupa.ademe.vercel.app/sitemap.xml",
+							"method": "GET",
+							"param": "Sec-Fetch-Mode",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						}
+					],
+					"count": "3",
+					"solution": "<p>Ensure that Sec-Fetch-Mode header is included in request headers.</p>",
+					"otherinfo": "",
+					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Mode</p>",
+					"cweid": "352",
+					"wascid": "9",
+					"sourceid": "1"
+				},
+				{
+					"pluginid": "90005",
+					"alertRef": "90005-1",
+					"alert": "Sec-Fetch-Site Header is Missing",
+					"name": "Sec-Fetch-Site Header is Missing",
+					"riskcode": "0",
+					"confidence": "3",
+					"riskdesc": "Informational (High)",
+					"desc": "<p>Specifies the relationship between request initiator's origin and target's origin.</p>",
+					"instances":[ 
+						{
+							"uri": "https://pacoupa.ademe.vercel.app",
+							"method": "GET",
+							"param": "Sec-Fetch-Site",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://pacoupa.ademe.vercel.app/robots.txt",
+							"method": "GET",
+							"param": "Sec-Fetch-Site",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://pacoupa.ademe.vercel.app/sitemap.xml",
+							"method": "GET",
+							"param": "Sec-Fetch-Site",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						}
+					],
+					"count": "3",
+					"solution": "<p>Ensure that Sec-Fetch-Site header is included in request headers.</p>",
+					"otherinfo": "",
+					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Site</p>",
+					"cweid": "352",
+					"wascid": "9",
+					"sourceid": "1"
+				},
+				{
+					"pluginid": "90005",
+					"alertRef": "90005-4",
+					"alert": "Sec-Fetch-User Header is Missing",
+					"name": "Sec-Fetch-User Header is Missing",
+					"riskcode": "0",
+					"confidence": "3",
+					"riskdesc": "Informational (High)",
+					"desc": "<p>Specifies if a navigation request was initiated by a user.</p>",
+					"instances":[ 
+						{
+							"uri": "https://pacoupa.ademe.vercel.app",
+							"method": "GET",
+							"param": "Sec-Fetch-User",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://pacoupa.ademe.vercel.app/robots.txt",
+							"method": "GET",
+							"param": "Sec-Fetch-User",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://pacoupa.ademe.vercel.app/sitemap.xml",
+							"method": "GET",
+							"param": "Sec-Fetch-User",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						}
+					],
+					"count": "3",
+					"solution": "<p>Ensure that Sec-Fetch-User header is included in user initiated requests.</p>",
+					"otherinfo": "",
+					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-User</p>",
+					"cweid": "352",
+					"wascid": "9",
+					"sourceid": "1"
+				},
+				{
+					"pluginid": "10049",
+					"alertRef": "10049",
+					"alert": "Storable and Cacheable Content",
+					"name": "Storable and Cacheable Content",
+					"riskcode": "0",
+					"confidence": "2",
+					"riskdesc": "Informational (Medium)",
+					"desc": "<p>The response contents are storable by caching components such as proxy servers, and may be retrieved directly from the cache, rather than from the origin server by the caching servers, in response to similar requests from other users.  If the response data is sensitive, personal or user-specific, this may result in sensitive information being leaked. In some cases, this may even result in a user gaining complete control of the session of another user, depending on the configuration of the caching components in use in their environment. This is primarily an issue where \"shared\" caching servers such as \"proxy\" caches are configured on the local network. This configuration is typically found in corporate or educational environments, for instance.</p>",
+					"instances":[ 
+						{
+							"uri": "https://pacoupa.ademe.vercel.app/_next/static/media/d82a8a076d0105b5-s.p.woff2",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "max-age=31536000",
+							"otherinfo": ""
+						}
+					],
+					"count": "1",
+					"solution": "<p>Validate that the response does not contain sensitive, personal or user-specific information.  If it does, consider the use of the following HTTP response headers, to limit, or prevent the content being stored and retrieved from the cache by another user:</p><p>Cache-Control: no-cache, no-store, must-revalidate, private</p><p>Pragma: no-cache</p><p>Expires: 0</p><p>This configuration directs both HTTP 1.0 and HTTP 1.1 compliant caching servers to not store the response, and to not retrieve the response (without validation) from the cache, in response to a similar request. </p>",
+					"otherinfo": "",
+					"reference": "<p>https://datatracker.ietf.org/doc/html/rfc7234</p><p>https://datatracker.ietf.org/doc/html/rfc7231</p><p>https://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html</p>",
+					"cweid": "524",
+					"wascid": "13",
+					"sourceid": "79"
+				},
+				{
+					"pluginid": "10049",
+					"alertRef": "10049",
+					"alert": "Storable but Non-Cacheable Content",
+					"name": "Storable but Non-Cacheable Content",
+					"riskcode": "0",
+					"confidence": "2",
+					"riskdesc": "Informational (Medium)",
+					"desc": "<p>The response contents are storable by caching components such as proxy servers, but will not be retrieved directly from the cache, without validating the request upstream, in response to similar requests from other users. </p>",
+					"instances":[ 
+						{
+							"uri": "https://pacoupa.ademe.vercel.app",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "max-age=0",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://pacoupa.ademe.vercel.app/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "max-age=0",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://pacoupa.ademe.vercel.app/accessibilite",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "max-age=0",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://pacoupa.ademe.vercel.app/cgu",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "max-age=0",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://pacoupa.ademe.vercel.app/img/ademe-logo-2022-1.svg",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "max-age=0",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://pacoupa.ademe.vercel.app/img/ademe.svg",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "max-age=0",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://pacoupa.ademe.vercel.app/mentions-legales",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "max-age=0",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://pacoupa.ademe.vercel.app/robots.txt",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "max-age=0",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://pacoupa.ademe.vercel.app/simulation",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "max-age=0",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://pacoupa.ademe.vercel.app/sitemap.xml",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "max-age=0",
+							"otherinfo": ""
+						}
+					],
+					"count": "10",
+					"solution": "",
+					"otherinfo": "",
+					"reference": "<p>https://datatracker.ietf.org/doc/html/rfc7234</p><p>https://datatracker.ietf.org/doc/html/rfc7231</p><p>https://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html</p>",
+					"cweid": "524",
+					"wascid": "13",
+					"sourceid": "6"
+				}
+			]
+		}
+	]
+}
