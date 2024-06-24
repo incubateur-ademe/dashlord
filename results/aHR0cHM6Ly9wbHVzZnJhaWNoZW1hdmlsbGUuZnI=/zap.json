@@ -1,7 +1,7 @@
 {
 	"@programName": "ZAP",
 	"@version": "2.15.0",
-	"@generated": "Sun, 23 Jun 2024 01:56:06",
+	"@generated": "Mon, 24 Jun 2024 17:26:47",
 	"site":[ 
 		{
 			"@name": "https://plusfraichemaville.fr",
@@ -60,6 +60,14 @@
 							"otherinfo": "style-src includes unsafe-inline."
 						},
 						{
+							"uri": "https://plusfraichemaville.fr/connexion",
+							"method": "GET",
+							"param": "content-security-policy",
+							"attack": "",
+							"evidence": "default-src 'self'; script-src 'self' https://stats.beta.gouv.fr 'nonce-NTQwMGVlYjktZGU0ZC00ZTVjLTk4ZTAtZTlmYTE1ZDZjZTM0' 'strict-dynamic' ; style-src 'self' 'unsafe-inline'; img-src 'self' blob: data: https://plusfraichemaville.s3.fr-par.scw.cloud/ ; font-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-src https://c33e446d.sibforms.com https://stats.plusfraichemaville.fr; frame-ancestors 'none'; upgrade-insecure-requests; connect-src 'self' https://sentry.incubateur.net/ https://stats.beta.gouv.fr/matomo.php https://api-adresse.data.gouv.fr/search/ ;",
+							"otherinfo": "style-src includes unsafe-inline."
+						},
+						{
 							"uri": "https://plusfraichemaville.fr/contact",
 							"method": "GET",
 							"param": "content-security-policy",
@@ -77,14 +85,6 @@
 						},
 						{
 							"uri": "https://plusfraichemaville.fr/fiches-diagnostic",
-							"method": "GET",
-							"param": "content-security-policy",
-							"attack": "",
-							"evidence": "default-src 'self'; script-src 'self' https://stats.beta.gouv.fr 'nonce-NTQwMGVlYjktZGU0ZC00ZTVjLTk4ZTAtZTlmYTE1ZDZjZTM0' 'strict-dynamic' ; style-src 'self' 'unsafe-inline'; img-src 'self' blob: data: https://plusfraichemaville.s3.fr-par.scw.cloud/ ; font-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-src https://c33e446d.sibforms.com https://stats.plusfraichemaville.fr; frame-ancestors 'none'; upgrade-insecure-requests; connect-src 'self' https://sentry.incubateur.net/ https://stats.beta.gouv.fr/matomo.php https://api-adresse.data.gouv.fr/search/ ;",
-							"otherinfo": "style-src includes unsafe-inline."
-						},
-						{
-							"uri": "https://plusfraichemaville.fr/mentions-legales",
 							"method": "GET",
 							"param": "content-security-policy",
 							"attack": "",
@@ -141,7 +141,7 @@
 					"reference": "<p>https://angular.io/guide/security</p>",
 					"cweid": "749",
 					"wascid": "-1",
-					"sourceid": "4590"
+					"sourceid": "4677"
 				},
 				{
 					"pluginid": "10063",
@@ -210,7 +210,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://plusfraichemaville.fr/fiches-diagnostic",
+							"uri": "https://plusfraichemaville.fr/fiche-solution",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -218,7 +218,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://plusfraichemaville.fr/mentions-legales",
+							"uri": "https://plusfraichemaville.fr/fiches-diagnostic",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -275,7 +275,7 @@
 					"reference": "<p>https://tools.ietf.org/html/rfc1918</p>",
 					"cweid": "200",
 					"wascid": "13",
-					"sourceid": "5479"
+					"sourceid": "5436"
 				},
 				{
 					"pluginid": "10037",
@@ -344,7 +344,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://plusfraichemaville.fr/fiches-diagnostic",
+							"uri": "https://plusfraichemaville.fr/fiche-solution",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -352,7 +352,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://plusfraichemaville.fr/mentions-legales",
+							"uri": "https://plusfraichemaville.fr/fiches-diagnostic",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -417,7 +417,7 @@
 					"reference": "<p>https://cwe.mitre.org/data/definitions/200.html</p>",
 					"cweid": "200",
 					"wascid": "13",
-					"sourceid": "4590"
+					"sourceid": "4677"
 				},
 				{
 					"pluginid": "10021",
@@ -429,6 +429,14 @@
 					"riskdesc": "Low (Medium)",
 					"desc": "<p>The Anti-MIME-Sniffing header X-Content-Type-Options was not set to 'nosniff'. This allows older versions of Internet Explorer and Chrome to perform MIME-sniffing on the response body, potentially causing the response body to be interpreted and displayed as a content type other than the declared content type. Current (early 2014) and legacy versions of Firefox will use the declared content type (if one is set), rather than performing MIME-sniffing.</p>",
 					"instances":[ 
+						{
+							"uri": "https://plusfraichemaville.fr/_next/image?q=75&url=%2F_next%2Fstatic%2Fmedia%2Flogo-ademe-amf.7ef60408.webp&w=640",
+							"method": "GET",
+							"param": "x-content-type-options",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
+						},
 						{
 							"uri": "https://plusfraichemaville.fr/_next/image?q=75&url=%2F_next%2Fstatic%2Fmedia%2Flogo-ademe-pfmv.a800b39e.svg&w=640",
 							"method": "GET",
@@ -454,22 +462,6 @@
 							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
 						},
 						{
-							"uri": "https://plusfraichemaville.fr/_next/image?q=75&url=%2Fimages%2Fhomepage%2Fhome-start-1.jpg&w=3840",
-							"method": "GET",
-							"param": "x-content-type-options",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
-						},
-						{
-							"uri": "https://plusfraichemaville.fr/_next/image?q=75&url=%2Fimages%2Fhomepage%2Fhome-start-2.svg&w=3840",
-							"method": "GET",
-							"param": "x-content-type-options",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
-						},
-						{
 							"uri": "https://plusfraichemaville.fr/_next/image?q=75&url=%2Fimages%2Fhomepage%2Fsolutions%2Farbres-vegetaux-cour-ecole.jpg&w=3840",
 							"method": "GET",
 							"param": "x-content-type-options",
@@ -486,30 +478,6 @@
 							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
 						},
 						{
-							"uri": "https://plusfraichemaville.fr/_next/image?q=75&url=%2Fimages%2Fhomepage%2Fsolutions%2Fcomportements-collectifs.jpg&w=3840",
-							"method": "GET",
-							"param": "x-content-type-options",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
-						},
-						{
-							"uri": "https://plusfraichemaville.fr/_next/image?q=75&url=%2Fimages%2Fhomepage%2Fsolutions%2Ffacade-vegetalisee.jpg&w=3840",
-							"method": "GET",
-							"param": "x-content-type-options",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
-						},
-						{
-							"uri": "https://plusfraichemaville.fr/_next/image?q=75&url=%2Fimages%2Fhomepage%2Fsolutions%2Frevetement-albedo-eleve.jpeg&w=3840",
-							"method": "GET",
-							"param": "x-content-type-options",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
-						},
-						{
 							"uri": "https://plusfraichemaville.fr/_next/image?q=75&url=%2Fimages%2Fhomepage%2Fsolutions%2Fstockage-eau-de-pluie.jpeg&w=3840",
 							"method": "GET",
 							"param": "x-content-type-options",
@@ -518,7 +486,39 @@
 							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
 						},
 						{
-							"uri": "https://plusfraichemaville.fr/_next/image?q=75&url=%2Fimages%2Fhomepage%2Fsolutions%2Fstockage-eau-pluie-ecole.jpeg&w=3840",
+							"uri": "https://plusfraichemaville.fr/_next/image?q=75&url=https%3A%2F%2Fplusfraichemaville.s3.fr-par.scw.cloud%2Fad_ecole_7784899dd1.svg&w=256",
+							"method": "GET",
+							"param": "x-content-type-options",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
+						},
+						{
+							"uri": "https://plusfraichemaville.fr/_next/image?q=75&url=https%3A%2F%2Fplusfraichemaville.s3.fr-par.scw.cloud%2Fad_parking_fd16be5a97.svg&w=256",
+							"method": "GET",
+							"param": "x-content-type-options",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
+						},
+						{
+							"uri": "https://plusfraichemaville.fr/_next/image?q=75&url=https%3A%2F%2Fplusfraichemaville.s3.fr-par.scw.cloud%2Fad_place_06a215610b.svg&w=256",
+							"method": "GET",
+							"param": "x-content-type-options",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
+						},
+						{
+							"uri": "https://plusfraichemaville.fr/_next/image?q=75&url=https%3A%2F%2Fplusfraichemaville.s3.fr-par.scw.cloud%2Fad_rondpoint_8515c0d618.svg&w=256",
+							"method": "GET",
+							"param": "x-content-type-options",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
+						},
+						{
+							"uri": "https://plusfraichemaville.fr/_next/image?q=75&url=https%3A%2F%2Fplusfraichemaville.s3.fr-par.scw.cloud%2Fad_rue_294ad41312.svg&w=256",
 							"method": "GET",
 							"param": "x-content-type-options",
 							"attack": "",
@@ -532,7 +532,7 @@
 					"reference": "<p>https://learn.microsoft.com/en-us/previous-versions/windows/internet-explorer/ie-developer/compatibility/gg622941(v=vs.85)</p><p>https://owasp.org/www-community/Security_Headers</p>",
 					"cweid": "693",
 					"wascid": "15",
-					"sourceid": "4607"
+					"sourceid": "4763"
 				},
 				{
 					"pluginid": "10094",
@@ -585,6 +585,14 @@
 							"otherinfo": "\uFFFD\uFFFD\uFFFD{\uFFFDSC\\x0003\\x0006VV#\uFFFD\uFFFDFSFB\uFFFDFSV2\u04D3\uFFFDS\\x0002\uFFFDS\uFFFDf\\x0013\\x0013VCf6S3"
 						},
 						{
+							"uri": "https://plusfraichemaville.fr/connexion",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "nonce-NTQwMGVlYjktZGU0ZC00ZTVjLTk4ZTAtZTlmYTE1ZDZjZTM0",
+							"otherinfo": "\uFFFD\uFFFD\uFFFD{\uFFFDSC\\x0003\\x0006VV#\uFFFD\uFFFDFSFB\uFFFDFSV2\u04D3\uFFFDS\\x0002\uFFFDS\uFFFDf\\x0013\\x0013VCf6S3"
+						},
+						{
 							"uri": "https://plusfraichemaville.fr/contact",
 							"method": "GET",
 							"param": "",
@@ -601,22 +609,6 @@
 							"otherinfo": "\uFFFD\uFFFD\uFFFD{\uFFFDSC\\x0003\\x0006VV#\uFFFD\uFFFDFSFB\uFFFDFSV2\u04D3\uFFFDS\\x0002\uFFFDS\uFFFDf\\x0013\\x0013VCf6S3"
 						},
 						{
-							"uri": "https://plusfraichemaville.fr/mentions-legales",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "nonce-NTQwMGVlYjktZGU0ZC00ZTVjLTk4ZTAtZTlmYTE1ZDZjZTM0",
-							"otherinfo": "\uFFFD\uFFFD\uFFFD{\uFFFDSC\\x0003\\x0006VV#\uFFFD\uFFFDFSFB\uFFFDFSV2\u04D3\uFFFDS\\x0002\uFFFDS\uFFFDf\\x0013\\x0013VCf6S3"
-						},
-						{
-							"uri": "https://plusfraichemaville.fr/projet",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "nonce-NTQwMGVlYjktZGU0ZC00ZTVjLTk4ZTAtZTlmYTE1ZDZjZTM0",
-							"otherinfo": "\uFFFD\uFFFD\uFFFD{\uFFFDSC\\x0003\\x0006VV#\uFFFD\uFFFDFSFB\uFFFDFSV2\u04D3\uFFFDS\\x0002\uFFFDS\uFFFDf\\x0013\\x0013VCf6S3"
-						},
-						{
 							"uri": "https://plusfraichemaville.fr/robots.txt",
 							"method": "GET",
 							"param": "",
@@ -626,6 +618,14 @@
 						},
 						{
 							"uri": "https://plusfraichemaville.fr/sitemap.xml",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "nonce-NTQwMGVlYjktZGU0ZC00ZTVjLTk4ZTAtZTlmYTE1ZDZjZTM0",
+							"otherinfo": "\uFFFD\uFFFD\uFFFD{\uFFFDSC\\x0003\\x0006VV#\uFFFD\uFFFDFSFB\uFFFDFSV2\u04D3\uFFFDS\\x0002\uFFFDS\uFFFDf\\x0013\\x0013VCf6S3"
+						},
+						{
+							"uri": "https://plusfraichemaville.fr/stats",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -674,7 +674,7 @@
 					"reference": "<p>https://learn.microsoft.com/en-us/previous-versions/windows/internet-explorer/ie-developer/compatibility/gg622941(v=vs.85)</p>",
 					"cweid": "345",
 					"wascid": "12",
-					"sourceid": "4524"
+					"sourceid": "4513"
 				},
 				{
 					"pluginid": "10027",
@@ -842,6 +842,14 @@
 							"otherinfo": "Links have been found with a target of '_self' - this is often used by modern frameworks to force a full page reload."
 						},
 						{
+							"uri": "https://plusfraichemaville.fr/connexion",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<a target=\"_self\" id=\"main-navigation-:R1amla:-link-0\" class=\"fr-nav__link\" href=\"/aide-decision\">D\u00E9couvrir</a>",
+							"otherinfo": "Links have been found with a target of '_self' - this is often used by modern frameworks to force a full page reload."
+						},
+						{
 							"uri": "https://plusfraichemaville.fr/contact",
 							"method": "GET",
 							"param": "",
@@ -859,14 +867,6 @@
 						},
 						{
 							"uri": "https://plusfraichemaville.fr/fiches-diagnostic",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "<a target=\"_self\" id=\"main-navigation-:R1amla:-link-0\" class=\"fr-nav__link\" href=\"/aide-decision\">D\u00E9couvrir</a>",
-							"otherinfo": "Links have been found with a target of '_self' - this is often used by modern frameworks to force a full page reload."
-						},
-						{
-							"uri": "https://plusfraichemaville.fr/mentions-legales",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -949,6 +949,14 @@
 							"otherinfo": ""
 						},
 						{
+							"uri": "https://plusfraichemaville.fr/connexion",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "no-store",
+							"otherinfo": ""
+						},
+						{
 							"uri": "https://plusfraichemaville.fr/contact",
 							"method": "GET",
 							"param": "",
@@ -965,15 +973,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://plusfraichemaville.fr/mentions-legales",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "no-store",
-							"otherinfo": ""
-						},
-						{
-							"uri": "https://plusfraichemaville.fr/projet",
+							"uri": "https://plusfraichemaville.fr/stats",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1043,7 +1043,7 @@
 					"desc": "<p>Specifies how and where the data would be used. For instance, if the value is audio, then the requested resource must be audio data and not any other type of resource.</p>",
 					"instances":[ 
 						{
-							"uri": "https://plusfraichemaville.fr/accessibilite",
+							"uri": "https://plusfraichemaville.fr",
 							"method": "GET",
 							"param": "Sec-Fetch-Dest",
 							"attack": "",
@@ -1073,7 +1073,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Dest</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "278"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "90005",
@@ -1086,7 +1086,7 @@
 					"desc": "<p>Allows to differentiate between requests for navigating between HTML pages and requests for loading resources like images, audio etc.</p>",
 					"instances":[ 
 						{
-							"uri": "https://plusfraichemaville.fr/accessibilite",
+							"uri": "https://plusfraichemaville.fr",
 							"method": "GET",
 							"param": "Sec-Fetch-Mode",
 							"attack": "",
@@ -1116,7 +1116,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Mode</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "278"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "90005",
@@ -1129,7 +1129,7 @@
 					"desc": "<p>Specifies the relationship between request initiator's origin and target's origin.</p>",
 					"instances":[ 
 						{
-							"uri": "https://plusfraichemaville.fr/accessibilite",
+							"uri": "https://plusfraichemaville.fr",
 							"method": "GET",
 							"param": "Sec-Fetch-Site",
 							"attack": "",
@@ -1159,7 +1159,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Site</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "278"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "90005",
@@ -1172,7 +1172,7 @@
 					"desc": "<p>Specifies if a navigation request was initiated by a user.</p>",
 					"instances":[ 
 						{
-							"uri": "https://plusfraichemaville.fr/accessibilite",
+							"uri": "https://plusfraichemaville.fr",
 							"method": "GET",
 							"param": "Sec-Fetch-User",
 							"attack": "",
@@ -1202,7 +1202,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-User</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "278"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "10049",
