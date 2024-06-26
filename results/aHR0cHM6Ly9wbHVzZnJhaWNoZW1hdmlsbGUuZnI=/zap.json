@@ -1,7 +1,7 @@
 {
 	"@programName": "ZAP",
 	"@version": "2.15.0",
-	"@generated": "Tue, 25 Jun 2024 13:07:02",
+	"@generated": "Wed, 26 Jun 2024 17:07:31",
 	"site":[ 
 		{
 			"@name": "https://plusfraichemaville.fr",
@@ -60,14 +60,6 @@
 							"otherinfo": "style-src includes unsafe-inline."
 						},
 						{
-							"uri": "https://plusfraichemaville.fr/connexion",
-							"method": "GET",
-							"param": "content-security-policy",
-							"attack": "",
-							"evidence": "default-src 'self'; script-src 'self' https://stats.beta.gouv.fr 'nonce-NTQwMGVlYjktZGU0ZC00ZTVjLTk4ZTAtZTlmYTE1ZDZjZTM0' 'strict-dynamic' ; style-src 'self' 'unsafe-inline'; img-src 'self' blob: data: https://plusfraichemaville.s3.fr-par.scw.cloud/ ; font-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-src https://c33e446d.sibforms.com https://stats.plusfraichemaville.fr; frame-ancestors 'none'; upgrade-insecure-requests; connect-src 'self' https://sentry.incubateur.net/ https://stats.beta.gouv.fr/matomo.php https://api-adresse.data.gouv.fr/search/ ;",
-							"otherinfo": "style-src includes unsafe-inline."
-						},
-						{
 							"uri": "https://plusfraichemaville.fr/contact",
 							"method": "GET",
 							"param": "content-security-policy",
@@ -84,7 +76,7 @@
 							"otherinfo": "style-src includes unsafe-inline."
 						},
 						{
-							"uri": "https://plusfraichemaville.fr/fiche-solution/reseaux_de_froid",
+							"uri": "https://plusfraichemaville.fr/fiches-diagnostic",
 							"method": "GET",
 							"param": "content-security-policy",
 							"attack": "",
@@ -92,7 +84,15 @@
 							"otherinfo": "style-src includes unsafe-inline."
 						},
 						{
-							"uri": "https://plusfraichemaville.fr/fiches-diagnostic",
+							"uri": "https://plusfraichemaville.fr/mentions-legales",
+							"method": "GET",
+							"param": "content-security-policy",
+							"attack": "",
+							"evidence": "default-src 'self'; script-src 'self' https://stats.beta.gouv.fr 'nonce-NTQwMGVlYjktZGU0ZC00ZTVjLTk4ZTAtZTlmYTE1ZDZjZTM0' 'strict-dynamic' ; style-src 'self' 'unsafe-inline'; img-src 'self' blob: data: https://plusfraichemaville.s3.fr-par.scw.cloud/ ; font-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-src https://c33e446d.sibforms.com https://stats.plusfraichemaville.fr; frame-ancestors 'none'; upgrade-insecure-requests; connect-src 'self' https://sentry.incubateur.net/ https://stats.beta.gouv.fr/matomo.php https://api-adresse.data.gouv.fr/search/ ;",
+							"otherinfo": "style-src includes unsafe-inline."
+						},
+						{
+							"uri": "https://plusfraichemaville.fr/projet",
 							"method": "GET",
 							"param": "content-security-policy",
 							"attack": "",
@@ -114,7 +114,7 @@
 					"reference": "<p>https://www.w3.org/TR/CSP/</p><p>https://caniuse.com/#search=content+security+policy</p><p>https://content-security-policy.com/</p><p>https://github.com/HtmlUnit/htmlunit-csp</p><p>https://developers.google.com/web/fundamentals/security/csp#policy_applies_to_a_wide_variety_of_resources</p>",
 					"cweid": "693",
 					"wascid": "15",
-					"sourceid": "105"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "10110",
@@ -194,14 +194,6 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://plusfraichemaville.fr/connexion",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
 							"uri": "https://plusfraichemaville.fr/contact",
 							"method": "GET",
 							"param": "",
@@ -218,7 +210,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://plusfraichemaville.fr/fiche-solution/reseaux_de_froid",
+							"uri": "https://plusfraichemaville.fr/fiches-diagnostic",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -226,7 +218,15 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://plusfraichemaville.fr/fiches-diagnostic",
+							"uri": "https://plusfraichemaville.fr/mentions-legales",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://plusfraichemaville.fr/projet",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -249,6 +249,33 @@
 					"cweid": "693",
 					"wascid": "15",
 					"sourceid": "1"
+				},
+				{
+					"pluginid": "2",
+					"alertRef": "2",
+					"alert": "Private IP Disclosure",
+					"name": "Private IP Disclosure",
+					"riskcode": "1",
+					"confidence": "2",
+					"riskdesc": "Low (Medium)",
+					"desc": "<p>A private IP (such as 10.x.x.x, 172.x.x.x, 192.168.x.x) or an Amazon EC2 private hostname (for example, ip-10-0-56-78) has been found in the HTTP response body. This information might be helpful for further attacks targeting internal systems.</p>",
+					"instances":[ 
+						{
+							"uri": "https://plusfraichemaville.fr/_next/image?q=75&url=%2F_next%2Fstatic%2Fmedia%2Foups.493a8569.svg&w=640",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "10.253.92.92",
+							"otherinfo": "10.253.92.92\n"
+						}
+					],
+					"count": "1",
+					"solution": "<p>Remove the private IP address from the HTTP response body.  For comments, use JSP/ASP/PHP comment instead of HTML/JavaScript comment which can be seen by client browsers.</p>",
+					"otherinfo": "<p>10.253.92.92</p><p></p>",
+					"reference": "<p>https://tools.ietf.org/html/rfc1918</p>",
+					"cweid": "200",
+					"wascid": "13",
+					"sourceid": "5436"
 				},
 				{
 					"pluginid": "10037",
@@ -301,14 +328,6 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://plusfraichemaville.fr/connexion",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "X-Powered-By: Next.js",
-							"otherinfo": ""
-						},
-						{
 							"uri": "https://plusfraichemaville.fr/contact",
 							"method": "GET",
 							"param": "",
@@ -325,7 +344,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://plusfraichemaville.fr/fiche-solution/reseaux_de_froid",
+							"uri": "https://plusfraichemaville.fr/fiches-diagnostic",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -333,7 +352,15 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://plusfraichemaville.fr/fiches-diagnostic",
+							"uri": "https://plusfraichemaville.fr/mentions-legales",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "X-Powered-By: Next.js",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://plusfraichemaville.fr/projet",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -355,7 +382,7 @@
 					"reference": "<p>https://owasp.org/www-project-web-security-testing-guide/v42/4-Web_Application_Security_Testing/01-Information_Gathering/08-Fingerprint_Web_Application_Framework</p><p>https://www.troyhunt.com/2012/02/shhh-dont-let-your-response-headers.html</p>",
 					"cweid": "200",
 					"wascid": "13",
-					"sourceid": "105"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "10096",
@@ -505,7 +532,7 @@
 					"reference": "<p>https://learn.microsoft.com/en-us/previous-versions/windows/internet-explorer/ie-developer/compatibility/gg622941(v=vs.85)</p><p>https://owasp.org/www-community/Security_Headers</p>",
 					"cweid": "693",
 					"wascid": "15",
-					"sourceid": "4600"
+					"sourceid": "4602"
 				},
 				{
 					"pluginid": "10094",
@@ -558,7 +585,7 @@
 							"otherinfo": "\uFFFD\uFFFD\uFFFD{\uFFFDSC\\x0003\\x0006VV#\uFFFD\uFFFDFSFB\uFFFDFSV2\u04D3\uFFFDS\\x0002\uFFFDS\uFFFDf\\x0013\\x0013VCf6S3"
 						},
 						{
-							"uri": "https://plusfraichemaville.fr/connexion",
+							"uri": "https://plusfraichemaville.fr/contact",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -566,7 +593,7 @@
 							"otherinfo": "\uFFFD\uFFFD\uFFFD{\uFFFDSC\\x0003\\x0006VV#\uFFFD\uFFFDFSFB\uFFFDFSV2\u04D3\uFFFDS\\x0002\uFFFDS\uFFFDf\\x0013\\x0013VCf6S3"
 						},
 						{
-							"uri": "https://plusfraichemaville.fr/contact",
+							"uri": "https://plusfraichemaville.fr/fiche-solution",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -612,7 +639,7 @@
 					"reference": "<p>https://projects.webappsec.org/w/page/13246936/Information%20Leakage</p>",
 					"cweid": "200",
 					"wascid": "13",
-					"sourceid": "105"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "10019",
@@ -659,14 +686,6 @@
 					"riskdesc": "Informational (Low)",
 					"desc": "<p>The response appears to contain suspicious comments which may help an attacker. Note: Matches made within script blocks or files are against the entire content not only comments.</p>",
 					"instances":[ 
-						{
-							"uri": "https://plusfraichemaville.fr/_next/static/chunks/1126-0d99d05305a226a5.js",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "from",
-							"otherinfo": "The following pattern was used: \\bFROM\\b and was detected in the element starting with: \"(self.webpackChunk_N_E=self.webpackChunk_N_E||[]).push([[1126],{42463:function(t,e,r){\"use strict\";var n=r(60891);Object.defineP\", see evidence field for the suspicious comment/snippet."
-						},
 						{
 							"uri": "https://plusfraichemaville.fr/_next/static/chunks/1455-5ca58bc2aaa94c9c.js",
 							"method": "GET",
@@ -764,13 +783,13 @@
 							"otherinfo": "The following pattern was used: \\bADMIN\\b and was detected in the element starting with: \"<script nonce=\"NTQwMGVlYjktZGU0ZC00ZTVjLTk4ZTAtZTlmYTE1ZDZjZTM0\">self.__next_f.push([1,\"25:[[\\\"$\\\",\\\"h2\\\",null,{\\\"className\\\":\\\"\", see evidence field for the suspicious comment/snippet."
 						}
 					],
-					"count": "13",
+					"count": "12",
 					"solution": "<p>Remove all comments that return information that may help an attacker and fix any underlying problems they refer to.</p>",
-					"otherinfo": "<p>The following pattern was used: \\bFROM\\b and was detected in the element starting with: \"(self.webpackChunk_N_E=self.webpackChunk_N_E||[]).push([[1126],{42463:function(t,e,r){\"use strict\";var n=r(60891);Object.defineP\", see evidence field for the suspicious comment/snippet.</p>",
+					"otherinfo": "<p>The following pattern was used: \\bSELECT\\b and was detected in the element starting with: \"(self.webpackChunk_N_E=self.webpackChunk_N_E||[]).push([[1455],{71356:function(t,n,e){\"use strict\";var i=e(2265),r=e(32363),o=e(\", see evidence field for the suspicious comment/snippet.</p>",
 					"reference": "",
 					"cweid": "200",
 					"wascid": "13",
-					"sourceid": "4592"
+					"sourceid": "4590"
 				},
 				{
 					"pluginid": "10109",
@@ -823,14 +842,6 @@
 							"otherinfo": "Links have been found with a target of '_self' - this is often used by modern frameworks to force a full page reload."
 						},
 						{
-							"uri": "https://plusfraichemaville.fr/connexion",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "<a target=\"_self\" id=\"main-navigation-:R1amla:-link-0\" class=\"fr-nav__link\" href=\"/aide-decision\">D\u00E9couvrir</a>",
-							"otherinfo": "Links have been found with a target of '_self' - this is often used by modern frameworks to force a full page reload."
-						},
-						{
 							"uri": "https://plusfraichemaville.fr/contact",
 							"method": "GET",
 							"param": "",
@@ -847,7 +858,7 @@
 							"otherinfo": "Links have been found with a target of '_self' - this is often used by modern frameworks to force a full page reload."
 						},
 						{
-							"uri": "https://plusfraichemaville.fr/fiche-solution/reseaux_de_froid",
+							"uri": "https://plusfraichemaville.fr/fiches-diagnostic",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -855,7 +866,15 @@
 							"otherinfo": "Links have been found with a target of '_self' - this is often used by modern frameworks to force a full page reload."
 						},
 						{
-							"uri": "https://plusfraichemaville.fr/fiches-diagnostic",
+							"uri": "https://plusfraichemaville.fr/mentions-legales",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<a target=\"_self\" id=\"main-navigation-:R1amla:-link-0\" class=\"fr-nav__link\" href=\"/aide-decision\">D\u00E9couvrir</a>",
+							"otherinfo": "Links have been found with a target of '_self' - this is often used by modern frameworks to force a full page reload."
+						},
+						{
+							"uri": "https://plusfraichemaville.fr/projet",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -877,7 +896,7 @@
 					"reference": "",
 					"cweid": "-1",
 					"wascid": "-1",
-					"sourceid": "105"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "10049",
@@ -930,7 +949,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://plusfraichemaville.fr/connexion",
+							"uri": "https://plusfraichemaville.fr/contact",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -938,7 +957,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://plusfraichemaville.fr/contact",
+							"uri": "https://plusfraichemaville.fr/fiche-solution",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1011,7 +1030,7 @@
 					"reference": "<p>https://cheatsheetseries.owasp.org/cheatsheets/Session_Management_Cheat_Sheet.html#web-content-caching</p><p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cache-Control</p><p>https://grayduck.mn/2021/09/13/cache-control-recommendations/</p>",
 					"cweid": "525",
 					"wascid": "13",
-					"sourceid": "4575"
+					"sourceid": "4574"
 				},
 				{
 					"pluginid": "90005",
@@ -1024,7 +1043,7 @@
 					"desc": "<p>Specifies how and where the data would be used. For instance, if the value is audio, then the requested resource must be audio data and not any other type of resource.</p>",
 					"instances":[ 
 						{
-							"uri": "https://plusfraichemaville.fr",
+							"uri": "https://plusfraichemaville.fr/aide-decision",
 							"method": "GET",
 							"param": "Sec-Fetch-Dest",
 							"attack": "",
@@ -1054,7 +1073,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Dest</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "1"
+					"sourceid": "278"
 				},
 				{
 					"pluginid": "90005",
@@ -1067,7 +1086,7 @@
 					"desc": "<p>Allows to differentiate between requests for navigating between HTML pages and requests for loading resources like images, audio etc.</p>",
 					"instances":[ 
 						{
-							"uri": "https://plusfraichemaville.fr",
+							"uri": "https://plusfraichemaville.fr/aide-decision",
 							"method": "GET",
 							"param": "Sec-Fetch-Mode",
 							"attack": "",
@@ -1097,7 +1116,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Mode</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "1"
+					"sourceid": "278"
 				},
 				{
 					"pluginid": "90005",
@@ -1110,7 +1129,7 @@
 					"desc": "<p>Specifies the relationship between request initiator's origin and target's origin.</p>",
 					"instances":[ 
 						{
-							"uri": "https://plusfraichemaville.fr",
+							"uri": "https://plusfraichemaville.fr/aide-decision",
 							"method": "GET",
 							"param": "Sec-Fetch-Site",
 							"attack": "",
@@ -1140,7 +1159,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Site</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "1"
+					"sourceid": "278"
 				},
 				{
 					"pluginid": "90005",
@@ -1153,7 +1172,7 @@
 					"desc": "<p>Specifies if a navigation request was initiated by a user.</p>",
 					"instances":[ 
 						{
-							"uri": "https://plusfraichemaville.fr",
+							"uri": "https://plusfraichemaville.fr/aide-decision",
 							"method": "GET",
 							"param": "Sec-Fetch-User",
 							"attack": "",
@@ -1183,7 +1202,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-User</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "1"
+					"sourceid": "278"
 				},
 				{
 					"pluginid": "10049",
