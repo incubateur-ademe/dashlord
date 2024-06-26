@@ -24,7 +24,6 @@ on:
           - ecoindex
   push:
     branches:
-      - master
       - main
     paths:
       - "dashlord.yaml"
@@ -46,12 +45,16 @@ jobs:
       sites: ${{ steps.init.outputs.sites }}
       config: ${{ steps.init.outputs.config }}
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - id: init
         uses: "SocialGouv/dashlord-actions/init@v1"
         with:
           url: ${{ github.event.inputs.url }}
           tool: ${{ github.event.inputs.tool }}
+      - id: updown-init
+        uses: "SocialGouv/dashlord-actions/updown-init@v1"
+        env:
+          UPDOWNIO_API_KEY: ${{ secrets.UPDOWNIO_API_KEY }}
 
   scans:
     runs-on: ubuntu-latest
@@ -64,9 +67,7 @@ jobs:
       matrix:
         sites: ${{ fromJson(needs.init.outputs.sites) }}
     steps:
-      - uses: actions/checkout@v3
-        with:
-          ref: ${{ github.ref }}
+      - uses: actions/checkout@v4
 
       - run: |
           mkdir scans
@@ -334,35 +335,10 @@ jobs:
           # only clean up previous stats when all tools runned
           cleanup: ${{ github.event.inputs.tool == 'all' && true || false }}
 
-      - name: "Commit"
-        id: commit1
-        continue-on-error: true
-        run: |
-          git config --global user.email 41898282+github-actions[bot]@users.noreply.github.com
-          git config --global user.name GitHub
-          git add "results"
-          git commit -m "update: ${{ matrix.sites.url }}"
-          git pull --rebase --no-ff origin ${{ github.ref }}
-          git push
-
-      - name: "Commit retry"
-        if: steps.commit1.outcome=='failure'
-        id: commit2
-        continue-on-error: true
-        run: |
-          git config --global user.email 41898282+github-actions[bot]@users.noreply.github.com
-          git config --global user.name GitHub
-          git add "results"
-          git commit -m "update: ${{ matrix.sites.url }}"
-          git pull --rebase --no-ff origin ${{ github.ref }}
-          git push
-
-      - name: "Commit retry 2"
-        if: steps.commit2.outcome=='failure'
-        run: |
-          git config --global user.email 41898282+github-actions[bot]@users.noreply.github.com
-          git config --global user.name GitHub
-          git add "results"
-          git commit -m "update: ${{ matrix.sites.url }}"
-          git pull --rebase --no-ff origin ${{ github.ref }}
-          git push
+      - uses: EndBug/add-and-commit@v9
+        with:
+          add: "results"
+          author_name: "incubateur-ademe-admin"
+          author_email: "accelerateurdelatransitionecologique@ademe.fr"
+          message: "update: ${{ matrix.sites.url }}"
+          pull: "--rebase --autostash"
