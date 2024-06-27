@@ -1,3 +1,42 @@
+_api_tools: &api_tools
+  "404": false
+  screenshot: false
+  wappalyzer: false
+  declaration-a11y: false
+  declaration-rgpd: false
+  budget_page: false
+  stats: false
+
+_iframe_tools: &iframe_tools
+  "404": false
+  declaration-rgpd: false
+  declaration-a11y: false
+  budget_page: false
+  stats: false
+
+_same_github_tools: &same_github_tools
+  dependabot: false
+  codescan: false
+  github_repository: true
+
+_staging_tools: &staging_tools
+  <<: *same_github_tools
+  "404": false
+  screenshot: false
+  lighthouse: false
+  testssl: false
+  wappalyzer: false
+  dependabot: false
+  codescan: false
+  updownio: false
+  http: false
+  stats: false
+  declaration-a11y: false
+  declaration-rgpd: false
+  sonarcloud: false
+  budget_page: false
+  github_repository: false
+
 title: DashLord Accélérateur de la transition écologique
 description: Bonnes pratiques techniques de l'incubateur de l'ADEME
 entity: République Française
@@ -34,6 +73,7 @@ tools:
 columns:
   zap: false
 urls:
+  # Carte Verte
   - url: https://carte-verte.beta.gouv.fr
     category: startup
     betaId: carte-verte
@@ -50,6 +90,10 @@ urls:
       - staging
     repositories:
       - incubateur-ademe/carte-verte
+    tools:
+      <<: *staging_tools
+
+  # Impact CO2
   - url: https://impactco2.fr
     category: startup
     betaId: impact.co2
@@ -58,6 +102,18 @@ urls:
       - production
     repositories:
       - incubateur-ademe/impactco2
+  - url: https://preimpactco2.osc-fr1.scalingo.io
+    category: startup
+    betaId: impact.co2
+    tags:
+      - homepage
+      - stagging
+    repositories:
+      - incubateur-ademe/impactco2
+    tools:
+      <<: *staging_tools
+
+  # Nos Gestes Climat
   - url: https://nosgestesclimat.fr
     category: startup
     betaId: nosgestesclimat
@@ -68,6 +124,8 @@ urls:
       - incubateur-ademe/nosgestesclimat-site-nextjs
       - incubateur-ademe/nosgestesclimat
       - incubateur-ademe/nosgestesclimat-server
+
+  # Longue Vie aux Objets
   - url: https://longuevieauxobjets.ademe.fr
     category: startup
     betaId: longuevieauxobjets
@@ -76,6 +134,26 @@ urls:
       - production
     repositories:
       - incubateur-ademe/quefairedemesobjets
+  - url: https://lvao.ademe.fr
+    category: startup
+    betaId: longuevieauxobjets
+    tags:
+      - iframe
+      - production
+    repositories:
+      - incubateur-ademe/quefairedemesobjets
+    tools:
+      <<: *iframe_tools
+  - url: https://quefairedemesdechets.ademe.fr
+    category: startup
+    betaId: longuevieauxobjets
+    tags:
+      - app
+      - production
+    repositories:
+      - incubateur-ademe/quefairedemesdechets
+
+  # Plus Fraiche Ma Ville
   - url: https://plusfraichemaville.fr
     category: startup
     betaId: plusfraichemaville
@@ -100,6 +178,10 @@ urls:
     repositories:
       - incubateur-ademe/plusfraichemaville-site
       - incubateur-ademe/plusfraichemaville-cms
+    tools:
+      <<: *staging_tools
+
+  # Transition Ecologique des Entreprises
   - url: https://mission-transition-ecologique.beta.gouv.fr
     category: startup
     betaId: transition-ecologique-des-entreprises
@@ -110,6 +192,17 @@ urls:
       - betagouv/transition-ecologique-entreprises-widget
     pages:
       - /annuaire
+      - /api/health
+  - url: https://mission-transition-ecologique.beta.gouv.fr/api/health
+    category: startup
+    betaId: transition-ecologique-des-entreprises
+    tags:
+      - api
+      - production
+    repositories:
+      - betagouv/transition-ecologique-entreprises-widget
+    tools:
+      <<: *api_tools
   - url: https://preprod.mission-transition-ecologique.incubateur.net
     category: startup
     betaId: transition-ecologique-des-entreprises
@@ -118,8 +211,13 @@ urls:
       - staging
     repositories:
       - betagouv/transition-ecologique-entreprises-widget
+    tools:
+      <<: *staging_tools
     pages:
       - /annuaire
+      - /api/health
+
+  # Territoires en Transitions
   - url: https://www.territoiresentransitions.fr
     category: startup
     betaId: territoires-en-transitions
@@ -144,6 +242,8 @@ urls:
       - production
     repositories:
       - incubateur-ademe/rencontres-tete
+
+  # Benefriches
   - url: https://benefriches.ademe.fr
     category: startup
     betaId: benefriches
@@ -162,8 +262,12 @@ urls:
       - staging
     repositories:
       - incubateur-ademe/benefriches
+    tools:
+      <<: *staging_tools
     pages:
       - /premiers-pas
+
+  # Facili-TACCT
   - url: https://facili-tacct-preprod.osc-fr1.scalingo.io
     category: startup
     betaId: tacct
@@ -172,14 +276,10 @@ urls:
       - staging
     repositories:
       - incubateur-ademe/facili-tacct
-  - url: https://pacoupa.ademe.vercel.app
-    category: startup
-    betaId: pacoupa
-    tags:
-      - homepage
-      - staging
-    repositories:
-      - incubateur-ademe/pacoupa
+    tools:
+      <<: *staging_tools
+
+  # Pacoupa
   - url: https://pacoupa.ademe.fr
     category: startup
     betaId: pacoupa
@@ -190,3 +290,15 @@ urls:
       - incubateur-ademe/pacoupa
     pages:
       - /simulation
+  - url: https://pacoupa.ademe.vercel.app
+    category: startup
+    betaId: pacoupa
+    tags:
+      - homepage
+      - staging
+    repositories:
+      - incubateur-ademe/pacoupa
+    pages:
+      - /simulation
+    tools:
+      <<: *staging_tools
