@@ -1,7 +1,7 @@
 {
 	"@programName": "ZAP",
 	"@version": "2.15.0",
-	"@generated": "Thu, 27 Jun 2024 11:57:15",
+	"@generated": "Sun, 30 Jun 2024 02:16:06",
 	"site":[ 
 		{
 			"@name": "https://quefairedemesdechets.ademe.fr",
@@ -98,7 +98,7 @@
 					"reference": "<p>https://cheatsheetseries.owasp.org/cheatsheets/Cross-Site_Request_Forgery_Prevention_Cheat_Sheet.html</p><p>https://cwe.mitre.org/data/definitions/352.html</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "1"
+					"sourceid": "7"
 				},
 				{
 					"pluginid": "10038",
@@ -159,7 +159,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://quefairedemesdechets.ademe.fr/dechet/cable/",
+							"uri": "https://quefairedemesdechets.ademe.fr/dechet/aliments-compostables/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -312,7 +312,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Frame-Options</p>",
 					"cweid": "1021",
 					"wascid": "15",
-					"sourceid": "1"
+					"sourceid": "7"
 				},
 				{
 					"pluginid": "90003",
@@ -419,7 +419,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/Security/Subresource_Integrity</p>",
 					"cweid": "345",
 					"wascid": "15",
-					"sourceid": "6"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "10044",
@@ -502,7 +502,7 @@
 					"reference": "",
 					"cweid": "201",
 					"wascid": "13",
-					"sourceid": "60"
+					"sourceid": "64"
 				},
 				{
 					"pluginid": "10063",
@@ -531,14 +531,6 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://quefairedemesdechets.ademe.fr/?email=zaproxy%40example.com&message=Zaproxy+alias+impedit+expedita+quisquam+pariatur+exercitationem.+Nemo+rerum+eveniet+dolores+rem+quia+dignissimos.&nom=ZAP&objet=ZAP",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
 							"uri": "https://quefairedemesdechets.ademe.fr/app-96c6af5fa8976d37331f.js",
 							"method": "GET",
 							"param": "",
@@ -555,7 +547,23 @@
 							"otherinfo": ""
 						},
 						{
+							"uri": "https://quefairedemesdechets.ademe.fr/build/?email=zaproxy%40example.com&message=Zaproxy+alias+impedit+expedita+quisquam+pariatur+exercitationem.+Nemo+rerum+eveniet+dolores+rem+quia+dignissimos.&nom=ZAP&objet=ZAP",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
 							"uri": "https://quefairedemesdechets.ademe.fr/build/opensearch.xml",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://quefairedemesdechets.ademe.fr/dechet/aliments-compostables/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -587,14 +595,6 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://quefairedemesdechets.ademe.fr/sitemap.xml?email=zaproxy%40example.com&message=Zaproxy+alias+impedit+expedita+quisquam+pariatur+exercitationem.+Nemo+rerum+eveniet+dolores+rem+quia+dignissimos.&nom=ZAP&objet=ZAP",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
 							"uri": "https://quefairedemesdechets.ademe.fr/webpack-runtime-8ef7c45f5a5576596e85.js",
 							"method": "GET",
 							"param": "",
@@ -610,6 +610,33 @@
 					"cweid": "693",
 					"wascid": "15",
 					"sourceid": "1"
+				},
+				{
+					"pluginid": "10035",
+					"alertRef": "10035-1",
+					"alert": "Strict-Transport-Security Header Not Set",
+					"name": "Strict-Transport-Security Header Not Set",
+					"riskcode": "1",
+					"confidence": "3",
+					"riskdesc": "Low (High)",
+					"desc": "<p>HTTP Strict Transport Security (HSTS) is a web security policy mechanism whereby a web server declares that complying user agents (such as a web browser) are to interact with it using only secure HTTPS connections (i.e. HTTP layered over TLS/SSL). HSTS is an IETF standards track protocol and is specified in RFC 6797.</p>",
+					"instances":[ 
+						{
+							"uri": "https://quefairedemesdechets.ademe.fr/dechet/reveil-matin/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						}
+					],
+					"count": "1",
+					"solution": "<p>Ensure that your web server, application server, load balancer, etc. is configured to enforce Strict-Transport-Security.</p>",
+					"otherinfo": "",
+					"reference": "<p>https://cheatsheetseries.owasp.org/cheatsheets/HTTP_Strict_Transport_Security_Cheat_Sheet.html</p><p>https://owasp.org/www-community/Security_Headers</p><p>https://en.wikipedia.org/wiki/HTTP_Strict_Transport_Security</p><p>https://caniuse.com/stricttransportsecurity</p><p>https://datatracker.ietf.org/doc/html/rfc6797</p>",
+					"cweid": "319",
+					"wascid": "15",
+					"sourceid": "5524"
 				},
 				{
 					"pluginid": "10021",
@@ -654,7 +681,7 @@
 							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
 						},
 						{
-							"uri": "https://quefairedemesdechets.ademe.fr/icons/icon-192x192.png?v=8ef53b602d6760e0b8742df3104f377e",
+							"uri": "https://quefairedemesdechets.ademe.fr/icons/icon-144x144.png?v=8ef53b602d6760e0b8742df3104f377e",
 							"method": "GET",
 							"param": "x-content-type-options",
 							"attack": "",
@@ -876,6 +903,14 @@
 							"otherinfo": "The URL contains email address(es)."
 						},
 						{
+							"uri": "https://quefairedemesdechets.ademe.fr/dechet/aliments-compostables/opensearch.xml?email=zaproxy%40example.com&message=Zaproxy+alias+impedit+expedita+quisquam+pariatur+exercitationem.+Nemo+rerum+eveniet+dolores+rem+quia+dignissimos.&nom=ZAP&objet=ZAP",
+							"method": "GET",
+							"param": "email",
+							"attack": "",
+							"evidence": "zaproxy@example.com",
+							"otherinfo": "The URL contains email address(es)."
+						},
+						{
 							"uri": "https://quefairedemesdechets.ademe.fr/dechet/cable/?email=zaproxy%40example.com&message=Zaproxy+alias+impedit+expedita+quisquam+pariatur+exercitationem.+Nemo+rerum+eveniet+dolores+rem+quia+dignissimos.&nom=ZAP&objet=ZAP",
 							"method": "GET",
 							"param": "email",
@@ -892,14 +927,6 @@
 							"otherinfo": "The URL contains email address(es)."
 						},
 						{
-							"uri": "https://quefairedemesdechets.ademe.fr/dechet/chaussures/?email=zaproxy%40example.com&message=Zaproxy+alias+impedit+expedita+quisquam+pariatur+exercitationem.+Nemo+rerum+eveniet+dolores+rem+quia+dignissimos.&nom=ZAP&objet=ZAP",
-							"method": "GET",
-							"param": "email",
-							"attack": "",
-							"evidence": "zaproxy@example.com",
-							"otherinfo": "The URL contains email address(es)."
-						},
-						{
 							"uri": "https://quefairedemesdechets.ademe.fr/dechet/medicaments/?email=zaproxy%40example.com&message=Zaproxy+alias+impedit+expedita+quisquam+pariatur+exercitationem.+Nemo+rerum+eveniet+dolores+rem+quia+dignissimos.&nom=ZAP&objet=ZAP",
 							"method": "GET",
 							"param": "email",
@@ -908,7 +935,7 @@
 							"otherinfo": "The URL contains email address(es)."
 						},
 						{
-							"uri": "https://quefairedemesdechets.ademe.fr/dechet/pot-de-yaourt-en-plastique/?email=zaproxy%40example.com&message=Zaproxy+alias+impedit+expedita+quisquam+pariatur+exercitationem.+Nemo+rerum+eveniet+dolores+rem+quia+dignissimos.&nom=ZAP&objet=ZAP",
+							"uri": "https://quefairedemesdechets.ademe.fr/dechet/smartphone/?email=zaproxy%40example.com&message=Zaproxy+alias+impedit+expedita+quisquam+pariatur+exercitationem.+Nemo+rerum+eveniet+dolores+rem+quia+dignissimos.&nom=ZAP&objet=ZAP",
 							"method": "GET",
 							"param": "email",
 							"attack": "",
@@ -938,7 +965,7 @@
 					"reference": "",
 					"cweid": "200",
 					"wascid": "13",
-					"sourceid": "79"
+					"sourceid": "90"
 				},
 				{
 					"pluginid": "10027",
@@ -1280,11 +1307,19 @@
 							"otherinfo": "The presence of the 'Age' header indicates that a HTTP/1.1 compliant caching server is in use."
 						},
 						{
+							"uri": "https://quefairedemesdechets.ademe.fr",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "Age: 1",
+							"otherinfo": "The presence of the 'Age' header indicates that a HTTP/1.1 compliant caching server is in use."
+						},
+						{
 							"uri": "https://quefairedemesdechets.ademe.fr/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "Age: 0",
+							"evidence": "Age: 1",
 							"otherinfo": "The presence of the 'Age' header indicates that a HTTP/1.1 compliant caching server is in use."
 						},
 						{
@@ -1320,7 +1355,7 @@
 							"otherinfo": "The presence of the 'Age' header indicates that a HTTP/1.1 compliant caching server is in use."
 						},
 						{
-							"uri": "https://quefairedemesdechets.ademe.fr/favicon-32x32.png?v=8ef53b602d6760e0b8742df3104f377e",
+							"uri": "https://quefairedemesdechets.ademe.fr/dechet/smartphone",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1328,15 +1363,7 @@
 							"otherinfo": "The presence of the 'Age' header indicates that a HTTP/1.1 compliant caching server is in use."
 						},
 						{
-							"uri": "https://quefairedemesdechets.ademe.fr/icons/icon-48x48.png?v=8ef53b602d6760e0b8742df3104f377e",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "Age: 0",
-							"otherinfo": "The presence of the 'Age' header indicates that a HTTP/1.1 compliant caching server is in use."
-						},
-						{
-							"uri": "https://quefairedemesdechets.ademe.fr/manifest.webmanifest",
+							"uri": "https://quefairedemesdechets.ademe.fr/opensearch.xml",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1348,7 +1375,7 @@
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "Age: 0",
+							"evidence": "Age: 45920",
 							"otherinfo": "The presence of the 'Age' header indicates that a HTTP/1.1 compliant caching server is in use."
 						},
 						{
@@ -1358,9 +1385,17 @@
 							"attack": "",
 							"evidence": "Age: 0",
 							"otherinfo": "The presence of the 'Age' header indicates that a HTTP/1.1 compliant caching server is in use."
+						},
+						{
+							"uri": "https://quefairedemesdechets.ademe.fr/sitemap/sitemap-index.xml",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "Age: 0",
+							"otherinfo": "The presence of the 'Age' header indicates that a HTTP/1.1 compliant caching server is in use."
 						}
 					],
-					"count": "11",
+					"count": "12",
 					"solution": "<p>Validate that the response does not contain sensitive, personal or user-specific information.  If it does, consider the use of the following HTTP response headers, to limit, or prevent the content being stored and retrieved from the cache by another user:</p><p>Cache-Control: no-cache, no-store, must-revalidate, private</p><p>Pragma: no-cache</p><p>Expires: 0</p><p>This configuration directs both HTTP 1.0 and HTTP 1.1 compliant caching servers to not store the response, and to not retrieve the response (without validation) from the cache, in response to a similar request.</p>",
 					"otherinfo": "<p>The presence of the 'Age' header indicates that a HTTP/1.1 compliant caching server is in use.</p>",
 					"reference": "<p>https://tools.ietf.org/html/rfc7234</p><p>https://tools.ietf.org/html/rfc7231</p><p>https://www.rfc-editor.org/rfc/rfc9110.html</p>",
@@ -1599,7 +1634,7 @@
 							"otherinfo": "The response is stale, and stale responses are not configured to be re-validated or blocked, using the 'must-revalidate', 'proxy-revalidate', 's-maxage', or 'max-age' response 'Cache-Control' directives."
 						},
 						{
-							"uri": "https://quefairedemesdechets.ademe.fr/favicon-32x32.png?v=8ef53b602d6760e0b8742df3104f377e",
+							"uri": "https://quefairedemesdechets.ademe.fr/dechet/smartphone",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1607,15 +1642,7 @@
 							"otherinfo": "The response is stale, and stale responses are not configured to be re-validated or blocked, using the 'must-revalidate', 'proxy-revalidate', 's-maxage', or 'max-age' response 'Cache-Control' directives."
 						},
 						{
-							"uri": "https://quefairedemesdechets.ademe.fr/icons/icon-48x48.png?v=8ef53b602d6760e0b8742df3104f377e",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": "The response is stale, and stale responses are not configured to be re-validated or blocked, using the 'must-revalidate', 'proxy-revalidate', 's-maxage', or 'max-age' response 'Cache-Control' directives."
-						},
-						{
-							"uri": "https://quefairedemesdechets.ademe.fr/manifest.webmanifest",
+							"uri": "https://quefairedemesdechets.ademe.fr/opensearch.xml",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1632,6 +1659,14 @@
 						},
 						{
 							"uri": "https://quefairedemesdechets.ademe.fr/sitemap.xml",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "The response is stale, and stale responses are not configured to be re-validated or blocked, using the 'must-revalidate', 'proxy-revalidate', 's-maxage', or 'max-age' response 'Cache-Control' directives."
+						},
+						{
+							"uri": "https://quefairedemesdechets.ademe.fr/sitemap/sitemap-index.xml",
 							"method": "GET",
 							"param": "",
 							"attack": "",
