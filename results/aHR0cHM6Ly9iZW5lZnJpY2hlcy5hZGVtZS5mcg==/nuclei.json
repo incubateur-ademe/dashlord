@@ -1,43 +1,6 @@
 [
   [
     {
-      "template": "dns/caa-fingerprint.yaml",
-      "template-url": "https://templates.nuclei.sh/public/caa-fingerprint",
-      "template-id": "caa-fingerprint",
-      "template-path": "/home/runner/nuclei-templates/dns/caa-fingerprint.yaml",
-      "info": {
-        "name": "CAA Record",
-        "author": [
-          "pdteam"
-        ],
-        "tags": [
-          "dns",
-          "caa"
-        ],
-        "description": "A CAA record was discovered. A CAA record is used to specify which certificate authorities (CAs) are allowed to issue certificates for a domain.",
-        "reference": [
-          "https://support.dnsimple.com/articles/caa-record/#whats-a-caa-record"
-        ],
-        "severity": "info",
-        "metadata": {
-          "max-request": 1
-        },
-        "classification": {
-          "cve-id": null,
-          "cwe-id": [
-            "cwe-200"
-          ]
-        }
-      },
-      "type": "dns",
-      "host": "benefriches.ademe.fr.",
-      "matched-at": "benefriches.ademe.fr",
-      "request": ";; opcode: QUERY, status: NOERROR, id: 47637\n;; flags: rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;benefriches.ademe.fr.\tIN\t CAA\n",
-      "response": ";; opcode: QUERY, status: NOERROR, id: 47637\n;; flags: qr rd ra; QUERY: 1, ANSWER: 2, AUTHORITY: 1, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 512\n\n;; QUESTION SECTION:\n;benefriches.ademe.fr.\tIN\t CAA\n\n;; ANSWER SECTION:\nbenefriches.ademe.fr.\t10800\tIN\tCNAME\tbenefriches-production.osc-secnum-fr1.scalingo.io.\nbenefriches-production.osc-secnum-fr1.scalingo.io.\t300\tIN\tCNAME\tsc-lb-pool-01.osc-secnum-fr1.scalingo-network.com.\n\n;; AUTHORITY SECTION:\nscalingo-network.com.\t1800\tIN\tSOA\tburt.ns.cloudflare.com. dns.cloudflare.com. 2344697733 10000 2400 604800 1800\n",
-      "timestamp": "2024-06-30T03:09:54.242834017Z",
-      "matcher-status": true
-    },
-    {
       "template": "dns/dns-saas-service-detection.yaml",
       "template-url": "https://templates.nuclei.sh/public/dns-saas-service-detection",
       "template-id": "dns-saas-service-detection",
@@ -69,126 +32,46 @@
       "extracted-results": [
         "benefriches-production.osc-secnum-fr1.scalingo.io."
       ],
-      "request": ";; opcode: QUERY, status: NOERROR, id: 63325\n;; flags: rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;benefriches.ademe.fr.\tIN\t CNAME\n",
-      "response": ";; opcode: QUERY, status: NOERROR, id: 63325\n;; flags: qr rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 1232\n\n;; QUESTION SECTION:\n;benefriches.ademe.fr.\tIN\t CNAME\n\n;; ANSWER SECTION:\nbenefriches.ademe.fr.\t10800\tIN\tCNAME\tbenefriches-production.osc-secnum-fr1.scalingo.io.\n",
-      "timestamp": "2024-06-30T03:09:55.221117435Z",
+      "request": ";; opcode: QUERY, status: NOERROR, id: 2403\n;; flags: rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;benefriches.ademe.fr.\tIN\t CNAME\n",
+      "response": ";; opcode: QUERY, status: NOERROR, id: 2403\n;; flags: qr rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 1232\n\n;; QUESTION SECTION:\n;benefriches.ademe.fr.\tIN\t CNAME\n\n;; ANSWER SECTION:\nbenefriches.ademe.fr.\t10800\tIN\tCNAME\tbenefriches-production.osc-secnum-fr1.scalingo.io.\n",
+      "timestamp": "2024-07-07T03:18:39.113325274Z",
       "matcher-status": true
     },
     {
-      "template": "http/misconfiguration/http-missing-security-headers.yaml",
-      "template-url": "https://templates.nuclei.sh/public/http-missing-security-headers",
-      "template-id": "http-missing-security-headers",
-      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/http-missing-security-headers.yaml",
+      "template": "dns/caa-fingerprint.yaml",
+      "template-url": "https://templates.nuclei.sh/public/caa-fingerprint",
+      "template-id": "caa-fingerprint",
+      "template-path": "/home/runner/nuclei-templates/dns/caa-fingerprint.yaml",
       "info": {
-        "name": "HTTP Missing Security Headers",
+        "name": "CAA Record",
         "author": [
-          "socketz",
-          "geeknik",
-          "g4l1t0",
-          "convisoappsec",
-          "kurohost",
-          "dawid-czarnecki",
-          "forgedhallpass",
-          "jub0bs"
+          "pdteam"
         ],
         "tags": [
-          "misconfig",
-          "headers",
-          "generic"
+          "dns",
+          "caa"
         ],
-        "description": "This template searches for missing HTTP security headers. The impact of these missing headers can vary.\n",
+        "description": "A CAA record was discovered. A CAA record is used to specify which certificate authorities (CAs) are allowed to issue certificates for a domain.",
+        "reference": [
+          "https://support.dnsimple.com/articles/caa-record/#whats-a-caa-record"
+        ],
         "severity": "info",
         "metadata": {
           "max-request": 1
+        },
+        "classification": {
+          "cve-id": null,
+          "cwe-id": [
+            "cwe-200"
+          ]
         }
       },
-      "matcher-name": "cross-origin-embedder-policy",
-      "type": "http",
-      "host": "https://benefriches.ademe.fr",
-      "matched-at": "https://benefriches.ademe.fr",
-      "request": "GET / HTTP/1.1\r\nHost: benefriches.ademe.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
-      "response": "HTTP/1.1 200 OK\r\nConnection: close\r\nTransfer-Encoding: chunked\r\nContent-Security-Policy: default-src 'self'; script-src 'self' https://tally.so/widgets/embed.js https://stats.beta.gouv.fr ;connect-src 'self' https://stats.beta.gouv.fr/matomo.php https://api-adresse.data.gouv.fr/search/ https://geo.api.gouv.fr/communes/;font-src 'self';img-src 'self' data: https://a.tile.openstreetmap.org https://b.tile.openstreetmap.org https://c.tile.openstreetmap.org;frame-ancestors 'none';style-src 'self' 'unsafe-inline'; frame-src https://tally.so;\r\nContent-Type: text/html; charset=utf-8\r\nDate: Sun, 30 Jun 2024 03:10:39 GMT\r\nEtag: W/\"667d9596-40d\"\r\nLast-Modified: Thu, 27 Jun 2024 16:38:46 GMT\r\nStrict-Transport-Security: max-age=31536000\r\nVary: Accept-Encoding\r\nX-Content-Type-Options: nosniff\r\nX-Frame-Options: DENY\r\nX-Request-Id: fcec7338-7ad7-4b0d-9448-b65773648c03\r\n\r\n<!doctype html>\n<html lang=\"fr\">\n  <head>\n    <meta charset=\"UTF-8\" />\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n    <link rel=\"apple-touch-icon\" href=\"/dsfr/favicon/apple-touch-icon.png\" />\n    <link rel=\"icon\" href=\"/dsfr/favicon/favicon.svg\" type=\"image/svg+xml\" />\n    <link rel=\"shortcut icon\" href=\"/dsfr/favicon/favicon.ico\" type=\"image/x-icon\" />\n    <link rel=\"manifest\" href=\"/dsfr/favicon/manifest.webmanifest\" crossorigin=\"use-credentials\" />\n\n    <link rel=\"stylesheet\" href=\"/dsfr/utility/icons/icons.min.css\" />\n    <link rel=\"stylesheet\" href=\"/dsfr/dsfr.min.css\" />\n    <script async src=\"https://tally.so/widgets/embed.js\"></script>\n    <script src=\"/js/env-vars.js\"></script>\n    <title>Bénéfriches, l'outil qui calcule la valeur réelle de votre projet d'aménagement</title>\n  <script type=\"module\" crossorigin src=\"/assets/index-BnF_f6EC.js\"></script>\n  <link rel=\"stylesheet\" crossorigin href=\"/assets/index-B_iKI1WQ.css\">\n\n  <body>\n    <div id=\"root\"></div>\n  </body>\n</html>\n",
-      "ip": "80.247.12.255",
-      "timestamp": "2024-06-30T03:10:39.899057156Z",
-      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://benefriches.ademe.fr'",
-      "matcher-status": true
-    },
-    {
-      "template": "http/misconfiguration/http-missing-security-headers.yaml",
-      "template-url": "https://templates.nuclei.sh/public/http-missing-security-headers",
-      "template-id": "http-missing-security-headers",
-      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/http-missing-security-headers.yaml",
-      "info": {
-        "name": "HTTP Missing Security Headers",
-        "author": [
-          "socketz",
-          "geeknik",
-          "g4l1t0",
-          "convisoappsec",
-          "kurohost",
-          "dawid-czarnecki",
-          "forgedhallpass",
-          "jub0bs"
-        ],
-        "tags": [
-          "misconfig",
-          "headers",
-          "generic"
-        ],
-        "description": "This template searches for missing HTTP security headers. The impact of these missing headers can vary.\n",
-        "severity": "info",
-        "metadata": {
-          "max-request": 1
-        }
-      },
-      "matcher-name": "cross-origin-opener-policy",
-      "type": "http",
-      "host": "https://benefriches.ademe.fr",
-      "matched-at": "https://benefriches.ademe.fr",
-      "request": "GET / HTTP/1.1\r\nHost: benefriches.ademe.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
-      "response": "HTTP/1.1 200 OK\r\nConnection: close\r\nTransfer-Encoding: chunked\r\nContent-Security-Policy: default-src 'self'; script-src 'self' https://tally.so/widgets/embed.js https://stats.beta.gouv.fr ;connect-src 'self' https://stats.beta.gouv.fr/matomo.php https://api-adresse.data.gouv.fr/search/ https://geo.api.gouv.fr/communes/;font-src 'self';img-src 'self' data: https://a.tile.openstreetmap.org https://b.tile.openstreetmap.org https://c.tile.openstreetmap.org;frame-ancestors 'none';style-src 'self' 'unsafe-inline'; frame-src https://tally.so;\r\nContent-Type: text/html; charset=utf-8\r\nDate: Sun, 30 Jun 2024 03:10:39 GMT\r\nEtag: W/\"667d9596-40d\"\r\nLast-Modified: Thu, 27 Jun 2024 16:38:46 GMT\r\nStrict-Transport-Security: max-age=31536000\r\nVary: Accept-Encoding\r\nX-Content-Type-Options: nosniff\r\nX-Frame-Options: DENY\r\nX-Request-Id: fcec7338-7ad7-4b0d-9448-b65773648c03\r\n\r\n<!doctype html>\n<html lang=\"fr\">\n  <head>\n    <meta charset=\"UTF-8\" />\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n    <link rel=\"apple-touch-icon\" href=\"/dsfr/favicon/apple-touch-icon.png\" />\n    <link rel=\"icon\" href=\"/dsfr/favicon/favicon.svg\" type=\"image/svg+xml\" />\n    <link rel=\"shortcut icon\" href=\"/dsfr/favicon/favicon.ico\" type=\"image/x-icon\" />\n    <link rel=\"manifest\" href=\"/dsfr/favicon/manifest.webmanifest\" crossorigin=\"use-credentials\" />\n\n    <link rel=\"stylesheet\" href=\"/dsfr/utility/icons/icons.min.css\" />\n    <link rel=\"stylesheet\" href=\"/dsfr/dsfr.min.css\" />\n    <script async src=\"https://tally.so/widgets/embed.js\"></script>\n    <script src=\"/js/env-vars.js\"></script>\n    <title>Bénéfriches, l'outil qui calcule la valeur réelle de votre projet d'aménagement</title>\n  <script type=\"module\" crossorigin src=\"/assets/index-BnF_f6EC.js\"></script>\n  <link rel=\"stylesheet\" crossorigin href=\"/assets/index-B_iKI1WQ.css\">\n\n  <body>\n    <div id=\"root\"></div>\n  </body>\n</html>\n",
-      "ip": "80.247.12.255",
-      "timestamp": "2024-06-30T03:10:39.899117619Z",
-      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://benefriches.ademe.fr'",
-      "matcher-status": true
-    },
-    {
-      "template": "http/misconfiguration/http-missing-security-headers.yaml",
-      "template-url": "https://templates.nuclei.sh/public/http-missing-security-headers",
-      "template-id": "http-missing-security-headers",
-      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/http-missing-security-headers.yaml",
-      "info": {
-        "name": "HTTP Missing Security Headers",
-        "author": [
-          "socketz",
-          "geeknik",
-          "g4l1t0",
-          "convisoappsec",
-          "kurohost",
-          "dawid-czarnecki",
-          "forgedhallpass",
-          "jub0bs"
-        ],
-        "tags": [
-          "misconfig",
-          "headers",
-          "generic"
-        ],
-        "description": "This template searches for missing HTTP security headers. The impact of these missing headers can vary.\n",
-        "severity": "info",
-        "metadata": {
-          "max-request": 1
-        }
-      },
-      "matcher-name": "cross-origin-resource-policy",
-      "type": "http",
-      "host": "https://benefriches.ademe.fr",
-      "matched-at": "https://benefriches.ademe.fr",
-      "request": "GET / HTTP/1.1\r\nHost: benefriches.ademe.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
-      "response": "HTTP/1.1 200 OK\r\nConnection: close\r\nTransfer-Encoding: chunked\r\nContent-Security-Policy: default-src 'self'; script-src 'self' https://tally.so/widgets/embed.js https://stats.beta.gouv.fr ;connect-src 'self' https://stats.beta.gouv.fr/matomo.php https://api-adresse.data.gouv.fr/search/ https://geo.api.gouv.fr/communes/;font-src 'self';img-src 'self' data: https://a.tile.openstreetmap.org https://b.tile.openstreetmap.org https://c.tile.openstreetmap.org;frame-ancestors 'none';style-src 'self' 'unsafe-inline'; frame-src https://tally.so;\r\nContent-Type: text/html; charset=utf-8\r\nDate: Sun, 30 Jun 2024 03:10:39 GMT\r\nEtag: W/\"667d9596-40d\"\r\nLast-Modified: Thu, 27 Jun 2024 16:38:46 GMT\r\nStrict-Transport-Security: max-age=31536000\r\nVary: Accept-Encoding\r\nX-Content-Type-Options: nosniff\r\nX-Frame-Options: DENY\r\nX-Request-Id: fcec7338-7ad7-4b0d-9448-b65773648c03\r\n\r\n<!doctype html>\n<html lang=\"fr\">\n  <head>\n    <meta charset=\"UTF-8\" />\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n    <link rel=\"apple-touch-icon\" href=\"/dsfr/favicon/apple-touch-icon.png\" />\n    <link rel=\"icon\" href=\"/dsfr/favicon/favicon.svg\" type=\"image/svg+xml\" />\n    <link rel=\"shortcut icon\" href=\"/dsfr/favicon/favicon.ico\" type=\"image/x-icon\" />\n    <link rel=\"manifest\" href=\"/dsfr/favicon/manifest.webmanifest\" crossorigin=\"use-credentials\" />\n\n    <link rel=\"stylesheet\" href=\"/dsfr/utility/icons/icons.min.css\" />\n    <link rel=\"stylesheet\" href=\"/dsfr/dsfr.min.css\" />\n    <script async src=\"https://tally.so/widgets/embed.js\"></script>\n    <script src=\"/js/env-vars.js\"></script>\n    <title>Bénéfriches, l'outil qui calcule la valeur réelle de votre projet d'aménagement</title>\n  <script type=\"module\" crossorigin src=\"/assets/index-BnF_f6EC.js\"></script>\n  <link rel=\"stylesheet\" crossorigin href=\"/assets/index-B_iKI1WQ.css\">\n\n  <body>\n    <div id=\"root\"></div>\n  </body>\n</html>\n",
-      "ip": "80.247.12.255",
-      "timestamp": "2024-06-30T03:10:39.899137145Z",
-      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://benefriches.ademe.fr'",
+      "type": "dns",
+      "host": "benefriches.ademe.fr.",
+      "matched-at": "benefriches.ademe.fr",
+      "request": ";; opcode: QUERY, status: NOERROR, id: 32329\n;; flags: rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;benefriches.ademe.fr.\tIN\t CAA\n",
+      "response": ";; opcode: QUERY, status: NOERROR, id: 32329\n;; flags: qr rd ra; QUERY: 1, ANSWER: 2, AUTHORITY: 1, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 1232\n\n;; QUESTION SECTION:\n;benefriches.ademe.fr.\tIN\t CAA\n\n;; ANSWER SECTION:\nbenefriches.ademe.fr.\t10800\tIN\tCNAME\tbenefriches-production.osc-secnum-fr1.scalingo.io.\nbenefriches-production.osc-secnum-fr1.scalingo.io.\t300\tIN\tCNAME\tsc-lb-pool-01.osc-secnum-fr1.scalingo-network.com.\n\n;; AUTHORITY SECTION:\nscalingo-network.com.\t1800\tIN\tSOA\tburt.ns.cloudflare.com. dns.cloudflare.com. 2344697733 10000 2400 604800 1800\n",
+      "timestamp": "2024-07-07T03:18:39.203253404Z",
       "matcher-status": true
     },
     {
@@ -224,9 +107,9 @@
       "host": "https://benefriches.ademe.fr",
       "matched-at": "https://benefriches.ademe.fr",
       "request": "GET / HTTP/1.1\r\nHost: benefriches.ademe.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
-      "response": "HTTP/1.1 200 OK\r\nConnection: close\r\nTransfer-Encoding: chunked\r\nContent-Security-Policy: default-src 'self'; script-src 'self' https://tally.so/widgets/embed.js https://stats.beta.gouv.fr ;connect-src 'self' https://stats.beta.gouv.fr/matomo.php https://api-adresse.data.gouv.fr/search/ https://geo.api.gouv.fr/communes/;font-src 'self';img-src 'self' data: https://a.tile.openstreetmap.org https://b.tile.openstreetmap.org https://c.tile.openstreetmap.org;frame-ancestors 'none';style-src 'self' 'unsafe-inline'; frame-src https://tally.so;\r\nContent-Type: text/html; charset=utf-8\r\nDate: Sun, 30 Jun 2024 03:10:39 GMT\r\nEtag: W/\"667d9596-40d\"\r\nLast-Modified: Thu, 27 Jun 2024 16:38:46 GMT\r\nStrict-Transport-Security: max-age=31536000\r\nVary: Accept-Encoding\r\nX-Content-Type-Options: nosniff\r\nX-Frame-Options: DENY\r\nX-Request-Id: fcec7338-7ad7-4b0d-9448-b65773648c03\r\n\r\n<!doctype html>\n<html lang=\"fr\">\n  <head>\n    <meta charset=\"UTF-8\" />\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n    <link rel=\"apple-touch-icon\" href=\"/dsfr/favicon/apple-touch-icon.png\" />\n    <link rel=\"icon\" href=\"/dsfr/favicon/favicon.svg\" type=\"image/svg+xml\" />\n    <link rel=\"shortcut icon\" href=\"/dsfr/favicon/favicon.ico\" type=\"image/x-icon\" />\n    <link rel=\"manifest\" href=\"/dsfr/favicon/manifest.webmanifest\" crossorigin=\"use-credentials\" />\n\n    <link rel=\"stylesheet\" href=\"/dsfr/utility/icons/icons.min.css\" />\n    <link rel=\"stylesheet\" href=\"/dsfr/dsfr.min.css\" />\n    <script async src=\"https://tally.so/widgets/embed.js\"></script>\n    <script src=\"/js/env-vars.js\"></script>\n    <title>Bénéfriches, l'outil qui calcule la valeur réelle de votre projet d'aménagement</title>\n  <script type=\"module\" crossorigin src=\"/assets/index-BnF_f6EC.js\"></script>\n  <link rel=\"stylesheet\" crossorigin href=\"/assets/index-B_iKI1WQ.css\">\n\n  <body>\n    <div id=\"root\"></div>\n  </body>\n</html>\n",
-      "ip": "80.247.12.255",
-      "timestamp": "2024-06-30T03:10:39.899152995Z",
+      "response": "HTTP/1.1 200 OK\r\nConnection: close\r\nTransfer-Encoding: chunked\r\nContent-Security-Policy: default-src 'self'; script-src 'self' https://tally.so/widgets/embed.js https://stats.beta.gouv.fr ;connect-src 'self' https://stats.beta.gouv.fr/matomo.php https://api-adresse.data.gouv.fr/search/ https://geo.api.gouv.fr/communes/;font-src 'self';img-src 'self' data: https://a.tile.openstreetmap.org https://b.tile.openstreetmap.org https://c.tile.openstreetmap.org;frame-ancestors 'none';style-src 'self' 'unsafe-inline'; frame-src https://tally.so;\r\nContent-Type: text/html; charset=utf-8\r\nDate: Sun, 07 Jul 2024 03:19:33 GMT\r\nEtag: W/\"6685482b-462\"\r\nLast-Modified: Wed, 03 Jul 2024 12:46:35 GMT\r\nStrict-Transport-Security: max-age=31536000\r\nVary: Accept-Encoding\r\nX-Content-Type-Options: nosniff\r\nX-Frame-Options: DENY\r\nX-Request-Id: 1eaf113d-7a70-42e6-9698-a1aa56cd9060\r\n\r\n<!doctype html>\n<html lang=\"fr\">\n  <head>\n    <meta charset=\"UTF-8\" />\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n    <link rel=\"icon\" href=\"/favicon/favicon-32.png\" sizes=\"32x32\" type=\"image/png\" />\n    <link rel=\"icon\" href=\"/favicon/favicon-128.png\" sizes=\"128x128\" type=\"image/png\" />\n    <link rel=\"icon\" href=\"/favicon/favicon-192.png\" sizes=\"192x192\" type=\"image/png\" />\n    <link rel=\"apple-touch-icon\" href=\"/favicon/favicon-180.png\" />\n    <link rel=\"manifest\" href=\"/favicon/manifest.webmanifest\" crossorigin=\"use-credentials\" />\n\n    <link rel=\"stylesheet\" href=\"/dsfr/utility/icons/icons.min.css\" />\n    <link rel=\"stylesheet\" href=\"/dsfr/dsfr.min.css\" />\n    <script async src=\"https://tally.so/widgets/embed.js\"></script>\n    <script src=\"/js/env-vars.js\"></script>\n    <title>Bénéfriches, l'outil qui calcule la valeur réelle de votre projet d'aménagement</title>\n  <script type=\"module\" crossorigin src=\"/assets/index-B_hf4Ul5.js\"></script>\n  <link rel=\"stylesheet\" crossorigin href=\"/assets/index-BLDTsyrD.css\">\n\n  <body>\n    <div id=\"root\"></div>\n  </body>\n</html>\n",
+      "ip": "185.21.194.105",
+      "timestamp": "2024-07-07T03:19:33.24434992Z",
       "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://benefriches.ademe.fr'",
       "matcher-status": true
     },
@@ -263,9 +146,9 @@
       "host": "https://benefriches.ademe.fr",
       "matched-at": "https://benefriches.ademe.fr",
       "request": "GET / HTTP/1.1\r\nHost: benefriches.ademe.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
-      "response": "HTTP/1.1 200 OK\r\nConnection: close\r\nTransfer-Encoding: chunked\r\nContent-Security-Policy: default-src 'self'; script-src 'self' https://tally.so/widgets/embed.js https://stats.beta.gouv.fr ;connect-src 'self' https://stats.beta.gouv.fr/matomo.php https://api-adresse.data.gouv.fr/search/ https://geo.api.gouv.fr/communes/;font-src 'self';img-src 'self' data: https://a.tile.openstreetmap.org https://b.tile.openstreetmap.org https://c.tile.openstreetmap.org;frame-ancestors 'none';style-src 'self' 'unsafe-inline'; frame-src https://tally.so;\r\nContent-Type: text/html; charset=utf-8\r\nDate: Sun, 30 Jun 2024 03:10:39 GMT\r\nEtag: W/\"667d9596-40d\"\r\nLast-Modified: Thu, 27 Jun 2024 16:38:46 GMT\r\nStrict-Transport-Security: max-age=31536000\r\nVary: Accept-Encoding\r\nX-Content-Type-Options: nosniff\r\nX-Frame-Options: DENY\r\nX-Request-Id: fcec7338-7ad7-4b0d-9448-b65773648c03\r\n\r\n<!doctype html>\n<html lang=\"fr\">\n  <head>\n    <meta charset=\"UTF-8\" />\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n    <link rel=\"apple-touch-icon\" href=\"/dsfr/favicon/apple-touch-icon.png\" />\n    <link rel=\"icon\" href=\"/dsfr/favicon/favicon.svg\" type=\"image/svg+xml\" />\n    <link rel=\"shortcut icon\" href=\"/dsfr/favicon/favicon.ico\" type=\"image/x-icon\" />\n    <link rel=\"manifest\" href=\"/dsfr/favicon/manifest.webmanifest\" crossorigin=\"use-credentials\" />\n\n    <link rel=\"stylesheet\" href=\"/dsfr/utility/icons/icons.min.css\" />\n    <link rel=\"stylesheet\" href=\"/dsfr/dsfr.min.css\" />\n    <script async src=\"https://tally.so/widgets/embed.js\"></script>\n    <script src=\"/js/env-vars.js\"></script>\n    <title>Bénéfriches, l'outil qui calcule la valeur réelle de votre projet d'aménagement</title>\n  <script type=\"module\" crossorigin src=\"/assets/index-BnF_f6EC.js\"></script>\n  <link rel=\"stylesheet\" crossorigin href=\"/assets/index-B_iKI1WQ.css\">\n\n  <body>\n    <div id=\"root\"></div>\n  </body>\n</html>\n",
-      "ip": "80.247.12.255",
-      "timestamp": "2024-06-30T03:10:39.89916643Z",
+      "response": "HTTP/1.1 200 OK\r\nConnection: close\r\nTransfer-Encoding: chunked\r\nContent-Security-Policy: default-src 'self'; script-src 'self' https://tally.so/widgets/embed.js https://stats.beta.gouv.fr ;connect-src 'self' https://stats.beta.gouv.fr/matomo.php https://api-adresse.data.gouv.fr/search/ https://geo.api.gouv.fr/communes/;font-src 'self';img-src 'self' data: https://a.tile.openstreetmap.org https://b.tile.openstreetmap.org https://c.tile.openstreetmap.org;frame-ancestors 'none';style-src 'self' 'unsafe-inline'; frame-src https://tally.so;\r\nContent-Type: text/html; charset=utf-8\r\nDate: Sun, 07 Jul 2024 03:19:33 GMT\r\nEtag: W/\"6685482b-462\"\r\nLast-Modified: Wed, 03 Jul 2024 12:46:35 GMT\r\nStrict-Transport-Security: max-age=31536000\r\nVary: Accept-Encoding\r\nX-Content-Type-Options: nosniff\r\nX-Frame-Options: DENY\r\nX-Request-Id: 1eaf113d-7a70-42e6-9698-a1aa56cd9060\r\n\r\n<!doctype html>\n<html lang=\"fr\">\n  <head>\n    <meta charset=\"UTF-8\" />\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n    <link rel=\"icon\" href=\"/favicon/favicon-32.png\" sizes=\"32x32\" type=\"image/png\" />\n    <link rel=\"icon\" href=\"/favicon/favicon-128.png\" sizes=\"128x128\" type=\"image/png\" />\n    <link rel=\"icon\" href=\"/favicon/favicon-192.png\" sizes=\"192x192\" type=\"image/png\" />\n    <link rel=\"apple-touch-icon\" href=\"/favicon/favicon-180.png\" />\n    <link rel=\"manifest\" href=\"/favicon/manifest.webmanifest\" crossorigin=\"use-credentials\" />\n\n    <link rel=\"stylesheet\" href=\"/dsfr/utility/icons/icons.min.css\" />\n    <link rel=\"stylesheet\" href=\"/dsfr/dsfr.min.css\" />\n    <script async src=\"https://tally.so/widgets/embed.js\"></script>\n    <script src=\"/js/env-vars.js\"></script>\n    <title>Bénéfriches, l'outil qui calcule la valeur réelle de votre projet d'aménagement</title>\n  <script type=\"module\" crossorigin src=\"/assets/index-B_hf4Ul5.js\"></script>\n  <link rel=\"stylesheet\" crossorigin href=\"/assets/index-BLDTsyrD.css\">\n\n  <body>\n    <div id=\"root\"></div>\n  </body>\n</html>\n",
+      "ip": "185.21.194.105",
+      "timestamp": "2024-07-07T03:19:33.244400014Z",
       "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://benefriches.ademe.fr'",
       "matcher-status": true
     },
@@ -302,9 +185,9 @@
       "host": "https://benefriches.ademe.fr",
       "matched-at": "https://benefriches.ademe.fr",
       "request": "GET / HTTP/1.1\r\nHost: benefriches.ademe.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
-      "response": "HTTP/1.1 200 OK\r\nConnection: close\r\nTransfer-Encoding: chunked\r\nContent-Security-Policy: default-src 'self'; script-src 'self' https://tally.so/widgets/embed.js https://stats.beta.gouv.fr ;connect-src 'self' https://stats.beta.gouv.fr/matomo.php https://api-adresse.data.gouv.fr/search/ https://geo.api.gouv.fr/communes/;font-src 'self';img-src 'self' data: https://a.tile.openstreetmap.org https://b.tile.openstreetmap.org https://c.tile.openstreetmap.org;frame-ancestors 'none';style-src 'self' 'unsafe-inline'; frame-src https://tally.so;\r\nContent-Type: text/html; charset=utf-8\r\nDate: Sun, 30 Jun 2024 03:10:39 GMT\r\nEtag: W/\"667d9596-40d\"\r\nLast-Modified: Thu, 27 Jun 2024 16:38:46 GMT\r\nStrict-Transport-Security: max-age=31536000\r\nVary: Accept-Encoding\r\nX-Content-Type-Options: nosniff\r\nX-Frame-Options: DENY\r\nX-Request-Id: fcec7338-7ad7-4b0d-9448-b65773648c03\r\n\r\n<!doctype html>\n<html lang=\"fr\">\n  <head>\n    <meta charset=\"UTF-8\" />\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n    <link rel=\"apple-touch-icon\" href=\"/dsfr/favicon/apple-touch-icon.png\" />\n    <link rel=\"icon\" href=\"/dsfr/favicon/favicon.svg\" type=\"image/svg+xml\" />\n    <link rel=\"shortcut icon\" href=\"/dsfr/favicon/favicon.ico\" type=\"image/x-icon\" />\n    <link rel=\"manifest\" href=\"/dsfr/favicon/manifest.webmanifest\" crossorigin=\"use-credentials\" />\n\n    <link rel=\"stylesheet\" href=\"/dsfr/utility/icons/icons.min.css\" />\n    <link rel=\"stylesheet\" href=\"/dsfr/dsfr.min.css\" />\n    <script async src=\"https://tally.so/widgets/embed.js\"></script>\n    <script src=\"/js/env-vars.js\"></script>\n    <title>Bénéfriches, l'outil qui calcule la valeur réelle de votre projet d'aménagement</title>\n  <script type=\"module\" crossorigin src=\"/assets/index-BnF_f6EC.js\"></script>\n  <link rel=\"stylesheet\" crossorigin href=\"/assets/index-B_iKI1WQ.css\">\n\n  <body>\n    <div id=\"root\"></div>\n  </body>\n</html>\n",
-      "ip": "80.247.12.255",
-      "timestamp": "2024-06-30T03:10:39.899179905Z",
+      "response": "HTTP/1.1 200 OK\r\nConnection: close\r\nTransfer-Encoding: chunked\r\nContent-Security-Policy: default-src 'self'; script-src 'self' https://tally.so/widgets/embed.js https://stats.beta.gouv.fr ;connect-src 'self' https://stats.beta.gouv.fr/matomo.php https://api-adresse.data.gouv.fr/search/ https://geo.api.gouv.fr/communes/;font-src 'self';img-src 'self' data: https://a.tile.openstreetmap.org https://b.tile.openstreetmap.org https://c.tile.openstreetmap.org;frame-ancestors 'none';style-src 'self' 'unsafe-inline'; frame-src https://tally.so;\r\nContent-Type: text/html; charset=utf-8\r\nDate: Sun, 07 Jul 2024 03:19:33 GMT\r\nEtag: W/\"6685482b-462\"\r\nLast-Modified: Wed, 03 Jul 2024 12:46:35 GMT\r\nStrict-Transport-Security: max-age=31536000\r\nVary: Accept-Encoding\r\nX-Content-Type-Options: nosniff\r\nX-Frame-Options: DENY\r\nX-Request-Id: 1eaf113d-7a70-42e6-9698-a1aa56cd9060\r\n\r\n<!doctype html>\n<html lang=\"fr\">\n  <head>\n    <meta charset=\"UTF-8\" />\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n    <link rel=\"icon\" href=\"/favicon/favicon-32.png\" sizes=\"32x32\" type=\"image/png\" />\n    <link rel=\"icon\" href=\"/favicon/favicon-128.png\" sizes=\"128x128\" type=\"image/png\" />\n    <link rel=\"icon\" href=\"/favicon/favicon-192.png\" sizes=\"192x192\" type=\"image/png\" />\n    <link rel=\"apple-touch-icon\" href=\"/favicon/favicon-180.png\" />\n    <link rel=\"manifest\" href=\"/favicon/manifest.webmanifest\" crossorigin=\"use-credentials\" />\n\n    <link rel=\"stylesheet\" href=\"/dsfr/utility/icons/icons.min.css\" />\n    <link rel=\"stylesheet\" href=\"/dsfr/dsfr.min.css\" />\n    <script async src=\"https://tally.so/widgets/embed.js\"></script>\n    <script src=\"/js/env-vars.js\"></script>\n    <title>Bénéfriches, l'outil qui calcule la valeur réelle de votre projet d'aménagement</title>\n  <script type=\"module\" crossorigin src=\"/assets/index-B_hf4Ul5.js\"></script>\n  <link rel=\"stylesheet\" crossorigin href=\"/assets/index-BLDTsyrD.css\">\n\n  <body>\n    <div id=\"root\"></div>\n  </body>\n</html>\n",
+      "ip": "185.21.194.105",
+      "timestamp": "2024-07-07T03:19:33.244419731Z",
       "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://benefriches.ademe.fr'",
       "matcher-status": true
     },
@@ -341,9 +224,126 @@
       "host": "https://benefriches.ademe.fr",
       "matched-at": "https://benefriches.ademe.fr",
       "request": "GET / HTTP/1.1\r\nHost: benefriches.ademe.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
-      "response": "HTTP/1.1 200 OK\r\nConnection: close\r\nTransfer-Encoding: chunked\r\nContent-Security-Policy: default-src 'self'; script-src 'self' https://tally.so/widgets/embed.js https://stats.beta.gouv.fr ;connect-src 'self' https://stats.beta.gouv.fr/matomo.php https://api-adresse.data.gouv.fr/search/ https://geo.api.gouv.fr/communes/;font-src 'self';img-src 'self' data: https://a.tile.openstreetmap.org https://b.tile.openstreetmap.org https://c.tile.openstreetmap.org;frame-ancestors 'none';style-src 'self' 'unsafe-inline'; frame-src https://tally.so;\r\nContent-Type: text/html; charset=utf-8\r\nDate: Sun, 30 Jun 2024 03:10:39 GMT\r\nEtag: W/\"667d9596-40d\"\r\nLast-Modified: Thu, 27 Jun 2024 16:38:46 GMT\r\nStrict-Transport-Security: max-age=31536000\r\nVary: Accept-Encoding\r\nX-Content-Type-Options: nosniff\r\nX-Frame-Options: DENY\r\nX-Request-Id: fcec7338-7ad7-4b0d-9448-b65773648c03\r\n\r\n<!doctype html>\n<html lang=\"fr\">\n  <head>\n    <meta charset=\"UTF-8\" />\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n    <link rel=\"apple-touch-icon\" href=\"/dsfr/favicon/apple-touch-icon.png\" />\n    <link rel=\"icon\" href=\"/dsfr/favicon/favicon.svg\" type=\"image/svg+xml\" />\n    <link rel=\"shortcut icon\" href=\"/dsfr/favicon/favicon.ico\" type=\"image/x-icon\" />\n    <link rel=\"manifest\" href=\"/dsfr/favicon/manifest.webmanifest\" crossorigin=\"use-credentials\" />\n\n    <link rel=\"stylesheet\" href=\"/dsfr/utility/icons/icons.min.css\" />\n    <link rel=\"stylesheet\" href=\"/dsfr/dsfr.min.css\" />\n    <script async src=\"https://tally.so/widgets/embed.js\"></script>\n    <script src=\"/js/env-vars.js\"></script>\n    <title>Bénéfriches, l'outil qui calcule la valeur réelle de votre projet d'aménagement</title>\n  <script type=\"module\" crossorigin src=\"/assets/index-BnF_f6EC.js\"></script>\n  <link rel=\"stylesheet\" crossorigin href=\"/assets/index-B_iKI1WQ.css\">\n\n  <body>\n    <div id=\"root\"></div>\n  </body>\n</html>\n",
-      "ip": "80.247.12.255",
-      "timestamp": "2024-06-30T03:10:39.899257527Z",
+      "response": "HTTP/1.1 200 OK\r\nConnection: close\r\nTransfer-Encoding: chunked\r\nContent-Security-Policy: default-src 'self'; script-src 'self' https://tally.so/widgets/embed.js https://stats.beta.gouv.fr ;connect-src 'self' https://stats.beta.gouv.fr/matomo.php https://api-adresse.data.gouv.fr/search/ https://geo.api.gouv.fr/communes/;font-src 'self';img-src 'self' data: https://a.tile.openstreetmap.org https://b.tile.openstreetmap.org https://c.tile.openstreetmap.org;frame-ancestors 'none';style-src 'self' 'unsafe-inline'; frame-src https://tally.so;\r\nContent-Type: text/html; charset=utf-8\r\nDate: Sun, 07 Jul 2024 03:19:33 GMT\r\nEtag: W/\"6685482b-462\"\r\nLast-Modified: Wed, 03 Jul 2024 12:46:35 GMT\r\nStrict-Transport-Security: max-age=31536000\r\nVary: Accept-Encoding\r\nX-Content-Type-Options: nosniff\r\nX-Frame-Options: DENY\r\nX-Request-Id: 1eaf113d-7a70-42e6-9698-a1aa56cd9060\r\n\r\n<!doctype html>\n<html lang=\"fr\">\n  <head>\n    <meta charset=\"UTF-8\" />\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n    <link rel=\"icon\" href=\"/favicon/favicon-32.png\" sizes=\"32x32\" type=\"image/png\" />\n    <link rel=\"icon\" href=\"/favicon/favicon-128.png\" sizes=\"128x128\" type=\"image/png\" />\n    <link rel=\"icon\" href=\"/favicon/favicon-192.png\" sizes=\"192x192\" type=\"image/png\" />\n    <link rel=\"apple-touch-icon\" href=\"/favicon/favicon-180.png\" />\n    <link rel=\"manifest\" href=\"/favicon/manifest.webmanifest\" crossorigin=\"use-credentials\" />\n\n    <link rel=\"stylesheet\" href=\"/dsfr/utility/icons/icons.min.css\" />\n    <link rel=\"stylesheet\" href=\"/dsfr/dsfr.min.css\" />\n    <script async src=\"https://tally.so/widgets/embed.js\"></script>\n    <script src=\"/js/env-vars.js\"></script>\n    <title>Bénéfriches, l'outil qui calcule la valeur réelle de votre projet d'aménagement</title>\n  <script type=\"module\" crossorigin src=\"/assets/index-B_hf4Ul5.js\"></script>\n  <link rel=\"stylesheet\" crossorigin href=\"/assets/index-BLDTsyrD.css\">\n\n  <body>\n    <div id=\"root\"></div>\n  </body>\n</html>\n",
+      "ip": "185.21.194.105",
+      "timestamp": "2024-07-07T03:19:33.24443514Z",
+      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://benefriches.ademe.fr'",
+      "matcher-status": true
+    },
+    {
+      "template": "http/misconfiguration/http-missing-security-headers.yaml",
+      "template-url": "https://templates.nuclei.sh/public/http-missing-security-headers",
+      "template-id": "http-missing-security-headers",
+      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/http-missing-security-headers.yaml",
+      "info": {
+        "name": "HTTP Missing Security Headers",
+        "author": [
+          "socketz",
+          "geeknik",
+          "g4l1t0",
+          "convisoappsec",
+          "kurohost",
+          "dawid-czarnecki",
+          "forgedhallpass",
+          "jub0bs"
+        ],
+        "tags": [
+          "misconfig",
+          "headers",
+          "generic"
+        ],
+        "description": "This template searches for missing HTTP security headers. The impact of these missing headers can vary.\n",
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        }
+      },
+      "matcher-name": "cross-origin-embedder-policy",
+      "type": "http",
+      "host": "https://benefriches.ademe.fr",
+      "matched-at": "https://benefriches.ademe.fr",
+      "request": "GET / HTTP/1.1\r\nHost: benefriches.ademe.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 200 OK\r\nConnection: close\r\nTransfer-Encoding: chunked\r\nContent-Security-Policy: default-src 'self'; script-src 'self' https://tally.so/widgets/embed.js https://stats.beta.gouv.fr ;connect-src 'self' https://stats.beta.gouv.fr/matomo.php https://api-adresse.data.gouv.fr/search/ https://geo.api.gouv.fr/communes/;font-src 'self';img-src 'self' data: https://a.tile.openstreetmap.org https://b.tile.openstreetmap.org https://c.tile.openstreetmap.org;frame-ancestors 'none';style-src 'self' 'unsafe-inline'; frame-src https://tally.so;\r\nContent-Type: text/html; charset=utf-8\r\nDate: Sun, 07 Jul 2024 03:19:33 GMT\r\nEtag: W/\"6685482b-462\"\r\nLast-Modified: Wed, 03 Jul 2024 12:46:35 GMT\r\nStrict-Transport-Security: max-age=31536000\r\nVary: Accept-Encoding\r\nX-Content-Type-Options: nosniff\r\nX-Frame-Options: DENY\r\nX-Request-Id: 1eaf113d-7a70-42e6-9698-a1aa56cd9060\r\n\r\n<!doctype html>\n<html lang=\"fr\">\n  <head>\n    <meta charset=\"UTF-8\" />\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n    <link rel=\"icon\" href=\"/favicon/favicon-32.png\" sizes=\"32x32\" type=\"image/png\" />\n    <link rel=\"icon\" href=\"/favicon/favicon-128.png\" sizes=\"128x128\" type=\"image/png\" />\n    <link rel=\"icon\" href=\"/favicon/favicon-192.png\" sizes=\"192x192\" type=\"image/png\" />\n    <link rel=\"apple-touch-icon\" href=\"/favicon/favicon-180.png\" />\n    <link rel=\"manifest\" href=\"/favicon/manifest.webmanifest\" crossorigin=\"use-credentials\" />\n\n    <link rel=\"stylesheet\" href=\"/dsfr/utility/icons/icons.min.css\" />\n    <link rel=\"stylesheet\" href=\"/dsfr/dsfr.min.css\" />\n    <script async src=\"https://tally.so/widgets/embed.js\"></script>\n    <script src=\"/js/env-vars.js\"></script>\n    <title>Bénéfriches, l'outil qui calcule la valeur réelle de votre projet d'aménagement</title>\n  <script type=\"module\" crossorigin src=\"/assets/index-B_hf4Ul5.js\"></script>\n  <link rel=\"stylesheet\" crossorigin href=\"/assets/index-BLDTsyrD.css\">\n\n  <body>\n    <div id=\"root\"></div>\n  </body>\n</html>\n",
+      "ip": "185.21.194.105",
+      "timestamp": "2024-07-07T03:19:33.244448354Z",
+      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://benefriches.ademe.fr'",
+      "matcher-status": true
+    },
+    {
+      "template": "http/misconfiguration/http-missing-security-headers.yaml",
+      "template-url": "https://templates.nuclei.sh/public/http-missing-security-headers",
+      "template-id": "http-missing-security-headers",
+      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/http-missing-security-headers.yaml",
+      "info": {
+        "name": "HTTP Missing Security Headers",
+        "author": [
+          "socketz",
+          "geeknik",
+          "g4l1t0",
+          "convisoappsec",
+          "kurohost",
+          "dawid-czarnecki",
+          "forgedhallpass",
+          "jub0bs"
+        ],
+        "tags": [
+          "misconfig",
+          "headers",
+          "generic"
+        ],
+        "description": "This template searches for missing HTTP security headers. The impact of these missing headers can vary.\n",
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        }
+      },
+      "matcher-name": "cross-origin-opener-policy",
+      "type": "http",
+      "host": "https://benefriches.ademe.fr",
+      "matched-at": "https://benefriches.ademe.fr",
+      "request": "GET / HTTP/1.1\r\nHost: benefriches.ademe.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 200 OK\r\nConnection: close\r\nTransfer-Encoding: chunked\r\nContent-Security-Policy: default-src 'self'; script-src 'self' https://tally.so/widgets/embed.js https://stats.beta.gouv.fr ;connect-src 'self' https://stats.beta.gouv.fr/matomo.php https://api-adresse.data.gouv.fr/search/ https://geo.api.gouv.fr/communes/;font-src 'self';img-src 'self' data: https://a.tile.openstreetmap.org https://b.tile.openstreetmap.org https://c.tile.openstreetmap.org;frame-ancestors 'none';style-src 'self' 'unsafe-inline'; frame-src https://tally.so;\r\nContent-Type: text/html; charset=utf-8\r\nDate: Sun, 07 Jul 2024 03:19:33 GMT\r\nEtag: W/\"6685482b-462\"\r\nLast-Modified: Wed, 03 Jul 2024 12:46:35 GMT\r\nStrict-Transport-Security: max-age=31536000\r\nVary: Accept-Encoding\r\nX-Content-Type-Options: nosniff\r\nX-Frame-Options: DENY\r\nX-Request-Id: 1eaf113d-7a70-42e6-9698-a1aa56cd9060\r\n\r\n<!doctype html>\n<html lang=\"fr\">\n  <head>\n    <meta charset=\"UTF-8\" />\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n    <link rel=\"icon\" href=\"/favicon/favicon-32.png\" sizes=\"32x32\" type=\"image/png\" />\n    <link rel=\"icon\" href=\"/favicon/favicon-128.png\" sizes=\"128x128\" type=\"image/png\" />\n    <link rel=\"icon\" href=\"/favicon/favicon-192.png\" sizes=\"192x192\" type=\"image/png\" />\n    <link rel=\"apple-touch-icon\" href=\"/favicon/favicon-180.png\" />\n    <link rel=\"manifest\" href=\"/favicon/manifest.webmanifest\" crossorigin=\"use-credentials\" />\n\n    <link rel=\"stylesheet\" href=\"/dsfr/utility/icons/icons.min.css\" />\n    <link rel=\"stylesheet\" href=\"/dsfr/dsfr.min.css\" />\n    <script async src=\"https://tally.so/widgets/embed.js\"></script>\n    <script src=\"/js/env-vars.js\"></script>\n    <title>Bénéfriches, l'outil qui calcule la valeur réelle de votre projet d'aménagement</title>\n  <script type=\"module\" crossorigin src=\"/assets/index-B_hf4Ul5.js\"></script>\n  <link rel=\"stylesheet\" crossorigin href=\"/assets/index-BLDTsyrD.css\">\n\n  <body>\n    <div id=\"root\"></div>\n  </body>\n</html>\n",
+      "ip": "185.21.194.105",
+      "timestamp": "2024-07-07T03:19:33.244468572Z",
+      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://benefriches.ademe.fr'",
+      "matcher-status": true
+    },
+    {
+      "template": "http/misconfiguration/http-missing-security-headers.yaml",
+      "template-url": "https://templates.nuclei.sh/public/http-missing-security-headers",
+      "template-id": "http-missing-security-headers",
+      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/http-missing-security-headers.yaml",
+      "info": {
+        "name": "HTTP Missing Security Headers",
+        "author": [
+          "socketz",
+          "geeknik",
+          "g4l1t0",
+          "convisoappsec",
+          "kurohost",
+          "dawid-czarnecki",
+          "forgedhallpass",
+          "jub0bs"
+        ],
+        "tags": [
+          "misconfig",
+          "headers",
+          "generic"
+        ],
+        "description": "This template searches for missing HTTP security headers. The impact of these missing headers can vary.\n",
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        }
+      },
+      "matcher-name": "cross-origin-resource-policy",
+      "type": "http",
+      "host": "https://benefriches.ademe.fr",
+      "matched-at": "https://benefriches.ademe.fr",
+      "request": "GET / HTTP/1.1\r\nHost: benefriches.ademe.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 200 OK\r\nConnection: close\r\nTransfer-Encoding: chunked\r\nContent-Security-Policy: default-src 'self'; script-src 'self' https://tally.so/widgets/embed.js https://stats.beta.gouv.fr ;connect-src 'self' https://stats.beta.gouv.fr/matomo.php https://api-adresse.data.gouv.fr/search/ https://geo.api.gouv.fr/communes/;font-src 'self';img-src 'self' data: https://a.tile.openstreetmap.org https://b.tile.openstreetmap.org https://c.tile.openstreetmap.org;frame-ancestors 'none';style-src 'self' 'unsafe-inline'; frame-src https://tally.so;\r\nContent-Type: text/html; charset=utf-8\r\nDate: Sun, 07 Jul 2024 03:19:33 GMT\r\nEtag: W/\"6685482b-462\"\r\nLast-Modified: Wed, 03 Jul 2024 12:46:35 GMT\r\nStrict-Transport-Security: max-age=31536000\r\nVary: Accept-Encoding\r\nX-Content-Type-Options: nosniff\r\nX-Frame-Options: DENY\r\nX-Request-Id: 1eaf113d-7a70-42e6-9698-a1aa56cd9060\r\n\r\n<!doctype html>\n<html lang=\"fr\">\n  <head>\n    <meta charset=\"UTF-8\" />\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n    <link rel=\"icon\" href=\"/favicon/favicon-32.png\" sizes=\"32x32\" type=\"image/png\" />\n    <link rel=\"icon\" href=\"/favicon/favicon-128.png\" sizes=\"128x128\" type=\"image/png\" />\n    <link rel=\"icon\" href=\"/favicon/favicon-192.png\" sizes=\"192x192\" type=\"image/png\" />\n    <link rel=\"apple-touch-icon\" href=\"/favicon/favicon-180.png\" />\n    <link rel=\"manifest\" href=\"/favicon/manifest.webmanifest\" crossorigin=\"use-credentials\" />\n\n    <link rel=\"stylesheet\" href=\"/dsfr/utility/icons/icons.min.css\" />\n    <link rel=\"stylesheet\" href=\"/dsfr/dsfr.min.css\" />\n    <script async src=\"https://tally.so/widgets/embed.js\"></script>\n    <script src=\"/js/env-vars.js\"></script>\n    <title>Bénéfriches, l'outil qui calcule la valeur réelle de votre projet d'aménagement</title>\n  <script type=\"module\" crossorigin src=\"/assets/index-B_hf4Ul5.js\"></script>\n  <link rel=\"stylesheet\" crossorigin href=\"/assets/index-BLDTsyrD.css\">\n\n  <body>\n    <div id=\"root\"></div>\n  </body>\n</html>\n",
+      "ip": "185.21.194.105",
+      "timestamp": "2024-07-07T03:19:33.244481887Z",
       "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://benefriches.ademe.fr'",
       "matcher-status": true
     },
@@ -380,9 +380,9 @@
         "https://tally.so/widgets/embed.js"
       ],
       "request": "GET / HTTP/1.1\r\nHost: benefriches.ademe.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept-Encoding: gzip\r\n\r\n",
-      "response": "HTTP/1.1 200 OK\r\nConnection: close\r\nTransfer-Encoding: chunked\r\nContent-Security-Policy: default-src 'self'; script-src 'self' https://tally.so/widgets/embed.js https://stats.beta.gouv.fr ;connect-src 'self' https://stats.beta.gouv.fr/matomo.php https://api-adresse.data.gouv.fr/search/ https://geo.api.gouv.fr/communes/;font-src 'self';img-src 'self' data: https://a.tile.openstreetmap.org https://b.tile.openstreetmap.org https://c.tile.openstreetmap.org;frame-ancestors 'none';style-src 'self' 'unsafe-inline'; frame-src https://tally.so;\r\nContent-Type: text/html; charset=utf-8\r\nDate: Sun, 30 Jun 2024 03:10:55 GMT\r\nEtag: W/\"667d9596-40d\"\r\nLast-Modified: Thu, 27 Jun 2024 16:38:46 GMT\r\nStrict-Transport-Security: max-age=31536000\r\nVary: Accept-Encoding\r\nX-Content-Type-Options: nosniff\r\nX-Frame-Options: DENY\r\nX-Request-Id: 9c5563bf-68e0-4e15-ab94-54993e87b092\r\n\r\n<!doctype html>\n<html lang=\"fr\">\n  <head>\n    <meta charset=\"UTF-8\" />\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n    <link rel=\"apple-touch-icon\" href=\"/dsfr/favicon/apple-touch-icon.png\" />\n    <link rel=\"icon\" href=\"/dsfr/favicon/favicon.svg\" type=\"image/svg+xml\" />\n    <link rel=\"shortcut icon\" href=\"/dsfr/favicon/favicon.ico\" type=\"image/x-icon\" />\n    <link rel=\"manifest\" href=\"/dsfr/favicon/manifest.webmanifest\" crossorigin=\"use-credentials\" />\n\n    <link rel=\"stylesheet\" href=\"/dsfr/utility/icons/icons.min.css\" />\n    <link rel=\"stylesheet\" href=\"/dsfr/dsfr.min.css\" />\n    <script async src=\"https://tally.so/widgets/embed.js\"></script>\n    <script src=\"/js/env-vars.js\"></script>\n    <title>Bénéfriches, l'outil qui calcule la valeur réelle de votre projet d'aménagement</title>\n  <script type=\"module\" crossorigin src=\"/assets/index-BnF_f6EC.js\"></script>\n  <link rel=\"stylesheet\" crossorigin href=\"/assets/index-B_iKI1WQ.css\">\n\n  <body>\n    <div id=\"root\"></div>\n  </body>\n</html>\n",
-      "ip": "80.247.12.255",
-      "timestamp": "2024-06-30T03:10:55.543254712Z",
+      "response": "HTTP/1.1 200 OK\r\nConnection: close\r\nTransfer-Encoding: chunked\r\nContent-Security-Policy: default-src 'self'; script-src 'self' https://tally.so/widgets/embed.js https://stats.beta.gouv.fr ;connect-src 'self' https://stats.beta.gouv.fr/matomo.php https://api-adresse.data.gouv.fr/search/ https://geo.api.gouv.fr/communes/;font-src 'self';img-src 'self' data: https://a.tile.openstreetmap.org https://b.tile.openstreetmap.org https://c.tile.openstreetmap.org;frame-ancestors 'none';style-src 'self' 'unsafe-inline'; frame-src https://tally.so;\r\nContent-Type: text/html; charset=utf-8\r\nDate: Sun, 07 Jul 2024 03:19:52 GMT\r\nEtag: W/\"6685482b-462\"\r\nLast-Modified: Wed, 03 Jul 2024 12:46:35 GMT\r\nStrict-Transport-Security: max-age=31536000\r\nVary: Accept-Encoding\r\nX-Content-Type-Options: nosniff\r\nX-Frame-Options: DENY\r\nX-Request-Id: 9c87baf0-e1af-4740-b141-c8f55583a57e\r\n\r\n<!doctype html>\n<html lang=\"fr\">\n  <head>\n    <meta charset=\"UTF-8\" />\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n    <link rel=\"icon\" href=\"/favicon/favicon-32.png\" sizes=\"32x32\" type=\"image/png\" />\n    <link rel=\"icon\" href=\"/favicon/favicon-128.png\" sizes=\"128x128\" type=\"image/png\" />\n    <link rel=\"icon\" href=\"/favicon/favicon-192.png\" sizes=\"192x192\" type=\"image/png\" />\n    <link rel=\"apple-touch-icon\" href=\"/favicon/favicon-180.png\" />\n    <link rel=\"manifest\" href=\"/favicon/manifest.webmanifest\" crossorigin=\"use-credentials\" />\n\n    <link rel=\"stylesheet\" href=\"/dsfr/utility/icons/icons.min.css\" />\n    <link rel=\"stylesheet\" href=\"/dsfr/dsfr.min.css\" />\n    <script async src=\"https://tally.so/widgets/embed.js\"></script>\n    <script src=\"/js/env-vars.js\"></script>\n    <title>Bénéfriches, l'outil qui calcule la valeur réelle de votre projet d'aménagement</title>\n  <script type=\"module\" crossorigin src=\"/assets/index-B_hf4Ul5.js\"></script>\n  <link rel=\"stylesheet\" crossorigin href=\"/assets/index-BLDTsyrD.css\">\n\n  <body>\n    <div id=\"root\"></div>\n  </body>\n</html>\n",
+      "ip": "185.21.194.105",
+      "timestamp": "2024-07-07T03:19:52.591196151Z",
       "curl-command": "curl -X 'GET' -d '' -H 'Host: benefriches.ademe.fr' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://benefriches.ademe.fr/'",
       "matcher-status": true
     },
@@ -422,9 +422,9 @@
       "host": "https://benefriches.ademe.fr",
       "matched-at": "https://benefriches.ademe.fr/",
       "request": "POST / HTTP/1.1\r\nHost: benefriches.ademe.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nContent-Length: 27\r\nContent-Type: application/x-www-form-urlencoded\r\nAccept-Encoding: gzip\r\n\r\n_=<script>alert(1)</script>",
-      "response": "HTTP/1.1 405 Not Allowed\r\nConnection: close\r\nContent-Length: 150\r\nContent-Type: text/html; charset=utf-8\r\nDate: Sun, 30 Jun 2024 03:11:02 GMT\r\nStrict-Transport-Security: max-age=31536000\r\nX-Request-Id: cfa5687e-e530-4527-adec-acd790958ce5\r\n\r\n<html>\r\n<head><title>405 Not Allowed</title></head>\r\n<body>\r\n<center><h1>405 Not Allowed</h1></center>\r\n<hr><center>nginx</center>\r\n</body>\r\n</html>\r\n",
-      "ip": "80.247.12.255",
-      "timestamp": "2024-06-30T03:11:02.77932165Z",
+      "response": "HTTP/1.1 405 Not Allowed\r\nConnection: close\r\nContent-Length: 150\r\nContent-Type: text/html; charset=utf-8\r\nDate: Sun, 07 Jul 2024 03:20:01 GMT\r\nStrict-Transport-Security: max-age=31536000\r\nX-Request-Id: 5551beb5-da55-4f25-bcf9-d6d3b7dde1ee\r\n\r\n<html>\r\n<head><title>405 Not Allowed</title></head>\r\n<body>\r\n<center><h1>405 Not Allowed</h1></center>\r\n<hr><center>nginx</center>\r\n</body>\r\n</html>\r\n",
+      "ip": "185.21.194.105",
+      "timestamp": "2024-07-07T03:20:01.447864774Z",
       "curl-command": "curl -X 'POST' -d '_=<script>alert(1)</script>' -H 'Content-Type: application/x-www-form-urlencoded' -H 'Host: benefriches.ademe.fr' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://benefriches.ademe.fr/'",
       "matcher-status": true
     },
@@ -454,8 +454,8 @@
       "extracted-results": [
         "Let's Encrypt"
       ],
-      "ip": "80.247.12.255",
-      "timestamp": "2024-06-30T03:16:42.690569115Z",
+      "ip": "185.21.194.105",
+      "timestamp": "2024-07-07T03:25:25.330757805Z",
       "matcher-status": true
     },
     {
@@ -484,8 +484,8 @@
       "extracted-results": [
         "benefriches.ademe.fr"
       ],
-      "ip": "80.247.12.255",
-      "timestamp": "2024-06-30T03:16:42.690692316Z",
+      "ip": "185.21.194.105",
+      "timestamp": "2024-07-07T03:25:25.330867971Z",
       "matcher-status": true
     },
     {
@@ -515,8 +515,8 @@
       "extracted-results": [
         "tls12"
       ],
-      "ip": "80.247.12.255",
-      "timestamp": "2024-06-30T03:16:43.985067829Z",
+      "ip": "185.21.194.105",
+      "timestamp": "2024-07-07T03:25:26.926256575Z",
       "matcher-status": true
     },
     {
@@ -546,8 +546,8 @@
       "extracted-results": [
         "tls13"
       ],
-      "ip": "80.247.12.255",
-      "timestamp": "2024-06-30T03:16:44.160588204Z",
+      "ip": "185.21.194.105",
+      "timestamp": "2024-07-07T03:25:27.143414437Z",
       "matcher-status": true
     }
   ]
