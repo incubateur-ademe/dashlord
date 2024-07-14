@@ -1,7 +1,7 @@
 {
 	"@programName": "ZAP",
 	"@version": "2.15.0",
-	"@generated": "Tue, 9 Jul 2024 13:04:12",
+	"@generated": "Sun, 14 Jul 2024 03:51:56",
 	"site":[ 
 		{
 			"@name": "https://pacoupa.ademe.vercel.app",
@@ -189,14 +189,6 @@
 							"otherinfo": "The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing."
 						},
 						{
-							"uri": "https://pacoupa.ademe.vercel.app/_next/static/css/84597b599566c1a7.css",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "Access-Control-Allow-Origin: *",
-							"otherinfo": "The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing."
-						},
-						{
 							"uri": "https://pacoupa.ademe.vercel.app/_next/static/css/9266761ab7584a65.css",
 							"method": "GET",
 							"param": "",
@@ -214,6 +206,14 @@
 						},
 						{
 							"uri": "https://pacoupa.ademe.vercel.app/accessibilite",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "Access-Control-Allow-Origin: *",
+							"otherinfo": "The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing."
+						},
+						{
+							"uri": "https://pacoupa.ademe.vercel.app/cgu",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -267,7 +267,7 @@
 					"reference": "<p>https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.html5_overly_permissive_cors_policy</p>",
 					"cweid": "264",
 					"wascid": "14",
-					"sourceid": "9"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "90003",
@@ -374,7 +374,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/Security/Subresource_Integrity</p>",
 					"cweid": "345",
 					"wascid": "15",
-					"sourceid": "9"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "10096",
@@ -409,7 +409,7 @@
 					"reference": "<p>https://cwe.mitre.org/data/definitions/200.html</p>",
 					"cweid": "200",
 					"wascid": "13",
-					"sourceid": "114"
+					"sourceid": "113"
 				},
 				{
 					"pluginid": "10094",
@@ -516,7 +516,7 @@
 					"reference": "<p>https://projects.webappsec.org/w/page/13246936/Information%20Leakage</p>",
 					"cweid": "200",
 					"wascid": "13",
-					"sourceid": "9"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "10027",
@@ -543,6 +543,14 @@
 							"attack": "",
 							"evidence": "from",
 							"otherinfo": "The following pattern was used: \\bFROM\\b and was detected 2 times, the first in the element starting with: \" * The buffer module from node.js, for the browser.\", see evidence field for the suspicious comment/snippet."
+						},
+						{
+							"uri": "https://pacoupa.ademe.vercel.app/_next/static/chunks/446-026e6c83a907f8ab.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "select",
+							"otherinfo": "The following pattern was used: \\bSELECT\\b and was detected in the element starting with: \"`),w.rippleVisible,M,550,({theme:e})=>e.transitions.easing.easeInOut,w.ripplePulsate,({theme:e})=>e.transitions.duration.shorter\", see evidence field for the suspicious comment/snippet."
 						},
 						{
 							"uri": "https://pacoupa.ademe.vercel.app/_next/static/chunks/749-81bfa09d9d662009.js",
@@ -625,13 +633,13 @@
 							"otherinfo": "The following pattern was used: \\bQUERY\\b and was detected in the element starting with: \"!function(){var t=\"undefined\"!=typeof globalThis?globalThis:\"undefined\"!=typeof window?window:\"undefined\"!=typeof global?global:\", see evidence field for the suspicious comment/snippet."
 						}
 					],
-					"count": "12",
+					"count": "13",
 					"solution": "<p>Remove all comments that return information that may help an attacker and fix any underlying problems they refer to.</p>",
 					"otherinfo": "<p>The following pattern was used: \\bFROM\\b and was detected in the element starting with: \"(self.webpackChunk_N_E=self.webpackChunk_N_E||[]).push([[124],{34487:function(e,t,n){\"use strict\";n.d(t,{s:function(){return s}}\", see evidence field for the suspicious comment/snippet.</p>",
 					"reference": "",
 					"cweid": "200",
 					"wascid": "13",
-					"sourceid": "160"
+					"sourceid": "161"
 				},
 				{
 					"pluginid": "10015",
@@ -716,7 +724,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://pacoupa.ademe.vercel.app/simulation/etapes?adresse=ZAP",
+							"uri": "https://pacoupa.ademe.vercel.app/simulation/etapes",
 							"method": "GET",
 							"param": "cache-control",
 							"attack": "",
@@ -755,7 +763,7 @@
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "Age: 88380",
+							"evidence": "Age: 487244",
 							"otherinfo": "The presence of the 'Age' header indicates that a HTTP/1.1 compliant caching server is in use."
 						},
 						{
@@ -763,15 +771,15 @@
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "Age: 88380",
+							"evidence": "Age: 487244",
 							"otherinfo": "The presence of the 'Age' header indicates that a HTTP/1.1 compliant caching server is in use."
 						},
 						{
-							"uri": "https://pacoupa.ademe.vercel.app/_next/static/css/84597b599566c1a7.css",
+							"uri": "https://pacoupa.ademe.vercel.app/_next/static/chunks/webpack-83f903d97a980dc8.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "Age: 480",
+							"evidence": "Age: 664",
 							"otherinfo": "The presence of the 'Age' header indicates that a HTTP/1.1 compliant caching server is in use."
 						},
 						{
@@ -779,7 +787,7 @@
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "Age: 480",
+							"evidence": "Age: 664",
 							"otherinfo": "The presence of the 'Age' header indicates that a HTTP/1.1 compliant caching server is in use."
 						},
 						{
@@ -787,7 +795,7 @@
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "Age: 479",
+							"evidence": "Age: 664",
 							"otherinfo": "The presence of the 'Age' header indicates that a HTTP/1.1 compliant caching server is in use."
 						},
 						{
@@ -795,15 +803,7 @@
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "Age: 0",
-							"otherinfo": "The presence of the 'Age' header indicates that a HTTP/1.1 compliant caching server is in use."
-						},
-						{
-							"uri": "https://pacoupa.ademe.vercel.app/cgu",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "Age: 0",
+							"evidence": "Age: 398863",
 							"otherinfo": "The presence of the 'Age' header indicates that a HTTP/1.1 compliant caching server is in use."
 						},
 						{
@@ -811,7 +811,7 @@
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "Age: 479",
+							"evidence": "Age: 664",
 							"otherinfo": "The presence of the 'Age' header indicates that a HTTP/1.1 compliant caching server is in use."
 						},
 						{
@@ -819,7 +819,7 @@
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "Age: 480",
+							"evidence": "Age: 664",
 							"otherinfo": "The presence of the 'Age' header indicates that a HTTP/1.1 compliant caching server is in use."
 						},
 						{
@@ -827,7 +827,15 @@
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "Age: 415",
+							"evidence": "Age: 399279",
+							"otherinfo": "The presence of the 'Age' header indicates that a HTTP/1.1 compliant caching server is in use."
+						},
+						{
+							"uri": "https://pacoupa.ademe.vercel.app/simulation",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "Age: 398863",
 							"otherinfo": "The presence of the 'Age' header indicates that a HTTP/1.1 compliant caching server is in use."
 						},
 						{
@@ -835,7 +843,7 @@
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "Age: 415",
+							"evidence": "Age: 258",
 							"otherinfo": "The presence of the 'Age' header indicates that a HTTP/1.1 compliant caching server is in use."
 						}
 					],
@@ -845,7 +853,7 @@
 					"reference": "<p>https://tools.ietf.org/html/rfc7234</p><p>https://tools.ietf.org/html/rfc7231</p><p>https://www.rfc-editor.org/rfc/rfc9110.html</p>",
 					"cweid": "-1",
 					"wascid": "-1",
-					"sourceid": "9"
+					"sourceid": "6"
 				},
 				{
 					"pluginid": "90005",
@@ -858,7 +866,7 @@
 					"desc": "<p>Specifies how and where the data would be used. For instance, if the value is audio, then the requested resource must be audio data and not any other type of resource.</p>",
 					"instances":[ 
 						{
-							"uri": "https://pacoupa.ademe.vercel.app/img/ademe-logo-2022-1.svg",
+							"uri": "https://pacoupa.ademe.vercel.app",
 							"method": "GET",
 							"param": "Sec-Fetch-Dest",
 							"attack": "",
@@ -888,7 +896,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Dest</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "64"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "90005",
@@ -901,7 +909,7 @@
 					"desc": "<p>Allows to differentiate between requests for navigating between HTML pages and requests for loading resources like images, audio etc.</p>",
 					"instances":[ 
 						{
-							"uri": "https://pacoupa.ademe.vercel.app/img/ademe-logo-2022-1.svg",
+							"uri": "https://pacoupa.ademe.vercel.app",
 							"method": "GET",
 							"param": "Sec-Fetch-Mode",
 							"attack": "",
@@ -931,7 +939,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Mode</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "64"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "90005",
@@ -944,7 +952,7 @@
 					"desc": "<p>Specifies the relationship between request initiator's origin and target's origin.</p>",
 					"instances":[ 
 						{
-							"uri": "https://pacoupa.ademe.vercel.app/img/ademe-logo-2022-1.svg",
+							"uri": "https://pacoupa.ademe.vercel.app",
 							"method": "GET",
 							"param": "Sec-Fetch-Site",
 							"attack": "",
@@ -974,7 +982,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Site</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "64"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "90005",
@@ -987,7 +995,7 @@
 					"desc": "<p>Specifies if a navigation request was initiated by a user.</p>",
 					"instances":[ 
 						{
-							"uri": "https://pacoupa.ademe.vercel.app/img/ademe-logo-2022-1.svg",
+							"uri": "https://pacoupa.ademe.vercel.app",
 							"method": "GET",
 							"param": "Sec-Fetch-User",
 							"attack": "",
@@ -1017,7 +1025,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-User</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "64"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "10049",
@@ -1030,7 +1038,7 @@
 					"desc": "<p>The response contents are storable by caching components such as proxy servers, and may be retrieved directly from the cache, rather than from the origin server by the caching servers, in response to similar requests from other users. If the response data is sensitive, personal or user-specific, this may result in sensitive information being leaked. In some cases, this may even result in a user gaining complete control of the session of another user, depending on the configuration of the caching components in use in their environment. This is primarily an issue where \"shared\" caching servers such as \"proxy\" caches are configured on the local network. This configuration is typically found in corporate or educational environments, for instance.</p>",
 					"instances":[ 
 						{
-							"uri": "https://pacoupa.ademe.vercel.app/_next/static/css/84597b599566c1a7.css",
+							"uri": "https://pacoupa.ademe.vercel.app/_next/static/chunks/webpack-83f903d97a980dc8.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1143,7 +1151,7 @@
 					"reference": "<p>https://datatracker.ietf.org/doc/html/rfc7234</p><p>https://datatracker.ietf.org/doc/html/rfc7231</p><p>https://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html</p>",
 					"cweid": "524",
 					"wascid": "13",
-					"sourceid": "9"
+					"sourceid": "6"
 				}
 			]
 		}
