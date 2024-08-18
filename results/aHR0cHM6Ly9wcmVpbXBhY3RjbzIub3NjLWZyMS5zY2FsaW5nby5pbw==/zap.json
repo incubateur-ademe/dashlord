@@ -1,7 +1,7 @@
 {
 	"@programName": "ZAP",
 	"@version": "2.15.0",
-	"@generated": "Sun, 11 Aug 2024 02:00:44",
+	"@generated": "Sun, 18 Aug 2024 01:52:16",
 	"site":[ 
 		{
 			"@name": "https://preimpactco2.osc-fr1.scalingo.io",
@@ -28,7 +28,7 @@
 							"otherinfo": "The following directives either allow wildcard sources (or ancestors), are not defined, or are overly broadly defined:\nstyle-src, img-src, frame-ancestors, font-src\n\nThe directive(s): frame-ancestors are among the directives that do not fallback to default-src, missing/excluding them is the same as allowing anything."
 						},
 						{
-							"uri": "https://preimpactco2.osc-fr1.scalingo.io/",
+							"uri": "https://preimpactco2.osc-fr1.scalingo.io/doc",
 							"method": "GET",
 							"param": "Content-Security-Policy",
 							"attack": "",
@@ -71,7 +71,7 @@
 							"otherinfo": "script-src includes unsafe-inline."
 						},
 						{
-							"uri": "https://preimpactco2.osc-fr1.scalingo.io/",
+							"uri": "https://preimpactco2.osc-fr1.scalingo.io/doc",
 							"method": "GET",
 							"param": "Content-Security-Policy",
 							"attack": "",
@@ -114,7 +114,7 @@
 							"otherinfo": "style-src includes unsafe-inline."
 						},
 						{
-							"uri": "https://preimpactco2.osc-fr1.scalingo.io/",
+							"uri": "https://preimpactco2.osc-fr1.scalingo.io/doc",
 							"method": "GET",
 							"param": "Content-Security-Policy",
 							"attack": "",
@@ -173,14 +173,6 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://preimpactco2.osc-fr1.scalingo.io/doc/guide-utilisation",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
 							"uri": "https://preimpactco2.osc-fr1.scalingo.io/outils",
 							"method": "GET",
 							"param": "",
@@ -189,15 +181,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://preimpactco2.osc-fr1.scalingo.io/rendez-vous?fromLabel=footer",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"uri": "https://preimpactco2.osc-fr1.scalingo.io/stats",
+							"uri": "https://preimpactco2.osc-fr1.scalingo.io/plan-du-site",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -205,13 +189,13 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "7",
+					"count": "5",
 					"solution": "<p>Ensure that your web server, application server, load balancer, etc. is configured to set the Permissions-Policy header.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Permissions-Policy</p><p>https://developer.chrome.com/blog/feature-policy/</p><p>https://scotthelme.co.uk/a-new-security-header-feature-policy/</p><p>https://w3c.github.io/webappsec-feature-policy/</p><p>https://www.smashingmagazine.com/2018/12/feature-policy/</p>",
 					"cweid": "693",
 					"wascid": "15",
-					"sourceid": "9"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "10037",
@@ -248,14 +232,6 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://preimpactco2.osc-fr1.scalingo.io/doc/guide-utilisation",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "X-Powered-By: Next.js",
-							"otherinfo": ""
-						},
-						{
 							"uri": "https://preimpactco2.osc-fr1.scalingo.io/outils",
 							"method": "GET",
 							"param": "",
@@ -264,15 +240,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://preimpactco2.osc-fr1.scalingo.io/rendez-vous?fromLabel=footer",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "X-Powered-By: Next.js",
-							"otherinfo": ""
-						},
-						{
-							"uri": "https://preimpactco2.osc-fr1.scalingo.io/stats",
+							"uri": "https://preimpactco2.osc-fr1.scalingo.io/plan-du-site",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -280,40 +248,13 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "7",
+					"count": "5",
 					"solution": "<p>Ensure that your web server, application server, load balancer, etc. is configured to suppress \"X-Powered-By\" headers.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://owasp.org/www-project-web-security-testing-guide/v42/4-Web_Application_Security_Testing/01-Information_Gathering/08-Fingerprint_Web_Application_Framework</p><p>https://www.troyhunt.com/2012/02/shhh-dont-let-your-response-headers.html</p>",
 					"cweid": "200",
 					"wascid": "13",
-					"sourceid": "9"
-				},
-				{
-					"pluginid": "10094",
-					"alertRef": "10094-3",
-					"alert": "Base64 Disclosure",
-					"name": "Base64 Disclosure",
-					"riskcode": "0",
-					"confidence": "2",
-					"riskdesc": "Informational (Medium)",
-					"desc": "<p>Base64 encoded data was disclosed by the application/web server. Note: in the interests of performance not all base64 strings in the response were analyzed individually, the entire response should be looked at by the analyst/security team/developer(s).</p>",
-					"instances":[ 
-						{
-							"uri": "https://preimpactco2.osc-fr1.scalingo.io/doc/guide-utilisation",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "com/a33bcf70-8792-422e-bd32-0327fc741a8b/0b4b17c9-09a1-4613-b350-3599f6fca9f9/Untitled",
-							"otherinfo": "r\uFFFD\uFFFDk}\uFFFDq\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD6\uFFFD\uFFFDw}\uFFFD\uFFFD}\uFFFD}\uFFFD\uFFFD\u056F\\x001b\uFFFDF\uFFFDo^\uFFFD\uFFFD\uFFFD=k_\uFFFD\uFFFD]\uFFFDo~t\uFFFD~}\uFFFD\uFFFD\uFFFDq\uFFFD_\uFFFD\uFFFD'\uFFFD+ey"
-						}
-					],
-					"count": "1",
-					"solution": "<p>Manually confirm that the Base64 data does not leak sensitive information, and that the data cannot be aggregated/used to exploit other vulnerabilities.</p>",
-					"otherinfo": "<p>r\uFFFD\uFFFDk}\uFFFDq\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD6\uFFFD\uFFFDw}\uFFFD\uFFFD}\uFFFD}\uFFFD\uFFFD\u056F\\x001b\uFFFDF\uFFFDo^\uFFFD\uFFFD\uFFFD=k_\uFFFD\uFFFD]\uFFFDo~t\uFFFD~}\uFFFD\uFFFD\uFFFDq\uFFFD_\uFFFD\uFFFD'\uFFFD+ey</p>",
-					"reference": "<p>https://projects.webappsec.org/w/page/13246936/Information%20Leakage</p>",
-					"cweid": "200",
-					"wascid": "13",
-					"sourceid": "298"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "10027",
@@ -326,20 +267,28 @@
 					"desc": "<p>The response appears to contain suspicious comments which may help an attacker. Note: Matches made within script blocks or files are against the entire content not only comments.</p>",
 					"instances":[ 
 						{
+							"uri": "https://preimpactco2.osc-fr1.scalingo.io",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "select",
+							"otherinfo": "The following pattern was used: \\bSELECT\\b and was detected in the element starting with: \"<script>self.__next_f.push([1,\"11:[\\\"$\\\",\\\"div\\\",null,{\\\"className\\\":\\\"main-container Block_block__tPUWw\\\",\\\"id\\\":\\\"$undefined\\\"\", see evidence field for the suspicious comment/snippet."
+						},
+						{
+							"uri": "https://preimpactco2.osc-fr1.scalingo.io/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "select",
+							"otherinfo": "The following pattern was used: \\bSELECT\\b and was detected in the element starting with: \"<script>self.__next_f.push([1,\"11:[\\\"$\\\",\\\"div\\\",null,{\\\"className\\\":\\\"main-container Block_block__tPUWw\\\",\\\"id\\\":\\\"$undefined\\\"\", see evidence field for the suspicious comment/snippet."
+						},
+						{
 							"uri": "https://preimpactco2.osc-fr1.scalingo.io/doc",
 							"method": "GET",
 							"param": "",
 							"attack": "",
 							"evidence": "from",
 							"otherinfo": "The following pattern was used: \\bFROM\\b and was detected in the element starting with: \"<script>self.__next_f.push([1,\"0:[[[\\\"$\\\",\\\"link\\\",\\\"0\\\",{\\\"rel\\\":\\\"stylesheet\\\",\\\"href\\\":\\\"/_next/static/css/9a4deda599d35475.c\", see evidence field for the suspicious comment/snippet."
-						},
-						{
-							"uri": "https://preimpactco2.osc-fr1.scalingo.io/doc/guide-utilisation",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "select",
-							"otherinfo": "The following pattern was used: \\bSELECT\\b and was detected in the element starting with: \"<script>self.__next_f.push([1,\"7:[[\\\"$\\\",\\\"div\\\",null,{\\\"className\\\":\\\"main-container Block_block__tPUWw\\\",\\\"id\\\":\\\"$undefined\\\"\", see evidence field for the suspicious comment/snippet."
 						},
 						{
 							"uri": "https://preimpactco2.osc-fr1.scalingo.io/outils",
@@ -350,29 +299,29 @@
 							"otherinfo": "The following pattern was used: \\bFROM\\b and was detected in the element starting with: \"<script>self.__next_f.push([1,\"0:[[[\\\"$\\\",\\\"link\\\",\\\"0\\\",{\\\"rel\\\":\\\"stylesheet\\\",\\\"href\\\":\\\"/_next/static/css/9a4deda599d35475.c\", see evidence field for the suspicious comment/snippet."
 						},
 						{
-							"uri": "https://preimpactco2.osc-fr1.scalingo.io/rendez-vous?fromLabel=footer",
+							"uri": "https://preimpactco2.osc-fr1.scalingo.io/outils",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "select",
+							"otherinfo": "The following pattern was used: \\bSELECT\\b and was detected in the element starting with: \"<script>self.__next_f.push([1,\"e:[\\\"$\\\",\\\"div\\\",null,{\\\"className\\\":\\\"main-container Block_block__tPUWw\\\",\\\"id\\\":\\\"$undefined\\\",\", see evidence field for the suspicious comment/snippet."
+						},
+						{
+							"uri": "https://preimpactco2.osc-fr1.scalingo.io/plan-du-site",
 							"method": "GET",
 							"param": "",
 							"attack": "",
 							"evidence": "from",
 							"otherinfo": "The following pattern was used: \\bFROM\\b and was detected in the element starting with: \"<script>self.__next_f.push([1,\"0:[[[\\\"$\\\",\\\"link\\\",\\\"0\\\",{\\\"rel\\\":\\\"stylesheet\\\",\\\"href\\\":\\\"/_next/static/css/9a4deda599d35475.c\", see evidence field for the suspicious comment/snippet."
-						},
-						{
-							"uri": "https://preimpactco2.osc-fr1.scalingo.io/stats",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "from",
-							"otherinfo": "The following pattern was used: \\bFROM\\b and was detected in the element starting with: \"<script>self.__next_f.push([1,\"7:[[\\\"$\\\",\\\"div\\\",null,{\\\"className\\\":\\\"Page_container__8UcBY main-container\\\",\\\"children\\\":[[\\\"$\", see evidence field for the suspicious comment/snippet."
 						}
 					],
-					"count": "5",
+					"count": "6",
 					"solution": "<p>Remove all comments that return information that may help an attacker and fix any underlying problems they refer to.</p>",
-					"otherinfo": "<p>The following pattern was used: \\bFROM\\b and was detected in the element starting with: \"<script>self.__next_f.push([1,\"0:[[[\\\"$\\\",\\\"link\\\",\\\"0\\\",{\\\"rel\\\":\\\"stylesheet\\\",\\\"href\\\":\\\"/_next/static/css/9a4deda599d35475.c\", see evidence field for the suspicious comment/snippet.</p>",
+					"otherinfo": "<p>The following pattern was used: \\bSELECT\\b and was detected in the element starting with: \"<script>self.__next_f.push([1,\"11:[\\\"$\\\",\\\"div\\\",null,{\\\"className\\\":\\\"main-container Block_block__tPUWw\\\",\\\"id\\\":\\\"$undefined\\\"\", see evidence field for the suspicious comment/snippet.</p>",
 					"reference": "",
 					"cweid": "200",
 					"wascid": "13",
-					"sourceid": "287"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "10109",
@@ -409,14 +358,6 @@
 							"otherinfo": "Links have been found with a target of '_self' - this is often used by modern frameworks to force a full page reload."
 						},
 						{
-							"uri": "https://preimpactco2.osc-fr1.scalingo.io/doc/guide-utilisation",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "<a class=\"Link_link__kqI8J\" target=\"_self\" href=\"/stats\">Statistiques</a>",
-							"otherinfo": "Links have been found with a target of '_self' - this is often used by modern frameworks to force a full page reload."
-						},
-						{
 							"uri": "https://preimpactco2.osc-fr1.scalingo.io/outils",
 							"method": "GET",
 							"param": "",
@@ -425,15 +366,7 @@
 							"otherinfo": "Links have been found with a target of '_self' - this is often used by modern frameworks to force a full page reload."
 						},
 						{
-							"uri": "https://preimpactco2.osc-fr1.scalingo.io/rendez-vous?fromLabel=footer",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "<a class=\"Link_link__kqI8J\" target=\"_self\" href=\"/stats\">Statistiques</a>",
-							"otherinfo": "Links have been found with a target of '_self' - this is often used by modern frameworks to force a full page reload."
-						},
-						{
-							"uri": "https://preimpactco2.osc-fr1.scalingo.io/stats",
+							"uri": "https://preimpactco2.osc-fr1.scalingo.io/plan-du-site",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -441,7 +374,7 @@
 							"otherinfo": "Links have been found with a target of '_self' - this is often used by modern frameworks to force a full page reload."
 						}
 					],
-					"count": "7",
+					"count": "5",
 					"solution": "<p>This is an informational alert and so no changes are required.</p>",
 					"otherinfo": "<p>Links have been found with a target of '_self' - this is often used by modern frameworks to force a full page reload.</p>",
 					"reference": "",
@@ -484,14 +417,6 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://preimpactco2.osc-fr1.scalingo.io/doc/guide-utilisation",
-							"method": "GET",
-							"param": "cache-control",
-							"attack": "",
-							"evidence": "s-maxage=1, stale-while-revalidate",
-							"otherinfo": ""
-						},
-						{
 							"uri": "https://preimpactco2.osc-fr1.scalingo.io/outils",
 							"method": "GET",
 							"param": "cache-control",
@@ -500,7 +425,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://preimpactco2.osc-fr1.scalingo.io/rendez-vous?fromLabel=footer",
+							"uri": "https://preimpactco2.osc-fr1.scalingo.io/plan-du-site",
 							"method": "GET",
 							"param": "cache-control",
 							"attack": "",
@@ -516,23 +441,15 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://preimpactco2.osc-fr1.scalingo.io/sitemap-0.xml",
+							"uri": "https://preimpactco2.osc-fr1.scalingo.io/sitemap.xml",
 							"method": "GET",
 							"param": "cache-control",
 							"attack": "",
 							"evidence": "public, max-age=0",
 							"otherinfo": ""
-						},
-						{
-							"uri": "https://preimpactco2.osc-fr1.scalingo.io/stats",
-							"method": "GET",
-							"param": "cache-control",
-							"attack": "",
-							"evidence": "s-maxage=1, stale-while-revalidate",
-							"otherinfo": ""
 						}
 					],
-					"count": "9",
+					"count": "7",
 					"solution": "<p>For secure content, ensure the cache-control HTTP header is set with \"no-cache, no-store, must-revalidate\". If an asset should be cached consider setting the directives \"public, max-age, immutable\".</p>",
 					"otherinfo": "",
 					"reference": "<p>https://cheatsheetseries.owasp.org/cheatsheets/Session_Management_Cheat_Sheet.html#web-content-caching</p><p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cache-Control</p><p>https://grayduck.mn/2021/09/13/cache-control-recommendations/</p>",
@@ -551,7 +468,7 @@
 					"desc": "<p>Specifies how and where the data would be used. For instance, if the value is audio, then the requested resource must be audio data and not any other type of resource.</p>",
 					"instances":[ 
 						{
-							"uri": "https://preimpactco2.osc-fr1.scalingo.io/robots.txt",
+							"uri": "https://preimpactco2.osc-fr1.scalingo.io",
 							"method": "GET",
 							"param": "Sec-Fetch-Dest",
 							"attack": "",
@@ -559,7 +476,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://preimpactco2.osc-fr1.scalingo.io/sitemap-0.xml",
+							"uri": "https://preimpactco2.osc-fr1.scalingo.io/robots.txt",
 							"method": "GET",
 							"param": "Sec-Fetch-Dest",
 							"attack": "",
@@ -581,7 +498,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Dest</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "7"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "90005",
@@ -594,7 +511,7 @@
 					"desc": "<p>Allows to differentiate between requests for navigating between HTML pages and requests for loading resources like images, audio etc.</p>",
 					"instances":[ 
 						{
-							"uri": "https://preimpactco2.osc-fr1.scalingo.io/robots.txt",
+							"uri": "https://preimpactco2.osc-fr1.scalingo.io",
 							"method": "GET",
 							"param": "Sec-Fetch-Mode",
 							"attack": "",
@@ -602,7 +519,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://preimpactco2.osc-fr1.scalingo.io/sitemap-0.xml",
+							"uri": "https://preimpactco2.osc-fr1.scalingo.io/robots.txt",
 							"method": "GET",
 							"param": "Sec-Fetch-Mode",
 							"attack": "",
@@ -624,7 +541,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Mode</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "7"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "90005",
@@ -637,7 +554,7 @@
 					"desc": "<p>Specifies the relationship between request initiator's origin and target's origin.</p>",
 					"instances":[ 
 						{
-							"uri": "https://preimpactco2.osc-fr1.scalingo.io/robots.txt",
+							"uri": "https://preimpactco2.osc-fr1.scalingo.io",
 							"method": "GET",
 							"param": "Sec-Fetch-Site",
 							"attack": "",
@@ -645,7 +562,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://preimpactco2.osc-fr1.scalingo.io/sitemap-0.xml",
+							"uri": "https://preimpactco2.osc-fr1.scalingo.io/robots.txt",
 							"method": "GET",
 							"param": "Sec-Fetch-Site",
 							"attack": "",
@@ -667,7 +584,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Site</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "7"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "90005",
@@ -680,7 +597,7 @@
 					"desc": "<p>Specifies if a navigation request was initiated by a user.</p>",
 					"instances":[ 
 						{
-							"uri": "https://preimpactco2.osc-fr1.scalingo.io/robots.txt",
+							"uri": "https://preimpactco2.osc-fr1.scalingo.io",
 							"method": "GET",
 							"param": "Sec-Fetch-User",
 							"attack": "",
@@ -688,7 +605,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://preimpactco2.osc-fr1.scalingo.io/sitemap-0.xml",
+							"uri": "https://preimpactco2.osc-fr1.scalingo.io/robots.txt",
 							"method": "GET",
 							"param": "Sec-Fetch-User",
 							"attack": "",
@@ -710,7 +627,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-User</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "7"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "10049",
@@ -747,14 +664,6 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://preimpactco2.osc-fr1.scalingo.io/doc/guide-utilisation",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "s-maxage=1",
-							"otherinfo": ""
-						},
-						{
 							"uri": "https://preimpactco2.osc-fr1.scalingo.io/outils",
 							"method": "GET",
 							"param": "",
@@ -763,29 +672,21 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://preimpactco2.osc-fr1.scalingo.io/rendez-vous?fromLabel=footer",
+							"uri": "https://preimpactco2.osc-fr1.scalingo.io/plan-du-site",
 							"method": "GET",
 							"param": "",
 							"attack": "",
 							"evidence": "s-maxage=31536000",
 							"otherinfo": ""
-						},
-						{
-							"uri": "https://preimpactco2.osc-fr1.scalingo.io/stats",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "s-maxage=1",
-							"otherinfo": ""
 						}
 					],
-					"count": "7",
+					"count": "5",
 					"solution": "<p>Validate that the response does not contain sensitive, personal or user-specific information. If it does, consider the use of the following HTTP response headers, to limit, or prevent the content being stored and retrieved from the cache by another user:</p><p>Cache-Control: no-cache, no-store, must-revalidate, private</p><p>Pragma: no-cache</p><p>Expires: 0</p><p>This configuration directs both HTTP 1.0 and HTTP 1.1 compliant caching servers to not store the response, and to not retrieve the response (without validation) from the cache, in response to a similar request.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://datatracker.ietf.org/doc/html/rfc7234</p><p>https://datatracker.ietf.org/doc/html/rfc7231</p><p>https://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html</p>",
 					"cweid": "524",
 					"wascid": "13",
-					"sourceid": "9"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "10049",
@@ -806,14 +707,6 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://preimpactco2.osc-fr1.scalingo.io/sitemap-0.xml",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "max-age=0",
-							"otherinfo": ""
-						},
-						{
 							"uri": "https://preimpactco2.osc-fr1.scalingo.io/sitemap.xml",
 							"method": "GET",
 							"param": "",
@@ -822,112 +715,13 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "3",
+					"count": "2",
 					"solution": "",
 					"otherinfo": "",
 					"reference": "<p>https://datatracker.ietf.org/doc/html/rfc7234</p><p>https://datatracker.ietf.org/doc/html/rfc7231</p><p>https://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html</p>",
 					"cweid": "524",
 					"wascid": "13",
-					"sourceid": "7"
-				},
-				{
-					"pluginid": "10031",
-					"alertRef": "10031",
-					"alert": "User Controllable HTML Element Attribute (Potential XSS)",
-					"name": "User Controllable HTML Element Attribute (Potential XSS)",
-					"riskcode": "0",
-					"confidence": "1",
-					"riskdesc": "Informational (Low)",
-					"desc": "<p>This check looks at user-supplied input in query string parameters and POST data to identify where certain HTML attribute values might be controlled. This provides hot-spot detection for XSS (cross-site scripting) that will require further review by a security analyst to determine exploitability.</p>",
-					"instances":[ 
-						{
-							"uri": "https://preimpactco2.osc-fr1.scalingo.io/rendez-vous?fromLabel=footer",
-							"method": "GET",
-							"param": "fromLabel",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://preimpactco2.osc-fr1.scalingo.io/rendez-vous?fromLabel=footer\n\nappears to include user input in:\na(n) [div] tag [class] attribute\n\nThe user input found was:\nfromLabel=footer\n\nThe user-controlled value was:\nfooter_bottomlinks__zm1vi"
-						},
-						{
-							"uri": "https://preimpactco2.osc-fr1.scalingo.io/rendez-vous?fromLabel=footer",
-							"method": "GET",
-							"param": "fromLabel",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://preimpactco2.osc-fr1.scalingo.io/rendez-vous?fromLabel=footer\n\nappears to include user input in:\na(n) [div] tag [class] attribute\n\nThe user input found was:\nfromLabel=footer\n\nThe user-controlled value was:\nfooter_footerexplain__h7zng"
-						},
-						{
-							"uri": "https://preimpactco2.osc-fr1.scalingo.io/rendez-vous?fromLabel=footer",
-							"method": "GET",
-							"param": "fromLabel",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://preimpactco2.osc-fr1.scalingo.io/rendez-vous?fromLabel=footer\n\nappears to include user input in:\na(n) [div] tag [class] attribute\n\nThe user input found was:\nfromLabel=footer\n\nThe user-controlled value was:\nfooter_header__nfzfh"
-						},
-						{
-							"uri": "https://preimpactco2.osc-fr1.scalingo.io/rendez-vous?fromLabel=footer",
-							"method": "GET",
-							"param": "fromLabel",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://preimpactco2.osc-fr1.scalingo.io/rendez-vous?fromLabel=footer\n\nappears to include user input in:\na(n) [div] tag [class] attribute\n\nThe user input found was:\nfromLabel=footer\n\nThe user-controlled value was:\nfooter_internalcontainer__woxgq"
-						},
-						{
-							"uri": "https://preimpactco2.osc-fr1.scalingo.io/rendez-vous?fromLabel=footer",
-							"method": "GET",
-							"param": "fromLabel",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://preimpactco2.osc-fr1.scalingo.io/rendez-vous?fromLabel=footer\n\nappears to include user input in:\na(n) [div] tag [class] attribute\n\nThe user input found was:\nfromLabel=footer\n\nThe user-controlled value was:\nfooter_linkcontainer__dfqsq"
-						},
-						{
-							"uri": "https://preimpactco2.osc-fr1.scalingo.io/rendez-vous?fromLabel=footer",
-							"method": "GET",
-							"param": "fromLabel",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://preimpactco2.osc-fr1.scalingo.io/rendez-vous?fromLabel=footer\n\nappears to include user input in:\na(n) [div] tag [class] attribute\n\nThe user input found was:\nfromLabel=footer\n\nThe user-controlled value was:\nfooter_linktitle__llrf3"
-						},
-						{
-							"uri": "https://preimpactco2.osc-fr1.scalingo.io/rendez-vous?fromLabel=footer",
-							"method": "GET",
-							"param": "fromLabel",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://preimpactco2.osc-fr1.scalingo.io/rendez-vous?fromLabel=footer\n\nappears to include user input in:\na(n) [div] tag [class] attribute\n\nThe user input found was:\nfromLabel=footer\n\nThe user-controlled value was:\nfooter_logos__tj0ze"
-						},
-						{
-							"uri": "https://preimpactco2.osc-fr1.scalingo.io/rendez-vous?fromLabel=footer",
-							"method": "GET",
-							"param": "fromLabel",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://preimpactco2.osc-fr1.scalingo.io/rendez-vous?fromLabel=footer\n\nappears to include user input in:\na(n) [div] tag [class] attribute\n\nThe user input found was:\nfromLabel=footer\n\nThe user-controlled value was:\nfooter_toplinks__jegjg"
-						},
-						{
-							"uri": "https://preimpactco2.osc-fr1.scalingo.io/rendez-vous?fromLabel=footer",
-							"method": "GET",
-							"param": "fromLabel",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://preimpactco2.osc-fr1.scalingo.io/rendez-vous?fromLabel=footer\n\nappears to include user input in:\na(n) [footer] tag [class] attribute\n\nThe user input found was:\nfromLabel=footer\n\nThe user-controlled value was:\nfooter_footer__ena9m"
-						},
-						{
-							"uri": "https://preimpactco2.osc-fr1.scalingo.io/rendez-vous?fromLabel=footer",
-							"method": "GET",
-							"param": "fromLabel",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://preimpactco2.osc-fr1.scalingo.io/rendez-vous?fromLabel=footer\n\nappears to include user input in:\na(n) [footer] tag [id] attribute\n\nThe user input found was:\nfromLabel=footer\n\nThe user-controlled value was:\nfooter"
-						}
-					],
-					"count": "10",
-					"solution": "<p>Validate all input and sanitize output it before writing to any HTML attributes.</p>",
-					"otherinfo": "<p>User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:</p><p></p><p>https://preimpactco2.osc-fr1.scalingo.io/rendez-vous?fromLabel=footer</p><p></p><p>appears to include user input in:</p><p>a(n) [div] tag [class] attribute</p><p></p><p>The user input found was:</p><p>fromLabel=footer</p><p></p><p>The user-controlled value was:</p><p>footer_bottomlinks__zm1vi</p>",
-					"reference": "<p>https://cheatsheetseries.owasp.org/cheatsheets/Input_Validation_Cheat_Sheet.html</p>",
-					"cweid": "20",
-					"wascid": "20",
-					"sourceid": "291"
+					"sourceid": "61"
 				}
 			]
 		}
