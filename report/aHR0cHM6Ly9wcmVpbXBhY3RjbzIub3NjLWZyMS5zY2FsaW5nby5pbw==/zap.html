@@ -127,7 +127,7 @@ td {
 	</h2>
 
 	<h3>
-		Generated on Sun, 18 Aug 2024 01:52:15
+		Generated on Sun, 25 Aug 2024 02:00:29
 	</h3>
 
 	<h3>
@@ -153,7 +153,7 @@ td {
 					<div>High</div>
 				</td>
 				<td align="center">
-					<div>0</div>
+					<div>1</div>
 				</td>
 			</tr>
 			<tr>
@@ -177,7 +177,7 @@ td {
 					<div>Informational</div>
 				</td>
 				<td align="center">
-					<div>9</div>
+					<div>11</div>
 				</td>
 			</tr>
 			<tr>
@@ -203,6 +203,11 @@ td {
 					align="center">Number of Instances</th>
 			</tr>
 			<tr>
+				<td><a href="#10062">PII Disclosure</a></td>
+				<td align="center" class="risk-3">High</td>
+				<td align="center">1</td>
+			</tr>
+			<tr>
 				<td><a href="#10055">CSP: Wildcard Directive</a></td>
 				<td align="center" class="risk-2">Medium</td>
 				<td align="center">3</td>
@@ -220,27 +225,32 @@ td {
 			<tr>
 				<td><a href="#10063">Permissions Policy Header Not Set</a></td>
 				<td align="center" class="risk-1">Low</td>
-				<td align="center">5</td>
+				<td align="center">9</td>
 			</tr>
 			<tr>
 				<td><a href="#10037">Server Leaks Information via &quot;X-Powered-By&quot; HTTP Response Header Field(s)</a></td>
 				<td align="center" class="risk-1">Low</td>
-				<td align="center">5</td>
+				<td align="center">9</td>
+			</tr>
+			<tr>
+				<td><a href="#10094">Base64 Disclosure</a></td>
+				<td align="center" class="risk-0">Informational</td>
+				<td align="center">1</td>
 			</tr>
 			<tr>
 				<td><a href="#10027">Information Disclosure - Suspicious Comments</a></td>
 				<td align="center" class="risk-0">Informational</td>
-				<td align="center">6</td>
+				<td align="center">10</td>
 			</tr>
 			<tr>
 				<td><a href="#10109">Modern Web Application</a></td>
 				<td align="center" class="risk-0">Informational</td>
-				<td align="center">5</td>
+				<td align="center">9</td>
 			</tr>
 			<tr>
 				<td><a href="#10015">Re-examine Cache-control Directives</a></td>
 				<td align="center" class="risk-0">Informational</td>
-				<td align="center">7</td>
+				<td align="center">11</td>
 			</tr>
 			<tr>
 				<td><a href="#90005">Sec-Fetch-Dest Header is Missing</a></td>
@@ -265,12 +275,17 @@ td {
 			<tr>
 				<td><a href="#10049">Storable and Cacheable Content</a></td>
 				<td align="center" class="risk-0">Informational</td>
-				<td align="center">5</td>
+				<td align="center">9</td>
 			</tr>
 			<tr>
 				<td><a href="#10049">Storable but Non-Cacheable Content</a></td>
 				<td align="center" class="risk-0">Informational</td>
 				<td align="center">2</td>
+			</tr>
+			<tr>
+				<td><a href="#10031">User Controllable HTML Element Attribute (Potential XSS)</a></td>
+				<td align="center" class="risk-0">Informational</td>
+				<td align="center">10</td>
 			</tr>
 		</table>
 		<div class="spacer-lg"></div>
@@ -278,6 +293,91 @@ td {
 
 	
 		<h3>Alert Detail</h3>
+		
+			<table class="results">
+				<tr height="24">
+					<th width="20%" class="risk-3"><a
+						id="10062"></a>
+						<div>High</div></th>
+					<th class="risk-3">PII Disclosure</th>
+				</tr>
+				<tr>
+					<td width="20%">Description</td>
+					<td width="80%">
+							<div>The response contains Personally Identifiable Information, such as CC number, SSN and similar sensitive data.</div>
+							
+						</td>
+				</tr>
+				<TR vAlign="top">
+					<TD colspan="2"></TD>
+				</TR>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://preimpactco2.osc-fr1.scalingo.io/doc/exemples">https://preimpactco2.osc-fr1.scalingo.io/doc/exemples</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">671078181303813</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">Credit Card Type detected: Maestro
+Bank Identification Number: 671078
+Brand: MAESTRO
+Category: STANDARD
+Issuer: ZUERCHER KANTONALBANK</td>
+					</tr>
+				
+				<tr>
+					<td width="20%">Instances</td>
+					<td width="80%">1</td>
+				</tr>
+				<tr>
+					<td width="20%">Solution</td>
+					<td width="80%">
+							<div>Check the response for the potential presence of personally identifiable information (PII), ensure nothing sensitive is leaked by the application.</div>
+							
+						</td>
+				</tr>
+				<tr>
+					<td width="20%">Reference</td>
+					<td width="80%"></td>
+				</tr>
+				<tr>
+					<td width="20%">CWE Id</td>
+					<td width="80%"><a
+						href="https://cwe.mitre.org/data/definitions/359.html">359</a></td>
+				</tr>
+				<tr>
+					<td width="20%">WASC Id</td>
+					<td width="80%">13</td>
+				</tr>
+				<tr>
+					<td width="20%">Plugin Id</td>
+					<td width="80%"><a
+						href="https://www.zaproxy.org/docs/alerts/10062/">10062</a></td>
+				</tr>
+			</table>
+			<div class="spacer"></div>
 		
 			<table class="results">
 				<tr height="24">
@@ -334,7 +434,7 @@ The directive(s): frame-ancestors are among the directives that do not fallback 
 					<tr>
 						<td width="20%"
 							class="indent1">URL</td>
-						<td width="80%"><a href="https://preimpactco2.osc-fr1.scalingo.io/doc">https://preimpactco2.osc-fr1.scalingo.io/doc</a></td>
+						<td width="80%"><a href="https://preimpactco2.osc-fr1.scalingo.io/">https://preimpactco2.osc-fr1.scalingo.io/</a></td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -368,7 +468,7 @@ The directive(s): frame-ancestors are among the directives that do not fallback 
 					<tr>
 						<td width="20%"
 							class="indent1">URL</td>
-						<td width="80%"><a href="https://preimpactco2.osc-fr1.scalingo.io/outils">https://preimpactco2.osc-fr1.scalingo.io/outils</a></td>
+						<td width="80%"><a href="https://preimpactco2.osc-fr1.scalingo.io/stats">https://preimpactco2.osc-fr1.scalingo.io/stats</a></td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -498,7 +598,7 @@ The directive(s): frame-ancestors are among the directives that do not fallback 
 					<tr>
 						<td width="20%"
 							class="indent1">URL</td>
-						<td width="80%"><a href="https://preimpactco2.osc-fr1.scalingo.io/doc">https://preimpactco2.osc-fr1.scalingo.io/doc</a></td>
+						<td width="80%"><a href="https://preimpactco2.osc-fr1.scalingo.io/">https://preimpactco2.osc-fr1.scalingo.io/</a></td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -529,7 +629,7 @@ The directive(s): frame-ancestors are among the directives that do not fallback 
 					<tr>
 						<td width="20%"
 							class="indent1">URL</td>
-						<td width="80%"><a href="https://preimpactco2.osc-fr1.scalingo.io/outils">https://preimpactco2.osc-fr1.scalingo.io/outils</a></td>
+						<td width="80%"><a href="https://preimpactco2.osc-fr1.scalingo.io/stats">https://preimpactco2.osc-fr1.scalingo.io/stats</a></td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -656,7 +756,7 @@ The directive(s): frame-ancestors are among the directives that do not fallback 
 					<tr>
 						<td width="20%"
 							class="indent1">URL</td>
-						<td width="80%"><a href="https://preimpactco2.osc-fr1.scalingo.io/doc">https://preimpactco2.osc-fr1.scalingo.io/doc</a></td>
+						<td width="80%"><a href="https://preimpactco2.osc-fr1.scalingo.io/">https://preimpactco2.osc-fr1.scalingo.io/</a></td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -687,7 +787,7 @@ The directive(s): frame-ancestors are among the directives that do not fallback 
 					<tr>
 						<td width="20%"
 							class="indent1">URL</td>
-						<td width="80%"><a href="https://preimpactco2.osc-fr1.scalingo.io/outils">https://preimpactco2.osc-fr1.scalingo.io/outils</a></td>
+						<td width="80%"><a href="https://preimpactco2.osc-fr1.scalingo.io/stats">https://preimpactco2.osc-fr1.scalingo.io/stats</a></td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -845,7 +945,100 @@ The directive(s): frame-ancestors are among the directives that do not fallback 
 					<tr>
 						<td width="20%"
 							class="indent1">URL</td>
+						<td width="80%"><a href="https://preimpactco2.osc-fr1.scalingo.io/budget">https://preimpactco2.osc-fr1.scalingo.io/budget</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
 						<td width="80%"><a href="https://preimpactco2.osc-fr1.scalingo.io/doc">https://preimpactco2.osc-fr1.scalingo.io/doc</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://preimpactco2.osc-fr1.scalingo.io/doc/exemples">https://preimpactco2.osc-fr1.scalingo.io/doc/exemples</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://preimpactco2.osc-fr1.scalingo.io/mentions-legales">https://preimpactco2.osc-fr1.scalingo.io/mentions-legales</a></td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -907,7 +1100,38 @@ The directive(s): frame-ancestors are among the directives that do not fallback 
 					<tr>
 						<td width="20%"
 							class="indent1">URL</td>
-						<td width="80%"><a href="https://preimpactco2.osc-fr1.scalingo.io/plan-du-site">https://preimpactco2.osc-fr1.scalingo.io/plan-du-site</a></td>
+						<td width="80%"><a href="https://preimpactco2.osc-fr1.scalingo.io/rendez-vous?fromLabel=footer">https://preimpactco2.osc-fr1.scalingo.io/rendez-vous?fromLabel=footer</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://preimpactco2.osc-fr1.scalingo.io/stats">https://preimpactco2.osc-fr1.scalingo.io/stats</a></td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -937,7 +1161,7 @@ The directive(s): frame-ancestors are among the directives that do not fallback 
 				
 				<tr>
 					<td width="20%">Instances</td>
-					<td width="80%">5</td>
+					<td width="80%">9</td>
 				</tr>
 				<tr>
 					<td width="20%">Solution</td>
@@ -1065,7 +1289,100 @@ The directive(s): frame-ancestors are among the directives that do not fallback 
 					<tr>
 						<td width="20%"
 							class="indent1">URL</td>
+						<td width="80%"><a href="https://preimpactco2.osc-fr1.scalingo.io/budget">https://preimpactco2.osc-fr1.scalingo.io/budget</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">X-Powered-By: Next.js</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
 						<td width="80%"><a href="https://preimpactco2.osc-fr1.scalingo.io/doc">https://preimpactco2.osc-fr1.scalingo.io/doc</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">X-Powered-By: Next.js</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://preimpactco2.osc-fr1.scalingo.io/doc/exemples">https://preimpactco2.osc-fr1.scalingo.io/doc/exemples</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">X-Powered-By: Next.js</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://preimpactco2.osc-fr1.scalingo.io/mentions-legales">https://preimpactco2.osc-fr1.scalingo.io/mentions-legales</a></td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -1127,7 +1444,38 @@ The directive(s): frame-ancestors are among the directives that do not fallback 
 					<tr>
 						<td width="20%"
 							class="indent1">URL</td>
-						<td width="80%"><a href="https://preimpactco2.osc-fr1.scalingo.io/plan-du-site">https://preimpactco2.osc-fr1.scalingo.io/plan-du-site</a></td>
+						<td width="80%"><a href="https://preimpactco2.osc-fr1.scalingo.io/rendez-vous?fromLabel=footer">https://preimpactco2.osc-fr1.scalingo.io/rendez-vous?fromLabel=footer</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">X-Powered-By: Next.js</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://preimpactco2.osc-fr1.scalingo.io/stats">https://preimpactco2.osc-fr1.scalingo.io/stats</a></td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -1157,7 +1505,7 @@ The directive(s): frame-ancestors are among the directives that do not fallback 
 				
 				<tr>
 					<td width="20%">Instances</td>
-					<td width="80%">5</td>
+					<td width="80%">9</td>
 				</tr>
 				<tr>
 					<td width="20%">Solution</td>
@@ -1189,6 +1537,90 @@ The directive(s): frame-ancestors are among the directives that do not fallback 
 					<td width="20%">Plugin Id</td>
 					<td width="80%"><a
 						href="https://www.zaproxy.org/docs/alerts/10037/">10037</a></td>
+				</tr>
+			</table>
+			<div class="spacer"></div>
+		
+			<table class="results">
+				<tr height="24">
+					<th width="20%" class="risk-0"><a
+						id="10094"></a>
+						<div>Informational</div></th>
+					<th class="risk-0">Base64 Disclosure</th>
+				</tr>
+				<tr>
+					<td width="20%">Description</td>
+					<td width="80%">
+							<div>Base64 encoded data was disclosed by the application/web server. Note: in the interests of performance not all base64 strings in the response were analyzed individually, the entire response should be looked at by the analyst/security team/developer(s).</div>
+							
+						</td>
+				</tr>
+				<TR vAlign="top">
+					<TD colspan="2"></TD>
+				</TR>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://preimpactco2.osc-fr1.scalingo.io/doc/exemples">https://preimpactco2.osc-fr1.scalingo.io/doc/exemples</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">com/impact-report/Impact-Report-2024-Selency-x-Aktio</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">r���jZr߫z�+��&amp;��-����~�M��&#39;�zw2���ب</td>
+					</tr>
+				
+				<tr>
+					<td width="20%">Instances</td>
+					<td width="80%">1</td>
+				</tr>
+				<tr>
+					<td width="20%">Solution</td>
+					<td width="80%">
+							<div>Manually confirm that the Base64 data does not leak sensitive information, and that the data cannot be aggregated/used to exploit other vulnerabilities.</div>
+							
+						</td>
+				</tr>
+				<tr>
+					<td width="20%">Reference</td>
+					<td width="80%">
+							<a href="https://projects.webappsec.org/w/page/13246936/Information%20Leakage">https://projects.webappsec.org/w/page/13246936/Information%20Leakage</a>
+							
+						</td>
+				</tr>
+				<tr>
+					<td width="20%">CWE Id</td>
+					<td width="80%"><a
+						href="https://cwe.mitre.org/data/definitions/200.html">200</a></td>
+				</tr>
+				<tr>
+					<td width="20%">WASC Id</td>
+					<td width="80%">13</td>
+				</tr>
+				<tr>
+					<td width="20%">Plugin Id</td>
+					<td width="80%"><a
+						href="https://www.zaproxy.org/docs/alerts/10094/">10094</a></td>
 				</tr>
 			</table>
 			<div class="spacer"></div>
@@ -1276,7 +1708,100 @@ The directive(s): frame-ancestors are among the directives that do not fallback 
 					<tr>
 						<td width="20%"
 							class="indent1">URL</td>
+						<td width="80%"><a href="https://preimpactco2.osc-fr1.scalingo.io/budget">https://preimpactco2.osc-fr1.scalingo.io/budget</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">from</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">The following pattern was used: \bFROM\b and was detected in the element starting with: &quot;&lt;script&gt;self.__next_f.push([1,&quot;0:[[[\&quot;$\&quot;,\&quot;link\&quot;,\&quot;0\&quot;,{\&quot;rel\&quot;:\&quot;stylesheet\&quot;,\&quot;href\&quot;:\&quot;/_next/static/css/9a4deda599d35475.c&quot;, see evidence field for the suspicious comment/snippet.</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
 						<td width="80%"><a href="https://preimpactco2.osc-fr1.scalingo.io/doc">https://preimpactco2.osc-fr1.scalingo.io/doc</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">from</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">The following pattern was used: \bFROM\b and was detected in the element starting with: &quot;&lt;script&gt;self.__next_f.push([1,&quot;0:[[[\&quot;$\&quot;,\&quot;link\&quot;,\&quot;0\&quot;,{\&quot;rel\&quot;:\&quot;stylesheet\&quot;,\&quot;href\&quot;:\&quot;/_next/static/css/9a4deda599d35475.c&quot;, see evidence field for the suspicious comment/snippet.</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://preimpactco2.osc-fr1.scalingo.io/doc/exemples">https://preimpactco2.osc-fr1.scalingo.io/doc/exemples</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">from</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">The following pattern was used: \bFROM\b and was detected in the element starting with: &quot;&lt;script&gt;self.__next_f.push([1,&quot;7:[[[\&quot;$\&quot;,\&quot;div\&quot;,null,{\&quot;className\&quot;:\&quot;main-container\&quot;,\&quot;children\&quot;:[\&quot;$\&quot;,\&quot;div\&quot;,null,{\&quot;cla&quot;, see evidence field for the suspicious comment/snippet.</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://preimpactco2.osc-fr1.scalingo.io/mentions-legales">https://preimpactco2.osc-fr1.scalingo.io/mentions-legales</a></td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -1369,7 +1894,7 @@ The directive(s): frame-ancestors are among the directives that do not fallback 
 					<tr>
 						<td width="20%"
 							class="indent1">URL</td>
-						<td width="80%"><a href="https://preimpactco2.osc-fr1.scalingo.io/plan-du-site">https://preimpactco2.osc-fr1.scalingo.io/plan-du-site</a></td>
+						<td width="80%"><a href="https://preimpactco2.osc-fr1.scalingo.io/rendez-vous?fromLabel=footer">https://preimpactco2.osc-fr1.scalingo.io/rendez-vous?fromLabel=footer</a></td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -1397,9 +1922,40 @@ The directive(s): frame-ancestors are among the directives that do not fallback 
 						<td width="80%">The following pattern was used: \bFROM\b and was detected in the element starting with: &quot;&lt;script&gt;self.__next_f.push([1,&quot;0:[[[\&quot;$\&quot;,\&quot;link\&quot;,\&quot;0\&quot;,{\&quot;rel\&quot;:\&quot;stylesheet\&quot;,\&quot;href\&quot;:\&quot;/_next/static/css/9a4deda599d35475.c&quot;, see evidence field for the suspicious comment/snippet.</td>
 					</tr>
 				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://preimpactco2.osc-fr1.scalingo.io/stats">https://preimpactco2.osc-fr1.scalingo.io/stats</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">from</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">The following pattern was used: \bFROM\b and was detected in the element starting with: &quot;&lt;script&gt;self.__next_f.push([1,&quot;7:[[\&quot;$\&quot;,\&quot;div\&quot;,null,{\&quot;className\&quot;:\&quot;Page_container__8UcBY main-container\&quot;,\&quot;children\&quot;:[[\&quot;$&quot;, see evidence field for the suspicious comment/snippet.</td>
+					</tr>
+				
 				<tr>
 					<td width="20%">Instances</td>
-					<td width="80%">6</td>
+					<td width="80%">10</td>
 				</tr>
 				<tr>
 					<td width="20%">Solution</td>
@@ -1512,7 +2068,100 @@ The directive(s): frame-ancestors are among the directives that do not fallback 
 					<tr>
 						<td width="20%"
 							class="indent1">URL</td>
+						<td width="80%"><a href="https://preimpactco2.osc-fr1.scalingo.io/budget">https://preimpactco2.osc-fr1.scalingo.io/budget</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">&lt;a class=&quot;Link_link__kqI8J&quot; target=&quot;_self&quot; href=&quot;/stats&quot;&gt;Statistiques&lt;/a&gt;</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">Links have been found with a target of &#39;_self&#39; - this is often used by modern frameworks to force a full page reload.</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
 						<td width="80%"><a href="https://preimpactco2.osc-fr1.scalingo.io/doc">https://preimpactco2.osc-fr1.scalingo.io/doc</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">&lt;a class=&quot;Link_link__kqI8J&quot; target=&quot;_self&quot; href=&quot;/stats&quot;&gt;Statistiques&lt;/a&gt;</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">Links have been found with a target of &#39;_self&#39; - this is often used by modern frameworks to force a full page reload.</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://preimpactco2.osc-fr1.scalingo.io/doc/exemples">https://preimpactco2.osc-fr1.scalingo.io/doc/exemples</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">&lt;a class=&quot;Link_link__kqI8J&quot; target=&quot;_self&quot; href=&quot;/stats&quot;&gt;Statistiques&lt;/a&gt;</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">Links have been found with a target of &#39;_self&#39; - this is often used by modern frameworks to force a full page reload.</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://preimpactco2.osc-fr1.scalingo.io/mentions-legales">https://preimpactco2.osc-fr1.scalingo.io/mentions-legales</a></td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -1574,7 +2223,38 @@ The directive(s): frame-ancestors are among the directives that do not fallback 
 					<tr>
 						<td width="20%"
 							class="indent1">URL</td>
-						<td width="80%"><a href="https://preimpactco2.osc-fr1.scalingo.io/plan-du-site">https://preimpactco2.osc-fr1.scalingo.io/plan-du-site</a></td>
+						<td width="80%"><a href="https://preimpactco2.osc-fr1.scalingo.io/rendez-vous?fromLabel=footer">https://preimpactco2.osc-fr1.scalingo.io/rendez-vous?fromLabel=footer</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">&lt;a class=&quot;Link_link__kqI8J&quot; target=&quot;_self&quot; href=&quot;/stats&quot;&gt;Statistiques&lt;/a&gt;</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">Links have been found with a target of &#39;_self&#39; - this is often used by modern frameworks to force a full page reload.</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://preimpactco2.osc-fr1.scalingo.io/stats">https://preimpactco2.osc-fr1.scalingo.io/stats</a></td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -1604,7 +2284,7 @@ The directive(s): frame-ancestors are among the directives that do not fallback 
 				
 				<tr>
 					<td width="20%">Instances</td>
-					<td width="80%">5</td>
+					<td width="80%">9</td>
 				</tr>
 				<tr>
 					<td width="20%">Solution</td>
@@ -1716,7 +2396,100 @@ The directive(s): frame-ancestors are among the directives that do not fallback 
 					<tr>
 						<td width="20%"
 							class="indent1">URL</td>
+						<td width="80%"><a href="https://preimpactco2.osc-fr1.scalingo.io/budget">https://preimpactco2.osc-fr1.scalingo.io/budget</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%">cache-control</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">s-maxage=31536000, stale-while-revalidate</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
 						<td width="80%"><a href="https://preimpactco2.osc-fr1.scalingo.io/doc">https://preimpactco2.osc-fr1.scalingo.io/doc</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%">cache-control</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">s-maxage=31536000, stale-while-revalidate</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://preimpactco2.osc-fr1.scalingo.io/doc/exemples">https://preimpactco2.osc-fr1.scalingo.io/doc/exemples</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%">cache-control</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">s-maxage=1, stale-while-revalidate</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://preimpactco2.osc-fr1.scalingo.io/mentions-legales">https://preimpactco2.osc-fr1.scalingo.io/mentions-legales</a></td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -1778,7 +2551,7 @@ The directive(s): frame-ancestors are among the directives that do not fallback 
 					<tr>
 						<td width="20%"
 							class="indent1">URL</td>
-						<td width="80%"><a href="https://preimpactco2.osc-fr1.scalingo.io/plan-du-site">https://preimpactco2.osc-fr1.scalingo.io/plan-du-site</a></td>
+						<td width="80%"><a href="https://preimpactco2.osc-fr1.scalingo.io/rendez-vous?fromLabel=footer">https://preimpactco2.osc-fr1.scalingo.io/rendez-vous?fromLabel=footer</a></td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -1868,9 +2641,40 @@ The directive(s): frame-ancestors are among the directives that do not fallback 
 						<td width="80%"></td>
 					</tr>
 				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://preimpactco2.osc-fr1.scalingo.io/stats">https://preimpactco2.osc-fr1.scalingo.io/stats</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%">cache-control</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">s-maxage=1, stale-while-revalidate</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
+					</tr>
+				
 				<tr>
 					<td width="20%">Instances</td>
-					<td width="80%">7</td>
+					<td width="80%">11</td>
 				</tr>
 				<tr>
 					<td width="20%">Solution</td>
@@ -2576,7 +3380,100 @@ The directive(s): frame-ancestors are among the directives that do not fallback 
 					<tr>
 						<td width="20%"
 							class="indent1">URL</td>
+						<td width="80%"><a href="https://preimpactco2.osc-fr1.scalingo.io/budget">https://preimpactco2.osc-fr1.scalingo.io/budget</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">s-maxage=31536000</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
 						<td width="80%"><a href="https://preimpactco2.osc-fr1.scalingo.io/doc">https://preimpactco2.osc-fr1.scalingo.io/doc</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">s-maxage=31536000</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://preimpactco2.osc-fr1.scalingo.io/doc/exemples">https://preimpactco2.osc-fr1.scalingo.io/doc/exemples</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">s-maxage=1</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://preimpactco2.osc-fr1.scalingo.io/mentions-legales">https://preimpactco2.osc-fr1.scalingo.io/mentions-legales</a></td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -2638,7 +3535,7 @@ The directive(s): frame-ancestors are among the directives that do not fallback 
 					<tr>
 						<td width="20%"
 							class="indent1">URL</td>
-						<td width="80%"><a href="https://preimpactco2.osc-fr1.scalingo.io/plan-du-site">https://preimpactco2.osc-fr1.scalingo.io/plan-du-site</a></td>
+						<td width="80%"><a href="https://preimpactco2.osc-fr1.scalingo.io/rendez-vous?fromLabel=footer">https://preimpactco2.osc-fr1.scalingo.io/rendez-vous?fromLabel=footer</a></td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -2666,9 +3563,40 @@ The directive(s): frame-ancestors are among the directives that do not fallback 
 						<td width="80%"></td>
 					</tr>
 				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://preimpactco2.osc-fr1.scalingo.io/stats">https://preimpactco2.osc-fr1.scalingo.io/stats</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">s-maxage=1</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
+					</tr>
+				
 				<tr>
 					<td width="20%">Instances</td>
-					<td width="80%">5</td>
+					<td width="80%">9</td>
 				</tr>
 				<tr>
 					<td width="20%">Solution</td>
@@ -2833,6 +3761,479 @@ The directive(s): frame-ancestors are among the directives that do not fallback 
 					<td width="20%">Plugin Id</td>
 					<td width="80%"><a
 						href="https://www.zaproxy.org/docs/alerts/10049/">10049</a></td>
+				</tr>
+			</table>
+			<div class="spacer"></div>
+		
+			<table class="results">
+				<tr height="24">
+					<th width="20%" class="risk-0"><a
+						id="10031"></a>
+						<div>Informational</div></th>
+					<th class="risk-0">User Controllable HTML Element Attribute (Potential XSS)</th>
+				</tr>
+				<tr>
+					<td width="20%">Description</td>
+					<td width="80%">
+							<div>This check looks at user-supplied input in query string parameters and POST data to identify where certain HTML attribute values might be controlled. This provides hot-spot detection for XSS (cross-site scripting) that will require further review by a security analyst to determine exploitability.</div>
+							
+						</td>
+				</tr>
+				<TR vAlign="top">
+					<TD colspan="2"></TD>
+				</TR>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://preimpactco2.osc-fr1.scalingo.io/rendez-vous?fromLabel=footer">https://preimpactco2.osc-fr1.scalingo.io/rendez-vous?fromLabel=footer</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%">fromLabel</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:
+
+https://preimpactco2.osc-fr1.scalingo.io/rendez-vous?fromLabel=footer
+
+appears to include user input in:
+a(n) [div] tag [class] attribute
+
+The user input found was:
+fromLabel=footer
+
+The user-controlled value was:
+footer_bottomlinks__zm1vi</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://preimpactco2.osc-fr1.scalingo.io/rendez-vous?fromLabel=footer">https://preimpactco2.osc-fr1.scalingo.io/rendez-vous?fromLabel=footer</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%">fromLabel</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:
+
+https://preimpactco2.osc-fr1.scalingo.io/rendez-vous?fromLabel=footer
+
+appears to include user input in:
+a(n) [div] tag [class] attribute
+
+The user input found was:
+fromLabel=footer
+
+The user-controlled value was:
+footer_footerexplain__h7zng</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://preimpactco2.osc-fr1.scalingo.io/rendez-vous?fromLabel=footer">https://preimpactco2.osc-fr1.scalingo.io/rendez-vous?fromLabel=footer</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%">fromLabel</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:
+
+https://preimpactco2.osc-fr1.scalingo.io/rendez-vous?fromLabel=footer
+
+appears to include user input in:
+a(n) [div] tag [class] attribute
+
+The user input found was:
+fromLabel=footer
+
+The user-controlled value was:
+footer_header__nfzfh</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://preimpactco2.osc-fr1.scalingo.io/rendez-vous?fromLabel=footer">https://preimpactco2.osc-fr1.scalingo.io/rendez-vous?fromLabel=footer</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%">fromLabel</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:
+
+https://preimpactco2.osc-fr1.scalingo.io/rendez-vous?fromLabel=footer
+
+appears to include user input in:
+a(n) [div] tag [class] attribute
+
+The user input found was:
+fromLabel=footer
+
+The user-controlled value was:
+footer_internalcontainer__woxgq</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://preimpactco2.osc-fr1.scalingo.io/rendez-vous?fromLabel=footer">https://preimpactco2.osc-fr1.scalingo.io/rendez-vous?fromLabel=footer</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%">fromLabel</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:
+
+https://preimpactco2.osc-fr1.scalingo.io/rendez-vous?fromLabel=footer
+
+appears to include user input in:
+a(n) [div] tag [class] attribute
+
+The user input found was:
+fromLabel=footer
+
+The user-controlled value was:
+footer_linkcontainer__dfqsq</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://preimpactco2.osc-fr1.scalingo.io/rendez-vous?fromLabel=footer">https://preimpactco2.osc-fr1.scalingo.io/rendez-vous?fromLabel=footer</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%">fromLabel</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:
+
+https://preimpactco2.osc-fr1.scalingo.io/rendez-vous?fromLabel=footer
+
+appears to include user input in:
+a(n) [div] tag [class] attribute
+
+The user input found was:
+fromLabel=footer
+
+The user-controlled value was:
+footer_linktitle__llrf3</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://preimpactco2.osc-fr1.scalingo.io/rendez-vous?fromLabel=footer">https://preimpactco2.osc-fr1.scalingo.io/rendez-vous?fromLabel=footer</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%">fromLabel</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:
+
+https://preimpactco2.osc-fr1.scalingo.io/rendez-vous?fromLabel=footer
+
+appears to include user input in:
+a(n) [div] tag [class] attribute
+
+The user input found was:
+fromLabel=footer
+
+The user-controlled value was:
+footer_logos__tj0ze</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://preimpactco2.osc-fr1.scalingo.io/rendez-vous?fromLabel=footer">https://preimpactco2.osc-fr1.scalingo.io/rendez-vous?fromLabel=footer</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%">fromLabel</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:
+
+https://preimpactco2.osc-fr1.scalingo.io/rendez-vous?fromLabel=footer
+
+appears to include user input in:
+a(n) [div] tag [class] attribute
+
+The user input found was:
+fromLabel=footer
+
+The user-controlled value was:
+footer_toplinks__jegjg</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://preimpactco2.osc-fr1.scalingo.io/rendez-vous?fromLabel=footer">https://preimpactco2.osc-fr1.scalingo.io/rendez-vous?fromLabel=footer</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%">fromLabel</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:
+
+https://preimpactco2.osc-fr1.scalingo.io/rendez-vous?fromLabel=footer
+
+appears to include user input in:
+a(n) [footer] tag [class] attribute
+
+The user input found was:
+fromLabel=footer
+
+The user-controlled value was:
+footer_footer__ena9m</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://preimpactco2.osc-fr1.scalingo.io/rendez-vous?fromLabel=footer">https://preimpactco2.osc-fr1.scalingo.io/rendez-vous?fromLabel=footer</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%">fromLabel</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:
+
+https://preimpactco2.osc-fr1.scalingo.io/rendez-vous?fromLabel=footer
+
+appears to include user input in:
+a(n) [footer] tag [id] attribute
+
+The user input found was:
+fromLabel=footer
+
+The user-controlled value was:
+footer</td>
+					</tr>
+				
+				<tr>
+					<td width="20%">Instances</td>
+					<td width="80%">10</td>
+				</tr>
+				<tr>
+					<td width="20%">Solution</td>
+					<td width="80%">
+							<div>Validate all input and sanitize output it before writing to any HTML attributes.</div>
+							
+						</td>
+				</tr>
+				<tr>
+					<td width="20%">Reference</td>
+					<td width="80%">
+							<a href="https://cheatsheetseries.owasp.org/cheatsheets/Input_Validation_Cheat_Sheet.html">https://cheatsheetseries.owasp.org/cheatsheets/Input_Validation_Cheat_Sheet.html</a>
+							
+						</td>
+				</tr>
+				<tr>
+					<td width="20%">CWE Id</td>
+					<td width="80%"><a
+						href="https://cwe.mitre.org/data/definitions/20.html">20</a></td>
+				</tr>
+				<tr>
+					<td width="20%">WASC Id</td>
+					<td width="80%">20</td>
+				</tr>
+				<tr>
+					<td width="20%">Plugin Id</td>
+					<td width="80%"><a
+						href="https://www.zaproxy.org/docs/alerts/10031/">10031</a></td>
 				</tr>
 			</table>
 			<div class="spacer"></div>
