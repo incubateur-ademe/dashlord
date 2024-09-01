@@ -1,7 +1,7 @@
 {
 	"@programName": "ZAP",
 	"@version": "2.15.0",
-	"@generated": "Sun, 25 Aug 2024 01:48:21",
+	"@generated": "Sun, 1 Sep 2024 01:57:54",
 	"site":[ 
 		{
 			"@name": "https://impactco2.fr",
@@ -9,6 +9,33 @@
 			"@port": "443",
 			"@ssl": "true",
 			"alerts": [ 
+				{
+					"pluginid": "10062",
+					"alertRef": "10062",
+					"alert": "PII Disclosure",
+					"name": "PII Disclosure",
+					"riskcode": "3",
+					"confidence": "3",
+					"riskdesc": "High (High)",
+					"desc": "<p>The response contains Personally Identifiable Information, such as CC number, SSN and similar sensitive data.</p>",
+					"instances":[ 
+						{
+							"uri": "https://impactco2.fr/doc/exemples",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "5877407657309",
+							"otherinfo": "Credit Card Type detected: Maestro\nBank Identification Number: 587740\nBrand: MAESTRO\nCategory: STANDARD\nIssuer: "
+						}
+					],
+					"count": "1",
+					"solution": "<p>Check the response for the potential presence of personally identifiable information (PII), ensure nothing sensitive is leaked by the application.</p>",
+					"otherinfo": "<p>Credit Card Type detected: Maestro</p><p>Bank Identification Number: 587740</p><p>Brand: MAESTRO</p><p>Category: STANDARD</p><p>Issuer: </p>",
+					"reference": "",
+					"cweid": "359",
+					"wascid": "13",
+					"sourceid": "560"
+				},
 				{
 					"pluginid": "10055",
 					"alertRef": "10055-4",
@@ -24,23 +51,23 @@
 							"method": "GET",
 							"param": "Content-Security-Policy",
 							"attack": "",
-							"evidence": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self' https: file:;img-src 'self' https: data:;object-src 'none';script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com/ajax/libs/iframe-resizer/4.3.2/iframeResizer.contentWindow.min.js https://stats.beta.gouv.fr/matomo.js https://stats.beta.gouv.fr/plugins/HeatmaSessionRecording/configs.php;script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests ;connect-src 'self' https://stats.beta.gouv.fr https://photon.komoot.io https://sentry.incubateur.net https://cdn.jsdelivr.net;frame-src 'self' https://cloud.contact.ademe.fr/impact-CO2-miniform https://cloud.contact.ademe.fr/impact-CO2-rdv",
+							"evidence": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self' https: file:;img-src 'self' https: data:;object-src 'none';script-src 'self' 'unsafe-inline' https://stats.beta.gouv.fr/matomo.js https://stats.beta.gouv.fr/plugins/HeatmaSessionRecording/configs.php;script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests ;connect-src 'self' https://stats.beta.gouv.fr https://photon.komoot.io https://sentry.incubateur.net https://cdn.jsdelivr.net;frame-src 'self' https://cloud.contact.ademe.fr/impact-CO2-miniform https://cloud.contact.ademe.fr/impact-CO2-rdv",
 							"otherinfo": "The following directives either allow wildcard sources (or ancestors), are not defined, or are overly broadly defined:\nstyle-src, img-src, frame-ancestors, font-src\n\nThe directive(s): frame-ancestors are among the directives that do not fallback to default-src, missing/excluding them is the same as allowing anything."
 						},
 						{
-							"uri": "https://impactco2.fr/",
+							"uri": "https://impactco2.fr/iframes/caspratiques/avion-pny",
 							"method": "GET",
 							"param": "Content-Security-Policy",
 							"attack": "",
-							"evidence": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self' https: file:;img-src 'self' https: data:;object-src 'none';script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com/ajax/libs/iframe-resizer/4.3.2/iframeResizer.contentWindow.min.js https://stats.beta.gouv.fr/matomo.js https://stats.beta.gouv.fr/plugins/HeatmaSessionRecording/configs.php;script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests ;connect-src 'self' https://stats.beta.gouv.fr https://photon.komoot.io https://sentry.incubateur.net https://cdn.jsdelivr.net;frame-src 'self' https://cloud.contact.ademe.fr/impact-CO2-miniform https://cloud.contact.ademe.fr/impact-CO2-rdv",
+							"evidence": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';img-src 'self' https: data:;object-src 'none';script-src 'self' 'unsafe-inline' https://stats.beta.gouv.fr/matomo.js https://stats.beta.gouv.fr/plugins/HeatmaSessionRecording/configs.php;script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests ;connect-src 'self' https://stats.beta.gouv.fr https://photon.komoot.io https://sentry.incubateur.net https://cdn.jsdelivr.net;frame-src 'self' https://cloud.contact.ademe.fr/impact-CO2-miniform https://cloud.contact.ademe.fr/impact-CO2-rdv",
 							"otherinfo": "The following directives either allow wildcard sources (or ancestors), are not defined, or are overly broadly defined:\nstyle-src, img-src, frame-ancestors, font-src\n\nThe directive(s): frame-ancestors are among the directives that do not fallback to default-src, missing/excluding them is the same as allowing anything."
 						},
 						{
-							"uri": "https://impactco2.fr/doc/guide-utilisation",
+							"uri": "https://impactco2.fr/iframes/comparateur/etiquette-animee",
 							"method": "GET",
 							"param": "Content-Security-Policy",
 							"attack": "",
-							"evidence": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self' https: file:;img-src 'self' https: data:;object-src 'none';script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com/ajax/libs/iframe-resizer/4.3.2/iframeResizer.contentWindow.min.js https://stats.beta.gouv.fr/matomo.js https://stats.beta.gouv.fr/plugins/HeatmaSessionRecording/configs.php;script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests ;connect-src 'self' https://stats.beta.gouv.fr https://photon.komoot.io https://sentry.incubateur.net https://cdn.jsdelivr.net;frame-src 'self' https://cloud.contact.ademe.fr/impact-CO2-miniform https://cloud.contact.ademe.fr/impact-CO2-rdv",
+							"evidence": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';img-src 'self' https: data:;object-src 'none';script-src 'self' 'unsafe-inline' https://stats.beta.gouv.fr/matomo.js https://stats.beta.gouv.fr/plugins/HeatmaSessionRecording/configs.php;script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests ;connect-src 'self' https://stats.beta.gouv.fr https://photon.komoot.io https://sentry.incubateur.net https://cdn.jsdelivr.net;frame-src 'self' https://cloud.contact.ademe.fr/impact-CO2-miniform https://cloud.contact.ademe.fr/impact-CO2-rdv",
 							"otherinfo": "The following directives either allow wildcard sources (or ancestors), are not defined, or are overly broadly defined:\nstyle-src, img-src, frame-ancestors, font-src\n\nThe directive(s): frame-ancestors are among the directives that do not fallback to default-src, missing/excluding them is the same as allowing anything."
 						}
 					],
@@ -67,23 +94,23 @@
 							"method": "GET",
 							"param": "Content-Security-Policy",
 							"attack": "",
-							"evidence": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self' https: file:;img-src 'self' https: data:;object-src 'none';script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com/ajax/libs/iframe-resizer/4.3.2/iframeResizer.contentWindow.min.js https://stats.beta.gouv.fr/matomo.js https://stats.beta.gouv.fr/plugins/HeatmaSessionRecording/configs.php;script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests ;connect-src 'self' https://stats.beta.gouv.fr https://photon.komoot.io https://sentry.incubateur.net https://cdn.jsdelivr.net;frame-src 'self' https://cloud.contact.ademe.fr/impact-CO2-miniform https://cloud.contact.ademe.fr/impact-CO2-rdv",
+							"evidence": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self' https: file:;img-src 'self' https: data:;object-src 'none';script-src 'self' 'unsafe-inline' https://stats.beta.gouv.fr/matomo.js https://stats.beta.gouv.fr/plugins/HeatmaSessionRecording/configs.php;script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests ;connect-src 'self' https://stats.beta.gouv.fr https://photon.komoot.io https://sentry.incubateur.net https://cdn.jsdelivr.net;frame-src 'self' https://cloud.contact.ademe.fr/impact-CO2-miniform https://cloud.contact.ademe.fr/impact-CO2-rdv",
 							"otherinfo": "script-src includes unsafe-inline."
 						},
 						{
-							"uri": "https://impactco2.fr/",
+							"uri": "https://impactco2.fr/iframes/caspratiques/avion-pny",
 							"method": "GET",
 							"param": "Content-Security-Policy",
 							"attack": "",
-							"evidence": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self' https: file:;img-src 'self' https: data:;object-src 'none';script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com/ajax/libs/iframe-resizer/4.3.2/iframeResizer.contentWindow.min.js https://stats.beta.gouv.fr/matomo.js https://stats.beta.gouv.fr/plugins/HeatmaSessionRecording/configs.php;script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests ;connect-src 'self' https://stats.beta.gouv.fr https://photon.komoot.io https://sentry.incubateur.net https://cdn.jsdelivr.net;frame-src 'self' https://cloud.contact.ademe.fr/impact-CO2-miniform https://cloud.contact.ademe.fr/impact-CO2-rdv",
+							"evidence": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';img-src 'self' https: data:;object-src 'none';script-src 'self' 'unsafe-inline' https://stats.beta.gouv.fr/matomo.js https://stats.beta.gouv.fr/plugins/HeatmaSessionRecording/configs.php;script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests ;connect-src 'self' https://stats.beta.gouv.fr https://photon.komoot.io https://sentry.incubateur.net https://cdn.jsdelivr.net;frame-src 'self' https://cloud.contact.ademe.fr/impact-CO2-miniform https://cloud.contact.ademe.fr/impact-CO2-rdv",
 							"otherinfo": "script-src includes unsafe-inline."
 						},
 						{
-							"uri": "https://impactco2.fr/doc/guide-utilisation",
+							"uri": "https://impactco2.fr/iframes/comparateur/etiquette-animee",
 							"method": "GET",
 							"param": "Content-Security-Policy",
 							"attack": "",
-							"evidence": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self' https: file:;img-src 'self' https: data:;object-src 'none';script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com/ajax/libs/iframe-resizer/4.3.2/iframeResizer.contentWindow.min.js https://stats.beta.gouv.fr/matomo.js https://stats.beta.gouv.fr/plugins/HeatmaSessionRecording/configs.php;script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests ;connect-src 'self' https://stats.beta.gouv.fr https://photon.komoot.io https://sentry.incubateur.net https://cdn.jsdelivr.net;frame-src 'self' https://cloud.contact.ademe.fr/impact-CO2-miniform https://cloud.contact.ademe.fr/impact-CO2-rdv",
+							"evidence": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';img-src 'self' https: data:;object-src 'none';script-src 'self' 'unsafe-inline' https://stats.beta.gouv.fr/matomo.js https://stats.beta.gouv.fr/plugins/HeatmaSessionRecording/configs.php;script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests ;connect-src 'self' https://stats.beta.gouv.fr https://photon.komoot.io https://sentry.incubateur.net https://cdn.jsdelivr.net;frame-src 'self' https://cloud.contact.ademe.fr/impact-CO2-miniform https://cloud.contact.ademe.fr/impact-CO2-rdv",
 							"otherinfo": "script-src includes unsafe-inline."
 						}
 					],
@@ -110,23 +137,23 @@
 							"method": "GET",
 							"param": "Content-Security-Policy",
 							"attack": "",
-							"evidence": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self' https: file:;img-src 'self' https: data:;object-src 'none';script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com/ajax/libs/iframe-resizer/4.3.2/iframeResizer.contentWindow.min.js https://stats.beta.gouv.fr/matomo.js https://stats.beta.gouv.fr/plugins/HeatmaSessionRecording/configs.php;script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests ;connect-src 'self' https://stats.beta.gouv.fr https://photon.komoot.io https://sentry.incubateur.net https://cdn.jsdelivr.net;frame-src 'self' https://cloud.contact.ademe.fr/impact-CO2-miniform https://cloud.contact.ademe.fr/impact-CO2-rdv",
+							"evidence": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self' https: file:;img-src 'self' https: data:;object-src 'none';script-src 'self' 'unsafe-inline' https://stats.beta.gouv.fr/matomo.js https://stats.beta.gouv.fr/plugins/HeatmaSessionRecording/configs.php;script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests ;connect-src 'self' https://stats.beta.gouv.fr https://photon.komoot.io https://sentry.incubateur.net https://cdn.jsdelivr.net;frame-src 'self' https://cloud.contact.ademe.fr/impact-CO2-miniform https://cloud.contact.ademe.fr/impact-CO2-rdv",
 							"otherinfo": "style-src includes unsafe-inline."
 						},
 						{
-							"uri": "https://impactco2.fr/",
+							"uri": "https://impactco2.fr/iframes/caspratiques/avion-pny",
 							"method": "GET",
 							"param": "Content-Security-Policy",
 							"attack": "",
-							"evidence": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self' https: file:;img-src 'self' https: data:;object-src 'none';script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com/ajax/libs/iframe-resizer/4.3.2/iframeResizer.contentWindow.min.js https://stats.beta.gouv.fr/matomo.js https://stats.beta.gouv.fr/plugins/HeatmaSessionRecording/configs.php;script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests ;connect-src 'self' https://stats.beta.gouv.fr https://photon.komoot.io https://sentry.incubateur.net https://cdn.jsdelivr.net;frame-src 'self' https://cloud.contact.ademe.fr/impact-CO2-miniform https://cloud.contact.ademe.fr/impact-CO2-rdv",
+							"evidence": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';img-src 'self' https: data:;object-src 'none';script-src 'self' 'unsafe-inline' https://stats.beta.gouv.fr/matomo.js https://stats.beta.gouv.fr/plugins/HeatmaSessionRecording/configs.php;script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests ;connect-src 'self' https://stats.beta.gouv.fr https://photon.komoot.io https://sentry.incubateur.net https://cdn.jsdelivr.net;frame-src 'self' https://cloud.contact.ademe.fr/impact-CO2-miniform https://cloud.contact.ademe.fr/impact-CO2-rdv",
 							"otherinfo": "style-src includes unsafe-inline."
 						},
 						{
-							"uri": "https://impactco2.fr/doc/guide-utilisation",
+							"uri": "https://impactco2.fr/iframes/comparateur/etiquette-animee",
 							"method": "GET",
 							"param": "Content-Security-Policy",
 							"attack": "",
-							"evidence": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self' https: file:;img-src 'self' https: data:;object-src 'none';script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com/ajax/libs/iframe-resizer/4.3.2/iframeResizer.contentWindow.min.js https://stats.beta.gouv.fr/matomo.js https://stats.beta.gouv.fr/plugins/HeatmaSessionRecording/configs.php;script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests ;connect-src 'self' https://stats.beta.gouv.fr https://photon.komoot.io https://sentry.incubateur.net https://cdn.jsdelivr.net;frame-src 'self' https://cloud.contact.ademe.fr/impact-CO2-miniform https://cloud.contact.ademe.fr/impact-CO2-rdv",
+							"evidence": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';img-src 'self' https: data:;object-src 'none';script-src 'self' 'unsafe-inline' https://stats.beta.gouv.fr/matomo.js https://stats.beta.gouv.fr/plugins/HeatmaSessionRecording/configs.php;script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests ;connect-src 'self' https://stats.beta.gouv.fr https://photon.komoot.io https://sentry.incubateur.net https://cdn.jsdelivr.net;frame-src 'self' https://cloud.contact.ademe.fr/impact-CO2-miniform https://cloud.contact.ademe.fr/impact-CO2-rdv",
 							"otherinfo": "style-src includes unsafe-inline."
 						}
 					],
@@ -203,7 +230,7 @@
 					"reference": "<p>https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.html5_overly_permissive_cors_policy</p>",
 					"cweid": "264",
 					"wascid": "14",
-					"sourceid": "432"
+					"sourceid": "546"
 				},
 				{
 					"pluginid": "10020",
@@ -272,7 +299,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://impactco2.fr/iframes/comparateur/etiquette",
+							"uri": "https://impactco2.fr/iframes/chauffage/chauffagegaz",
 							"method": "GET",
 							"param": "x-frame-options",
 							"attack": "",
@@ -318,7 +345,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Frame-Options</p>",
 					"cweid": "1021",
 					"wascid": "15",
-					"sourceid": "401"
+					"sourceid": "295"
 				},
 				{
 					"pluginid": "90003",
@@ -335,7 +362,7 @@
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "<link rel=\"preload\" as=\"image\" href=\"https://prod-files-secure.s3.us-west-2.amazonaws.com/a33bcf70-8792-422e-bd32-0327fc741a8b/86bb09e7-73bd-4a96-99d9-78e5a14e4c25/cegid.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&amp;X-Amz-Credential=AKIAT73L2G45HZZMZUHI%2F20240825%2Fus-west-2%2Fs3%2Faws4_request&amp;X-Amz-Date=20240825T014649Z&amp;X-Amz-Expires=3600&amp;X-Amz-Signature=a052df773b9f7fa6f7a1ce63996a6f52a786c589f57367a6b5edd01805140408&amp;X-Amz-SignedHeaders=host&amp;x-id=GetObject\"/>",
+							"evidence": "<link rel=\"preload\" as=\"image\" href=\"https://prod-files-secure.s3.us-west-2.amazonaws.com/a33bcf70-8792-422e-bd32-0327fc741a8b/86bb09e7-73bd-4a96-99d9-78e5a14e4c25/cegid.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&amp;X-Amz-Credential=AKIAT73L2G45HZZMZUHI%2F20240901%2Fus-west-2%2Fs3%2Faws4_request&amp;X-Amz-Date=20240901T015105Z&amp;X-Amz-Expires=3600&amp;X-Amz-Signature=4d4bc24193d63869d7e3725541dd2558fa7996e6f6405e5937ecb21b742f96fa&amp;X-Amz-SignedHeaders=host&amp;x-id=GetObject\"/>",
 							"otherinfo": ""
 						},
 						{
@@ -343,7 +370,7 @@
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "<link rel=\"preload\" as=\"image\" href=\"https://prod-files-secure.s3.us-west-2.amazonaws.com/a33bcf70-8792-422e-bd32-0327fc741a8b/d9731f85-4469-41cb-8a36-168cf17fbc6b/leni.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&amp;X-Amz-Credential=AKIAT73L2G45HZZMZUHI%2F20240825%2Fus-west-2%2Fs3%2Faws4_request&amp;X-Amz-Date=20240825T014649Z&amp;X-Amz-Expires=3600&amp;X-Amz-Signature=bf0ceae894e6670ce685d6c456508f9697e7546a93ffcfaa31a982f28e779105&amp;X-Amz-SignedHeaders=host&amp;x-id=GetObject\"/>",
+							"evidence": "<link rel=\"preload\" as=\"image\" href=\"https://prod-files-secure.s3.us-west-2.amazonaws.com/a33bcf70-8792-422e-bd32-0327fc741a8b/d9731f85-4469-41cb-8a36-168cf17fbc6b/leni.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&amp;X-Amz-Credential=AKIAT73L2G45HZZMZUHI%2F20240901%2Fus-west-2%2Fs3%2Faws4_request&amp;X-Amz-Date=20240901T015105Z&amp;X-Amz-Expires=3600&amp;X-Amz-Signature=fd72095ec9abd46e056003418a81d1b0b8ad44c46ed2675579e2b6a1931318e0&amp;X-Amz-SignedHeaders=host&amp;x-id=GetObject\"/>",
 							"otherinfo": ""
 						},
 						{
@@ -351,7 +378,7 @@
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "<link rel=\"preload\" as=\"image\" href=\"https://prod-files-secure.s3.us-west-2.amazonaws.com/a33bcf70-8792-422e-bd32-0327fc741a8b/fa14f773-d76e-409b-8392-408fe91e85c2/cesi.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&amp;X-Amz-Credential=AKIAT73L2G45HZZMZUHI%2F20240825%2Fus-west-2%2Fs3%2Faws4_request&amp;X-Amz-Date=20240825T014649Z&amp;X-Amz-Expires=3600&amp;X-Amz-Signature=1199be271cdcd964a22fbfb080bfa3143c8d5b8b78815b6ce258097f5b73e747&amp;X-Amz-SignedHeaders=host&amp;x-id=GetObject\"/>",
+							"evidence": "<link rel=\"preload\" as=\"image\" href=\"https://prod-files-secure.s3.us-west-2.amazonaws.com/a33bcf70-8792-422e-bd32-0327fc741a8b/fa14f773-d76e-409b-8392-408fe91e85c2/cesi.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&amp;X-Amz-Credential=AKIAT73L2G45HZZMZUHI%2F20240901%2Fus-west-2%2Fs3%2Faws4_request&amp;X-Amz-Date=20240901T015105Z&amp;X-Amz-Expires=3600&amp;X-Amz-Signature=70d1c9fc245ed899c635116c28b9e6db0268577a107c07de0f8570ad11df89c4&amp;X-Amz-SignedHeaders=host&amp;x-id=GetObject\"/>",
 							"otherinfo": ""
 						},
 						{
@@ -359,7 +386,7 @@
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "<link rel=\"preload\" as=\"image\" href=\"https://prod-files-secure.s3.us-west-2.amazonaws.com/a33bcf70-8792-422e-bd32-0327fc741a8b/4bf0866d-0513-42b1-8af6-765cc0ceba9f/sami.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&amp;X-Amz-Credential=AKIAT73L2G45HZZMZUHI%2F20240825%2Fus-west-2%2Fs3%2Faws4_request&amp;X-Amz-Date=20240825T014656Z&amp;X-Amz-Expires=3600&amp;X-Amz-Signature=2b1ffd7eb1e3e82240598381ebcc8094c6389eb6898f21ebb0f89ccea2b3846d&amp;X-Amz-SignedHeaders=host&amp;x-id=GetObject\"/>",
+							"evidence": "<link rel=\"preload\" as=\"image\" href=\"https://prod-files-secure.s3.us-west-2.amazonaws.com/a33bcf70-8792-422e-bd32-0327fc741a8b/0510de25-0c93-4a90-a947-6b5652dd5711/2050.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&amp;X-Amz-Credential=AKIAT73L2G45HZZMZUHI%2F20240901%2Fus-west-2%2Fs3%2Faws4_request&amp;X-Amz-Date=20240901T015419Z&amp;X-Amz-Expires=3600&amp;X-Amz-Signature=87b1b56db0f18a16b06285480af38f59ce30ff4fb669914edbfad1025a5c3852&amp;X-Amz-SignedHeaders=host&amp;x-id=GetObject\"/>",
 							"otherinfo": ""
 						},
 						{
@@ -367,7 +394,7 @@
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "<link rel=\"preload\" as=\"image\" href=\"https://prod-files-secure.s3.us-west-2.amazonaws.com/a33bcf70-8792-422e-bd32-0327fc741a8b/933c7465-f3ef-4b3d-83fa-bbb50f7622cb/muto.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&amp;X-Amz-Credential=AKIAT73L2G45HZZMZUHI%2F20240825%2Fus-west-2%2Fs3%2Faws4_request&amp;X-Amz-Date=20240825T014656Z&amp;X-Amz-Expires=3600&amp;X-Amz-Signature=25249a0df32b3c0873db9ff01879abe993abfb97a540063db3590e6c2312f704&amp;X-Amz-SignedHeaders=host&amp;x-id=GetObject\"/>",
+							"evidence": "<link rel=\"preload\" as=\"image\" href=\"https://prod-files-secure.s3.us-west-2.amazonaws.com/a33bcf70-8792-422e-bd32-0327fc741a8b/4bf0866d-0513-42b1-8af6-765cc0ceba9f/sami.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&amp;X-Amz-Credential=AKIAT73L2G45HZZMZUHI%2F20240901%2Fus-west-2%2Fs3%2Faws4_request&amp;X-Amz-Date=20240901T015419Z&amp;X-Amz-Expires=3600&amp;X-Amz-Signature=d01349551f117301bf99d6420def7caf450ddae622d883698f7fbfbd620e69e6&amp;X-Amz-SignedHeaders=host&amp;x-id=GetObject\"/>",
 							"otherinfo": ""
 						},
 						{
@@ -375,7 +402,15 @@
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "<link rel=\"preload\" as=\"image\" href=\"https://prod-files-secure.s3.us-west-2.amazonaws.com/a33bcf70-8792-422e-bd32-0327fc741a8b/e5d408c6-254c-421e-9573-44a0f4f234b8/makesense.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&amp;X-Amz-Credential=AKIAT73L2G45HZZMZUHI%2F20240825%2Fus-west-2%2Fs3%2Faws4_request&amp;X-Amz-Date=20240825T014656Z&amp;X-Amz-Expires=3600&amp;X-Amz-Signature=b6da3935c0a30a51928e3a604c75f1addd59cb4a7a4caf3ecd5760104f8804cc&amp;X-Amz-SignedHeaders=host&amp;x-id=GetObject\"/>",
+							"evidence": "<link rel=\"preload\" as=\"image\" href=\"https://prod-files-secure.s3.us-west-2.amazonaws.com/a33bcf70-8792-422e-bd32-0327fc741a8b/975e6496-3208-4dbe-a801-be77281afe05/tictactrip.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&amp;X-Amz-Credential=AKIAT73L2G45HZZMZUHI%2F20240901%2Fus-west-2%2Fs3%2Faws4_request&amp;X-Amz-Date=20240901T015419Z&amp;X-Amz-Expires=3600&amp;X-Amz-Signature=f093a4ff986010ced68e219f5d7ae639750f17b4a2e04e34587627d40ec2f7a7&amp;X-Amz-SignedHeaders=host&amp;x-id=GetObject\"/>",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://impactco2.fr/outils/comparateur",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<link rel=\"preload\" as=\"image\" href=\"https://prod-files-secure.s3.us-west-2.amazonaws.com/a33bcf70-8792-422e-bd32-0327fc741a8b/e5d408c6-254c-421e-9573-44a0f4f234b8/makesense.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&amp;X-Amz-Credential=AKIAT73L2G45HZZMZUHI%2F20240901%2Fus-west-2%2Fs3%2Faws4_request&amp;X-Amz-Date=20240901T015419Z&amp;X-Amz-Expires=3600&amp;X-Amz-Signature=2e9d82c6fa497dc3df66352dcb652a6846923043bccba6517cd7538b06f3cfde&amp;X-Amz-SignedHeaders=host&amp;x-id=GetObject\"/>",
 							"otherinfo": ""
 						},
 						{
@@ -383,7 +418,7 @@
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "<link rel=\"preload\" as=\"image\" href=\"https://prod-files-secure.s3.us-west-2.amazonaws.com/a33bcf70-8792-422e-bd32-0327fc741a8b/4bf0866d-0513-42b1-8af6-765cc0ceba9f/sami.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&amp;X-Amz-Credential=AKIAT73L2G45HZZMZUHI%2F20240825%2Fus-west-2%2Fs3%2Faws4_request&amp;X-Amz-Date=20240825T014656Z&amp;X-Amz-Expires=3600&amp;X-Amz-Signature=2b1ffd7eb1e3e82240598381ebcc8094c6389eb6898f21ebb0f89ccea2b3846d&amp;X-Amz-SignedHeaders=host&amp;x-id=GetObject\"/>",
+							"evidence": "<link rel=\"preload\" as=\"image\" href=\"https://prod-files-secure.s3.us-west-2.amazonaws.com/a33bcf70-8792-422e-bd32-0327fc741a8b/0510de25-0c93-4a90-a947-6b5652dd5711/2050.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&amp;X-Amz-Credential=AKIAT73L2G45HZZMZUHI%2F20240901%2Fus-west-2%2Fs3%2Faws4_request&amp;X-Amz-Date=20240901T014227Z&amp;X-Amz-Expires=3600&amp;X-Amz-Signature=6acc03a5a07cc69e5eaf6e65f3c9b2ecad9263f5e0fc908a72eb78bf8af22106&amp;X-Amz-SignedHeaders=host&amp;x-id=GetObject\"/>",
 							"otherinfo": ""
 						},
 						{
@@ -391,7 +426,7 @@
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "<link rel=\"preload\" as=\"image\" href=\"https://prod-files-secure.s3.us-west-2.amazonaws.com/a33bcf70-8792-422e-bd32-0327fc741a8b/933c7465-f3ef-4b3d-83fa-bbb50f7622cb/muto.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&amp;X-Amz-Credential=AKIAT73L2G45HZZMZUHI%2F20240825%2Fus-west-2%2Fs3%2Faws4_request&amp;X-Amz-Date=20240825T014656Z&amp;X-Amz-Expires=3600&amp;X-Amz-Signature=25249a0df32b3c0873db9ff01879abe993abfb97a540063db3590e6c2312f704&amp;X-Amz-SignedHeaders=host&amp;x-id=GetObject\"/>",
+							"evidence": "<link rel=\"preload\" as=\"image\" href=\"https://prod-files-secure.s3.us-west-2.amazonaws.com/a33bcf70-8792-422e-bd32-0327fc741a8b/4bf0866d-0513-42b1-8af6-765cc0ceba9f/sami.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&amp;X-Amz-Credential=AKIAT73L2G45HZZMZUHI%2F20240901%2Fus-west-2%2Fs3%2Faws4_request&amp;X-Amz-Date=20240901T014227Z&amp;X-Amz-Expires=3600&amp;X-Amz-Signature=a972494400dc6c7b9a2f3449e1ed92a77777611bcb6e6dc5b72fdd342704317a&amp;X-Amz-SignedHeaders=host&amp;x-id=GetObject\"/>",
 							"otherinfo": ""
 						},
 						{
@@ -399,31 +434,15 @@
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "<link rel=\"preload\" as=\"image\" href=\"https://prod-files-secure.s3.us-west-2.amazonaws.com/a33bcf70-8792-422e-bd32-0327fc741a8b/e5d408c6-254c-421e-9573-44a0f4f234b8/makesense.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&amp;X-Amz-Credential=AKIAT73L2G45HZZMZUHI%2F20240825%2Fus-west-2%2Fs3%2Faws4_request&amp;X-Amz-Date=20240825T014656Z&amp;X-Amz-Expires=3600&amp;X-Amz-Signature=b6da3935c0a30a51928e3a604c75f1addd59cb4a7a4caf3ecd5760104f8804cc&amp;X-Amz-SignedHeaders=host&amp;x-id=GetObject\"/>",
+							"evidence": "<link rel=\"preload\" as=\"image\" href=\"https://prod-files-secure.s3.us-west-2.amazonaws.com/a33bcf70-8792-422e-bd32-0327fc741a8b/975e6496-3208-4dbe-a801-be77281afe05/tictactrip.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&amp;X-Amz-Credential=AKIAT73L2G45HZZMZUHI%2F20240901%2Fus-west-2%2Fs3%2Faws4_request&amp;X-Amz-Date=20240901T014227Z&amp;X-Amz-Expires=3600&amp;X-Amz-Signature=4e4392617ac609a3859c2cc6c304157d2fea92c9bc59a586be3169b0a9b146d6&amp;X-Amz-SignedHeaders=host&amp;x-id=GetObject\"/>",
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://impactco2.fr/outils/comparateur?value=100",
+							"uri": "https://impactco2.fr/outils/comparateur?value",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "<link rel=\"preload\" as=\"image\" href=\"https://prod-files-secure.s3.us-west-2.amazonaws.com/a33bcf70-8792-422e-bd32-0327fc741a8b/4bf0866d-0513-42b1-8af6-765cc0ceba9f/sami.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&amp;X-Amz-Credential=AKIAT73L2G45HZZMZUHI%2F20240825%2Fus-west-2%2Fs3%2Faws4_request&amp;X-Amz-Date=20240825T014655Z&amp;X-Amz-Expires=3600&amp;X-Amz-Signature=2bc6fb10566728a70ae55688092ad63d76f84f7bfa38643f6236a6b8dc177011&amp;X-Amz-SignedHeaders=host&amp;x-id=GetObject\"/>",
-							"otherinfo": ""
-						},
-						{
-							"uri": "https://impactco2.fr/outils/comparateur?value=100",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "<link rel=\"preload\" as=\"image\" href=\"https://prod-files-secure.s3.us-west-2.amazonaws.com/a33bcf70-8792-422e-bd32-0327fc741a8b/933c7465-f3ef-4b3d-83fa-bbb50f7622cb/muto.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&amp;X-Amz-Credential=AKIAT73L2G45HZZMZUHI%2F20240825%2Fus-west-2%2Fs3%2Faws4_request&amp;X-Amz-Date=20240825T014656Z&amp;X-Amz-Expires=3600&amp;X-Amz-Signature=25249a0df32b3c0873db9ff01879abe993abfb97a540063db3590e6c2312f704&amp;X-Amz-SignedHeaders=host&amp;x-id=GetObject\"/>",
-							"otherinfo": ""
-						},
-						{
-							"uri": "https://impactco2.fr/outils/comparateur?value=100",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "<link rel=\"preload\" as=\"image\" href=\"https://prod-files-secure.s3.us-west-2.amazonaws.com/a33bcf70-8792-422e-bd32-0327fc741a8b/e5d408c6-254c-421e-9573-44a0f4f234b8/makesense.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&amp;X-Amz-Credential=AKIAT73L2G45HZZMZUHI%2F20240825%2Fus-west-2%2Fs3%2Faws4_request&amp;X-Amz-Date=20240825T014655Z&amp;X-Amz-Expires=3600&amp;X-Amz-Signature=7f0ed74a9936ef5c3ecd13fd38f255d21247359e738f31d01ac58fe83d6873f9&amp;X-Amz-SignedHeaders=host&amp;x-id=GetObject\"/>",
+							"evidence": "<link rel=\"preload\" as=\"image\" href=\"https://prod-files-secure.s3.us-west-2.amazonaws.com/a33bcf70-8792-422e-bd32-0327fc741a8b/e5d408c6-254c-421e-9573-44a0f4f234b8/makesense.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&amp;X-Amz-Credential=AKIAT73L2G45HZZMZUHI%2F20240901%2Fus-west-2%2Fs3%2Faws4_request&amp;X-Amz-Date=20240901T014227Z&amp;X-Amz-Expires=3600&amp;X-Amz-Signature=c6a1ed22a02d204ea535aa17e6d9281529305efb79fe4a765790fd304702878e&amp;X-Amz-SignedHeaders=host&amp;x-id=GetObject\"/>",
 							"otherinfo": ""
 						},
 						{
@@ -431,25 +450,17 @@
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "<link rel=\"preload\" as=\"image\" href=\"https://prod-files-secure.s3.us-west-2.amazonaws.com/a33bcf70-8792-422e-bd32-0327fc741a8b/593e9dcd-13cb-4bbb-abed-2bca307d14a6/greenly.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&amp;X-Amz-Credential=AKIAT73L2G45HZZMZUHI%2F20240825%2Fus-west-2%2Fs3%2Faws4_request&amp;X-Amz-Date=20240825T014651Z&amp;X-Amz-Expires=3600&amp;X-Amz-Signature=e9d08e1b399bcd1912ba2f52700735e73a3925d07d3741e40919407424a2a9be&amp;X-Amz-SignedHeaders=host&amp;x-id=GetObject\"/>",
-							"otherinfo": ""
-						},
-						{
-							"uri": "https://impactco2.fr/outils/detecteur",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "<link rel=\"preload\" as=\"image\" href=\"https://prod-files-secure.s3.us-west-2.amazonaws.com/a33bcf70-8792-422e-bd32-0327fc741a8b/c9619b55-cb0c-40f9-b050-deb8f91e9c3b/greengo.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&amp;X-Amz-Credential=AKIAT73L2G45HZZMZUHI%2F20240825%2Fus-west-2%2Fs3%2Faws4_request&amp;X-Amz-Date=20240825T014652Z&amp;X-Amz-Expires=3600&amp;X-Amz-Signature=97e21fde453ddd812a1b397239902f11cde437cf0f5ac0d0fdd979e8012c490d&amp;X-Amz-SignedHeaders=host&amp;x-id=GetObject\"/>",
+							"evidence": "<link rel=\"preload\" as=\"image\" href=\"https://prod-files-secure.s3.us-west-2.amazonaws.com/a33bcf70-8792-422e-bd32-0327fc741a8b/593e9dcd-13cb-4bbb-abed-2bca307d14a6/greenly.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&amp;X-Amz-Credential=AKIAT73L2G45HZZMZUHI%2F20240901%2Fus-west-2%2Fs3%2Faws4_request&amp;X-Amz-Date=20240901T015136Z&amp;X-Amz-Expires=3600&amp;X-Amz-Signature=7a4e4bec80dc2fb8b80cc49a387609e97779ff0c79e4c387405051a60d6ad952&amp;X-Amz-SignedHeaders=host&amp;x-id=GetObject\"/>",
 							"otherinfo": ""
 						}
 					],
-					"count": "14",
+					"count": "12",
 					"solution": "<p>Provide a valid integrity attribute to the tag.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/Security/Subresource_Integrity</p>",
 					"cweid": "345",
 					"wascid": "15",
-					"sourceid": "750"
+					"sourceid": "602"
 				},
 				{
 					"pluginid": "10110",
@@ -470,7 +481,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://impactco2.fr/_next/static/chunks/6808-ac96bd120df7a3d5.js",
+							"uri": "https://impactco2.fr/_next/static/chunks/6808-34f53071242f2568.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -478,7 +489,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://impactco2.fr/_next/static/chunks/8093-08d0c579c5347103.js",
+							"uri": "https://impactco2.fr/_next/static/chunks/8093-c44871924b0339b9.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -492,7 +503,7 @@
 					"reference": "<p>https://angular.io/guide/security</p>",
 					"cweid": "749",
 					"wascid": "-1",
-					"sourceid": "576"
+					"sourceid": "781"
 				},
 				{
 					"pluginid": "10063",
@@ -513,7 +524,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://impactco2.fr/",
+							"uri": "https://impactco2.fr/iframes/caspratiques/avion-pny",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -521,7 +532,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://impactco2.fr/budget",
+							"uri": "https://impactco2.fr/iframes/caspratiques/francais",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -529,7 +540,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://impactco2.fr/doc",
+							"uri": "https://impactco2.fr/iframes/caspratiques/friends",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -537,7 +548,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://impactco2.fr/doc/api",
+							"uri": "https://impactco2.fr/iframes/caspratiques/game-of-thrones",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -545,7 +556,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://impactco2.fr/doc/exemples",
+							"uri": "https://impactco2.fr/iframes/caspratiques/tgv-paris-berlin",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -553,7 +564,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://impactco2.fr/doc/guide-utilisation",
+							"uri": "https://impactco2.fr/iframes/caspratiques/tgv-paris-marseille",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -561,7 +572,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://impactco2.fr/outils",
+							"uri": "https://impactco2.fr/iframes/caspratiques/voiture-lille-nimes",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -569,7 +580,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://impactco2.fr/plan-du-site",
+							"uri": "https://impactco2.fr/iframes/comparateur/etiquette-animee",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -577,7 +588,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://impactco2.fr/rendez-vous?fromLabel=footer",
+							"uri": "https://impactco2.fr/iframes/usagenumerique/email",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -585,7 +596,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://impactco2.fr/stats",
+							"uri": "https://impactco2.fr/iframes/usagenumerique/spam",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -599,7 +610,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Permissions-Policy</p><p>https://developer.chrome.com/blog/feature-policy/</p><p>https://scotthelme.co.uk/a-new-security-header-feature-policy/</p><p>https://w3c.github.io/webappsec-feature-policy/</p><p>https://www.smashingmagazine.com/2018/12/feature-policy/</p>",
 					"cweid": "693",
 					"wascid": "15",
-					"sourceid": "6"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "10037",
@@ -620,7 +631,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://impactco2.fr/",
+							"uri": "https://impactco2.fr/iframes/caspratiques/avion-pny",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -628,7 +639,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://impactco2.fr/budget",
+							"uri": "https://impactco2.fr/iframes/caspratiques/francais",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -636,7 +647,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://impactco2.fr/doc",
+							"uri": "https://impactco2.fr/iframes/caspratiques/friends",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -644,7 +655,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://impactco2.fr/doc/api",
+							"uri": "https://impactco2.fr/iframes/caspratiques/game-of-thrones",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -652,7 +663,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://impactco2.fr/doc/exemples",
+							"uri": "https://impactco2.fr/iframes/caspratiques/tgv-paris-berlin",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -660,7 +671,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://impactco2.fr/doc/guide-utilisation",
+							"uri": "https://impactco2.fr/iframes/caspratiques/tgv-paris-marseille",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -668,7 +679,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://impactco2.fr/outils",
+							"uri": "https://impactco2.fr/iframes/caspratiques/voiture-lille-nimes",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -676,7 +687,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://impactco2.fr/plan-du-site",
+							"uri": "https://impactco2.fr/iframes/comparateur/etiquette-animee",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -684,7 +695,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://impactco2.fr/rendez-vous?fromLabel=footer",
+							"uri": "https://impactco2.fr/iframes/usagenumerique/email",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -692,7 +703,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://impactco2.fr/stats",
+							"uri": "https://impactco2.fr/iframes/usagenumerique/spam",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -706,7 +717,7 @@
 					"reference": "<p>https://owasp.org/www-project-web-security-testing-guide/v42/4-Web_Application_Security_Testing/01-Information_Gathering/08-Fingerprint_Web_Application_Framework</p><p>https://www.troyhunt.com/2012/02/shhh-dont-let-your-response-headers.html</p>",
 					"cweid": "200",
 					"wascid": "13",
-					"sourceid": "6"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "10096",
@@ -719,7 +730,7 @@
 					"desc": "<p>A timestamp was disclosed by the application/web server. - Unix</p>",
 					"instances":[ 
 						{
-							"uri": "https://impactco2.fr/_next/static/chunks/1191-1baf4d9bcf23f86c.js",
+							"uri": "https://impactco2.fr/_next/static/chunks/2701-0b8df0bdcd5046a9.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -727,7 +738,7 @@
 							"otherinfo": "1743339172, which evaluates to: 2025-03-30 12:52:52."
 						},
 						{
-							"uri": "https://impactco2.fr/_next/static/chunks/6808-ac96bd120df7a3d5.js",
+							"uri": "https://impactco2.fr/_next/static/chunks/6808-34f53071242f2568.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1029,7 +1040,7 @@
 					"reference": "<p>https://cwe.mitre.org/data/definitions/200.html</p>",
 					"cweid": "200",
 					"wascid": "13",
-					"sourceid": "347"
+					"sourceid": "676"
 				},
 				{
 					"pluginid": "10094",
@@ -1042,23 +1053,7 @@
 					"desc": "<p>Base64 encoded data was disclosed by the application/web server. Note: in the interests of performance not all base64 strings in the response were analyzed individually, the entire response should be looked at by the analyst/security team/developer(s).</p>",
 					"instances":[ 
 						{
-							"uri": "https://impactco2.fr/_next/static/chunks/2000-6cdcd7709825ea35.js",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "CheckboxInput_container__k9QTE",
-							"otherinfo": "\n\\x0017\uFFFD\uFFFD\uFFFD1\"zn\uFFFD\uFFFD(\uFFFD\u05A2\uFFFD\uFFFD\uFFFD\uFFFDOPL"
-						},
-						{
-							"uri": "https://impactco2.fr/_next/static/chunks/6536-51fa6d8e7fff7ac1.js",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "DetectorScript_clipboardTitle__R_3f9",
-							"otherinfo": "\r\uFFFD^r\uFFFD+I\uFFFD\uFFFD\uFFFD\u0716*[\uFFFD\uFFFD\uFFFDN+e{\uFFFD\uFFFD\uFFFDw\uFFFD"
-						},
-						{
-							"uri": "https://impactco2.fr/_next/static/chunks/6617-4d509d51f8775084.js",
+							"uri": "https://impactco2.fr/_next/static/chunks/6617-8cdf5c171ca6b071.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1066,23 +1061,7 @@
 							"otherinfo": "ifB~UmlSFo0nDFIaQyJcUAHmA8NBXPB0XrtmdUTZoz_0e"
 						},
 						{
-							"uri": "https://impactco2.fr/_next/static/chunks/9109-942e667082c708bc.js",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/",
-							"otherinfo": "\\x0000\\x0010\uFFFD\\x0010Q\uFFFD \uFFFD\uFFFD0\u04CFA\\x0014\uFFFDQU\uFFFDa\uFFFD\uFFFDq\u05DF\uFFFD\\x0018\uFFFD\uFFFDY\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\u06EF\uFFFD\\x001c\uFFFD\uFFFD]\uFFFD\u37BB\uFFFD\u07FF"
-						},
-						{
-							"uri": "https://impactco2.fr/_next/static/chunks/app/(public)/plan-du-site/page-4091193f6764e930.js",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "DetectorScript_clipboardTitle__R_3f9",
-							"otherinfo": "\r\uFFFD^r\uFFFD+I\uFFFD\uFFFD\uFFFD\u0716*[\uFFFD\uFFFD\uFFFDN+e{\uFFFD\uFFFD\uFFFDw\uFFFD"
-						},
-						{
-							"uri": "https://impactco2.fr/_next/static/css/5dc2f5fc71080902.css",
+							"uri": "https://impactco2.fr/_next/static/css/2627b7b696a1107e.css",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1090,15 +1069,7 @@
 							"otherinfo": "\\x0012\uFFFD\uFFFD\uFFFD\uFFFD^\uFFFD\uFFFD\\x000e\uFFFD\uFFFD\uFFFDr\uFFFD\uFFFD\uFFFD\uFFFD(\uFFFD\u05E7\uFFFD\uFFFD\uFFFD!>p"
 						},
 						{
-							"uri": "https://impactco2.fr/_next/static/css/977ffaaf7d28b5a4.css",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAYAAADED76LAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyhpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMTExIDc5LjE1ODMyNSwgMjAxNS8wOS8xMC0wMToxMDoyMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6MTRDOTY4N0U2N0VFMTFFNjg2MzZDQjkwNkQ4MjgwMEIiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6MTRDOTY4N0Q2N0VFMTFFNjg2MzZDQjkwNkQ4MjgwMEIiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTUgKE1hY2ludG9zaCkiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo3NjcyQkQ3NjY3QzUxMUU2QjJCQ0UyNDA4MTAwMjE3MSIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo3NjcyQkQ3NzY3QzUxMUU2QjJCQ0UyNDA4MTAwMjE3MSIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PsBS+GMAAAAjSURBVHjaYvz//z8DLsD4gcGXiYEAGBIKGBne//fFpwAgwAB98AaF2pjlUQAAAABJRU5ErkJggg==",
-							"otherinfo": "\uFFFDPNG\r\n\\x001a\n\\x0000\\x0000\\x0000\rIHDR\\x0000\\x0000\\x0000\\x0008\\x0000\\x0000\\x0000\\x0008\\x0008\\x0006\\x0000\\x0000\\x0000\uFFFD\\x000f\uFFFD\uFFFD\\x0000\\x0000\\x0000\\x0019tEXtSoftware\\x0000Adobe ImageReadyq\uFFFDe<\\x0000\\x0000\\x0003(iTXtXML:com.adobe.xmp\\x0000\\x0000\\x0000\\x0000\\x0000<?xpacket begin=\"\uFEFF\" id=\"W5M0MpCehiHzreSzNTczkc9d\"?> <x:xmpmeta xmlns:x=\"adobe:ns:meta/\" x:xmptk=\"Adobe XMP Core 5.6-c111 79.158325, 2015/09/10-01:10:20        \"> <rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"> <rdf:Description rdf:about=\"\" xmlns:xmpMM=\"http://ns.adobe.com/xap/1.0/mm/\" xmlns:stRef=\"http://ns.adobe.com/xap/1.0/sType/ResourceRef#\" xmlns:xmp=\"http://ns.adobe.com/xap/1.0/\" xmpMM:DocumentID=\"xmp.did:14C9687E67EE11E68636CB906D82800B\" xmpMM:InstanceID=\"xmp.iid:14C9687D67EE11E68636CB906D82800B\" xmp:CreatorTool=\"Adobe Photoshop CC 2015 (Macintosh)\"> <xmpMM:DerivedFrom stRef:instanceID=\"xmp.iid:7672BD7667C511E6B2BCE24081002171\" stRef:documentID=\"xmp.did:7672BD7767C511E6B2BCE24081002171\"/> </rdf:Description> </rdf:RDF> </x:xmpmeta> <?xpacket end=\"r\"?>\uFFFDR\uFFFDc\\x0000\\x0000\\x0000#IDATx\uFFFDb\uFFFD\uFFFD\uFFFD?\\x0003.\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\\x0000\\x0018\\x0012\n\\x0018\\x0019\uFFFD\uFFFD\uFFFD\u0167\\x0000 \uFFFD\\x0000}\uFFFD\\x0006\uFFFD\u0698\uFFFDQ\\x0000\\x0000\\x0000\\x0000IEND\uFFFDB`\uFFFD"
-						},
-						{
-							"uri": "https://impactco2.fr/_next/static/css/9f29e87e501e95aa.css",
+							"uri": "https://impactco2.fr/_next/static/css/8fa153d157aaa13b.css",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1122,6 +1093,46 @@
 							"otherinfo": "~\uFFFD\uFFFD\uFFFDb\uFFFD\uFFFDb\uFFFDy\u0797\uFFFD\uFFFD\u7FE9\uFFFD\uFFFD\uFFFDjy\uFFFDz_\uFFFD{\u98B1\uF79F\uFFFDq\uFFFD,\uFFFD\uFFFD\uFFFD\uFFFD\u05FEu\uFFFD>\uFFFD+^\uFFFD\uFFFD\\x001el\\x0019n{\uFFFD^\uFFFD_\uFFFDu\uFFFD"
 						},
 						{
+							"uri": "https://impactco2.fr/contenu/comment-sensibiliser-vos-visiteurs-empreinte-carbone",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "com/a33bcf70-8792-422e-bd32-0327fc741a8b/6670a3d9-163f-47a2-83a5-f0c8f5e7f297/Untitled",
+							"otherinfo": "r\uFFFD\uFFFDk}\uFFFDq\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD6\uFFFD\uFFFDw}\uFFFD\uFFFD}\uFFFD}\uFFFD\uFFFD\u056F\\x001b\uFFFD\uFFFD\uFFFD\u046D\uFFFD\uFFFD\uFFFDz\uFFFD\uFFFD\uFFFD\uFFFD\uFFFDv\uFFFD\uFFFD\uFFFD\\x001c\uFFFD\uFFFD^\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD'\uFFFD+ey"
+						},
+						{
+							"uri": "https://impactco2.fr/contenu/detecteur-co2",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "com/dms/image/D4D0BAQErXoyfYYQo2A/company-logo_200_200/0/1692894826844/steply_app_logo",
+							"otherinfo": "r\uFFFD\uFFFDvk?\uFFFDf\uFFFD{\uFFFD\uFFFD\\x000f@@@J\u05E3'\uFFFDa\n6\\x0003\uFFFD(\uFFFD\uFFFD\uFFFD\uFFFD\uFFFDh\uFFFD\uFFFD\uFFFD\uFFFDO\uFFFD\uFFFDO\uFFFD\uFFFD^\uFFFD\uFFFD\uFFFDx\uFFFDn\uFFFD\uFFFD\uFFFD\uFFFDe\uFFFD\uFFFD\uFFFD\uFFFD\uFFFDh\uFFFD"
+						},
+						{
+							"uri": "https://impactco2.fr/contenu/etiquette-carbone",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "com/a33bcf70-8792-422e-bd32-0327fc741a8b/cc74c092-5508-4d7c-a891-3f06a8419013/Untitled",
+							"otherinfo": "r\uFFFD\uFFFDk}\uFFFDq\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD6\uFFFD\uFFFDw}\uFFFD\uFFFD}\uFFFD}\uFFFD\uFFFD\u056F\\x001b\uFFFD\uFFFD;\uFFFD\uFFFD=\uFFFD\uFFFDy\uFFFD\u03F8w\uFFFD>k\uFFFDu\uFFFDw\uFFFD\uFFFD8\uFFFD\uFFFD5\uFFFD\uFFFD'\uFFFD+ey"
+						},
+						{
+							"uri": "https://impactco2.fr/contenu/impact-carbone-hiver-station-ski",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "com/a33bcf70-8792-422e-bd32-0327fc741a8b/478d752d-c959-41f8-95f6-bb14301c0767/Untitled",
+							"otherinfo": "r\uFFFD\uFFFDk}\uFFFDq\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD6\uFFFD\uFFFDw}\uFFFD\uFFFD}\uFFFD}\uFFFD\uFFFD\u056F\\x001b\uFFFD\uFFFD\uFFFDw\uFFFDvw\uFFFD=\uFFFD\u07F8\uFFFD\uFFFD>\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD}5sN\uFFFD\uFFFD\uFFFD'\uFFFD+ey"
+						},
+						{
+							"uri": "https://impactco2.fr/contenu/nouveau-site",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "com/a33bcf70-8792-422e-bd32-0327fc741a8b/92dcaff6-cee3-447e-b4e3-0c6a6f023612/Untitled",
+							"otherinfo": "r\uFFFD\uFFFDk}\uFFFDq\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD6\uFFFD\uFFFDw}\uFFFD\uFFFD}\uFFFD}\uFFFD\uFFFD\u056F\\x001b\uFFFD\u075Dq\uFFFD\uFFFD\uFFFD\uFFFD\\x001e{\uFFFD\u3DFEo\uFFFD\uFFFD\uFFFDG:k\uFFFD\uFFFD\uFFFD~\uFFFD\uFFFD\uFFFD'\uFFFD+ey"
+						},
+						{
 							"uri": "https://impactco2.fr/doc/exemples",
 							"method": "GET",
 							"param": "",
@@ -1140,11 +1151,11 @@
 					],
 					"count": "12",
 					"solution": "<p>Manually confirm that the Base64 data does not leak sensitive information, and that the data cannot be aggregated/used to exploit other vulnerabilities.</p>",
-					"otherinfo": "<p></p><p>\\x0017\uFFFD\uFFFD\uFFFD1\"zn\uFFFD\uFFFD(\uFFFD\u05A2\uFFFD\uFFFD\uFFFD\uFFFDOPL</p>",
+					"otherinfo": "<p>ifB~UmlSFo0nDFIaQyJcUAHmA8NBXPB0XrtmdUTZoz_0e</p>",
 					"reference": "<p>https://projects.webappsec.org/w/page/13246936/Information%20Leakage</p>",
 					"cweid": "200",
 					"wascid": "13",
-					"sourceid": "350"
+					"sourceid": "652"
 				},
 				{
 					"pluginid": "10019",
@@ -1187,7 +1198,7 @@
 					"reference": "<p>https://learn.microsoft.com/en-us/previous-versions/windows/internet-explorer/ie-developer/compatibility/gg622941(v=vs.85)</p>",
 					"cweid": "345",
 					"wascid": "12",
-					"sourceid": "444"
+					"sourceid": "553"
 				},
 				{
 					"pluginid": "10027",
@@ -1205,15 +1216,15 @@
 							"param": "",
 							"attack": "",
 							"evidence": "select",
-							"otherinfo": "The following pattern was used: \\bSELECT\\b and was detected in the element starting with: \"<script>self.__next_f.push([1,\"11:[\\\"$\\\",\\\"div\\\",null,{\\\"className\\\":\\\"main-container Block_block__tPUWw\\\",\\\"id\\\":\\\"$undefined\\\"\", see evidence field for the suspicious comment/snippet."
+							"otherinfo": "The following pattern was used: \\bSELECT\\b and was detected in the element starting with: \"<script>self.__next_f.push([1,\"f:[\\\"$\\\",\\\"div\\\",null,{\\\"className\\\":\\\"main-container Block_block__tPUWw\\\",\\\"id\\\":\\\"$undefined\\\",\", see evidence field for the suspicious comment/snippet."
 						},
 						{
-							"uri": "https://impactco2.fr/",
+							"uri": "https://impactco2.fr/accessibilite",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "select",
-							"otherinfo": "The following pattern was used: \\bSELECT\\b and was detected in the element starting with: \"<script>self.__next_f.push([1,\"11:[\\\"$\\\",\\\"div\\\",null,{\\\"className\\\":\\\"main-container Block_block__tPUWw\\\",\\\"id\\\":\\\"$undefined\\\"\", see evidence field for the suspicious comment/snippet."
+							"evidence": "from",
+							"otherinfo": "The following pattern was used: \\bFROM\\b and was detected in the element starting with: \"<script>self.__next_f.push([1,\"0:[[[\\\"$\\\",\\\"link\\\",\\\"0\\\",{\\\"rel\\\":\\\"stylesheet\\\",\\\"href\\\":\\\"/_next/static/css/7d6a7108e897f452.c\", see evidence field for the suspicious comment/snippet."
 						},
 						{
 							"uri": "https://impactco2.fr/budget",
@@ -1221,7 +1232,39 @@
 							"param": "",
 							"attack": "",
 							"evidence": "from",
-							"otherinfo": "The following pattern was used: \\bFROM\\b and was detected in the element starting with: \"<script>self.__next_f.push([1,\"0:[[[\\\"$\\\",\\\"link\\\",\\\"0\\\",{\\\"rel\\\":\\\"stylesheet\\\",\\\"href\\\":\\\"/_next/static/css/9a4deda599d35475.c\", see evidence field for the suspicious comment/snippet."
+							"otherinfo": "The following pattern was used: \\bFROM\\b and was detected in the element starting with: \"<script>self.__next_f.push([1,\"0:[[[\\\"$\\\",\\\"link\\\",\\\"0\\\",{\\\"rel\\\":\\\"stylesheet\\\",\\\"href\\\":\\\"/_next/static/css/7d6a7108e897f452.c\", see evidence field for the suspicious comment/snippet."
+						},
+						{
+							"uri": "https://impactco2.fr/contenu/detecteur-co2",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "from",
+							"otherinfo": "The following pattern was used: \\bFROM\\b and was detected in the element starting with: \"<script>self.__next_f.push([1,\"8:[[\\\"$\\\",\\\"$L4a\\\",null,{\\\"title\\\":\\\"Le D\u00E9tecteur CO\u2082\\\",\\\"recordMap\\\":{\\\"block\\\":{\\\"51206793-c21f\", see evidence field for the suspicious comment/snippet."
+						},
+						{
+							"uri": "https://impactco2.fr/contenu/etiquette-carbone",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "from",
+							"otherinfo": "The following pattern was used: \\bFROM\\b and was detected in the element starting with: \"<script>self.__next_f.push([1,\"8:[[\\\"$\\\",\\\"$L4a\\\",null,{\\\"title\\\":\\\"L\u2019\u00E9tiquette carbone : pr\u00E9sentation et tutoriel d\u2019int\u00E9gration\", see evidence field for the suspicious comment/snippet."
+						},
+						{
+							"uri": "https://impactco2.fr/contenu/impact-carbone-hiver-station-ski",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "from",
+							"otherinfo": "The following pattern was used: \\bFROM\\b and was detected in the element starting with: \"<script>self.__next_f.push([1,\"8:[[\\\"$\\\",\\\"$L4a\\\",null,{\\\"title\\\":\\\"4 conseils pour r\u00E9duire l\u2019impact carbone des s\u00E9jours au ski\\\", see evidence field for the suspicious comment/snippet."
+						},
+						{
+							"uri": "https://impactco2.fr/contenu/nouveau-site",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "from",
+							"otherinfo": "The following pattern was used: \\bFROM\\b and was detected in the element starting with: \"<script>self.__next_f.push([1,\"8:[[\\\"$\\\",\\\"$L4a\\\",null,{\\\"title\\\":\\\"Le nouveau site \u201CImpact CO2\u201D est en ligne !\\\",\\\"recordMap\\\":\", see evidence field for the suspicious comment/snippet."
 						},
 						{
 							"uri": "https://impactco2.fr/doc",
@@ -1229,15 +1272,7 @@
 							"param": "",
 							"attack": "",
 							"evidence": "from",
-							"otherinfo": "The following pattern was used: \\bFROM\\b and was detected in the element starting with: \"<script>self.__next_f.push([1,\"0:[[[\\\"$\\\",\\\"link\\\",\\\"0\\\",{\\\"rel\\\":\\\"stylesheet\\\",\\\"href\\\":\\\"/_next/static/css/9a4deda599d35475.c\", see evidence field for the suspicious comment/snippet."
-						},
-						{
-							"uri": "https://impactco2.fr/doc/exemples",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "from",
-							"otherinfo": "The following pattern was used: \\bFROM\\b and was detected in the element starting with: \"<script>self.__next_f.push([1,\"7:[[[\\\"$\\\",\\\"div\\\",null,{\\\"className\\\":\\\"main-container\\\",\\\"children\\\":[\\\"$\\\",\\\"div\\\",null,{\\\"cla\", see evidence field for the suspicious comment/snippet."
+							"otherinfo": "The following pattern was used: \\bFROM\\b and was detected in the element starting with: \"<script>self.__next_f.push([1,\"0:[[[\\\"$\\\",\\\"link\\\",\\\"0\\\",{\\\"rel\\\":\\\"stylesheet\\\",\\\"href\\\":\\\"/_next/static/css/7d6a7108e897f452.c\", see evidence field for the suspicious comment/snippet."
 						},
 						{
 							"uri": "https://impactco2.fr/doc/guide-utilisation",
@@ -1245,52 +1280,28 @@
 							"param": "",
 							"attack": "",
 							"evidence": "select",
-							"otherinfo": "The following pattern was used: \\bSELECT\\b and was detected in the element starting with: \"<script>self.__next_f.push([1,\"7:[[\\\"$\\\",\\\"div\\\",null,{\\\"className\\\":\\\"main-container Block_block__tPUWw\\\",\\\"id\\\":\\\"$undefined\\\"\", see evidence field for the suspicious comment/snippet."
+							"otherinfo": "The following pattern was used: \\bSELECT\\b and was detected in the element starting with: \"<script>self.__next_f.push([1,\"6:[[\\\"$\\\",\\\"div\\\",null,{\\\"className\\\":\\\"main-container Block_block__tPUWw\\\",\\\"id\\\":\\\"$undefined\\\"\", see evidence field for the suspicious comment/snippet."
 						},
 						{
-							"uri": "https://impactco2.fr/outils",
+							"uri": "https://impactco2.fr/doc/kit-communication",
 							"method": "GET",
 							"param": "",
 							"attack": "",
 							"evidence": "from",
-							"otherinfo": "The following pattern was used: \\bFROM\\b and was detected in the element starting with: \"<script>self.__next_f.push([1,\"0:[[[\\\"$\\\",\\\"link\\\",\\\"0\\\",{\\\"rel\\\":\\\"stylesheet\\\",\\\"href\\\":\\\"/_next/static/css/9a4deda599d35475.c\", see evidence field for the suspicious comment/snippet."
+							"otherinfo": "The following pattern was used: \\bFROM\\b and was detected in the element starting with: \"<script>self.__next_f.push([1,\"0:[[[\\\"$\\\",\\\"link\\\",\\\"0\\\",{\\\"rel\\\":\\\"stylesheet\\\",\\\"href\\\":\\\"/_next/static/css/7d6a7108e897f452.c\", see evidence field for the suspicious comment/snippet."
 						},
 						{
-							"uri": "https://impactco2.fr/outils",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "select",
-							"otherinfo": "The following pattern was used: \\bSELECT\\b and was detected in the element starting with: \"<script>self.__next_f.push([1,\"e:[\\\"$\\\",\\\"div\\\",null,{\\\"className\\\":\\\"main-container Block_block__tPUWw\\\",\\\"id\\\":\\\"$undefined\\\",\", see evidence field for the suspicious comment/snippet."
-						},
-						{
-							"uri": "https://impactco2.fr/plan-du-site",
+							"uri": "https://impactco2.fr/doc/livraison",
 							"method": "GET",
 							"param": "",
 							"attack": "",
 							"evidence": "from",
-							"otherinfo": "The following pattern was used: \\bFROM\\b and was detected in the element starting with: \"<script>self.__next_f.push([1,\"0:[[[\\\"$\\\",\\\"link\\\",\\\"0\\\",{\\\"rel\\\":\\\"stylesheet\\\",\\\"href\\\":\\\"/_next/static/css/9a4deda599d35475.c\", see evidence field for the suspicious comment/snippet."
-						},
-						{
-							"uri": "https://impactco2.fr/rendez-vous?fromLabel=footer",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "from",
-							"otherinfo": "The following pattern was used: \\bFROM\\b and was detected in the element starting with: \"<script>self.__next_f.push([1,\"0:[[[\\\"$\\\",\\\"link\\\",\\\"0\\\",{\\\"rel\\\":\\\"stylesheet\\\",\\\"href\\\":\\\"/_next/static/css/9a4deda599d35475.c\", see evidence field for the suspicious comment/snippet."
-						},
-						{
-							"uri": "https://impactco2.fr/stats",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "from",
-							"otherinfo": "The following pattern was used: \\bFROM\\b and was detected in the element starting with: \"<script>self.__next_f.push([1,\"7:[[\\\"$\\\",\\\"div\\\",null,{\\\"className\\\":\\\"Page_container__8UcBY main-container\\\",\\\"children\\\":[[\\\"$\", see evidence field for the suspicious comment/snippet."
+							"otherinfo": "The following pattern was used: \\bFROM\\b and was detected in the element starting with: \"<script>self.__next_f.push([1,\"0:[[[\\\"$\\\",\\\"link\\\",\\\"0\\\",{\\\"rel\\\":\\\"stylesheet\\\",\\\"href\\\":\\\"/_next/static/css/7d6a7108e897f452.c\", see evidence field for the suspicious comment/snippet."
 						}
 					],
 					"count": "11",
 					"solution": "<p>Remove all comments that return information that may help an attacker and fix any underlying problems they refer to.</p>",
-					"otherinfo": "<p>The following pattern was used: \\bSELECT\\b and was detected in the element starting with: \"<script>self.__next_f.push([1,\"11:[\\\"$\\\",\\\"div\\\",null,{\\\"className\\\":\\\"main-container Block_block__tPUWw\\\",\\\"id\\\":\\\"$undefined\\\"\", see evidence field for the suspicious comment/snippet.</p>",
+					"otherinfo": "<p>The following pattern was used: \\bSELECT\\b and was detected in the element starting with: \"<script>self.__next_f.push([1,\"f:[\\\"$\\\",\\\"div\\\",null,{\\\"className\\\":\\\"main-container Block_block__tPUWw\\\",\\\"id\\\":\\\"$undefined\\\",\", see evidence field for the suspicious comment/snippet.</p>",
 					"reference": "",
 					"cweid": "200",
 					"wascid": "13",
@@ -1315,84 +1326,84 @@
 							"otherinfo": "Links have been found with a target of '_self' - this is often used by modern frameworks to force a full page reload."
 						},
 						{
-							"uri": "https://impactco2.fr/",
+							"uri": "https://impactco2.fr/iframes/caspratiques/avion-pny",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "<a class=\"Link_link__kqI8J\" target=\"_self\" href=\"/stats\">Statistiques</a>",
-							"otherinfo": "Links have been found with a target of '_self' - this is often used by modern frameworks to force a full page reload."
+							"evidence": "<script src=\"/_next/static/chunks/fd9d1056-431d46a046e71540.js\" async=\"\"></script>",
+							"otherinfo": "No links have been found while there are scripts, which is an indication that this is a modern web application."
 						},
 						{
-							"uri": "https://impactco2.fr/budget",
+							"uri": "https://impactco2.fr/iframes/caspratiques/francais",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "<a class=\"Link_link__kqI8J\" target=\"_self\" href=\"/stats\">Statistiques</a>",
-							"otherinfo": "Links have been found with a target of '_self' - this is often used by modern frameworks to force a full page reload."
+							"evidence": "<script src=\"/_next/static/chunks/fd9d1056-431d46a046e71540.js\" async=\"\"></script>",
+							"otherinfo": "No links have been found while there are scripts, which is an indication that this is a modern web application."
 						},
 						{
-							"uri": "https://impactco2.fr/doc",
+							"uri": "https://impactco2.fr/iframes/caspratiques/friends",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "<a class=\"Link_link__kqI8J\" target=\"_self\" href=\"/stats\">Statistiques</a>",
-							"otherinfo": "Links have been found with a target of '_self' - this is often used by modern frameworks to force a full page reload."
+							"evidence": "<script src=\"/_next/static/chunks/fd9d1056-431d46a046e71540.js\" async=\"\"></script>",
+							"otherinfo": "No links have been found while there are scripts, which is an indication that this is a modern web application."
 						},
 						{
-							"uri": "https://impactco2.fr/doc/api",
+							"uri": "https://impactco2.fr/iframes/caspratiques/game-of-thrones",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "<a class=\"Link_link__kqI8J\" target=\"_self\" href=\"/stats\">Statistiques</a>",
-							"otherinfo": "Links have been found with a target of '_self' - this is often used by modern frameworks to force a full page reload."
+							"evidence": "<script src=\"/_next/static/chunks/fd9d1056-431d46a046e71540.js\" async=\"\"></script>",
+							"otherinfo": "No links have been found while there are scripts, which is an indication that this is a modern web application."
 						},
 						{
-							"uri": "https://impactco2.fr/doc/exemples",
+							"uri": "https://impactco2.fr/iframes/caspratiques/tgv-paris-berlin",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "<a class=\"Link_link__kqI8J\" target=\"_self\" href=\"/stats\">Statistiques</a>",
-							"otherinfo": "Links have been found with a target of '_self' - this is often used by modern frameworks to force a full page reload."
+							"evidence": "<script src=\"/_next/static/chunks/fd9d1056-431d46a046e71540.js\" async=\"\"></script>",
+							"otherinfo": "No links have been found while there are scripts, which is an indication that this is a modern web application."
 						},
 						{
-							"uri": "https://impactco2.fr/doc/guide-utilisation",
+							"uri": "https://impactco2.fr/iframes/caspratiques/tgv-paris-marseille",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "<a class=\"Link_link__kqI8J\" target=\"_self\" href=\"/stats\">Statistiques</a>",
-							"otherinfo": "Links have been found with a target of '_self' - this is often used by modern frameworks to force a full page reload."
+							"evidence": "<script src=\"/_next/static/chunks/fd9d1056-431d46a046e71540.js\" async=\"\"></script>",
+							"otherinfo": "No links have been found while there are scripts, which is an indication that this is a modern web application."
 						},
 						{
-							"uri": "https://impactco2.fr/outils",
+							"uri": "https://impactco2.fr/iframes/caspratiques/voiture-lille-nimes",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "<a class=\"Link_link__kqI8J\" target=\"_self\" href=\"/stats\">Statistiques</a>",
-							"otherinfo": "Links have been found with a target of '_self' - this is often used by modern frameworks to force a full page reload."
+							"evidence": "<script src=\"/_next/static/chunks/fd9d1056-431d46a046e71540.js\" async=\"\"></script>",
+							"otherinfo": "No links have been found while there are scripts, which is an indication that this is a modern web application."
 						},
 						{
-							"uri": "https://impactco2.fr/plan-du-site",
+							"uri": "https://impactco2.fr/iframes/comparateur/etiquette-animee",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "<a class=\"Link_link__kqI8J\" target=\"_self\" href=\"/stats\">Statistiques</a>",
-							"otherinfo": "Links have been found with a target of '_self' - this is often used by modern frameworks to force a full page reload."
+							"evidence": "<script src=\"/_next/static/chunks/fd9d1056-431d46a046e71540.js\" async=\"\"></script>",
+							"otherinfo": "No links have been found while there are scripts, which is an indication that this is a modern web application."
 						},
 						{
-							"uri": "https://impactco2.fr/rendez-vous?fromLabel=footer",
+							"uri": "https://impactco2.fr/iframes/usagenumerique/email",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "<a class=\"Link_link__kqI8J\" target=\"_self\" href=\"/stats\">Statistiques</a>",
-							"otherinfo": "Links have been found with a target of '_self' - this is often used by modern frameworks to force a full page reload."
+							"evidence": "<script src=\"/_next/static/chunks/fd9d1056-431d46a046e71540.js\" async=\"\"></script>",
+							"otherinfo": "No links have been found while there are scripts, which is an indication that this is a modern web application."
 						},
 						{
-							"uri": "https://impactco2.fr/stats",
+							"uri": "https://impactco2.fr/iframes/usagenumerique/spam",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "<a class=\"Link_link__kqI8J\" target=\"_self\" href=\"/stats\">Statistiques</a>",
-							"otherinfo": "Links have been found with a target of '_self' - this is often used by modern frameworks to force a full page reload."
+							"evidence": "<script src=\"/_next/static/chunks/fd9d1056-431d46a046e71540.js\" async=\"\"></script>",
+							"otherinfo": "No links have been found while there are scripts, which is an indication that this is a modern web application."
 						}
 					],
 					"count": "11",
@@ -1418,19 +1429,11 @@
 							"method": "GET",
 							"param": "cache-control",
 							"attack": "",
-							"evidence": "s-maxage=1, stale-while-revalidate",
+							"evidence": "s-maxage=900, stale-while-revalidate",
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://impactco2.fr/",
-							"method": "GET",
-							"param": "cache-control",
-							"attack": "",
-							"evidence": "s-maxage=1, stale-while-revalidate",
-							"otherinfo": ""
-						},
-						{
-							"uri": "https://impactco2.fr/budget",
+							"uri": "https://impactco2.fr/iframes/caspratiques/avion-pny",
 							"method": "GET",
 							"param": "cache-control",
 							"attack": "",
@@ -1438,7 +1441,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://impactco2.fr/doc",
+							"uri": "https://impactco2.fr/iframes/caspratiques/francais",
 							"method": "GET",
 							"param": "cache-control",
 							"attack": "",
@@ -1446,23 +1449,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://impactco2.fr/doc/exemples",
-							"method": "GET",
-							"param": "cache-control",
-							"attack": "",
-							"evidence": "s-maxage=1, stale-while-revalidate",
-							"otherinfo": ""
-						},
-						{
-							"uri": "https://impactco2.fr/doc/guide-utilisation",
-							"method": "GET",
-							"param": "cache-control",
-							"attack": "",
-							"evidence": "s-maxage=1, stale-while-revalidate",
-							"otherinfo": ""
-						},
-						{
-							"uri": "https://impactco2.fr/plan-du-site",
+							"uri": "https://impactco2.fr/iframes/caspratiques/friends",
 							"method": "GET",
 							"param": "cache-control",
 							"attack": "",
@@ -1470,11 +1457,51 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://impactco2.fr/rendez-vous?fromLabel=footer",
+							"uri": "https://impactco2.fr/iframes/caspratiques/tgv-paris-berlin",
 							"method": "GET",
 							"param": "cache-control",
 							"attack": "",
 							"evidence": "s-maxage=31536000, stale-while-revalidate",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://impactco2.fr/iframes/caspratiques/tgv-paris-marseille",
+							"method": "GET",
+							"param": "cache-control",
+							"attack": "",
+							"evidence": "s-maxage=31536000, stale-while-revalidate",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://impactco2.fr/iframes/caspratiques/voiture-lille-nimes",
+							"method": "GET",
+							"param": "cache-control",
+							"attack": "",
+							"evidence": "s-maxage=31536000, stale-while-revalidate",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://impactco2.fr/iframes/comparateur/etiquette-animee",
+							"method": "GET",
+							"param": "cache-control",
+							"attack": "",
+							"evidence": "s-maxage=31536000, stale-while-revalidate",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://impactco2.fr/robots.txt",
+							"method": "GET",
+							"param": "cache-control",
+							"attack": "",
+							"evidence": "public, max-age=0",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://impactco2.fr/sitemap-0.xml",
+							"method": "GET",
+							"param": "cache-control",
+							"attack": "",
+							"evidence": "public, max-age=0",
 							"otherinfo": ""
 						},
 						{
@@ -1484,17 +1511,9 @@
 							"attack": "",
 							"evidence": "public, max-age=0",
 							"otherinfo": ""
-						},
-						{
-							"uri": "https://impactco2.fr/stats",
-							"method": "GET",
-							"param": "cache-control",
-							"attack": "",
-							"evidence": "s-maxage=1, stale-while-revalidate",
-							"otherinfo": ""
 						}
 					],
-					"count": "10",
+					"count": "11",
 					"solution": "<p>For secure content, ensure the cache-control HTTP header is set with \"no-cache, no-store, must-revalidate\". If an asset should be cached consider setting the directives \"public, max-age, immutable\".</p>",
 					"otherinfo": "",
 					"reference": "<p>https://cheatsheetseries.owasp.org/cheatsheets/Session_Management_Cheat_Sheet.html#web-content-caching</p><p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cache-Control</p><p>https://grayduck.mn/2021/09/13/cache-control-recommendations/</p>",
@@ -1513,7 +1532,7 @@
 					"desc": "<p>Specifies how and where the data would be used. For instance, if the value is audio, then the requested resource must be audio data and not any other type of resource.</p>",
 					"instances":[ 
 						{
-							"uri": "https://impactco2.fr/",
+							"uri": "https://impactco2.fr/robots.txt",
 							"method": "GET",
 							"param": "Sec-Fetch-Dest",
 							"attack": "",
@@ -1521,7 +1540,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://impactco2.fr/robots.txt",
+							"uri": "https://impactco2.fr/sitemap-0.xml",
 							"method": "GET",
 							"param": "Sec-Fetch-Dest",
 							"attack": "",
@@ -1543,7 +1562,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Dest</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "62"
+					"sourceid": "7"
 				},
 				{
 					"pluginid": "90005",
@@ -1556,7 +1575,7 @@
 					"desc": "<p>Allows to differentiate between requests for navigating between HTML pages and requests for loading resources like images, audio etc.</p>",
 					"instances":[ 
 						{
-							"uri": "https://impactco2.fr/",
+							"uri": "https://impactco2.fr/robots.txt",
 							"method": "GET",
 							"param": "Sec-Fetch-Mode",
 							"attack": "",
@@ -1564,7 +1583,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://impactco2.fr/robots.txt",
+							"uri": "https://impactco2.fr/sitemap-0.xml",
 							"method": "GET",
 							"param": "Sec-Fetch-Mode",
 							"attack": "",
@@ -1586,7 +1605,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Mode</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "62"
+					"sourceid": "7"
 				},
 				{
 					"pluginid": "90005",
@@ -1599,7 +1618,7 @@
 					"desc": "<p>Specifies the relationship between request initiator's origin and target's origin.</p>",
 					"instances":[ 
 						{
-							"uri": "https://impactco2.fr/",
+							"uri": "https://impactco2.fr/robots.txt",
 							"method": "GET",
 							"param": "Sec-Fetch-Site",
 							"attack": "",
@@ -1607,7 +1626,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://impactco2.fr/robots.txt",
+							"uri": "https://impactco2.fr/sitemap-0.xml",
 							"method": "GET",
 							"param": "Sec-Fetch-Site",
 							"attack": "",
@@ -1629,7 +1648,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Site</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "62"
+					"sourceid": "7"
 				},
 				{
 					"pluginid": "90005",
@@ -1642,7 +1661,7 @@
 					"desc": "<p>Specifies if a navigation request was initiated by a user.</p>",
 					"instances":[ 
 						{
-							"uri": "https://impactco2.fr/",
+							"uri": "https://impactco2.fr/robots.txt",
 							"method": "GET",
 							"param": "Sec-Fetch-User",
 							"attack": "",
@@ -1650,7 +1669,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://impactco2.fr/robots.txt",
+							"uri": "https://impactco2.fr/sitemap-0.xml",
 							"method": "GET",
 							"param": "Sec-Fetch-User",
 							"attack": "",
@@ -1672,7 +1691,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-User</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "62"
+					"sourceid": "7"
 				},
 				{
 					"pluginid": "10049",
@@ -1689,19 +1708,11 @@
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "s-maxage=1",
+							"evidence": "s-maxage=900",
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://impactco2.fr/",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "s-maxage=1",
-							"otherinfo": ""
-						},
-						{
-							"uri": "https://impactco2.fr/budget",
+							"uri": "https://impactco2.fr/iframes/caspratiques/avion-pny",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1709,7 +1720,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://impactco2.fr/doc",
+							"uri": "https://impactco2.fr/iframes/caspratiques/francais",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1717,23 +1728,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://impactco2.fr/doc/exemples",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "s-maxage=1",
-							"otherinfo": ""
-						},
-						{
-							"uri": "https://impactco2.fr/doc/guide-utilisation",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "s-maxage=1",
-							"otherinfo": ""
-						},
-						{
-							"uri": "https://impactco2.fr/plan-du-site",
+							"uri": "https://impactco2.fr/iframes/caspratiques/friends",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1741,7 +1736,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://impactco2.fr/rendez-vous?fromLabel=footer",
+							"uri": "https://impactco2.fr/iframes/caspratiques/tgv-paris-berlin",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1749,21 +1744,37 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://impactco2.fr/stats",
+							"uri": "https://impactco2.fr/iframes/caspratiques/tgv-paris-marseille",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "s-maxage=1",
+							"evidence": "s-maxage=31536000",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://impactco2.fr/iframes/caspratiques/voiture-lille-nimes",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "s-maxage=31536000",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://impactco2.fr/iframes/comparateur/etiquette-animee",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "s-maxage=31536000",
 							"otherinfo": ""
 						}
 					],
-					"count": "9",
+					"count": "8",
 					"solution": "<p>Validate that the response does not contain sensitive, personal or user-specific information. If it does, consider the use of the following HTTP response headers, to limit, or prevent the content being stored and retrieved from the cache by another user:</p><p>Cache-Control: no-cache, no-store, must-revalidate, private</p><p>Pragma: no-cache</p><p>Expires: 0</p><p>This configuration directs both HTTP 1.0 and HTTP 1.1 compliant caching servers to not store the response, and to not retrieve the response (without validation) from the cache, in response to a similar request.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://datatracker.ietf.org/doc/html/rfc7234</p><p>https://datatracker.ietf.org/doc/html/rfc7231</p><p>https://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html</p>",
 					"cweid": "524",
 					"wascid": "13",
-					"sourceid": "6"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "10049",
@@ -1784,6 +1795,14 @@
 							"otherinfo": ""
 						},
 						{
+							"uri": "https://impactco2.fr/sitemap-0.xml",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "max-age=0",
+							"otherinfo": ""
+						},
+						{
 							"uri": "https://impactco2.fr/sitemap.xml",
 							"method": "GET",
 							"param": "",
@@ -1792,13 +1811,13 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "2",
+					"count": "3",
 					"solution": "",
 					"otherinfo": "",
 					"reference": "<p>https://datatracker.ietf.org/doc/html/rfc7234</p><p>https://datatracker.ietf.org/doc/html/rfc7231</p><p>https://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html</p>",
 					"cweid": "524",
 					"wascid": "13",
-					"sourceid": "20"
+					"sourceid": "7"
 				},
 				{
 					"pluginid": "10031",
@@ -1810,14 +1829,6 @@
 					"riskdesc": "Informational (Low)",
 					"desc": "<p>This check looks at user-supplied input in query string parameters and POST data to identify where certain HTML attribute values might be controlled. This provides hot-spot detection for XSS (cross-site scripting) that will require further review by a security analyst to determine exploitability.</p>",
 					"instances":[ 
-						{
-							"uri": "https://impactco2.fr/rendez-vous?fromLabel=footer",
-							"method": "GET",
-							"param": "fromLabel",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://impactco2.fr/rendez-vous?fromLabel=footer\n\nappears to include user input in:\na(n) [div] tag [class] attribute\n\nThe user input found was:\nfromLabel=footer\n\nThe user-controlled value was:\nfooter_bottomlinks__zm1vi"
-						},
 						{
 							"uri": "https://impactco2.fr/rendez-vous?fromLabel=footer",
 							"method": "GET",
@@ -1841,14 +1852,6 @@
 							"attack": "",
 							"evidence": "",
 							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://impactco2.fr/rendez-vous?fromLabel=footer\n\nappears to include user input in:\na(n) [div] tag [class] attribute\n\nThe user input found was:\nfromLabel=footer\n\nThe user-controlled value was:\nfooter_internalcontainer__woxgq"
-						},
-						{
-							"uri": "https://impactco2.fr/rendez-vous?fromLabel=footer",
-							"method": "GET",
-							"param": "fromLabel",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://impactco2.fr/rendez-vous?fromLabel=footer\n\nappears to include user input in:\na(n) [div] tag [class] attribute\n\nThe user input found was:\nfromLabel=footer\n\nThe user-controlled value was:\nfooter_linkcontainer__dfqsq"
 						},
 						{
 							"uri": "https://impactco2.fr/rendez-vous?fromLabel=footer",
@@ -1889,15 +1892,39 @@
 							"attack": "",
 							"evidence": "",
 							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://impactco2.fr/rendez-vous?fromLabel=footer\n\nappears to include user input in:\na(n) [footer] tag [id] attribute\n\nThe user input found was:\nfromLabel=footer\n\nThe user-controlled value was:\nfooter"
+						},
+						{
+							"uri": "https://impactco2.fr/rendez-vous?fromLabel=footer",
+							"method": "GET",
+							"param": "fromLabel",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://impactco2.fr/rendez-vous?fromLabel=footer\n\nappears to include user input in:\na(n) [li] tag [class] attribute\n\nThe user input found was:\nfromLabel=footer\n\nThe user-controlled value was:\nfooter_bottomlink__oi1xo"
+						},
+						{
+							"uri": "https://impactco2.fr/rendez-vous?fromLabel=footer",
+							"method": "GET",
+							"param": "fromLabel",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://impactco2.fr/rendez-vous?fromLabel=footer\n\nappears to include user input in:\na(n) [ul] tag [class] attribute\n\nThe user input found was:\nfromLabel=footer\n\nThe user-controlled value was:\nfooter_bottomlinks__zm1vi"
+						},
+						{
+							"uri": "https://impactco2.fr/rendez-vous?fromLabel=footer",
+							"method": "GET",
+							"param": "fromLabel",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://impactco2.fr/rendez-vous?fromLabel=footer\n\nappears to include user input in:\na(n) [ul] tag [class] attribute\n\nThe user input found was:\nfromLabel=footer\n\nThe user-controlled value was:\nfooter_linkcontainer__dfqsq"
 						}
 					],
-					"count": "10",
+					"count": "11",
 					"solution": "<p>Validate all input and sanitize output it before writing to any HTML attributes.</p>",
-					"otherinfo": "<p>User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:</p><p></p><p>https://impactco2.fr/rendez-vous?fromLabel=footer</p><p></p><p>appears to include user input in:</p><p>a(n) [div] tag [class] attribute</p><p></p><p>The user input found was:</p><p>fromLabel=footer</p><p></p><p>The user-controlled value was:</p><p>footer_bottomlinks__zm1vi</p>",
+					"otherinfo": "<p>User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:</p><p></p><p>https://impactco2.fr/rendez-vous?fromLabel=footer</p><p></p><p>appears to include user input in:</p><p>a(n) [div] tag [class] attribute</p><p></p><p>The user input found was:</p><p>fromLabel=footer</p><p></p><p>The user-controlled value was:</p><p>footer_footerexplain__h7zng</p>",
 					"reference": "<p>https://cheatsheetseries.owasp.org/cheatsheets/Input_Validation_Cheat_Sheet.html</p>",
 					"cweid": "20",
 					"wascid": "20",
-					"sourceid": "71"
+					"sourceid": "604"
 				}
 			]
 		}
