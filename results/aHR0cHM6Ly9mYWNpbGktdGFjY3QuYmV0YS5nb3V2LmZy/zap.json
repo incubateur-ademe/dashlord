@@ -1,7 +1,7 @@
 {
 	"@programName": "ZAP",
 	"@version": "2.15.0",
-	"@generated": "Sun, 1 Sep 2024 03:53:35",
+	"@generated": "Sun, 8 Sep 2024 03:47:34",
 	"site":[ 
 		{
 			"@name": "https://facili-tacct.beta.gouv.fr",
@@ -36,7 +36,7 @@
 							"otherinfo": "The following directives either allow wildcard sources (or ancestors), are not defined, or are overly broadly defined:\nimg-src, connect-src"
 						},
 						{
-							"uri": "https://facili-tacct.beta.gouv.fr/sitemap.xml",
+							"uri": "https://facili-tacct.beta.gouv.fr/no%20repository/main/LICENSE",
 							"method": "GET",
 							"param": "Content-Security-Policy",
 							"attack": "",
@@ -50,7 +50,7 @@
 					"reference": "<p>https://www.w3.org/TR/CSP/</p><p>https://caniuse.com/#search=content+security+policy</p><p>https://content-security-policy.com/</p><p>https://github.com/HtmlUnit/htmlunit-csp</p><p>https://developers.google.com/web/fundamentals/security/csp#policy_applies_to_a_wide_variety_of_resources</p>",
 					"cweid": "693",
 					"wascid": "15",
-					"sourceid": "6"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "10055",
@@ -79,7 +79,7 @@
 							"otherinfo": "script-src includes unsafe-inline."
 						},
 						{
-							"uri": "https://facili-tacct.beta.gouv.fr/sitemap.xml",
+							"uri": "https://facili-tacct.beta.gouv.fr/no%20repository/main/LICENSE",
 							"method": "GET",
 							"param": "Content-Security-Policy",
 							"attack": "",
@@ -93,7 +93,7 @@
 					"reference": "<p>https://www.w3.org/TR/CSP/</p><p>https://caniuse.com/#search=content+security+policy</p><p>https://content-security-policy.com/</p><p>https://github.com/HtmlUnit/htmlunit-csp</p><p>https://developers.google.com/web/fundamentals/security/csp#policy_applies_to_a_wide_variety_of_resources</p>",
 					"cweid": "693",
 					"wascid": "15",
-					"sourceid": "6"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "10055",
@@ -122,7 +122,7 @@
 							"otherinfo": "style-src includes unsafe-inline."
 						},
 						{
-							"uri": "https://facili-tacct.beta.gouv.fr/sitemap.xml",
+							"uri": "https://facili-tacct.beta.gouv.fr/no%20repository/main/LICENSE",
 							"method": "GET",
 							"param": "Content-Security-Policy",
 							"attack": "",
@@ -136,112 +136,7 @@
 					"reference": "<p>https://www.w3.org/TR/CSP/</p><p>https://caniuse.com/#search=content+security+policy</p><p>https://content-security-policy.com/</p><p>https://github.com/HtmlUnit/htmlunit-csp</p><p>https://developers.google.com/web/fundamentals/security/csp#policy_applies_to_a_wide_variety_of_resources</p>",
 					"cweid": "693",
 					"wascid": "15",
-					"sourceid": "6"
-				},
-				{
-					"pluginid": "10010",
-					"alertRef": "10010",
-					"alert": "Cookie No HttpOnly Flag",
-					"name": "Cookie No HttpOnly Flag",
-					"riskcode": "1",
-					"confidence": "2",
-					"riskdesc": "Low (Medium)",
-					"desc": "<p>A cookie has been set without the HttpOnly flag, which means that the cookie can be accessed by JavaScript. If a malicious script can be run on this page then the cookie will be accessible and can be transmitted to another site. If this is a session cookie then session hijacking may be possible.</p>",
-					"instances":[ 
-						{
-							"uri": "https://facili-tacct.beta.gouv.fr",
-							"method": "GET",
-							"param": "token",
-							"attack": "",
-							"evidence": "set-cookie: token",
-							"otherinfo": ""
-						},
-						{
-							"uri": "https://facili-tacct.beta.gouv.fr/",
-							"method": "GET",
-							"param": "token",
-							"attack": "",
-							"evidence": "set-cookie: token",
-							"otherinfo": ""
-						}
-					],
-					"count": "2",
-					"solution": "<p>Ensure that the HttpOnly flag is set for all cookies.</p>",
-					"otherinfo": "",
-					"reference": "<p>https://owasp.org/www-community/HttpOnly</p>",
-					"cweid": "1004",
-					"wascid": "13",
-					"sourceid": "6"
-				},
-				{
-					"pluginid": "10011",
-					"alertRef": "10011",
-					"alert": "Cookie Without Secure Flag",
-					"name": "Cookie Without Secure Flag",
-					"riskcode": "1",
-					"confidence": "2",
-					"riskdesc": "Low (Medium)",
-					"desc": "<p>A cookie has been set without the secure flag, which means that the cookie can be accessed via unencrypted connections.</p>",
-					"instances":[ 
-						{
-							"uri": "https://facili-tacct.beta.gouv.fr",
-							"method": "GET",
-							"param": "token",
-							"attack": "",
-							"evidence": "set-cookie: token",
-							"otherinfo": ""
-						},
-						{
-							"uri": "https://facili-tacct.beta.gouv.fr/",
-							"method": "GET",
-							"param": "token",
-							"attack": "",
-							"evidence": "set-cookie: token",
-							"otherinfo": ""
-						}
-					],
-					"count": "2",
-					"solution": "<p>Whenever a cookie contains sensitive information or is a session token, then it should always be passed using an encrypted channel. Ensure that the secure flag is set for cookies containing such sensitive information.</p>",
-					"otherinfo": "",
-					"reference": "<p>https://owasp.org/www-project-web-security-testing-guide/v41/4-Web_Application_Security_Testing/06-Session_Management_Testing/02-Testing_for_Cookies_Attributes.html</p>",
-					"cweid": "614",
-					"wascid": "13",
-					"sourceid": "6"
-				},
-				{
-					"pluginid": "10054",
-					"alertRef": "10054-1",
-					"alert": "Cookie without SameSite Attribute",
-					"name": "Cookie without SameSite Attribute",
-					"riskcode": "1",
-					"confidence": "2",
-					"riskdesc": "Low (Medium)",
-					"desc": "<p>A cookie has been set without the SameSite attribute, which means that the cookie can be sent as a result of a 'cross-site' request. The SameSite attribute is an effective counter measure to cross-site request forgery, cross-site script inclusion, and timing attacks.</p>",
-					"instances":[ 
-						{
-							"uri": "https://facili-tacct.beta.gouv.fr",
-							"method": "GET",
-							"param": "token",
-							"attack": "",
-							"evidence": "set-cookie: token",
-							"otherinfo": ""
-						},
-						{
-							"uri": "https://facili-tacct.beta.gouv.fr/",
-							"method": "GET",
-							"param": "token",
-							"attack": "",
-							"evidence": "set-cookie: token",
-							"otherinfo": ""
-						}
-					],
-					"count": "2",
-					"solution": "<p>Ensure that the SameSite attribute is set to either 'lax' or ideally 'strict' for all cookies.</p>",
-					"otherinfo": "",
-					"reference": "<p>https://tools.ietf.org/html/draft-ietf-httpbis-cookie-same-site</p>",
-					"cweid": "1275",
-					"wascid": "13",
-					"sourceid": "6"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "10035",
@@ -270,7 +165,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://facili-tacct.beta.gouv.fr/_next/static/chunks/webpack-381b4a41543459ef.js",
+							"uri": "https://facili-tacct.beta.gouv.fr/_next/static/css/663262990729faf3.css",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -278,7 +173,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://facili-tacct.beta.gouv.fr/_next/static/css/1519ddcf4989180a.css",
+							"uri": "https://facili-tacct.beta.gouv.fr/_next/static/css/81ae756f1e0fabb8.css",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -286,7 +181,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://facili-tacct.beta.gouv.fr/_next/static/css/1b1d10445b60e5f7.css",
+							"uri": "https://facili-tacct.beta.gouv.fr/_next/static/media/apple-touch-icon.1db30588.png",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -294,7 +189,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://facili-tacct.beta.gouv.fr/_next/static/css/2fa9b6c179667371.css",
+							"uri": "https://facili-tacct.beta.gouv.fr/_next/static/media/Spectral-Regular.d09028d7.woff2",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -302,7 +197,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://facili-tacct.beta.gouv.fr/_next/static/media/Marianne-Regular.119b3a3e.woff2",
+							"uri": "https://facili-tacct.beta.gouv.fr/accessibilite",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -361,7 +256,15 @@
 					"desc": "<p>A timestamp was disclosed by the application/web server. - Unix</p>",
 					"instances":[ 
 						{
-							"uri": "https://facili-tacct.beta.gouv.fr/_next/static/chunks/4806-2250cd0cec9c6869.js",
+							"uri": "https://facili-tacct.beta.gouv.fr/_next/static/chunks/375-82e60f8dd1bd3bb1.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1540483477",
+							"otherinfo": "1540483477, which evaluates to: 2018-10-25 16:04:37."
+						},
+						{
+							"uri": "https://facili-tacct.beta.gouv.fr/_next/static/chunks/3941-8c446697cc036a2b.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -369,13 +272,13 @@
 							"otherinfo": "1540483477, which evaluates to: 2018-10-25 16:04:37."
 						}
 					],
-					"count": "1",
+					"count": "2",
 					"solution": "<p>Manually confirm that the timestamp data is not sensitive, and that the data cannot be aggregated to disclose exploitable patterns.</p>",
 					"otherinfo": "<p>1540483477, which evaluates to: 2018-10-25 16:04:37.</p>",
 					"reference": "<p>https://cwe.mitre.org/data/definitions/200.html</p>",
 					"cweid": "200",
 					"wascid": "13",
-					"sourceid": "73"
+					"sourceid": "99"
 				},
 				{
 					"pluginid": "10094",
@@ -404,7 +307,15 @@
 							"otherinfo": "\uFFFD\uFFFD-\uFFFD\uFFFD%\uFFFD\uFFFD-\uFFFD\uFFFD\uFFFDyj\u06A6\uFFFD\uFFFD\uFFFD\uFFFD\\x0010\uFFFDK"
 						},
 						{
-							"uri": "https://facili-tacct.beta.gouv.fr/_next/static/chunks/app/accessibilite/page-8aba422dd3800512.js",
+							"uri": "https://facili-tacct.beta.gouv.fr/_next/static/chunks/7480-ccb03b6b86e2e62c.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAMAAADz0U65AAAASFBMVEX////jCQ/mKC3xgIQ3N6jd3fH86OnhAAEAAI/9+/vt7PdFRbC1tN98fMf01NbzmJsYGJzqVFciIp7S0euhoddgYLvlGB3orK1jzlTyAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAO0lEQVR4nAXBhwGAMAwEsUu1P40O+2+KhHturGj4XhDJ8AziM3IvSOvlng1RA30OlA7jfC5qNGMAaAs/Qa0B266IshMAAAAASUVORK5CYII=",
+							"otherinfo": "\uFFFDPNG\r\n\\x001a\n\\x0000\\x0000\\x0000\rIHDR\\x0000\\x0000\\x0000\\x0008\\x0000\\x0000\\x0000\\x0008\\x0008\\x0003\\x0000\\x0000\\x0000\uFFFD\uFFFDN\uFFFD\\x0000\\x0000\\x0000HPLTE\uFFFD\uFFFD\uFFFD\uFFFD\t\\x000f\uFFFD(-\uFFFD77\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\\x0000\\x0001\\x0000\\x0000\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFDEE\uFFFD\uFFFD\uFFFD\uFFFD||\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\\x0018\\x0018\uFFFD\uFFFDTW\"\"\uFFFD\uFFFD\uFFFD\uB861\uFFFD``\uFFFD\uFFFD\\x0018\\x001d\u8B2Dc\uFFFDT\uFFFD\\x0000\\x0000\\x0000\tpHYs\\x0000\\x0000\\x000b\\x0013\\x0000\\x0000\\x000b\\x0013\\x0001\\x0000\uFFFD\uFFFD\\x0018\\x0000\\x0000\\x0000;IDATx\uFFFD\\x0005\uFFFD\uFFFD\\x0001\uFFFD0\\x000c\\x0004\uFFFDK\uFFFD?\uFFFD\\x000e\uFFFDo\uFFFD\uFFFD{n\uFFFDh\uFFFD^\\x0010\uFFFD\uFFFD\\x000c\uFFFD3r/H\uFFFD\uFFFD\rQ\\x0003}\\x000e\uFFFD\\x000e\uFFFD|.j4c\\x0000h\\x000b?A\uFFFD\\x0001\u06EE\uFFFD\uFFFD\\x0013\\x0000\\x0000\\x0000\\x0000IEND\uFFFDB`\uFFFD"
+						},
+						{
+							"uri": "https://facili-tacct.beta.gouv.fr/_next/static/chunks/app/accessibilite/page-8c04af4cd9208899.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -412,7 +323,7 @@
 							"otherinfo": "!\uFFFD'\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD'\uFFFD\uFFFD\u0696('\uFFFD\uFFFD)\uFFFD\uFFFD\uFFFDW\uFFFD"
 						},
 						{
-							"uri": "https://facili-tacct.beta.gouv.fr/_next/static/chunks/app/layout-955ec3f702ee97d6.js",
+							"uri": "https://facili-tacct.beta.gouv.fr/_next/static/chunks/app/layout-1bdbca36b1752ca6.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -420,15 +331,7 @@
 							"otherinfo": "\uFFFD\uFFFD-\uFFFD\uFFFD%\uFFFD\uFFFD-\uFFFD\uFFFD\uFFFDyj\u06A6\uFFFD\uFFFD\uFFFD\uFFFD\\x0010\uFFFDK"
 						},
 						{
-							"uri": "https://facili-tacct.beta.gouv.fr/_next/static/chunks/app/page-1f57294a2672c7fb.js",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "iVBORw0KGgoAAAANSUhEUgAAAAgAAAAGCAQAAABUDBdwAAAAVUlEQVR42i3GIQ6AIABA0S8CGrSRZfMgWnWz223aZV4DLsDm+biDBnjpkd3CCQp5Knha137VoVGMEvwwpTl5C1ZDc8lolrCGaF6BBLVpil1RU/R0OT/ldQzTL6xlqwAAAABJRU5ErkJggg==",
-							"otherinfo": "\uFFFDPNG\r\n\\x001a\n\\x0000\\x0000\\x0000\rIHDR\\x0000\\x0000\\x0000\\x0008\\x0000\\x0000\\x0000\\x0006\\x0008\\x0004\\x0000\\x0000\\x0000T\\x000c\\x0017p\\x0000\\x0000\\x0000UIDATx\uFFFD-\uFFFD!\\x000e\uFFFD \\x0000@\uFFFD/\\x0002\\x001a\uFFFD\uFFFDe\uFFFD Zu\uFFFD\uFFFDm\uFFFDe^\\x0003.\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\\x0006x\uFFFD\uFFFD\uFFFD\t\ny*xZ\uFFFD~\u0561Q\uFFFD\\x0012\uFFFD0\uFFFD9y\\x000bVCs\uFFFDh\uFFFD\uFFFD\uFFFDh^\uFFFD\\x0004\uFFFDi\uFFFD]QS\uFFFDt9?\uFFFDu\\x000c\uFFFD/\uFFFDe\uFFFD\\x0000\\x0000\\x0000\\x0000IEND\uFFFDB`\uFFFD"
-						},
-						{
-							"uri": "https://facili-tacct.beta.gouv.fr/_next/static/css/2fa9b6c179667371.css",
+							"uri": "https://facili-tacct.beta.gouv.fr/_next/static/chunks/app/not-found-09edef2ab22b4788.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -436,21 +339,53 @@
 							"otherinfo": "!\uFFFD'\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD'\uFFFD\uFFFD\u0696('\uFFFD\uFFFD)\uFFFD\uFFFD\uFFFDW\uFFFD"
 						},
 						{
-							"uri": "https://facili-tacct.beta.gouv.fr/_next/static/css/85cdce4f005c6d88.css",
+							"uri": "https://facili-tacct.beta.gouv.fr/_next/static/chunks/app/page-006c455a9a31ed27.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "iVBORw0KGgoAAAANSUhEUgAAAAgAAAAGCAMAAADJ2y/JAAAAFVBMVEXX1//v7/3v7/3w8P7q6v/v7/7n5/3XgxyRAAAAB3RSTlMBKTpIDFsay7bhZgAAAAlwSFlzAAALEwAACxMBAJqcGAAAACdJREFUeJwFwQcBAAAIw7Du4V8yCVAigBuqIdfLRay2pmHcIANGkR4LtgBqbfr3XAAAAABJRU5ErkJggg==",
+							"otherinfo": "\uFFFDPNG\r\n\\x001a\n\\x0000\\x0000\\x0000\rIHDR\\x0000\\x0000\\x0000\\x0008\\x0000\\x0000\\x0000\\x0006\\x0008\\x0003\\x0000\\x0000\\x0000\uFFFD\uFFFD/\uFFFD\\x0000\\x0000\\x0000\\x0015PLTE\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\u05C3\\x001c\uFFFD\\x0000\\x0000\\x0000\\x0007tRNS\\x0001):H\\x000c[\\x001a\u02F6\uFFFDf\\x0000\\x0000\\x0000\tpHYs\\x0000\\x0000\\x000b\\x0013\\x0000\\x0000\\x000b\\x0013\\x0001\\x0000\uFFFD\uFFFD\\x0018\\x0000\\x0000\\x0000'IDATx\uFFFD\\x0005\uFFFD\\x0007\\x0001\\x0000\\x0000\\x0008\u00F0\uFFFD\uFFFD_2\tP\"\uFFFD\\x001b\uFFFD!\uFFFD\uFFFDE\uFFFD\uFFFD\uFFFDa\uFFFD \\x0003F\uFFFD\\x001e\\x000b\uFFFD\\x0000jm\uFFFD\uFFFD\\\\x0000\\x0000\\x0000\\x0000IEND\uFFFDB`\uFFFD"
+						},
+						{
+							"uri": "https://facili-tacct.beta.gouv.fr/_next/static/css/663262990729faf3.css",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "root_collectiviteWrapper__EQv0s",
+							"otherinfo": "\uFFFD\uFFFD-\uFFFD\uFFFD%\uFFFD\uFFFD-\uFFFD\uFFFD\uFFFDyj\u06A6\uFFFD\uFFFD\uFFFD\uFFFD\\x0010\uFFFDK"
+						},
+						{
+							"uri": "https://facili-tacct.beta.gouv.fr/_next/static/css/702c7735784367b9.css",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "ressources_cardsWrapper__QYT1X",
+							"otherinfo": "\uFFFD\uFFFD,\uFFFD\uFFFD\uFFFDz\uFFFD\uFFFDj\uFFFDlZ\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\\x0006\\x0013\uFFFD"
+						},
+						{
+							"uri": "https://facili-tacct.beta.gouv.fr/_next/static/css/d25630d641ee712c.css",
 							"method": "GET",
 							"param": "",
 							"attack": "",
 							"evidence": "2H9v2H7V5H4v4h16V5h-3v2h-2V5zm5",
 							"otherinfo": "\uFFFDo\uFFFD~\uFFFD\uFFFD~/\uFFFD\\x001dzW\uFFFD~\uFFFD\uFFFD\uFFFD\uFFFDey\uFFFDn"
+						},
+						{
+							"uri": "https://facili-tacct.beta.gouv.fr/ressources",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "ressources_cardsWrapper__QYT1X",
+							"otherinfo": "\uFFFD\uFFFD,\uFFFD\uFFFD\uFFFDz\uFFFD\uFFFDj\uFFFDlZ\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\\x0006\\x0013\uFFFD"
 						}
 					],
-					"count": "7",
+					"count": "11",
 					"solution": "<p>Manually confirm that the Base64 data does not leak sensitive information, and that the data cannot be aggregated/used to exploit other vulnerabilities.</p>",
 					"otherinfo": "<p>\uFFFD\uFFFD-\uFFFD\uFFFD%\uFFFD\uFFFD-\uFFFD\uFFFD\uFFFDyj\u06A6\uFFFD\uFFFD\uFFFD\uFFFD\\x0010\uFFFDK</p>",
 					"reference": "<p>https://projects.webappsec.org/w/page/13246936/Information%20Leakage</p>",
 					"cweid": "200",
 					"wascid": "13",
-					"sourceid": "1"
+					"sourceid": "6"
 				},
 				{
 					"pluginid": "10027",
@@ -463,61 +398,168 @@
 					"desc": "<p>The response appears to contain suspicious comments which may help an attacker. Note: Matches made within script blocks or files are against the entire content not only comments.</p>",
 					"instances":[ 
 						{
-							"uri": "https://facili-tacct.beta.gouv.fr/_next/static/chunks/231-d34a7249ee814d31.js",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "query",
-							"otherinfo": "The following pattern was used: \\bQUERY\\b and was detected in the element starting with: \"\"use strict\";(self.webpackChunk_N_E=self.webpackChunk_N_E||[]).push([[231],{844:function(e,t,n){Object.defineProperty(t,\"__esMod\", see evidence field for the suspicious comment/snippet."
-						},
-						{
-							"uri": "https://facili-tacct.beta.gouv.fr/_next/static/chunks/4595-cf07b9c91fa62bdd.js",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "from",
-							"otherinfo": "The following pattern was used: \\bFROM\\b and was detected in the element starting with: \"\"use strict\";(self.webpackChunk_N_E=self.webpackChunk_N_E||[]).push([[4595],{66648:function(e,t,n){n.d(t,{default:function(){ret\", see evidence field for the suspicious comment/snippet."
-						},
-						{
-							"uri": "https://facili-tacct.beta.gouv.fr/_next/static/chunks/7023-da30060b4e3bf8bf.js",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "bug",
-							"otherinfo": "The following pattern was used: \\bBUG\\b and was detected in the element starting with: \"${t}`))}function v(){if(!i)throw Error(\"Invariant: React.unstable_postpone is not defined. This suggests the wrong version of Re\", see evidence field for the suspicious comment/snippet."
-						},
-						{
-							"uri": "https://facili-tacct.beta.gouv.fr/_next/static/chunks/7023-da30060b4e3bf8bf.js",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "query",
-							"otherinfo": "The following pattern was used: \\bQUERY\\b and was detected in the element starting with: \"(self.webpackChunk_N_E=self.webpackChunk_N_E||[]).push([[7023],{29492:function(e,t){\"use strict\";function n(){return\"\"}Object.de\", see evidence field for the suspicious comment/snippet."
-						},
-						{
-							"uri": "https://facili-tacct.beta.gouv.fr/_next/static/chunks/fd9d1056-09220828ee0491e5.js",
+							"uri": "https://facili-tacct.beta.gouv.fr/_next/static/chunks/375-82e60f8dd1bd3bb1.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
 							"evidence": "select",
-							"otherinfo": "The following pattern was used: \\bSELECT\\b and was detected in the element starting with: \"\"use strict\";(self.webpackChunk_N_E=self.webpackChunk_N_E||[]).push([[2971],{84417:function(e,t,n){var r,l=n(2265),a=n(85689),o=\", see evidence field for the suspicious comment/snippet."
+							"otherinfo": "The following pattern was used: \\bSELECT\\b and was detected in the element starting with: \"!function(){try{var e=\"undefined\"!=typeof window?window:\"undefined\"!=typeof global?global:\"undefined\"!=typeof self?self:{},t=Err\", see evidence field for the suspicious comment/snippet."
 						},
 						{
-							"uri": "https://facili-tacct.beta.gouv.fr/_next/static/chunks/polyfills-78c92fac7aa8fdd8.js",
+							"uri": "https://facili-tacct.beta.gouv.fr/_next/static/chunks/375-82e60f8dd1bd3bb1.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "where",
+							"otherinfo": "The following pattern was used: \\bWHERE\\b and was detected in the element starting with: \" */function S(e,t){return g(e,t)}\"object\"==typeof document&&(n=(0,v.Z)({key:\"css\",prepend:!0}));let O=(e,t)=>{Array.isArray(e.__\", see evidence field for the suspicious comment/snippet."
+						},
+						{
+							"uri": "https://facili-tacct.beta.gouv.fr/_next/static/chunks/3941-8c446697cc036a2b.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "bug",
+							"otherinfo": "The following pattern was used: \\bBUG\\b and was detected in the element starting with: \"${t}`))}function y(){if(!u)throw Error(\"Invariant: React.unstable_postpone is not defined. This suggests the wrong version of Re\", see evidence field for the suspicious comment/snippet."
+						},
+						{
+							"uri": "https://facili-tacct.beta.gouv.fr/_next/static/chunks/3941-8c446697cc036a2b.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "Db",
+							"otherinfo": "The following pattern was used: \\bDB\\b and was detected in the element starting with: \"`),\"string\"==typeof n||n instanceof Uint8Array)i(n);else{let e;try{e=JSON.stringify(n)}catch(t){e=JSON.stringify((0,o.Fv)(n))}i(\", see evidence field for the suspicious comment/snippet."
+						},
+						{
+							"uri": "https://facili-tacct.beta.gouv.fr/_next/static/chunks/3941-8c446697cc036a2b.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "from",
+							"otherinfo": "The following pattern was used: \\bFROM\\b and was detected in the element starting with: \"Error:`,t)}}let X=$.GLOBAL_OBJ,z=$.GLOBAL_OBJ;function V(e){let t=\"history\";q(t,e),W(t,K)}function K(){if(!function(){let e=X.ch\", see evidence field for the suspicious comment/snippet."
+						},
+						{
+							"uri": "https://facili-tacct.beta.gouv.fr/_next/static/chunks/3941-8c446697cc036a2b.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
 							"evidence": "query",
-							"otherinfo": "The following pattern was used: \\bQUERY\\b and was detected in the element starting with: \"!function(){var t=\"undefined\"!=typeof globalThis?globalThis:\"undefined\"!=typeof window?window:\"undefined\"!=typeof global?global:\", see evidence field for the suspicious comment/snippet."
+							"otherinfo": "The following pattern was used: \\bQUERY\\b and was detected 2 times, the first in the element starting with: \"!function(){try{var e=\"undefined\"!=typeof window?window:\"undefined\"!=typeof global?global:\"undefined\"!=typeof self?self:{},t=Err\", see evidence field for the suspicious comment/snippet."
+						},
+						{
+							"uri": "https://facili-tacct.beta.gouv.fr/_next/static/chunks/3941-8c446697cc036a2b.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "user",
+							"otherinfo": "The following pattern was used: \\bUSER\\b and was detected in the element starting with: \"  ${l.join(\"\\n  \")}`)}(a),(i=a)&&((0,_.xp)(i,P,s),(0,_.xp)(i,S,r)),a}function N(e){let t={isStandalone:(e.experimental||{}).stan\", see evidence field for the suspicious comment/snippet."
+						},
+						{
+							"uri": "https://facili-tacct.beta.gouv.fr/_next/static/chunks/3941-8c446697cc036a2b.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "where",
+							"otherinfo": "The following pattern was used: \\bWHERE\\b and was detected in the element starting with: \" */(t={}).parse=function(e,t){if(\"string\"!=typeof e)throw TypeError(\"argument str must be a string\");for(var r={},i=e.split(o),a\", see evidence field for the suspicious comment/snippet."
+						},
+						{
+							"uri": "https://facili-tacct.beta.gouv.fr/_next/static/chunks/5878-269a34b5521629d1.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "from",
+							"otherinfo": "The following pattern was used: \\bFROM\\b and was detected in the element starting with: \"!function(){try{var e=\"undefined\"!=typeof window?window:\"undefined\"!=typeof global?global:\"undefined\"!=typeof self?self:{},t=Err\", see evidence field for the suspicious comment/snippet."
+						},
+						{
+							"uri": "https://facili-tacct.beta.gouv.fr/_next/static/chunks/6349-7462f1148a3b80e3.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "select",
+							"otherinfo": "The following pattern was used: \\bSELECT\\b and was detected in the element starting with: \"!function(){try{var e=\"undefined\"!=typeof window?window:\"undefined\"!=typeof global?global:\"undefined\"!=typeof self?self:{},t=Err\", see evidence field for the suspicious comment/snippet."
+						},
+						{
+							"uri": "https://facili-tacct.beta.gouv.fr/_next/static/chunks/app/global-error-9936d0b412b51bda.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "from",
+							"otherinfo": "The following pattern was used: \\bFROM\\b and was detected in the element starting with: \"!function(){try{var e=\"undefined\"!=typeof window?window:\"undefined\"!=typeof global?global:\"undefined\"!=typeof self?self:{},t=Err\", see evidence field for the suspicious comment/snippet."
+						},
+						{
+							"uri": "https://facili-tacct.beta.gouv.fr/_next/static/chunks/app/layout-1bdbca36b1752ca6.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "user",
+							"otherinfo": "The following pattern was used: \\bUSER\\b and was detected in the element starting with: \"!function(){try{var e=\"undefined\"!=typeof window?window:\"undefined\"!=typeof global?global:\"undefined\"!=typeof self?self:{},t=Err\", see evidence field for the suspicious comment/snippet."
+						},
+						{
+							"uri": "https://facili-tacct.beta.gouv.fr/_next/static/chunks/fd9d1056-6bc75c4722b7598d.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "select",
+							"otherinfo": "The following pattern was used: \\bSELECT\\b and was detected in the element starting with: \"!function(){try{var e=\"undefined\"!=typeof window?window:\"undefined\"!=typeof global?global:\"undefined\"!=typeof self?self:{},t=Err\", see evidence field for the suspicious comment/snippet."
+						},
+						{
+							"uri": "https://facili-tacct.beta.gouv.fr/_next/static/chunks/main-app-321d80d77acd9bd6.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "debug",
+							"otherinfo": "The following pattern was used: \\bDEBUG\\b and was detected in the element starting with: \"!function(){try{var e=\"undefined\"!=typeof window?window:\"undefined\"!=typeof global?global:\"undefined\"!=typeof self?self:{},n=Err\", see evidence field for the suspicious comment/snippet."
 						}
 					],
-					"count": "6",
+					"count": "14",
 					"solution": "<p>Remove all comments that return information that may help an attacker and fix any underlying problems they refer to.</p>",
-					"otherinfo": "<p>The following pattern was used: \\bQUERY\\b and was detected in the element starting with: \"\"use strict\";(self.webpackChunk_N_E=self.webpackChunk_N_E||[]).push([[231],{844:function(e,t,n){Object.defineProperty(t,\"__esMod\", see evidence field for the suspicious comment/snippet.</p>",
+					"otherinfo": "<p>The following pattern was used: \\bSELECT\\b and was detected in the element starting with: \"!function(){try{var e=\"undefined\"!=typeof window?window:\"undefined\"!=typeof global?global:\"undefined\"!=typeof self?self:{},t=Err\", see evidence field for the suspicious comment/snippet.</p>",
 					"reference": "",
 					"cweid": "200",
 					"wascid": "13",
-					"sourceid": "78"
+					"sourceid": "99"
+				},
+				{
+					"pluginid": "10109",
+					"alertRef": "10109",
+					"alert": "Modern Web Application",
+					"name": "Modern Web Application",
+					"riskcode": "0",
+					"confidence": "2",
+					"riskdesc": "Informational (Medium)",
+					"desc": "<p>The application appears to be a modern web application. If you need to explore it automatically then the Ajax Spider may well be more effective than the standard one.</p>",
+					"instances":[ 
+						{
+							"uri": "https://facili-tacct.beta.gouv.fr/ressources",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<a class=\"fr-breadcrumb__link\" aria-current=\"page\">Ressources</a>",
+							"otherinfo": "Links have been found that do not have traditional href attributes, which is an indication that this is a modern web application."
+						},
+						{
+							"uri": "https://facili-tacct.beta.gouv.fr/ressources/article",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<a class=\"fr-breadcrumb__link\" aria-current=\"page\">Article</a>",
+							"otherinfo": "Links have been found that do not have traditional href attributes, which is an indication that this is a modern web application."
+						},
+						{
+							"uri": "https://facili-tacct.beta.gouv.fr/ressources/atelier",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<a class=\"fr-breadcrumb__link\" aria-current=\"page\">Atelier</a>",
+							"otherinfo": "Links have been found that do not have traditional href attributes, which is an indication that this is a modern web application."
+						}
+					],
+					"count": "3",
+					"solution": "<p>This is an informational alert and so no changes are required.</p>",
+					"otherinfo": "<p>Links have been found that do not have traditional href attributes, which is an indication that this is a modern web application.</p>",
+					"reference": "",
+					"cweid": "-1",
+					"wascid": "-1",
+					"sourceid": "124"
 				},
 				{
 					"pluginid": "10049",
@@ -560,7 +602,7 @@
 					"reference": "<p>https://datatracker.ietf.org/doc/html/rfc7234</p><p>https://datatracker.ietf.org/doc/html/rfc7231</p><p>https://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html</p>",
 					"cweid": "524",
 					"wascid": "13",
-					"sourceid": "50"
+					"sourceid": "59"
 				},
 				{
 					"pluginid": "10015",
@@ -619,15 +661,39 @@
 							"attack": "",
 							"evidence": "s-maxage=31536000, stale-while-revalidate",
 							"otherinfo": ""
+						},
+						{
+							"uri": "https://facili-tacct.beta.gouv.fr/ressources",
+							"method": "GET",
+							"param": "cache-control",
+							"attack": "",
+							"evidence": "s-maxage=31536000, stale-while-revalidate",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://facili-tacct.beta.gouv.fr/ressources/article",
+							"method": "GET",
+							"param": "cache-control",
+							"attack": "",
+							"evidence": "s-maxage=31536000, stale-while-revalidate",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://facili-tacct.beta.gouv.fr/ressources/atelier",
+							"method": "GET",
+							"param": "cache-control",
+							"attack": "",
+							"evidence": "s-maxage=31536000, stale-while-revalidate",
+							"otherinfo": ""
 						}
 					],
-					"count": "6",
+					"count": "9",
 					"solution": "<p>For secure content, ensure the cache-control HTTP header is set with \"no-cache, no-store, must-revalidate\". If an asset should be cached consider setting the directives \"public, max-age, immutable\".</p>",
 					"otherinfo": "",
 					"reference": "<p>https://cheatsheetseries.owasp.org/cheatsheets/Session_Management_Cheat_Sheet.html#web-content-caching</p><p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cache-Control</p><p>https://grayduck.mn/2021/09/13/cache-control-recommendations/</p>",
 					"cweid": "525",
 					"wascid": "13",
-					"sourceid": "6"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "90005",
@@ -656,7 +722,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://facili-tacct.beta.gouv.fr/sitemap.xml",
+							"uri": "https://facili-tacct.beta.gouv.fr/no%20repository/main/LICENSE",
 							"method": "GET",
 							"param": "Sec-Fetch-Dest",
 							"attack": "",
@@ -670,7 +736,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Dest</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "1"
+					"sourceid": "6"
 				},
 				{
 					"pluginid": "90005",
@@ -699,7 +765,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://facili-tacct.beta.gouv.fr/sitemap.xml",
+							"uri": "https://facili-tacct.beta.gouv.fr/no%20repository/main/LICENSE",
 							"method": "GET",
 							"param": "Sec-Fetch-Mode",
 							"attack": "",
@@ -713,7 +779,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Mode</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "1"
+					"sourceid": "6"
 				},
 				{
 					"pluginid": "90005",
@@ -742,7 +808,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://facili-tacct.beta.gouv.fr/sitemap.xml",
+							"uri": "https://facili-tacct.beta.gouv.fr/no%20repository/main/LICENSE",
 							"method": "GET",
 							"param": "Sec-Fetch-Site",
 							"attack": "",
@@ -785,7 +851,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://facili-tacct.beta.gouv.fr/sitemap.xml",
+							"uri": "https://facili-tacct.beta.gouv.fr/no%20repository/main/LICENSE",
 							"method": "GET",
 							"param": "Sec-Fetch-User",
 							"attack": "",
@@ -799,57 +865,6 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-User</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "1"
-				},
-				{
-					"pluginid": "10112",
-					"alertRef": "10112",
-					"alert": "Session Management Response Identified",
-					"name": "Session Management Response Identified",
-					"riskcode": "0",
-					"confidence": "2",
-					"riskdesc": "Informational (Medium)",
-					"desc": "<p>The given response has been identified as containing a session management token. The 'Other Info' field contains a set of header tokens that can be used in the Header Based Session Management Method. If the request is in a context which has a Session Management Method set to \"Auto-Detect\" then this rule will change the session management to use the tokens identified.</p>",
-					"instances":[ 
-						{
-							"uri": "https://facili-tacct.beta.gouv.fr",
-							"method": "GET",
-							"param": "token",
-							"attack": "",
-							"evidence": "1607imx38jtnho97yqzkyf",
-							"otherinfo": "\ncookie:token"
-						},
-						{
-							"uri": "https://facili-tacct.beta.gouv.fr",
-							"method": "GET",
-							"param": "token",
-							"attack": "",
-							"evidence": "bpxd5y2t6skt0m97h8btfq",
-							"otherinfo": "\ncookie:token"
-						},
-						{
-							"uri": "https://facili-tacct.beta.gouv.fr/",
-							"method": "GET",
-							"param": "token",
-							"attack": "",
-							"evidence": "a1jlv0gew0v5f94d27bpq5",
-							"otherinfo": "\ncookie:token"
-						},
-						{
-							"uri": "https://facili-tacct.beta.gouv.fr",
-							"method": "GET",
-							"param": "token",
-							"attack": "",
-							"evidence": "1607imx38jtnho97yqzkyf",
-							"otherinfo": "\ncookie:token"
-						}
-					],
-					"count": "4",
-					"solution": "<p>This is an informational alert rather than a vulnerability and so there is nothing to fix.</p>",
-					"otherinfo": "<p></p><p>cookie:token</p>",
-					"reference": "<p>https://www.zaproxy.org/docs/desktop/addons/authentication-helper/session-mgmt-id</p>",
-					"cweid": "-1",
-					"wascid": "-1",
 					"sourceid": "6"
 				},
 				{
@@ -879,7 +894,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://facili-tacct.beta.gouv.fr/_next/static/chunks/webpack-381b4a41543459ef.js",
+							"uri": "https://facili-tacct.beta.gouv.fr/_next/static/css/663262990729faf3.css",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -887,7 +902,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://facili-tacct.beta.gouv.fr/_next/static/css/1519ddcf4989180a.css",
+							"uri": "https://facili-tacct.beta.gouv.fr/_next/static/css/81ae756f1e0fabb8.css",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -895,7 +910,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://facili-tacct.beta.gouv.fr/_next/static/css/1b1d10445b60e5f7.css",
+							"uri": "https://facili-tacct.beta.gouv.fr/_next/static/media/apple-touch-icon.1db30588.png",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -903,7 +918,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://facili-tacct.beta.gouv.fr/_next/static/css/2fa9b6c179667371.css",
+							"uri": "https://facili-tacct.beta.gouv.fr/_next/static/media/Spectral-Regular.d09028d7.woff2",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -911,11 +926,11 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://facili-tacct.beta.gouv.fr/_next/static/media/Marianne-Regular.119b3a3e.woff2",
+							"uri": "https://facili-tacct.beta.gouv.fr/accessibilite",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "max-age=31536000",
+							"evidence": "s-maxage=31536000",
 							"otherinfo": ""
 						},
 						{
