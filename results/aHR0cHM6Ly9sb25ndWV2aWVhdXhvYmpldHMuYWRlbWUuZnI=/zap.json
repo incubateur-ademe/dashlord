@@ -1,7 +1,7 @@
 {
 	"@programName": "ZAP",
 	"@version": "2.15.0",
-	"@generated": "Sun, 8 Sep 2024 02:13:51",
+	"@generated": "Sun, 15 Sep 2024 02:20:34",
 	"site":[ 
 		{
 			"@name": "https://longuevieauxobjets.ademe.fr",
@@ -9,33 +9,6 @@
 			"@port": "443",
 			"@ssl": "true",
 			"alerts": [ 
-				{
-					"pluginid": "10062",
-					"alertRef": "10062",
-					"alert": "PII Disclosure",
-					"name": "PII Disclosure",
-					"riskcode": "3",
-					"confidence": "3",
-					"riskdesc": "High (High)",
-					"desc": "<p>The response contains Personally Identifiable Information, such as CC number, SSN and similar sensitive data.</p>",
-					"instances":[ 
-						{
-							"uri": "https://longuevieauxobjets.ademe.fr/nos-sources-de-donnees/",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "563334610880561",
-							"otherinfo": "Credit Card Type detected: Maestro\nBank Identification Number: 563334\nBrand: MAESTRO\nCategory: \nIssuer: "
-						}
-					],
-					"count": "1",
-					"solution": "<p>Check the response for the potential presence of personally identifiable information (PII), ensure nothing sensitive is leaked by the application.</p>",
-					"otherinfo": "<p>Credit Card Type detected: Maestro</p><p>Bank Identification Number: 563334</p><p>Brand: MAESTRO</p><p>Category: </p><p>Issuer: </p>",
-					"reference": "",
-					"cweid": "359",
-					"wascid": "13",
-					"sourceid": "39"
-				},
 				{
 					"pluginid": "10038",
 					"alertRef": "10038-1",
@@ -141,7 +114,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/Security/CSP/Introducing_Content_Security_Policy</p><p>https://cheatsheetseries.owasp.org/cheatsheets/Content_Security_Policy_Cheat_Sheet.html</p><p>https://www.w3.org/TR/CSP/</p><p>https://w3c.github.io/webappsec-csp/</p><p>https://web.dev/articles/csp</p><p>https://caniuse.com/#feat=contentsecuritypolicy</p><p>https://content-security-policy.com/</p>",
 					"cweid": "693",
 					"wascid": "15",
-					"sourceid": "1"
+					"sourceid": "6"
 				},
 				{
 					"pluginid": "90003",
@@ -154,6 +127,14 @@
 					"desc": "<p>The integrity attribute is missing on a script or link tag served by an external server. The integrity tag prevents an attacker who have gained access to this server from injecting a malicious content.</p>",
 					"instances":[ 
 						{
+							"uri": "https://longuevieauxobjets.ademe.fr/carte-reemploi-reparation-agglo-montpellier/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<script src='https://lvao.ademe.fr/static/carte.js' data-action_list='preter|emprunter|louer|mettreenlocation|reparer|donner|echanger|acheter|revendre' data-action_displayed='preter|emprunter|louer|mettreenlocation|reparer|donner|echanger|acheter|revendre|trier' data-bounding_box='{\"southWest\": {\"lat\": 43.521205, \"lng\": 3.700959}, \"northEast\": {\"lat\": 43.760462, \"lng\": 4.051211}}'></script>",
+							"otherinfo": ""
+						},
+						{
 							"uri": "https://longuevieauxobjets.ademe.fr/carte-reemploi-reparation-bretagne/",
 							"method": "GET",
 							"param": "",
@@ -162,11 +143,11 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://longuevieauxobjets.ademe.fr/carte-reemploi-reparation-cholet/",
+							"uri": "https://longuevieauxobjets.ademe.fr/carte-reemploi-reparation-grand-chambery/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "<script src='https://lvao.ademe.fr/static/carte.js' data-action_list='preter|emprunter|louer|mettreenlocation|reparer|donner|echanger|acheter|revendre' data-action_displayed='preter|emprunter|louer|mettreenlocation|reparer|donner|echanger|acheter|revendre' data-bounding_box='{\"southWest\": {\"lat\": 47.019856, \"lng\": -1.12248}, \"northEast\": {\"lat\": 47.201176, \"lng\": -0.402189}}'></script>",
+							"evidence": "<script src='https://lvao.ademe.fr/static/carte.js' data-action_displayed='preter|emprunter|louer|mettreenlocation|reparer|donner|echanger|acheter|revendre' data-bounding_box='{\"southWest\": {\"lat\": 45.528588, \"lng\": 5.824918}, \"northEast\": {\"lat\": 45.743846, \"lng\": 6.184368}}'></script>",
 							"otherinfo": ""
 						},
 						{
@@ -178,19 +159,43 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://longuevieauxobjets.ademe.fr/carte-reemploi-reparation-pays-basque/",
+							"uri": "https://longuevieauxobjets.ademe.fr/carte-reemploi-reparation-montpellier/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "<script src='https://lvao.ademe.fr/static/carte.js' data-action_list='preter|emprunter|louer|mettreenlocation|reparer|donner|echanger|acheter|revendre' data-action_displayed='preter|emprunter|louer|mettreenlocation|reparer|donner|echanger|acheter|revendre' data-bounding_box='{\"southWest\": {\"lat\": 43.186405, \"lng\": -1.99904}, \"northEast\": {\"lat\": 43.557755, \"lng\": -0.579057}}'></script>",
+							"evidence": "<script src='https://lvao.ademe.fr/static/carte.js' data-action_list='preter|emprunter|louer|mettreenlocation|reparer|donner|echanger|acheter|revendre' data-action_displayed='preter|emprunter|louer|mettreenlocation|reparer|donner|echanger|acheter|revendre|trier' data-bounding_box='{\"southWest\": {\"lat\": 43.577098, \"lng\": 3.801001}, \"northEast\": {\"lat\": 43.64602, \"lng\": 3.909324}}'></script>",
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://longuevieauxobjets.ademe.fr/la-carte-du-r%C3%A9emploi-et-de-la-r%C3%A9paration-%C3%A0-angers/",
+							"uri": "https://longuevieauxobjets.ademe.fr/carte-reemploi-reparation-redon-agglom%C3%A9ration/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "<script src='https://lvao.ademe.fr/static/carte.js' data-action_list='preter|emprunter|louer|mettreenlocation|reparer|donner|echanger|acheter|revendre' data-action_displayed='preter|emprunter|louer|mettreenlocation|reparer|donner|echanger|acheter|revendre|trier' data-bounding_box='{\"southWest\": {\"lat\": 47.467015, \"lng\": -0.588856}, \"northEast\": {\"lat\": 47.482629, \"lng\": -0.527947}}'></script>",
+							"evidence": "<script src='https://lvao.ademe.fr/static/carte.js' data-action_displayed='preter|emprunter|louer|mettreenlocation|reparer|donner|echanger|acheter|revendre' data-bounding_box='{\"southWest\": {\"lat\": 47.559945, \"lng\": -2.270534}, \"northEast\": {\"lat\": 47.889921, \"lng\": -1.710028}}'></script>",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://longuevieauxobjets.ademe.fr/carte-reemploi-reparation-saint-malo-agglom%C3%A9ration/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<script src='https://lvao.ademe.fr/static/carte.js' data-action_displayed='preter|emprunter|louer|mettreenlocation|reparer|donner|echanger|acheter|revendre' data-bounding_box='{\"southWest\": {\"lat\": 48.482428, \"lng\": -2.051466}, \"northEast\": {\"lat\": 48.713967, \"lng\": -1.76269}}'></script>",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://longuevieauxobjets.ademe.fr/carte-reemploi-reparation-sytrad/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<script src='https://lvao.ademe.fr/static/carte.js' data-action_list='preter|emprunter|louer|mettreenlocation|reparer|donner|echanger|acheter|revendre' data-bounding_box='{\"southWest\": {\"lat\": 44.70297, \"lng\": 4.020316}, \"northEast\": {\"lat\": 45.350679, \"lng\": 5.751376}}'></script>",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://longuevieauxobjets.ademe.fr/carte-reemploi-reparation-vallee-oise-trois-forets/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<script src='https://lvao.ademe.fr/static/carte.js' data-action_displayed='preter|emprunter|louer|mettreenlocation|reparer|donner|echanger|acheter|revendre' data-bounding_box='{\"southWest\": {\"lat\": 49.054418, \"lng\": 2.152533}, \"northEast\": {\"lat\": 49.120073, \"lng\": 2.300505}}'></script>",
 							"otherinfo": ""
 						},
 						{
@@ -199,14 +204,6 @@
 							"param": "",
 							"attack": "",
 							"evidence": "<script src='https://lvao.ademe.fr/static/carte.js' data-action_list='preter|emprunter|louer|mettreenlocation|reparer|donner|echanger|acheter|revendre' data-bounding_box='{\"southWest\": {\"lat\": 48.313283, \"lng\": -4.96835}, \"northEast\": {\"lat\": 48.671739, \"lng\": -4.134058}}'></script>",
-							"otherinfo": ""
-						},
-						{
-							"uri": "https://longuevieauxobjets.ademe.fr/reparation-reemploi-bassin-pompey/",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "<script src='https://lvao.ademe.fr/static/carte.js' data-action_list='preter|emprunter|louer|mettreenlocation|reparer|donner|echanger|acheter|revendre' data-action_displayed='preter|emprunter|louer|mettreenlocation|reparer|donner|echanger|acheter|revendre' data-bounding_box='{\"southWest\": {\"lat\": 48.730625, \"lng\": 6.02225}, \"northEast\": {\"lat\": 48.819979, \"lng\": 6.205248}}'></script>",
 							"otherinfo": ""
 						},
 						{
@@ -226,13 +223,13 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "9",
+					"count": "12",
 					"solution": "<p>Provide a valid integrity attribute to the tag.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/Security/Subresource_Integrity</p>",
 					"cweid": "345",
 					"wascid": "15",
-					"sourceid": "286"
+					"sourceid": "252"
 				},
 				{
 					"pluginid": "10017",
@@ -245,6 +242,14 @@
 					"desc": "<p>The page includes one or more script files from a third-party domain.</p>",
 					"instances":[ 
 						{
+							"uri": "https://longuevieauxobjets.ademe.fr/carte-reemploi-reparation-agglo-montpellier/",
+							"method": "GET",
+							"param": "https://lvao.ademe.fr/static/carte.js",
+							"attack": "",
+							"evidence": "<script src='https://lvao.ademe.fr/static/carte.js' data-action_list='preter|emprunter|louer|mettreenlocation|reparer|donner|echanger|acheter|revendre' data-action_displayed='preter|emprunter|louer|mettreenlocation|reparer|donner|echanger|acheter|revendre|trier' data-bounding_box='{\"southWest\": {\"lat\": 43.521205, \"lng\": 3.700959}, \"northEast\": {\"lat\": 43.760462, \"lng\": 4.051211}}'></script>",
+							"otherinfo": ""
+						},
+						{
 							"uri": "https://longuevieauxobjets.ademe.fr/carte-reemploi-reparation-bretagne/",
 							"method": "GET",
 							"param": "https://lvao.ademe.fr/static/carte.js",
@@ -253,11 +258,11 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://longuevieauxobjets.ademe.fr/carte-reemploi-reparation-cholet/",
+							"uri": "https://longuevieauxobjets.ademe.fr/carte-reemploi-reparation-grand-chambery/",
 							"method": "GET",
 							"param": "https://lvao.ademe.fr/static/carte.js",
 							"attack": "",
-							"evidence": "<script src='https://lvao.ademe.fr/static/carte.js' data-action_list='preter|emprunter|louer|mettreenlocation|reparer|donner|echanger|acheter|revendre' data-action_displayed='preter|emprunter|louer|mettreenlocation|reparer|donner|echanger|acheter|revendre' data-bounding_box='{\"southWest\": {\"lat\": 47.019856, \"lng\": -1.12248}, \"northEast\": {\"lat\": 47.201176, \"lng\": -0.402189}}'></script>",
+							"evidence": "<script src='https://lvao.ademe.fr/static/carte.js' data-action_displayed='preter|emprunter|louer|mettreenlocation|reparer|donner|echanger|acheter|revendre' data-bounding_box='{\"southWest\": {\"lat\": 45.528588, \"lng\": 5.824918}, \"northEast\": {\"lat\": 45.743846, \"lng\": 6.184368}}'></script>",
 							"otherinfo": ""
 						},
 						{
@@ -269,19 +274,43 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://longuevieauxobjets.ademe.fr/carte-reemploi-reparation-pays-basque/",
+							"uri": "https://longuevieauxobjets.ademe.fr/carte-reemploi-reparation-montpellier/",
 							"method": "GET",
 							"param": "https://lvao.ademe.fr/static/carte.js",
 							"attack": "",
-							"evidence": "<script src='https://lvao.ademe.fr/static/carte.js' data-action_list='preter|emprunter|louer|mettreenlocation|reparer|donner|echanger|acheter|revendre' data-action_displayed='preter|emprunter|louer|mettreenlocation|reparer|donner|echanger|acheter|revendre' data-bounding_box='{\"southWest\": {\"lat\": 43.186405, \"lng\": -1.99904}, \"northEast\": {\"lat\": 43.557755, \"lng\": -0.579057}}'></script>",
+							"evidence": "<script src='https://lvao.ademe.fr/static/carte.js' data-action_list='preter|emprunter|louer|mettreenlocation|reparer|donner|echanger|acheter|revendre' data-action_displayed='preter|emprunter|louer|mettreenlocation|reparer|donner|echanger|acheter|revendre|trier' data-bounding_box='{\"southWest\": {\"lat\": 43.577098, \"lng\": 3.801001}, \"northEast\": {\"lat\": 43.64602, \"lng\": 3.909324}}'></script>",
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://longuevieauxobjets.ademe.fr/la-carte-du-r%C3%A9emploi-et-de-la-r%C3%A9paration-%C3%A0-angers/",
+							"uri": "https://longuevieauxobjets.ademe.fr/carte-reemploi-reparation-redon-agglom%C3%A9ration/",
 							"method": "GET",
 							"param": "https://lvao.ademe.fr/static/carte.js",
 							"attack": "",
-							"evidence": "<script src='https://lvao.ademe.fr/static/carte.js' data-action_list='preter|emprunter|louer|mettreenlocation|reparer|donner|echanger|acheter|revendre' data-action_displayed='preter|emprunter|louer|mettreenlocation|reparer|donner|echanger|acheter|revendre|trier' data-bounding_box='{\"southWest\": {\"lat\": 47.467015, \"lng\": -0.588856}, \"northEast\": {\"lat\": 47.482629, \"lng\": -0.527947}}'></script>",
+							"evidence": "<script src='https://lvao.ademe.fr/static/carte.js' data-action_displayed='preter|emprunter|louer|mettreenlocation|reparer|donner|echanger|acheter|revendre' data-bounding_box='{\"southWest\": {\"lat\": 47.559945, \"lng\": -2.270534}, \"northEast\": {\"lat\": 47.889921, \"lng\": -1.710028}}'></script>",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://longuevieauxobjets.ademe.fr/carte-reemploi-reparation-saint-malo-agglom%C3%A9ration/",
+							"method": "GET",
+							"param": "https://lvao.ademe.fr/static/carte.js",
+							"attack": "",
+							"evidence": "<script src='https://lvao.ademe.fr/static/carte.js' data-action_displayed='preter|emprunter|louer|mettreenlocation|reparer|donner|echanger|acheter|revendre' data-bounding_box='{\"southWest\": {\"lat\": 48.482428, \"lng\": -2.051466}, \"northEast\": {\"lat\": 48.713967, \"lng\": -1.76269}}'></script>",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://longuevieauxobjets.ademe.fr/carte-reemploi-reparation-sytrad/",
+							"method": "GET",
+							"param": "https://lvao.ademe.fr/static/carte.js",
+							"attack": "",
+							"evidence": "<script src='https://lvao.ademe.fr/static/carte.js' data-action_list='preter|emprunter|louer|mettreenlocation|reparer|donner|echanger|acheter|revendre' data-bounding_box='{\"southWest\": {\"lat\": 44.70297, \"lng\": 4.020316}, \"northEast\": {\"lat\": 45.350679, \"lng\": 5.751376}}'></script>",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://longuevieauxobjets.ademe.fr/carte-reemploi-reparation-vallee-oise-trois-forets/",
+							"method": "GET",
+							"param": "https://lvao.ademe.fr/static/carte.js",
+							"attack": "",
+							"evidence": "<script src='https://lvao.ademe.fr/static/carte.js' data-action_displayed='preter|emprunter|louer|mettreenlocation|reparer|donner|echanger|acheter|revendre' data-bounding_box='{\"southWest\": {\"lat\": 49.054418, \"lng\": 2.152533}, \"northEast\": {\"lat\": 49.120073, \"lng\": 2.300505}}'></script>",
 							"otherinfo": ""
 						},
 						{
@@ -290,14 +319,6 @@
 							"param": "https://lvao.ademe.fr/static/carte.js",
 							"attack": "",
 							"evidence": "<script src='https://lvao.ademe.fr/static/carte.js' data-action_list='preter|emprunter|louer|mettreenlocation|reparer|donner|echanger|acheter|revendre' data-bounding_box='{\"southWest\": {\"lat\": 48.313283, \"lng\": -4.96835}, \"northEast\": {\"lat\": 48.671739, \"lng\": -4.134058}}'></script>",
-							"otherinfo": ""
-						},
-						{
-							"uri": "https://longuevieauxobjets.ademe.fr/reparation-reemploi-bassin-pompey/",
-							"method": "GET",
-							"param": "https://lvao.ademe.fr/static/carte.js",
-							"attack": "",
-							"evidence": "<script src='https://lvao.ademe.fr/static/carte.js' data-action_list='preter|emprunter|louer|mettreenlocation|reparer|donner|echanger|acheter|revendre' data-action_displayed='preter|emprunter|louer|mettreenlocation|reparer|donner|echanger|acheter|revendre' data-bounding_box='{\"southWest\": {\"lat\": 48.730625, \"lng\": 6.02225}, \"northEast\": {\"lat\": 48.819979, \"lng\": 6.205248}}'></script>",
 							"otherinfo": ""
 						},
 						{
@@ -317,13 +338,13 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "9",
+					"count": "12",
 					"solution": "<p>Ensure JavaScript source files are loaded from only trusted sources, and the sources can't be controlled by end users of the application.</p>",
 					"otherinfo": "",
 					"reference": "",
 					"cweid": "829",
 					"wascid": "15",
-					"sourceid": "286"
+					"sourceid": "252"
 				},
 				{
 					"pluginid": "10063",
@@ -376,7 +397,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://longuevieauxobjets.ademe.fr/plan-du-site/",
+							"uri": "https://longuevieauxobjets.ademe.fr/nos-sources-de-donnees/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -430,7 +451,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Permissions-Policy</p><p>https://developer.chrome.com/blog/feature-policy/</p><p>https://scotthelme.co.uk/a-new-security-header-feature-policy/</p><p>https://w3c.github.io/webappsec-feature-policy/</p><p>https://www.smashingmagazine.com/2018/12/feature-policy/</p>",
 					"cweid": "693",
 					"wascid": "15",
-					"sourceid": "1"
+					"sourceid": "6"
 				},
 				{
 					"pluginid": "10035",
@@ -483,7 +504,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://longuevieauxobjets.ademe.fr/plan-du-site/",
+							"uri": "https://longuevieauxobjets.ademe.fr/nos-sources-de-donnees/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -537,7 +558,7 @@
 					"reference": "<p>https://cheatsheetseries.owasp.org/cheatsheets/HTTP_Strict_Transport_Security_Cheat_Sheet.html</p><p>https://owasp.org/www-community/Security_Headers</p><p>https://en.wikipedia.org/wiki/HTTP_Strict_Transport_Security</p><p>https://caniuse.com/stricttransportsecurity</p><p>https://datatracker.ietf.org/doc/html/rfc6797</p>",
 					"cweid": "319",
 					"wascid": "15",
-					"sourceid": "1"
+					"sourceid": "6"
 				},
 				{
 					"pluginid": "10021",
@@ -598,7 +619,7 @@
 							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
 						},
 						{
-							"uri": "https://longuevieauxobjets.ademe.fr/static/dsfr/dist/dsfr/dsfr.module.min.js",
+							"uri": "https://longuevieauxobjets.ademe.fr/static/dsfr/dist/dsfr/dsfr.min.css",
 							"method": "GET",
 							"param": "x-content-type-options",
 							"attack": "",
@@ -652,7 +673,7 @@
 					"reference": "<p>https://learn.microsoft.com/en-us/previous-versions/windows/internet-explorer/ie-developer/compatibility/gg622941(v=vs.85)</p><p>https://owasp.org/www-community/Security_Headers</p>",
 					"cweid": "693",
 					"wascid": "15",
-					"sourceid": "172"
+					"sourceid": "180"
 				},
 				{
 					"pluginid": "10094",
@@ -705,7 +726,7 @@
 							"otherinfo": "\uFFFD\\x0016\uFFFD\uFFFD\\x0013\uFFFD#OOKas\\x000c\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\\x0018\uFFFDE\uFFFDSe\uFFFD\uFFFD\uFFFD\\x0008G\\x000e?x\\x0017\\x0007t\\x0015l$\uFFFDh\uFFFDbnI&\uFFFD\uFFFDAF\uFFFD\uFFFD"
 						},
 						{
-							"uri": "https://longuevieauxobjets.ademe.fr/plan-du-site/",
+							"uri": "https://longuevieauxobjets.ademe.fr/nos-sources-de-donnees/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -759,7 +780,7 @@
 					"reference": "<p>https://projects.webappsec.org/w/page/13246936/Information%20Leakage</p>",
 					"cweid": "200",
 					"wascid": "13",
-					"sourceid": "1"
+					"sourceid": "6"
 				},
 				{
 					"pluginid": "10027",
@@ -794,7 +815,7 @@
 					"reference": "",
 					"cweid": "200",
 					"wascid": "13",
-					"sourceid": "175"
+					"sourceid": "183"
 				},
 				{
 					"pluginid": "10109",
@@ -901,7 +922,7 @@
 					"reference": "",
 					"cweid": "-1",
 					"wascid": "-1",
-					"sourceid": "1"
+					"sourceid": "6"
 				},
 				{
 					"pluginid": "10015",
@@ -1008,7 +1029,7 @@
 					"reference": "<p>https://cheatsheetseries.owasp.org/cheatsheets/Session_Management_Cheat_Sheet.html#web-content-caching</p><p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cache-Control</p><p>https://grayduck.mn/2021/09/13/cache-control-recommendations/</p>",
 					"cweid": "525",
 					"wascid": "13",
-					"sourceid": "1"
+					"sourceid": "6"
 				},
 				{
 					"pluginid": "90005",
@@ -1029,7 +1050,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://longuevieauxobjets.ademe.fr/",
+							"uri": "https://longuevieauxobjets.ademe.fr/robots.txt",
 							"method": "GET",
 							"param": "Sec-Fetch-Dest",
 							"attack": "",
@@ -1037,7 +1058,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://longuevieauxobjets.ademe.fr/robots.txt",
+							"uri": "https://longuevieauxobjets.ademe.fr/sitemap.xml",
 							"method": "GET",
 							"param": "Sec-Fetch-Dest",
 							"attack": "",
@@ -1051,7 +1072,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Dest</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "1"
+					"sourceid": "6"
 				},
 				{
 					"pluginid": "90005",
@@ -1072,7 +1093,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://longuevieauxobjets.ademe.fr/",
+							"uri": "https://longuevieauxobjets.ademe.fr/robots.txt",
 							"method": "GET",
 							"param": "Sec-Fetch-Mode",
 							"attack": "",
@@ -1080,7 +1101,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://longuevieauxobjets.ademe.fr/robots.txt",
+							"uri": "https://longuevieauxobjets.ademe.fr/sitemap.xml",
 							"method": "GET",
 							"param": "Sec-Fetch-Mode",
 							"attack": "",
@@ -1094,7 +1115,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Mode</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "1"
+					"sourceid": "6"
 				},
 				{
 					"pluginid": "90005",
@@ -1115,7 +1136,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://longuevieauxobjets.ademe.fr/",
+							"uri": "https://longuevieauxobjets.ademe.fr/robots.txt",
 							"method": "GET",
 							"param": "Sec-Fetch-Site",
 							"attack": "",
@@ -1123,7 +1144,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://longuevieauxobjets.ademe.fr/robots.txt",
+							"uri": "https://longuevieauxobjets.ademe.fr/sitemap.xml",
 							"method": "GET",
 							"param": "Sec-Fetch-Site",
 							"attack": "",
@@ -1137,7 +1158,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Site</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "1"
+					"sourceid": "6"
 				},
 				{
 					"pluginid": "90005",
@@ -1158,7 +1179,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://longuevieauxobjets.ademe.fr/",
+							"uri": "https://longuevieauxobjets.ademe.fr/robots.txt",
 							"method": "GET",
 							"param": "Sec-Fetch-User",
 							"attack": "",
@@ -1166,7 +1187,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://longuevieauxobjets.ademe.fr/robots.txt",
+							"uri": "https://longuevieauxobjets.ademe.fr/sitemap.xml",
 							"method": "GET",
 							"param": "Sec-Fetch-User",
 							"attack": "",
@@ -1180,7 +1201,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-User</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "1"
+					"sourceid": "6"
 				},
 				{
 					"pluginid": "10049",
@@ -1233,7 +1254,7 @@
 							"otherinfo": "In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234."
 						},
 						{
-							"uri": "https://longuevieauxobjets.ademe.fr/plan-du-site/",
+							"uri": "https://longuevieauxobjets.ademe.fr/nos-sources-de-donnees/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
