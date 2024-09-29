@@ -1,7 +1,7 @@
 {
 	"@programName": "ZAP",
 	"@version": "2.15.0",
-	"@generated": "Sun, 22 Sep 2024 04:10:01",
+	"@generated": "Sun, 29 Sep 2024 04:13:54",
 	"site":[ 
 		{
 			"@name": "https://budget-site.ademe.vercel.app",
@@ -9,33 +9,6 @@
 			"@port": "443",
 			"@ssl": "true",
 			"alerts": [ 
-				{
-					"pluginid": "10202",
-					"alertRef": "10202",
-					"alert": "Absence of Anti-CSRF Tokens",
-					"name": "Absence of Anti-CSRF Tokens",
-					"riskcode": "2",
-					"confidence": "1",
-					"riskdesc": "Medium (Low)",
-					"desc": "<p>No Anti-CSRF tokens were found in a HTML submission form.</p><p>A cross-site request forgery is an attack that involves forcing a victim to send an HTTP request to a target destination without their knowledge or intent in order to perform an action as the victim. The underlying cause is application functionality using predictable URL/form actions in a repeatable way. The nature of the attack is that CSRF exploits the trust that a web site has for a user. By contrast, cross-site scripting (XSS) exploits the trust that a user has for a web site. Like XSS, CSRF attacks are not necessarily cross-site, but they can be. Cross-site request forgery is also known as CSRF, XSRF, one-click attack, session riding, confused deputy, and sea surf.</p><p></p><p>CSRF attacks are effective in a number of situations, including:</p><p>    * The victim has an active session on the target site.</p><p>    * The victim is authenticated via HTTP auth on the target site.</p><p>    * The victim is on the same local network as the target site.</p><p></p><p>CSRF has primarily been used to perform an action against a target site using the victim's privileges, but recent techniques have been discovered to disclose information by gaining access to the response. The risk of information disclosure is dramatically increased when the target site is vulnerable to XSS, because XSS can be used as a platform for CSRF, allowing the attack to operate within the bounds of the same-origin policy.</p>",
-					"instances":[ 
-						{
-							"uri": "https://budget-site.ademe.vercel.app/login",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "<form>",
-							"otherinfo": "No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 1: \"input-:Rdltfata:\" ]."
-						}
-					],
-					"count": "1",
-					"solution": "<p>Phase: Architecture and Design</p><p>Use a vetted library or framework that does not allow this weakness to occur or provides constructs that make this weakness easier to avoid.</p><p>For example, use anti-CSRF packages such as the OWASP CSRFGuard.</p><p></p><p>Phase: Implementation</p><p>Ensure that your application is free of cross-site scripting issues, because most CSRF defenses can be bypassed using attacker-controlled script.</p><p></p><p>Phase: Architecture and Design</p><p>Generate a unique nonce for each form, place the nonce into the form, and verify the nonce upon receipt of the form. Be sure that the nonce is not predictable (CWE-330).</p><p>Note that this can be bypassed using XSS.</p><p></p><p>Identify especially dangerous operations. When the user performs a dangerous operation, send a separate confirmation request to ensure that the user intended to perform that operation.</p><p>Note that this can be bypassed using XSS.</p><p></p><p>Use the ESAPI Session Management control.</p><p>This control includes a component for CSRF.</p><p></p><p>Do not use the GET method for any request that triggers a state change.</p><p></p><p>Phase: Implementation</p><p>Check the HTTP Referer header to see if the request originated from an expected page. This could break legitimate functionality, because users or proxies may have disabled sending the Referer for privacy reasons.</p>",
-					"otherinfo": "<p>No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 1: \"input-:Rdltfata:\" ].</p>",
-					"reference": "<p>https://cheatsheetseries.owasp.org/cheatsheets/Cross-Site_Request_Forgery_Prevention_Cheat_Sheet.html</p><p>https://cwe.mitre.org/data/definitions/352.html</p>",
-					"cweid": "352",
-					"wascid": "9",
-					"sourceid": "61"
-				},
 				{
 					"pluginid": "10055",
 					"alertRef": "10055-5",
@@ -79,7 +52,7 @@
 							"otherinfo": "script-src includes unsafe-inline."
 						},
 						{
-							"uri": "https://budget-site.ademe.vercel.app/mentions-legales",
+							"uri": "https://budget-site.ademe.vercel.app/login",
 							"method": "GET",
 							"param": "Content-Security-Policy",
 							"attack": "",
@@ -138,7 +111,7 @@
 							"otherinfo": "style-src includes unsafe-inline."
 						},
 						{
-							"uri": "https://budget-site.ademe.vercel.app/mentions-legales",
+							"uri": "https://budget-site.ademe.vercel.app/login",
 							"method": "GET",
 							"param": "Content-Security-Policy",
 							"attack": "",
@@ -181,6 +154,14 @@
 							"otherinfo": "The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing."
 						},
 						{
+							"uri": "https://budget-site.ademe.vercel.app/_next/static/chunks/webpack-cb8e9190620c7050.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "Access-Control-Allow-Origin: *",
+							"otherinfo": "The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing."
+						},
+						{
 							"uri": "https://budget-site.ademe.vercel.app/_next/static/css/3d96107d0bddfbb6.css",
 							"method": "GET",
 							"param": "",
@@ -189,23 +170,23 @@
 							"otherinfo": "The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing."
 						},
 						{
+							"uri": "https://budget-site.ademe.vercel.app/_next/static/css/c325d86291db3246.css",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "Access-Control-Allow-Origin: *",
+							"otherinfo": "The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing."
+						},
+						{
+							"uri": "https://budget-site.ademe.vercel.app/_next/static/css/fe8d6868e58e1291.css",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "Access-Control-Allow-Origin: *",
+							"otherinfo": "The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing."
+						},
+						{
 							"uri": "https://budget-site.ademe.vercel.app/_next/static/media/e11418ac562b8ac1-s.p.woff2",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "Access-Control-Allow-Origin: *",
-							"otherinfo": "The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing."
-						},
-						{
-							"uri": "https://budget-site.ademe.vercel.app/accessibilite",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "Access-Control-Allow-Origin: *",
-							"otherinfo": "The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing."
-						},
-						{
-							"uri": "https://budget-site.ademe.vercel.app/cgu",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -222,14 +203,6 @@
 						},
 						{
 							"uri": "https://budget-site.ademe.vercel.app/img/ademe-logo-2022-1.svg",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "Access-Control-Allow-Origin: *",
-							"otherinfo": "The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing."
-						},
-						{
-							"uri": "https://budget-site.ademe.vercel.app/mentions-legales",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -334,7 +307,7 @@
 					"reference": "<p>https://projects.webappsec.org/w/page/13246936/Information%20Leakage</p>",
 					"cweid": "200",
 					"wascid": "13",
-					"sourceid": "6"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "10027",
@@ -363,6 +336,14 @@
 							"otherinfo": "The following pattern was used: \\bUSER\\b and was detected 2 times, the first in the element starting with: \"<script>self.__next_f.push([1,\"14:{}\\n13:[\\\"$\\\",\\\"$L11\\\",\\\"hqai-user\\\",\\\"$14\\\"]\\n16:{}\\n15:[\\\"$\\\",\\\"$L12\\\",\\\"hqai-loginlogout\\\",\", see evidence field for the suspicious comment/snippet."
 						},
 						{
+							"uri": "https://budget-site.ademe.vercel.app/_next/static/chunks/611-c91c2d92210dd356.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "from",
+							"otherinfo": "The following pattern was used: \\bFROM\\b and was detected in the element starting with: \"\"use strict\";(self.webpackChunk_N_E=self.webpackChunk_N_E||[]).push([[611],{4965:function(e,t,n){n.d(t,{f:function(){return b}})\", see evidence field for the suspicious comment/snippet."
+						},
+						{
 							"uri": "https://budget-site.ademe.vercel.app/_next/static/chunks/614-1736fc10220de324.js",
 							"method": "GET",
 							"param": "",
@@ -379,12 +360,28 @@
 							"otherinfo": "The following pattern was used: \\bBUG\\b and was detected in the element starting with: \"(self.webpackChunk_N_E=self.webpackChunk_N_E||[]).push([[69],{269:function(e,t){\"use strict\";function r(){return\"\"}Object.define\", see evidence field for the suspicious comment/snippet."
 						},
 						{
+							"uri": "https://budget-site.ademe.vercel.app/_next/static/chunks/799-c9278611ab3c90ab.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "query",
+							"otherinfo": "The following pattern was used: \\bQUERY\\b and was detected in the element starting with: \"(self.webpackChunk_N_E=self.webpackChunk_N_E||[]).push([[799],{3744:function(e,t,r){\"use strict\";r.d(t,{BW:function(){return w}}\", see evidence field for the suspicious comment/snippet."
+						},
+						{
 							"uri": "https://budget-site.ademe.vercel.app/_next/static/chunks/967-f0e7b8777d3ec27f.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
 							"evidence": "debug",
 							"otherinfo": "The following pattern was used: \\bDEBUG\\b and was detected in the element starting with: \"\"use strict\";(self.webpackChunk_N_E=self.webpackChunk_N_E||[]).push([[967],{967:function(e,t,n){n.r(t),n.d(t,{SessionContext:fun\", see evidence field for the suspicious comment/snippet."
+						},
+						{
+							"uri": "https://budget-site.ademe.vercel.app/_next/static/chunks/app/layout-b7aa23ac21a8e7e3.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "user",
+							"otherinfo": "The following pattern was used: \\bUSER\\b and was detected in the element starting with: \"(self.webpackChunk_N_E=self.webpackChunk_N_E||[]).push([[185],{9600:function(e,t,n){Promise.resolve().then(n.t.bind(n,2602,23)),\", see evidence field for the suspicious comment/snippet."
 						},
 						{
 							"uri": "https://budget-site.ademe.vercel.app/_next/static/chunks/fd9d1056-226306ebbbcf4a82.js",
@@ -403,31 +400,7 @@
 							"otherinfo": "The following pattern was used: \\bUSER\\b and was detected 2 times, the first in the element starting with: \"<script>self.__next_f.push([1,\"13:{}\\n12:[\\\"$\\\",\\\"$L10\\\",\\\"hqai-user\\\",\\\"$13\\\"]\\n15:{}\\n14:[\\\"$\\\",\\\"$L11\\\",\\\"hqai-loginlogout\\\",\", see evidence field for the suspicious comment/snippet."
 						},
 						{
-							"uri": "https://budget-site.ademe.vercel.app/cgu",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "user",
-							"otherinfo": "The following pattern was used: \\bUSER\\b and was detected 2 times, the first in the element starting with: \"<script>self.__next_f.push([1,\"13:{}\\n12:[\\\"$\\\",\\\"$L10\\\",\\\"hqai-user\\\",\\\"$13\\\"]\\n15:{}\\n14:[\\\"$\\\",\\\"$L11\\\",\\\"hqai-loginlogout\\\",\", see evidence field for the suspicious comment/snippet."
-						},
-						{
 							"uri": "https://budget-site.ademe.vercel.app/login",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "user",
-							"otherinfo": "The following pattern was used: \\bUSER\\b and was detected 2 times, the first in the element starting with: \"<script>self.__next_f.push([1,\"14:{}\\n13:[\\\"$\\\",\\\"$L11\\\",\\\"hqai-user\\\",\\\"$14\\\"]\\n16:{}\\n15:[\\\"$\\\",\\\"$L12\\\",\\\"hqai-loginlogout\\\",\", see evidence field for the suspicious comment/snippet."
-						},
-						{
-							"uri": "https://budget-site.ademe.vercel.app/mentions-legales",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "user",
-							"otherinfo": "The following pattern was used: \\bUSER\\b and was detected 2 times, the first in the element starting with: \"<script>self.__next_f.push([1,\"14:{}\\n13:[\\\"$\\\",\\\"$L11\\\",\\\"hqai-user\\\",\\\"$14\\\"]\\n16:{}\\n15:[\\\"$\\\",\\\"$L12\\\",\\\"hqai-loginlogout\\\",\", see evidence field for the suspicious comment/snippet."
-						},
-						{
-							"uri": "https://budget-site.ademe.vercel.app/politique-de-confidentialite",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -441,7 +414,7 @@
 					"reference": "",
 					"cweid": "200",
 					"wascid": "13",
-					"sourceid": "1"
+					"sourceid": "6"
 				},
 				{
 					"pluginid": "10015",
@@ -549,7 +522,7 @@
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "Age: 12485758",
+							"evidence": "Age: 13090789",
 							"otherinfo": "The presence of the 'Age' header indicates that a HTTP/1.1 compliant caching server is in use."
 						},
 						{
@@ -557,7 +530,15 @@
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "Age: 12485758",
+							"evidence": "Age: 13090790",
+							"otherinfo": "The presence of the 'Age' header indicates that a HTTP/1.1 compliant caching server is in use."
+						},
+						{
+							"uri": "https://budget-site.ademe.vercel.app/_next/static/chunks/webpack-cb8e9190620c7050.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "Age: 508",
 							"otherinfo": "The presence of the 'Age' header indicates that a HTTP/1.1 compliant caching server is in use."
 						},
 						{
@@ -565,7 +546,15 @@
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "Age: 3024849",
+							"evidence": "Age: 509",
+							"otherinfo": "The presence of the 'Age' header indicates that a HTTP/1.1 compliant caching server is in use."
+						},
+						{
+							"uri": "https://budget-site.ademe.vercel.app/_next/static/css/c325d86291db3246.css",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "Age: 508",
 							"otherinfo": "The presence of the 'Age' header indicates that a HTTP/1.1 compliant caching server is in use."
 						},
 						{
@@ -573,7 +562,7 @@
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "Age: 3024849",
+							"evidence": "Age: 509",
 							"otherinfo": "The presence of the 'Age' header indicates that a HTTP/1.1 compliant caching server is in use."
 						},
 						{
@@ -581,23 +570,7 @@
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "Age: 3024849",
-							"otherinfo": "The presence of the 'Age' header indicates that a HTTP/1.1 compliant caching server is in use."
-						},
-						{
-							"uri": "https://budget-site.ademe.vercel.app/accessibilite",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "Age: 7484124",
-							"otherinfo": "The presence of the 'Age' header indicates that a HTTP/1.1 compliant caching server is in use."
-						},
-						{
-							"uri": "https://budget-site.ademe.vercel.app/cgu",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "Age: 7484124",
+							"evidence": "Age: 508",
 							"otherinfo": "The presence of the 'Age' header indicates that a HTTP/1.1 compliant caching server is in use."
 						},
 						{
@@ -605,7 +578,7 @@
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "Age: 3024849",
+							"evidence": "Age: 508",
 							"otherinfo": "The presence of the 'Age' header indicates that a HTTP/1.1 compliant caching server is in use."
 						},
 						{
@@ -613,15 +586,7 @@
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "Age: 2419732",
-							"otherinfo": "The presence of the 'Age' header indicates that a HTTP/1.1 compliant caching server is in use."
-						},
-						{
-							"uri": "https://budget-site.ademe.vercel.app/mentions-legales",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "Age: 7736393",
+							"evidence": "Age: 508",
 							"otherinfo": "The presence of the 'Age' header indicates that a HTTP/1.1 compliant caching server is in use."
 						},
 						{
@@ -629,7 +594,7 @@
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "Age: 7484387",
+							"evidence": "Age: 8089418",
 							"otherinfo": "The presence of the 'Age' header indicates that a HTTP/1.1 compliant caching server is in use."
 						},
 						{
@@ -637,11 +602,11 @@
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "Age: 3024786",
+							"evidence": "Age: 442",
 							"otherinfo": "The presence of the 'Age' header indicates that a HTTP/1.1 compliant caching server is in use."
 						}
 					],
-					"count": "12",
+					"count": "11",
 					"solution": "<p>Validate that the response does not contain sensitive, personal or user-specific information. If it does, consider the use of the following HTTP response headers, to limit, or prevent the content being stored and retrieved from the cache by another user:</p><p>Cache-Control: no-cache, no-store, must-revalidate, private</p><p>Pragma: no-cache</p><p>Expires: 0</p><p>This configuration directs both HTTP 1.0 and HTTP 1.1 compliant caching servers to not store the response, and to not retrieve the response (without validation) from the cache, in response to a similar request.</p>",
 					"otherinfo": "<p>The presence of the 'Age' header indicates that a HTTP/1.1 compliant caching server is in use.</p>",
 					"reference": "<p>https://tools.ietf.org/html/rfc7234</p><p>https://tools.ietf.org/html/rfc7231</p><p>https://www.rfc-editor.org/rfc/rfc9110.html</p>",
@@ -660,7 +625,7 @@
 					"desc": "<p>Specifies how and where the data would be used. For instance, if the value is audio, then the requested resource must be audio data and not any other type of resource.</p>",
 					"instances":[ 
 						{
-							"uri": "https://budget-site.ademe.vercel.app",
+							"uri": "https://budget-site.ademe.vercel.app/_next/static/media/e11418ac562b8ac1-s.p.woff2",
 							"method": "GET",
 							"param": "Sec-Fetch-Dest",
 							"attack": "",
@@ -690,7 +655,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Dest</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "6"
+					"sourceid": "44"
 				},
 				{
 					"pluginid": "90005",
@@ -703,7 +668,7 @@
 					"desc": "<p>Allows to differentiate between requests for navigating between HTML pages and requests for loading resources like images, audio etc.</p>",
 					"instances":[ 
 						{
-							"uri": "https://budget-site.ademe.vercel.app",
+							"uri": "https://budget-site.ademe.vercel.app/_next/static/media/e11418ac562b8ac1-s.p.woff2",
 							"method": "GET",
 							"param": "Sec-Fetch-Mode",
 							"attack": "",
@@ -733,7 +698,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Mode</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "6"
+					"sourceid": "44"
 				},
 				{
 					"pluginid": "90005",
@@ -746,7 +711,7 @@
 					"desc": "<p>Specifies the relationship between request initiator's origin and target's origin.</p>",
 					"instances":[ 
 						{
-							"uri": "https://budget-site.ademe.vercel.app",
+							"uri": "https://budget-site.ademe.vercel.app/_next/static/media/e11418ac562b8ac1-s.p.woff2",
 							"method": "GET",
 							"param": "Sec-Fetch-Site",
 							"attack": "",
@@ -776,7 +741,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Site</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "6"
+					"sourceid": "44"
 				},
 				{
 					"pluginid": "90005",
@@ -789,7 +754,7 @@
 					"desc": "<p>Specifies if a navigation request was initiated by a user.</p>",
 					"instances":[ 
 						{
-							"uri": "https://budget-site.ademe.vercel.app",
+							"uri": "https://budget-site.ademe.vercel.app/_next/static/media/e11418ac562b8ac1-s.p.woff2",
 							"method": "GET",
 							"param": "Sec-Fetch-User",
 							"attack": "",
@@ -819,7 +784,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-User</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "6"
+					"sourceid": "44"
 				},
 				{
 					"pluginid": "10049",
@@ -832,7 +797,23 @@
 					"desc": "<p>The response contents are storable by caching components such as proxy servers, and may be retrieved directly from the cache, rather than from the origin server by the caching servers, in response to similar requests from other users. If the response data is sensitive, personal or user-specific, this may result in sensitive information being leaked. In some cases, this may even result in a user gaining complete control of the session of another user, depending on the configuration of the caching components in use in their environment. This is primarily an issue where \"shared\" caching servers such as \"proxy\" caches are configured on the local network. This configuration is typically found in corporate or educational environments, for instance.</p>",
 					"instances":[ 
 						{
+							"uri": "https://budget-site.ademe.vercel.app/_next/static/chunks/webpack-cb8e9190620c7050.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "max-age=31536000",
+							"otherinfo": ""
+						},
+						{
 							"uri": "https://budget-site.ademe.vercel.app/_next/static/css/3d96107d0bddfbb6.css",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "max-age=31536000",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://budget-site.ademe.vercel.app/_next/static/css/c325d86291db3246.css",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -854,15 +835,31 @@
 							"attack": "",
 							"evidence": "max-age=31536000",
 							"otherinfo": ""
+						},
+						{
+							"uri": "https://budget-site.ademe.vercel.app/_next/static/media/Marianne-Light.3b7ead04.woff2",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "max-age=31536000",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://budget-site.ademe.vercel.app/_next/static/media/Marianne-Light_Italic.575f7383.woff2",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "max-age=31536000",
+							"otherinfo": ""
 						}
 					],
-					"count": "3",
+					"count": "7",
 					"solution": "<p>Validate that the response does not contain sensitive, personal or user-specific information. If it does, consider the use of the following HTTP response headers, to limit, or prevent the content being stored and retrieved from the cache by another user:</p><p>Cache-Control: no-cache, no-store, must-revalidate, private</p><p>Pragma: no-cache</p><p>Expires: 0</p><p>This configuration directs both HTTP 1.0 and HTTP 1.1 compliant caching servers to not store the response, and to not retrieve the response (without validation) from the cache, in response to a similar request.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://datatracker.ietf.org/doc/html/rfc7234</p><p>https://datatracker.ietf.org/doc/html/rfc7231</p><p>https://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html</p>",
 					"cweid": "524",
 					"wascid": "13",
-					"sourceid": "58"
+					"sourceid": "54"
 				},
 				{
 					"pluginid": "10049",
@@ -876,22 +873,6 @@
 					"instances":[ 
 						{
 							"uri": "https://budget-site.ademe.vercel.app",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "max-age=0",
-							"otherinfo": ""
-						},
-						{
-							"uri": "https://budget-site.ademe.vercel.app/accessibilite",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "max-age=0",
-							"otherinfo": ""
-						},
-						{
-							"uri": "https://budget-site.ademe.vercel.app/cgu",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -915,14 +896,6 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://budget-site.ademe.vercel.app/mentions-legales",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "max-age=0",
-							"otherinfo": ""
-						},
-						{
 							"uri": "https://budget-site.ademe.vercel.app/robots.txt",
 							"method": "GET",
 							"param": "",
@@ -939,7 +912,7 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "8",
+					"count": "5",
 					"solution": "",
 					"otherinfo": "",
 					"reference": "<p>https://datatracker.ietf.org/doc/html/rfc7234</p><p>https://datatracker.ietf.org/doc/html/rfc7231</p><p>https://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html</p>",
