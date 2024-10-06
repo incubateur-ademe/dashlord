@@ -1,43 +1,6 @@
 [
   [
     {
-      "template": "dns/caa-fingerprint.yaml",
-      "template-url": "https://templates.nuclei.sh/public/caa-fingerprint",
-      "template-id": "caa-fingerprint",
-      "template-path": "/home/runner/nuclei-templates/dns/caa-fingerprint.yaml",
-      "info": {
-        "name": "CAA Record",
-        "author": [
-          "pdteam"
-        ],
-        "tags": [
-          "dns",
-          "caa"
-        ],
-        "description": "A CAA record was discovered. A CAA record is used to specify which certificate authorities (CAs) are allowed to issue certificates for a domain.",
-        "reference": [
-          "https://support.dnsimple.com/articles/caa-record/#whats-a-caa-record"
-        ],
-        "severity": "info",
-        "metadata": {
-          "max-request": 1
-        },
-        "classification": {
-          "cve-id": null,
-          "cwe-id": [
-            "cwe-200"
-          ]
-        }
-      },
-      "type": "dns",
-      "host": "longuevieauxobjets.ademe.fr.",
-      "matched-at": "longuevieauxobjets.ademe.fr",
-      "request": ";; opcode: QUERY, status: NOERROR, id: 6845\n;; flags: rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;longuevieauxobjets.ademe.fr.\tIN\t CAA\n",
-      "response": ";; opcode: QUERY, status: NOERROR, id: 6845\n;; flags: qr rd ra; QUERY: 1, ANSWER: 2, AUTHORITY: 1, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 512\n\n;; QUESTION SECTION:\n;longuevieauxobjets.ademe.fr.\tIN\t CAA\n\n;; ANSWER SECTION:\nlonguevieauxobjets.ademe.fr.\t5380\tIN\tCNAME\tquefairedemesobjets.osc-fr1.scalingo.io.\nquefairedemesobjets.osc-fr1.scalingo.io.\t300\tIN\tCNAME\tsc-lb-pool-01.osc-fr1.scalingo-network.com.\n\n;; AUTHORITY SECTION:\nscalingo-network.com.\t1800\tIN\tSOA\tburt.ns.cloudflare.com. dns.cloudflare.com. 2352884849 10000 2400 604800 1800\n",
-      "timestamp": "2024-09-29T02:08:04.168751055Z",
-      "matcher-status": true
-    },
-    {
       "template": "dns/dns-saas-service-detection.yaml",
       "template-url": "https://templates.nuclei.sh/public/dns-saas-service-detection",
       "template-id": "dns-saas-service-detection",
@@ -69,48 +32,46 @@
       "extracted-results": [
         "quefairedemesobjets.osc-fr1.scalingo.io."
       ],
-      "request": ";; opcode: QUERY, status: NOERROR, id: 6711\n;; flags: rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;longuevieauxobjets.ademe.fr.\tIN\t CNAME\n",
-      "response": ";; opcode: QUERY, status: NOERROR, id: 6711\n;; flags: qr rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 1232\n\n;; QUESTION SECTION:\n;longuevieauxobjets.ademe.fr.\tIN\t CNAME\n\n;; ANSWER SECTION:\nlonguevieauxobjets.ademe.fr.\t10800\tIN\tCNAME\tquefairedemesobjets.osc-fr1.scalingo.io.\n",
-      "timestamp": "2024-09-29T02:08:04.186507207Z",
+      "request": ";; opcode: QUERY, status: NOERROR, id: 6451\n;; flags: rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;longuevieauxobjets.ademe.fr.\tIN\t CNAME\n",
+      "response": ";; opcode: QUERY, status: NOERROR, id: 6451\n;; flags: qr rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 512\n\n;; QUESTION SECTION:\n;longuevieauxobjets.ademe.fr.\tIN\t CNAME\n\n;; ANSWER SECTION:\nlonguevieauxobjets.ademe.fr.\t10800\tIN\tCNAME\tquefairedemesobjets.osc-fr1.scalingo.io.\n",
+      "timestamp": "2024-10-06T02:10:38.538396274Z",
       "matcher-status": true
     },
     {
-      "template": "http/misconfiguration/http-missing-security-headers.yaml",
-      "template-url": "https://templates.nuclei.sh/public/http-missing-security-headers",
-      "template-id": "http-missing-security-headers",
-      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/http-missing-security-headers.yaml",
+      "template": "dns/caa-fingerprint.yaml",
+      "template-url": "https://templates.nuclei.sh/public/caa-fingerprint",
+      "template-id": "caa-fingerprint",
+      "template-path": "/home/runner/nuclei-templates/dns/caa-fingerprint.yaml",
       "info": {
-        "name": "HTTP Missing Security Headers",
+        "name": "CAA Record",
         "author": [
-          "socketz",
-          "geeknik",
-          "g4l1t0",
-          "convisoappsec",
-          "kurohost",
-          "dawid-czarnecki",
-          "forgedhallpass",
-          "jub0bs"
+          "pdteam"
         ],
         "tags": [
-          "misconfig",
-          "headers",
-          "generic"
+          "dns",
+          "caa"
         ],
-        "description": "This template searches for missing HTTP security headers. The impact of these missing headers can vary.\n",
+        "description": "A CAA record was discovered. A CAA record is used to specify which certificate authorities (CAs) are allowed to issue certificates for a domain.",
+        "reference": [
+          "https://support.dnsimple.com/articles/caa-record/#whats-a-caa-record"
+        ],
         "severity": "info",
         "metadata": {
           "max-request": 1
+        },
+        "classification": {
+          "cve-id": null,
+          "cwe-id": [
+            "cwe-200"
+          ]
         }
       },
-      "matcher-name": "strict-transport-security",
-      "type": "http",
-      "host": "https://longuevieauxobjets.ademe.fr",
-      "matched-at": "https://longuevieauxobjets.ademe.fr",
-      "request": "GET / HTTP/1.1\r\nHost: longuevieauxobjets.ademe.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
-      "response": "HTTP/1.1 502 Bad Gateway\r\nConnection: close\r\nTransfer-Encoding: chunked\r\nContent-Encoding: identity\r\nContent-Type: text/html\r\nDate: Sun, 29 Sep 2024 02:11:54 GMT\r\nX-Request-Id: 6bf72f79-8a74-4ed4-9c1a-78bc931df157\r\n\r\n<!DOCTYPE html><html><head><meta charset='utf-8'><meta content='IE=edge,chrome=1' http-equiv='X-UA-Compatible'><meta content='width=device-width, initial-scale=1.0' name='viewport'><title>Application Error</title><style>html { height: 100%;}body { -webkit-transform-style: preserve-3d; transform-style: preserve-3d; text-align: center; height: 100%; margin: 0; padding: 0; background: -webkit-gradient(linear, left top, left bottom, from(#1864ab), to(#099ec9)) left top/100% 100% no-repeat #1864ab; background: linear-gradient(to bottom, #1864ab, #099ec9) left top/100% 100% no-repeat #1864ab; color: white;}#wrapper { position: relative; top: 40%; -webkit-transform: translateY(-40%); transform: translateY(-40%);}h1 { font-size: 2rem; font-weight: 700; text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5); font-family: \"Lato\", sans-serif; margin: 0; paddding: 0;}p { margin-left: auto; margin-right: auto; width: 768px;}p em { margin-top: 1em; font-family: \"Lato\", sans-serif;}</style></head><body><div id='wrapper'><h1>Application Error</h1><p><em>The application has stopped responding unexpectedly.<br>If you're the application owner, check your logs and metrics for details.</em></p></div></body></html>\n",
-      "ip": "109.232.233.130",
-      "timestamp": "2024-09-29T02:11:54.806665667Z",
-      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://longuevieauxobjets.ademe.fr'",
+      "type": "dns",
+      "host": "longuevieauxobjets.ademe.fr.",
+      "matched-at": "longuevieauxobjets.ademe.fr",
+      "request": ";; opcode: QUERY, status: NOERROR, id: 17639\n;; flags: rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;longuevieauxobjets.ademe.fr.\tIN\t CAA\n",
+      "response": ";; opcode: QUERY, status: NOERROR, id: 17639\n;; flags: qr rd ra; QUERY: 1, ANSWER: 2, AUTHORITY: 1, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 1232\n\n;; QUESTION SECTION:\n;longuevieauxobjets.ademe.fr.\tIN\t CAA\n\n;; ANSWER SECTION:\nlonguevieauxobjets.ademe.fr.\t10800\tIN\tCNAME\tquefairedemesobjets.osc-fr1.scalingo.io.\nquefairedemesobjets.osc-fr1.scalingo.io.\t300\tIN\tCNAME\tsc-lb-pool-01.osc-fr1.scalingo-network.com.\n\n;; AUTHORITY SECTION:\nscalingo-network.com.\t1800\tIN\tSOA\tburt.ns.cloudflare.com. dns.cloudflare.com. 2352884849 10000 2400 604800 1800\n",
+      "timestamp": "2024-10-06T02:10:38.64557797Z",
       "matcher-status": true
     },
     {
@@ -146,9 +107,9 @@
       "host": "https://longuevieauxobjets.ademe.fr",
       "matched-at": "https://longuevieauxobjets.ademe.fr",
       "request": "GET / HTTP/1.1\r\nHost: longuevieauxobjets.ademe.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
-      "response": "HTTP/1.1 502 Bad Gateway\r\nConnection: close\r\nTransfer-Encoding: chunked\r\nContent-Encoding: identity\r\nContent-Type: text/html\r\nDate: Sun, 29 Sep 2024 02:11:54 GMT\r\nX-Request-Id: 6bf72f79-8a74-4ed4-9c1a-78bc931df157\r\n\r\n<!DOCTYPE html><html><head><meta charset='utf-8'><meta content='IE=edge,chrome=1' http-equiv='X-UA-Compatible'><meta content='width=device-width, initial-scale=1.0' name='viewport'><title>Application Error</title><style>html { height: 100%;}body { -webkit-transform-style: preserve-3d; transform-style: preserve-3d; text-align: center; height: 100%; margin: 0; padding: 0; background: -webkit-gradient(linear, left top, left bottom, from(#1864ab), to(#099ec9)) left top/100% 100% no-repeat #1864ab; background: linear-gradient(to bottom, #1864ab, #099ec9) left top/100% 100% no-repeat #1864ab; color: white;}#wrapper { position: relative; top: 40%; -webkit-transform: translateY(-40%); transform: translateY(-40%);}h1 { font-size: 2rem; font-weight: 700; text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5); font-family: \"Lato\", sans-serif; margin: 0; paddding: 0;}p { margin-left: auto; margin-right: auto; width: 768px;}p em { margin-top: 1em; font-family: \"Lato\", sans-serif;}</style></head><body><div id='wrapper'><h1>Application Error</h1><p><em>The application has stopped responding unexpectedly.<br>If you're the application owner, check your logs and metrics for details.</em></p></div></body></html>\n",
-      "ip": "109.232.233.130",
-      "timestamp": "2024-09-29T02:11:54.806724356Z",
+      "response": "HTTP/1.1 502 Bad Gateway\r\nConnection: close\r\nTransfer-Encoding: chunked\r\nContent-Encoding: identity\r\nContent-Type: text/html\r\nDate: Sun, 06 Oct 2024 02:14:24 GMT\r\nX-Request-Id: d3fa6048-2d8b-4833-a0e4-6a0eebbf2f11\r\n\r\n<!DOCTYPE html><html><head><meta charset='utf-8'><meta content='IE=edge,chrome=1' http-equiv='X-UA-Compatible'><meta content='width=device-width, initial-scale=1.0' name='viewport'><title>Application Error</title><style>html { height: 100%;}body { -webkit-transform-style: preserve-3d; transform-style: preserve-3d; text-align: center; height: 100%; margin: 0; padding: 0; background: -webkit-gradient(linear, left top, left bottom, from(#1864ab), to(#099ec9)) left top/100% 100% no-repeat #1864ab; background: linear-gradient(to bottom, #1864ab, #099ec9) left top/100% 100% no-repeat #1864ab; color: white;}#wrapper { position: relative; top: 40%; -webkit-transform: translateY(-40%); transform: translateY(-40%);}h1 { font-size: 2rem; font-weight: 700; text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5); font-family: \"Lato\", sans-serif; margin: 0; paddding: 0;}p { margin-left: auto; margin-right: auto; width: 768px;}p em { margin-top: 1em; font-family: \"Lato\", sans-serif;}</style></head><body><div id='wrapper'><h1>Application Error</h1><p><em>The application has stopped responding unexpectedly.<br>If you're the application owner, check your logs and metrics for details.</em></p></div></body></html>\n",
+      "ip": "148.253.75.120",
+      "timestamp": "2024-10-06T02:14:24.728554179Z",
       "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://longuevieauxobjets.ademe.fr'",
       "matcher-status": true
     },
@@ -185,126 +146,9 @@
       "host": "https://longuevieauxobjets.ademe.fr",
       "matched-at": "https://longuevieauxobjets.ademe.fr",
       "request": "GET / HTTP/1.1\r\nHost: longuevieauxobjets.ademe.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
-      "response": "HTTP/1.1 502 Bad Gateway\r\nConnection: close\r\nTransfer-Encoding: chunked\r\nContent-Encoding: identity\r\nContent-Type: text/html\r\nDate: Sun, 29 Sep 2024 02:11:54 GMT\r\nX-Request-Id: 6bf72f79-8a74-4ed4-9c1a-78bc931df157\r\n\r\n<!DOCTYPE html><html><head><meta charset='utf-8'><meta content='IE=edge,chrome=1' http-equiv='X-UA-Compatible'><meta content='width=device-width, initial-scale=1.0' name='viewport'><title>Application Error</title><style>html { height: 100%;}body { -webkit-transform-style: preserve-3d; transform-style: preserve-3d; text-align: center; height: 100%; margin: 0; padding: 0; background: -webkit-gradient(linear, left top, left bottom, from(#1864ab), to(#099ec9)) left top/100% 100% no-repeat #1864ab; background: linear-gradient(to bottom, #1864ab, #099ec9) left top/100% 100% no-repeat #1864ab; color: white;}#wrapper { position: relative; top: 40%; -webkit-transform: translateY(-40%); transform: translateY(-40%);}h1 { font-size: 2rem; font-weight: 700; text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5); font-family: \"Lato\", sans-serif; margin: 0; paddding: 0;}p { margin-left: auto; margin-right: auto; width: 768px;}p em { margin-top: 1em; font-family: \"Lato\", sans-serif;}</style></head><body><div id='wrapper'><h1>Application Error</h1><p><em>The application has stopped responding unexpectedly.<br>If you're the application owner, check your logs and metrics for details.</em></p></div></body></html>\n",
-      "ip": "109.232.233.130",
-      "timestamp": "2024-09-29T02:11:54.806745205Z",
-      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://longuevieauxobjets.ademe.fr'",
-      "matcher-status": true
-    },
-    {
-      "template": "http/misconfiguration/http-missing-security-headers.yaml",
-      "template-url": "https://templates.nuclei.sh/public/http-missing-security-headers",
-      "template-id": "http-missing-security-headers",
-      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/http-missing-security-headers.yaml",
-      "info": {
-        "name": "HTTP Missing Security Headers",
-        "author": [
-          "socketz",
-          "geeknik",
-          "g4l1t0",
-          "convisoappsec",
-          "kurohost",
-          "dawid-czarnecki",
-          "forgedhallpass",
-          "jub0bs"
-        ],
-        "tags": [
-          "misconfig",
-          "headers",
-          "generic"
-        ],
-        "description": "This template searches for missing HTTP security headers. The impact of these missing headers can vary.\n",
-        "severity": "info",
-        "metadata": {
-          "max-request": 1
-        }
-      },
-      "matcher-name": "cross-origin-resource-policy",
-      "type": "http",
-      "host": "https://longuevieauxobjets.ademe.fr",
-      "matched-at": "https://longuevieauxobjets.ademe.fr",
-      "request": "GET / HTTP/1.1\r\nHost: longuevieauxobjets.ademe.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
-      "response": "HTTP/1.1 502 Bad Gateway\r\nConnection: close\r\nTransfer-Encoding: chunked\r\nContent-Encoding: identity\r\nContent-Type: text/html\r\nDate: Sun, 29 Sep 2024 02:11:54 GMT\r\nX-Request-Id: 6bf72f79-8a74-4ed4-9c1a-78bc931df157\r\n\r\n<!DOCTYPE html><html><head><meta charset='utf-8'><meta content='IE=edge,chrome=1' http-equiv='X-UA-Compatible'><meta content='width=device-width, initial-scale=1.0' name='viewport'><title>Application Error</title><style>html { height: 100%;}body { -webkit-transform-style: preserve-3d; transform-style: preserve-3d; text-align: center; height: 100%; margin: 0; padding: 0; background: -webkit-gradient(linear, left top, left bottom, from(#1864ab), to(#099ec9)) left top/100% 100% no-repeat #1864ab; background: linear-gradient(to bottom, #1864ab, #099ec9) left top/100% 100% no-repeat #1864ab; color: white;}#wrapper { position: relative; top: 40%; -webkit-transform: translateY(-40%); transform: translateY(-40%);}h1 { font-size: 2rem; font-weight: 700; text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5); font-family: \"Lato\", sans-serif; margin: 0; paddding: 0;}p { margin-left: auto; margin-right: auto; width: 768px;}p em { margin-top: 1em; font-family: \"Lato\", sans-serif;}</style></head><body><div id='wrapper'><h1>Application Error</h1><p><em>The application has stopped responding unexpectedly.<br>If you're the application owner, check your logs and metrics for details.</em></p></div></body></html>\n",
-      "ip": "109.232.233.130",
-      "timestamp": "2024-09-29T02:11:54.806762357Z",
-      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://longuevieauxobjets.ademe.fr'",
-      "matcher-status": true
-    },
-    {
-      "template": "http/misconfiguration/http-missing-security-headers.yaml",
-      "template-url": "https://templates.nuclei.sh/public/http-missing-security-headers",
-      "template-id": "http-missing-security-headers",
-      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/http-missing-security-headers.yaml",
-      "info": {
-        "name": "HTTP Missing Security Headers",
-        "author": [
-          "socketz",
-          "geeknik",
-          "g4l1t0",
-          "convisoappsec",
-          "kurohost",
-          "dawid-czarnecki",
-          "forgedhallpass",
-          "jub0bs"
-        ],
-        "tags": [
-          "misconfig",
-          "headers",
-          "generic"
-        ],
-        "description": "This template searches for missing HTTP security headers. The impact of these missing headers can vary.\n",
-        "severity": "info",
-        "metadata": {
-          "max-request": 1
-        }
-      },
-      "matcher-name": "content-security-policy",
-      "type": "http",
-      "host": "https://longuevieauxobjets.ademe.fr",
-      "matched-at": "https://longuevieauxobjets.ademe.fr",
-      "request": "GET / HTTP/1.1\r\nHost: longuevieauxobjets.ademe.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
-      "response": "HTTP/1.1 502 Bad Gateway\r\nConnection: close\r\nTransfer-Encoding: chunked\r\nContent-Encoding: identity\r\nContent-Type: text/html\r\nDate: Sun, 29 Sep 2024 02:11:54 GMT\r\nX-Request-Id: 6bf72f79-8a74-4ed4-9c1a-78bc931df157\r\n\r\n<!DOCTYPE html><html><head><meta charset='utf-8'><meta content='IE=edge,chrome=1' http-equiv='X-UA-Compatible'><meta content='width=device-width, initial-scale=1.0' name='viewport'><title>Application Error</title><style>html { height: 100%;}body { -webkit-transform-style: preserve-3d; transform-style: preserve-3d; text-align: center; height: 100%; margin: 0; padding: 0; background: -webkit-gradient(linear, left top, left bottom, from(#1864ab), to(#099ec9)) left top/100% 100% no-repeat #1864ab; background: linear-gradient(to bottom, #1864ab, #099ec9) left top/100% 100% no-repeat #1864ab; color: white;}#wrapper { position: relative; top: 40%; -webkit-transform: translateY(-40%); transform: translateY(-40%);}h1 { font-size: 2rem; font-weight: 700; text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5); font-family: \"Lato\", sans-serif; margin: 0; paddding: 0;}p { margin-left: auto; margin-right: auto; width: 768px;}p em { margin-top: 1em; font-family: \"Lato\", sans-serif;}</style></head><body><div id='wrapper'><h1>Application Error</h1><p><em>The application has stopped responding unexpectedly.<br>If you're the application owner, check your logs and metrics for details.</em></p></div></body></html>\n",
-      "ip": "109.232.233.130",
-      "timestamp": "2024-09-29T02:11:54.806777335Z",
-      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://longuevieauxobjets.ademe.fr'",
-      "matcher-status": true
-    },
-    {
-      "template": "http/misconfiguration/http-missing-security-headers.yaml",
-      "template-url": "https://templates.nuclei.sh/public/http-missing-security-headers",
-      "template-id": "http-missing-security-headers",
-      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/http-missing-security-headers.yaml",
-      "info": {
-        "name": "HTTP Missing Security Headers",
-        "author": [
-          "socketz",
-          "geeknik",
-          "g4l1t0",
-          "convisoappsec",
-          "kurohost",
-          "dawid-czarnecki",
-          "forgedhallpass",
-          "jub0bs"
-        ],
-        "tags": [
-          "misconfig",
-          "headers",
-          "generic"
-        ],
-        "description": "This template searches for missing HTTP security headers. The impact of these missing headers can vary.\n",
-        "severity": "info",
-        "metadata": {
-          "max-request": 1
-        }
-      },
-      "matcher-name": "x-frame-options",
-      "type": "http",
-      "host": "https://longuevieauxobjets.ademe.fr",
-      "matched-at": "https://longuevieauxobjets.ademe.fr",
-      "request": "GET / HTTP/1.1\r\nHost: longuevieauxobjets.ademe.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
-      "response": "HTTP/1.1 502 Bad Gateway\r\nConnection: close\r\nTransfer-Encoding: chunked\r\nContent-Encoding: identity\r\nContent-Type: text/html\r\nDate: Sun, 29 Sep 2024 02:11:54 GMT\r\nX-Request-Id: 6bf72f79-8a74-4ed4-9c1a-78bc931df157\r\n\r\n<!DOCTYPE html><html><head><meta charset='utf-8'><meta content='IE=edge,chrome=1' http-equiv='X-UA-Compatible'><meta content='width=device-width, initial-scale=1.0' name='viewport'><title>Application Error</title><style>html { height: 100%;}body { -webkit-transform-style: preserve-3d; transform-style: preserve-3d; text-align: center; height: 100%; margin: 0; padding: 0; background: -webkit-gradient(linear, left top, left bottom, from(#1864ab), to(#099ec9)) left top/100% 100% no-repeat #1864ab; background: linear-gradient(to bottom, #1864ab, #099ec9) left top/100% 100% no-repeat #1864ab; color: white;}#wrapper { position: relative; top: 40%; -webkit-transform: translateY(-40%); transform: translateY(-40%);}h1 { font-size: 2rem; font-weight: 700; text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5); font-family: \"Lato\", sans-serif; margin: 0; paddding: 0;}p { margin-left: auto; margin-right: auto; width: 768px;}p em { margin-top: 1em; font-family: \"Lato\", sans-serif;}</style></head><body><div id='wrapper'><h1>Application Error</h1><p><em>The application has stopped responding unexpectedly.<br>If you're the application owner, check your logs and metrics for details.</em></p></div></body></html>\n",
-      "ip": "109.232.233.130",
-      "timestamp": "2024-09-29T02:11:54.806794627Z",
+      "response": "HTTP/1.1 502 Bad Gateway\r\nConnection: close\r\nTransfer-Encoding: chunked\r\nContent-Encoding: identity\r\nContent-Type: text/html\r\nDate: Sun, 06 Oct 2024 02:14:24 GMT\r\nX-Request-Id: d3fa6048-2d8b-4833-a0e4-6a0eebbf2f11\r\n\r\n<!DOCTYPE html><html><head><meta charset='utf-8'><meta content='IE=edge,chrome=1' http-equiv='X-UA-Compatible'><meta content='width=device-width, initial-scale=1.0' name='viewport'><title>Application Error</title><style>html { height: 100%;}body { -webkit-transform-style: preserve-3d; transform-style: preserve-3d; text-align: center; height: 100%; margin: 0; padding: 0; background: -webkit-gradient(linear, left top, left bottom, from(#1864ab), to(#099ec9)) left top/100% 100% no-repeat #1864ab; background: linear-gradient(to bottom, #1864ab, #099ec9) left top/100% 100% no-repeat #1864ab; color: white;}#wrapper { position: relative; top: 40%; -webkit-transform: translateY(-40%); transform: translateY(-40%);}h1 { font-size: 2rem; font-weight: 700; text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5); font-family: \"Lato\", sans-serif; margin: 0; paddding: 0;}p { margin-left: auto; margin-right: auto; width: 768px;}p em { margin-top: 1em; font-family: \"Lato\", sans-serif;}</style></head><body><div id='wrapper'><h1>Application Error</h1><p><em>The application has stopped responding unexpectedly.<br>If you're the application owner, check your logs and metrics for details.</em></p></div></body></html>\n",
+      "ip": "148.253.75.120",
+      "timestamp": "2024-10-06T02:14:24.728621104Z",
       "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://longuevieauxobjets.ademe.fr'",
       "matcher-status": true
     },
@@ -341,126 +185,9 @@
       "host": "https://longuevieauxobjets.ademe.fr",
       "matched-at": "https://longuevieauxobjets.ademe.fr",
       "request": "GET / HTTP/1.1\r\nHost: longuevieauxobjets.ademe.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
-      "response": "HTTP/1.1 502 Bad Gateway\r\nConnection: close\r\nTransfer-Encoding: chunked\r\nContent-Encoding: identity\r\nContent-Type: text/html\r\nDate: Sun, 29 Sep 2024 02:11:54 GMT\r\nX-Request-Id: 6bf72f79-8a74-4ed4-9c1a-78bc931df157\r\n\r\n<!DOCTYPE html><html><head><meta charset='utf-8'><meta content='IE=edge,chrome=1' http-equiv='X-UA-Compatible'><meta content='width=device-width, initial-scale=1.0' name='viewport'><title>Application Error</title><style>html { height: 100%;}body { -webkit-transform-style: preserve-3d; transform-style: preserve-3d; text-align: center; height: 100%; margin: 0; padding: 0; background: -webkit-gradient(linear, left top, left bottom, from(#1864ab), to(#099ec9)) left top/100% 100% no-repeat #1864ab; background: linear-gradient(to bottom, #1864ab, #099ec9) left top/100% 100% no-repeat #1864ab; color: white;}#wrapper { position: relative; top: 40%; -webkit-transform: translateY(-40%); transform: translateY(-40%);}h1 { font-size: 2rem; font-weight: 700; text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5); font-family: \"Lato\", sans-serif; margin: 0; paddding: 0;}p { margin-left: auto; margin-right: auto; width: 768px;}p em { margin-top: 1em; font-family: \"Lato\", sans-serif;}</style></head><body><div id='wrapper'><h1>Application Error</h1><p><em>The application has stopped responding unexpectedly.<br>If you're the application owner, check your logs and metrics for details.</em></p></div></body></html>\n",
-      "ip": "109.232.233.130",
-      "timestamp": "2024-09-29T02:11:54.806810386Z",
-      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://longuevieauxobjets.ademe.fr'",
-      "matcher-status": true
-    },
-    {
-      "template": "http/misconfiguration/http-missing-security-headers.yaml",
-      "template-url": "https://templates.nuclei.sh/public/http-missing-security-headers",
-      "template-id": "http-missing-security-headers",
-      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/http-missing-security-headers.yaml",
-      "info": {
-        "name": "HTTP Missing Security Headers",
-        "author": [
-          "socketz",
-          "geeknik",
-          "g4l1t0",
-          "convisoappsec",
-          "kurohost",
-          "dawid-czarnecki",
-          "forgedhallpass",
-          "jub0bs"
-        ],
-        "tags": [
-          "misconfig",
-          "headers",
-          "generic"
-        ],
-        "description": "This template searches for missing HTTP security headers. The impact of these missing headers can vary.\n",
-        "severity": "info",
-        "metadata": {
-          "max-request": 1
-        }
-      },
-      "matcher-name": "referrer-policy",
-      "type": "http",
-      "host": "https://longuevieauxobjets.ademe.fr",
-      "matched-at": "https://longuevieauxobjets.ademe.fr",
-      "request": "GET / HTTP/1.1\r\nHost: longuevieauxobjets.ademe.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
-      "response": "HTTP/1.1 502 Bad Gateway\r\nConnection: close\r\nTransfer-Encoding: chunked\r\nContent-Encoding: identity\r\nContent-Type: text/html\r\nDate: Sun, 29 Sep 2024 02:11:54 GMT\r\nX-Request-Id: 6bf72f79-8a74-4ed4-9c1a-78bc931df157\r\n\r\n<!DOCTYPE html><html><head><meta charset='utf-8'><meta content='IE=edge,chrome=1' http-equiv='X-UA-Compatible'><meta content='width=device-width, initial-scale=1.0' name='viewport'><title>Application Error</title><style>html { height: 100%;}body { -webkit-transform-style: preserve-3d; transform-style: preserve-3d; text-align: center; height: 100%; margin: 0; padding: 0; background: -webkit-gradient(linear, left top, left bottom, from(#1864ab), to(#099ec9)) left top/100% 100% no-repeat #1864ab; background: linear-gradient(to bottom, #1864ab, #099ec9) left top/100% 100% no-repeat #1864ab; color: white;}#wrapper { position: relative; top: 40%; -webkit-transform: translateY(-40%); transform: translateY(-40%);}h1 { font-size: 2rem; font-weight: 700; text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5); font-family: \"Lato\", sans-serif; margin: 0; paddding: 0;}p { margin-left: auto; margin-right: auto; width: 768px;}p em { margin-top: 1em; font-family: \"Lato\", sans-serif;}</style></head><body><div id='wrapper'><h1>Application Error</h1><p><em>The application has stopped responding unexpectedly.<br>If you're the application owner, check your logs and metrics for details.</em></p></div></body></html>\n",
-      "ip": "109.232.233.130",
-      "timestamp": "2024-09-29T02:11:54.806831095Z",
-      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://longuevieauxobjets.ademe.fr'",
-      "matcher-status": true
-    },
-    {
-      "template": "http/misconfiguration/http-missing-security-headers.yaml",
-      "template-url": "https://templates.nuclei.sh/public/http-missing-security-headers",
-      "template-id": "http-missing-security-headers",
-      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/http-missing-security-headers.yaml",
-      "info": {
-        "name": "HTTP Missing Security Headers",
-        "author": [
-          "socketz",
-          "geeknik",
-          "g4l1t0",
-          "convisoappsec",
-          "kurohost",
-          "dawid-czarnecki",
-          "forgedhallpass",
-          "jub0bs"
-        ],
-        "tags": [
-          "misconfig",
-          "headers",
-          "generic"
-        ],
-        "description": "This template searches for missing HTTP security headers. The impact of these missing headers can vary.\n",
-        "severity": "info",
-        "metadata": {
-          "max-request": 1
-        }
-      },
-      "matcher-name": "clear-site-data",
-      "type": "http",
-      "host": "https://longuevieauxobjets.ademe.fr",
-      "matched-at": "https://longuevieauxobjets.ademe.fr",
-      "request": "GET / HTTP/1.1\r\nHost: longuevieauxobjets.ademe.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
-      "response": "HTTP/1.1 502 Bad Gateway\r\nConnection: close\r\nTransfer-Encoding: chunked\r\nContent-Encoding: identity\r\nContent-Type: text/html\r\nDate: Sun, 29 Sep 2024 02:11:54 GMT\r\nX-Request-Id: 6bf72f79-8a74-4ed4-9c1a-78bc931df157\r\n\r\n<!DOCTYPE html><html><head><meta charset='utf-8'><meta content='IE=edge,chrome=1' http-equiv='X-UA-Compatible'><meta content='width=device-width, initial-scale=1.0' name='viewport'><title>Application Error</title><style>html { height: 100%;}body { -webkit-transform-style: preserve-3d; transform-style: preserve-3d; text-align: center; height: 100%; margin: 0; padding: 0; background: -webkit-gradient(linear, left top, left bottom, from(#1864ab), to(#099ec9)) left top/100% 100% no-repeat #1864ab; background: linear-gradient(to bottom, #1864ab, #099ec9) left top/100% 100% no-repeat #1864ab; color: white;}#wrapper { position: relative; top: 40%; -webkit-transform: translateY(-40%); transform: translateY(-40%);}h1 { font-size: 2rem; font-weight: 700; text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5); font-family: \"Lato\", sans-serif; margin: 0; paddding: 0;}p { margin-left: auto; margin-right: auto; width: 768px;}p em { margin-top: 1em; font-family: \"Lato\", sans-serif;}</style></head><body><div id='wrapper'><h1>Application Error</h1><p><em>The application has stopped responding unexpectedly.<br>If you're the application owner, check your logs and metrics for details.</em></p></div></body></html>\n",
-      "ip": "109.232.233.130",
-      "timestamp": "2024-09-29T02:11:54.806867042Z",
-      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://longuevieauxobjets.ademe.fr'",
-      "matcher-status": true
-    },
-    {
-      "template": "http/misconfiguration/http-missing-security-headers.yaml",
-      "template-url": "https://templates.nuclei.sh/public/http-missing-security-headers",
-      "template-id": "http-missing-security-headers",
-      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/http-missing-security-headers.yaml",
-      "info": {
-        "name": "HTTP Missing Security Headers",
-        "author": [
-          "socketz",
-          "geeknik",
-          "g4l1t0",
-          "convisoappsec",
-          "kurohost",
-          "dawid-czarnecki",
-          "forgedhallpass",
-          "jub0bs"
-        ],
-        "tags": [
-          "misconfig",
-          "headers",
-          "generic"
-        ],
-        "description": "This template searches for missing HTTP security headers. The impact of these missing headers can vary.\n",
-        "severity": "info",
-        "metadata": {
-          "max-request": 1
-        }
-      },
-      "matcher-name": "cross-origin-embedder-policy",
-      "type": "http",
-      "host": "https://longuevieauxobjets.ademe.fr",
-      "matched-at": "https://longuevieauxobjets.ademe.fr",
-      "request": "GET / HTTP/1.1\r\nHost: longuevieauxobjets.ademe.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
-      "response": "HTTP/1.1 502 Bad Gateway\r\nConnection: close\r\nTransfer-Encoding: chunked\r\nContent-Encoding: identity\r\nContent-Type: text/html\r\nDate: Sun, 29 Sep 2024 02:11:54 GMT\r\nX-Request-Id: 6bf72f79-8a74-4ed4-9c1a-78bc931df157\r\n\r\n<!DOCTYPE html><html><head><meta charset='utf-8'><meta content='IE=edge,chrome=1' http-equiv='X-UA-Compatible'><meta content='width=device-width, initial-scale=1.0' name='viewport'><title>Application Error</title><style>html { height: 100%;}body { -webkit-transform-style: preserve-3d; transform-style: preserve-3d; text-align: center; height: 100%; margin: 0; padding: 0; background: -webkit-gradient(linear, left top, left bottom, from(#1864ab), to(#099ec9)) left top/100% 100% no-repeat #1864ab; background: linear-gradient(to bottom, #1864ab, #099ec9) left top/100% 100% no-repeat #1864ab; color: white;}#wrapper { position: relative; top: 40%; -webkit-transform: translateY(-40%); transform: translateY(-40%);}h1 { font-size: 2rem; font-weight: 700; text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5); font-family: \"Lato\", sans-serif; margin: 0; paddding: 0;}p { margin-left: auto; margin-right: auto; width: 768px;}p em { margin-top: 1em; font-family: \"Lato\", sans-serif;}</style></head><body><div id='wrapper'><h1>Application Error</h1><p><em>The application has stopped responding unexpectedly.<br>If you're the application owner, check your logs and metrics for details.</em></p></div></body></html>\n",
-      "ip": "109.232.233.130",
-      "timestamp": "2024-09-29T02:11:54.806888211Z",
+      "response": "HTTP/1.1 502 Bad Gateway\r\nConnection: close\r\nTransfer-Encoding: chunked\r\nContent-Encoding: identity\r\nContent-Type: text/html\r\nDate: Sun, 06 Oct 2024 02:14:24 GMT\r\nX-Request-Id: d3fa6048-2d8b-4833-a0e4-6a0eebbf2f11\r\n\r\n<!DOCTYPE html><html><head><meta charset='utf-8'><meta content='IE=edge,chrome=1' http-equiv='X-UA-Compatible'><meta content='width=device-width, initial-scale=1.0' name='viewport'><title>Application Error</title><style>html { height: 100%;}body { -webkit-transform-style: preserve-3d; transform-style: preserve-3d; text-align: center; height: 100%; margin: 0; padding: 0; background: -webkit-gradient(linear, left top, left bottom, from(#1864ab), to(#099ec9)) left top/100% 100% no-repeat #1864ab; background: linear-gradient(to bottom, #1864ab, #099ec9) left top/100% 100% no-repeat #1864ab; color: white;}#wrapper { position: relative; top: 40%; -webkit-transform: translateY(-40%); transform: translateY(-40%);}h1 { font-size: 2rem; font-weight: 700; text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5); font-family: \"Lato\", sans-serif; margin: 0; paddding: 0;}p { margin-left: auto; margin-right: auto; width: 768px;}p em { margin-top: 1em; font-family: \"Lato\", sans-serif;}</style></head><body><div id='wrapper'><h1>Application Error</h1><p><em>The application has stopped responding unexpectedly.<br>If you're the application owner, check your logs and metrics for details.</em></p></div></body></html>\n",
+      "ip": "148.253.75.120",
+      "timestamp": "2024-10-06T02:14:24.728638507Z",
       "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://longuevieauxobjets.ademe.fr'",
       "matcher-status": true
     },
@@ -497,52 +224,283 @@
       "host": "https://longuevieauxobjets.ademe.fr",
       "matched-at": "https://longuevieauxobjets.ademe.fr",
       "request": "GET / HTTP/1.1\r\nHost: longuevieauxobjets.ademe.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
-      "response": "HTTP/1.1 502 Bad Gateway\r\nConnection: close\r\nTransfer-Encoding: chunked\r\nContent-Encoding: identity\r\nContent-Type: text/html\r\nDate: Sun, 29 Sep 2024 02:11:54 GMT\r\nX-Request-Id: 6bf72f79-8a74-4ed4-9c1a-78bc931df157\r\n\r\n<!DOCTYPE html><html><head><meta charset='utf-8'><meta content='IE=edge,chrome=1' http-equiv='X-UA-Compatible'><meta content='width=device-width, initial-scale=1.0' name='viewport'><title>Application Error</title><style>html { height: 100%;}body { -webkit-transform-style: preserve-3d; transform-style: preserve-3d; text-align: center; height: 100%; margin: 0; padding: 0; background: -webkit-gradient(linear, left top, left bottom, from(#1864ab), to(#099ec9)) left top/100% 100% no-repeat #1864ab; background: linear-gradient(to bottom, #1864ab, #099ec9) left top/100% 100% no-repeat #1864ab; color: white;}#wrapper { position: relative; top: 40%; -webkit-transform: translateY(-40%); transform: translateY(-40%);}h1 { font-size: 2rem; font-weight: 700; text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5); font-family: \"Lato\", sans-serif; margin: 0; paddding: 0;}p { margin-left: auto; margin-right: auto; width: 768px;}p em { margin-top: 1em; font-family: \"Lato\", sans-serif;}</style></head><body><div id='wrapper'><h1>Application Error</h1><p><em>The application has stopped responding unexpectedly.<br>If you're the application owner, check your logs and metrics for details.</em></p></div></body></html>\n",
-      "ip": "109.232.233.130",
-      "timestamp": "2024-09-29T02:11:54.80690352Z",
+      "response": "HTTP/1.1 502 Bad Gateway\r\nConnection: close\r\nTransfer-Encoding: chunked\r\nContent-Encoding: identity\r\nContent-Type: text/html\r\nDate: Sun, 06 Oct 2024 02:14:24 GMT\r\nX-Request-Id: d3fa6048-2d8b-4833-a0e4-6a0eebbf2f11\r\n\r\n<!DOCTYPE html><html><head><meta charset='utf-8'><meta content='IE=edge,chrome=1' http-equiv='X-UA-Compatible'><meta content='width=device-width, initial-scale=1.0' name='viewport'><title>Application Error</title><style>html { height: 100%;}body { -webkit-transform-style: preserve-3d; transform-style: preserve-3d; text-align: center; height: 100%; margin: 0; padding: 0; background: -webkit-gradient(linear, left top, left bottom, from(#1864ab), to(#099ec9)) left top/100% 100% no-repeat #1864ab; background: linear-gradient(to bottom, #1864ab, #099ec9) left top/100% 100% no-repeat #1864ab; color: white;}#wrapper { position: relative; top: 40%; -webkit-transform: translateY(-40%); transform: translateY(-40%);}h1 { font-size: 2rem; font-weight: 700; text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5); font-family: \"Lato\", sans-serif; margin: 0; paddding: 0;}p { margin-left: auto; margin-right: auto; width: 768px;}p em { margin-top: 1em; font-family: \"Lato\", sans-serif;}</style></head><body><div id='wrapper'><h1>Application Error</h1><p><em>The application has stopped responding unexpectedly.<br>If you're the application owner, check your logs and metrics for details.</em></p></div></body></html>\n",
+      "ip": "148.253.75.120",
+      "timestamp": "2024-10-06T02:14:24.728652363Z",
       "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://longuevieauxobjets.ademe.fr'",
       "matcher-status": true
     },
     {
-      "template": "http/technologies/waf-detect.yaml",
-      "template-url": "https://templates.nuclei.sh/public/waf-detect",
-      "template-id": "waf-detect",
-      "template-path": "/home/runner/nuclei-templates/http/technologies/waf-detect.yaml",
+      "template": "http/misconfiguration/http-missing-security-headers.yaml",
+      "template-url": "https://templates.nuclei.sh/public/http-missing-security-headers",
+      "template-id": "http-missing-security-headers",
+      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/http-missing-security-headers.yaml",
       "info": {
-        "name": "WAF Detection",
+        "name": "HTTP Missing Security Headers",
         "author": [
-          "dwisiswant0",
-          "lu4nx"
+          "socketz",
+          "geeknik",
+          "g4l1t0",
+          "convisoappsec",
+          "kurohost",
+          "dawid-czarnecki",
+          "forgedhallpass",
+          "jub0bs"
         ],
         "tags": [
-          "waf",
-          "tech",
-          "misc"
+          "misconfig",
+          "headers",
+          "generic"
         ],
-        "description": "A web application firewall was detected.",
-        "reference": [
-          "https://github.com/ekultek/whatwaf"
-        ],
+        "description": "This template searches for missing HTTP security headers. The impact of these missing headers can vary.\n",
         "severity": "info",
         "metadata": {
           "max-request": 1
-        },
-        "classification": {
-          "cve-id": null,
-          "cwe-id": [
-            "cwe-200"
-          ]
         }
       },
-      "matcher-name": "apachegeneric",
+      "matcher-name": "cross-origin-embedder-policy",
       "type": "http",
       "host": "https://longuevieauxobjets.ademe.fr",
-      "matched-at": "https://longuevieauxobjets.ademe.fr/",
-      "request": "POST / HTTP/1.1\r\nHost: longuevieauxobjets.ademe.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nContent-Length: 27\r\nContent-Type: application/x-www-form-urlencoded\r\nAccept-Encoding: gzip\r\n\r\n_=<script>alert(1)</script>",
-      "response": "HTTP/1.1 403 Forbidden\r\nConnection: close\r\nTransfer-Encoding: chunked\r\nContent-Language: fr\r\nContent-Type: text/html; charset=utf-8\r\nCross-Origin-Opener-Policy: same-origin\r\nDate: Sun, 29 Sep 2024 02:12:53 GMT\r\nReferrer-Policy: same-origin\r\nVary: Accept-Language\r\nX-Content-Type-Options: nosniff\r\nX-Frame-Options: DENY\r\nX-Request-Id: cdf6b5a4-b634-4a85-b354-5de61d1ce593\r\n\r\n<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n  <meta http-equiv=\"content-type\" content=\"text/html; charset=utf-8\">\n  <meta name=\"robots\" content=\"NONE,NOARCHIVE\">\n  <title>403 Forbidden</title>\n  <style>\n    html * { padding:0; margin:0; }\n    body * { padding:10px 20px; }\n    body * * { padding:0; }\n    body { font-family: sans-serif; background:#eee; color:#000; }\n    body>div { border-bottom:1px solid #ddd; }\n    h1 { font-weight:normal; margin-bottom:.4em; }\n    h1 span { font-size:60%; color:#666; font-weight:normal; }\n    #info { background:#f6f6f6; }\n    #info ul { margin: 0.5em 4em; }\n    #info p, #summary p { padding-top:10px; }\n    #summary { background: #ffc; }\n    #explanation { background:#eee; border-bottom: 0px none; }\n  </style>\n</head>\n<body>\n<div id=\"summary\">\n  <h1>Interdit <span>(403)</span></h1>\n  <p>La vérification CSRF a échoué. La requête a été interrompue.</p>\n\n  <p>Vous voyez ce message parce que ce site HTTPS exige que le navigateur web envoie un en-tête « Referer », ce qu’il n&#x27;a pas fait. Cet en-tête est exigé pour des raisons de sécurité, afin de s’assurer que le navigateur n’ait pas été piraté par un intervenant externe.</p>\n  <p>Si vous avez désactivé l’envoi des en-têtes « Referer » par votre navigateur, veuillez les réactiver, au moins pour ce site ou pour les connexions HTTPS, ou encore pour les requêtes de même origine (« same-origin »).</p>\n  <p>Si vous utilisez la balise &lt;meta name=&quot;referrer&quot; content=&quot;no-referrer&quot;&gt; ou que vous incluez l’en-tête « Referrer-Policy: no-referrer », il est préférable de les enlever. La protection CSRF exige que l’en-tête ``Referer`` effectue un contrôle de référant strict. Si vous vous souciez de la confidentialité, utilisez des alternatives comme &lt;a rel=&quot;noreferrer&quot; …&gt; pour les liens vers des sites tiers.</p>\n\n\n</div>\n\n<div id=\"explanation\">\n  <p><small>Des informations plus détaillées sont affichées lorsque la variable DEBUG vaut True.</small></p>\n</div>\n\n</body>\n</html>\n",
-      "ip": "109.232.233.130",
-      "timestamp": "2024-09-29T02:12:53.155852258Z",
-      "curl-command": "curl -X 'POST' -d '_=<script>alert(1)</script>' -H 'Content-Type: application/x-www-form-urlencoded' -H 'Host: longuevieauxobjets.ademe.fr' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://longuevieauxobjets.ademe.fr/'",
+      "matched-at": "https://longuevieauxobjets.ademe.fr",
+      "request": "GET / HTTP/1.1\r\nHost: longuevieauxobjets.ademe.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 502 Bad Gateway\r\nConnection: close\r\nTransfer-Encoding: chunked\r\nContent-Encoding: identity\r\nContent-Type: text/html\r\nDate: Sun, 06 Oct 2024 02:14:24 GMT\r\nX-Request-Id: d3fa6048-2d8b-4833-a0e4-6a0eebbf2f11\r\n\r\n<!DOCTYPE html><html><head><meta charset='utf-8'><meta content='IE=edge,chrome=1' http-equiv='X-UA-Compatible'><meta content='width=device-width, initial-scale=1.0' name='viewport'><title>Application Error</title><style>html { height: 100%;}body { -webkit-transform-style: preserve-3d; transform-style: preserve-3d; text-align: center; height: 100%; margin: 0; padding: 0; background: -webkit-gradient(linear, left top, left bottom, from(#1864ab), to(#099ec9)) left top/100% 100% no-repeat #1864ab; background: linear-gradient(to bottom, #1864ab, #099ec9) left top/100% 100% no-repeat #1864ab; color: white;}#wrapper { position: relative; top: 40%; -webkit-transform: translateY(-40%); transform: translateY(-40%);}h1 { font-size: 2rem; font-weight: 700; text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5); font-family: \"Lato\", sans-serif; margin: 0; paddding: 0;}p { margin-left: auto; margin-right: auto; width: 768px;}p em { margin-top: 1em; font-family: \"Lato\", sans-serif;}</style></head><body><div id='wrapper'><h1>Application Error</h1><p><em>The application has stopped responding unexpectedly.<br>If you're the application owner, check your logs and metrics for details.</em></p></div></body></html>\n",
+      "ip": "148.253.75.120",
+      "timestamp": "2024-10-06T02:14:24.728665017Z",
+      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://longuevieauxobjets.ademe.fr'",
+      "matcher-status": true
+    },
+    {
+      "template": "http/misconfiguration/http-missing-security-headers.yaml",
+      "template-url": "https://templates.nuclei.sh/public/http-missing-security-headers",
+      "template-id": "http-missing-security-headers",
+      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/http-missing-security-headers.yaml",
+      "info": {
+        "name": "HTTP Missing Security Headers",
+        "author": [
+          "socketz",
+          "geeknik",
+          "g4l1t0",
+          "convisoappsec",
+          "kurohost",
+          "dawid-czarnecki",
+          "forgedhallpass",
+          "jub0bs"
+        ],
+        "tags": [
+          "misconfig",
+          "headers",
+          "generic"
+        ],
+        "description": "This template searches for missing HTTP security headers. The impact of these missing headers can vary.\n",
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        }
+      },
+      "matcher-name": "cross-origin-resource-policy",
+      "type": "http",
+      "host": "https://longuevieauxobjets.ademe.fr",
+      "matched-at": "https://longuevieauxobjets.ademe.fr",
+      "request": "GET / HTTP/1.1\r\nHost: longuevieauxobjets.ademe.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 502 Bad Gateway\r\nConnection: close\r\nTransfer-Encoding: chunked\r\nContent-Encoding: identity\r\nContent-Type: text/html\r\nDate: Sun, 06 Oct 2024 02:14:24 GMT\r\nX-Request-Id: d3fa6048-2d8b-4833-a0e4-6a0eebbf2f11\r\n\r\n<!DOCTYPE html><html><head><meta charset='utf-8'><meta content='IE=edge,chrome=1' http-equiv='X-UA-Compatible'><meta content='width=device-width, initial-scale=1.0' name='viewport'><title>Application Error</title><style>html { height: 100%;}body { -webkit-transform-style: preserve-3d; transform-style: preserve-3d; text-align: center; height: 100%; margin: 0; padding: 0; background: -webkit-gradient(linear, left top, left bottom, from(#1864ab), to(#099ec9)) left top/100% 100% no-repeat #1864ab; background: linear-gradient(to bottom, #1864ab, #099ec9) left top/100% 100% no-repeat #1864ab; color: white;}#wrapper { position: relative; top: 40%; -webkit-transform: translateY(-40%); transform: translateY(-40%);}h1 { font-size: 2rem; font-weight: 700; text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5); font-family: \"Lato\", sans-serif; margin: 0; paddding: 0;}p { margin-left: auto; margin-right: auto; width: 768px;}p em { margin-top: 1em; font-family: \"Lato\", sans-serif;}</style></head><body><div id='wrapper'><h1>Application Error</h1><p><em>The application has stopped responding unexpectedly.<br>If you're the application owner, check your logs and metrics for details.</em></p></div></body></html>\n",
+      "ip": "148.253.75.120",
+      "timestamp": "2024-10-06T02:14:24.72867737Z",
+      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://longuevieauxobjets.ademe.fr'",
+      "matcher-status": true
+    },
+    {
+      "template": "http/misconfiguration/http-missing-security-headers.yaml",
+      "template-url": "https://templates.nuclei.sh/public/http-missing-security-headers",
+      "template-id": "http-missing-security-headers",
+      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/http-missing-security-headers.yaml",
+      "info": {
+        "name": "HTTP Missing Security Headers",
+        "author": [
+          "socketz",
+          "geeknik",
+          "g4l1t0",
+          "convisoappsec",
+          "kurohost",
+          "dawid-czarnecki",
+          "forgedhallpass",
+          "jub0bs"
+        ],
+        "tags": [
+          "misconfig",
+          "headers",
+          "generic"
+        ],
+        "description": "This template searches for missing HTTP security headers. The impact of these missing headers can vary.\n",
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        }
+      },
+      "matcher-name": "strict-transport-security",
+      "type": "http",
+      "host": "https://longuevieauxobjets.ademe.fr",
+      "matched-at": "https://longuevieauxobjets.ademe.fr",
+      "request": "GET / HTTP/1.1\r\nHost: longuevieauxobjets.ademe.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 502 Bad Gateway\r\nConnection: close\r\nTransfer-Encoding: chunked\r\nContent-Encoding: identity\r\nContent-Type: text/html\r\nDate: Sun, 06 Oct 2024 02:14:24 GMT\r\nX-Request-Id: d3fa6048-2d8b-4833-a0e4-6a0eebbf2f11\r\n\r\n<!DOCTYPE html><html><head><meta charset='utf-8'><meta content='IE=edge,chrome=1' http-equiv='X-UA-Compatible'><meta content='width=device-width, initial-scale=1.0' name='viewport'><title>Application Error</title><style>html { height: 100%;}body { -webkit-transform-style: preserve-3d; transform-style: preserve-3d; text-align: center; height: 100%; margin: 0; padding: 0; background: -webkit-gradient(linear, left top, left bottom, from(#1864ab), to(#099ec9)) left top/100% 100% no-repeat #1864ab; background: linear-gradient(to bottom, #1864ab, #099ec9) left top/100% 100% no-repeat #1864ab; color: white;}#wrapper { position: relative; top: 40%; -webkit-transform: translateY(-40%); transform: translateY(-40%);}h1 { font-size: 2rem; font-weight: 700; text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5); font-family: \"Lato\", sans-serif; margin: 0; paddding: 0;}p { margin-left: auto; margin-right: auto; width: 768px;}p em { margin-top: 1em; font-family: \"Lato\", sans-serif;}</style></head><body><div id='wrapper'><h1>Application Error</h1><p><em>The application has stopped responding unexpectedly.<br>If you're the application owner, check your logs and metrics for details.</em></p></div></body></html>\n",
+      "ip": "148.253.75.120",
+      "timestamp": "2024-10-06T02:14:24.728690004Z",
+      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://longuevieauxobjets.ademe.fr'",
+      "matcher-status": true
+    },
+    {
+      "template": "http/misconfiguration/http-missing-security-headers.yaml",
+      "template-url": "https://templates.nuclei.sh/public/http-missing-security-headers",
+      "template-id": "http-missing-security-headers",
+      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/http-missing-security-headers.yaml",
+      "info": {
+        "name": "HTTP Missing Security Headers",
+        "author": [
+          "socketz",
+          "geeknik",
+          "g4l1t0",
+          "convisoappsec",
+          "kurohost",
+          "dawid-czarnecki",
+          "forgedhallpass",
+          "jub0bs"
+        ],
+        "tags": [
+          "misconfig",
+          "headers",
+          "generic"
+        ],
+        "description": "This template searches for missing HTTP security headers. The impact of these missing headers can vary.\n",
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        }
+      },
+      "matcher-name": "content-security-policy",
+      "type": "http",
+      "host": "https://longuevieauxobjets.ademe.fr",
+      "matched-at": "https://longuevieauxobjets.ademe.fr",
+      "request": "GET / HTTP/1.1\r\nHost: longuevieauxobjets.ademe.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 502 Bad Gateway\r\nConnection: close\r\nTransfer-Encoding: chunked\r\nContent-Encoding: identity\r\nContent-Type: text/html\r\nDate: Sun, 06 Oct 2024 02:14:24 GMT\r\nX-Request-Id: d3fa6048-2d8b-4833-a0e4-6a0eebbf2f11\r\n\r\n<!DOCTYPE html><html><head><meta charset='utf-8'><meta content='IE=edge,chrome=1' http-equiv='X-UA-Compatible'><meta content='width=device-width, initial-scale=1.0' name='viewport'><title>Application Error</title><style>html { height: 100%;}body { -webkit-transform-style: preserve-3d; transform-style: preserve-3d; text-align: center; height: 100%; margin: 0; padding: 0; background: -webkit-gradient(linear, left top, left bottom, from(#1864ab), to(#099ec9)) left top/100% 100% no-repeat #1864ab; background: linear-gradient(to bottom, #1864ab, #099ec9) left top/100% 100% no-repeat #1864ab; color: white;}#wrapper { position: relative; top: 40%; -webkit-transform: translateY(-40%); transform: translateY(-40%);}h1 { font-size: 2rem; font-weight: 700; text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5); font-family: \"Lato\", sans-serif; margin: 0; paddding: 0;}p { margin-left: auto; margin-right: auto; width: 768px;}p em { margin-top: 1em; font-family: \"Lato\", sans-serif;}</style></head><body><div id='wrapper'><h1>Application Error</h1><p><em>The application has stopped responding unexpectedly.<br>If you're the application owner, check your logs and metrics for details.</em></p></div></body></html>\n",
+      "ip": "148.253.75.120",
+      "timestamp": "2024-10-06T02:14:24.728705703Z",
+      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://longuevieauxobjets.ademe.fr'",
+      "matcher-status": true
+    },
+    {
+      "template": "http/misconfiguration/http-missing-security-headers.yaml",
+      "template-url": "https://templates.nuclei.sh/public/http-missing-security-headers",
+      "template-id": "http-missing-security-headers",
+      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/http-missing-security-headers.yaml",
+      "info": {
+        "name": "HTTP Missing Security Headers",
+        "author": [
+          "socketz",
+          "geeknik",
+          "g4l1t0",
+          "convisoappsec",
+          "kurohost",
+          "dawid-czarnecki",
+          "forgedhallpass",
+          "jub0bs"
+        ],
+        "tags": [
+          "misconfig",
+          "headers",
+          "generic"
+        ],
+        "description": "This template searches for missing HTTP security headers. The impact of these missing headers can vary.\n",
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        }
+      },
+      "matcher-name": "x-frame-options",
+      "type": "http",
+      "host": "https://longuevieauxobjets.ademe.fr",
+      "matched-at": "https://longuevieauxobjets.ademe.fr",
+      "request": "GET / HTTP/1.1\r\nHost: longuevieauxobjets.ademe.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 502 Bad Gateway\r\nConnection: close\r\nTransfer-Encoding: chunked\r\nContent-Encoding: identity\r\nContent-Type: text/html\r\nDate: Sun, 06 Oct 2024 02:14:24 GMT\r\nX-Request-Id: d3fa6048-2d8b-4833-a0e4-6a0eebbf2f11\r\n\r\n<!DOCTYPE html><html><head><meta charset='utf-8'><meta content='IE=edge,chrome=1' http-equiv='X-UA-Compatible'><meta content='width=device-width, initial-scale=1.0' name='viewport'><title>Application Error</title><style>html { height: 100%;}body { -webkit-transform-style: preserve-3d; transform-style: preserve-3d; text-align: center; height: 100%; margin: 0; padding: 0; background: -webkit-gradient(linear, left top, left bottom, from(#1864ab), to(#099ec9)) left top/100% 100% no-repeat #1864ab; background: linear-gradient(to bottom, #1864ab, #099ec9) left top/100% 100% no-repeat #1864ab; color: white;}#wrapper { position: relative; top: 40%; -webkit-transform: translateY(-40%); transform: translateY(-40%);}h1 { font-size: 2rem; font-weight: 700; text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5); font-family: \"Lato\", sans-serif; margin: 0; paddding: 0;}p { margin-left: auto; margin-right: auto; width: 768px;}p em { margin-top: 1em; font-family: \"Lato\", sans-serif;}</style></head><body><div id='wrapper'><h1>Application Error</h1><p><em>The application has stopped responding unexpectedly.<br>If you're the application owner, check your logs and metrics for details.</em></p></div></body></html>\n",
+      "ip": "148.253.75.120",
+      "timestamp": "2024-10-06T02:14:24.728716633Z",
+      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://longuevieauxobjets.ademe.fr'",
+      "matcher-status": true
+    },
+    {
+      "template": "http/misconfiguration/http-missing-security-headers.yaml",
+      "template-url": "https://templates.nuclei.sh/public/http-missing-security-headers",
+      "template-id": "http-missing-security-headers",
+      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/http-missing-security-headers.yaml",
+      "info": {
+        "name": "HTTP Missing Security Headers",
+        "author": [
+          "socketz",
+          "geeknik",
+          "g4l1t0",
+          "convisoappsec",
+          "kurohost",
+          "dawid-czarnecki",
+          "forgedhallpass",
+          "jub0bs"
+        ],
+        "tags": [
+          "misconfig",
+          "headers",
+          "generic"
+        ],
+        "description": "This template searches for missing HTTP security headers. The impact of these missing headers can vary.\n",
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        }
+      },
+      "matcher-name": "referrer-policy",
+      "type": "http",
+      "host": "https://longuevieauxobjets.ademe.fr",
+      "matched-at": "https://longuevieauxobjets.ademe.fr",
+      "request": "GET / HTTP/1.1\r\nHost: longuevieauxobjets.ademe.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 502 Bad Gateway\r\nConnection: close\r\nTransfer-Encoding: chunked\r\nContent-Encoding: identity\r\nContent-Type: text/html\r\nDate: Sun, 06 Oct 2024 02:14:24 GMT\r\nX-Request-Id: d3fa6048-2d8b-4833-a0e4-6a0eebbf2f11\r\n\r\n<!DOCTYPE html><html><head><meta charset='utf-8'><meta content='IE=edge,chrome=1' http-equiv='X-UA-Compatible'><meta content='width=device-width, initial-scale=1.0' name='viewport'><title>Application Error</title><style>html { height: 100%;}body { -webkit-transform-style: preserve-3d; transform-style: preserve-3d; text-align: center; height: 100%; margin: 0; padding: 0; background: -webkit-gradient(linear, left top, left bottom, from(#1864ab), to(#099ec9)) left top/100% 100% no-repeat #1864ab; background: linear-gradient(to bottom, #1864ab, #099ec9) left top/100% 100% no-repeat #1864ab; color: white;}#wrapper { position: relative; top: 40%; -webkit-transform: translateY(-40%); transform: translateY(-40%);}h1 { font-size: 2rem; font-weight: 700; text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5); font-family: \"Lato\", sans-serif; margin: 0; paddding: 0;}p { margin-left: auto; margin-right: auto; width: 768px;}p em { margin-top: 1em; font-family: \"Lato\", sans-serif;}</style></head><body><div id='wrapper'><h1>Application Error</h1><p><em>The application has stopped responding unexpectedly.<br>If you're the application owner, check your logs and metrics for details.</em></p></div></body></html>\n",
+      "ip": "148.253.75.120",
+      "timestamp": "2024-10-06T02:14:24.728725199Z",
+      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://longuevieauxobjets.ademe.fr'",
+      "matcher-status": true
+    },
+    {
+      "template": "http/misconfiguration/http-missing-security-headers.yaml",
+      "template-url": "https://templates.nuclei.sh/public/http-missing-security-headers",
+      "template-id": "http-missing-security-headers",
+      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/http-missing-security-headers.yaml",
+      "info": {
+        "name": "HTTP Missing Security Headers",
+        "author": [
+          "socketz",
+          "geeknik",
+          "g4l1t0",
+          "convisoappsec",
+          "kurohost",
+          "dawid-czarnecki",
+          "forgedhallpass",
+          "jub0bs"
+        ],
+        "tags": [
+          "misconfig",
+          "headers",
+          "generic"
+        ],
+        "description": "This template searches for missing HTTP security headers. The impact of these missing headers can vary.\n",
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        }
+      },
+      "matcher-name": "clear-site-data",
+      "type": "http",
+      "host": "https://longuevieauxobjets.ademe.fr",
+      "matched-at": "https://longuevieauxobjets.ademe.fr",
+      "request": "GET / HTTP/1.1\r\nHost: longuevieauxobjets.ademe.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 502 Bad Gateway\r\nConnection: close\r\nTransfer-Encoding: chunked\r\nContent-Encoding: identity\r\nContent-Type: text/html\r\nDate: Sun, 06 Oct 2024 02:14:24 GMT\r\nX-Request-Id: d3fa6048-2d8b-4833-a0e4-6a0eebbf2f11\r\n\r\n<!DOCTYPE html><html><head><meta charset='utf-8'><meta content='IE=edge,chrome=1' http-equiv='X-UA-Compatible'><meta content='width=device-width, initial-scale=1.0' name='viewport'><title>Application Error</title><style>html { height: 100%;}body { -webkit-transform-style: preserve-3d; transform-style: preserve-3d; text-align: center; height: 100%; margin: 0; padding: 0; background: -webkit-gradient(linear, left top, left bottom, from(#1864ab), to(#099ec9)) left top/100% 100% no-repeat #1864ab; background: linear-gradient(to bottom, #1864ab, #099ec9) left top/100% 100% no-repeat #1864ab; color: white;}#wrapper { position: relative; top: 40%; -webkit-transform: translateY(-40%); transform: translateY(-40%);}h1 { font-size: 2rem; font-weight: 700; text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5); font-family: \"Lato\", sans-serif; margin: 0; paddding: 0;}p { margin-left: auto; margin-right: auto; width: 768px;}p em { margin-top: 1em; font-family: \"Lato\", sans-serif;}</style></head><body><div id='wrapper'><h1>Application Error</h1><p><em>The application has stopped responding unexpectedly.<br>If you're the application owner, check your logs and metrics for details.</em></p></div></body></html>\n",
+      "ip": "148.253.75.120",
+      "timestamp": "2024-10-06T02:14:24.728733124Z",
+      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://longuevieauxobjets.ademe.fr'",
       "matcher-status": true
     },
     {
@@ -571,8 +529,8 @@
       "extracted-results": [
         "Let's Encrypt"
       ],
-      "ip": "109.232.233.130",
-      "timestamp": "2024-09-29T02:18:49.755039513Z",
+      "ip": "148.253.75.120",
+      "timestamp": "2024-10-06T02:21:20.074233551Z",
       "matcher-status": true
     },
     {
@@ -601,8 +559,8 @@
       "extracted-results": [
         "longuevieauxobjets.ademe.fr"
       ],
-      "ip": "109.232.233.130",
-      "timestamp": "2024-09-29T02:18:49.75517768Z",
+      "ip": "148.253.75.120",
+      "timestamp": "2024-10-06T02:21:20.074383281Z",
       "matcher-status": true
     },
     {
@@ -632,8 +590,8 @@
       "extracted-results": [
         "tls12"
       ],
-      "ip": "109.232.233.130",
-      "timestamp": "2024-09-29T02:18:53.369765181Z",
+      "ip": "148.253.75.120",
+      "timestamp": "2024-10-06T02:21:25.71618683Z",
       "matcher-status": true
     },
     {
@@ -663,8 +621,8 @@
       "extracted-results": [
         "tls13"
       ],
-      "ip": "109.232.233.130",
-      "timestamp": "2024-09-29T02:18:53.569185529Z",
+      "ip": "148.253.75.120",
+      "timestamp": "2024-10-06T02:21:25.935068992Z",
       "matcher-status": true
     }
   ]
