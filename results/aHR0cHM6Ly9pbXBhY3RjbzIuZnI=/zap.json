@@ -1,7 +1,7 @@
 {
 	"@programName": "ZAP",
 	"@version": "2.15.0",
-	"@generated": "Wed, 9 Oct 2024 17:01:46",
+	"@generated": "Sun, 13 Oct 2024 01:56:55",
 	"site":[ 
 		{
 			"@name": "https://impactco2.fr",
@@ -28,7 +28,7 @@
 							"otherinfo": "The following directives either allow wildcard sources (or ancestors), are not defined, or are overly broadly defined:\nstyle-src, img-src, frame-ancestors, font-src\n\nThe directive(s): frame-ancestors are among the directives that do not fallback to default-src, missing/excluding them is the same as allowing anything."
 						},
 						{
-							"uri": "https://impactco2.fr/doc/guide-utilisation",
+							"uri": "https://impactco2.fr/",
 							"method": "GET",
 							"param": "Content-Security-Policy",
 							"attack": "",
@@ -50,7 +50,7 @@
 					"reference": "<p>https://www.w3.org/TR/CSP/</p><p>https://caniuse.com/#search=content+security+policy</p><p>https://content-security-policy.com/</p><p>https://github.com/HtmlUnit/htmlunit-csp</p><p>https://developers.google.com/web/fundamentals/security/csp#policy_applies_to_a_wide_variety_of_resources</p>",
 					"cweid": "693",
 					"wascid": "15",
-					"sourceid": "1"
+					"sourceid": "6"
 				},
 				{
 					"pluginid": "10055",
@@ -71,7 +71,7 @@
 							"otherinfo": "script-src includes unsafe-inline."
 						},
 						{
-							"uri": "https://impactco2.fr/doc/guide-utilisation",
+							"uri": "https://impactco2.fr/",
 							"method": "GET",
 							"param": "Content-Security-Policy",
 							"attack": "",
@@ -93,7 +93,7 @@
 					"reference": "<p>https://www.w3.org/TR/CSP/</p><p>https://caniuse.com/#search=content+security+policy</p><p>https://content-security-policy.com/</p><p>https://github.com/HtmlUnit/htmlunit-csp</p><p>https://developers.google.com/web/fundamentals/security/csp#policy_applies_to_a_wide_variety_of_resources</p>",
 					"cweid": "693",
 					"wascid": "15",
-					"sourceid": "1"
+					"sourceid": "6"
 				},
 				{
 					"pluginid": "10055",
@@ -114,7 +114,7 @@
 							"otherinfo": "style-src includes unsafe-inline."
 						},
 						{
-							"uri": "https://impactco2.fr/doc/guide-utilisation",
+							"uri": "https://impactco2.fr/",
 							"method": "GET",
 							"param": "Content-Security-Policy",
 							"attack": "",
@@ -136,7 +136,74 @@
 					"reference": "<p>https://www.w3.org/TR/CSP/</p><p>https://caniuse.com/#search=content+security+policy</p><p>https://content-security-policy.com/</p><p>https://github.com/HtmlUnit/htmlunit-csp</p><p>https://developers.google.com/web/fundamentals/security/csp#policy_applies_to_a_wide_variety_of_resources</p>",
 					"cweid": "693",
 					"wascid": "15",
-					"sourceid": "1"
+					"sourceid": "6"
+				},
+				{
+					"pluginid": "10098",
+					"alertRef": "10098",
+					"alert": "Cross-Domain Misconfiguration",
+					"name": "Cross-Domain Misconfiguration",
+					"riskcode": "2",
+					"confidence": "2",
+					"riskdesc": "Medium (Medium)",
+					"desc": "<p>Web browser data loading may be possible, due to a Cross Origin Resource Sharing (CORS) misconfiguration on the web server.</p>",
+					"instances":[ 
+						{
+							"uri": "https://impactco2.fr/api/v1/chauffage?m2=&chauffages=&language=fr",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "Access-Control-Allow-Origin: *",
+							"otherinfo": "The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing."
+						},
+						{
+							"uri": "https://impactco2.fr/api/v1/doc",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "Access-Control-Allow-Origin: *",
+							"otherinfo": "The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing."
+						},
+						{
+							"uri": "https://impactco2.fr/api/v1/fruitsetlegumes?month=&category=&language=fr",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "Access-Control-Allow-Origin: *",
+							"otherinfo": "The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing."
+						},
+						{
+							"uri": "https://impactco2.fr/api/v1/thematiques",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "Access-Control-Allow-Origin: *",
+							"otherinfo": "The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing."
+						},
+						{
+							"uri": "https://impactco2.fr/api/v1/thematiques/ecv?detail=0&language=fr",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "Access-Control-Allow-Origin: *",
+							"otherinfo": "The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing."
+						},
+						{
+							"uri": "https://impactco2.fr/api/v1/transport?km=&displayAll=0&transports=&ignoreRadiativeForcing=0&occupencyRate=&includeConstruction=&language=fr",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "Access-Control-Allow-Origin: *",
+							"otherinfo": "The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing."
+						}
+					],
+					"count": "6",
+					"solution": "<p>Ensure that sensitive data is not available in an unauthenticated manner (using IP address white-listing, for instance).</p><p>Configure the \"Access-Control-Allow-Origin\" HTTP header to a more restrictive set of domains, or remove all CORS headers entirely, to allow the web browser to enforce the Same Origin Policy (SOP) in a more restrictive manner.</p>",
+					"otherinfo": "<p>The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing.</p>",
+					"reference": "<p>https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.html5_overly_permissive_cors_policy</p>",
+					"cweid": "264",
+					"wascid": "14",
+					"sourceid": "616"
 				},
 				{
 					"pluginid": "10020",
@@ -251,7 +318,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Frame-Options</p>",
 					"cweid": "1021",
 					"wascid": "15",
-					"sourceid": "300"
+					"sourceid": "335"
 				},
 				{
 					"pluginid": "90003",
@@ -288,7 +355,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://impactco2.fr/doc/guide-utilisation",
+							"uri": "https://impactco2.fr/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -296,7 +363,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://impactco2.fr/doc/guide-utilisation",
+							"uri": "https://impactco2.fr/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -304,7 +371,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://impactco2.fr/doc/guide-utilisation",
+							"uri": "https://impactco2.fr/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -371,14 +438,6 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://impactco2.fr/accessibilite",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
 							"uri": "https://impactco2.fr/budget",
 							"method": "GET",
 							"param": "",
@@ -404,6 +463,14 @@
 						},
 						{
 							"uri": "https://impactco2.fr/doc/guide-utilisation",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://impactco2.fr/doc/questions-frequentes",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -478,14 +545,6 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://impactco2.fr/accessibilite",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "X-Powered-By: Next.js",
-							"otherinfo": ""
-						},
-						{
 							"uri": "https://impactco2.fr/budget",
 							"method": "GET",
 							"param": "",
@@ -511,6 +570,14 @@
 						},
 						{
 							"uri": "https://impactco2.fr/doc/guide-utilisation",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "X-Powered-By: Next.js",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://impactco2.fr/doc/questions-frequentes",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -583,15 +650,303 @@
 							"attack": "",
 							"evidence": "1540483477",
 							"otherinfo": "1540483477, which evaluates to: 2018-10-25 16:04:37."
+						},
+						{
+							"uri": "https://impactco2.fr/_next/static/chunks/949fd6f9-34480e3c6497629a.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1426881987",
+							"otherinfo": "1426881987, which evaluates to: 2015-03-20 20:06:27."
+						},
+						{
+							"uri": "https://impactco2.fr/_next/static/chunks/949fd6f9-34480e3c6497629a.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1432725776",
+							"otherinfo": "1432725776, which evaluates to: 2015-05-27 11:22:56."
+						},
+						{
+							"uri": "https://impactco2.fr/_next/static/chunks/949fd6f9-34480e3c6497629a.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1467031594",
+							"otherinfo": "1467031594, which evaluates to: 2016-06-27 12:46:34."
+						},
+						{
+							"uri": "https://impactco2.fr/_next/static/chunks/949fd6f9-34480e3c6497629a.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1495990901",
+							"otherinfo": "1495990901, which evaluates to: 2017-05-28 17:01:41."
+						},
+						{
+							"uri": "https://impactco2.fr/_next/static/chunks/949fd6f9-34480e3c6497629a.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1501505948",
+							"otherinfo": "1501505948, which evaluates to: 2017-07-31 12:59:08."
+						},
+						{
+							"uri": "https://impactco2.fr/_next/static/chunks/949fd6f9-34480e3c6497629a.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1508970993",
+							"otherinfo": "1508970993, which evaluates to: 2017-10-25 22:36:33."
+						},
+						{
+							"uri": "https://impactco2.fr/_next/static/chunks/949fd6f9-34480e3c6497629a.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1518500249",
+							"otherinfo": "1518500249, which evaluates to: 2018-02-13 05:37:29."
+						},
+						{
+							"uri": "https://impactco2.fr/_next/static/chunks/949fd6f9-34480e3c6497629a.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1522805485",
+							"otherinfo": "1522805485, which evaluates to: 2018-04-04 01:31:25."
+						},
+						{
+							"uri": "https://impactco2.fr/_next/static/chunks/949fd6f9-34480e3c6497629a.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1537002063",
+							"otherinfo": "1537002063, which evaluates to: 2018-09-15 09:01:03."
+						},
+						{
+							"uri": "https://impactco2.fr/_next/static/chunks/949fd6f9-34480e3c6497629a.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1541459225",
+							"otherinfo": "1541459225, which evaluates to: 2018-11-05 23:07:05."
+						},
+						{
+							"uri": "https://impactco2.fr/_next/static/chunks/949fd6f9-34480e3c6497629a.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1546045734",
+							"otherinfo": "1546045734, which evaluates to: 2018-12-29 01:08:54."
+						},
+						{
+							"uri": "https://impactco2.fr/_next/static/chunks/949fd6f9-34480e3c6497629a.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1555081692",
+							"otherinfo": "1555081692, which evaluates to: 2019-04-12 15:08:12."
+						},
+						{
+							"uri": "https://impactco2.fr/_next/static/chunks/949fd6f9-34480e3c6497629a.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1575990012",
+							"otherinfo": "1575990012, which evaluates to: 2019-12-10 15:00:12."
+						},
+						{
+							"uri": "https://impactco2.fr/_next/static/chunks/949fd6f9-34480e3c6497629a.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1595750129",
+							"otherinfo": "1595750129, which evaluates to: 2020-07-26 07:55:29."
+						},
+						{
+							"uri": "https://impactco2.fr/_next/static/chunks/949fd6f9-34480e3c6497629a.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1607167915",
+							"otherinfo": "1607167915, which evaluates to: 2020-12-05 11:31:55."
+						},
+						{
+							"uri": "https://impactco2.fr/_next/static/chunks/949fd6f9-34480e3c6497629a.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1654270250",
+							"otherinfo": "1654270250, which evaluates to: 2022-06-03 15:30:50."
+						},
+						{
+							"uri": "https://impactco2.fr/_next/static/chunks/949fd6f9-34480e3c6497629a.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1694076839",
+							"otherinfo": "1694076839, which evaluates to: 2023-09-07 08:53:59."
+						},
+						{
+							"uri": "https://impactco2.fr/_next/static/chunks/949fd6f9-34480e3c6497629a.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1695183700",
+							"otherinfo": "1695183700, which evaluates to: 2023-09-20 04:21:40."
+						},
+						{
+							"uri": "https://impactco2.fr/_next/static/chunks/949fd6f9-34480e3c6497629a.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1731405415",
+							"otherinfo": "1731405415, which evaluates to: 2024-11-12 09:56:55."
+						},
+						{
+							"uri": "https://impactco2.fr/_next/static/chunks/949fd6f9-34480e3c6497629a.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1732584193",
+							"otherinfo": "1732584193, which evaluates to: 2024-11-26 01:23:13."
+						},
+						{
+							"uri": "https://impactco2.fr/_next/static/chunks/949fd6f9-34480e3c6497629a.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1747873779",
+							"otherinfo": "1747873779, which evaluates to: 2025-05-22 00:29:39."
+						},
+						{
+							"uri": "https://impactco2.fr/_next/static/chunks/949fd6f9-34480e3c6497629a.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1750603025",
+							"otherinfo": "1750603025, which evaluates to: 2025-06-22 14:37:05."
+						},
+						{
+							"uri": "https://impactco2.fr/_next/static/chunks/949fd6f9-34480e3c6497629a.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1779033703",
+							"otherinfo": "1779033703, which evaluates to: 2026-05-17 16:01:43."
+						},
+						{
+							"uri": "https://impactco2.fr/_next/static/chunks/949fd6f9-34480e3c6497629a.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1816402316",
+							"otherinfo": "1816402316, which evaluates to: 2027-07-24 04:11:56."
+						},
+						{
+							"uri": "https://impactco2.fr/_next/static/chunks/949fd6f9-34480e3c6497629a.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1856431235",
+							"otherinfo": "1856431235, which evaluates to: 2028-10-29 11:20:35."
+						},
+						{
+							"uri": "https://impactco2.fr/_next/static/chunks/949fd6f9-34480e3c6497629a.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1859775393",
+							"otherinfo": "1859775393, which evaluates to: 2028-12-07 04:16:33."
+						},
+						{
+							"uri": "https://impactco2.fr/_next/static/chunks/949fd6f9-34480e3c6497629a.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1894007588",
+							"otherinfo": "1894007588, which evaluates to: 2030-01-07 09:13:08."
+						},
+						{
+							"uri": "https://impactco2.fr/_next/static/chunks/949fd6f9-34480e3c6497629a.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1899447441",
+							"otherinfo": "1899447441, which evaluates to: 2030-03-11 08:17:21."
+						},
+						{
+							"uri": "https://impactco2.fr/_next/static/chunks/949fd6f9-34480e3c6497629a.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1914138554",
+							"otherinfo": "1914138554, which evaluates to: 2030-08-28 09:09:14."
+						},
+						{
+							"uri": "https://impactco2.fr/_next/static/chunks/949fd6f9-34480e3c6497629a.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1925078388",
+							"otherinfo": "1925078388, which evaluates to: 2031-01-01 23:59:48."
+						},
+						{
+							"uri": "https://impactco2.fr/_next/static/chunks/949fd6f9-34480e3c6497629a.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1955562222",
+							"otherinfo": "1955562222, which evaluates to: 2031-12-20 19:43:42."
+						},
+						{
+							"uri": "https://impactco2.fr/_next/static/chunks/949fd6f9-34480e3c6497629a.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1986661051",
+							"otherinfo": "1986661051, which evaluates to: 2032-12-14 18:17:31."
+						},
+						{
+							"uri": "https://impactco2.fr/_next/static/chunks/949fd6f9-34480e3c6497629a.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1996064986",
+							"otherinfo": "1996064986, which evaluates to: 2033-04-02 14:29:46."
+						},
+						{
+							"uri": "https://impactco2.fr/_next/static/chunks/949fd6f9-34480e3c6497629a.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "2003034995",
+							"otherinfo": "2003034995, which evaluates to: 2033-06-22 06:36:35."
+						},
+						{
+							"uri": "https://impactco2.fr/_next/static/chunks/949fd6f9-34480e3c6497629a.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "2007800933",
+							"otherinfo": "2007800933, which evaluates to: 2033-08-16 10:28:53."
+						},
+						{
+							"uri": "https://impactco2.fr/_next/static/chunks/949fd6f9-34480e3c6497629a.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "2024104815",
+							"otherinfo": "2024104815, which evaluates to: 2034-02-21 03:20:15."
 						}
 					],
-					"count": "2",
+					"count": "38",
 					"solution": "<p>Manually confirm that the timestamp data is not sensitive, and that the data cannot be aggregated to disclose exploitable patterns.</p>",
 					"otherinfo": "<p>1743339172, which evaluates to: 2025-03-30 12:52:52.</p>",
 					"reference": "<p>https://cwe.mitre.org/data/definitions/200.html</p>",
 					"cweid": "200",
 					"wascid": "13",
-					"sourceid": "509"
+					"sourceid": "403"
 				},
 				{
 					"pluginid": "10094",
@@ -652,6 +1007,38 @@
 							"otherinfo": "~\uFFFD\uFFFD\uFFFDb\uFFFD\uFFFDb\uFFFDy\u0797\uFFFD\uFFFD\u7FE9\uFFFD\uFFFD\uFFFDjy\uFFFDz_\uFFFD{\u98B1\uF79F\uFFFDq\uFFFD,\uFFFD\uFFFD\uFFFD\uFFFD\u05FEu\uFFFD>\uFFFD+^\uFFFD\uFFFD\\x001el\\x0019n{\uFFFD^\uFFFD_\uFFFDu\uFFFD"
 						},
 						{
+							"uri": "https://impactco2.fr/contenu/detecteur-co2",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "com/dms/image/D4D0BAQErXoyfYYQo2A/company-logo_200_200/0/1692894826844/steply_app_logo",
+							"otherinfo": "r\uFFFD\uFFFDvk?\uFFFDf\uFFFD{\uFFFD\uFFFD\\x000f@@@J\u05E3'\uFFFDa\n6\\x0003\uFFFD(\uFFFD\uFFFD\uFFFD\uFFFD\uFFFDh\uFFFD\uFFFD\uFFFD\uFFFDO\uFFFD\uFFFDO\uFFFD\uFFFD^\uFFFD\uFFFD\uFFFDx\uFFFDn\uFFFD\uFFFD\uFFFD\uFFFDe\uFFFD\uFFFD\uFFFD\uFFFD\uFFFDh\uFFFD"
+						},
+						{
+							"uri": "https://impactco2.fr/contenu/impact-carbone-hiver-station-ski",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "com/a33bcf70-8792-422e-bd32-0327fc741a8b/7b1a81bd-8c00-4544-85ed-a2489fd0231a/Untitled_",
+							"otherinfo": "r\uFFFD\uFFFDk}\uFFFDq\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD6\uFFFD\uFFFDw}\uFFFD\uFFFD}\uFFFD}\uFFFD\uFFFD\u056F\\x001b\uFFFD\uFFFD\uFFFDk\uFFFD[w\uFFFD\\x001c\uFFFDO\uFFFD\uFFFD>\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFDm\uFFFDk\uFFFD'\uFFFD+ey\uFFFD"
+						},
+						{
+							"uri": "https://impactco2.fr/contenu/nouveau-site",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "com/a33bcf70-8792-422e-bd32-0327fc741a8b/92dcaff6-cee3-447e-b4e3-0c6a6f023612/Untitled",
+							"otherinfo": "r\uFFFD\uFFFDk}\uFFFDq\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD6\uFFFD\uFFFDw}\uFFFD\uFFFD}\uFFFD}\uFFFD\uFFFD\u056F\\x001b\uFFFD\u075Dq\uFFFD\uFFFD\uFFFD\uFFFD\\x001e{\uFFFD\u3DFEo\uFFFD\uFFFD\uFFFDG:k\uFFFD\uFFFD\uFFFD~\uFFFD\uFFFD\uFFFD'\uFFFD+ey"
+						},
+						{
+							"uri": "https://impactco2.fr/contenu/semaine-mobilite-simulateur-transport-ademe",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "com/a33bcf70-8792-422e-bd32-0327fc741a8b/92a521ce-a6f2-474c-9259-1a3167bf9862/ICO2_Transport_liste",
+							"otherinfo": "r\uFFFD\uFFFDk}\uFFFDq\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD6\uFFFD\uFFFDw}\uFFFD\uFFFD}\uFFFD}\uFFFD\uFFFD\u056F\\x001b\uFFFD\u075A\uFFFDm\\{\uFFFDo\uFFFD\uFFFD>\uFFFDn}\uFFFDV\uFFFD\u05EE\uFFFD\uFFFD:\uFFFD\uFFFD\\x0002;o\u04ED\uFFFD\uC98A\uFFFD\uFFFDX\uFFFD\uFFFD"
+						},
+						{
 							"uri": "https://impactco2.fr/doc/exemples",
 							"method": "GET",
 							"param": "",
@@ -668,13 +1055,56 @@
 							"otherinfo": "r\uFFFD\uFFFDk}\uFFFDq\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD6\uFFFD\uFFFDw}\uFFFD\uFFFD}\uFFFD}\uFFFD\uFFFD\u056F\\x001b\uFFFDF\uFFFDo^\uFFFD\uFFFD\uFFFD=k_\uFFFD\uFFFD]\uFFFDo~t\uFFFD~}\uFFFD\uFFFD\uFFFDq\uFFFD_\uFFFD\uFFFD'\uFFFD+ey"
 						}
 					],
-					"count": "8",
+					"count": "12",
 					"solution": "<p>Manually confirm that the Base64 data does not leak sensitive information, and that the data cannot be aggregated/used to exploit other vulnerabilities.</p>",
 					"otherinfo": "<p></p><p>\\x0017\uFFFD\uFFFD\uFFFD1\"zn\uFFFD\uFFFD(\uFFFD\u05A2\uFFFD\uFFFD\uFFFD\uFFFDOPL</p>",
 					"reference": "<p>https://projects.webappsec.org/w/page/13246936/Information%20Leakage</p>",
 					"cweid": "200",
 					"wascid": "13",
-					"sourceid": "510"
+					"sourceid": "405"
+				},
+				{
+					"pluginid": "10019",
+					"alertRef": "10019-1",
+					"alert": "Content-Type Header Missing",
+					"name": "Content-Type Header Missing",
+					"riskcode": "0",
+					"confidence": "2",
+					"riskdesc": "Informational (Medium)",
+					"desc": "<p>The Content-Type header was either missing or empty.</p>",
+					"instances":[ 
+						{
+							"uri": "https://impactco2.fr/api/v1/thematiques/ecv/?detail=0&language=fr",
+							"method": "GET",
+							"param": "content-type",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://impactco2.fr/comparateur?value",
+							"method": "GET",
+							"param": "content-type",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://impactco2.fr/comparateur?value=100",
+							"method": "GET",
+							"param": "content-type",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						}
+					],
+					"count": "3",
+					"solution": "<p>Ensure each page is setting the specific and appropriate content-type value for the content being delivered.</p>",
+					"otherinfo": "",
+					"reference": "<p>https://learn.microsoft.com/en-us/previous-versions/windows/internet-explorer/ie-developer/compatibility/gg622941(v=vs.85)</p>",
+					"cweid": "345",
+					"wascid": "12",
+					"sourceid": "669"
 				},
 				{
 					"pluginid": "10027",
@@ -701,14 +1131,6 @@
 							"attack": "",
 							"evidence": "select",
 							"otherinfo": "The following pattern was used: \\bSELECT\\b and was detected in the element starting with: \"<script>self.__next_f.push([1,\"e:[\\\"$\\\",\\\"div\\\",null,{\\\"className\\\":\\\"main-container Block_block__tPUWw\\\",\\\"id\\\":\\\"$undefined\\\",\", see evidence field for the suspicious comment/snippet."
-						},
-						{
-							"uri": "https://impactco2.fr/accessibilite",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "from",
-							"otherinfo": "The following pattern was used: \\bFROM\\b and was detected in the element starting with: \"<script>self.__next_f.push([1,\"0:[\\\"$\\\",\\\"$L4\\\",null,{\\\"buildId\\\":\\\"j1c7D3SoSVWnRutvybybl\\\",\\\"assetPrefix\\\":\\\"\\\",\\\"urlParts\\\":[\\\", see evidence field for the suspicious comment/snippet."
 						},
 						{
 							"uri": "https://impactco2.fr/budget",
@@ -741,6 +1163,14 @@
 							"attack": "",
 							"evidence": "select",
 							"otherinfo": "The following pattern was used: \\bSELECT\\b and was detected in the element starting with: \"<script>self.__next_f.push([1,\"6:[[\\\"$\\\",\\\"div\\\",null,{\\\"className\\\":\\\"main-container Block_block__tPUWw\\\",\\\"id\\\":\\\"$undefined\\\"\", see evidence field for the suspicious comment/snippet."
+						},
+						{
+							"uri": "https://impactco2.fr/doc/questions-frequentes",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "select",
+							"otherinfo": "The following pattern was used: \\bSELECT\\b and was detected in the element starting with: \"<script>self.__next_f.push([1,\"7:[[[\\\"$\\\",\\\"div\\\",null,{\\\"className\\\":\\\"main-container\\\",\\\"children\\\":[\\\"$\\\",\\\"div\\\",null,{\\\"cla\", see evidence field for the suspicious comment/snippet."
 						},
 						{
 							"uri": "https://impactco2.fr/outils",
@@ -818,14 +1248,6 @@
 							"otherinfo": "Links have been found with a target of '_self' - this is often used by modern frameworks to force a full page reload."
 						},
 						{
-							"uri": "https://impactco2.fr/accessibilite",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "<a class=\"Link_link__kqI8J\" target=\"_self\" href=\"/stats\">Statistiques</a>",
-							"otherinfo": "Links have been found with a target of '_self' - this is often used by modern frameworks to force a full page reload."
-						},
-						{
 							"uri": "https://impactco2.fr/budget",
 							"method": "GET",
 							"param": "",
@@ -851,6 +1273,14 @@
 						},
 						{
 							"uri": "https://impactco2.fr/doc/guide-utilisation",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<a class=\"Link_link__kqI8J\" target=\"_self\" href=\"/stats\">Statistiques</a>",
+							"otherinfo": "Links have been found with a target of '_self' - this is often used by modern frameworks to force a full page reload."
+						},
+						{
+							"uri": "https://impactco2.fr/doc/questions-frequentes",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1046,7 +1476,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Dest</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "8"
+					"sourceid": "7"
 				},
 				{
 					"pluginid": "90005",
@@ -1089,7 +1519,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Mode</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "8"
+					"sourceid": "7"
 				},
 				{
 					"pluginid": "90005",
@@ -1132,7 +1562,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Site</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "8"
+					"sourceid": "7"
 				},
 				{
 					"pluginid": "90005",
@@ -1175,7 +1605,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-User</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "8"
+					"sourceid": "7"
 				},
 				{
 					"pluginid": "10049",
@@ -1301,7 +1731,7 @@
 					"reference": "<p>https://datatracker.ietf.org/doc/html/rfc7234</p><p>https://datatracker.ietf.org/doc/html/rfc7231</p><p>https://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html</p>",
 					"cweid": "524",
 					"wascid": "13",
-					"sourceid": "8"
+					"sourceid": "7"
 				},
 				{
 					"pluginid": "10031",
@@ -1408,7 +1838,7 @@
 					"reference": "<p>https://cheatsheetseries.owasp.org/cheatsheets/Input_Validation_Cheat_Sheet.html</p>",
 					"cweid": "20",
 					"wascid": "20",
-					"sourceid": "286"
+					"sourceid": "292"
 				}
 			]
 		}
