@@ -1,6 +1,43 @@
 [
   [
     {
+      "template": "dns/caa-fingerprint.yaml",
+      "template-url": "https://templates.nuclei.sh/public/caa-fingerprint",
+      "template-id": "caa-fingerprint",
+      "template-path": "/home/runner/nuclei-templates/dns/caa-fingerprint.yaml",
+      "info": {
+        "name": "CAA Record",
+        "author": [
+          "pdteam"
+        ],
+        "tags": [
+          "dns",
+          "caa"
+        ],
+        "description": "A CAA record was discovered. A CAA record is used to specify which certificate authorities (CAs) are allowed to issue certificates for a domain.",
+        "reference": [
+          "https://support.dnsimple.com/articles/caa-record/#whats-a-caa-record"
+        ],
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        },
+        "classification": {
+          "cve-id": null,
+          "cwe-id": [
+            "cwe-200"
+          ]
+        }
+      },
+      "type": "dns",
+      "host": "facili-tacct.beta.gouv.fr.",
+      "matched-at": "facili-tacct.beta.gouv.fr",
+      "request": ";; opcode: QUERY, status: NOERROR, id: 39077\n;; flags: rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;facili-tacct.beta.gouv.fr.\tIN\t CAA\n",
+      "response": ";; opcode: QUERY, status: NOERROR, id: 39077\n;; flags: qr rd ra; QUERY: 1, ANSWER: 0, AUTHORITY: 1, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 1232\n\n;; QUESTION SECTION:\n;facili-tacct.beta.gouv.fr.\tIN\t CAA\n\n;; AUTHORITY SECTION:\nfacili-tacct.beta.gouv.fr.\t60\tIN\tSOA\tdns104.ovh.net. tech.ovh.net. 2024090900 86400 3600 3600000 60\n",
+      "timestamp": "2024-10-20T03:52:45.493357625Z",
+      "matcher-status": true
+    },
+    {
       "template": "dns/nameserver-fingerprint.yaml",
       "template-url": "https://templates.nuclei.sh/public/nameserver-fingerprint",
       "template-id": "nameserver-fingerprint",
@@ -30,12 +67,55 @@
       "host": "facili-tacct.beta.gouv.fr.",
       "matched-at": "facili-tacct.beta.gouv.fr",
       "extracted-results": [
-        "dns104.ovh.net.",
-        "ns104.ovh.net."
+        "ns104.ovh.net.",
+        "dns104.ovh.net."
       ],
-      "request": ";; opcode: QUERY, status: NOERROR, id: 51330\n;; flags: rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;facili-tacct.beta.gouv.fr.\tIN\t NS\n",
-      "response": ";; opcode: QUERY, status: NOERROR, id: 51330\n;; flags: qr rd ra; QUERY: 1, ANSWER: 2, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 512\n\n;; QUESTION SECTION:\n;facili-tacct.beta.gouv.fr.\tIN\t NS\n\n;; ANSWER SECTION:\nfacili-tacct.beta.gouv.fr.\t3600\tIN\tNS\tdns104.ovh.net.\nfacili-tacct.beta.gouv.fr.\t3600\tIN\tNS\tns104.ovh.net.\n",
-      "timestamp": "2024-10-13T03:41:53.17491554Z",
+      "request": ";; opcode: QUERY, status: NOERROR, id: 39862\n;; flags: rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;facili-tacct.beta.gouv.fr.\tIN\t NS\n",
+      "response": ";; opcode: QUERY, status: NOERROR, id: 39862\n;; flags: qr rd ra; QUERY: 1, ANSWER: 2, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 512\n\n;; QUESTION SECTION:\n;facili-tacct.beta.gouv.fr.\tIN\t NS\n\n;; ANSWER SECTION:\nfacili-tacct.beta.gouv.fr.\t3600\tIN\tNS\tns104.ovh.net.\nfacili-tacct.beta.gouv.fr.\t3600\tIN\tNS\tdns104.ovh.net.\n",
+      "timestamp": "2024-10-20T03:52:46.298482426Z",
+      "matcher-status": true
+    },
+    {
+      "template": "dns/mx-fingerprint.yaml",
+      "template-url": "https://templates.nuclei.sh/public/mx-fingerprint",
+      "template-id": "mx-fingerprint",
+      "template-path": "/home/runner/nuclei-templates/dns/mx-fingerprint.yaml",
+      "info": {
+        "name": "MX Record Detection",
+        "author": [
+          "pdteam"
+        ],
+        "tags": [
+          "dns",
+          "mx"
+        ],
+        "description": "An MX record was detected. MX records direct emails to a mail exchange server.",
+        "reference": [
+          "https://www.cloudflare.com/learning/dns/dns-records/dns-mx-record/",
+          "https://mxtoolbox.com/"
+        ],
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        },
+        "classification": {
+          "cve-id": null,
+          "cwe-id": [
+            "cwe-200"
+          ]
+        }
+      },
+      "type": "dns",
+      "host": "facili-tacct.beta.gouv.fr.",
+      "matched-at": "facili-tacct.beta.gouv.fr",
+      "extracted-results": [
+        "1 mx1.mail.ovh.net.",
+        "5 mx2.mail.ovh.net.",
+        "100 mx3.mail.ovh.net."
+      ],
+      "request": ";; opcode: QUERY, status: NOERROR, id: 64127\n;; flags: rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;facili-tacct.beta.gouv.fr.\tIN\t MX\n",
+      "response": ";; opcode: QUERY, status: NOERROR, id: 64127\n;; flags: qr rd ra; QUERY: 1, ANSWER: 3, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 512\n\n;; QUESTION SECTION:\n;facili-tacct.beta.gouv.fr.\tIN\t MX\n\n;; ANSWER SECTION:\nfacili-tacct.beta.gouv.fr.\t3600\tIN\tMX\t1 mx1.mail.ovh.net.\nfacili-tacct.beta.gouv.fr.\t3600\tIN\tMX\t5 mx2.mail.ovh.net.\nfacili-tacct.beta.gouv.fr.\t3600\tIN\tMX\t100 mx3.mail.ovh.net.\n",
+      "timestamp": "2024-10-20T03:52:46.299993439Z",
       "matcher-status": true
     },
     {
@@ -67,9 +147,9 @@
       "extracted-results": [
         "v=spf1 include:mx.ovh.com -all\""
       ],
-      "request": ";; opcode: QUERY, status: NOERROR, id: 18072\n;; flags: rd ad; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;facili-tacct.beta.gouv.fr.\tIN\t TXT\n",
-      "response": ";; opcode: QUERY, status: NOERROR, id: 18072\n;; flags: qr rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 512\n\n;; QUESTION SECTION:\n;facili-tacct.beta.gouv.fr.\tIN\t TXT\n\n;; ANSWER SECTION:\nfacili-tacct.beta.gouv.fr.\t600\tIN\tTXT\t\"v=spf1 include:mx.ovh.com -all\"\n",
-      "timestamp": "2024-10-13T03:41:53.177094884Z",
+      "request": ";; opcode: QUERY, status: NOERROR, id: 49989\n;; flags: rd ad; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;facili-tacct.beta.gouv.fr.\tIN\t TXT\n",
+      "response": ";; opcode: QUERY, status: NOERROR, id: 49989\n;; flags: qr rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 1232\n\n;; QUESTION SECTION:\n;facili-tacct.beta.gouv.fr.\tIN\t TXT\n\n;; ANSWER SECTION:\nfacili-tacct.beta.gouv.fr.\t600\tIN\tTXT\t\"v=spf1 include:mx.ovh.com -all\"\n",
+      "timestamp": "2024-10-20T03:52:46.480176731Z",
       "matcher-status": true
     },
     {
@@ -107,89 +187,9 @@
       "extracted-results": [
         "\"v=spf1 include:mx.ovh.com -all\""
       ],
-      "request": ";; opcode: QUERY, status: NOERROR, id: 18072\n;; flags: rd ad; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;facili-tacct.beta.gouv.fr.\tIN\t TXT\n",
-      "response": ";; opcode: QUERY, status: NOERROR, id: 18072\n;; flags: qr rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 512\n\n;; QUESTION SECTION:\n;facili-tacct.beta.gouv.fr.\tIN\t TXT\n\n;; ANSWER SECTION:\nfacili-tacct.beta.gouv.fr.\t600\tIN\tTXT\t\"v=spf1 include:mx.ovh.com -all\"\n",
-      "timestamp": "2024-10-13T03:41:53.177168441Z",
-      "matcher-status": true
-    },
-    {
-      "template": "dns/caa-fingerprint.yaml",
-      "template-url": "https://templates.nuclei.sh/public/caa-fingerprint",
-      "template-id": "caa-fingerprint",
-      "template-path": "/home/runner/nuclei-templates/dns/caa-fingerprint.yaml",
-      "info": {
-        "name": "CAA Record",
-        "author": [
-          "pdteam"
-        ],
-        "tags": [
-          "dns",
-          "caa"
-        ],
-        "description": "A CAA record was discovered. A CAA record is used to specify which certificate authorities (CAs) are allowed to issue certificates for a domain.",
-        "reference": [
-          "https://support.dnsimple.com/articles/caa-record/#whats-a-caa-record"
-        ],
-        "severity": "info",
-        "metadata": {
-          "max-request": 1
-        },
-        "classification": {
-          "cve-id": null,
-          "cwe-id": [
-            "cwe-200"
-          ]
-        }
-      },
-      "type": "dns",
-      "host": "facili-tacct.beta.gouv.fr.",
-      "matched-at": "facili-tacct.beta.gouv.fr",
-      "request": ";; opcode: QUERY, status: NOERROR, id: 55302\n;; flags: rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;facili-tacct.beta.gouv.fr.\tIN\t CAA\n",
-      "response": ";; opcode: QUERY, status: NOERROR, id: 55302\n;; flags: qr rd ra; QUERY: 1, ANSWER: 0, AUTHORITY: 1, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 1232\n\n;; QUESTION SECTION:\n;facili-tacct.beta.gouv.fr.\tIN\t CAA\n\n;; AUTHORITY SECTION:\nfacili-tacct.beta.gouv.fr.\t60\tIN\tSOA\tdns104.ovh.net. tech.ovh.net. 2024090900 86400 3600 3600000 60\n",
-      "timestamp": "2024-10-13T03:41:53.248995498Z",
-      "matcher-status": true
-    },
-    {
-      "template": "dns/mx-fingerprint.yaml",
-      "template-url": "https://templates.nuclei.sh/public/mx-fingerprint",
-      "template-id": "mx-fingerprint",
-      "template-path": "/home/runner/nuclei-templates/dns/mx-fingerprint.yaml",
-      "info": {
-        "name": "MX Record Detection",
-        "author": [
-          "pdteam"
-        ],
-        "tags": [
-          "dns",
-          "mx"
-        ],
-        "description": "An MX record was detected. MX records direct emails to a mail exchange server.",
-        "reference": [
-          "https://www.cloudflare.com/learning/dns/dns-records/dns-mx-record/",
-          "https://mxtoolbox.com/"
-        ],
-        "severity": "info",
-        "metadata": {
-          "max-request": 1
-        },
-        "classification": {
-          "cve-id": null,
-          "cwe-id": [
-            "cwe-200"
-          ]
-        }
-      },
-      "type": "dns",
-      "host": "facili-tacct.beta.gouv.fr.",
-      "matched-at": "facili-tacct.beta.gouv.fr",
-      "extracted-results": [
-        "5 mx2.mail.ovh.net.",
-        "100 mx3.mail.ovh.net.",
-        "1 mx1.mail.ovh.net."
-      ],
-      "request": ";; opcode: QUERY, status: NOERROR, id: 43410\n;; flags: rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;facili-tacct.beta.gouv.fr.\tIN\t MX\n",
-      "response": ";; opcode: QUERY, status: NOERROR, id: 43410\n;; flags: qr rd ra; QUERY: 1, ANSWER: 3, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 512\n\n;; QUESTION SECTION:\n;facili-tacct.beta.gouv.fr.\tIN\t MX\n\n;; ANSWER SECTION:\nfacili-tacct.beta.gouv.fr.\t3600\tIN\tMX\t5 mx2.mail.ovh.net.\nfacili-tacct.beta.gouv.fr.\t3600\tIN\tMX\t100 mx3.mail.ovh.net.\nfacili-tacct.beta.gouv.fr.\t3600\tIN\tMX\t1 mx1.mail.ovh.net.\n",
-      "timestamp": "2024-10-13T03:41:54.090098995Z",
+      "request": ";; opcode: QUERY, status: NOERROR, id: 49989\n;; flags: rd ad; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;facili-tacct.beta.gouv.fr.\tIN\t TXT\n",
+      "response": ";; opcode: QUERY, status: NOERROR, id: 49989\n;; flags: qr rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 1232\n\n;; QUESTION SECTION:\n;facili-tacct.beta.gouv.fr.\tIN\t TXT\n\n;; ANSWER SECTION:\nfacili-tacct.beta.gouv.fr.\t600\tIN\tTXT\t\"v=spf1 include:mx.ovh.com -all\"\n",
+      "timestamp": "2024-10-20T03:52:46.480251661Z",
       "matcher-status": true
     },
     {
@@ -207,7 +207,8 @@
           "kurohost",
           "dawid-czarnecki",
           "forgedhallpass",
-          "jub0bs"
+          "jub0bs",
+          "userdehghani"
         ],
         "tags": [
           "misconfig",
@@ -225,9 +226,9 @@
       "host": "https://facili-tacct.beta.gouv.fr",
       "matched-at": "https://facili-tacct.beta.gouv.fr",
       "request": "GET / HTTP/1.1\r\nHost: facili-tacct.beta.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
-      "response": "HTTP/1.1 503 Service Temporarily Unavailable\r\nConnection: close\r\nContent-Length: 190\r\nContent-Type: text/html; charset=utf-8\r\nDate: Sun, 13 Oct 2024 03:42:47 GMT\r\nStrict-Transport-Security: max-age=31536000\r\nX-Request-Id: 98b809e5-5366-4973-8c37-9625350a300f\r\n\r\n<html>\r\n<head><title>503 Service Temporarily Unavailable</title></head>\r\n<body>\r\n<center><h1>503 Service Temporarily Unavailable</h1></center>\r\n<hr><center>nginx</center>\r\n</body>\r\n</html>\r\n",
-      "ip": "5.104.101.30",
-      "timestamp": "2024-10-13T03:42:47.523052927Z",
+      "response": "HTTP/1.1 503 Service Temporarily Unavailable\r\nConnection: close\r\nContent-Length: 190\r\nContent-Type: text/html; charset=utf-8\r\nDate: Sun, 20 Oct 2024 03:53:50 GMT\r\nStrict-Transport-Security: max-age=31536000\r\nX-Request-Id: 67725380-4872-47e7-9895-85e7decc7e02\r\n\r\n<html>\r\n<head><title>503 Service Temporarily Unavailable</title></head>\r\n<body>\r\n<center><h1>503 Service Temporarily Unavailable</h1></center>\r\n<hr><center>nginx</center>\r\n</body>\r\n</html>\r\n",
+      "ip": "109.232.236.90",
+      "timestamp": "2024-10-20T03:53:50.156505306Z",
       "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://facili-tacct.beta.gouv.fr'",
       "matcher-status": true
     },
@@ -246,85 +247,8 @@
           "kurohost",
           "dawid-czarnecki",
           "forgedhallpass",
-          "jub0bs"
-        ],
-        "tags": [
-          "misconfig",
-          "headers",
-          "generic"
-        ],
-        "description": "This template searches for missing HTTP security headers. The impact of these missing headers can vary.\n",
-        "severity": "info",
-        "metadata": {
-          "max-request": 1
-        }
-      },
-      "matcher-name": "x-frame-options",
-      "type": "http",
-      "host": "https://facili-tacct.beta.gouv.fr",
-      "matched-at": "https://facili-tacct.beta.gouv.fr",
-      "request": "GET / HTTP/1.1\r\nHost: facili-tacct.beta.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
-      "response": "HTTP/1.1 503 Service Temporarily Unavailable\r\nConnection: close\r\nContent-Length: 190\r\nContent-Type: text/html; charset=utf-8\r\nDate: Sun, 13 Oct 2024 03:42:47 GMT\r\nStrict-Transport-Security: max-age=31536000\r\nX-Request-Id: 98b809e5-5366-4973-8c37-9625350a300f\r\n\r\n<html>\r\n<head><title>503 Service Temporarily Unavailable</title></head>\r\n<body>\r\n<center><h1>503 Service Temporarily Unavailable</h1></center>\r\n<hr><center>nginx</center>\r\n</body>\r\n</html>\r\n",
-      "ip": "5.104.101.30",
-      "timestamp": "2024-10-13T03:42:47.523101398Z",
-      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://facili-tacct.beta.gouv.fr'",
-      "matcher-status": true
-    },
-    {
-      "template": "http/misconfiguration/http-missing-security-headers.yaml",
-      "template-url": "https://templates.nuclei.sh/public/http-missing-security-headers",
-      "template-id": "http-missing-security-headers",
-      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/http-missing-security-headers.yaml",
-      "info": {
-        "name": "HTTP Missing Security Headers",
-        "author": [
-          "socketz",
-          "geeknik",
-          "g4l1t0",
-          "convisoappsec",
-          "kurohost",
-          "dawid-czarnecki",
-          "forgedhallpass",
-          "jub0bs"
-        ],
-        "tags": [
-          "misconfig",
-          "headers",
-          "generic"
-        ],
-        "description": "This template searches for missing HTTP security headers. The impact of these missing headers can vary.\n",
-        "severity": "info",
-        "metadata": {
-          "max-request": 1
-        }
-      },
-      "matcher-name": "x-content-type-options",
-      "type": "http",
-      "host": "https://facili-tacct.beta.gouv.fr",
-      "matched-at": "https://facili-tacct.beta.gouv.fr",
-      "request": "GET / HTTP/1.1\r\nHost: facili-tacct.beta.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
-      "response": "HTTP/1.1 503 Service Temporarily Unavailable\r\nConnection: close\r\nContent-Length: 190\r\nContent-Type: text/html; charset=utf-8\r\nDate: Sun, 13 Oct 2024 03:42:47 GMT\r\nStrict-Transport-Security: max-age=31536000\r\nX-Request-Id: 98b809e5-5366-4973-8c37-9625350a300f\r\n\r\n<html>\r\n<head><title>503 Service Temporarily Unavailable</title></head>\r\n<body>\r\n<center><h1>503 Service Temporarily Unavailable</h1></center>\r\n<hr><center>nginx</center>\r\n</body>\r\n</html>\r\n",
-      "ip": "5.104.101.30",
-      "timestamp": "2024-10-13T03:42:47.523121255Z",
-      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://facili-tacct.beta.gouv.fr'",
-      "matcher-status": true
-    },
-    {
-      "template": "http/misconfiguration/http-missing-security-headers.yaml",
-      "template-url": "https://templates.nuclei.sh/public/http-missing-security-headers",
-      "template-id": "http-missing-security-headers",
-      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/http-missing-security-headers.yaml",
-      "info": {
-        "name": "HTTP Missing Security Headers",
-        "author": [
-          "socketz",
-          "geeknik",
-          "g4l1t0",
-          "convisoappsec",
-          "kurohost",
-          "dawid-czarnecki",
-          "forgedhallpass",
-          "jub0bs"
+          "jub0bs",
+          "userdehghani"
         ],
         "tags": [
           "misconfig",
@@ -342,9 +266,9 @@
       "host": "https://facili-tacct.beta.gouv.fr",
       "matched-at": "https://facili-tacct.beta.gouv.fr",
       "request": "GET / HTTP/1.1\r\nHost: facili-tacct.beta.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
-      "response": "HTTP/1.1 503 Service Temporarily Unavailable\r\nConnection: close\r\nContent-Length: 190\r\nContent-Type: text/html; charset=utf-8\r\nDate: Sun, 13 Oct 2024 03:42:47 GMT\r\nStrict-Transport-Security: max-age=31536000\r\nX-Request-Id: 98b809e5-5366-4973-8c37-9625350a300f\r\n\r\n<html>\r\n<head><title>503 Service Temporarily Unavailable</title></head>\r\n<body>\r\n<center><h1>503 Service Temporarily Unavailable</h1></center>\r\n<hr><center>nginx</center>\r\n</body>\r\n</html>\r\n",
-      "ip": "5.104.101.30",
-      "timestamp": "2024-10-13T03:42:47.523137405Z",
+      "response": "HTTP/1.1 503 Service Temporarily Unavailable\r\nConnection: close\r\nContent-Length: 190\r\nContent-Type: text/html; charset=utf-8\r\nDate: Sun, 20 Oct 2024 03:53:50 GMT\r\nStrict-Transport-Security: max-age=31536000\r\nX-Request-Id: 67725380-4872-47e7-9895-85e7decc7e02\r\n\r\n<html>\r\n<head><title>503 Service Temporarily Unavailable</title></head>\r\n<body>\r\n<center><h1>503 Service Temporarily Unavailable</h1></center>\r\n<hr><center>nginx</center>\r\n</body>\r\n</html>\r\n",
+      "ip": "109.232.236.90",
+      "timestamp": "2024-10-20T03:53:50.156547284Z",
       "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://facili-tacct.beta.gouv.fr'",
       "matcher-status": true
     },
@@ -363,46 +287,8 @@
           "kurohost",
           "dawid-czarnecki",
           "forgedhallpass",
-          "jub0bs"
-        ],
-        "tags": [
-          "misconfig",
-          "headers",
-          "generic"
-        ],
-        "description": "This template searches for missing HTTP security headers. The impact of these missing headers can vary.\n",
-        "severity": "info",
-        "metadata": {
-          "max-request": 1
-        }
-      },
-      "matcher-name": "clear-site-data",
-      "type": "http",
-      "host": "https://facili-tacct.beta.gouv.fr",
-      "matched-at": "https://facili-tacct.beta.gouv.fr",
-      "request": "GET / HTTP/1.1\r\nHost: facili-tacct.beta.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
-      "response": "HTTP/1.1 503 Service Temporarily Unavailable\r\nConnection: close\r\nContent-Length: 190\r\nContent-Type: text/html; charset=utf-8\r\nDate: Sun, 13 Oct 2024 03:42:47 GMT\r\nStrict-Transport-Security: max-age=31536000\r\nX-Request-Id: 98b809e5-5366-4973-8c37-9625350a300f\r\n\r\n<html>\r\n<head><title>503 Service Temporarily Unavailable</title></head>\r\n<body>\r\n<center><h1>503 Service Temporarily Unavailable</h1></center>\r\n<hr><center>nginx</center>\r\n</body>\r\n</html>\r\n",
-      "ip": "5.104.101.30",
-      "timestamp": "2024-10-13T03:42:47.523160237Z",
-      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://facili-tacct.beta.gouv.fr'",
-      "matcher-status": true
-    },
-    {
-      "template": "http/misconfiguration/http-missing-security-headers.yaml",
-      "template-url": "https://templates.nuclei.sh/public/http-missing-security-headers",
-      "template-id": "http-missing-security-headers",
-      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/http-missing-security-headers.yaml",
-      "info": {
-        "name": "HTTP Missing Security Headers",
-        "author": [
-          "socketz",
-          "geeknik",
-          "g4l1t0",
-          "convisoappsec",
-          "kurohost",
-          "dawid-czarnecki",
-          "forgedhallpass",
-          "jub0bs"
+          "jub0bs",
+          "userdehghani"
         ],
         "tags": [
           "misconfig",
@@ -420,9 +306,9 @@
       "host": "https://facili-tacct.beta.gouv.fr",
       "matched-at": "https://facili-tacct.beta.gouv.fr",
       "request": "GET / HTTP/1.1\r\nHost: facili-tacct.beta.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
-      "response": "HTTP/1.1 503 Service Temporarily Unavailable\r\nConnection: close\r\nContent-Length: 190\r\nContent-Type: text/html; charset=utf-8\r\nDate: Sun, 13 Oct 2024 03:42:47 GMT\r\nStrict-Transport-Security: max-age=31536000\r\nX-Request-Id: 98b809e5-5366-4973-8c37-9625350a300f\r\n\r\n<html>\r\n<head><title>503 Service Temporarily Unavailable</title></head>\r\n<body>\r\n<center><h1>503 Service Temporarily Unavailable</h1></center>\r\n<hr><center>nginx</center>\r\n</body>\r\n</html>\r\n",
-      "ip": "5.104.101.30",
-      "timestamp": "2024-10-13T03:42:47.523177329Z",
+      "response": "HTTP/1.1 503 Service Temporarily Unavailable\r\nConnection: close\r\nContent-Length: 190\r\nContent-Type: text/html; charset=utf-8\r\nDate: Sun, 20 Oct 2024 03:53:50 GMT\r\nStrict-Transport-Security: max-age=31536000\r\nX-Request-Id: 67725380-4872-47e7-9895-85e7decc7e02\r\n\r\n<html>\r\n<head><title>503 Service Temporarily Unavailable</title></head>\r\n<body>\r\n<center><h1>503 Service Temporarily Unavailable</h1></center>\r\n<hr><center>nginx</center>\r\n</body>\r\n</html>\r\n",
+      "ip": "109.232.236.90",
+      "timestamp": "2024-10-20T03:53:50.156563074Z",
       "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://facili-tacct.beta.gouv.fr'",
       "matcher-status": true
     },
@@ -441,46 +327,8 @@
           "kurohost",
           "dawid-czarnecki",
           "forgedhallpass",
-          "jub0bs"
-        ],
-        "tags": [
-          "misconfig",
-          "headers",
-          "generic"
-        ],
-        "description": "This template searches for missing HTTP security headers. The impact of these missing headers can vary.\n",
-        "severity": "info",
-        "metadata": {
-          "max-request": 1
-        }
-      },
-      "matcher-name": "permissions-policy",
-      "type": "http",
-      "host": "https://facili-tacct.beta.gouv.fr",
-      "matched-at": "https://facili-tacct.beta.gouv.fr",
-      "request": "GET / HTTP/1.1\r\nHost: facili-tacct.beta.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
-      "response": "HTTP/1.1 503 Service Temporarily Unavailable\r\nConnection: close\r\nContent-Length: 190\r\nContent-Type: text/html; charset=utf-8\r\nDate: Sun, 13 Oct 2024 03:42:47 GMT\r\nStrict-Transport-Security: max-age=31536000\r\nX-Request-Id: 98b809e5-5366-4973-8c37-9625350a300f\r\n\r\n<html>\r\n<head><title>503 Service Temporarily Unavailable</title></head>\r\n<body>\r\n<center><h1>503 Service Temporarily Unavailable</h1></center>\r\n<hr><center>nginx</center>\r\n</body>\r\n</html>\r\n",
-      "ip": "5.104.101.30",
-      "timestamp": "2024-10-13T03:42:47.523194481Z",
-      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://facili-tacct.beta.gouv.fr'",
-      "matcher-status": true
-    },
-    {
-      "template": "http/misconfiguration/http-missing-security-headers.yaml",
-      "template-url": "https://templates.nuclei.sh/public/http-missing-security-headers",
-      "template-id": "http-missing-security-headers",
-      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/http-missing-security-headers.yaml",
-      "info": {
-        "name": "HTTP Missing Security Headers",
-        "author": [
-          "socketz",
-          "geeknik",
-          "g4l1t0",
-          "convisoappsec",
-          "kurohost",
-          "dawid-czarnecki",
-          "forgedhallpass",
-          "jub0bs"
+          "jub0bs",
+          "userdehghani"
         ],
         "tags": [
           "misconfig",
@@ -498,9 +346,9 @@
       "host": "https://facili-tacct.beta.gouv.fr",
       "matched-at": "https://facili-tacct.beta.gouv.fr",
       "request": "GET / HTTP/1.1\r\nHost: facili-tacct.beta.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
-      "response": "HTTP/1.1 503 Service Temporarily Unavailable\r\nConnection: close\r\nContent-Length: 190\r\nContent-Type: text/html; charset=utf-8\r\nDate: Sun, 13 Oct 2024 03:42:47 GMT\r\nStrict-Transport-Security: max-age=31536000\r\nX-Request-Id: 98b809e5-5366-4973-8c37-9625350a300f\r\n\r\n<html>\r\n<head><title>503 Service Temporarily Unavailable</title></head>\r\n<body>\r\n<center><h1>503 Service Temporarily Unavailable</h1></center>\r\n<hr><center>nginx</center>\r\n</body>\r\n</html>\r\n",
-      "ip": "5.104.101.30",
-      "timestamp": "2024-10-13T03:42:47.523211543Z",
+      "response": "HTTP/1.1 503 Service Temporarily Unavailable\r\nConnection: close\r\nContent-Length: 190\r\nContent-Type: text/html; charset=utf-8\r\nDate: Sun, 20 Oct 2024 03:53:50 GMT\r\nStrict-Transport-Security: max-age=31536000\r\nX-Request-Id: 67725380-4872-47e7-9895-85e7decc7e02\r\n\r\n<html>\r\n<head><title>503 Service Temporarily Unavailable</title></head>\r\n<body>\r\n<center><h1>503 Service Temporarily Unavailable</h1></center>\r\n<hr><center>nginx</center>\r\n</body>\r\n</html>\r\n",
+      "ip": "109.232.236.90",
+      "timestamp": "2024-10-20T03:53:50.156579555Z",
       "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://facili-tacct.beta.gouv.fr'",
       "matcher-status": true
     },
@@ -519,7 +367,48 @@
           "kurohost",
           "dawid-czarnecki",
           "forgedhallpass",
-          "jub0bs"
+          "jub0bs",
+          "userdehghani"
+        ],
+        "tags": [
+          "misconfig",
+          "headers",
+          "generic"
+        ],
+        "description": "This template searches for missing HTTP security headers. The impact of these missing headers can vary.\n",
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        }
+      },
+      "matcher-name": "clear-site-data",
+      "type": "http",
+      "host": "https://facili-tacct.beta.gouv.fr",
+      "matched-at": "https://facili-tacct.beta.gouv.fr",
+      "request": "GET / HTTP/1.1\r\nHost: facili-tacct.beta.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 503 Service Temporarily Unavailable\r\nConnection: close\r\nContent-Length: 190\r\nContent-Type: text/html; charset=utf-8\r\nDate: Sun, 20 Oct 2024 03:53:50 GMT\r\nStrict-Transport-Security: max-age=31536000\r\nX-Request-Id: 67725380-4872-47e7-9895-85e7decc7e02\r\n\r\n<html>\r\n<head><title>503 Service Temporarily Unavailable</title></head>\r\n<body>\r\n<center><h1>503 Service Temporarily Unavailable</h1></center>\r\n<hr><center>nginx</center>\r\n</body>\r\n</html>\r\n",
+      "ip": "109.232.236.90",
+      "timestamp": "2024-10-20T03:53:50.156596917Z",
+      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://facili-tacct.beta.gouv.fr'",
+      "matcher-status": true
+    },
+    {
+      "template": "http/misconfiguration/http-missing-security-headers.yaml",
+      "template-url": "https://templates.nuclei.sh/public/http-missing-security-headers",
+      "template-id": "http-missing-security-headers",
+      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/http-missing-security-headers.yaml",
+      "info": {
+        "name": "HTTP Missing Security Headers",
+        "author": [
+          "socketz",
+          "geeknik",
+          "g4l1t0",
+          "convisoappsec",
+          "kurohost",
+          "dawid-czarnecki",
+          "forgedhallpass",
+          "jub0bs",
+          "userdehghani"
         ],
         "tags": [
           "misconfig",
@@ -537,9 +426,9 @@
       "host": "https://facili-tacct.beta.gouv.fr",
       "matched-at": "https://facili-tacct.beta.gouv.fr",
       "request": "GET / HTTP/1.1\r\nHost: facili-tacct.beta.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
-      "response": "HTTP/1.1 503 Service Temporarily Unavailable\r\nConnection: close\r\nContent-Length: 190\r\nContent-Type: text/html; charset=utf-8\r\nDate: Sun, 13 Oct 2024 03:42:47 GMT\r\nStrict-Transport-Security: max-age=31536000\r\nX-Request-Id: 98b809e5-5366-4973-8c37-9625350a300f\r\n\r\n<html>\r\n<head><title>503 Service Temporarily Unavailable</title></head>\r\n<body>\r\n<center><h1>503 Service Temporarily Unavailable</h1></center>\r\n<hr><center>nginx</center>\r\n</body>\r\n</html>\r\n",
-      "ip": "5.104.101.30",
-      "timestamp": "2024-10-13T03:42:47.523228154Z",
+      "response": "HTTP/1.1 503 Service Temporarily Unavailable\r\nConnection: close\r\nContent-Length: 190\r\nContent-Type: text/html; charset=utf-8\r\nDate: Sun, 20 Oct 2024 03:53:50 GMT\r\nStrict-Transport-Security: max-age=31536000\r\nX-Request-Id: 67725380-4872-47e7-9895-85e7decc7e02\r\n\r\n<html>\r\n<head><title>503 Service Temporarily Unavailable</title></head>\r\n<body>\r\n<center><h1>503 Service Temporarily Unavailable</h1></center>\r\n<hr><center>nginx</center>\r\n</body>\r\n</html>\r\n",
+      "ip": "109.232.236.90",
+      "timestamp": "2024-10-20T03:53:50.156610923Z",
       "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://facili-tacct.beta.gouv.fr'",
       "matcher-status": true
     },
@@ -558,7 +447,8 @@
           "kurohost",
           "dawid-czarnecki",
           "forgedhallpass",
-          "jub0bs"
+          "jub0bs",
+          "userdehghani"
         ],
         "tags": [
           "misconfig",
@@ -576,9 +466,129 @@
       "host": "https://facili-tacct.beta.gouv.fr",
       "matched-at": "https://facili-tacct.beta.gouv.fr",
       "request": "GET / HTTP/1.1\r\nHost: facili-tacct.beta.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
-      "response": "HTTP/1.1 503 Service Temporarily Unavailable\r\nConnection: close\r\nContent-Length: 190\r\nContent-Type: text/html; charset=utf-8\r\nDate: Sun, 13 Oct 2024 03:42:47 GMT\r\nStrict-Transport-Security: max-age=31536000\r\nX-Request-Id: 98b809e5-5366-4973-8c37-9625350a300f\r\n\r\n<html>\r\n<head><title>503 Service Temporarily Unavailable</title></head>\r\n<body>\r\n<center><h1>503 Service Temporarily Unavailable</h1></center>\r\n<hr><center>nginx</center>\r\n</body>\r\n</html>\r\n",
-      "ip": "5.104.101.30",
-      "timestamp": "2024-10-13T03:42:47.523244144Z",
+      "response": "HTTP/1.1 503 Service Temporarily Unavailable\r\nConnection: close\r\nContent-Length: 190\r\nContent-Type: text/html; charset=utf-8\r\nDate: Sun, 20 Oct 2024 03:53:50 GMT\r\nStrict-Transport-Security: max-age=31536000\r\nX-Request-Id: 67725380-4872-47e7-9895-85e7decc7e02\r\n\r\n<html>\r\n<head><title>503 Service Temporarily Unavailable</title></head>\r\n<body>\r\n<center><h1>503 Service Temporarily Unavailable</h1></center>\r\n<hr><center>nginx</center>\r\n</body>\r\n</html>\r\n",
+      "ip": "109.232.236.90",
+      "timestamp": "2024-10-20T03:53:50.156623516Z",
+      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://facili-tacct.beta.gouv.fr'",
+      "matcher-status": true
+    },
+    {
+      "template": "http/misconfiguration/http-missing-security-headers.yaml",
+      "template-url": "https://templates.nuclei.sh/public/http-missing-security-headers",
+      "template-id": "http-missing-security-headers",
+      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/http-missing-security-headers.yaml",
+      "info": {
+        "name": "HTTP Missing Security Headers",
+        "author": [
+          "socketz",
+          "geeknik",
+          "g4l1t0",
+          "convisoappsec",
+          "kurohost",
+          "dawid-czarnecki",
+          "forgedhallpass",
+          "jub0bs",
+          "userdehghani"
+        ],
+        "tags": [
+          "misconfig",
+          "headers",
+          "generic"
+        ],
+        "description": "This template searches for missing HTTP security headers. The impact of these missing headers can vary.\n",
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        }
+      },
+      "matcher-name": "permissions-policy",
+      "type": "http",
+      "host": "https://facili-tacct.beta.gouv.fr",
+      "matched-at": "https://facili-tacct.beta.gouv.fr",
+      "request": "GET / HTTP/1.1\r\nHost: facili-tacct.beta.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 503 Service Temporarily Unavailable\r\nConnection: close\r\nContent-Length: 190\r\nContent-Type: text/html; charset=utf-8\r\nDate: Sun, 20 Oct 2024 03:53:50 GMT\r\nStrict-Transport-Security: max-age=31536000\r\nX-Request-Id: 67725380-4872-47e7-9895-85e7decc7e02\r\n\r\n<html>\r\n<head><title>503 Service Temporarily Unavailable</title></head>\r\n<body>\r\n<center><h1>503 Service Temporarily Unavailable</h1></center>\r\n<hr><center>nginx</center>\r\n</body>\r\n</html>\r\n",
+      "ip": "109.232.236.90",
+      "timestamp": "2024-10-20T03:53:50.156760922Z",
+      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://facili-tacct.beta.gouv.fr'",
+      "matcher-status": true
+    },
+    {
+      "template": "http/misconfiguration/http-missing-security-headers.yaml",
+      "template-url": "https://templates.nuclei.sh/public/http-missing-security-headers",
+      "template-id": "http-missing-security-headers",
+      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/http-missing-security-headers.yaml",
+      "info": {
+        "name": "HTTP Missing Security Headers",
+        "author": [
+          "socketz",
+          "geeknik",
+          "g4l1t0",
+          "convisoappsec",
+          "kurohost",
+          "dawid-czarnecki",
+          "forgedhallpass",
+          "jub0bs",
+          "userdehghani"
+        ],
+        "tags": [
+          "misconfig",
+          "headers",
+          "generic"
+        ],
+        "description": "This template searches for missing HTTP security headers. The impact of these missing headers can vary.\n",
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        }
+      },
+      "matcher-name": "x-frame-options",
+      "type": "http",
+      "host": "https://facili-tacct.beta.gouv.fr",
+      "matched-at": "https://facili-tacct.beta.gouv.fr",
+      "request": "GET / HTTP/1.1\r\nHost: facili-tacct.beta.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 503 Service Temporarily Unavailable\r\nConnection: close\r\nContent-Length: 190\r\nContent-Type: text/html; charset=utf-8\r\nDate: Sun, 20 Oct 2024 03:53:50 GMT\r\nStrict-Transport-Security: max-age=31536000\r\nX-Request-Id: 67725380-4872-47e7-9895-85e7decc7e02\r\n\r\n<html>\r\n<head><title>503 Service Temporarily Unavailable</title></head>\r\n<body>\r\n<center><h1>503 Service Temporarily Unavailable</h1></center>\r\n<hr><center>nginx</center>\r\n</body>\r\n</html>\r\n",
+      "ip": "109.232.236.90",
+      "timestamp": "2024-10-20T03:53:50.156782793Z",
+      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://facili-tacct.beta.gouv.fr'",
+      "matcher-status": true
+    },
+    {
+      "template": "http/misconfiguration/http-missing-security-headers.yaml",
+      "template-url": "https://templates.nuclei.sh/public/http-missing-security-headers",
+      "template-id": "http-missing-security-headers",
+      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/http-missing-security-headers.yaml",
+      "info": {
+        "name": "HTTP Missing Security Headers",
+        "author": [
+          "socketz",
+          "geeknik",
+          "g4l1t0",
+          "convisoappsec",
+          "kurohost",
+          "dawid-czarnecki",
+          "forgedhallpass",
+          "jub0bs",
+          "userdehghani"
+        ],
+        "tags": [
+          "misconfig",
+          "headers",
+          "generic"
+        ],
+        "description": "This template searches for missing HTTP security headers. The impact of these missing headers can vary.\n",
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        }
+      },
+      "matcher-name": "x-content-type-options",
+      "type": "http",
+      "host": "https://facili-tacct.beta.gouv.fr",
+      "matched-at": "https://facili-tacct.beta.gouv.fr",
+      "request": "GET / HTTP/1.1\r\nHost: facili-tacct.beta.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 503 Service Temporarily Unavailable\r\nConnection: close\r\nContent-Length: 190\r\nContent-Type: text/html; charset=utf-8\r\nDate: Sun, 20 Oct 2024 03:53:50 GMT\r\nStrict-Transport-Security: max-age=31536000\r\nX-Request-Id: 67725380-4872-47e7-9895-85e7decc7e02\r\n\r\n<html>\r\n<head><title>503 Service Temporarily Unavailable</title></head>\r\n<body>\r\n<center><h1>503 Service Temporarily Unavailable</h1></center>\r\n<hr><center>nginx</center>\r\n</body>\r\n</html>\r\n",
+      "ip": "109.232.236.90",
+      "timestamp": "2024-10-20T03:53:50.15717299Z",
       "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://facili-tacct.beta.gouv.fr'",
       "matcher-status": true
     },
@@ -618,9 +628,9 @@
       "host": "https://facili-tacct.beta.gouv.fr",
       "matched-at": "https://facili-tacct.beta.gouv.fr/",
       "request": "POST / HTTP/1.1\r\nHost: facili-tacct.beta.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nContent-Length: 27\r\nContent-Type: application/x-www-form-urlencoded\r\nAccept-Encoding: gzip\r\n\r\n_=<script>alert(1)</script>",
-      "response": "HTTP/1.1 503 Service Temporarily Unavailable\r\nConnection: close\r\nContent-Length: 190\r\nContent-Type: text/html; charset=utf-8\r\nDate: Sun, 13 Oct 2024 03:43:17 GMT\r\nStrict-Transport-Security: max-age=31536000\r\nX-Request-Id: 8b8e5d9c-cb57-44fa-9406-5eb84740c34f\r\n\r\n<html>\r\n<head><title>503 Service Temporarily Unavailable</title></head>\r\n<body>\r\n<center><h1>503 Service Temporarily Unavailable</h1></center>\r\n<hr><center>nginx</center>\r\n</body>\r\n</html>\r\n",
-      "ip": "5.104.101.30",
-      "timestamp": "2024-10-13T03:43:17.24983606Z",
+      "response": "HTTP/1.1 503 Service Temporarily Unavailable\r\nConnection: close\r\nContent-Length: 190\r\nContent-Type: text/html; charset=utf-8\r\nDate: Sun, 20 Oct 2024 03:54:22 GMT\r\nStrict-Transport-Security: max-age=31536000\r\nX-Request-Id: cbd28e45-275d-4f16-90a4-2bf4e571f738\r\n\r\n<html>\r\n<head><title>503 Service Temporarily Unavailable</title></head>\r\n<body>\r\n<center><h1>503 Service Temporarily Unavailable</h1></center>\r\n<hr><center>nginx</center>\r\n</body>\r\n</html>\r\n",
+      "ip": "109.232.236.90",
+      "timestamp": "2024-10-20T03:54:22.541975564Z",
       "curl-command": "curl -X 'POST' -d '_=<script>alert(1)</script>' -H 'Content-Type: application/x-www-form-urlencoded' -H 'Host: facili-tacct.beta.gouv.fr' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://facili-tacct.beta.gouv.fr/'",
       "matcher-status": true
     },
@@ -650,8 +660,8 @@
       "extracted-results": [
         "Let's Encrypt"
       ],
-      "ip": "5.104.101.30",
-      "timestamp": "2024-10-13T03:49:12.456248066Z",
+      "ip": "109.232.236.90",
+      "timestamp": "2024-10-20T03:59:59.860077876Z",
       "matcher-status": true
     },
     {
@@ -680,8 +690,8 @@
       "extracted-results": [
         "facili-tacct.beta.gouv.fr"
       ],
-      "ip": "5.104.101.30",
-      "timestamp": "2024-10-13T03:49:12.456359975Z",
+      "ip": "109.232.236.90",
+      "timestamp": "2024-10-20T03:59:59.860199933Z",
       "matcher-status": true
     },
     {
@@ -711,8 +721,8 @@
       "extracted-results": [
         "tls12"
       ],
-      "ip": "5.104.101.30",
-      "timestamp": "2024-10-13T03:49:14.06266475Z",
+      "ip": "109.232.236.90",
+      "timestamp": "2024-10-20T04:00:05.955237837Z",
       "matcher-status": true
     },
     {
@@ -742,8 +752,8 @@
       "extracted-results": [
         "tls13"
       ],
-      "ip": "5.104.101.30",
-      "timestamp": "2024-10-13T03:49:14.260250643Z",
+      "ip": "109.232.236.90",
+      "timestamp": "2024-10-20T04:00:06.175877408Z",
       "matcher-status": true
     }
   ]
