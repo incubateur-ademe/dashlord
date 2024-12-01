@@ -1,7 +1,7 @@
 {
 	"@programName": "ZAP",
 	"@version": "2.15.0",
-	"@generated": "Sun, 24 Nov 2024 03:43:57",
+	"@generated": "Sun, 1 Dec 2024 03:44:35",
 	"site":[ 
 		{
 			"@name": "https://rencontres.territoiresentransitions.fr",
@@ -9,6 +9,33 @@
 			"@port": "443",
 			"@ssl": "true",
 			"alerts": [ 
+				{
+					"pluginid": "10003",
+					"alertRef": "10003",
+					"alert": "Vulnerable JS Library",
+					"name": "Vulnerable JS Library",
+					"riskcode": "3",
+					"confidence": "2",
+					"riskdesc": "High (Medium)",
+					"desc": "<p>The identified library nextjs, version 14.1.0 is vulnerable.</p>",
+					"instances":[ 
+						{
+							"uri": "https://rencontres.territoiresentransitions.fr/_next/static/chunks/main-930135e47dff83e9.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "=\"14.1.0\",z=(0,P.default)(),V=e=>[].slice.call(e),X=!1;class Y extends y.default.Component{componentDidCatch(e,t){this.props.fn(e,t)}componentDidMount",
+							"otherinfo": "CVE-2024-47831\nCVE-2024-34351\nCVE-2024-46982\n"
+						}
+					],
+					"count": "1",
+					"solution": "<p>Please upgrade to the latest version of nextjs.</p>",
+					"otherinfo": "<p>CVE-2024-47831</p><p>CVE-2024-34351</p><p>CVE-2024-46982</p><p></p>",
+					"reference": "<p>https://github.com/advisories/GHSA-g77x-44xx-532m</p><p>https://github.com/vercel/next.js/commit/7ed7f125e07ef0517a331009ed7e32691ba403d3</p><p>https://github.com/vercel/next.js/commit/bd164d53af259c05f1ab434004bcfdd3837d7cda</p><p>https://github.com/vercel/next.js/security/advisories/GHSA-fr5h-rqp8-mj6g</p><p>https://github.com/vercel/next.js/commit/8f7a6ca7d21a97bc9f7a1bbe10427b5ad74b9085</p><p>https://github.com/vercel/next.js/commit/d11cbc9ff0b1aaefabcba9afe1e562e0b1fde65a</p><p>https://nvd.nist.gov/vuln/detail/CVE-2024-34351</p><p>https://github.com/advisories/GHSA-gp8f-8m3g-qvj9</p><p>https://github.com/vercel/next.js</p><p>https://nvd.nist.gov/vuln/detail/CVE-2024-47831</p><p>https://github.com/vercel/next.js/security/advisories/GHSA-gp8f-8m3g-qvj9</p><p>https://github.com/advisories/GHSA-fr5h-rqp8-mj6g</p><p>https://nvd.nist.gov/vuln/detail/CVE-2024-46982</p><p>https://github.com/vercel/next.js/pull/62561</p><p>https://github.com/vercel/next.js/security/advisories/GHSA-g77x-44xx-532m</p><p></p>",
+					"cweid": "829",
+					"wascid": "-1",
+					"sourceid": "137"
+				},
 				{
 					"pluginid": "10038",
 					"alertRef": "10038-1",
@@ -76,7 +103,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://rencontres.territoiresentransitions.fr/rencontres?region=Bretagne",
+							"uri": "https://rencontres.territoiresentransitions.fr/rencontres?region=Centre-Val%20de%20Loire",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -84,7 +111,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://rencontres.territoiresentransitions.fr/rencontres?region=Centre-Val%20de%20Loire",
+							"uri": "https://rencontres.territoiresentransitions.fr/rencontres?region=Corse",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -98,17 +125,9 @@
 							"attack": "",
 							"evidence": "",
 							"otherinfo": ""
-						},
-						{
-							"uri": "https://rencontres.territoiresentransitions.fr/sitemap.xml",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
 						}
 					],
-					"count": "11",
+					"count": "10",
 					"solution": "<p>Ensure that your web server, application server, load balancer, etc. is configured to set the Content-Security-Policy header.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/Security/CSP/Introducing_Content_Security_Policy</p><p>https://cheatsheetseries.owasp.org/cheatsheets/Content_Security_Policy_Cheat_Sheet.html</p><p>https://www.w3.org/TR/CSP/</p><p>https://w3c.github.io/webappsec-csp/</p><p>https://web.dev/articles/csp</p><p>https://caniuse.com/#feat=contentsecuritypolicy</p><p>https://content-security-policy.com/</p>",
@@ -126,14 +145,6 @@
 					"riskdesc": "Medium (Medium)",
 					"desc": "<p>The response does not protect against 'ClickJacking' attacks. It should include either Content-Security-Policy with 'frame-ancestors' directive or X-Frame-Options.</p>",
 					"instances":[ 
-						{
-							"uri": "https://rencontres.territoiresentransitions.fr",
-							"method": "GET",
-							"param": "x-frame-options",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
 						{
 							"uri": "https://rencontres.territoiresentransitions.fr/",
 							"method": "GET",
@@ -215,13 +226,13 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "11",
+					"count": "10",
 					"solution": "<p>Modern Web browsers support the Content-Security-Policy and X-Frame-Options HTTP headers. Ensure one of them is set on all web pages returned by your site/app.</p><p>If you expect the page to be framed only by pages on your server (e.g. it's part of a FRAMESET) then you'll want to use SAMEORIGIN, otherwise if you never expect the page to be framed, you should use DENY. Alternatively consider implementing Content Security Policy's \"frame-ancestors\" directive.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Frame-Options</p>",
 					"cweid": "1021",
 					"wascid": "15",
-					"sourceid": "1"
+					"sourceid": "86"
 				},
 				{
 					"pluginid": "90003",
@@ -290,7 +301,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://rencontres.territoiresentransitions.fr/rencontres?region=Bretagne",
+							"uri": "https://rencontres.territoiresentransitions.fr/rencontres?region=Centre-Val%20de%20Loire",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -298,7 +309,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://rencontres.territoiresentransitions.fr/rencontres?region=Centre-Val%20de%20Loire",
+							"uri": "https://rencontres.territoiresentransitions.fr/rencontres?region=Corse",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -331,33 +342,6 @@
 					"sourceid": "1"
 				},
 				{
-					"pluginid": "10003",
-					"alertRef": "10003",
-					"alert": "Vulnerable JS Library",
-					"name": "Vulnerable JS Library",
-					"riskcode": "2",
-					"confidence": "2",
-					"riskdesc": "Medium (Medium)",
-					"desc": "<p>The identified library nextjs, version 14.1.0 is vulnerable.</p>",
-					"instances":[ 
-						{
-							"uri": "https://rencontres.territoiresentransitions.fr/_next/static/chunks/main-930135e47dff83e9.js",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "=\"14.1.0\",z=(0,P.default)(),V=e=>[].slice.call(e),X=!1;class Y extends y.default.Component{componentDidCatch(e,t){this.props.fn(e,t)}componentDidMount",
-							"otherinfo": "CVE-2024-34351\nCVE-2024-46982\n"
-						}
-					],
-					"count": "1",
-					"solution": "<p>Please upgrade to the latest version of nextjs.</p>",
-					"otherinfo": "<p>CVE-2024-34351</p><p>CVE-2024-46982</p><p></p>",
-					"reference": "<p>https://github.com/vercel/next.js/commit/7ed7f125e07ef0517a331009ed7e32691ba403d3</p><p>https://github.com/vercel/next.js/commit/bd164d53af259c05f1ab434004bcfdd3837d7cda</p><p>https://github.com/vercel/next.js/commit/8f7a6ca7d21a97bc9f7a1bbe10427b5ad74b9085</p><p>https://nvd.nist.gov/vuln/detail/CVE-2024-34351</p><p>https://github.com/advisories/GHSA-gp8f-8m3g-qvj9</p><p>https://github.com/vercel/next.js</p><p>https://github.com/vercel/next.js/security/advisories/GHSA-gp8f-8m3g-qvj9</p><p>https://github.com/advisories/GHSA-fr5h-rqp8-mj6g</p><p>https://nvd.nist.gov/vuln/detail/CVE-2024-46982</p><p>https://github.com/vercel/next.js/pull/62561</p><p>https://github.com/vercel/next.js/security/advisories/GHSA-fr5h-rqp8-mj6g</p><p></p>",
-					"cweid": "829",
-					"wascid": "-1",
-					"sourceid": "126"
-				},
-				{
 					"pluginid": "10063",
 					"alertRef": "10063-1",
 					"alert": "Permissions Policy Header Not Set",
@@ -377,22 +361,6 @@
 						},
 						{
 							"uri": "https://rencontres.territoiresentransitions.fr/",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"uri": "https://rencontres.territoiresentransitions.fr/_next/static/chunks/polyfills-c67a75d1b6f99dc8.js",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"uri": "https://rencontres.territoiresentransitions.fr/_next/static/chunks/webpack-c748489e3d60b9f5.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -433,6 +401,22 @@
 						},
 						{
 							"uri": "https://rencontres.territoiresentransitions.fr/rencontres?region=Bourgogne-Franche-Comt%C3%A9",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://rencontres.territoiresentransitions.fr/rencontres?region=Centre-Val%20de%20Loire",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://rencontres.territoiresentransitions.fr/rencontres?region=Corse",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -491,22 +475,6 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://rencontres.territoiresentransitions.fr/_next/static/chunks/polyfills-c67a75d1b6f99dc8.js",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "x-powered-by: Express",
-							"otherinfo": ""
-						},
-						{
-							"uri": "https://rencontres.territoiresentransitions.fr/_next/static/chunks/webpack-c748489e3d60b9f5.js",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "x-powered-by: Express",
-							"otherinfo": ""
-						},
-						{
 							"uri": "https://rencontres.territoiresentransitions.fr/_next/static/css/bbc25907e114c931.css",
 							"method": "GET",
 							"param": "",
@@ -555,6 +523,14 @@
 							"otherinfo": ""
 						},
 						{
+							"uri": "https://rencontres.territoiresentransitions.fr/rencontres?region=Bourgogne-Franche-Comt%C3%A9",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "x-powered-by: Next.js",
+							"otherinfo": ""
+						},
+						{
 							"uri": "https://rencontres.territoiresentransitions.fr/robots.txt",
 							"method": "GET",
 							"param": "",
@@ -571,13 +547,13 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "12",
+					"count": "11",
 					"solution": "<p>Ensure that your web server, application server, load balancer, etc. is configured to suppress \"X-Powered-By\" headers.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://owasp.org/www-project-web-security-testing-guide/v42/4-Web_Application_Security_Testing/01-Information_Gathering/08-Fingerprint_Web_Application_Framework</p><p>https://www.troyhunt.com/2012/02/shhh-dont-let-your-response-headers.html</p>",
 					"cweid": "200",
 					"wascid": "13",
-					"sourceid": "1"
+					"sourceid": "7"
 				},
 				{
 					"pluginid": "10035",
@@ -599,22 +575,6 @@
 						},
 						{
 							"uri": "https://rencontres.territoiresentransitions.fr/",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"uri": "https://rencontres.territoiresentransitions.fr/_next/static/chunks/polyfills-c67a75d1b6f99dc8.js",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"uri": "https://rencontres.territoiresentransitions.fr/_next/static/chunks/webpack-c748489e3d60b9f5.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -654,7 +614,23 @@
 							"otherinfo": ""
 						},
 						{
+							"uri": "https://rencontres.territoiresentransitions.fr/rencontres",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
 							"uri": "https://rencontres.territoiresentransitions.fr/rencontres?region=Auvergne-Rh%C3%B4ne-Alpes",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://rencontres.territoiresentransitions.fr/rencontres?region=Bourgogne-Franche-Comt%C3%A9",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -684,7 +660,7 @@
 					"reference": "<p>https://cheatsheetseries.owasp.org/cheatsheets/HTTP_Strict_Transport_Security_Cheat_Sheet.html</p><p>https://owasp.org/www-community/Security_Headers</p><p>https://en.wikipedia.org/wiki/HTTP_Strict_Transport_Security</p><p>https://caniuse.com/stricttransportsecurity</p><p>https://datatracker.ietf.org/doc/html/rfc6797</p>",
 					"cweid": "319",
 					"wascid": "15",
-					"sourceid": "1"
+					"sourceid": "7"
 				},
 				{
 					"pluginid": "10096",
@@ -711,7 +687,7 @@
 					"reference": "<p>https://cwe.mitre.org/data/definitions/200.html</p>",
 					"cweid": "200",
 					"wascid": "13",
-					"sourceid": "126"
+					"sourceid": "137"
 				},
 				{
 					"pluginid": "10021",
@@ -733,22 +709,6 @@
 						},
 						{
 							"uri": "https://rencontres.territoiresentransitions.fr/",
-							"method": "GET",
-							"param": "x-content-type-options",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
-						},
-						{
-							"uri": "https://rencontres.territoiresentransitions.fr/_next/static/chunks/polyfills-c67a75d1b6f99dc8.js",
-							"method": "GET",
-							"param": "x-content-type-options",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
-						},
-						{
-							"uri": "https://rencontres.territoiresentransitions.fr/_next/static/chunks/webpack-c748489e3d60b9f5.js",
 							"method": "GET",
 							"param": "x-content-type-options",
 							"attack": "",
@@ -810,6 +770,22 @@
 							"attack": "",
 							"evidence": "",
 							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
+						},
+						{
+							"uri": "https://rencontres.territoiresentransitions.fr/rencontres?region=Centre-Val%20de%20Loire",
+							"method": "GET",
+							"param": "x-content-type-options",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
+						},
+						{
+							"uri": "https://rencontres.territoiresentransitions.fr/rencontres?region=Corse",
+							"method": "GET",
+							"param": "x-content-type-options",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
 						}
 					],
 					"count": "11",
@@ -818,7 +794,7 @@
 					"reference": "<p>https://learn.microsoft.com/en-us/previous-versions/windows/internet-explorer/ie-developer/compatibility/gg622941(v=vs.85)</p><p>https://owasp.org/www-community/Security_Headers</p>",
 					"cweid": "693",
 					"wascid": "15",
-					"sourceid": "1"
+					"sourceid": "7"
 				},
 				{
 					"pluginid": "10094",
@@ -835,97 +811,97 @@
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "/_next/static/kniBBljxFA2vtMfvCQcHU/_buildManifest",
-							"otherinfo": "\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uCD6Bbs\uFFFD'\uFFFD\\x0010e\uFFFD\\x0011@\uFFFD\uFFFDL~\uFFFDpu?\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\\x001a\uFFFD'\u07B2"
+							"evidence": "/_next/static/9DxkEQidk5Z0YexjUrAoD/_buildManifest",
+							"otherinfo": "\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uCD6Bbs\uFFFDC\uFFFDA\\x0010\uFFFD\uFFFD9gF\\x001e\uFFFD5+\\x0002\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\\x001a\uFFFD'\u07B2"
 						},
 						{
 							"uri": "https://rencontres.territoiresentransitions.fr/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "/_next/static/kniBBljxFA2vtMfvCQcHU/_buildManifest",
-							"otherinfo": "\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uCD6Bbs\uFFFD'\uFFFD\\x0010e\uFFFD\\x0011@\uFFFD\uFFFDL~\uFFFDpu?\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\\x001a\uFFFD'\u07B2"
+							"evidence": "/_next/static/9DxkEQidk5Z0YexjUrAoD/_buildManifest",
+							"otherinfo": "\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uCD6Bbs\uFFFDC\uFFFDA\\x0010\uFFFD\uFFFD9gF\\x001e\uFFFD5+\\x0002\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\\x001a\uFFFD'\u07B2"
 						},
 						{
 							"uri": "https://rencontres.territoiresentransitions.fr/connexion",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "/_next/static/kniBBljxFA2vtMfvCQcHU/_buildManifest",
-							"otherinfo": "\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uCD6Bbs\uFFFD'\uFFFD\\x0010e\uFFFD\\x0011@\uFFFD\uFFFDL~\uFFFDpu?\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\\x001a\uFFFD'\u07B2"
+							"evidence": "/_next/static/9DxkEQidk5Z0YexjUrAoD/_buildManifest",
+							"otherinfo": "\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uCD6Bbs\uFFFDC\uFFFDA\\x0010\uFFFD\uFFFD9gF\\x001e\uFFFD5+\\x0002\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\\x001a\uFFFD'\u07B2"
 						},
 						{
 							"uri": "https://rencontres.territoiresentransitions.fr/inscription",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "/_next/static/kniBBljxFA2vtMfvCQcHU/_buildManifest",
-							"otherinfo": "\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uCD6Bbs\uFFFD'\uFFFD\\x0010e\uFFFD\\x0011@\uFFFD\uFFFDL~\uFFFDpu?\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\\x001a\uFFFD'\u07B2"
+							"evidence": "/_next/static/9DxkEQidk5Z0YexjUrAoD/_buildManifest",
+							"otherinfo": "\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uCD6Bbs\uFFFDC\uFFFDA\\x0010\uFFFD\uFFFD9gF\\x001e\uFFFD5+\\x0002\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\\x001a\uFFFD'\u07B2"
 						},
 						{
 							"uri": "https://rencontres.territoiresentransitions.fr/rencontres",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "/_next/static/kniBBljxFA2vtMfvCQcHU/_buildManifest",
-							"otherinfo": "\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uCD6Bbs\uFFFD'\uFFFD\\x0010e\uFFFD\\x0011@\uFFFD\uFFFDL~\uFFFDpu?\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\\x001a\uFFFD'\u07B2"
+							"evidence": "/_next/static/9DxkEQidk5Z0YexjUrAoD/_buildManifest",
+							"otherinfo": "\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uCD6Bbs\uFFFDC\uFFFDA\\x0010\uFFFD\uFFFD9gF\\x001e\uFFFD5+\\x0002\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\\x001a\uFFFD'\u07B2"
 						},
 						{
 							"uri": "https://rencontres.territoiresentransitions.fr/rencontres?region=Auvergne-Rh%C3%B4ne-Alpes",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "/_next/static/kniBBljxFA2vtMfvCQcHU/_buildManifest",
-							"otherinfo": "\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uCD6Bbs\uFFFD'\uFFFD\\x0010e\uFFFD\\x0011@\uFFFD\uFFFDL~\uFFFDpu?\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\\x001a\uFFFD'\u07B2"
+							"evidence": "/_next/static/9DxkEQidk5Z0YexjUrAoD/_buildManifest",
+							"otherinfo": "\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uCD6Bbs\uFFFDC\uFFFDA\\x0010\uFFFD\uFFFD9gF\\x001e\uFFFD5+\\x0002\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\\x001a\uFFFD'\u07B2"
 						},
 						{
 							"uri": "https://rencontres.territoiresentransitions.fr/rencontres?region=Bourgogne-Franche-Comt%C3%A9",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "/_next/static/kniBBljxFA2vtMfvCQcHU/_buildManifest",
-							"otherinfo": "\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uCD6Bbs\uFFFD'\uFFFD\\x0010e\uFFFD\\x0011@\uFFFD\uFFFDL~\uFFFDpu?\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\\x001a\uFFFD'\u07B2"
-						},
-						{
-							"uri": "https://rencontres.territoiresentransitions.fr/rencontres?region=Bretagne",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "/_next/static/kniBBljxFA2vtMfvCQcHU/_buildManifest",
-							"otherinfo": "\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uCD6Bbs\uFFFD'\uFFFD\\x0010e\uFFFD\\x0011@\uFFFD\uFFFDL~\uFFFDpu?\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\\x001a\uFFFD'\u07B2"
+							"evidence": "/_next/static/9DxkEQidk5Z0YexjUrAoD/_buildManifest",
+							"otherinfo": "\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uCD6Bbs\uFFFDC\uFFFDA\\x0010\uFFFD\uFFFD9gF\\x001e\uFFFD5+\\x0002\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\\x001a\uFFFD'\u07B2"
 						},
 						{
 							"uri": "https://rencontres.territoiresentransitions.fr/rencontres?region=Centre-Val%20de%20Loire",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "/_next/static/kniBBljxFA2vtMfvCQcHU/_buildManifest",
-							"otherinfo": "\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uCD6Bbs\uFFFD'\uFFFD\\x0010e\uFFFD\\x0011@\uFFFD\uFFFDL~\uFFFDpu?\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\\x001a\uFFFD'\u07B2"
+							"evidence": "/_next/static/9DxkEQidk5Z0YexjUrAoD/_buildManifest",
+							"otherinfo": "\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uCD6Bbs\uFFFDC\uFFFDA\\x0010\uFFFD\uFFFD9gF\\x001e\uFFFD5+\\x0002\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\\x001a\uFFFD'\u07B2"
+						},
+						{
+							"uri": "https://rencontres.territoiresentransitions.fr/rencontres?region=Corse",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "/_next/static/9DxkEQidk5Z0YexjUrAoD/_buildManifest",
+							"otherinfo": "\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uCD6Bbs\uFFFDC\uFFFDA\\x0010\uFFFD\uFFFD9gF\\x001e\uFFFD5+\\x0002\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\\x001a\uFFFD'\u07B2"
 						},
 						{
 							"uri": "https://rencontres.territoiresentransitions.fr/robots.txt",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "/_next/static/kniBBljxFA2vtMfvCQcHU/_buildManifest",
-							"otherinfo": "\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uCD6Bbs\uFFFD'\uFFFD\\x0010e\uFFFD\\x0011@\uFFFD\uFFFDL~\uFFFDpu?\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\\x001a\uFFFD'\u07B2"
+							"evidence": "/_next/static/9DxkEQidk5Z0YexjUrAoD/_buildManifest",
+							"otherinfo": "\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uCD6Bbs\uFFFDC\uFFFDA\\x0010\uFFFD\uFFFD9gF\\x001e\uFFFD5+\\x0002\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\\x001a\uFFFD'\u07B2"
 						},
 						{
 							"uri": "https://rencontres.territoiresentransitions.fr/sitemap.xml",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "/_next/static/kniBBljxFA2vtMfvCQcHU/_buildManifest",
-							"otherinfo": "\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uCD6Bbs\uFFFD'\uFFFD\\x0010e\uFFFD\\x0011@\uFFFD\uFFFDL~\uFFFDpu?\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\\x001a\uFFFD'\u07B2"
+							"evidence": "/_next/static/9DxkEQidk5Z0YexjUrAoD/_buildManifest",
+							"otherinfo": "\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uCD6Bbs\uFFFDC\uFFFDA\\x0010\uFFFD\uFFFD9gF\\x001e\uFFFD5+\\x0002\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\\x001a\uFFFD'\u07B2"
 						}
 					],
 					"count": "11",
 					"solution": "<p>Manually confirm that the Base64 data does not leak sensitive information, and that the data cannot be aggregated/used to exploit other vulnerabilities.</p>",
-					"otherinfo": "<p>\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uCD6Bbs\uFFFD'\uFFFD\\x0010e\uFFFD\\x0011@\uFFFD\uFFFDL~\uFFFDpu?\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\\x001a\uFFFD'\u07B2</p>",
+					"otherinfo": "<p>\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uCD6Bbs\uFFFDC\uFFFDA\\x0010\uFFFD\uFFFD9gF\\x001e\uFFFD5+\\x0002\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\\x001a\uFFFD'\u07B2</p>",
 					"reference": "<p>https://projects.webappsec.org/w/page/13246936/Information%20Leakage</p>",
 					"cweid": "200",
 					"wascid": "13",
-					"sourceid": "1"
+					"sourceid": "7"
 				},
 				{
 					"pluginid": "10019",
@@ -952,7 +928,7 @@
 					"reference": "<p>https://learn.microsoft.com/en-us/previous-versions/windows/internet-explorer/ie-developer/compatibility/gg622941(v=vs.85)</p>",
 					"cweid": "345",
 					"wascid": "12",
-					"sourceid": "237"
+					"sourceid": "248"
 				},
 				{
 					"pluginid": "10027",
@@ -970,7 +946,7 @@
 							"param": "",
 							"attack": "",
 							"evidence": "query",
-							"otherinfo": "The following pattern was used: \\bQUERY\\b and was detected in the element starting with: \"<script id=\"__NEXT_DATA__\" type=\"application/json\" crossorigin=\"\">{\"props\":{\"pageProps\":{}},\"page\":\"/\",\"query\":{},\"buildId\":\"kni\", see evidence field for the suspicious comment/snippet."
+							"otherinfo": "The following pattern was used: \\bQUERY\\b and was detected in the element starting with: \"<script id=\"__NEXT_DATA__\" type=\"application/json\" crossorigin=\"\">{\"props\":{\"pageProps\":{}},\"page\":\"/\",\"query\":{},\"buildId\":\"9Dx\", see evidence field for the suspicious comment/snippet."
 						},
 						{
 							"uri": "https://rencontres.territoiresentransitions.fr/",
@@ -978,23 +954,7 @@
 							"param": "",
 							"attack": "",
 							"evidence": "query",
-							"otherinfo": "The following pattern was used: \\bQUERY\\b and was detected in the element starting with: \"<script id=\"__NEXT_DATA__\" type=\"application/json\" crossorigin=\"\">{\"props\":{\"pageProps\":{}},\"page\":\"/\",\"query\":{},\"buildId\":\"kni\", see evidence field for the suspicious comment/snippet."
-						},
-						{
-							"uri": "https://rencontres.territoiresentransitions.fr/_next/static/chunks/pages/_app-87883517a6c644b1.js",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "admin",
-							"otherinfo": "The following pattern was used: \\bADMIN\\b and was detected in the element starting with: \"(self.webpackChunk_N_E=self.webpackChunk_N_E||[]).push([[888],{1118:function(e,t,n){(window.__NEXT_P=window.__NEXT_P||[]).push([\", see evidence field for the suspicious comment/snippet."
-						},
-						{
-							"uri": "https://rencontres.territoiresentransitions.fr/_next/static/chunks/polyfills-c67a75d1b6f99dc8.js",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "query",
-							"otherinfo": "The following pattern was used: \\bQUERY\\b and was detected in the element starting with: \"!function(){var t=\"undefined\"!=typeof globalThis?globalThis:\"undefined\"!=typeof window?window:\"undefined\"!=typeof global?global:\", see evidence field for the suspicious comment/snippet."
+							"otherinfo": "The following pattern was used: \\bQUERY\\b and was detected in the element starting with: \"<script id=\"__NEXT_DATA__\" type=\"application/json\" crossorigin=\"\">{\"props\":{\"pageProps\":{}},\"page\":\"/\",\"query\":{},\"buildId\":\"9Dx\", see evidence field for the suspicious comment/snippet."
 						},
 						{
 							"uri": "https://rencontres.territoiresentransitions.fr/connexion",
@@ -1037,6 +997,22 @@
 							"otherinfo": "The following pattern was used: \\bQUERY\\b and was detected in the element starting with: \"<script id=\"__NEXT_DATA__\" type=\"application/json\">{\"props\":{\"pageProps\":{\"base\":[{\"id\":38,\"nom\":\"Neutralit\u00E9 carbone - Projeter \", see evidence field for the suspicious comment/snippet."
 						},
 						{
+							"uri": "https://rencontres.territoiresentransitions.fr/rencontres?region=Centre-Val%20de%20Loire",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "query",
+							"otherinfo": "The following pattern was used: \\bQUERY\\b and was detected in the element starting with: \"<script id=\"__NEXT_DATA__\" type=\"application/json\">{\"props\":{\"pageProps\":{\"base\":[{\"id\":38,\"nom\":\"Neutralit\u00E9 carbone - Projeter \", see evidence field for the suspicious comment/snippet."
+						},
+						{
+							"uri": "https://rencontres.territoiresentransitions.fr/rencontres?region=Corse",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "query",
+							"otherinfo": "The following pattern was used: \\bQUERY\\b and was detected in the element starting with: \"<script id=\"__NEXT_DATA__\" type=\"application/json\">{\"props\":{\"pageProps\":{\"base\":[{\"id\":38,\"nom\":\"Neutralit\u00E9 carbone - Projeter \", see evidence field for the suspicious comment/snippet."
+						},
+						{
 							"uri": "https://rencontres.territoiresentransitions.fr/robots.txt",
 							"method": "GET",
 							"param": "",
@@ -1055,11 +1031,11 @@
 					],
 					"count": "11",
 					"solution": "<p>Remove all comments that return information that may help an attacker and fix any underlying problems they refer to.</p>",
-					"otherinfo": "<p>The following pattern was used: \\bQUERY\\b and was detected in the element starting with: \"<script id=\"__NEXT_DATA__\" type=\"application/json\" crossorigin=\"\">{\"props\":{\"pageProps\":{}},\"page\":\"/\",\"query\":{},\"buildId\":\"kni\", see evidence field for the suspicious comment/snippet.</p>",
+					"otherinfo": "<p>The following pattern was used: \\bQUERY\\b and was detected in the element starting with: \"<script id=\"__NEXT_DATA__\" type=\"application/json\" crossorigin=\"\">{\"props\":{\"pageProps\":{}},\"page\":\"/\",\"query\":{},\"buildId\":\"9Dx\", see evidence field for the suspicious comment/snippet.</p>",
 					"reference": "",
 					"cweid": "200",
 					"wascid": "13",
-					"sourceid": "1"
+					"sourceid": "7"
 				},
 				{
 					"pluginid": "10109",
@@ -1128,7 +1104,7 @@
 							"otherinfo": "A noScript tag has been found, which is an indication that the application works differently with JavaScript enabled compared to when it is not."
 						},
 						{
-							"uri": "https://rencontres.territoiresentransitions.fr/rencontres?region=Bretagne",
+							"uri": "https://rencontres.territoiresentransitions.fr/rencontres?region=Centre-Val%20de%20Loire",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1136,7 +1112,7 @@
 							"otherinfo": "A noScript tag has been found, which is an indication that the application works differently with JavaScript enabled compared to when it is not."
 						},
 						{
-							"uri": "https://rencontres.territoiresentransitions.fr/rencontres?region=Centre-Val%20de%20Loire",
+							"uri": "https://rencontres.territoiresentransitions.fr/rencontres?region=Corse",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1166,7 +1142,7 @@
 					"reference": "",
 					"cweid": "-1",
 					"wascid": "-1",
-					"sourceid": "1"
+					"sourceid": "7"
 				},
 				{
 					"pluginid": "10049",
@@ -1195,6 +1171,14 @@
 							"otherinfo": ""
 						},
 						{
+							"uri": "https://rencontres.territoiresentransitions.fr/rencontres?region=Bourgogne-Franche-Comt%C3%A9",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "no-store",
+							"otherinfo": ""
+						},
+						{
 							"uri": "https://rencontres.territoiresentransitions.fr/robots.txt",
 							"method": "GET",
 							"param": "",
@@ -1211,13 +1195,13 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "4",
+					"count": "5",
 					"solution": "<p>The content may be marked as storable by ensuring that the following conditions are satisfied:</p><p>The request method must be understood by the cache and defined as being cacheable (\"GET\", \"HEAD\", and \"POST\" are currently defined as cacheable)</p><p>The response status code must be understood by the cache (one of the 1XX, 2XX, 3XX, 4XX, or 5XX response classes are generally understood)</p><p>The \"no-store\" cache directive must not appear in the request or response header fields</p><p>For caching by \"shared\" caches such as \"proxy\" caches, the \"private\" response directive must not appear in the response</p><p>For caching by \"shared\" caches such as \"proxy\" caches, the \"Authorization\" header field must not appear in the request, unless the response explicitly allows it (using one of the \"must-revalidate\", \"public\", or \"s-maxage\" Cache-Control response directives)</p><p>In addition to the conditions above, at least one of the following conditions must also be satisfied by the response:</p><p>It must contain an \"Expires\" header field</p><p>It must contain a \"max-age\" response directive</p><p>For \"shared\" caches such as \"proxy\" caches, it must contain a \"s-maxage\" response directive</p><p>It must contain a \"Cache Control Extension\" that allows it to be cached</p><p>It must have a status code that is defined as cacheable by default (200, 203, 204, 206, 300, 301, 404, 405, 410, 414, 501).</p>",
 					"otherinfo": "",
 					"reference": "<p>https://datatracker.ietf.org/doc/html/rfc7234</p><p>https://datatracker.ietf.org/doc/html/rfc7231</p><p>https://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html</p>",
 					"cweid": "524",
 					"wascid": "13",
-					"sourceid": "99"
+					"sourceid": "117"
 				},
 				{
 					"pluginid": "10015",
@@ -1469,14 +1453,6 @@
 							"otherinfo": "In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234."
 						},
 						{
-							"uri": "https://rencontres.territoiresentransitions.fr/_next/static/chunks/webpack-c748489e3d60b9f5.js",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "max-age=31536000",
-							"otherinfo": ""
-						},
-						{
 							"uri": "https://rencontres.territoiresentransitions.fr/_next/static/css/bbc25907e114c931.css",
 							"method": "GET",
 							"param": "",
@@ -1501,7 +1477,7 @@
 							"otherinfo": "In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234."
 						}
 					],
-					"count": "6",
+					"count": "5",
 					"solution": "<p>Validate that the response does not contain sensitive, personal or user-specific information. If it does, consider the use of the following HTTP response headers, to limit, or prevent the content being stored and retrieved from the cache by another user:</p><p>Cache-Control: no-cache, no-store, must-revalidate, private</p><p>Pragma: no-cache</p><p>Expires: 0</p><p>This configuration directs both HTTP 1.0 and HTTP 1.1 compliant caching servers to not store the response, and to not retrieve the response (without validation) from the cache, in response to a similar request.</p>",
 					"otherinfo": "<p>In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234.</p>",
 					"reference": "<p>https://datatracker.ietf.org/doc/html/rfc7234</p><p>https://datatracker.ietf.org/doc/html/rfc7231</p><p>https://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html</p>",
@@ -1534,7 +1510,34 @@
 					"reference": "<p>https://datatracker.ietf.org/doc/html/rfc7234</p><p>https://datatracker.ietf.org/doc/html/rfc7231</p><p>https://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html</p>",
 					"cweid": "524",
 					"wascid": "13",
-					"sourceid": "91"
+					"sourceid": "118"
+				},
+				{
+					"pluginid": "10003",
+					"alertRef": "10003",
+					"alert": "Vulnerable JS Library",
+					"name": "Vulnerable JS Library",
+					"riskcode": "0",
+					"confidence": "2",
+					"riskdesc": "Informational (Medium)",
+					"desc": "<p>The identified library react-dom, version 18.2. is vulnerable.</p>",
+					"instances":[ 
+						{
+							"uri": "https://rencontres.territoiresentransitions.fr/_next/static/chunks/framework-5429a50ba5373c56.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "version:\"18.2.0\",rendererPackageName:\"react-dom\"",
+							"otherinfo": ""
+						}
+					],
+					"count": "1",
+					"solution": "<p>Please upgrade to the latest version of react-dom.</p>",
+					"otherinfo": "",
+					"reference": "",
+					"cweid": "829",
+					"wascid": "-1",
+					"sourceid": "143"
 				}
 			]
 		}
