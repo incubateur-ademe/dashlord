@@ -1,7 +1,7 @@
 {
 	"@programName": "ZAP",
 	"@version": "2.15.0",
-	"@generated": "Sun, 22 Dec 2024 02:23:41",
+	"@generated": "Sun, 29 Dec 2024 02:25:51",
 	"site":[ 
 		{
 			"@name": "https://longuevieauxobjets.ademe.fr",
@@ -9,6 +9,81 @@
 			"@port": "443",
 			"@ssl": "true",
 			"alerts": [ 
+				{
+					"pluginid": "10062",
+					"alertRef": "10062",
+					"alert": "PII Disclosure",
+					"name": "PII Disclosure",
+					"riskcode": "3",
+					"confidence": "3",
+					"riskdesc": "High (High)",
+					"desc": "<p>The response contains Personally Identifiable Information, such as CC number, SSN and similar sensitive data.</p>",
+					"instances":[ 
+						{
+							"uri": "https://longuevieauxobjets.ademe.fr/carte-reemploi-reparation-communaute-agglomeration-centre-martinique/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "4766105980843",
+							"otherinfo": "Credit Card Type detected: Visa\nBank Identification Number: 476610\nBrand: VISA\nCategory: \nIssuer: UNITED COMMERCIAL BANK"
+						},
+						{
+							"uri": "https://longuevieauxobjets.ademe.fr/carte-reemploi-reparation-guyane/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "4766105980843",
+							"otherinfo": "Credit Card Type detected: Visa\nBank Identification Number: 476610\nBrand: VISA\nCategory: \nIssuer: UNITED COMMERCIAL BANK"
+						},
+						{
+							"uri": "https://longuevieauxobjets.ademe.fr/carte-reemploi-reparation-polynesie/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "4766105980843",
+							"otherinfo": "Credit Card Type detected: Visa\nBank Identification Number: 476610\nBrand: VISA\nCategory: \nIssuer: UNITED COMMERCIAL BANK"
+						},
+						{
+							"uri": "https://longuevieauxobjets.ademe.fr/la-carte-du-r%C3%A9emploi-et-de-la-r%C3%A9paration-%C3%A0-angers/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "4766105980843",
+							"otherinfo": "Credit Card Type detected: Visa\nBank Identification Number: 476610\nBrand: VISA\nCategory: \nIssuer: UNITED COMMERCIAL BANK"
+						},
+						{
+							"uri": "https://longuevieauxobjets.ademe.fr/reemploi-reparation-mutualisation-la-reunion/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "4766105980843",
+							"otherinfo": "Credit Card Type detected: Visa\nBank Identification Number: 476610\nBrand: VISA\nCategory: \nIssuer: UNITED COMMERCIAL BANK"
+						},
+						{
+							"uri": "https://longuevieauxobjets.ademe.fr/reparation-don-mutualisation-cap-excellence/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "4766105980843",
+							"otherinfo": "Credit Card Type detected: Visa\nBank Identification Number: 476610\nBrand: VISA\nCategory: \nIssuer: UNITED COMMERCIAL BANK"
+						},
+						{
+							"uri": "https://longuevieauxobjets.ademe.fr/reparation-reemploi-guadeloupe/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "4766105980843",
+							"otherinfo": "Credit Card Type detected: Visa\nBank Identification Number: 476610\nBrand: VISA\nCategory: \nIssuer: UNITED COMMERCIAL BANK"
+						}
+					],
+					"count": "7",
+					"solution": "<p>Check the response for the potential presence of personally identifiable information (PII), ensure nothing sensitive is leaked by the application.</p>",
+					"otherinfo": "<p>Credit Card Type detected: Visa</p><p>Bank Identification Number: 476610</p><p>Brand: VISA</p><p>Category: </p><p>Issuer: UNITED COMMERCIAL BANK</p>",
+					"reference": "",
+					"cweid": "359",
+					"wascid": "13",
+					"sourceid": "550"
+				},
 				{
 					"pluginid": "10038",
 					"alertRef": "10038-1",
@@ -60,7 +135,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://longuevieauxobjets.ademe.fr/les-actualites/",
+							"uri": "https://longuevieauxobjets.ademe.fr/nos-sources-de-donnees/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -68,7 +143,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://longuevieauxobjets.ademe.fr/nos-sources-de-donnees/",
+							"uri": "https://longuevieauxobjets.ademe.fr/plan-du-site/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -159,6 +234,14 @@
 							"otherinfo": ""
 						},
 						{
+							"uri": "https://longuevieauxobjets.ademe.fr/carte-reemploi-reparation-grand-chalon/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<script src='https://lvao.ademe.fr/static/carte.js' data-action_list='preter|emprunter|louer|mettreenlocation|reparer|donner|echanger|acheter|revendre' data-action_displayed='preter|emprunter|louer|mettreenlocation|reparer|donner|echanger|acheter|revendre|trier' data-bounding_box='{\"southWest\": {\"lat\": 46.6851263, \"lng\": 4.577858}, \"northEast\": {\"lat\": 46.9694285, \"lng\": 5.0126337}}'></script>",
+							"otherinfo": ""
+						},
+						{
 							"uri": "https://longuevieauxobjets.ademe.fr/carte-reemploi-reparation-grand-chambery/",
 							"method": "GET",
 							"param": "",
@@ -180,14 +263,6 @@
 							"param": "",
 							"attack": "",
 							"evidence": "<script src='https://lvao.ademe.fr/static/carte.js' data-action_list='preter|emprunter|louer|mettreenlocation|reparer|donner|echanger|acheter|revendre' data-action_displayed='preter|emprunter|louer|mettreenlocation|reparer|donner|echanger|acheter|revendre|trier' data-bounding_box='{\"southWest\": {\"lat\": 44.746113, \"lng\": 4.873901}, \"northEast\": {\"lat\": 45.862629, \"lng\": 6.093384}}'></script>",
-							"otherinfo": ""
-						},
-						{
-							"uri": "https://longuevieauxobjets.ademe.fr/carte-reemploi-reparation-saint-cyr-mere-boitier/",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "<script src='https://lvao.ademe.fr/static/carte.js' data-action_list='preter|emprunter|louer|mettreenlocation|reparer|donner|echanger|acheter|revendre' data-bounding_box='{\"southWest\": {\"lat\": 46.283574, \"lng\": 4.372125}, \"northEast\": {\"lat\": 46.398764, \"lng\": 4.696222}}'></script>",
 							"otherinfo": ""
 						},
 						{
@@ -229,7 +304,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/Security/Subresource_Integrity</p>",
 					"cweid": "345",
 					"wascid": "15",
-					"sourceid": "115"
+					"sourceid": "121"
 				},
 				{
 					"pluginid": "10017",
@@ -274,6 +349,14 @@
 							"otherinfo": ""
 						},
 						{
+							"uri": "https://longuevieauxobjets.ademe.fr/carte-reemploi-reparation-grand-chalon/",
+							"method": "GET",
+							"param": "https://lvao.ademe.fr/static/carte.js",
+							"attack": "",
+							"evidence": "<script src='https://lvao.ademe.fr/static/carte.js' data-action_list='preter|emprunter|louer|mettreenlocation|reparer|donner|echanger|acheter|revendre' data-action_displayed='preter|emprunter|louer|mettreenlocation|reparer|donner|echanger|acheter|revendre|trier' data-bounding_box='{\"southWest\": {\"lat\": 46.6851263, \"lng\": 4.577858}, \"northEast\": {\"lat\": 46.9694285, \"lng\": 5.0126337}}'></script>",
+							"otherinfo": ""
+						},
+						{
 							"uri": "https://longuevieauxobjets.ademe.fr/carte-reemploi-reparation-grand-chambery/",
 							"method": "GET",
 							"param": "https://lvao.ademe.fr/static/carte.js",
@@ -295,14 +378,6 @@
 							"param": "https://lvao.ademe.fr/static/carte.js",
 							"attack": "",
 							"evidence": "<script src='https://lvao.ademe.fr/static/carte.js' data-action_list='preter|emprunter|louer|mettreenlocation|reparer|donner|echanger|acheter|revendre' data-action_displayed='preter|emprunter|louer|mettreenlocation|reparer|donner|echanger|acheter|revendre|trier' data-bounding_box='{\"southWest\": {\"lat\": 44.746113, \"lng\": 4.873901}, \"northEast\": {\"lat\": 45.862629, \"lng\": 6.093384}}'></script>",
-							"otherinfo": ""
-						},
-						{
-							"uri": "https://longuevieauxobjets.ademe.fr/carte-reemploi-reparation-saint-cyr-mere-boitier/",
-							"method": "GET",
-							"param": "https://lvao.ademe.fr/static/carte.js",
-							"attack": "",
-							"evidence": "<script src='https://lvao.ademe.fr/static/carte.js' data-action_list='preter|emprunter|louer|mettreenlocation|reparer|donner|echanger|acheter|revendre' data-bounding_box='{\"southWest\": {\"lat\": 46.283574, \"lng\": 4.372125}, \"northEast\": {\"lat\": 46.398764, \"lng\": 4.696222}}'></script>",
 							"otherinfo": ""
 						},
 						{
@@ -344,7 +419,7 @@
 					"reference": "",
 					"cweid": "829",
 					"wascid": "15",
-					"sourceid": "115"
+					"sourceid": "121"
 				},
 				{
 					"pluginid": "10063",
@@ -405,7 +480,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://longuevieauxobjets.ademe.fr/nos-sources-de-donnees/",
+							"uri": "https://longuevieauxobjets.ademe.fr/plan-du-site/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -512,7 +587,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://longuevieauxobjets.ademe.fr/nos-sources-de-donnees/",
+							"uri": "https://longuevieauxobjets.ademe.fr/plan-du-site/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -673,7 +748,7 @@
 					"reference": "<p>https://learn.microsoft.com/en-us/previous-versions/windows/internet-explorer/ie-developer/compatibility/gg622941(v=vs.85)</p><p>https://owasp.org/www-community/Security_Headers</p>",
 					"cweid": "693",
 					"wascid": "15",
-					"sourceid": "96"
+					"sourceid": "94"
 				},
 				{
 					"pluginid": "10094",
@@ -734,7 +809,7 @@
 							"otherinfo": "\uFFFD\\x0016\uFFFD\uFFFD\\x0013\uFFFD#OOKas\\x000c\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\\x0018\uFFFDE\uFFFDSe\uFFFD\uFFFD\uFFFD\\x0008G\\x000e?x\\x0017\\x0007t\\x0015l$\uFFFDh\uFFFDbnI&\uFFFD\uFFFDAF\uFFFD\uFFFD"
 						},
 						{
-							"uri": "https://longuevieauxobjets.ademe.fr/nos-sources-de-donnees/",
+							"uri": "https://longuevieauxobjets.ademe.fr/plan-du-site/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -815,7 +890,7 @@
 					"reference": "",
 					"cweid": "200",
 					"wascid": "13",
-					"sourceid": "95"
+					"sourceid": "97"
 				},
 				{
 					"pluginid": "10109",
@@ -876,7 +951,7 @@
 							"otherinfo": "Links have been found with a target of '_self' - this is often used by modern frameworks to force a full page reload."
 						},
 						{
-							"uri": "https://longuevieauxobjets.ademe.fr/nos-sources-de-donnees/",
+							"uri": "https://longuevieauxobjets.ademe.fr/plan-du-site/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -922,7 +997,7 @@
 					"reference": "",
 					"cweid": "-1",
 					"wascid": "-1",
-					"sourceid": "6"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "10015",
@@ -944,14 +1019,6 @@
 						},
 						{
 							"uri": "https://longuevieauxobjets.ademe.fr/",
-							"method": "GET",
-							"param": "cache-control",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"uri": "https://longuevieauxobjets.ademe.fr/accessibilite/",
 							"method": "GET",
 							"param": "cache-control",
 							"attack": "",
@@ -984,6 +1051,14 @@
 						},
 						{
 							"uri": "https://longuevieauxobjets.ademe.fr/les-actualites/",
+							"method": "GET",
+							"param": "cache-control",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://longuevieauxobjets.ademe.fr/mentions-legales/",
 							"method": "GET",
 							"param": "cache-control",
 							"attack": "",
@@ -1050,7 +1125,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://longuevieauxobjets.ademe.fr/robots.txt",
+							"uri": "https://longuevieauxobjets.ademe.fr/",
 							"method": "GET",
 							"param": "Sec-Fetch-Dest",
 							"attack": "",
@@ -1093,7 +1168,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://longuevieauxobjets.ademe.fr/robots.txt",
+							"uri": "https://longuevieauxobjets.ademe.fr/",
 							"method": "GET",
 							"param": "Sec-Fetch-Mode",
 							"attack": "",
@@ -1136,7 +1211,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://longuevieauxobjets.ademe.fr/robots.txt",
+							"uri": "https://longuevieauxobjets.ademe.fr/",
 							"method": "GET",
 							"param": "Sec-Fetch-Site",
 							"attack": "",
@@ -1179,7 +1254,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://longuevieauxobjets.ademe.fr/robots.txt",
+							"uri": "https://longuevieauxobjets.ademe.fr/",
 							"method": "GET",
 							"param": "Sec-Fetch-User",
 							"attack": "",
@@ -1262,7 +1337,7 @@
 							"otherinfo": "In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234."
 						},
 						{
-							"uri": "https://longuevieauxobjets.ademe.fr/nos-sources-de-donnees/",
+							"uri": "https://longuevieauxobjets.ademe.fr/plan-du-site/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
