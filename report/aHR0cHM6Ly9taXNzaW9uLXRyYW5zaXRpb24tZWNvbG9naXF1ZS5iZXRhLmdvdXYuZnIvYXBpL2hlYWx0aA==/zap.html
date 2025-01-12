@@ -1,0 +1,4807 @@
+<!DOCTYPE html>
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>ZAP Scanning Report</title>
+<style type="text/css">
+body {
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	color: #000;
+	font-size: 13px;
+}
+
+h1 {
+	text-align: center;
+	font-weight: bold;
+	font-size: 32px
+}
+
+h3 {
+	font-size: 16px;
+}
+
+table {
+	border: none;
+	font-size: 13px;
+}
+
+td, th {
+	padding: 3px 4px;
+	word-break: break-word;
+}
+
+th {
+	font-weight: bold;
+	background-color: #666666;
+}
+
+td {
+	background-color: #e8e8e8;
+}
+
+.spacer {
+	margin: 10px;
+}
+
+.spacer-lg {
+	margin: 40px;
+}
+
+.indent1 {
+	padding: 4px 20px;
+}
+
+.indent2 {
+	padding: 4px 40px;
+}
+
+.risk-3 {
+	background-color: red;
+	color: #FFF;
+}
+
+.risk-2 {
+	background-color: orange;
+	color: #FFF;
+}
+
+.risk-1 {
+	background-color: yellow;
+	color: #000;
+}
+
+.risk-0 {
+	background-color: blue;
+	color: #FFF;
+}
+
+.risk--1 {
+	background-color: green;
+	color: #FFF;
+}
+
+.summary {
+	width: 45%;
+}
+
+.summary th {
+	color: #FFF;
+}
+
+.summary100 {
+	width: 100%;
+}
+
+.summary80 {
+	width: 80%;
+}
+
+.tdconstrainer {
+	width: 9.1%;
+	padding: 0
+}
+
+.alerts {
+	width: 75%;
+}
+
+.alerts th {
+	color: #FFF;
+}
+
+.results {
+	width: 100%;
+}
+
+.results th {
+	text-align: left;
+}
+
+.left-header {
+	display: inline-block;
+}
+
+.pass {
+	background: green;
+	color: white
+}
+
+.pass::before {
+	content: '\2714';
+	color: white
+}
+
+.fail {
+	background: red;
+	color: white
+}
+
+.fail::before {
+	content: '\2716';
+	color: white
+}
+
+.alert-3b::before {
+	content: '\2691';
+	color: red
+}
+
+.alert-2b::before {
+	content: '\2691 ';
+	color: orange
+}
+
+.alert-1b::before {
+	content: '\2691';
+	color: yellow
+}
+
+.alert-0b::before {
+	content: '\2691';
+	color: blue
+}
+
+.alert-3a::after {
+	content: '\2691';
+	color: red
+}
+
+.alert-2a::after {
+	content: '\2691 ';
+	color: orange
+}
+
+.alert-1a::after {
+	content: '\2691';
+	color: yellow
+}
+
+.alert-0a::after {
+	content: '\2691';
+	color: blue
+}
+
+.lm2 {
+	margin-left: 2em;
+}
+
+.smallnote {
+	font-size: 0.75em
+}
+
+.alwayswhite {
+	color: white
+}
+</style>
+</head>
+<body>
+	<h1>
+		<!-- The ZAP by Checkmark Logo -->
+		<img
+			src="data:image/png;base64,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"
+			alt="" />
+		ZAP Scanning Report
+	</h1>
+	<p />
+	
+
+	<h2>
+		
+		Site: https://mission-transition-ecologique.beta.gouv.fr
+		
+	</h2>
+
+	<h3>
+		Generated on Sun, 12 Jan 2025 03:23:34
+	</h3>
+
+	<h3>
+		ZAP Version: 2.16.0
+	</h3>
+
+	<h4>
+		ZAP by <a href="https://checkmarx.com/">Checkmarx</a>
+	</h4>
+
+	
+		<h3 class="left-header">Summary of Alerts</h3>
+		<table class="summary">
+			<tr>
+				<th width="45%"
+					height="24">Risk Level</th>
+				<th width="55%"
+					align="center">Number of Alerts</th>
+			</tr>
+			<tr>
+				<td class="risk-3">
+					<div>High</div>
+				</td>
+				<td align="center">
+					<div>0</div>
+				</td>
+			</tr>
+			<tr>
+				<td class="risk-2">
+					<div>Medium</div>
+				</td>
+				<td align="center">
+					<div>5</div>
+				</td>
+			</tr>
+			<tr>
+				<td class="risk-1">
+					<div>Low</div>
+				</td>
+				<td align="center">
+					<div>1</div>
+				</td>
+			</tr>
+			<tr>
+				<td class="risk-0">
+					<div>Informational</div>
+				</td>
+				<td align="center">
+					<div>10</div>
+				</td>
+			</tr>
+			<tr>
+				<td class="risk--1">
+					<div>				False Positives:</div>
+				</td>
+				<td align="center">
+					<div>0</div>
+				</td>
+			</tr>
+		</table>
+		<div class="spacer-lg"></div>
+	
+
+	
+		
+			<h3>Summary of Sequences</h3>
+			<p class="smallnote">For each step: result (Pass/Fail) - risk (of highest alert(s) for the step, if any).</p>
+
+			
+		
+	
+
+	
+		<h3>Alerts</h3>
+		<table class="alerts">
+			<tr>
+				<th width="60%" height="24">Name</th>
+				<th width="20%"
+					align="center">Risk Level</th>
+				<th width="20%"
+					align="center">Number of Instances</th>
+			</tr>
+			<tr>
+				<td><a href="#10055">CSP: script-src unsafe-inline</a></td>
+				<td align="center" class="risk-2">Medium</td>
+				<td align="center">2</td>
+			</tr>
+			<tr>
+				<td><a href="#10055">CSP: style-src unsafe-inline</a></td>
+				<td align="center" class="risk-2">Medium</td>
+				<td align="center">4</td>
+			</tr>
+			<tr>
+				<td><a href="#10038">Content Security Policy (CSP) Header Not Set</a></td>
+				<td align="center" class="risk-2">Medium</td>
+				<td align="center">11</td>
+			</tr>
+			<tr>
+				<td><a href="#10098">Cross-Domain Misconfiguration</a></td>
+				<td align="center" class="risk-2">Medium</td>
+				<td align="center">10</td>
+			</tr>
+			<tr>
+				<td><a href="#90003">Sub Resource Integrity Attribute Missing</a></td>
+				<td align="center" class="risk-2">Medium</td>
+				<td align="center">11</td>
+			</tr>
+			<tr>
+				<td><a href="#10063">Permissions Policy Header Not Set</a></td>
+				<td align="center" class="risk-1">Low</td>
+				<td align="center">11</td>
+			</tr>
+			<tr>
+				<td><a href="#10094">Base64 Disclosure</a></td>
+				<td align="center" class="risk-0">Informational</td>
+				<td align="center">11</td>
+			</tr>
+			<tr>
+				<td><a href="#10055">CSP: Header &amp; Meta</a></td>
+				<td align="center" class="risk-0">Informational</td>
+				<td align="center">1</td>
+			</tr>
+			<tr>
+				<td><a href="#10027">Information Disclosure - Suspicious Comments</a></td>
+				<td align="center" class="risk-0">Informational</td>
+				<td align="center">11</td>
+			</tr>
+			<tr>
+				<td><a href="#10109">Modern Web Application</a></td>
+				<td align="center" class="risk-0">Informational</td>
+				<td align="center">11</td>
+			</tr>
+			<tr>
+				<td><a href="#10015">Re-examine Cache-control Directives</a></td>
+				<td align="center" class="risk-0">Informational</td>
+				<td align="center">10</td>
+			</tr>
+			<tr>
+				<td><a href="#90005">Sec-Fetch-Dest Header is Missing</a></td>
+				<td align="center" class="risk-0">Informational</td>
+				<td align="center">2</td>
+			</tr>
+			<tr>
+				<td><a href="#90005">Sec-Fetch-Mode Header is Missing</a></td>
+				<td align="center" class="risk-0">Informational</td>
+				<td align="center">2</td>
+			</tr>
+			<tr>
+				<td><a href="#90005">Sec-Fetch-Site Header is Missing</a></td>
+				<td align="center" class="risk-0">Informational</td>
+				<td align="center">2</td>
+			</tr>
+			<tr>
+				<td><a href="#90005">Sec-Fetch-User Header is Missing</a></td>
+				<td align="center" class="risk-0">Informational</td>
+				<td align="center">2</td>
+			</tr>
+			<tr>
+				<td><a href="#10049">Storable and Cacheable Content</a></td>
+				<td align="center" class="risk-0">Informational</td>
+				<td align="center">10</td>
+			</tr>
+		</table>
+		<div class="spacer-lg"></div>
+	
+
+	
+		<h3>Alert Detail</h3>
+		
+			<table class="results">
+				<tr height="24">
+					<th width="20%" class="risk-2"><a
+						id="10055"></a>
+						<div>Medium</div></th>
+					<th class="risk-2">CSP: script-src unsafe-inline</th>
+				</tr>
+				<tr>
+					<td width="20%">Description</td>
+					<td width="80%">
+							<div>Content Security Policy (CSP) is an added layer of security that helps to detect and mitigate certain types of attacks. Including (but not limited to) Cross Site Scripting (XSS), and data injection attacks. These attacks are used for everything from data theft to site defacement or distribution of malware. CSP provides a set of standard HTTP headers that allow website owners to declare approved sources of content that browsers should be allowed to load on that page — covered types are JavaScript, CSS, HTML frames, fonts, images and embeddable objects such as Java applets, ActiveX, audio and video files.</div>
+							
+						</td>
+				</tr>
+				<TR vAlign="top">
+					<TD colspan="2"></TD>
+				</TR>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://mission-transition-ecologique.beta.gouv.fr/">https://mission-transition-ecologique.beta.gouv.fr/</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%">content-security-policy</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">base-uri &#39;self&#39;; font-src &#39;self&#39;; form-action &#39;self&#39;; frame-ancestors &#39;self&#39;; img-src &#39;self&#39; data:; object-src &#39;self&#39;; script-src-attr &#39;none&#39;; style-src &#39;self&#39; &#39;unsafe-inline&#39; https://embed.typeform.com; script-src &#39;self&#39; &#39;strict-dynamic&#39; &#39;sha256-DOXMGNUTv1cK/f2ugjJL9ouZQi+vTAl7Y9rhuH51fvM=&#39; &#39;sha384-JNI1bA6IzNVq58UvdOUB6pMkpXZn48uW44ge8HrEs88jKrfC9xCreFlUbyl6mApZ&#39; &#39;sha384-oXrgKPMGCD5dAYLbcPnoVJn70gXa39MutE+u90OuysE5tDh5rI2v4yJYTdrT6Bnn&#39;; upgrade-insecure-requests; script-src-elem &#39;self&#39; &#39;unsafe-inline&#39; https://stats.beta.gouv.fr https://eu.i.posthog.com https://eu-assets.i.posthog.com https://embed.typeform.com; worker-src &#39;self&#39; blob:; connect-src &#39;self&#39; https://stats.beta.gouv.fr https://embed.typeform.com https://api.typeform.com https://eu.i.posthog.com https://eu-assets.i.posthog.com https://sentry.incubateur.net; frame-src &#39;self&#39; https://form.typeform.com; default-src &#39;none&#39;;</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">script-src includes unsafe-inline.</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://mission-transition-ecologique.beta.gouv.fr/">https://mission-transition-ecologique.beta.gouv.fr/</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%">Content-Security-Policy</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">base-uri &#39;self&#39;; font-src &#39;self&#39;; form-action &#39;self&#39;; img-src &#39;self&#39; data:; object-src &#39;self&#39;; script-src-attr &#39;none&#39;; style-src &#39;self&#39; &#39;unsafe-inline&#39; https://embed.typeform.com; script-src &#39;self&#39; &#39;strict-dynamic&#39; &#39;sha256-DOXMGNUTv1cK/f2ugjJL9ouZQi+vTAl7Y9rhuH51fvM=&#39; &#39;sha384-JNI1bA6IzNVq58UvdOUB6pMkpXZn48uW44ge8HrEs88jKrfC9xCreFlUbyl6mApZ&#39; &#39;sha384-oXrgKPMGCD5dAYLbcPnoVJn70gXa39MutE+u90OuysE5tDh5rI2v4yJYTdrT6Bnn&#39;; upgrade-insecure-requests; script-src-elem &#39;self&#39; &#39;unsafe-inline&#39; https://stats.beta.gouv.fr https://eu.i.posthog.com https://eu-assets.i.posthog.com https://embed.typeform.com; worker-src &#39;self&#39; blob:; connect-src &#39;self&#39; https://stats.beta.gouv.fr https://embed.typeform.com https://api.typeform.com https://eu.i.posthog.com https://eu-assets.i.posthog.com https://sentry.incubateur.net; frame-src &#39;self&#39; https://form.typeform.com; default-src &#39;none&#39;;</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">script-src includes unsafe-inline.</td>
+					</tr>
+				
+				<tr>
+					<td width="20%">Instances</td>
+					<td width="80%">2</td>
+				</tr>
+				<tr>
+					<td width="20%">Solution</td>
+					<td width="80%">
+							<div>Ensure that your web server, application server, load balancer, etc. is properly configured to set the Content-Security-Policy header.</div>
+							
+						</td>
+				</tr>
+				<tr>
+					<td width="20%">Reference</td>
+					<td width="80%">
+							<a href="https://www.w3.org/TR/CSP/">https://www.w3.org/TR/CSP/</a>
+							<br />
+						
+							<a href="https://caniuse.com/#search=content+security+policy">https://caniuse.com/#search=content+security+policy</a>
+							<br />
+						
+							<a href="https://content-security-policy.com/">https://content-security-policy.com/</a>
+							<br />
+						
+							<a href="https://github.com/HtmlUnit/htmlunit-csp">https://github.com/HtmlUnit/htmlunit-csp</a>
+							<br />
+						
+							<a href="https://developers.google.com/web/fundamentals/security/csp#policy_applies_to_a_wide_variety_of_resources">https://developers.google.com/web/fundamentals/security/csp#policy_applies_to_a_wide_variety_of_resources</a>
+							
+						</td>
+				</tr>
+				<tr>
+					<td width="20%">CWE Id</td>
+					<td width="80%"><a
+						href="https://cwe.mitre.org/data/definitions/693.html">693</a></td>
+				</tr>
+				<tr>
+					<td width="20%">WASC Id</td>
+					<td width="80%">15</td>
+				</tr>
+				<tr>
+					<td width="20%">Plugin Id</td>
+					<td width="80%"><a
+						href="https://www.zaproxy.org/docs/alerts/10055/">10055</a></td>
+				</tr>
+			</table>
+			<div class="spacer"></div>
+		
+			<table class="results">
+				<tr height="24">
+					<th width="20%" class="risk-2"><a
+						id="10055"></a>
+						<div>Medium</div></th>
+					<th class="risk-2">CSP: style-src unsafe-inline</th>
+				</tr>
+				<tr>
+					<td width="20%">Description</td>
+					<td width="80%">
+							<div>Content Security Policy (CSP) is an added layer of security that helps to detect and mitigate certain types of attacks. Including (but not limited to) Cross Site Scripting (XSS), and data injection attacks. These attacks are used for everything from data theft to site defacement or distribution of malware. CSP provides a set of standard HTTP headers that allow website owners to declare approved sources of content that browsers should be allowed to load on that page — covered types are JavaScript, CSS, HTML frames, fonts, images and embeddable objects such as Java applets, ActiveX, audio and video files.</div>
+							
+						</td>
+				</tr>
+				<TR vAlign="top">
+					<TD colspan="2"></TD>
+				</TR>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://mission-transition-ecologique.beta.gouv.fr/">https://mission-transition-ecologique.beta.gouv.fr/</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%">content-security-policy</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">base-uri &#39;self&#39;; font-src &#39;self&#39;; form-action &#39;self&#39;; frame-ancestors &#39;self&#39;; img-src &#39;self&#39; data:; object-src &#39;self&#39;; script-src-attr &#39;none&#39;; style-src &#39;self&#39; &#39;unsafe-inline&#39; https://embed.typeform.com; script-src &#39;self&#39; &#39;strict-dynamic&#39; &#39;sha256-DOXMGNUTv1cK/f2ugjJL9ouZQi+vTAl7Y9rhuH51fvM=&#39; &#39;sha384-JNI1bA6IzNVq58UvdOUB6pMkpXZn48uW44ge8HrEs88jKrfC9xCreFlUbyl6mApZ&#39; &#39;sha384-oXrgKPMGCD5dAYLbcPnoVJn70gXa39MutE+u90OuysE5tDh5rI2v4yJYTdrT6Bnn&#39;; upgrade-insecure-requests; script-src-elem &#39;self&#39; &#39;unsafe-inline&#39; https://stats.beta.gouv.fr https://eu.i.posthog.com https://eu-assets.i.posthog.com https://embed.typeform.com; worker-src &#39;self&#39; blob:; connect-src &#39;self&#39; https://stats.beta.gouv.fr https://embed.typeform.com https://api.typeform.com https://eu.i.posthog.com https://eu-assets.i.posthog.com https://sentry.incubateur.net; frame-src &#39;self&#39; https://form.typeform.com; default-src &#39;none&#39;;</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">style-src includes unsafe-inline.</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://mission-transition-ecologique.beta.gouv.fr/">https://mission-transition-ecologique.beta.gouv.fr/</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%">Content-Security-Policy</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">base-uri &#39;self&#39;; font-src &#39;self&#39;; form-action &#39;self&#39;; img-src &#39;self&#39; data:; object-src &#39;self&#39;; script-src-attr &#39;none&#39;; style-src &#39;self&#39; &#39;unsafe-inline&#39; https://embed.typeform.com; script-src &#39;self&#39; &#39;strict-dynamic&#39; &#39;sha256-DOXMGNUTv1cK/f2ugjJL9ouZQi+vTAl7Y9rhuH51fvM=&#39; &#39;sha384-JNI1bA6IzNVq58UvdOUB6pMkpXZn48uW44ge8HrEs88jKrfC9xCreFlUbyl6mApZ&#39; &#39;sha384-oXrgKPMGCD5dAYLbcPnoVJn70gXa39MutE+u90OuysE5tDh5rI2v4yJYTdrT6Bnn&#39;; upgrade-insecure-requests; script-src-elem &#39;self&#39; &#39;unsafe-inline&#39; https://stats.beta.gouv.fr https://eu.i.posthog.com https://eu-assets.i.posthog.com https://embed.typeform.com; worker-src &#39;self&#39; blob:; connect-src &#39;self&#39; https://stats.beta.gouv.fr https://embed.typeform.com https://api.typeform.com https://eu.i.posthog.com https://eu-assets.i.posthog.com https://sentry.incubateur.net; frame-src &#39;self&#39; https://form.typeform.com; default-src &#39;none&#39;;</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">style-src includes unsafe-inline.</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://mission-transition-ecologique.beta.gouv.fr/api">https://mission-transition-ecologique.beta.gouv.fr/api</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%">content-security-policy</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">base-uri &#39;self&#39;; font-src &#39;self&#39;; form-action &#39;self&#39;; frame-ancestors &#39;self&#39;; img-src &#39;self&#39; data:; object-src &#39;self&#39;; script-src-attr &#39;none&#39;; style-src &#39;self&#39; &#39;unsafe-inline&#39; https://embed.typeform.com; script-src &#39;self&#39; &#39;nonce-yEG+9uqDB7UkMY1AjGy6zA/0&#39; &#39;strict-dynamic&#39;; upgrade-insecure-requests; script-src-elem &#39;self&#39; &#39;unsafe-inline&#39; &#39;nonce-yEG+9uqDB7UkMY1AjGy6zA/0&#39; https://stats.beta.gouv.fr https://eu.i.posthog.com https://eu-assets.i.posthog.com https://embed.typeform.com; worker-src &#39;self&#39; blob:; connect-src &#39;self&#39; https://stats.beta.gouv.fr https://embed.typeform.com https://api.typeform.com https://eu.i.posthog.com https://eu-assets.i.posthog.com https://sentry.incubateur.net; frame-src &#39;self&#39; https://form.typeform.com; default-src &#39;none&#39;;</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">style-src includes unsafe-inline.</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://mission-transition-ecologique.beta.gouv.fr/stats">https://mission-transition-ecologique.beta.gouv.fr/stats</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%">Content-Security-Policy</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">base-uri &#39;self&#39;; font-src &#39;self&#39;; form-action &#39;self&#39;; frame-ancestors &#39;self&#39;; img-src &#39;self&#39; data:; object-src &#39;self&#39;; script-src-attr &#39;none&#39;; style-src &#39;self&#39; &#39;unsafe-inline&#39; https://embed.typeform.com; script-src &#39;self&#39; &#39;nonce-jE6r4Irs7UQ48Yx5fVTEfbg5&#39; &#39;strict-dynamic&#39;; upgrade-insecure-requests; script-src-elem &#39;self&#39; &#39;unsafe-inline&#39; &#39;nonce-jE6r4Irs7UQ48Yx5fVTEfbg5&#39; https://stats.beta.gouv.fr https://eu.i.posthog.com https://eu-assets.i.posthog.com https://embed.typeform.com; worker-src &#39;self&#39; blob:; connect-src &#39;self&#39; https://stats.beta.gouv.fr https://embed.typeform.com https://api.typeform.com https://eu.i.posthog.com https://eu-assets.i.posthog.com https://sentry.incubateur.net; frame-src &#39;self&#39; https://form.typeform.com; default-src &#39;none&#39;;</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">style-src includes unsafe-inline.</td>
+					</tr>
+				
+				<tr>
+					<td width="20%">Instances</td>
+					<td width="80%">4</td>
+				</tr>
+				<tr>
+					<td width="20%">Solution</td>
+					<td width="80%">
+							<div>Ensure that your web server, application server, load balancer, etc. is properly configured to set the Content-Security-Policy header.</div>
+							
+						</td>
+				</tr>
+				<tr>
+					<td width="20%">Reference</td>
+					<td width="80%">
+							<a href="https://www.w3.org/TR/CSP/">https://www.w3.org/TR/CSP/</a>
+							<br />
+						
+							<a href="https://caniuse.com/#search=content+security+policy">https://caniuse.com/#search=content+security+policy</a>
+							<br />
+						
+							<a href="https://content-security-policy.com/">https://content-security-policy.com/</a>
+							<br />
+						
+							<a href="https://github.com/HtmlUnit/htmlunit-csp">https://github.com/HtmlUnit/htmlunit-csp</a>
+							<br />
+						
+							<a href="https://developers.google.com/web/fundamentals/security/csp#policy_applies_to_a_wide_variety_of_resources">https://developers.google.com/web/fundamentals/security/csp#policy_applies_to_a_wide_variety_of_resources</a>
+							
+						</td>
+				</tr>
+				<tr>
+					<td width="20%">CWE Id</td>
+					<td width="80%"><a
+						href="https://cwe.mitre.org/data/definitions/693.html">693</a></td>
+				</tr>
+				<tr>
+					<td width="20%">WASC Id</td>
+					<td width="80%">15</td>
+				</tr>
+				<tr>
+					<td width="20%">Plugin Id</td>
+					<td width="80%"><a
+						href="https://www.zaproxy.org/docs/alerts/10055/">10055</a></td>
+				</tr>
+			</table>
+			<div class="spacer"></div>
+		
+			<table class="results">
+				<tr height="24">
+					<th width="20%" class="risk-2"><a
+						id="10038"></a>
+						<div>Medium</div></th>
+					<th class="risk-2">Content Security Policy (CSP) Header Not Set</th>
+				</tr>
+				<tr>
+					<td width="20%">Description</td>
+					<td width="80%">
+							<div>Content Security Policy (CSP) is an added layer of security that helps to detect and mitigate certain types of attacks, including Cross Site Scripting (XSS) and data injection attacks. These attacks are used for everything from data theft to site defacement or distribution of malware. CSP provides a set of standard HTTP headers that allow website owners to declare approved sources of content that browsers should be allowed to load on that page — covered types are JavaScript, CSS, HTML frames, fonts, images and embeddable objects such as Java applets, ActiveX, audio and video files.</div>
+							
+						</td>
+				</tr>
+				<TR vAlign="top">
+					<TD colspan="2"></TD>
+				</TR>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://mission-transition-ecologique.beta.gouv.fr/aides-entreprise/accelerateur-decarbonation">https://mission-transition-ecologique.beta.gouv.fr/aides-entreprise/accelerateur-decarbonation</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://mission-transition-ecologique.beta.gouv.fr/aides-entreprise/act-pas-a-pas">https://mission-transition-ecologique.beta.gouv.fr/aides-entreprise/act-pas-a-pas</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://mission-transition-ecologique.beta.gouv.fr/aides-entreprise/adaptation-bzh">https://mission-transition-ecologique.beta.gouv.fr/aides-entreprise/adaptation-bzh</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://mission-transition-ecologique.beta.gouv.fr/aides-entreprise/aide-financement-occitanie">https://mission-transition-ecologique.beta.gouv.fr/aides-entreprise/aide-financement-occitanie</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://mission-transition-ecologique.beta.gouv.fr/aides-entreprise/aide-travaux-tourisme-aura">https://mission-transition-ecologique.beta.gouv.fr/aides-entreprise/aide-travaux-tourisme-aura</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://mission-transition-ecologique.beta.gouv.fr/aides-entreprise/aides-au-reemploi-des-emballages">https://mission-transition-ecologique.beta.gouv.fr/aides-entreprise/aides-au-reemploi-des-emballages</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://mission-transition-ecologique.beta.gouv.fr/aides-entreprise/amo-chaufferie-biomasse">https://mission-transition-ecologique.beta.gouv.fr/aides-entreprise/amo-chaufferie-biomasse</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://mission-transition-ecologique.beta.gouv.fr/aides-entreprise/audit-clef-verte-sud">https://mission-transition-ecologique.beta.gouv.fr/aides-entreprise/audit-clef-verte-sud</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://mission-transition-ecologique.beta.gouv.fr/aides-entreprise/audit-energetique-en-industrie">https://mission-transition-ecologique.beta.gouv.fr/aides-entreprise/audit-energetique-en-industrie</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://mission-transition-ecologique.beta.gouv.fr/aides-entreprise/b-a-ba-du-climat-et-biodiversite">https://mission-transition-ecologique.beta.gouv.fr/aides-entreprise/b-a-ba-du-climat-et-biodiversite</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://mission-transition-ecologique.beta.gouv.fr/api/health">https://mission-transition-ecologique.beta.gouv.fr/api/health</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
+					</tr>
+				
+				<tr>
+					<td width="20%">Instances</td>
+					<td width="80%">11</td>
+				</tr>
+				<tr>
+					<td width="20%">Solution</td>
+					<td width="80%">
+							<div>Ensure that your web server, application server, load balancer, etc. is configured to set the Content-Security-Policy header.</div>
+							
+						</td>
+				</tr>
+				<tr>
+					<td width="20%">Reference</td>
+					<td width="80%">
+							<a href="https://developer.mozilla.org/en-US/docs/Web/Security/CSP/Introducing_Content_Security_Policy">https://developer.mozilla.org/en-US/docs/Web/Security/CSP/Introducing_Content_Security_Policy</a>
+							<br />
+						
+							<a href="https://cheatsheetseries.owasp.org/cheatsheets/Content_Security_Policy_Cheat_Sheet.html">https://cheatsheetseries.owasp.org/cheatsheets/Content_Security_Policy_Cheat_Sheet.html</a>
+							<br />
+						
+							<a href="https://www.w3.org/TR/CSP/">https://www.w3.org/TR/CSP/</a>
+							<br />
+						
+							<a href="https://w3c.github.io/webappsec-csp/">https://w3c.github.io/webappsec-csp/</a>
+							<br />
+						
+							<a href="https://web.dev/articles/csp">https://web.dev/articles/csp</a>
+							<br />
+						
+							<a href="https://caniuse.com/#feat=contentsecuritypolicy">https://caniuse.com/#feat=contentsecuritypolicy</a>
+							<br />
+						
+							<a href="https://content-security-policy.com/">https://content-security-policy.com/</a>
+							
+						</td>
+				</tr>
+				<tr>
+					<td width="20%">CWE Id</td>
+					<td width="80%"><a
+						href="https://cwe.mitre.org/data/definitions/693.html">693</a></td>
+				</tr>
+				<tr>
+					<td width="20%">WASC Id</td>
+					<td width="80%">15</td>
+				</tr>
+				<tr>
+					<td width="20%">Plugin Id</td>
+					<td width="80%"><a
+						href="https://www.zaproxy.org/docs/alerts/10038/">10038</a></td>
+				</tr>
+			</table>
+			<div class="spacer"></div>
+		
+			<table class="results">
+				<tr height="24">
+					<th width="20%" class="risk-2"><a
+						id="10098"></a>
+						<div>Medium</div></th>
+					<th class="risk-2">Cross-Domain Misconfiguration</th>
+				</tr>
+				<tr>
+					<td width="20%">Description</td>
+					<td width="80%">
+							<div>Web browser data loading may be possible, due to a Cross Origin Resource Sharing (CORS) misconfiguration on the web server.</div>
+							
+						</td>
+				</tr>
+				<TR vAlign="top">
+					<TD colspan="2"></TD>
+				</TR>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://mission-transition-ecologique.beta.gouv.fr/">https://mission-transition-ecologique.beta.gouv.fr/</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">access-control-allow-origin: *</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing.</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://mission-transition-ecologique.beta.gouv.fr/accessibilite">https://mission-transition-ecologique.beta.gouv.fr/accessibilite</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">access-control-allow-origin: *</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing.</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://mission-transition-ecologique.beta.gouv.fr/ajouter-une-aide-entreprises">https://mission-transition-ecologique.beta.gouv.fr/ajouter-une-aide-entreprises</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">access-control-allow-origin: *</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing.</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://mission-transition-ecologique.beta.gouv.fr/api">https://mission-transition-ecologique.beta.gouv.fr/api</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">access-control-allow-origin: *</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing.</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://mission-transition-ecologique.beta.gouv.fr/api/health">https://mission-transition-ecologique.beta.gouv.fr/api/health</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">access-control-allow-origin: *</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing.</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://mission-transition-ecologique.beta.gouv.fr/budget">https://mission-transition-ecologique.beta.gouv.fr/budget</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">access-control-allow-origin: *</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing.</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://mission-transition-ecologique.beta.gouv.fr/donnees-personnelles">https://mission-transition-ecologique.beta.gouv.fr/donnees-personnelles</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">access-control-allow-origin: *</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing.</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://mission-transition-ecologique.beta.gouv.fr/robots.txt">https://mission-transition-ecologique.beta.gouv.fr/robots.txt</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">access-control-allow-origin: *</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing.</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://mission-transition-ecologique.beta.gouv.fr/sitemap.xml">https://mission-transition-ecologique.beta.gouv.fr/sitemap.xml</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">access-control-allow-origin: *</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing.</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://mission-transition-ecologique.beta.gouv.fr/stats">https://mission-transition-ecologique.beta.gouv.fr/stats</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">access-control-allow-origin: *</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing.</td>
+					</tr>
+				
+				<tr>
+					<td width="20%">Instances</td>
+					<td width="80%">10</td>
+				</tr>
+				<tr>
+					<td width="20%">Solution</td>
+					<td width="80%">
+							<div>Ensure that sensitive data is not available in an unauthenticated manner (using IP address white-listing, for instance).</div>
+							<br />
+						
+							<div>Configure the &quot;Access-Control-Allow-Origin&quot; HTTP header to a more restrictive set of domains, or remove all CORS headers entirely, to allow the web browser to enforce the Same Origin Policy (SOP) in a more restrictive manner.</div>
+							
+						</td>
+				</tr>
+				<tr>
+					<td width="20%">Reference</td>
+					<td width="80%">
+							<a href="https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.html5_overly_permissive_cors_policy">https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.html5_overly_permissive_cors_policy</a>
+							
+						</td>
+				</tr>
+				<tr>
+					<td width="20%">CWE Id</td>
+					<td width="80%"><a
+						href="https://cwe.mitre.org/data/definitions/264.html">264</a></td>
+				</tr>
+				<tr>
+					<td width="20%">WASC Id</td>
+					<td width="80%">14</td>
+				</tr>
+				<tr>
+					<td width="20%">Plugin Id</td>
+					<td width="80%"><a
+						href="https://www.zaproxy.org/docs/alerts/10098/">10098</a></td>
+				</tr>
+			</table>
+			<div class="spacer"></div>
+		
+			<table class="results">
+				<tr height="24">
+					<th width="20%" class="risk-2"><a
+						id="90003"></a>
+						<div>Medium</div></th>
+					<th class="risk-2">Sub Resource Integrity Attribute Missing</th>
+				</tr>
+				<tr>
+					<td width="20%">Description</td>
+					<td width="80%">
+							<div>The integrity attribute is missing on a script or link tag served by an external server. The integrity tag prevents an attacker who have gained access to this server from injecting a malicious content.</div>
+							
+						</td>
+				</tr>
+				<TR vAlign="top">
+					<TD colspan="2"></TD>
+				</TR>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://mission-transition-ecologique.beta.gouv.fr/">https://mission-transition-ecologique.beta.gouv.fr/</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">&lt;link fetchpriority=&quot;low&quot; as=&quot;script&quot; referrerpolicy=&quot;no-referrer&quot; href=&quot;https://stats.beta.gouv.fr/matomo.js&quot; rel=&quot;preload&quot;&gt;</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://mission-transition-ecologique.beta.gouv.fr/accessibilite">https://mission-transition-ecologique.beta.gouv.fr/accessibilite</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">&lt;link fetchpriority=&quot;low&quot; as=&quot;script&quot; referrerpolicy=&quot;no-referrer&quot; href=&quot;https://stats.beta.gouv.fr/matomo.js&quot; rel=&quot;preload&quot;&gt;</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://mission-transition-ecologique.beta.gouv.fr/ajouter-une-aide-entreprises">https://mission-transition-ecologique.beta.gouv.fr/ajouter-une-aide-entreprises</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">&lt;link fetchpriority=&quot;low&quot; as=&quot;script&quot; referrerpolicy=&quot;no-referrer&quot; href=&quot;https://stats.beta.gouv.fr/matomo.js&quot; rel=&quot;preload&quot;&gt;</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://mission-transition-ecologique.beta.gouv.fr/api">https://mission-transition-ecologique.beta.gouv.fr/api</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">&lt;link nonce=&quot;yEG+9uqDB7UkMY1AjGy6zA/0&quot; fetchpriority=&quot;low&quot; as=&quot;script&quot; referrerpolicy=&quot;no-referrer&quot; href=&quot;https://stats.beta.gouv.fr/matomo.js&quot; rel=&quot;preload&quot;&gt;</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://mission-transition-ecologique.beta.gouv.fr/budget">https://mission-transition-ecologique.beta.gouv.fr/budget</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">&lt;link fetchpriority=&quot;low&quot; as=&quot;script&quot; referrerpolicy=&quot;no-referrer&quot; href=&quot;https://stats.beta.gouv.fr/matomo.js&quot; rel=&quot;preload&quot;&gt;</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://mission-transition-ecologique.beta.gouv.fr/donnees-personnelles">https://mission-transition-ecologique.beta.gouv.fr/donnees-personnelles</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">&lt;link nonce=&quot;cXVZpwfx2pFzsa/ixL/V1TkP&quot; fetchpriority=&quot;low&quot; as=&quot;script&quot; referrerpolicy=&quot;no-referrer&quot; href=&quot;https://stats.beta.gouv.fr/matomo.js&quot; rel=&quot;preload&quot;&gt;</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://mission-transition-ecologique.beta.gouv.fr/mentions-legales">https://mission-transition-ecologique.beta.gouv.fr/mentions-legales</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">&lt;link nonce=&quot;2UGTV3zlDkNVF4WEGCy8cez1&quot; fetchpriority=&quot;low&quot; as=&quot;script&quot; referrerpolicy=&quot;no-referrer&quot; href=&quot;https://stats.beta.gouv.fr/matomo.js&quot; rel=&quot;preload&quot;&gt;</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://mission-transition-ecologique.beta.gouv.fr/projets-entreprise">https://mission-transition-ecologique.beta.gouv.fr/projets-entreprise</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">&lt;link nonce=&quot;5Bipg1sWFwS1h5c5VIang8fU&quot; fetchpriority=&quot;low&quot; as=&quot;script&quot; referrerpolicy=&quot;no-referrer&quot; href=&quot;https://stats.beta.gouv.fr/matomo.js&quot; rel=&quot;preload&quot;&gt;</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://mission-transition-ecologique.beta.gouv.fr/questionnaire">https://mission-transition-ecologique.beta.gouv.fr/questionnaire</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">&lt;link nonce=&quot;AnnQug+suiniHWVElSXYBc+E&quot; fetchpriority=&quot;low&quot; as=&quot;script&quot; referrerpolicy=&quot;no-referrer&quot; href=&quot;https://stats.beta.gouv.fr/matomo.js&quot; rel=&quot;preload&quot;&gt;</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://mission-transition-ecologique.beta.gouv.fr/questionnaire/">https://mission-transition-ecologique.beta.gouv.fr/questionnaire/</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">&lt;link nonce=&quot;JWevmCqjeGiZhmTf23a54qdD&quot; fetchpriority=&quot;low&quot; as=&quot;script&quot; referrerpolicy=&quot;no-referrer&quot; href=&quot;https://stats.beta.gouv.fr/matomo.js&quot; rel=&quot;preload&quot;&gt;</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://mission-transition-ecologique.beta.gouv.fr/stats">https://mission-transition-ecologique.beta.gouv.fr/stats</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">&lt;link nonce=&quot;jE6r4Irs7UQ48Yx5fVTEfbg5&quot; fetchpriority=&quot;low&quot; as=&quot;script&quot; referrerpolicy=&quot;no-referrer&quot; href=&quot;https://stats.beta.gouv.fr/matomo.js&quot; rel=&quot;preload&quot;&gt;</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
+					</tr>
+				
+				<tr>
+					<td width="20%">Instances</td>
+					<td width="80%">11</td>
+				</tr>
+				<tr>
+					<td width="20%">Solution</td>
+					<td width="80%">
+							<div>Provide a valid integrity attribute to the tag.</div>
+							
+						</td>
+				</tr>
+				<tr>
+					<td width="20%">Reference</td>
+					<td width="80%">
+							<a href="https://developer.mozilla.org/en-US/docs/Web/Security/Subresource_Integrity">https://developer.mozilla.org/en-US/docs/Web/Security/Subresource_Integrity</a>
+							
+						</td>
+				</tr>
+				<tr>
+					<td width="20%">CWE Id</td>
+					<td width="80%"><a
+						href="https://cwe.mitre.org/data/definitions/345.html">345</a></td>
+				</tr>
+				<tr>
+					<td width="20%">WASC Id</td>
+					<td width="80%">15</td>
+				</tr>
+				<tr>
+					<td width="20%">Plugin Id</td>
+					<td width="80%"><a
+						href="https://www.zaproxy.org/docs/alerts/90003/">90003</a></td>
+				</tr>
+			</table>
+			<div class="spacer"></div>
+		
+			<table class="results">
+				<tr height="24">
+					<th width="20%" class="risk-1"><a
+						id="10063"></a>
+						<div>Low</div></th>
+					<th class="risk-1">Permissions Policy Header Not Set</th>
+				</tr>
+				<tr>
+					<td width="20%">Description</td>
+					<td width="80%">
+							<div>Permissions Policy Header is an added layer of security that helps to restrict from unauthorized access or usage of browser/client features by web resources. This policy ensures the user privacy by limiting or specifying the features of the browsers can be used by the web resources. Permissions Policy provides a set of standard HTTP headers that allow website owners to limit which features of browsers can be used by the page such as camera, microphone, location, full screen etc.</div>
+							
+						</td>
+				</tr>
+				<TR vAlign="top">
+					<TD colspan="2"></TD>
+				</TR>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://mission-transition-ecologique.beta.gouv.fr/_nuxt/B8kMsous.js">https://mission-transition-ecologique.beta.gouv.fr/_nuxt/B8kMsous.js</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://mission-transition-ecologique.beta.gouv.fr/_nuxt/Bep_aUu_.js">https://mission-transition-ecologique.beta.gouv.fr/_nuxt/Bep_aUu_.js</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://mission-transition-ecologique.beta.gouv.fr/_nuxt/CB8ReJGC.js">https://mission-transition-ecologique.beta.gouv.fr/_nuxt/CB8ReJGC.js</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://mission-transition-ecologique.beta.gouv.fr/_nuxt/CDKryq6o.js">https://mission-transition-ecologique.beta.gouv.fr/_nuxt/CDKryq6o.js</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://mission-transition-ecologique.beta.gouv.fr/_nuxt/CURg_EWH.js">https://mission-transition-ecologique.beta.gouv.fr/_nuxt/CURg_EWH.js</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://mission-transition-ecologique.beta.gouv.fr/_nuxt/CXe_zxF4.js">https://mission-transition-ecologique.beta.gouv.fr/_nuxt/CXe_zxF4.js</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://mission-transition-ecologique.beta.gouv.fr/_nuxt/CXYEZgT7.js">https://mission-transition-ecologique.beta.gouv.fr/_nuxt/CXYEZgT7.js</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://mission-transition-ecologique.beta.gouv.fr/_nuxt/Difkl-Kz.js">https://mission-transition-ecologique.beta.gouv.fr/_nuxt/Difkl-Kz.js</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://mission-transition-ecologique.beta.gouv.fr/_nuxt/HhRPsrTZ.js">https://mission-transition-ecologique.beta.gouv.fr/_nuxt/HhRPsrTZ.js</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://mission-transition-ecologique.beta.gouv.fr/_payload.js?036005f0-18ac-4fda-9648-7884a8f8c822">https://mission-transition-ecologique.beta.gouv.fr/_payload.js?036005f0-18ac-4fda-9648-7884a8f8c822</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://mission-transition-ecologique.beta.gouv.fr/api/health">https://mission-transition-ecologique.beta.gouv.fr/api/health</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
+					</tr>
+				
+				<tr>
+					<td width="20%">Instances</td>
+					<td width="80%">11</td>
+				</tr>
+				<tr>
+					<td width="20%">Solution</td>
+					<td width="80%">
+							<div>Ensure that your web server, application server, load balancer, etc. is configured to set the Permissions-Policy header.</div>
+							
+						</td>
+				</tr>
+				<tr>
+					<td width="20%">Reference</td>
+					<td width="80%">
+							<a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Permissions-Policy">https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Permissions-Policy</a>
+							<br />
+						
+							<a href="https://developer.chrome.com/blog/feature-policy/">https://developer.chrome.com/blog/feature-policy/</a>
+							<br />
+						
+							<a href="https://scotthelme.co.uk/a-new-security-header-feature-policy/">https://scotthelme.co.uk/a-new-security-header-feature-policy/</a>
+							<br />
+						
+							<a href="https://w3c.github.io/webappsec-feature-policy/">https://w3c.github.io/webappsec-feature-policy/</a>
+							<br />
+						
+							<a href="https://www.smashingmagazine.com/2018/12/feature-policy/">https://www.smashingmagazine.com/2018/12/feature-policy/</a>
+							
+						</td>
+				</tr>
+				<tr>
+					<td width="20%">CWE Id</td>
+					<td width="80%"><a
+						href="https://cwe.mitre.org/data/definitions/693.html">693</a></td>
+				</tr>
+				<tr>
+					<td width="20%">WASC Id</td>
+					<td width="80%">15</td>
+				</tr>
+				<tr>
+					<td width="20%">Plugin Id</td>
+					<td width="80%"><a
+						href="https://www.zaproxy.org/docs/alerts/10063/">10063</a></td>
+				</tr>
+			</table>
+			<div class="spacer"></div>
+		
+			<table class="results">
+				<tr height="24">
+					<th width="20%" class="risk-0"><a
+						id="10094"></a>
+						<div>Informational</div></th>
+					<th class="risk-0">Base64 Disclosure</th>
+				</tr>
+				<tr>
+					<td width="20%">Description</td>
+					<td width="80%">
+							<div>Base64 encoded data was disclosed by the application/web server. Note: in the interests of performance not all base64 strings in the response were analyzed individually, the entire response should be looked at by the analyst/security team/developer(s).</div>
+							
+						</td>
+				</tr>
+				<TR vAlign="top">
+					<TD colspan="2"></TD>
+				</TR>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://mission-transition-ecologique.beta.gouv.fr/">https://mission-transition-ecologique.beta.gouv.fr/</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">sha384-JNI1bA6IzNVq58UvdOUB6pMkpXZn48uW44ge8HrEs88jKrfC9xCreFlUbyl6mApZ</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">���4�[�35Z��K�9@z��)]�������,��ʭ��*�U�^��</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://mission-transition-ecologique.beta.gouv.fr/accessibilite">https://mission-transition-ecologique.beta.gouv.fr/accessibilite</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">sha384-JNI1bA6IzNVq58UvdOUB6pMkpXZn48uW44ge8HrEs88jKrfC9xCreFlUbyl6mApZ</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">���4�[�35Z��K�9@z��)]�������,��ʭ��*�U�^��</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://mission-transition-ecologique.beta.gouv.fr/ajouter-une-aide-entreprises">https://mission-transition-ecologique.beta.gouv.fr/ajouter-une-aide-entreprises</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">sha384-JNI1bA6IzNVq58UvdOUB6pMkpXZn48uW44ge8HrEs88jKrfC9xCreFlUbyl6mApZ</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">���4�[�35Z��K�9@z��)]�������,��ʭ��*�U�^��</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://mission-transition-ecologique.beta.gouv.fr/api">https://mission-transition-ecologique.beta.gouv.fr/api</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">nonce-yEG+9uqDB7UkMY1AjGy6zA/0</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">���{��n�0{RC��ˬ��</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://mission-transition-ecologique.beta.gouv.fr/budget">https://mission-transition-ecologique.beta.gouv.fr/budget</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">sha384-JNI1bA6IzNVq58UvdOUB6pMkpXZn48uW44ge8HrEs88jKrfC9xCreFlUbyl6mApZ</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">���4�[�35Z��K�9@z��)]�������,��ʭ��*�U�^��</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://mission-transition-ecologique.beta.gouv.fr/donnees-personnelles">https://mission-transition-ecologique.beta.gouv.fr/donnees-personnelles</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">nonce-cXVZpwfx2pFzsa/ixL/V1TkP</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">���{�U�p�;�,K�]S�</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://mission-transition-ecologique.beta.gouv.fr/images/logos/ademe.svg">https://mission-transition-ecologique.beta.gouv.fr/images/logos/ademe.svg</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">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</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">�PNG
+
+   IHDR   �   �   ��#)   �PLTE���A�&amp;3ua���NX�(n������Zd�(5v������� ��&quot;.�v{� �����`h�������&lt;E���`�������AK�&#39;
+=��������� �������6@���Z��O��JR����-7�ipE�4e�M}����p��&#39;X�򙝨�⛹�Aq����:j��W^�z�$U����K{�8����x��������z�ӛ�Ѹ��\|�e����� 1����������  �IDATx��	{�6��x7�-q���GHB8��&amp;��v;����n˲�����k�	Ʋ�Z���
+��ק��?~��r��W��o�J�ɹ�
+�I~=q�*&#39;�|�ĝ����w�r0�9�k��s.��z��,����_�J��7%i��nHL7��� 7�.C��P���+�y���=�r7�I�}47�����مG�v��Z;�e�=�ƌm���r�ҳ�a�[�[���m�u��]a��i�+�Z�4���r�5!U�ޒ����n��������`�I`&gt;�#�����A�(j%s�}=C�}�90	��Є�m���3�#�s�9exd�зJ7m�����L����=#�٤�r�#��r�L4��ރ(�+~������H�TӋ��p����V���~�U!B�&amp;-mF2�{����%�F*�!�=R�k����^�SCR�\%��X�G�&amp;g e�%bp�L����x�G����4�MϼB�֤�|�ߞpQ���C-�?�M�=�X�{&#39;s�
+E@�ќ�q�ۃ�k�3�߆&quot;�����}�40F��h��J�f@�I�Ɍ���^�2�|G�n������sVȷd���i��PFR���S�ieJ���AnIDxR.��	n&amp;Zn_��WhH�A�5n�Un)�U��yC����d����a�=6$�3����U/���*X|�E6+����eT[���*��0�E��o�&quot;�xl�k�
+Z���W�dr��WN��ʉ;_9q�+&#39;�|������&#39;*�/o���c�q��^�&lt;ϲJT,���_�2���oO�W҉�=g��Ys��D+k�{Φ�l���w13y�B_��~�&quot;�z�͜&lt;C��N����TQ������O��GQ��7��?��v2p�Er%�r��o�	�g�������;(��)-7Eǿ��rQ��R�l�_TjE6���&lt;ߒ�`Rt�}4�__vc�� 독������{Z{��ۓ���.c�����4��X��|q���ǽۙp���ޕ�Gq�I@�&#39;ZjKN&gt;�����=)�7&gt;�D{C����v&amp;֠(��sm�DV%��bgkO�b0��}y͝�a�L������p��O����?�;����_e�������H���X�i����u�H�ʕ��b�5����&amp;E�g�z�����~��� \�bVl�9*��?�m|b�܌w�5�[�7�-	�ho&#39;nP���5���\��-=�tp;�3wX�En�ԑP����{��cO�Bz.�����č��䌹_M��`�`,��;���͉����&amp;z����+�#\+�� ��&lt;^�I�ߨ�e�������V����.�
+�?s�~&#39;�a@����7A!��Uz&quot;ѓ�)DB�2i�/�oP�������`�)ʏ���l�S�(�:�&lt;ܭ9u�k���+�M���a&amp;nok��}��ؖ�6o�%V擐��n��.wC���ܓ���}f��l�:˥s �����e��J��C�$�ۃ��J�G�1wד���o�qPa��,HzKG��q�����]�(WC��.W�%Nl��[�|�J�&quot;�z3EFg:�P���ѹ�&#39;�]�
+bm_p�ϔ���L��;��C^4�2����������4&#39;����ȣ���_�;��e���ЀƊ����VclY��B�c�&lt;pG�7ilg0q����� n&#39;�|O�F�Wܧ.V.z�#8��&gt;Əܠ������˅�-ȭI(�r�\)B���L~���I�;F�U2���&#39;XK0�BX�ͲYZ4�dq�A��;x�u�5��8|��������o���eA�64�J��[�*�`�
+�X����:~|����5���hW��ѹ�B%����q���έ�ǫ����S/� +�8O��R��(����l_8��b $�����������o8���X&amp;��K�	��]݀c���&amp;�]���I��T��ߙoJS���b��&#39;���Ț2�ō�k���H���r���r�ݝk���&amp;���U��y؟��$Vwlr�r�@|�U��,�p�l�F�&quot;&amp;��ω���c+G3�S�5����ܒ��e���5���ӌ�V�#��hU��q+O���d�#��(��K�bW�����t/��31��|S�n�a&#39;v������Ư:�ٞ��NI�x.&#39;=w�ug�}I�ME����d�M�c4w������p�Tq�����J2���&amp;���f�N�,����a5Ag�	8�8}��r����j2����0{I_����Q�:%MJb�L~o_��3�js�#���!y�ټ��W�~p?w���D�m��%��ރy=�Aj�ĀS����zJSaf���\��=�)����=/�ɭ��;Sn��BMs�ҡT��=w��ĔW�hs�3�}͠���={%��Nți��TM���L*��=ݗg��7�n�j�jy_��Qr���_��-/����y��YA���������&quot;�_��e�2w����r��WN��ʉ;_9q�+&#39;�|�o�����]6��m��Z��W�W�\��V�M��Sd�c�i���޺\֭F�Qy(��4��M �Ig���e�� ��� �6seB Ȅ�UZD��ND{INf�Ϧ4j��� �H9��J�׼2�b�j[F��j�7�e���Ϻ�*C擯�頛ҹltT�0ꄛ��H�Mi���pSqw�ĩ��g.n�}�-VuA܈�qw�ۭN�r�?e��tʐ,KP6��zn&lt;Ex�&lt;�pW�]�6� �G�.����[�p��T�{�kF�L����f�=ҙo�X�ѭ�Pnö�+�m�V�[�[%EZJ��7�kˋ�Hܮ	�ЈX�� n���J�ۀ�&quot;Z4MsE��sm7��=�����װ�6Wɹo�9l�d�o�&#39;���=d��.�M�J`���E��fE�W\Ozh��
+�ȸk�B+���I�铉��5�#�-�7���=�Hw���V�F�;�!nu�c�{dM�+�e?7���f�0���rW�H\ƍ�ᾃ�٧~#�*r8ۨ١V���I��7�&gt;�?�6��1${����N[n��7�|�-���D�mH+ᯉͮ�&quot;��M6���-jo,�C@f�C� �BS��X�D]�����]���ޚ]`�_0�e���`&gt;���K�����v��B��rHk?�G�Sȉ;_9qk%�iL���e+�P�������Tm�_M�/QSc�эiv�&quot;Ԯ&gt;�3�G�47׏d�U0����&amp;`�Fp]�ޅ�Ga��=4_&amp;�.��)��x��V&lt;��WKo��&amp;�L���7s�����+�8k_C�b�^Ģ@��&amp;�Ea�2_�Dp��v� ��&gt;����G����pDƸ�Ǘ.�x֌�aCpW��̑�]�7B��&gt;��c;���,�o�� ^�mi���0Qlnn�vj+���5���M����QP�U�P�:͊�^��P�����������a43����&quot;���ܷ#�L���x���&#39;-v{�~g�&#39;n��|Qb�� s�Gpc�\�����0����L�ˊX��.��)����W׍�9�ø�Fg8��I�U��] ɚR(O&amp;�4�`�Ȟ1�{j��^n�(@C�F7/w���j|��w����x�MpK�������� �hc@���hw���D���}��{�oV{nn@�!�mS�����!�fd7݇�!�����C�r��1R2&lt;_K5��a���m����HO����BzuRI�G�(�Q�^��94o`�ܒ�}���q�߁��a]���o7��|�)�
+&amp;��j�t�dAįt	���U��&gt;&gt;խh!@��
+����]镸Z�G��X�Sp㈯�J�&gt;w��wsK}�ew����U������Q�A�S�.rF���n�b+��p�p�!ܠZ���j C���$�I�/�&#39;sӀ�d����pn�\�#_�8�}�ꕏ�ɍ��L�-={פ���d�U�)�[�FJ{��n��ɐa��oč�RswM�&amp;��A�#���%�F��D��q���&gt;Z���R=��pw��H=I������m2 ��ױ�X��{�����0$ϥ͗#���^��=�W�k�3�6:HعQ�����d�;�;�6*��DIh�OD)�
+�#��[�@&#39;��	#���c�` 4�0.�~(Vִ���!0�/l��ԛ��~���?7~@����tI��:�=�U%?_��
+G�
+��.y�t�目� ��ް.�����QN��&#39;�w�r��WN��ʉ;_9q�+w�3�����%�p�O(&#39;�|����g�#c    IEND�B`�</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://mission-transition-ecologique.beta.gouv.fr/images/logos/bpi-france.svg">https://mission-transition-ecologique.beta.gouv.fr/images/logos/bpi-france.svg</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">iVBORw0KGgoAAAANSUhEUgAAAlgAAAEsCAMAAAFf5A0yAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBNYWNpbnRvc2giIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6NTE3REUwRjNBNDcxMTFFMkI1QjZFMjQ1NTgyRjVFREYiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6NTE3REUwRjRBNDcxMTFFMkI1QjZFMjQ1NTgyRjVFREYiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo1MTdERTBGMUE0NzExMUUyQjVCNkUyNDU1ODJGNUVERiIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo1MTdERTBGMkE0NzExMUUyQjVCNkUyNDU1ODJGNUVERiIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PgIFOWcAAABLUExURf/NAP/rmXdtY//hZaCZkszJxP/zxP/ZP//54v/TIOzq6f/87392bPX084+Hfv/////+9/j49/7+/bizrvv7+/7OCv/RFNvZ1vDv7tpMLM0AABOUSURBVHja7NTbDoMgDADQUlCW7IGFqP//qesF2DCBZJPtCRJSG/XYoghh3IBpTWtav7IQL1hY380Z0BhhyWn4vi7H0Tm3SGDLexGpPhOCp3HjSyzAXR4FbYtLi0RyhdrjcaQbQEXJ5NBqaPdITpSAyeJpcr9QpjwmZW0L2Voqaw2rFvRuhVTlx1Zp7GR136Ou16nHhvXoW2nt8bX22ap6DCVtrf1GgwJZm6adb8nsloPfTXcPxfzJxuv7MVsA4/b2SGv+V6c1rT9bTwHYr4MVCEEgAMOuRuYll0T3/d90HWdWwzRk6xLMoTz1q5DwyS1ucesJLXnR0YfWBUcfGfC/oyeHjJ5wiC2PjPZYjYxWu0kWAHCv5aRc47CSNuGTEF/GKhAreTeNW6KcNn1HpweUn1seJqelqEJNbbOmB1qfX2vOpty1XsXR4y2RWqJcDrAVWkCrWq7eY7OlhkyOS5OyalV7tPkqI3zf0Rv+GomtiGrbdrAxcMdagn6fniFq2fmG80gtcaN9NTuaW9x6cOsrAHvmtsMgCANQjJdpZgZjLvv/Px1FpEWYETMvD+WlAoonpQVK/zkWYzEWYzEWYzHWfljmjF6fguVChYXOJzwV8zDoTCzo/Uiby5lSKZfAwvjbRJSHY9kC4bvGKmUWAhNXVIogX4SznO7doC0nLFYlBxB9iPX2v/DfFq7mWm2Kq7OxGVTHXk3eabKxNEk2mRiyCmA9VoODl5MOSoQlmjSGeAfZChHpMse2Qiy4VTBLQzCJBEvZBi2TWMq1kvnUY1HbsHqP9Yi1RbEoR1pbgkTbi+tKjm3VCduKsNpfWNachKLquiWvOVZ5ogw88RV5IrUtjfYSY829r1tyxVUr9DSJF9sTZ1hqnw0nG2sIsZzDXe4EUe6tLD4GMhZjMRZjMdbx5SsA+/a6nCAMRAEYhBIQBjKIad//SVtzkd0MEhMbS2cO/xhEv4ENCGcDFlhggQUWWGCBBRZYYIEF1j9iXeLbZt/Amp9K9XKwziebZD7c6CYJZXoXnsC6pxh9cSjWhz1YRb7YIIVll55GS8dhVRkzlh3WWNdWNtZm+TKrtWk915mgEOKW7ZuoV1xJsfVCLxXJfEla5xKyeJaXmfNAfbAsktEVazAnyIC4h65XmtQ19KNRrEvNomEdct4CKcZSSlWG0/98WTutYadmKfPb3eQC18a45JrINtG1tfAQlmaxAwl2+dmY7WpvM3OadtqtlUvfI2NOV/Kb2XCANXksQfoOJjrdtNyJrPdZA8/MSc6/zZpJ/ThWac5wR1ky0G8QYOnqWp5msd9yrMawmKB5J6tY6ybA0u0Z0vZBxLPGqJPI69hjdXx+dqCXKabkA6yWDz2PxW9VRVJ7xjZr2R+JPe9/8Fhc8hJrtG1tT163eNeKzypXSktdMunmM7Cbz+kcYj0aiXRzycZiCuuT3xPnae8q3+2yXCehKfY5gaVn9q/T+Y1ooRsfHX3/fz9fk5VSorQ7yrJTXSXTHzHe8EzxGyzZHJGVv/MnhTUXB+lI4qz2KCx/n2zNua+9GsmuwosksMACCyywwAILLLDAAgusv1q+BWDv3pYThIEwAJPGchCENIh9/zdtAYXdhSCBgWr5d3rjUEW+2ZzQjS/6toAFLGAhgAUsYAELWMBCAAtYwAIWsICFABawgAUsYAEL8bdYX6csO1lgzYhP8g32Y2CJb8v7pBWvPXtEqqJguxLLf4SVBs92XD0qVrt7bB33+kqy0Wigw9ikwGJR5nnZn3a6YvPwWDS6qp6qANaziNxYsVJa37dsNmHzQKt40VnC+slqrIWn9euqcB8svgVyG8OD/bTqymrhCBYrrdasvw9kqEdxVxoMQ7N3ajU/GvV1YaaSr7obVl0kf39/8w46sawcHNtC8OTGrtmJxbK089AyhbtNzyt98+82lzZDSzLpm3vUGzbn3aPLJFY16MVEjvDhoBJYv8lmSIFl21oNSxq2EwCb1hnvecuKPqukhaUCq58rNL/48BxryopcViix2NGR/c0ZiWInsV1tabI9Fv8ZBYHVFvMPDzqwQs5BO/zfTl6kncAiWWkK/isEzM4S87QO7Ztaa0bDfAqrpA1xCZZNXP24xOqfzIqg24O2sNY0f0UcuGIHrFP3+DrE6tvh5xIsuu1CpFZg0anEa2AVS7ECB5bml7wIazDKpWIk2HVSms1rhmd/LCv6ex+sidXB2kXWCqwrzZ0B1sesDt6BFQsOHyzjJnEPI1tjiVm5wOITLe9mGPBR3QdrMC0bW5Muy62FWF/fmcgkgnU95+L+1Yo+q76Dk/ph0c05krBdZEbtU+mAqJv/jvXWk9Lhgsax3LkUy7DE6scTa3TaodxD4h5YWXkha1eJWJ7t2Cp7JlbTaIaXHE1PSskdBqsC14o5FkvTZAusyZAd/H8MYL0iVuWV8IfGur3lPfe/wSIjtgFWvRh8xNiHzm/2AeHmWNN5V3mO0kfGut9ZKiywjhLAAhawgAUsYCGABSxgAQtYwEIAC1jAAhawgIUAFrCABax3ih8B2Lvj9lRBKAzgMRR1esNLQX3/T3pba8pBIMRpt3rPs382M/M31MPR7QALWMACFrCAhQAWsIAFLGABCwEsYAELWMACFgJYwAIWsIAFLASwgAUsYAELWAhgAQtYwAIWsBDAAhawgAUsYCGABSxgvQ9W2XX7E7BS4uhpBQmsQHgbZwLLfwx+vFtPVvWRPT46/z9eFpVZ1IDjfx5ZXS6W6iZdHKSs7T4CwBpjPx1ZtAMhsGLnLKc9BbA8V8Pu9j2zO4HVbd8Da5JndcNmx0Z6L5o6dEuypdO+K4a84Q26/Xa/lVoqM7vlzftixZuKAgtYK2D1107Zt0yiFt89t8X8i6WKdtb+bsddb4NVXOJQnu2Fh4LEgZRjTsPPzxSrqa4xTH/GtEs0pDt2Ze0Zr6z48vBcUYUJ9dXuuf9dV8Ma0qaTJ0knPSJvWE5S6m0DV2s7R3X7omkzdAvxtJhr6ABy23JbJiyzqdpyrAvX8baw8HXsO87A4jShZ1OROowVBbEH13TddjusYQJTxPobJmDxnQdLN2TnVAxrBBn6/zXcnU8Nq/Jhke5XxioPFshfB6s8dG4xJ4ilzTVIj0Z2/fTMsMmUW7tYxkzHlpLW1eOnOdJtVWY14WrnN5nKvhqWDgjpk/zpdMoMYvHp/Ge6Xe5wjFhS9fY4cyyvJ0KyJbu929hdk6m1sdSB9v4lWJbOOQlrHFjTT67c/r0N1dH0gOr9XZW1rV7TbW6QZ9GhVQQWdklYVfSDOzrOt4KetajI2CxQWJuVRDX5rLUAax/DOgQGWgBLR7Gc7u8OltNL21lYjZtqQ+ux9bFKchw6WGey8C5WsPXzJYlnLI7Vk6RJOe/Ex4XD6d307VfMnnQtwBo9DlMsSQrJeVii0t7sNTiyGjm9yFnVoGoXiGZ9LEXuQgSxukwstgt1fI6OLOG8k5K9Ul9f1unr/8X6yMLq9S4VqyU7Hakr7h6IJVfEUpaV5lUO1u7lsFgAi5O8fA5WJHsafgFNT0M9x2EYwFL0wPslrGE984DiH7ngFSHJHCxGXzAHS4bLCdXS2yS/kjqUU6xj2tUwgOXozMHqw6kmeyBWSeoOeXlWAMtE7eIjqwmettXslH2j6c6JDLu5WHoBlki4HOrNsejDHkVMcsuR5UwVvcdh5rMV+Vj0KHSwjolVh7vnrHY+Fg8ebf3CoZWN9cd55IpifSTWswJYgu7/LCwlvfd1WmcKZZXs63WxjufCrRwX1kKr6FzIHCxrfzUT9byRNVZHhxp1zb9fqxr3hlArqunh+qAbFp3Mw2KBiUkSFl1bk0k3nXLqebfFF2N9xm6FFTITK1ROScOyb3+410bPraGtsIphWuXB6s4yG8u7v8lY1nM6LpZim2Ap12JfWkuLycLjuNB5TFIlFf8ED+yxCRX/7Gtc3QQrC2yLkaWOdkg6Vx+xLi8Lr/nz1Mb4/EYses/zHulRs6oxRjcVF62i7yJ4ZbQxTcVqpVZJHaJRvMYfUQALWC+NJVgtFbBSsPiS0sibYfFlhaS3whpnaz2w7mFVT/p48iOwrLuADbDuYZlw9fItsU4/UUbO709+ht/oD8rnP7/5xlhiWswFVjBac33GAElpYjz5XEfif9EAC1jAAhawEMACFrCABSxgIYAFLGABC1jAQgALWMACFrCAhQAWsIAFLGABCwEsYAELWMACFgJYwAIWsIAFLASwgAUsYD1X/BOgvTPaThQGAqgxmoC4iFHQ///SFa0VYRIQgVZ6b8/Zh2oAzd1kmEwoXxYgFiAWIBYAYgFiAWIBIBYgFiAWAGIBYgFiASAWIBYgFgBiAWIBYgEgFiAWIBYAYgFiAWIBIBYgFiAWAGIBYgFiASAWIBYgFgBiAWIBYgEgFiAWIBYAYgFiAWIBIBYg1vDsN5vNka5FrCFZp8s76YnuRaxhOCyfWdPBiDXAFJgu66wcXTwrsf4dVo2fzdidvFo2OQSDrSgySmml7xiE+OVibbbNPh57XpLOuUz30lsTpYuFgEKIDxTr5H6HWCpe+EAsxOo6FdYnP7sIgFiIJXAUgvfndzibe5TK8+KCyTACsQTW9VM+WbWLpMBKG3d9ERDLjzs95sPVv3rIXjD5IdYbcu32+6OUZdBNr8gvINbbmKZXFgEQ6210M3DXCIBYb2MRa6Zi/fBHFTJYYbGcUTrOm4F+cvm9vWua35IV5T+xVhPEbInRtrid9nrevLDKuE6NFo9LLqweN7cyoVhPbNPDWlxtEdOc9aayoyfhzZUFymBqtLSs+kUbYeK8iaXy8GFynQgdWwSblD1dapmFb0p2xv8ZYu/9rdHeRoVO3MzEuqcENq+L5a22EsTabnbdxfr+jj2LPt3Euh6q3l9JvOiI9Y4+pu0YUn43sq3XmrkZilW6dXZ9xLomqtwIYjm9yBdvinXxI+op1k2QZl93O616zvSaTqe1ySzFuvT+uZ9Yl2HLDS6W8swZSpnbMKS+QhRlosw5VwZcYp+rrK9Yl7mxHqs11wyuE65p/DpOHhNnZpu6X65YGMRU9slilXPXcSN6c3BBsa4rfse1JOv6LbF0Ej0ouySz8v/oyvUZFTXDH8kt7cJiqfKkRsm+6/BwFd8vqXHih5ORNx3czOjZ7JPFcv4YOw2L9dXynAad7CFWXRDhPXHUJQYRzXHhl4PDWfXSGqNokQSSKJdR6WpP7l++av4/sDMQa/dPeHF17CDWzq1CNaLviyUMPEXHAETI6xdRN7HExabKapMJNW36cxt9mpNnZVSKXs28fEiCdBMqnAqJtXNpYDZ8W6wsXvQPP2xInaBYTsxGaP9VxdXg3soHDgdSzVfzKPt8sRq7aaoRfFAsUZ7jUGKZ/I1lah06fMuIJTW2Xzepwu1ENXrzTGsm/En06EPWz4glDVnrYxexpCHrMLlY1+uJlNZxnHfKjLWJJdyLft/f2VDwJjUtWwrmxBVyr8ifLZZQ6/kdZYXFkga7dGqxEmU7ZQ0eufw2sYxfrCgPF5EZq+sk7sX0xmzEkuxJO02FjSLR67rNlGJFtnNfDSKW6VOdGC0Qqx4qtYglJSu+jjyFWOqVvhpELJX3EMsg1hBifYVn44slFs0v4rKowemxxOpzpyp8ktyG0dlcxXLTi6WeF+XaxDKhLWN6uqlQtw4uQmAWT1sO90NipUvvTq0+YvWdClXyyogVSfdSWTayWEKOK+6VVTN/QKz91p806BG8n3aTiCXdwmfB1NAQYgkHztsdUePn1n+jWKGSvBaxpEl0P4lYkhx6N75Ypo8jwuhaRPMX6+CfCVvEEtcZd5OIJc2EagKxxG1rrZG2sOxpZy/WJlRDHBbr4E9jzVYsoXH7ZCgVamg3b7GkvPu6U3WDOIcedtOIJS1R2ynEErMcrSkHqVGczFms8zb4UJiQWIflsGUzLwbvwSFrRLHE6oe8beuFuIFDzFa5Dxfr1vtpSx2oV6z9YRl+TtHYYklD1sKaCcTy1FXHTbeMih9jmbg9J29WwF4a6exzxdqmqVwJnz49vUOqXfa1fC6XH1ssf+V6nudFPqpY4rXd3me1Vkprey9ZqFYB+nadFWUjXWn0yRWkvq0UtR1gL2ymqDUdXSzPGDDuWuEjNVV0PGt1kuvaaHZiHerPGuos1nZdf6LMBGKJS4ITidW1sKKW5Ir0XxNruzpJDxvqItZqfXbNiHMKsS5qZcrmPyPWVZPiRbEu31OiW8uzrPsMsfbrEKfNv53zfRKpVOu74em897c8C6faV0PUBrUwNmm+Q3lu0DMXGSMc8YlKqkJ4tbr7JxJe9323WWa0rHZe7nb0bWw2yopO5rFVZvik/O/7AwItSzqfxYgX7rJd9rUtMkncCydK7q0+8aEgiPXXQSxALECsHxMr+npWmtUJvYtYA4mVPd8t8SRIxBpErGbZpGESRay3xZK2ZmEWYr0rllgmYhELsd4US9z9G/NnlxDLL1anv0nv4ikWV+FTxZLWArvNZ+Fnn8FfF6s/jTJvmzATItYQPD1/2kaO0B2xhiJR2l5+yodnoxViAWIBIBYgFiAWAGIBYgFiASAWIBYgFgBiAWIBYgEgFiAWIBYAYgFiAWIBIBYgFiAWAGIBYgFiASAWIBYgFgBiAWIBYgEgFiAWIBYAYgFiAWIBYgEgFiAWIBYAYgFiAWIBIBYgFvxR/gN7koS7P+docwAAAABJRU5ErkJggg==</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">�PNG
+
+   IHDR  X  ,  _�2   tEXtSoftware Adobe ImageReadyq�e&lt;  &quot;iTXtXML:com.adobe.xmp     &lt;?xpacket begin=&quot;﻿&quot; id=&quot;W5M0MpCehiHzreSzNTczkc9d&quot;?&gt; &lt;x:xmpmeta xmlns:x=&quot;adobe:ns:meta/&quot; x:xmptk=&quot;Adobe XMP Core 5.0-c060 61.134777, 2010/02/12-17:32:00        &quot;&gt; &lt;rdf:RDF xmlns:rdf=&quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#&quot;&gt; &lt;rdf:Description rdf:about=&quot;&quot; xmlns:xmp=&quot;http://ns.adobe.com/xap/1.0/&quot; xmlns:xmpMM=&quot;http://ns.adobe.com/xap/1.0/mm/&quot; xmlns:stRef=&quot;http://ns.adobe.com/xap/1.0/sType/ResourceRef#&quot; xmp:CreatorTool=&quot;Adobe Photoshop CS5 Macintosh&quot; xmpMM:InstanceID=&quot;xmp.iid:517DE0F3A47111E2B5B6E245582F5EDF&quot; xmpMM:DocumentID=&quot;xmp.did:517DE0F4A47111E2B5B6E245582F5EDF&quot;&gt; &lt;xmpMM:DerivedFrom stRef:instanceID=&quot;xmp.iid:517DE0F1A47111E2B5B6E245582F5EDF&quot; stRef:documentID=&quot;xmp.did:517DE0F2A47111E2B5B6E245582F5EDF&quot;/&gt; &lt;/rdf:Description&gt; &lt;/rdf:RDF&gt; &lt;/x:xmpmeta&gt; &lt;?xpacket end=&quot;r&quot;?&gt;9g   KPLTE�� ��wmc��e�����������?����� ������vl���~��������������������
+���������L,�  �IDATx�����  �RP�쁅������0�d��	R�آa܀iMkZ��/XX���a�i��.��9�H`�{�&gt;��q�K,�]m�K�Dr���q�@E���jh�HN����ir�P�&lt;&amp;em�Z*k��n�T��Vi�duߣ�שǆ��[i���٪z%m��F�Y���o�얃�Mw������1[ ���Hk�W�5�?[Oد�A  îF�%�D���tgV�4d�̡&lt;�����-nq�	-y�ч�G�&#39;���p�-���X��V�I p��\㰒6�_�*+y7�[��6}G���[&amp;���BMm��Z�_kΦܵ^���-�Z�\�Z@�Z��c���L�K��jU{��*#|������j�v�1p�Z�~��!j����H-q�}5;�[�zp�+ {�� P��ifc.��?E�E�3/��&#39;�J�9c1c1c1�~X�^���B���&#39;&lt;�0�L,��H�˙R)�����D��c���*eWT� _����ݠ-&#39;,V%}��������Zm����T�^M�i��4I6��
+`=V����J�%�4�x�
+�2ǶB,�U0KC0�K�-�Xʵ���cQ۰z����E�(GZ[�Dۋ�J�m�	ۊ��_X֜���%�9Vy�&lt;�y&quot;�-��cͽ�[r�U+�4��gXj�&#39;k���]�Q�,&gt;2c1c1���+ ���� D�2�i��I[s��Kg�D��gX`�X`�X`��?b]��f����J�r��&#39;�d&gt;��&amp;	ez����}q(և=XE�� �e��FK�aU3��X�V6�f�2��i=י��훨W\I��B/�|IZ��x����@}�,��k0&#39;Ȁ���W��5��Q�K͢ar�)�RJU���|Y;�a�f)�����Ƹ��6ѵ���f�	v�٘�jo3s�vڭ�K�#cNW��p�5y,A�&amp;:ݴ܉��Y��Iο͚I�8Vi�pGY2�o`��Z�f��r�ư��y&#39;�X�&amp;�����Aĳƨ����cu|~v��)����=��oUER{�6k��=��X\�k�mmO^�x׊�*WJK]2��3����b=�ts��b
+���i�*��\&#39;�)�9��g�����h�}�?_��R��;ʲS]%�1��L�,�����&#39;�5�H��(,�l͹��ɮ$��,��,����Z�`�ޖ��0 ��r�4�}�7m�݅ ��j�wz�PE�ٜЍ/���,`!�,`X�B X���� ��,`�X_�,;Y`͈O��c`�o����={D��`�����v\=*V�{l��J��h��ؤ�bQ�yٟv�b��X4���� ֳ��X�RZ߷l6a�@�x�Y���j�����p,�rÃ����j�+�֬�d�GqWC�wj5?�ua����V]$�:���B��ƮىŲ���2��M�+}��6�6CK2�{�6�ݣ�$V5��D���X��fH�e�ZK� ���yˊ&gt;������+4���kʊ\V(��ё���b&#39;�]mi�=����:�B�A;��N^���&quot;Yi
+�+����ZkF�|
+��q	�M\����̊�ۃ���4E�b�S��:�����,��B�V`ѩ�k`K��旼k0ʥb$�uR��k�g,+�{�����E�
+�+͝�Ǭށ,�&amp;q#[c�Y���-�f�Q�k0-[�.˭�X_ߙ�$�u=���Պ&gt;�����a��9��]dF�S逨����֓��Ʊܹ˰���ktڡ�C�XYy!kW�X���*{&amp;V�h��MOJ��׊9K�d�ɐ�`�&quot;V���ƺ��=���&quot;#�V�|�؇�o���X�yWy��Gƺ�Y*,�����,`!�,`X�B X���� ���w�ػ��TA(�1uz�KA}�Oz[k�A �i�zϳ63�7���� X���� ��,`,`X�X���,��,`X`X�����,`!�,`�V�u��R��i	�@xg�~�[OV��=&gt;:�?^�YԀ�Y].��&amp;]���&gt;�c?Y�!�b�,�=�&lt;W���=�;��m�k�gu�f�Fz/�:tK��Ӿ+�����v��Z*3����bś�X+`��NٷL��=������v��n�]o�U\�P�텇�ā�cN������1LƴK4�;ve������\Q�	����]W�Ҧ�&#39;I&#39;=&quot;oXNR�mWk;Gu��i3t�k� r�r[&amp;,���r����u�;���4�gS�:���t�v;�aS��&amp;`�K7d�Tk��5ܝO��a��W�*�_�&lt;tn1&#39;���5H�Fv��̰ɔ[�X�Lǖ����9�mUf5�j�7�ʾ����t�b���g�]�p�XR��8s,�&#39;B�%����]����ԁ��%X��9	kX�O���������]���^�mn�gѡUvIXU�;:η������,PX��D5��� k�:Z KG������K�YX��jC���Jr:Xg��.V���%�g,�Փ�I9��ǅ�����W̞t-�=S,I
+�yX����58�9��Yՠj�f},E�B��L,�u|��,ἓ��R__����������.�%;�+��%W�R���U���X ���|V${~MOC=�a�R���%�a=����!�,F_0K��	���$��:�S�c��0������é&amp;{ VI�yyV �D��#�	����}��Ή��Xz�H��ͱ��ELrˑ�L��a��X�(t���U���v&gt;m�¡����y�b}$ֳX���,,%��uZg
+e���u���­�B��\�,k5���5VG�uͿ_���P+��������b��I][�I7�r�y��c}�n�2+TNIòo��Fϭ����aZ����2˻��X�s:.�b�`)�b_ZK�����yLR%��	��k\�+l����vH:W�./�������F,z���Q��1F7���&quot;xe�1M�j�VI�Q��Q X/�%X-�R����ța�e����gk=��aUO�x�#������a�p��-�N?QF��O~�����?���XbZ�V0Zs}� Iib&lt;�\G�� X�����,`!�,`X�B X���� ��,`,`X�X���,��,`=W���3�N�1����Q�����a�Vzo�هj ��d�L(_    bbb    bbb    bbb    bbb    bbb    bbb    bbb  ���7�͑�E�!Y��;��E�a8,�Y���5��.�]&lt;+��V���؝�Z69��(2Ji�����bm��&gt;{^�ιL��[����B���~�X*^�@,��:�&#39;?��X�%p���w8�{�����0���S&gt;Y����Jw}ˏ;=��տz�^0�!�r�����e�M��/ �ۘ�W�mt3p��Xock�b��G2Xa��Q:Λ�~r���k�ߒ�?�V�l�Ѷ���z޼�ʸN��K.�7�2�XOl��Z\mӜ����&#39;�͕�`j����Ea⼉���ar�[��=]j��oJv��b�����F�N��ĺ�6��孶��nv�����=�&gt;�ĺ��_I����&gt;��R~7��ך��U�uv}ĺ&amp;��b9��o�u�#�)�M�f_w;�z���N���,ź����X�a�.���J��0��Be��9W\b����X����5���i�:Ngf��_�X�T��b�s�q#zspA��+~ǵ$��-�t=(�$������5��-��b��Fɾ��p�/�q⇓�7������r�;������!V]�=q�%�qᗃ�Y���h��(�Q�jO�_�j�?�3k�Oxqu� �έB5��%&lt;E� D��Q7��Ŧ�j�	5m�s}��geT�^ͼ|H�t*�
+��si`6|[�,^�?lH��XN�Fh�U�����R�W�(�|��i�|P,Q��Pb���ej:|ˈ%5�_7���D5z�Lk&amp;�I��C�ψ%Y�c��!�0�X�뉔�q�wʌ��%܋~���P�&amp;5-[
+��r�ȟ-�P��e�Œ�tj�e;e��6��_�(���$����lĒ�I;M��&quot;��͔bE�s_&quot;��S�-�*��%%+��&lt;�XꕾD,��� �b}�g�%�/Ⲩ����s�*|�܆��\�rӋ�����2�-cz��P�.B`O[�Cb�K�N�&gt;b��
+U�ʈI�RY6�XB�+�U3@��֟4���v��%��g���b	��Q����X�����It?�X�z7�X��#��ZD����	[��w��%̈́j��mk�����ig/�&amp;TC��Oc�V,�q�d(jh7o�����Su�8�vӈ%-Q�)���)�Q��Y��6�P��X��e3/��!kD��ꇼm노�C�V����iK�W��a~N��bIC�	���U�M���c��=&#39;oV�^��s�ڦ�\	�&gt;=�C�]��|.�[,�z��E&gt;�X���g�VJk{/Y�V�v�e#]i������`/l��5],�0�Z�#5Ut&lt;ku���hvb���,�v]��b�K��յ�����_k�:I�&quot;�j}v͈s
+�.je��?#�U��E�.�S�[˳������Ϳ��}�T�����&lt;��WC��06i�Cyn�3#�J�Bx���&#39;^�}�Yf��v^�v�ml6ʊN�Uf�����-K:�ň�]��-2I�&#39;J�&gt;� ���A,@,@�+�zV��	��X��=�-�$H�D�f٤aE��Œ�fab�+�X&amp;b��K���g��/V��I��)W�SŒ���g�g��_�?�2o�0&quot;�&lt;=�F����&quot;Q�^~ʇg�bb    bbb    bbb    bbb    bbb    bbb    bbbb    bbb  �Q�{���?�hs    IEND�B`�</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://mission-transition-ecologique.beta.gouv.fr/mentions-legales">https://mission-transition-ecologique.beta.gouv.fr/mentions-legales</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">nonce-2UGTV3zlDkNVF4WEGCy8cez1</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">���{�5w�P�5QxXA����</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://mission-transition-ecologique.beta.gouv.fr/questionnaire/">https://mission-transition-ecologique.beta.gouv.fr/questionnaire/</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">nonce-JWevmCqjeGiZhmTf23a54qdD</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">���{�Vz���7���fM��k�*t</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://mission-transition-ecologique.beta.gouv.fr/stats">https://mission-transition-ecologique.beta.gouv.fr/stats</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">nonce-jE6r4Irs7UQ48Yx5fVTEfbg5</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">���{������C�Ǘ�LGۃ</td>
+					</tr>
+				
+				<tr>
+					<td width="20%">Instances</td>
+					<td width="80%">11</td>
+				</tr>
+				<tr>
+					<td width="20%">Solution</td>
+					<td width="80%">
+							<div>Manually confirm that the Base64 data does not leak sensitive information, and that the data cannot be aggregated/used to exploit other vulnerabilities.</div>
+							
+						</td>
+				</tr>
+				<tr>
+					<td width="20%">Reference</td>
+					<td width="80%">
+							<a href="https://projects.webappsec.org/w/page/13246936/Information%20Leakage">https://projects.webappsec.org/w/page/13246936/Information%20Leakage</a>
+							
+						</td>
+				</tr>
+				<tr>
+					<td width="20%">CWE Id</td>
+					<td width="80%"><a
+						href="https://cwe.mitre.org/data/definitions/200.html">200</a></td>
+				</tr>
+				<tr>
+					<td width="20%">WASC Id</td>
+					<td width="80%">13</td>
+				</tr>
+				<tr>
+					<td width="20%">Plugin Id</td>
+					<td width="80%"><a
+						href="https://www.zaproxy.org/docs/alerts/10094/">10094</a></td>
+				</tr>
+			</table>
+			<div class="spacer"></div>
+		
+			<table class="results">
+				<tr height="24">
+					<th width="20%" class="risk-0"><a
+						id="10055"></a>
+						<div>Informational</div></th>
+					<th class="risk-0">CSP: Header &amp; Meta</th>
+				</tr>
+				<tr>
+					<td width="20%">Description</td>
+					<td width="80%">
+							<div>The message contained both CSP specified via header and via Meta tag. It was not possible to union these policies in order to perform an analysis. Therefore, they have been evaluated individually.</div>
+							
+						</td>
+				</tr>
+				<TR vAlign="top">
+					<TD colspan="2"></TD>
+				</TR>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://mission-transition-ecologique.beta.gouv.fr/">https://mission-transition-ecologique.beta.gouv.fr/</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
+					</tr>
+				
+				<tr>
+					<td width="20%">Instances</td>
+					<td width="80%">1</td>
+				</tr>
+				<tr>
+					<td width="20%">Solution</td>
+					<td width="80%">
+							<div>Ensure that your web server, application server, load balancer, etc. is properly configured to set the Content-Security-Policy header.</div>
+							
+						</td>
+				</tr>
+				<tr>
+					<td width="20%">Reference</td>
+					<td width="80%">
+							<a href="https://www.w3.org/TR/CSP/">https://www.w3.org/TR/CSP/</a>
+							<br />
+						
+							<a href="https://caniuse.com/#search=content+security+policy">https://caniuse.com/#search=content+security+policy</a>
+							<br />
+						
+							<a href="https://content-security-policy.com/">https://content-security-policy.com/</a>
+							<br />
+						
+							<a href="https://github.com/HtmlUnit/htmlunit-csp">https://github.com/HtmlUnit/htmlunit-csp</a>
+							<br />
+						
+							<a href="https://developers.google.com/web/fundamentals/security/csp#policy_applies_to_a_wide_variety_of_resources">https://developers.google.com/web/fundamentals/security/csp#policy_applies_to_a_wide_variety_of_resources</a>
+							
+						</td>
+				</tr>
+				<tr>
+					<td width="20%">CWE Id</td>
+					<td width="80%"><a
+						href="https://cwe.mitre.org/data/definitions/693.html">693</a></td>
+				</tr>
+				<tr>
+					<td width="20%">WASC Id</td>
+					<td width="80%">15</td>
+				</tr>
+				<tr>
+					<td width="20%">Plugin Id</td>
+					<td width="80%"><a
+						href="https://www.zaproxy.org/docs/alerts/10055/">10055</a></td>
+				</tr>
+			</table>
+			<div class="spacer"></div>
+		
+			<table class="results">
+				<tr height="24">
+					<th width="20%" class="risk-0"><a
+						id="10027"></a>
+						<div>Informational</div></th>
+					<th class="risk-0">Information Disclosure - Suspicious Comments</th>
+				</tr>
+				<tr>
+					<td width="20%">Description</td>
+					<td width="80%">
+							<div>The response appears to contain suspicious comments which may help an attacker. Note: Matches made within script blocks or files are against the entire content not only comments.</div>
+							
+						</td>
+				</tr>
+				<TR vAlign="top">
+					<TD colspan="2"></TD>
+				</TR>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://mission-transition-ecologique.beta.gouv.fr/">https://mission-transition-ecologique.beta.gouv.fr/</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">query</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">The following pattern was used: \bQUERY\b and was detected in the element starting with: &quot;&lt;script type=&quot;module&quot;&gt;import p from &quot;/_payload.js?036005f0-18ac-4fda-9648-7884a8f8c822&quot;;window.__NUXT__={...p,...((function(a,b,&quot;, see evidence field for the suspicious comment/snippet.</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://mission-transition-ecologique.beta.gouv.fr/_nuxt/CB8ReJGC.js">https://mission-transition-ecologique.beta.gouv.fr/_nuxt/CB8ReJGC.js</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">from</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">The following pattern was used: \bFROM\b and was detected in the element starting with: &quot;import{cO as o,bJ as t,aS as s,bI as d,cP as i,ba as f,b8 as b}from&quot;./BiU-k1ig.js&quot;;(function(){try{var e=typeof window&lt;&quot;u&quot;?windo&quot;, see evidence field for the suspicious comment/snippet.</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://mission-transition-ecologique.beta.gouv.fr/_nuxt/CDKryq6o.js">https://mission-transition-ecologique.beta.gouv.fr/_nuxt/CDKryq6o.js</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">from</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">The following pattern was used: \bFROM\b and was detected in the element starting with: &quot;import{cO as t,b8 as d}from&quot;./BiU-k1ig.js&quot;;(function(){try{var e=typeof window&lt;&quot;u&quot;?window:typeof global&lt;&quot;u&quot;?global:typeof self&lt;&quot;&quot;, see evidence field for the suspicious comment/snippet.</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://mission-transition-ecologique.beta.gouv.fr/_nuxt/CXe_zxF4.js">https://mission-transition-ecologique.beta.gouv.fr/_nuxt/CXe_zxF4.js</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">from</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">The following pattern was used: \bFROM\b and was detected in the element starting with: &quot;import{cO as c,bJ as t,aS as n,bk as d,cP as u,bm as i}from&quot;./BiU-k1ig.js&quot;;(function(){try{var e=typeof window&lt;&quot;u&quot;?window:typeof&quot;, see evidence field for the suspicious comment/snippet.</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://mission-transition-ecologique.beta.gouv.fr/_nuxt/HhRPsrTZ.js">https://mission-transition-ecologique.beta.gouv.fr/_nuxt/HhRPsrTZ.js</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">from</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">The following pattern was used: \bFROM\b and was detected in the element starting with: &quot;import{c2 as $,aC as v,aB as y,bJ as k,aW as n,aX as a,aY as e,cv as E,a_ as m,cs as w,bi as f,bn as b,aZ as g,bf as C,bu as S,b&quot;, see evidence field for the suspicious comment/snippet.</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://mission-transition-ecologique.beta.gouv.fr/accessibilite">https://mission-transition-ecologique.beta.gouv.fr/accessibilite</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">query</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">The following pattern was used: \bQUERY\b and was detected in the element starting with: &quot;&lt;script type=&quot;module&quot;&gt;import p from &quot;/accessibilite/_payload.js?036005f0-18ac-4fda-9648-7884a8f8c822&quot;;window.__NUXT__={...p,...(&quot;, see evidence field for the suspicious comment/snippet.</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://mission-transition-ecologique.beta.gouv.fr/ajouter-une-aide-entreprises">https://mission-transition-ecologique.beta.gouv.fr/ajouter-une-aide-entreprises</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">query</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">The following pattern was used: \bQUERY\b and was detected in the element starting with: &quot;&lt;script type=&quot;module&quot;&gt;import p from &quot;/ajouter-une-aide-entreprises/_payload.js?036005f0-18ac-4fda-9648-7884a8f8c822&quot;;window.__NU&quot;, see evidence field for the suspicious comment/snippet.</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://mission-transition-ecologique.beta.gouv.fr/budget">https://mission-transition-ecologique.beta.gouv.fr/budget</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">query</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">The following pattern was used: \bQUERY\b and was detected in the element starting with: &quot;&lt;script type=&quot;module&quot;&gt;import p from &quot;/budget/_payload.js?036005f0-18ac-4fda-9648-7884a8f8c822&quot;;window.__NUXT__={...p,...((functi&quot;, see evidence field for the suspicious comment/snippet.</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://mission-transition-ecologique.beta.gouv.fr/donnees-personnelles">https://mission-transition-ecologique.beta.gouv.fr/donnees-personnelles</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">query</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">The following pattern was used: \bQUERY\b and was detected in the element starting with: &quot;&lt;script nonce=&quot;cXVZpwfx2pFzsa/ixL/V1TkP&quot;&gt;window.__NUXT__=(function(a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z,A,B,C,D,E&quot;, see evidence field for the suspicious comment/snippet.</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://mission-transition-ecologique.beta.gouv.fr/mentions-legales">https://mission-transition-ecologique.beta.gouv.fr/mentions-legales</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">query</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">The following pattern was used: \bQUERY\b and was detected in the element starting with: &quot;&lt;script nonce=&quot;2UGTV3zlDkNVF4WEGCy8cez1&quot;&gt;window.__NUXT__=(function(a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z,A,B,C,D,E&quot;, see evidence field for the suspicious comment/snippet.</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://mission-transition-ecologique.beta.gouv.fr/stats">https://mission-transition-ecologique.beta.gouv.fr/stats</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">query</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">The following pattern was used: \bQUERY\b and was detected in the element starting with: &quot;&lt;script nonce=&quot;jE6r4Irs7UQ48Yx5fVTEfbg5&quot;&gt;window.__NUXT__=(function(a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z,A,B,C,D,E&quot;, see evidence field for the suspicious comment/snippet.</td>
+					</tr>
+				
+				<tr>
+					<td width="20%">Instances</td>
+					<td width="80%">11</td>
+				</tr>
+				<tr>
+					<td width="20%">Solution</td>
+					<td width="80%">
+							<div>Remove all comments that return information that may help an attacker and fix any underlying problems they refer to.</div>
+							
+						</td>
+				</tr>
+				<tr>
+					<td width="20%">Reference</td>
+					<td width="80%"></td>
+				</tr>
+				<tr>
+					<td width="20%">CWE Id</td>
+					<td width="80%"><a
+						href="https://cwe.mitre.org/data/definitions/200.html">200</a></td>
+				</tr>
+				<tr>
+					<td width="20%">WASC Id</td>
+					<td width="80%">13</td>
+				</tr>
+				<tr>
+					<td width="20%">Plugin Id</td>
+					<td width="80%"><a
+						href="https://www.zaproxy.org/docs/alerts/10027/">10027</a></td>
+				</tr>
+			</table>
+			<div class="spacer"></div>
+		
+			<table class="results">
+				<tr height="24">
+					<th width="20%" class="risk-0"><a
+						id="10109"></a>
+						<div>Informational</div></th>
+					<th class="risk-0">Modern Web Application</th>
+				</tr>
+				<tr>
+					<td width="20%">Description</td>
+					<td width="80%">
+							<div>The application appears to be a modern web application. If you need to explore it automatically then the Ajax Spider may well be more effective than the standard one.</div>
+							
+						</td>
+				</tr>
+				<TR vAlign="top">
+					<TD colspan="2"></TD>
+				</TR>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://mission-transition-ecologique.beta.gouv.fr/">https://mission-transition-ecologique.beta.gouv.fr/</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">&lt;a aria-current=&quot;page&quot; href=&quot;/&quot; class=&quot;router-link-active router-link-exact-active fr-btn fr-py-2v fr-px-4v&quot; target=&quot;_self&quot;&gt;&lt;!----&gt; Accueil &lt;!----&gt;&lt;/a&gt;</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">Links have been found with a target of &#39;_self&#39; - this is often used by modern frameworks to force a full page reload.</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://mission-transition-ecologique.beta.gouv.fr/accessibilite">https://mission-transition-ecologique.beta.gouv.fr/accessibilite</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">&lt;a href=&quot;/&quot; class=&quot;fr-btn fr-py-2v fr-px-4v&quot; target=&quot;_self&quot;&gt;&lt;!----&gt; Accueil &lt;!----&gt;&lt;/a&gt;</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">Links have been found with a target of &#39;_self&#39; - this is often used by modern frameworks to force a full page reload.</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://mission-transition-ecologique.beta.gouv.fr/aides-entreprise/accelerateur-decarbonation">https://mission-transition-ecologique.beta.gouv.fr/aides-entreprise/accelerateur-decarbonation</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">&lt;script&gt;!function(){const e=document.createElement(&quot;link&quot;).relList;if(!(e&amp;&amp;e.supports&amp;&amp;e.supports(&quot;modulepreload&quot;))){for(const e of document.querySelectorAll(&#39;link[rel=&quot;modulepreload&quot;]&#39;))r(e);new MutationObserver((e=&gt;{for(const o of e)if(&quot;childList&quot;===o.type)for(const e of o.addedNodes)&quot;LINK&quot;===e.tagName&amp;&amp;&quot;modulepreload&quot;===e.rel&amp;&amp;r(e)})).observe(document,{childList:!0,subtree:!0})}function r(e){if(e.ep)return;e.ep=!0;const r=function(e){const r={};return e.integrity&amp;&amp;(r.integrity=e.integrity),e.referrerPolicy&amp;&amp;(r.referrerPolicy=e.referrerPolicy),&quot;use-credentials&quot;===e.crossOrigin?r.credentials=&quot;include&quot;:&quot;anonymous&quot;===e.crossOrigin?r.credentials=&quot;omit&quot;:r.credentials=&quot;same-origin&quot;,r}(e);fetch(e.href,r)}}();&lt;/script&gt;</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">No links have been found while there are scripts, which is an indication that this is a modern web application.</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://mission-transition-ecologique.beta.gouv.fr/ajouter-une-aide-entreprises">https://mission-transition-ecologique.beta.gouv.fr/ajouter-une-aide-entreprises</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">&lt;a href=&quot;/&quot; class=&quot;fr-btn fr-py-2v fr-px-4v&quot; target=&quot;_self&quot;&gt;&lt;!----&gt; Accueil &lt;!----&gt;&lt;/a&gt;</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">Links have been found with a target of &#39;_self&#39; - this is often used by modern frameworks to force a full page reload.</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://mission-transition-ecologique.beta.gouv.fr/budget">https://mission-transition-ecologique.beta.gouv.fr/budget</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">&lt;a href=&quot;/&quot; class=&quot;fr-btn fr-py-2v fr-px-4v&quot; target=&quot;_self&quot;&gt;&lt;!----&gt; Accueil &lt;!----&gt;&lt;/a&gt;</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">Links have been found with a target of &#39;_self&#39; - this is often used by modern frameworks to force a full page reload.</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://mission-transition-ecologique.beta.gouv.fr/donnees-personnelles">https://mission-transition-ecologique.beta.gouv.fr/donnees-personnelles</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">&lt;a href=&quot;/&quot; class=&quot;fr-btn fr-py-2v fr-px-4v&quot; target=&quot;_self&quot;&gt;&lt;!----&gt; Accueil &lt;!----&gt;&lt;/a&gt;</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">Links have been found with a target of &#39;_self&#39; - this is often used by modern frameworks to force a full page reload.</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://mission-transition-ecologique.beta.gouv.fr/mentions-legales">https://mission-transition-ecologique.beta.gouv.fr/mentions-legales</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">&lt;a href=&quot;/&quot; class=&quot;fr-btn fr-py-2v fr-px-4v&quot; target=&quot;_self&quot;&gt;&lt;!----&gt; Accueil &lt;!----&gt;&lt;/a&gt;</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">Links have been found with a target of &#39;_self&#39; - this is often used by modern frameworks to force a full page reload.</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://mission-transition-ecologique.beta.gouv.fr/projets-entreprise">https://mission-transition-ecologique.beta.gouv.fr/projets-entreprise</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">&lt;a href=&quot;/&quot; class=&quot;fr-btn fr-py-2v fr-px-4v&quot; target=&quot;_self&quot;&gt;&lt;!----&gt; Accueil &lt;!----&gt;&lt;/a&gt;</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">Links have been found with a target of &#39;_self&#39; - this is often used by modern frameworks to force a full page reload.</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://mission-transition-ecologique.beta.gouv.fr/questionnaire">https://mission-transition-ecologique.beta.gouv.fr/questionnaire</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">&lt;a href=&quot;/&quot; class=&quot;fr-btn fr-py-2v fr-px-4v&quot; target=&quot;_self&quot;&gt;&lt;!----&gt; Accueil &lt;!----&gt;&lt;/a&gt;</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">Links have been found with a target of &#39;_self&#39; - this is often used by modern frameworks to force a full page reload.</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://mission-transition-ecologique.beta.gouv.fr/questionnaire/">https://mission-transition-ecologique.beta.gouv.fr/questionnaire/</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">&lt;a href=&quot;/&quot; class=&quot;fr-btn fr-py-2v fr-px-4v&quot; target=&quot;_self&quot;&gt;&lt;!----&gt; Accueil &lt;!----&gt;&lt;/a&gt;</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">Links have been found with a target of &#39;_self&#39; - this is often used by modern frameworks to force a full page reload.</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://mission-transition-ecologique.beta.gouv.fr/stats">https://mission-transition-ecologique.beta.gouv.fr/stats</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">&lt;a href=&quot;/&quot; class=&quot;fr-btn fr-py-2v fr-px-4v&quot; target=&quot;_self&quot;&gt;&lt;!----&gt; Accueil &lt;!----&gt;&lt;/a&gt;</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">Links have been found with a target of &#39;_self&#39; - this is often used by modern frameworks to force a full page reload.</td>
+					</tr>
+				
+				<tr>
+					<td width="20%">Instances</td>
+					<td width="80%">11</td>
+				</tr>
+				<tr>
+					<td width="20%">Solution</td>
+					<td width="80%">
+							<div>This is an informational alert and so no changes are required.</div>
+							
+						</td>
+				</tr>
+				<tr>
+					<td width="20%">Reference</td>
+					<td width="80%"></td>
+				</tr>
+				<tr>
+					<td width="20%">CWE Id</td>
+					<td width="80%"></td>
+				</tr>
+				<tr>
+					<td width="20%">WASC Id</td>
+					<td width="80%"></td>
+				</tr>
+				<tr>
+					<td width="20%">Plugin Id</td>
+					<td width="80%"><a
+						href="https://www.zaproxy.org/docs/alerts/10109/">10109</a></td>
+				</tr>
+			</table>
+			<div class="spacer"></div>
+		
+			<table class="results">
+				<tr height="24">
+					<th width="20%" class="risk-0"><a
+						id="10015"></a>
+						<div>Informational</div></th>
+					<th class="risk-0">Re-examine Cache-control Directives</th>
+				</tr>
+				<tr>
+					<td width="20%">Description</td>
+					<td width="80%">
+							<div>The cache-control header has not been set properly or is missing, allowing the browser and proxies to cache content. For static assets like css, js, or image files this might be intended, however, the resources should be reviewed to ensure that no sensitive content will be cached.</div>
+							
+						</td>
+				</tr>
+				<TR vAlign="top">
+					<TD colspan="2"></TD>
+				</TR>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://mission-transition-ecologique.beta.gouv.fr/">https://mission-transition-ecologique.beta.gouv.fr/</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%">cache-control</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://mission-transition-ecologique.beta.gouv.fr/accessibilite">https://mission-transition-ecologique.beta.gouv.fr/accessibilite</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%">cache-control</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://mission-transition-ecologique.beta.gouv.fr/ajouter-une-aide-entreprises">https://mission-transition-ecologique.beta.gouv.fr/ajouter-une-aide-entreprises</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%">cache-control</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://mission-transition-ecologique.beta.gouv.fr/api/health">https://mission-transition-ecologique.beta.gouv.fr/api/health</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%">cache-control</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://mission-transition-ecologique.beta.gouv.fr/budget">https://mission-transition-ecologique.beta.gouv.fr/budget</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%">cache-control</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://mission-transition-ecologique.beta.gouv.fr/donnees-personnelles">https://mission-transition-ecologique.beta.gouv.fr/donnees-personnelles</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%">cache-control</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://mission-transition-ecologique.beta.gouv.fr/mentions-legales">https://mission-transition-ecologique.beta.gouv.fr/mentions-legales</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%">cache-control</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://mission-transition-ecologique.beta.gouv.fr/robots.txt">https://mission-transition-ecologique.beta.gouv.fr/robots.txt</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%">cache-control</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">max-age=14400, must-revalidate</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://mission-transition-ecologique.beta.gouv.fr/sitemap.xml">https://mission-transition-ecologique.beta.gouv.fr/sitemap.xml</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%">cache-control</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">s-maxage=2678400, stale-while-revalidate</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://mission-transition-ecologique.beta.gouv.fr/stats">https://mission-transition-ecologique.beta.gouv.fr/stats</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%">cache-control</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">s-maxage=86400, stale-while-revalidate</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
+					</tr>
+				
+				<tr>
+					<td width="20%">Instances</td>
+					<td width="80%">10</td>
+				</tr>
+				<tr>
+					<td width="20%">Solution</td>
+					<td width="80%">
+							<div>For secure content, ensure the cache-control HTTP header is set with &quot;no-cache, no-store, must-revalidate&quot;. If an asset should be cached consider setting the directives &quot;public, max-age, immutable&quot;.</div>
+							
+						</td>
+				</tr>
+				<tr>
+					<td width="20%">Reference</td>
+					<td width="80%">
+							<a href="https://cheatsheetseries.owasp.org/cheatsheets/Session_Management_Cheat_Sheet.html#web-content-caching">https://cheatsheetseries.owasp.org/cheatsheets/Session_Management_Cheat_Sheet.html#web-content-caching</a>
+							<br />
+						
+							<a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cache-Control">https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cache-Control</a>
+							<br />
+						
+							<a href="https://grayduck.mn/2021/09/13/cache-control-recommendations/">https://grayduck.mn/2021/09/13/cache-control-recommendations/</a>
+							
+						</td>
+				</tr>
+				<tr>
+					<td width="20%">CWE Id</td>
+					<td width="80%"><a
+						href="https://cwe.mitre.org/data/definitions/525.html">525</a></td>
+				</tr>
+				<tr>
+					<td width="20%">WASC Id</td>
+					<td width="80%">13</td>
+				</tr>
+				<tr>
+					<td width="20%">Plugin Id</td>
+					<td width="80%"><a
+						href="https://www.zaproxy.org/docs/alerts/10015/">10015</a></td>
+				</tr>
+			</table>
+			<div class="spacer"></div>
+		
+			<table class="results">
+				<tr height="24">
+					<th width="20%" class="risk-0"><a
+						id="90005"></a>
+						<div>Informational</div></th>
+					<th class="risk-0">Sec-Fetch-Dest Header is Missing</th>
+				</tr>
+				<tr>
+					<td width="20%">Description</td>
+					<td width="80%">
+							<div>Specifies how and where the data would be used. For instance, if the value is audio, then the requested resource must be audio data and not any other type of resource.</div>
+							
+						</td>
+				</tr>
+				<TR vAlign="top">
+					<TD colspan="2"></TD>
+				</TR>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://mission-transition-ecologique.beta.gouv.fr/">https://mission-transition-ecologique.beta.gouv.fr/</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%">Sec-Fetch-Dest</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://mission-transition-ecologique.beta.gouv.fr/api/health">https://mission-transition-ecologique.beta.gouv.fr/api/health</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%">Sec-Fetch-Dest</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
+					</tr>
+				
+				<tr>
+					<td width="20%">Instances</td>
+					<td width="80%">2</td>
+				</tr>
+				<tr>
+					<td width="20%">Solution</td>
+					<td width="80%">
+							<div>Ensure that Sec-Fetch-Dest header is included in request headers.</div>
+							
+						</td>
+				</tr>
+				<tr>
+					<td width="20%">Reference</td>
+					<td width="80%">
+							<a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Dest">https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Dest</a>
+							
+						</td>
+				</tr>
+				<tr>
+					<td width="20%">CWE Id</td>
+					<td width="80%"><a
+						href="https://cwe.mitre.org/data/definitions/352.html">352</a></td>
+				</tr>
+				<tr>
+					<td width="20%">WASC Id</td>
+					<td width="80%">9</td>
+				</tr>
+				<tr>
+					<td width="20%">Plugin Id</td>
+					<td width="80%"><a
+						href="https://www.zaproxy.org/docs/alerts/90005/">90005</a></td>
+				</tr>
+			</table>
+			<div class="spacer"></div>
+		
+			<table class="results">
+				<tr height="24">
+					<th width="20%" class="risk-0"><a
+						id="90005"></a>
+						<div>Informational</div></th>
+					<th class="risk-0">Sec-Fetch-Mode Header is Missing</th>
+				</tr>
+				<tr>
+					<td width="20%">Description</td>
+					<td width="80%">
+							<div>Allows to differentiate between requests for navigating between HTML pages and requests for loading resources like images, audio etc.</div>
+							
+						</td>
+				</tr>
+				<TR vAlign="top">
+					<TD colspan="2"></TD>
+				</TR>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://mission-transition-ecologique.beta.gouv.fr/">https://mission-transition-ecologique.beta.gouv.fr/</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%">Sec-Fetch-Mode</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://mission-transition-ecologique.beta.gouv.fr/api/health">https://mission-transition-ecologique.beta.gouv.fr/api/health</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%">Sec-Fetch-Mode</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
+					</tr>
+				
+				<tr>
+					<td width="20%">Instances</td>
+					<td width="80%">2</td>
+				</tr>
+				<tr>
+					<td width="20%">Solution</td>
+					<td width="80%">
+							<div>Ensure that Sec-Fetch-Mode header is included in request headers.</div>
+							
+						</td>
+				</tr>
+				<tr>
+					<td width="20%">Reference</td>
+					<td width="80%">
+							<a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Mode">https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Mode</a>
+							
+						</td>
+				</tr>
+				<tr>
+					<td width="20%">CWE Id</td>
+					<td width="80%"><a
+						href="https://cwe.mitre.org/data/definitions/352.html">352</a></td>
+				</tr>
+				<tr>
+					<td width="20%">WASC Id</td>
+					<td width="80%">9</td>
+				</tr>
+				<tr>
+					<td width="20%">Plugin Id</td>
+					<td width="80%"><a
+						href="https://www.zaproxy.org/docs/alerts/90005/">90005</a></td>
+				</tr>
+			</table>
+			<div class="spacer"></div>
+		
+			<table class="results">
+				<tr height="24">
+					<th width="20%" class="risk-0"><a
+						id="90005"></a>
+						<div>Informational</div></th>
+					<th class="risk-0">Sec-Fetch-Site Header is Missing</th>
+				</tr>
+				<tr>
+					<td width="20%">Description</td>
+					<td width="80%">
+							<div>Specifies the relationship between request initiator&#39;s origin and target&#39;s origin.</div>
+							
+						</td>
+				</tr>
+				<TR vAlign="top">
+					<TD colspan="2"></TD>
+				</TR>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://mission-transition-ecologique.beta.gouv.fr/">https://mission-transition-ecologique.beta.gouv.fr/</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%">Sec-Fetch-Site</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://mission-transition-ecologique.beta.gouv.fr/api/health">https://mission-transition-ecologique.beta.gouv.fr/api/health</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%">Sec-Fetch-Site</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
+					</tr>
+				
+				<tr>
+					<td width="20%">Instances</td>
+					<td width="80%">2</td>
+				</tr>
+				<tr>
+					<td width="20%">Solution</td>
+					<td width="80%">
+							<div>Ensure that Sec-Fetch-Site header is included in request headers.</div>
+							
+						</td>
+				</tr>
+				<tr>
+					<td width="20%">Reference</td>
+					<td width="80%">
+							<a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Site">https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Site</a>
+							
+						</td>
+				</tr>
+				<tr>
+					<td width="20%">CWE Id</td>
+					<td width="80%"><a
+						href="https://cwe.mitre.org/data/definitions/352.html">352</a></td>
+				</tr>
+				<tr>
+					<td width="20%">WASC Id</td>
+					<td width="80%">9</td>
+				</tr>
+				<tr>
+					<td width="20%">Plugin Id</td>
+					<td width="80%"><a
+						href="https://www.zaproxy.org/docs/alerts/90005/">90005</a></td>
+				</tr>
+			</table>
+			<div class="spacer"></div>
+		
+			<table class="results">
+				<tr height="24">
+					<th width="20%" class="risk-0"><a
+						id="90005"></a>
+						<div>Informational</div></th>
+					<th class="risk-0">Sec-Fetch-User Header is Missing</th>
+				</tr>
+				<tr>
+					<td width="20%">Description</td>
+					<td width="80%">
+							<div>Specifies if a navigation request was initiated by a user.</div>
+							
+						</td>
+				</tr>
+				<TR vAlign="top">
+					<TD colspan="2"></TD>
+				</TR>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://mission-transition-ecologique.beta.gouv.fr/">https://mission-transition-ecologique.beta.gouv.fr/</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%">Sec-Fetch-User</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://mission-transition-ecologique.beta.gouv.fr/api/health">https://mission-transition-ecologique.beta.gouv.fr/api/health</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%">Sec-Fetch-User</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
+					</tr>
+				
+				<tr>
+					<td width="20%">Instances</td>
+					<td width="80%">2</td>
+				</tr>
+				<tr>
+					<td width="20%">Solution</td>
+					<td width="80%">
+							<div>Ensure that Sec-Fetch-User header is included in user initiated requests.</div>
+							
+						</td>
+				</tr>
+				<tr>
+					<td width="20%">Reference</td>
+					<td width="80%">
+							<a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-User">https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-User</a>
+							
+						</td>
+				</tr>
+				<tr>
+					<td width="20%">CWE Id</td>
+					<td width="80%"><a
+						href="https://cwe.mitre.org/data/definitions/352.html">352</a></td>
+				</tr>
+				<tr>
+					<td width="20%">WASC Id</td>
+					<td width="80%">9</td>
+				</tr>
+				<tr>
+					<td width="20%">Plugin Id</td>
+					<td width="80%"><a
+						href="https://www.zaproxy.org/docs/alerts/90005/">90005</a></td>
+				</tr>
+			</table>
+			<div class="spacer"></div>
+		
+			<table class="results">
+				<tr height="24">
+					<th width="20%" class="risk-0"><a
+						id="10049"></a>
+						<div>Informational</div></th>
+					<th class="risk-0">Storable and Cacheable Content</th>
+				</tr>
+				<tr>
+					<td width="20%">Description</td>
+					<td width="80%">
+							<div>The response contents are storable by caching components such as proxy servers, and may be retrieved directly from the cache, rather than from the origin server by the caching servers, in response to similar requests from other users. If the response data is sensitive, personal or user-specific, this may result in sensitive information being leaked. In some cases, this may even result in a user gaining complete control of the session of another user, depending on the configuration of the caching components in use in their environment. This is primarily an issue where &quot;shared&quot; caching servers such as &quot;proxy&quot; caches are configured on the local network. This configuration is typically found in corporate or educational environments, for instance.</div>
+							
+						</td>
+				</tr>
+				<TR vAlign="top">
+					<TD colspan="2"></TD>
+				</TR>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://mission-transition-ecologique.beta.gouv.fr/">https://mission-transition-ecologique.beta.gouv.fr/</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234.</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://mission-transition-ecologique.beta.gouv.fr/_payload.js?036005f0-18ac-4fda-9648-7884a8f8c822">https://mission-transition-ecologique.beta.gouv.fr/_payload.js?036005f0-18ac-4fda-9648-7884a8f8c822</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234.</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://mission-transition-ecologique.beta.gouv.fr/accessibilite">https://mission-transition-ecologique.beta.gouv.fr/accessibilite</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234.</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://mission-transition-ecologique.beta.gouv.fr/ajouter-une-aide-entreprises">https://mission-transition-ecologique.beta.gouv.fr/ajouter-une-aide-entreprises</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234.</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://mission-transition-ecologique.beta.gouv.fr/api">https://mission-transition-ecologique.beta.gouv.fr/api</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234.</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://mission-transition-ecologique.beta.gouv.fr/api/health">https://mission-transition-ecologique.beta.gouv.fr/api/health</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234.</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://mission-transition-ecologique.beta.gouv.fr/budget">https://mission-transition-ecologique.beta.gouv.fr/budget</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234.</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://mission-transition-ecologique.beta.gouv.fr/robots.txt">https://mission-transition-ecologique.beta.gouv.fr/robots.txt</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">max-age=14400</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://mission-transition-ecologique.beta.gouv.fr/sitemap.xml">https://mission-transition-ecologique.beta.gouv.fr/sitemap.xml</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">s-maxage=2678400</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://mission-transition-ecologique.beta.gouv.fr/stats">https://mission-transition-ecologique.beta.gouv.fr/stats</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">s-maxage=86400</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
+					</tr>
+				
+				<tr>
+					<td width="20%">Instances</td>
+					<td width="80%">10</td>
+				</tr>
+				<tr>
+					<td width="20%">Solution</td>
+					<td width="80%">
+							<div>Validate that the response does not contain sensitive, personal or user-specific information. If it does, consider the use of the following HTTP response headers, to limit, or prevent the content being stored and retrieved from the cache by another user:</div>
+							<br />
+						
+							<div>Cache-Control: no-cache, no-store, must-revalidate, private</div>
+							<br />
+						
+							<div>Pragma: no-cache</div>
+							<br />
+						
+							<div>Expires: 0</div>
+							<br />
+						
+							<div>This configuration directs both HTTP 1.0 and HTTP 1.1 compliant caching servers to not store the response, and to not retrieve the response (without validation) from the cache, in response to a similar request.</div>
+							
+						</td>
+				</tr>
+				<tr>
+					<td width="20%">Reference</td>
+					<td width="80%">
+							<a href="https://datatracker.ietf.org/doc/html/rfc7234">https://datatracker.ietf.org/doc/html/rfc7234</a>
+							<br />
+						
+							<a href="https://datatracker.ietf.org/doc/html/rfc7231">https://datatracker.ietf.org/doc/html/rfc7231</a>
+							<br />
+						
+							<a href="https://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html">https://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html</a>
+							
+						</td>
+				</tr>
+				<tr>
+					<td width="20%">CWE Id</td>
+					<td width="80%"><a
+						href="https://cwe.mitre.org/data/definitions/524.html">524</a></td>
+				</tr>
+				<tr>
+					<td width="20%">WASC Id</td>
+					<td width="80%">13</td>
+				</tr>
+				<tr>
+					<td width="20%">Plugin Id</td>
+					<td width="80%"><a
+						href="https://www.zaproxy.org/docs/alerts/10049/">10049</a></td>
+				</tr>
+			</table>
+			<div class="spacer"></div>
+		
+	
+
+	
+		
+			<h3>Sequence Details</h3>
+			<sup>With the associated active scan results.</sup>
+
+			
+
+			<div class="spacer-lg"></div>
+
+		
+	
+
+</body>
+</html>
+
