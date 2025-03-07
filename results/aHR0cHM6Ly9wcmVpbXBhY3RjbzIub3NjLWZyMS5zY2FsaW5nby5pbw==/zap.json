@@ -1,7 +1,7 @@
 {
 	"@programName": "ZAP",
 	"@version": "2.16.0",
-	"@generated": "Sun, 2 Mar 2025 02:04:46",
+	"@generated": "Fri, 7 Mar 2025 16:50:02",
 	"site":[ 
 		{
 			"@name": "https://preimpactco2.osc-fr1.scalingo.io",
@@ -9,6 +9,34 @@
 			"@port": "443",
 			"@ssl": "true",
 			"alerts": [ 
+				{
+					"pluginid": "10062",
+					"alertRef": "10062",
+					"alert": "PII Disclosure",
+					"name": "PII Disclosure",
+					"riskcode": "3",
+					"confidence": "3",
+					"riskdesc": "High (High)",
+					"desc": "<p>The response contains Personally Identifiable Information, such as CC number, SSN and similar sensitive data.</p>",
+					"instances":[ 
+						{
+							"id": "129",
+							"uri": "https://preimpactco2.osc-fr1.scalingo.io/doc/exemples",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "57293575785749",
+							"otherinfo": "Credit Card Type detected: Maestro\nBank Identification Number: 572935\nBrand: MAESTRO\nCategory: STANDARD\nIssuer: "
+						}
+					],
+					"count": "1",
+					"solution": "<p>Check the response for the potential presence of personally identifiable information (PII), ensure nothing sensitive is leaked by the application.</p>",
+					"otherinfo": "<p>Credit Card Type detected: Maestro</p><p>Bank Identification Number: 572935</p><p>Brand: MAESTRO</p><p>Category: STANDARD</p><p>Issuer: </p>",
+					"reference": "",
+					"cweid": "359",
+					"wascid": "13",
+					"sourceid": "116"
+				},
 				{
 					"pluginid": "10055",
 					"alertRef": "10055-4",
@@ -29,7 +57,7 @@
 							"otherinfo": "The following directives either allow wildcard sources (or ancestors), are not defined, or are overly broadly defined:\nstyle-src, img-src, frame-ancestors, font-src\n\nThe directive(s): frame-ancestors are among the directives that do not fallback to default-src, missing/excluding them is the same as allowing anything."
 						},
 						{
-							"id": "33",
+							"id": "38",
 							"uri": "https://preimpactco2.osc-fr1.scalingo.io/",
 							"method": "GET",
 							"param": "Content-Security-Policy",
@@ -38,16 +66,7 @@
 							"otherinfo": "The following directives either allow wildcard sources (or ancestors), are not defined, or are overly broadly defined:\nstyle-src, img-src, frame-ancestors, font-src\n\nThe directive(s): frame-ancestors are among the directives that do not fallback to default-src, missing/excluding them is the same as allowing anything."
 						},
 						{
-							"id": "61",
-							"uri": "https://preimpactco2.osc-fr1.scalingo.io/doc/exemples",
-							"method": "GET",
-							"param": "Content-Security-Policy",
-							"attack": "",
-							"evidence": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self' https: file:;img-src 'self' https: data:;object-src 'none';script-src 'self' 'unsafe-inline' https://stats.beta.gouv.fr/matomo.js https://stats.beta.gouv.fr/plugins/HeatmaSessionRecording/configs.php;script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests ;connect-src 'self' https://stats.beta.gouv.fr https://photon.komoot.io https://sentry.incubateur.net https://cdn.jsdelivr.net;frame-src 'self' https://cloud.contact.ademe.fr/impact-CO2-miniform https://cloud.contact.ademe.fr/impact-CO2-rdv",
-							"otherinfo": "The following directives either allow wildcard sources (or ancestors), are not defined, or are overly broadly defined:\nstyle-src, img-src, frame-ancestors, font-src\n\nThe directive(s): frame-ancestors are among the directives that do not fallback to default-src, missing/excluding them is the same as allowing anything."
-						},
-						{
-							"id": "58",
+							"id": "30",
 							"uri": "https://preimpactco2.osc-fr1.scalingo.io/rendez-vous?fromLabel=Accueil",
 							"method": "GET",
 							"param": "Content-Security-Policy",
@@ -56,7 +75,7 @@
 							"otherinfo": "The following directives either allow wildcard sources (or ancestors), are not defined, or are overly broadly defined:\nstyle-src, img-src, frame-ancestors, font-src\n\nThe directive(s): frame-ancestors are among the directives that do not fallback to default-src, missing/excluding them is the same as allowing anything."
 						}
 					],
-					"count": "4",
+					"count": "3",
 					"solution": "<p>Ensure that your web server, application server, load balancer, etc. is properly configured to set the Content-Security-Policy header.</p>",
 					"otherinfo": "<p>The following directives either allow wildcard sources (or ancestors), are not defined, or are overly broadly defined:</p><p>style-src, img-src, frame-ancestors, font-src</p><p></p><p>The directive(s): frame-ancestors are among the directives that do not fallback to default-src, missing/excluding them is the same as allowing anything.</p>",
 					"reference": "<p>https://www.w3.org/TR/CSP/</p><p>https://caniuse.com/#search=content+security+policy</p><p>https://content-security-policy.com/</p><p>https://github.com/HtmlUnit/htmlunit-csp</p><p>https://developers.google.com/web/fundamentals/security/csp#policy_applies_to_a_wide_variety_of_resources</p>",
@@ -84,7 +103,7 @@
 							"otherinfo": "script-src includes unsafe-inline."
 						},
 						{
-							"id": "34",
+							"id": "39",
 							"uri": "https://preimpactco2.osc-fr1.scalingo.io/",
 							"method": "GET",
 							"param": "Content-Security-Policy",
@@ -93,16 +112,7 @@
 							"otherinfo": "script-src includes unsafe-inline."
 						},
 						{
-							"id": "62",
-							"uri": "https://preimpactco2.osc-fr1.scalingo.io/doc/exemples",
-							"method": "GET",
-							"param": "Content-Security-Policy",
-							"attack": "",
-							"evidence": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self' https: file:;img-src 'self' https: data:;object-src 'none';script-src 'self' 'unsafe-inline' https://stats.beta.gouv.fr/matomo.js https://stats.beta.gouv.fr/plugins/HeatmaSessionRecording/configs.php;script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests ;connect-src 'self' https://stats.beta.gouv.fr https://photon.komoot.io https://sentry.incubateur.net https://cdn.jsdelivr.net;frame-src 'self' https://cloud.contact.ademe.fr/impact-CO2-miniform https://cloud.contact.ademe.fr/impact-CO2-rdv",
-							"otherinfo": "script-src includes unsafe-inline."
-						},
-						{
-							"id": "59",
+							"id": "32",
 							"uri": "https://preimpactco2.osc-fr1.scalingo.io/rendez-vous?fromLabel=Accueil",
 							"method": "GET",
 							"param": "Content-Security-Policy",
@@ -111,7 +121,7 @@
 							"otherinfo": "script-src includes unsafe-inline."
 						}
 					],
-					"count": "4",
+					"count": "3",
 					"solution": "<p>Ensure that your web server, application server, load balancer, etc. is properly configured to set the Content-Security-Policy header.</p>",
 					"otherinfo": "<p>script-src includes unsafe-inline.</p>",
 					"reference": "<p>https://www.w3.org/TR/CSP/</p><p>https://caniuse.com/#search=content+security+policy</p><p>https://content-security-policy.com/</p><p>https://github.com/HtmlUnit/htmlunit-csp</p><p>https://developers.google.com/web/fundamentals/security/csp#policy_applies_to_a_wide_variety_of_resources</p>",
@@ -139,7 +149,7 @@
 							"otherinfo": "style-src includes unsafe-inline."
 						},
 						{
-							"id": "35",
+							"id": "40",
 							"uri": "https://preimpactco2.osc-fr1.scalingo.io/",
 							"method": "GET",
 							"param": "Content-Security-Policy",
@@ -148,16 +158,7 @@
 							"otherinfo": "style-src includes unsafe-inline."
 						},
 						{
-							"id": "63",
-							"uri": "https://preimpactco2.osc-fr1.scalingo.io/doc/exemples",
-							"method": "GET",
-							"param": "Content-Security-Policy",
-							"attack": "",
-							"evidence": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self' https: file:;img-src 'self' https: data:;object-src 'none';script-src 'self' 'unsafe-inline' https://stats.beta.gouv.fr/matomo.js https://stats.beta.gouv.fr/plugins/HeatmaSessionRecording/configs.php;script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests ;connect-src 'self' https://stats.beta.gouv.fr https://photon.komoot.io https://sentry.incubateur.net https://cdn.jsdelivr.net;frame-src 'self' https://cloud.contact.ademe.fr/impact-CO2-miniform https://cloud.contact.ademe.fr/impact-CO2-rdv",
-							"otherinfo": "style-src includes unsafe-inline."
-						},
-						{
-							"id": "60",
+							"id": "33",
 							"uri": "https://preimpactco2.osc-fr1.scalingo.io/rendez-vous?fromLabel=Accueil",
 							"method": "GET",
 							"param": "Content-Security-Policy",
@@ -166,7 +167,7 @@
 							"otherinfo": "style-src includes unsafe-inline."
 						}
 					],
-					"count": "4",
+					"count": "3",
 					"solution": "<p>Ensure that your web server, application server, load balancer, etc. is properly configured to set the Content-Security-Policy header.</p>",
 					"otherinfo": "<p>style-src includes unsafe-inline.</p>",
 					"reference": "<p>https://www.w3.org/TR/CSP/</p><p>https://caniuse.com/#search=content+security+policy</p><p>https://content-security-policy.com/</p><p>https://github.com/HtmlUnit/htmlunit-csp</p><p>https://developers.google.com/web/fundamentals/security/csp#policy_applies_to_a_wide_variety_of_resources</p>",
@@ -185,79 +186,52 @@
 					"desc": "<p>The integrity attribute is missing on a script or link tag served by an external server. The integrity tag prevents an attacker who have gained access to this server from injecting a malicious content.</p>",
 					"instances":[ 
 						{
-							"id": "81",
+							"id": "56",
 							"uri": "https://preimpactco2.osc-fr1.scalingo.io",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "<link rel=\"preload\" as=\"image\" href=\"https://prod-files-secure.s3.us-west-2.amazonaws.com/a33bcf70-8792-422e-bd32-0327fc741a8b/5cfb3847-4fe0-4a0d-9f30-2cc9543eb7a0/makesense.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&amp;X-Amz-Credential=ASIAZI2LB466WGYULOWQ%2F20250302%2Fus-west-2%2Fs3%2Faws4_request&amp;X-Amz-Date=20250302T020253Z&amp;X-Amz-Expires=3600&amp;X-Amz-Security-Token=IQoJb3JpZ2luX2VjEHoaCXVzLXdlc3QtMiJGMEQCIDZWivYyEZ50GNxM2ltti5POkJPKay3XKnoXddHH%2BCbfAiAmbpijF2jfed%2B72UBBG01sXi3okKeaeWy4iJd29ZlSxSqIBAiz%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F8BEAAaDDYzNzQyMzE4MzgwNSIMs6NkA1eaonhMETpQKtwDJGEHuQxZ5ZOqlrKG8gVDszcUDjlR9DEv8O7Ex%2BxGB8cfD8E5bSm%2BQxYqTcZrWgkT05MvtrtRv2KvqwLfab%2FF%2Fhh7Iqs73d5TGyRNDssHLB9dhaMVAM2P%2FqOnEFQCT0SpW6RQIrgv%2FhkOpy0EWZh15kP6hB5bNLWJUjho7l1QbSt5iwDEbCsCa2MGrrLfq8gBii6xztsaJKfp2b%2FZ5363RT6Bcq6tjNlIIo12t7GKlSdVpaPtWHwCy0KJwFU6xiXOABGLlRBAAOkGVjhj1UFsKPuof7QIYd5rdjp%2B4oDZIk9g5%2BCHBbTB9KP2Ad3hyYw8ooyVjzZkBfmAnT%2BdN7yKkS34Y7sAJHP3XxwRe7JETIwdvOCs4szx65Cg4p%2BjKNBv9Wkzr9Qxyls4A4IMtloAN6sOSmfPG7RJs0dNFsPbBXh1bh3hmh1R9r%2FD6G5nD4b2U8S%2Fuijhz%2FBvjXZAEy7AxqDaIncooOhDBoT9mIvWSIOPcZ8h9mBGl2QRpLh0cxcCvC6CeuXh36E7W1Cu9G3lJNF5Wz%2FN18N3pHL1ZfTyyAdORTcMX6Xs6NcIPn0cM7FAVoh35b6RWXRIyC6h9dQazwGl9cKxdSOZq3nbZaqj%2B4th%2BKeTbgMy6NU3ucswrvaOvgY6pgHxaCeoemTROf4Q%2BtYESCR54%2BzucRSv7p4hCjwncORllZOAGOKdX60FgK145wKuV6F4BrpKBPBnuDPM0gH1G1D%2Fhrqq8vZ4i%2FegIm0avTQs12oKHUtTImg9zdvsmsRGZSYzGOXJ84YKou8kQlX5XW5YJch%2FE8EK6dHsYH4mNkpNLTiCqsmZviJUW7IIviltUa5d7313YxMv3epuA9Hl30gSeNLftUI7&amp;X-Amz-Signature=242895688849bac7cd6fac89327692c3245ffa0ae1922aa1d8dc9dbbbb8bd424&amp;X-Amz-SignedHeaders=host&amp;x-id=GetObject\"/>",
+							"evidence": "<link rel=\"preload\" as=\"image\" href=\"https://prod-files-secure.s3.us-west-2.amazonaws.com/a33bcf70-8792-422e-bd32-0327fc741a8b/5cfb3847-4fe0-4a0d-9f30-2cc9543eb7a0/makesense.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&amp;X-Amz-Credential=ASIAZI2LB466RTMHCJ56%2F20250307%2Fus-west-2%2Fs3%2Faws4_request&amp;X-Amz-Date=20250307T164758Z&amp;X-Amz-Expires=3600&amp;X-Amz-Security-Token=IQoJb3JpZ2luX2VjEAEaCXVzLXdlc3QtMiJGMEQCIEBiNIFn0eF2YZFpZSOKOhfLMcIoUUPOTBKQlrRQ7Je6AiBSRGVymSy6fT4Vsv%2FeeOw7hVoAxoX8D1W%2FpwkJ76WXCCr%2FAwhKEAAaDDYzNzQyMzE4MzgwNSIMjJUIj1BFgUMzURgDKtwDCDT84m0CD9pOsyrYZ5w8vyzNAyb1WxOvNCgsChdSagnQ1tFdlpKYf7SKSvMgnaDzqH4qP3cR%2B8MXA3hoxY8Sx96Tg7YuAPdjGYfWRLX7ns0F7BUGqz%2BmOd8afNebDvm0rNbvIkrxuRateGxrMrQVQ19UgD8J8amRvpR8rzb8Vyn3nJgrWq%2BufWRowena3Q6jDH8iYvCvZzdiJTx%2FClrH7wTdgtq%2B1tfqp13ojSPrvGBnvPzbfOiB99a5RXzCun9cXMvQB7VnSwjfanufvCAEsEReG3rRnqxwE5%2BxIlRi3beWph7rYyEyk9mX5waPkhcBhdTbHrNgxiIrHjfmHZubn12MucttI0EI5h%2F1ROVp%2BL5c20zUvUnEGmowyG%2Brfpu7ls%2FsrHkm074Z6pvbyor0zIrrsu1nVqt1snE%2F8NSVAkTvCqsajMRocmkyJvSQ013t6JEpnikrO9MO%2BoAIjk0pjujrYgAiHhF8edtqCr4MEMfr6wYiG6OS2MKyrqklgXmIFDhqbG%2Fzfqk%2F8aTmO6TWhjEDeEeUDQQKpMmwt1%2BAupVmhvREOQOHArcgzJ1FHnrpqrpAPHBeswG4Ld8PrrJw5fSjMeXfKTeIGP1avaYmzH7V27aaq9D8CfwFT9Iww8CsvgY6pgF7zMdkbf7RxEfzzx%2B1cGazCMRQoMK%2FeWvVgtai1uE4jv%2FADO7TSMABmvA%2BP4MH1l%2BCDEodX2NADKUQd02zx8OBn%2Bj9Q9pA6CngdTRwzz8nWsheObGeFuzzHEJJTOeSuSZeEZ6VcQ7qef88WKN8pEG60CUBAEpoRyKykVySbDvTpzAaAGGYxsaHnRV0Ch%2BHTDVGQf3M%2Fa6vL6d1mtWd4vuondp%2BxUjL&amp;X-Amz-Signature=a4ac79802a848a475a891224d666cd3f60eee25e74413b3a3df2e28775ca8b75&amp;X-Amz-SignedHeaders=host&amp;x-id=GetObject\"/>",
 							"otherinfo": ""
 						},
 						{
-							"id": "38",
+							"id": "57",
 							"uri": "https://preimpactco2.osc-fr1.scalingo.io",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "<link rel=\"preload\" as=\"image\" href=\"https://prod-files-secure.s3.us-west-2.amazonaws.com/a33bcf70-8792-422e-bd32-0327fc741a8b/5cfb3847-4fe0-4a0d-9f30-2cc9543eb7a0/makesense.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&amp;X-Amz-Credential=ASIAZI2LB466Z6SOETWP%2F20250302%2Fus-west-2%2Fs3%2Faws4_request&amp;X-Amz-Date=20250302T020151Z&amp;X-Amz-Expires=3600&amp;X-Amz-Security-Token=IQoJb3JpZ2luX2VjEHoaCXVzLXdlc3QtMiJHMEUCIQCdl5Uo%2Ftwquoiwv%2BFEPJmybSk8ZiIkePw%2BzDrvKQ0AzgIgXyXdX0F%2Fif4yw%2Bccm8p2HBUHTjnzZ2u%2FnyysK2qt5REqiAQIs%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FARAAGgw2Mzc0MjMxODM4MDUiDOk1gLecZ3A%2FflKMdircA9NRS9gU2SULkxSLZErUBnZq9qiGi2KwJQvzQGXYk4fZftiVv469KHAVA1V%2FyhjK4GD4w6mRFmgonDC%2FH6NpXaZsAbMPApakTpPrSpl6k7m9ukRMm3EIFGdj4sBn%2FJhk15cib%2Bf5CWiOyDWyr5bnHXfeuwwVGK82NPKMdPeUV4%2B%2F%2FwINGXdJAB9x%2FkKnwr6jmrIvtwX4c9CQK1yx%2F%2F0ytXYFqW1q1lMjZEjFR3nYVclyrvItGZGZWjD5T%2BbMaw2v68x6EHrYgKRxf6CqqztfXboeo8DUZzZ1m4zuCUm3DGtcUajpe48puEQofKsoIj%2BrxG6Dabf65zb0WTxoeVv9j41iNHhPit2pSSvSxLH7gU6skAsHAP2stRawL7TwDChlYEFIc0l9%2FtnNIk%2Fwtj0o52e3xLrOqxAdVk3A9Rim3X3Qv84oYL9FP559z57PnDmrLzYi8rHctOHEXpRnUps9RB%2FRf8yJv4SZ15sKyAcDc7vCZoGmqQkBe9Ne9poIovgKLxB%2F8DzimmCLU0LaQtn9XT2J0Pmi61MhlnjbnYG5rgscnZ0XlSn91mbjswzFfvmzHJqf2FKrsJuc6GL0Xkn8ft92X5tzPexLtqU0WvAC3yRQ2WzKXB7%2BZJW71OLZMPL1jr4GOqUBew7looxiUCYLSGyKvYKLw3UR5UN7f5WbnzqoQuhzklGLGKWMk6546HpcMosQZePQQVsxBMgtX3tFfihBJZdUdM27eLuIkJfhKM839UefDvVtXuOSDIUgNyPrHHiKwDU7EZzaqKSWnV%2BPp8KlqGgPdg%2BiaTlINeoL%2BnzKfUnVcrKrbvtnlNrzvKE4eFUkLxW%2BAGtdzIGlhB35yuqGCyZkt%2FNM1Av7&amp;X-Amz-Signature=bb604e2c91ddcefaa15450f20c17c659af80e1ae90a39e8d44a01c73004a3024&amp;X-Amz-SignedHeaders=host&amp;x-id=GetObject\"/>",
+							"evidence": "<link rel=\"preload\" as=\"image\" href=\"https://prod-files-secure.s3.us-west-2.amazonaws.com/a33bcf70-8792-422e-bd32-0327fc741a8b/9b40ab4c-2dd0-4f20-8db3-7f790ee41695/figaroimmobilier.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&amp;X-Amz-Credential=ASIAZI2LB466ZHX4IB2Y%2F20250307%2Fus-west-2%2Fs3%2Faws4_request&amp;X-Amz-Date=20250307T164804Z&amp;X-Amz-Expires=3600&amp;X-Amz-Security-Token=IQoJb3JpZ2luX2VjEAEaCXVzLXdlc3QtMiJGMEQCICa58oqDoxHjog72g%2BMnuBpcEfGMugm%2F50I7Jm7p%2B7nrAiBY5VH2VBeeMXe3ttDbiS%2FYHVV6SC4TzdbM%2FjLfq1fBASr%2FAwhKEAAaDDYzNzQyMzE4MzgwNSIMSBnbWUVguGfxU69xKtwD3uDtbRdL6EZpQA1BuuWQK%2FNluZfW3SrslfoulpooCgSkRiJhTFandgbmOmVVRCyQwwTk5lH6krKN%2BkvpmXySrF%2BzYeL2uIY%2F0eIstVX8j4SHcI17MtaBFubtEvTBk9zEZBF2y4VCuscTPyejOBkX8jbR2kg7e7Vpsl3KjxnOIBQq7OH1T9j7%2FuQzgcfXfAUVAgTFV02DsMrDpzoIheo%2BCbufDCi3AVACj2OQ0mWalLFuPevyGHREZR98Fm2AWeoM5r8Ph7rS5B2mnq%2FuV%2BVv9q10rlIJAE6u4wLbt71HwpArxgpwwnT0UmypoZHk1v7fnQR7X7y5GXOmsaeMxInly5xTPAnk%2BiI1s3a8lvCX61Q8jpmihOYYjeXVh1w7OE8CWkdun11YvGUaQZHMNEmtdGOUPWr16WQDr0TxO63Pl5bdsTcFhp7MWssg%2B1t%2BeySFpPRVwQ9t99CcY1jUGLxQv2hYeW8%2FxjgazOy%2FmJm%2Bq%2FEVQkPSmw9RBGRRNzg1r5h5RRLregbW2tArsn8O3UKR4lGTYQ44DlhDG4VvTlizuBk1Zl2%2B9wOBCxXNgXZBXenc2eCHMZPYwI878LJnjtWbDA8KR0zUjXFR6cNaogh8OVf5y0sddGTHLY2shzow%2BL%2BsvgY6pgGP%2BrS0DVVbm3HJfnuzX1aDbgUz9B2Sdj80Lfgdci2O9K0HDiMxYhokn%2F71u%2FGOnJyfzkm%2Fu9gqSy0rsDUseZElC9ZEYq1jyuM%2Fp7F1UBYJoyI64ck%2BIRkkR7Afn6l2ZfcgYpBydfruSkLwkNenpMsaf2OMnvQ5LN2BmSM5L2X45qUCeJNL6McoF0lrFg8IwgQTBqLnlhkQqhTJvN1r4jDPs98diohQ&amp;X-Amz-Signature=10e96fe897188ce09b012d747bb94bf9205a08cc401ae5535b78be9058f6e41b&amp;X-Amz-SignedHeaders=host&amp;x-id=GetObject\"/>",
 							"otherinfo": ""
 						},
 						{
-							"id": "82",
+							"id": "53",
 							"uri": "https://preimpactco2.osc-fr1.scalingo.io",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "<link rel=\"preload\" as=\"image\" href=\"https://prod-files-secure.s3.us-west-2.amazonaws.com/a33bcf70-8792-422e-bd32-0327fc741a8b/9b40ab4c-2dd0-4f20-8db3-7f790ee41695/figaroimmobilier.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&amp;X-Amz-Credential=ASIAZI2LB4667HDZHNU6%2F20250302%2Fus-west-2%2Fs3%2Faws4_request&amp;X-Amz-Date=20250302T020255Z&amp;X-Amz-Expires=3600&amp;X-Amz-Security-Token=IQoJb3JpZ2luX2VjEHoaCXVzLXdlc3QtMiJIMEYCIQCST2f9hZKE8DbmtL0exCZ%2BKyCvjEuepTvQVTvQD%2BzW3wIhANdj9OU2z6lS%2Br5C43Hdf%2BmiINodxBU4GfStuSgFuocCKogECLP%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEQABoMNjM3NDIzMTgzODA1IgwV00rISn8srL02ULgq3ANoMVdbhpsOGpOw9AXTUrs2cZjo0TlW770wsHHfsI40EtAi3uR4SvlbNlS%2F%2BPLXKCAiSU5Ni2wdx7LvfO5bih%2BbL770uyflAZKz9R6XVEVhLY2u%2FmJnkykoN8bIRWnF4clOxP4yvxtcZTg3yNumbWGRSNEOBUkdjT1ayHJkQcYXm9DOFFVCSnF%2FpM26xW8kf1PpT94W%2Bp7l1iICotKpO9oMhhQ4e2JhcO4%2FfLFQrw9ZeWgxaaqczcopxpphVe9Bq71xXLu4%2B0eS7P4JLQTerNfsi4duYlbOIBkOorFl7VdnZQ%2FqcDEiZqvpCMRx9aWtLaDw7bvHni42U66ow2Zs3eSqvyKO%2B0J0fxZBIl%2BHeORwEgnvTHW%2FbjE2ucCqncvrqAY2YN3Zm76a7ES6Ct4GJc4r0Ee8HyBDw5yGla3zjK31YMnQ4bsZX71p%2Fu9cBlsAmxD%2FVwnsw%2BcaufkNguX0U3qQSp1FnLtmW353Q1Qi460O1qCbhHPeE7oCcg53nfha5gyHfw5OLR%2FbGi790mWXG2f9YaQbRFrJBEZAvhcZbHr6Tr8gLPVwyo1oN0nMJrbgw7CPiqpOn3VRiMRz0A0bbRkpAdedYTlEv4rQWnXHzPZ1IXoBfi5ojFxldirY7DCF9o6%2BBjqkASvPp%2FRHGRvhqjBZRmR8hc536OuJCYDJ8B1P7myQI2HKzuXjFdfo220w0f08mp6tWKjPYxVZOzWoZDZ%2B4I3H%2FaodjD7PN8%2BlFw13Qvi%2BzKu5YE1z6f8KvAFckFGuGqzOm5Z7G5dnRVQD%2FSHF6kP4bVtghFQpdUruQuN2MU7ec2tXdb%2BNh1Wn9eg9keXn17TCvBWJ7lIXjgShXV0JFZPRloDBnsPw&amp;X-Amz-Signature=fed44ebfb993f5a853d007f3e62a69e76c076f05546690db08f68ad53611312f&amp;X-Amz-SignedHeaders=host&amp;x-id=GetObject\"/>",
+							"evidence": "<link rel=\"preload\" as=\"image\" href=\"https://prod-files-secure.s3.us-west-2.amazonaws.com/a33bcf70-8792-422e-bd32-0327fc741a8b/a155e0c8-a7a3-4279-9063-5af809311750/sia.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&amp;X-Amz-Credential=ASIAZI2LB466RTMHCJ56%2F20250307%2Fus-west-2%2Fs3%2Faws4_request&amp;X-Amz-Date=20250307T164756Z&amp;X-Amz-Expires=3600&amp;X-Amz-Security-Token=IQoJb3JpZ2luX2VjEAEaCXVzLXdlc3QtMiJGMEQCIEBiNIFn0eF2YZFpZSOKOhfLMcIoUUPOTBKQlrRQ7Je6AiBSRGVymSy6fT4Vsv%2FeeOw7hVoAxoX8D1W%2FpwkJ76WXCCr%2FAwhKEAAaDDYzNzQyMzE4MzgwNSIMjJUIj1BFgUMzURgDKtwDCDT84m0CD9pOsyrYZ5w8vyzNAyb1WxOvNCgsChdSagnQ1tFdlpKYf7SKSvMgnaDzqH4qP3cR%2B8MXA3hoxY8Sx96Tg7YuAPdjGYfWRLX7ns0F7BUGqz%2BmOd8afNebDvm0rNbvIkrxuRateGxrMrQVQ19UgD8J8amRvpR8rzb8Vyn3nJgrWq%2BufWRowena3Q6jDH8iYvCvZzdiJTx%2FClrH7wTdgtq%2B1tfqp13ojSPrvGBnvPzbfOiB99a5RXzCun9cXMvQB7VnSwjfanufvCAEsEReG3rRnqxwE5%2BxIlRi3beWph7rYyEyk9mX5waPkhcBhdTbHrNgxiIrHjfmHZubn12MucttI0EI5h%2F1ROVp%2BL5c20zUvUnEGmowyG%2Brfpu7ls%2FsrHkm074Z6pvbyor0zIrrsu1nVqt1snE%2F8NSVAkTvCqsajMRocmkyJvSQ013t6JEpnikrO9MO%2BoAIjk0pjujrYgAiHhF8edtqCr4MEMfr6wYiG6OS2MKyrqklgXmIFDhqbG%2Fzfqk%2F8aTmO6TWhjEDeEeUDQQKpMmwt1%2BAupVmhvREOQOHArcgzJ1FHnrpqrpAPHBeswG4Ld8PrrJw5fSjMeXfKTeIGP1avaYmzH7V27aaq9D8CfwFT9Iww8CsvgY6pgF7zMdkbf7RxEfzzx%2B1cGazCMRQoMK%2FeWvVgtai1uE4jv%2FADO7TSMABmvA%2BP4MH1l%2BCDEodX2NADKUQd02zx8OBn%2Bj9Q9pA6CngdTRwzz8nWsheObGeFuzzHEJJTOeSuSZeEZ6VcQ7qef88WKN8pEG60CUBAEpoRyKykVySbDvTpzAaAGGYxsaHnRV0Ch%2BHTDVGQf3M%2Fa6vL6d1mtWd4vuondp%2BxUjL&amp;X-Amz-Signature=162d61b0cf42fe46d588612cdcea7518315a6baaadadd06fb0a1f2c5c39be123&amp;X-Amz-SignedHeaders=host&amp;x-id=GetObject\"/>",
 							"otherinfo": ""
 						},
 						{
-							"id": "39",
+							"id": "54",
 							"uri": "https://preimpactco2.osc-fr1.scalingo.io",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "<link rel=\"preload\" as=\"image\" href=\"https://prod-files-secure.s3.us-west-2.amazonaws.com/a33bcf70-8792-422e-bd32-0327fc741a8b/9b40ab4c-2dd0-4f20-8db3-7f790ee41695/figaroimmobilier.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&amp;X-Amz-Credential=ASIAZI2LB466VFYUSFP5%2F20250302%2Fus-west-2%2Fs3%2Faws4_request&amp;X-Amz-Date=20250302T020156Z&amp;X-Amz-Expires=3600&amp;X-Amz-Security-Token=IQoJb3JpZ2luX2VjEHoaCXVzLXdlc3QtMiJIMEYCIQCreaFcCpY3SoOjs4JdgZ45i%2Bqm1TGI997nKbeKDVvg%2FgIhALRv7uPCivdmhGeS5k%2FT%2F6l08CXFVU7YwpGWh6pnVzl%2BKogECLP%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEQABoMNjM3NDIzMTgzODA1Igz07VAQmtupzsgZV30q3AMCIEDsHkJzauEqWghlQ6t3PuGYKvOoeIhB%2FIzdxS9OHDeNgtmCoVHX664CRcUMoQr80roFFyR%2B%2Bv%2BB1TDTyj9WO2KRKoQ%2F4zF0TAzHSxLw7hRpliIRm7o%2FldcpnZCkuIFPS5HGSEnF1KShTt8%2F34EQ7WdtpzLpZ1zDo%2FbxOnlVWUGshlOfNydJT1DMjyZe2n%2B2mXkLYjxOm3rPXz10K9CD5kIMiEKONLHae4mzWjNV16xb6m0oDsmMBqF%2FhdKeDwaHyWW8IheBkGVFwDiYYnSGdh5xPobDtj7FDN3GM3KWCN76iaaVjvw8UTd%2FUZ6%2F%2BlBFTAvcp2iw2cjOxj6v7pECFpBc514039LBMKNuadpxyZarZUzkpOhSeHv8MGynFnkwGTJW%2B0Hoee8qWusc8rklPO4UfIgCpJD29F%2B5ojPD8yuOV65jXiCd3ma05atcHPjNBC2vy8Fa3KtgZmhlyilOZzRDXzqnNZkr1RL%2FNC7px2r4n9FO%2Fha2J5D%2FZlj8NwdNjXkyksPZEenZZAQqgSONCTW%2BIIZBM6vQkOU%2FsM7tPJIqAUOMqnYYFR94yzVgnaGppqhT6xAmz7iu2Jo8GJwgSIXTrJpfR9GYOPpJ%2Br4ctvFWCDyTm9QKdeiwSjDz9Y6%2BBjqkAbgVrwYF6I60oKIPOlW0C6zt%2BkFJam8Xr9hd3yywnNaJFvyt4qr9mezXS3pYXJYP2WwmTWg0CZPDZ22m9y8dsb%2B4rGOiv9rDT1rydgyez2j9jtDuQQHN5Usx9iv2nZRPq88fwItgxgAYVXnigWIZIfTnGW3xfracxq6xhVX1lgDM0Gag3q%2BpwYt%2FpUf800663yj2SA60yJcDGV06o2OVC9RDa%2Fum&amp;X-Amz-Signature=5559cfd323b577603c220d60ef396f847396e3341a8a51241b7a30a1c2d78412&amp;X-Amz-SignedHeaders=host&amp;x-id=GetObject\"/>",
+							"evidence": "<link rel=\"preload\" as=\"image\" href=\"https://prod-files-secure.s3.us-west-2.amazonaws.com/a33bcf70-8792-422e-bd32-0327fc741a8b/d6a12c19-7593-4193-aca1-4bd55c278caa/franceinfo.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&amp;X-Amz-Credential=ASIAZI2LB466RTMHCJ56%2F20250307%2Fus-west-2%2Fs3%2Faws4_request&amp;X-Amz-Date=20250307T164756Z&amp;X-Amz-Expires=3600&amp;X-Amz-Security-Token=IQoJb3JpZ2luX2VjEAEaCXVzLXdlc3QtMiJGMEQCIEBiNIFn0eF2YZFpZSOKOhfLMcIoUUPOTBKQlrRQ7Je6AiBSRGVymSy6fT4Vsv%2FeeOw7hVoAxoX8D1W%2FpwkJ76WXCCr%2FAwhKEAAaDDYzNzQyMzE4MzgwNSIMjJUIj1BFgUMzURgDKtwDCDT84m0CD9pOsyrYZ5w8vyzNAyb1WxOvNCgsChdSagnQ1tFdlpKYf7SKSvMgnaDzqH4qP3cR%2B8MXA3hoxY8Sx96Tg7YuAPdjGYfWRLX7ns0F7BUGqz%2BmOd8afNebDvm0rNbvIkrxuRateGxrMrQVQ19UgD8J8amRvpR8rzb8Vyn3nJgrWq%2BufWRowena3Q6jDH8iYvCvZzdiJTx%2FClrH7wTdgtq%2B1tfqp13ojSPrvGBnvPzbfOiB99a5RXzCun9cXMvQB7VnSwjfanufvCAEsEReG3rRnqxwE5%2BxIlRi3beWph7rYyEyk9mX5waPkhcBhdTbHrNgxiIrHjfmHZubn12MucttI0EI5h%2F1ROVp%2BL5c20zUvUnEGmowyG%2Brfpu7ls%2FsrHkm074Z6pvbyor0zIrrsu1nVqt1snE%2F8NSVAkTvCqsajMRocmkyJvSQ013t6JEpnikrO9MO%2BoAIjk0pjujrYgAiHhF8edtqCr4MEMfr6wYiG6OS2MKyrqklgXmIFDhqbG%2Fzfqk%2F8aTmO6TWhjEDeEeUDQQKpMmwt1%2BAupVmhvREOQOHArcgzJ1FHnrpqrpAPHBeswG4Ld8PrrJw5fSjMeXfKTeIGP1avaYmzH7V27aaq9D8CfwFT9Iww8CsvgY6pgF7zMdkbf7RxEfzzx%2B1cGazCMRQoMK%2FeWvVgtai1uE4jv%2FADO7TSMABmvA%2BP4MH1l%2BCDEodX2NADKUQd02zx8OBn%2Bj9Q9pA6CngdTRwzz8nWsheObGeFuzzHEJJTOeSuSZeEZ6VcQ7qef88WKN8pEG60CUBAEpoRyKykVySbDvTpzAaAGGYxsaHnRV0Ch%2BHTDVGQf3M%2Fa6vL6d1mtWd4vuondp%2BxUjL&amp;X-Amz-Signature=e6a771570fdb6a806f0122be3001638db027fbbf13418a1dcd0717325f66aa55&amp;X-Amz-SignedHeaders=host&amp;x-id=GetObject\"/>",
 							"otherinfo": ""
 						},
 						{
-							"id": "79",
+							"id": "55",
 							"uri": "https://preimpactco2.osc-fr1.scalingo.io",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "<link rel=\"preload\" as=\"image\" href=\"https://prod-files-secure.s3.us-west-2.amazonaws.com/a33bcf70-8792-422e-bd32-0327fc741a8b/d6a12c19-7593-4193-aca1-4bd55c278caa/franceinfo.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&amp;X-Amz-Credential=ASIAZI2LB466WGYULOWQ%2F20250302%2Fus-west-2%2Fs3%2Faws4_request&amp;X-Amz-Date=20250302T020252Z&amp;X-Amz-Expires=3600&amp;X-Amz-Security-Token=IQoJb3JpZ2luX2VjEHoaCXVzLXdlc3QtMiJGMEQCIDZWivYyEZ50GNxM2ltti5POkJPKay3XKnoXddHH%2BCbfAiAmbpijF2jfed%2B72UBBG01sXi3okKeaeWy4iJd29ZlSxSqIBAiz%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F8BEAAaDDYzNzQyMzE4MzgwNSIMs6NkA1eaonhMETpQKtwDJGEHuQxZ5ZOqlrKG8gVDszcUDjlR9DEv8O7Ex%2BxGB8cfD8E5bSm%2BQxYqTcZrWgkT05MvtrtRv2KvqwLfab%2FF%2Fhh7Iqs73d5TGyRNDssHLB9dhaMVAM2P%2FqOnEFQCT0SpW6RQIrgv%2FhkOpy0EWZh15kP6hB5bNLWJUjho7l1QbSt5iwDEbCsCa2MGrrLfq8gBii6xztsaJKfp2b%2FZ5363RT6Bcq6tjNlIIo12t7GKlSdVpaPtWHwCy0KJwFU6xiXOABGLlRBAAOkGVjhj1UFsKPuof7QIYd5rdjp%2B4oDZIk9g5%2BCHBbTB9KP2Ad3hyYw8ooyVjzZkBfmAnT%2BdN7yKkS34Y7sAJHP3XxwRe7JETIwdvOCs4szx65Cg4p%2BjKNBv9Wkzr9Qxyls4A4IMtloAN6sOSmfPG7RJs0dNFsPbBXh1bh3hmh1R9r%2FD6G5nD4b2U8S%2Fuijhz%2FBvjXZAEy7AxqDaIncooOhDBoT9mIvWSIOPcZ8h9mBGl2QRpLh0cxcCvC6CeuXh36E7W1Cu9G3lJNF5Wz%2FN18N3pHL1ZfTyyAdORTcMX6Xs6NcIPn0cM7FAVoh35b6RWXRIyC6h9dQazwGl9cKxdSOZq3nbZaqj%2B4th%2BKeTbgMy6NU3ucswrvaOvgY6pgHxaCeoemTROf4Q%2BtYESCR54%2BzucRSv7p4hCjwncORllZOAGOKdX60FgK145wKuV6F4BrpKBPBnuDPM0gH1G1D%2Fhrqq8vZ4i%2FegIm0avTQs12oKHUtTImg9zdvsmsRGZSYzGOXJ84YKou8kQlX5XW5YJch%2FE8EK6dHsYH4mNkpNLTiCqsmZviJUW7IIviltUa5d7313YxMv3epuA9Hl30gSeNLftUI7&amp;X-Amz-Signature=f3167fd6aa2dedcde7ece4a2a495360cc26faa2f79b8f84fb3c66c22717d56b7&amp;X-Amz-SignedHeaders=host&amp;x-id=GetObject\"/>",
+							"evidence": "<link rel=\"preload\" as=\"image\" href=\"https://prod-files-secure.s3.us-west-2.amazonaws.com/a33bcf70-8792-422e-bd32-0327fc741a8b/ec2e9b5a-3bb8-4c97-a874-d5c0c1814a0f/stadefrance.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&amp;X-Amz-Credential=ASIAZI2LB466RTMHCJ56%2F20250307%2Fus-west-2%2Fs3%2Faws4_request&amp;X-Amz-Date=20250307T164756Z&amp;X-Amz-Expires=3600&amp;X-Amz-Security-Token=IQoJb3JpZ2luX2VjEAEaCXVzLXdlc3QtMiJGMEQCIEBiNIFn0eF2YZFpZSOKOhfLMcIoUUPOTBKQlrRQ7Je6AiBSRGVymSy6fT4Vsv%2FeeOw7hVoAxoX8D1W%2FpwkJ76WXCCr%2FAwhKEAAaDDYzNzQyMzE4MzgwNSIMjJUIj1BFgUMzURgDKtwDCDT84m0CD9pOsyrYZ5w8vyzNAyb1WxOvNCgsChdSagnQ1tFdlpKYf7SKSvMgnaDzqH4qP3cR%2B8MXA3hoxY8Sx96Tg7YuAPdjGYfWRLX7ns0F7BUGqz%2BmOd8afNebDvm0rNbvIkrxuRateGxrMrQVQ19UgD8J8amRvpR8rzb8Vyn3nJgrWq%2BufWRowena3Q6jDH8iYvCvZzdiJTx%2FClrH7wTdgtq%2B1tfqp13ojSPrvGBnvPzbfOiB99a5RXzCun9cXMvQB7VnSwjfanufvCAEsEReG3rRnqxwE5%2BxIlRi3beWph7rYyEyk9mX5waPkhcBhdTbHrNgxiIrHjfmHZubn12MucttI0EI5h%2F1ROVp%2BL5c20zUvUnEGmowyG%2Brfpu7ls%2FsrHkm074Z6pvbyor0zIrrsu1nVqt1snE%2F8NSVAkTvCqsajMRocmkyJvSQ013t6JEpnikrO9MO%2BoAIjk0pjujrYgAiHhF8edtqCr4MEMfr6wYiG6OS2MKyrqklgXmIFDhqbG%2Fzfqk%2F8aTmO6TWhjEDeEeUDQQKpMmwt1%2BAupVmhvREOQOHArcgzJ1FHnrpqrpAPHBeswG4Ld8PrrJw5fSjMeXfKTeIGP1avaYmzH7V27aaq9D8CfwFT9Iww8CsvgY6pgF7zMdkbf7RxEfzzx%2B1cGazCMRQoMK%2FeWvVgtai1uE4jv%2FADO7TSMABmvA%2BP4MH1l%2BCDEodX2NADKUQd02zx8OBn%2Bj9Q9pA6CngdTRwzz8nWsheObGeFuzzHEJJTOeSuSZeEZ6VcQ7qef88WKN8pEG60CUBAEpoRyKykVySbDvTpzAaAGGYxsaHnRV0Ch%2BHTDVGQf3M%2Fa6vL6d1mtWd4vuondp%2BxUjL&amp;X-Amz-Signature=621fd173b8cc3ef6f6f46e4199c49dde3ad84c7d9aae239b4d249140dec9a236&amp;X-Amz-SignedHeaders=host&amp;x-id=GetObject\"/>",
 							"otherinfo": ""
 						},
 						{
-							"id": "36",
-							"uri": "https://preimpactco2.osc-fr1.scalingo.io",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "<link rel=\"preload\" as=\"image\" href=\"https://prod-files-secure.s3.us-west-2.amazonaws.com/a33bcf70-8792-422e-bd32-0327fc741a8b/d6a12c19-7593-4193-aca1-4bd55c278caa/franceinfo.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&amp;X-Amz-Credential=ASIAZI2LB466Z6SOETWP%2F20250302%2Fus-west-2%2Fs3%2Faws4_request&amp;X-Amz-Date=20250302T020149Z&amp;X-Amz-Expires=3600&amp;X-Amz-Security-Token=IQoJb3JpZ2luX2VjEHoaCXVzLXdlc3QtMiJHMEUCIQCdl5Uo%2Ftwquoiwv%2BFEPJmybSk8ZiIkePw%2BzDrvKQ0AzgIgXyXdX0F%2Fif4yw%2Bccm8p2HBUHTjnzZ2u%2FnyysK2qt5REqiAQIs%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FARAAGgw2Mzc0MjMxODM4MDUiDOk1gLecZ3A%2FflKMdircA9NRS9gU2SULkxSLZErUBnZq9qiGi2KwJQvzQGXYk4fZftiVv469KHAVA1V%2FyhjK4GD4w6mRFmgonDC%2FH6NpXaZsAbMPApakTpPrSpl6k7m9ukRMm3EIFGdj4sBn%2FJhk15cib%2Bf5CWiOyDWyr5bnHXfeuwwVGK82NPKMdPeUV4%2B%2F%2FwINGXdJAB9x%2FkKnwr6jmrIvtwX4c9CQK1yx%2F%2F0ytXYFqW1q1lMjZEjFR3nYVclyrvItGZGZWjD5T%2BbMaw2v68x6EHrYgKRxf6CqqztfXboeo8DUZzZ1m4zuCUm3DGtcUajpe48puEQofKsoIj%2BrxG6Dabf65zb0WTxoeVv9j41iNHhPit2pSSvSxLH7gU6skAsHAP2stRawL7TwDChlYEFIc0l9%2FtnNIk%2Fwtj0o52e3xLrOqxAdVk3A9Rim3X3Qv84oYL9FP559z57PnDmrLzYi8rHctOHEXpRnUps9RB%2FRf8yJv4SZ15sKyAcDc7vCZoGmqQkBe9Ne9poIovgKLxB%2F8DzimmCLU0LaQtn9XT2J0Pmi61MhlnjbnYG5rgscnZ0XlSn91mbjswzFfvmzHJqf2FKrsJuc6GL0Xkn8ft92X5tzPexLtqU0WvAC3yRQ2WzKXB7%2BZJW71OLZMPL1jr4GOqUBew7looxiUCYLSGyKvYKLw3UR5UN7f5WbnzqoQuhzklGLGKWMk6546HpcMosQZePQQVsxBMgtX3tFfihBJZdUdM27eLuIkJfhKM839UefDvVtXuOSDIUgNyPrHHiKwDU7EZzaqKSWnV%2BPp8KlqGgPdg%2BiaTlINeoL%2BnzKfUnVcrKrbvtnlNrzvKE4eFUkLxW%2BAGtdzIGlhB35yuqGCyZkt%2FNM1Av7&amp;X-Amz-Signature=2cc98ab8360f78f8c9ef122c7c9941816227a35f416bb90fbfd2f02b148340e4&amp;X-Amz-SignedHeaders=host&amp;x-id=GetObject\"/>",
-							"otherinfo": ""
-						},
-						{
-							"id": "80",
-							"uri": "https://preimpactco2.osc-fr1.scalingo.io",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "<link rel=\"preload\" as=\"image\" href=\"https://prod-files-secure.s3.us-west-2.amazonaws.com/a33bcf70-8792-422e-bd32-0327fc741a8b/ec2e9b5a-3bb8-4c97-a874-d5c0c1814a0f/stadefrance.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&amp;X-Amz-Credential=ASIAZI2LB466WGYULOWQ%2F20250302%2Fus-west-2%2Fs3%2Faws4_request&amp;X-Amz-Date=20250302T020252Z&amp;X-Amz-Expires=3600&amp;X-Amz-Security-Token=IQoJb3JpZ2luX2VjEHoaCXVzLXdlc3QtMiJGMEQCIDZWivYyEZ50GNxM2ltti5POkJPKay3XKnoXddHH%2BCbfAiAmbpijF2jfed%2B72UBBG01sXi3okKeaeWy4iJd29ZlSxSqIBAiz%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F8BEAAaDDYzNzQyMzE4MzgwNSIMs6NkA1eaonhMETpQKtwDJGEHuQxZ5ZOqlrKG8gVDszcUDjlR9DEv8O7Ex%2BxGB8cfD8E5bSm%2BQxYqTcZrWgkT05MvtrtRv2KvqwLfab%2FF%2Fhh7Iqs73d5TGyRNDssHLB9dhaMVAM2P%2FqOnEFQCT0SpW6RQIrgv%2FhkOpy0EWZh15kP6hB5bNLWJUjho7l1QbSt5iwDEbCsCa2MGrrLfq8gBii6xztsaJKfp2b%2FZ5363RT6Bcq6tjNlIIo12t7GKlSdVpaPtWHwCy0KJwFU6xiXOABGLlRBAAOkGVjhj1UFsKPuof7QIYd5rdjp%2B4oDZIk9g5%2BCHBbTB9KP2Ad3hyYw8ooyVjzZkBfmAnT%2BdN7yKkS34Y7sAJHP3XxwRe7JETIwdvOCs4szx65Cg4p%2BjKNBv9Wkzr9Qxyls4A4IMtloAN6sOSmfPG7RJs0dNFsPbBXh1bh3hmh1R9r%2FD6G5nD4b2U8S%2Fuijhz%2FBvjXZAEy7AxqDaIncooOhDBoT9mIvWSIOPcZ8h9mBGl2QRpLh0cxcCvC6CeuXh36E7W1Cu9G3lJNF5Wz%2FN18N3pHL1ZfTyyAdORTcMX6Xs6NcIPn0cM7FAVoh35b6RWXRIyC6h9dQazwGl9cKxdSOZq3nbZaqj%2B4th%2BKeTbgMy6NU3ucswrvaOvgY6pgHxaCeoemTROf4Q%2BtYESCR54%2BzucRSv7p4hCjwncORllZOAGOKdX60FgK145wKuV6F4BrpKBPBnuDPM0gH1G1D%2Fhrqq8vZ4i%2FegIm0avTQs12oKHUtTImg9zdvsmsRGZSYzGOXJ84YKou8kQlX5XW5YJch%2FE8EK6dHsYH4mNkpNLTiCqsmZviJUW7IIviltUa5d7313YxMv3epuA9Hl30gSeNLftUI7&amp;X-Amz-Signature=8b41644cf00bc5b406b18ac323da3694db85d3580513365cbe31d21724612150&amp;X-Amz-SignedHeaders=host&amp;x-id=GetObject\"/>",
-							"otherinfo": ""
-						},
-						{
-							"id": "37",
-							"uri": "https://preimpactco2.osc-fr1.scalingo.io",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "<link rel=\"preload\" as=\"image\" href=\"https://prod-files-secure.s3.us-west-2.amazonaws.com/a33bcf70-8792-422e-bd32-0327fc741a8b/ec2e9b5a-3bb8-4c97-a874-d5c0c1814a0f/stadefrance.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&amp;X-Amz-Credential=ASIAZI2LB466Z6SOETWP%2F20250302%2Fus-west-2%2Fs3%2Faws4_request&amp;X-Amz-Date=20250302T020149Z&amp;X-Amz-Expires=3600&amp;X-Amz-Security-Token=IQoJb3JpZ2luX2VjEHoaCXVzLXdlc3QtMiJHMEUCIQCdl5Uo%2Ftwquoiwv%2BFEPJmybSk8ZiIkePw%2BzDrvKQ0AzgIgXyXdX0F%2Fif4yw%2Bccm8p2HBUHTjnzZ2u%2FnyysK2qt5REqiAQIs%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FARAAGgw2Mzc0MjMxODM4MDUiDOk1gLecZ3A%2FflKMdircA9NRS9gU2SULkxSLZErUBnZq9qiGi2KwJQvzQGXYk4fZftiVv469KHAVA1V%2FyhjK4GD4w6mRFmgonDC%2FH6NpXaZsAbMPApakTpPrSpl6k7m9ukRMm3EIFGdj4sBn%2FJhk15cib%2Bf5CWiOyDWyr5bnHXfeuwwVGK82NPKMdPeUV4%2B%2F%2FwINGXdJAB9x%2FkKnwr6jmrIvtwX4c9CQK1yx%2F%2F0ytXYFqW1q1lMjZEjFR3nYVclyrvItGZGZWjD5T%2BbMaw2v68x6EHrYgKRxf6CqqztfXboeo8DUZzZ1m4zuCUm3DGtcUajpe48puEQofKsoIj%2BrxG6Dabf65zb0WTxoeVv9j41iNHhPit2pSSvSxLH7gU6skAsHAP2stRawL7TwDChlYEFIc0l9%2FtnNIk%2Fwtj0o52e3xLrOqxAdVk3A9Rim3X3Qv84oYL9FP559z57PnDmrLzYi8rHctOHEXpRnUps9RB%2FRf8yJv4SZ15sKyAcDc7vCZoGmqQkBe9Ne9poIovgKLxB%2F8DzimmCLU0LaQtn9XT2J0Pmi61MhlnjbnYG5rgscnZ0XlSn91mbjswzFfvmzHJqf2FKrsJuc6GL0Xkn8ft92X5tzPexLtqU0WvAC3yRQ2WzKXB7%2BZJW71OLZMPL1jr4GOqUBew7looxiUCYLSGyKvYKLw3UR5UN7f5WbnzqoQuhzklGLGKWMk6546HpcMosQZePQQVsxBMgtX3tFfihBJZdUdM27eLuIkJfhKM839UefDvVtXuOSDIUgNyPrHHiKwDU7EZzaqKSWnV%2BPp8KlqGgPdg%2BiaTlINeoL%2BnzKfUnVcrKrbvtnlNrzvKE4eFUkLxW%2BAGtdzIGlhB35yuqGCyZkt%2FNM1Av7&amp;X-Amz-Signature=674cb5ba50259e61f3cafcb1de1653514e7b8211da67d15cc5b2421bbc051c7c&amp;X-Amz-SignedHeaders=host&amp;x-id=GetObject\"/>",
-							"otherinfo": ""
-						},
-						{
-							"id": "42",
+							"id": "60",
 							"uri": "https://preimpactco2.osc-fr1.scalingo.io",
 							"method": "GET",
 							"param": "",
@@ -266,7 +240,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "41",
+							"id": "59",
 							"uri": "https://preimpactco2.osc-fr1.scalingo.io",
 							"method": "GET",
 							"param": "",
@@ -275,8 +249,107 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "40",
+							"id": "58",
 							"uri": "https://preimpactco2.osc-fr1.scalingo.io",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<link rel=\"preload\" href=\"https://cdn.jsdelivr.net/npm/@gouvfr/dsfr@1.12.1/dist/fonts/Marianne-Regular.woff2\" as=\"font\" type=\"font/woff2\" crossorigin=\"anonymous\"/>",
+							"otherinfo": ""
+						},
+						{
+							"id": "89",
+							"uri": "https://preimpactco2.osc-fr1.scalingo.io/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<link rel=\"preload\" as=\"image\" href=\"https://prod-files-secure.s3.us-west-2.amazonaws.com/a33bcf70-8792-422e-bd32-0327fc741a8b/5cfb3847-4fe0-4a0d-9f30-2cc9543eb7a0/makesense.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&amp;X-Amz-Credential=ASIAZI2LB466WWH5Q2TU%2F20250307%2Fus-west-2%2Fs3%2Faws4_request&amp;X-Amz-Date=20250307T164839Z&amp;X-Amz-Expires=3600&amp;X-Amz-Security-Token=IQoJb3JpZ2luX2VjEAEaCXVzLXdlc3QtMiJHMEUCIQCM4ON%2F73kz1R76Dht0Vx%2FggYBqDSdU5GNs45R%2BpJ7u1wIgaNqrPBboUZ1ODQj9BZFZfThpp%2BPrG%2BCBz7UHlU3GM5kq%2FwMIShAAGgw2Mzc0MjMxODM4MDUiDGKWZbRlVlg3U4K%2FmircAzdCICYj%2BV3Ayq6HpI60VkzUlBPxxp2udww0tFdKIDla0OSH51KUgIAuWOF1Pd%2BrAzU561IK1q0Ve4s3ogbZqCGge%2FpyuzaIMUfMvi2RfuqYwPxHJvrxeLFSzHyaCZS%2FYupuYU1c1b4o2731i6Svq5nq1tChX8LjgZ8XX4qUHVvb8SmFOQp6d%2B9CP7wNZdkF5iqMhop6RA3kH6Ulzi816XtRet%2BAXimSsWtP2j1p3Y%2BZNvseyBCHI3cvXHOwPU8si3UNe4%2F75VFf06SLDXRVOlgdI%2F1z3KxH11X0QTezUK9iPMnXChpCXwOTmXiL1bsJpWuG1tLHmXqDtSqJzCwfgT0bPhBa9uPsA9IpBof8sy17csQzdUT7mVoUhzBgcjcF6t6%2ByS06xooCi9RAvtRHHhNrujFn5TU9bUSi5yllNWbzwkKevVmjmd9SyzRrkqKSsiO6b2DHAsS0nKcsU1FuDa57uqggTW%2FMNQAnEI9fLEAz1En5SMApcvTTuBgYWej5dPGb1%2BCEmStqESDreipn2NtLw0%2BJW5lrWMh6cCLo%2Fk3hqIy8PLien1xmlYGJNShyVk9r0qa9zEFPboKWHJP5sC6lEJlq75FOxQVwfLjrQm0%2F84YRsXgvgBafBNZ6MNLArL4GOqUBCXK%2Bwg%2FKGrYSSnh5ePTUagtN35tDoS0d%2BdNJ91iJ1ibfgOmwQWMQ6TBkZ8YGYOnQldDLggvjlnMqhAHQDxoaDWP1sM1V%2Fdnhqe3o6ncnjeRz9g8nlH5ExxnXI6BRkF6V0pI4G2iUmTlW%2BnyH87AqJ7a%2FkY5BKbYzvNAYYIDS2EXrUWIEUvRpRwgmEil13U1CSl0XXwQ%2BOzl6ZZWbsScaDgx4geA0&amp;X-Amz-Signature=5316394e6bac87cd9be070ccc8a3aecbd59d7fb3a2c16599ba8fe814f2d82a6b&amp;X-Amz-SignedHeaders=host&amp;x-id=GetObject\"/>",
+							"otherinfo": ""
+						},
+						{
+							"id": "90",
+							"uri": "https://preimpactco2.osc-fr1.scalingo.io/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<link rel=\"preload\" as=\"image\" href=\"https://prod-files-secure.s3.us-west-2.amazonaws.com/a33bcf70-8792-422e-bd32-0327fc741a8b/9b40ab4c-2dd0-4f20-8db3-7f790ee41695/figaroimmobilier.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&amp;X-Amz-Credential=ASIAZI2LB4662NSVPEEB%2F20250307%2Fus-west-2%2Fs3%2Faws4_request&amp;X-Amz-Date=20250307T164843Z&amp;X-Amz-Expires=3600&amp;X-Amz-Security-Token=IQoJb3JpZ2luX2VjEAEaCXVzLXdlc3QtMiJHMEUCIHX5Lpa40LrKR28XHSrvim948mVQrv%2B%2B6r%2BGl993EiUnAiEA2hkUqaUrDBLxhkzNSw9GoKUaA%2F4627CysnZ7DlxMRTgq%2FwMIShAAGgw2Mzc0MjMxODM4MDUiDAgzSiR4MHZgIe7dEyrcAw6D2axv%2F2gUqDaG9XWJe9inAWZfbx7pTh8g%2BAgcRmAz4kjMVSySR0P1ZAmStOXrVafRhyIXCoSuvRLg9%2FURg%2Bo%2BBo3Ua9XXGF%2FGZ1CwcTC%2BkdFx%2FdLfOnEXKnnknondlweI6JIz9YbwxJ8WYNywJhfH%2FKfH6pBZW3ID5S8npwMBt%2B5qYPay4DoztvAhJbAEQ7zvmSYO4%2BACtCMjfnrSJCUIEeXDRg8hbW0IHn%2FoOm4BqBOp1b9ZJT5kbVYglHqO6%2BOMP1F04GkFs4dnV3IiePiDFj7SFUiW5IvMt7xmaJ7MIQDMs40hvT4Ov8ixC9DpTqaKFK4eyqekJDdXnc%2FnkO2zeFJYSQ2HR0%2FwWxoIkgrjk4j%2F2VQbgJ%2BormfaYm0N%2BmeX3UvkcCqb3UzyzAWv4JLOUUtgZxFYp4OAhV8fCvQM7uEcmhucWD0D0D1jcOCzff2xkaCMxGKo3vPWrpEpB1Cvwr6%2FovNBMi8gxK2HGHxkNaM7bUzqb3sXyn%2BfTXz9%2FEgb5Anv0%2FA2UZmoDIcpmYWYuOpVpTlPHx58vmttalCWrC9A9RgkLmb5bPNwlSndlvLlvywFsoConc%2BFvtlEA%2Fo4FOaT%2FAh2%2BtNjZwYrlq%2B3PoTHEoUPtQkAI5XVMPHBrL4GOqUBxjWUpq0X9s3uhswHHpbKUuBVR%2BCoqKAg0voPsMIuoXVNA4VnS15x7lDD7resWO%2FtA59cXiC0JsH8tGqYN5nEx9yA7prG8JJ0VcvIjGRQu1z6VKlAPsrf7eFMu3p3W31acHDDqr4cvYaH7%2FioKuGeN1Yz7Lq8DSjijA8NDngP3Gob4dskmpjQOPyZU8doxG8QBzVVrQ%2BRBkZy6bt5QvPhT%2B9mfp8G&amp;X-Amz-Signature=1fd66b3c88190db7cb9f1b05541a9e7ec774da70686825a64c2110d882081065&amp;X-Amz-SignedHeaders=host&amp;x-id=GetObject\"/>",
+							"otherinfo": ""
+						},
+						{
+							"id": "86",
+							"uri": "https://preimpactco2.osc-fr1.scalingo.io/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<link rel=\"preload\" as=\"image\" href=\"https://prod-files-secure.s3.us-west-2.amazonaws.com/a33bcf70-8792-422e-bd32-0327fc741a8b/a155e0c8-a7a3-4279-9063-5af809311750/sia.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&amp;X-Amz-Credential=ASIAZI2LB466WWH5Q2TU%2F20250307%2Fus-west-2%2Fs3%2Faws4_request&amp;X-Amz-Date=20250307T164836Z&amp;X-Amz-Expires=3600&amp;X-Amz-Security-Token=IQoJb3JpZ2luX2VjEAEaCXVzLXdlc3QtMiJHMEUCIQCM4ON%2F73kz1R76Dht0Vx%2FggYBqDSdU5GNs45R%2BpJ7u1wIgaNqrPBboUZ1ODQj9BZFZfThpp%2BPrG%2BCBz7UHlU3GM5kq%2FwMIShAAGgw2Mzc0MjMxODM4MDUiDGKWZbRlVlg3U4K%2FmircAzdCICYj%2BV3Ayq6HpI60VkzUlBPxxp2udww0tFdKIDla0OSH51KUgIAuWOF1Pd%2BrAzU561IK1q0Ve4s3ogbZqCGge%2FpyuzaIMUfMvi2RfuqYwPxHJvrxeLFSzHyaCZS%2FYupuYU1c1b4o2731i6Svq5nq1tChX8LjgZ8XX4qUHVvb8SmFOQp6d%2B9CP7wNZdkF5iqMhop6RA3kH6Ulzi816XtRet%2BAXimSsWtP2j1p3Y%2BZNvseyBCHI3cvXHOwPU8si3UNe4%2F75VFf06SLDXRVOlgdI%2F1z3KxH11X0QTezUK9iPMnXChpCXwOTmXiL1bsJpWuG1tLHmXqDtSqJzCwfgT0bPhBa9uPsA9IpBof8sy17csQzdUT7mVoUhzBgcjcF6t6%2ByS06xooCi9RAvtRHHhNrujFn5TU9bUSi5yllNWbzwkKevVmjmd9SyzRrkqKSsiO6b2DHAsS0nKcsU1FuDa57uqggTW%2FMNQAnEI9fLEAz1En5SMApcvTTuBgYWej5dPGb1%2BCEmStqESDreipn2NtLw0%2BJW5lrWMh6cCLo%2Fk3hqIy8PLien1xmlYGJNShyVk9r0qa9zEFPboKWHJP5sC6lEJlq75FOxQVwfLjrQm0%2F84YRsXgvgBafBNZ6MNLArL4GOqUBCXK%2Bwg%2FKGrYSSnh5ePTUagtN35tDoS0d%2BdNJ91iJ1ibfgOmwQWMQ6TBkZ8YGYOnQldDLggvjlnMqhAHQDxoaDWP1sM1V%2Fdnhqe3o6ncnjeRz9g8nlH5ExxnXI6BRkF6V0pI4G2iUmTlW%2BnyH87AqJ7a%2FkY5BKbYzvNAYYIDS2EXrUWIEUvRpRwgmEil13U1CSl0XXwQ%2BOzl6ZZWbsScaDgx4geA0&amp;X-Amz-Signature=4928991aea8f4d6453d76d52ec0d2b65f68e987ee0283fde1a71585de912cad3&amp;X-Amz-SignedHeaders=host&amp;x-id=GetObject\"/>",
+							"otherinfo": ""
+						},
+						{
+							"id": "87",
+							"uri": "https://preimpactco2.osc-fr1.scalingo.io/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<link rel=\"preload\" as=\"image\" href=\"https://prod-files-secure.s3.us-west-2.amazonaws.com/a33bcf70-8792-422e-bd32-0327fc741a8b/d6a12c19-7593-4193-aca1-4bd55c278caa/franceinfo.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&amp;X-Amz-Credential=ASIAZI2LB466WWH5Q2TU%2F20250307%2Fus-west-2%2Fs3%2Faws4_request&amp;X-Amz-Date=20250307T164836Z&amp;X-Amz-Expires=3600&amp;X-Amz-Security-Token=IQoJb3JpZ2luX2VjEAEaCXVzLXdlc3QtMiJHMEUCIQCM4ON%2F73kz1R76Dht0Vx%2FggYBqDSdU5GNs45R%2BpJ7u1wIgaNqrPBboUZ1ODQj9BZFZfThpp%2BPrG%2BCBz7UHlU3GM5kq%2FwMIShAAGgw2Mzc0MjMxODM4MDUiDGKWZbRlVlg3U4K%2FmircAzdCICYj%2BV3Ayq6HpI60VkzUlBPxxp2udww0tFdKIDla0OSH51KUgIAuWOF1Pd%2BrAzU561IK1q0Ve4s3ogbZqCGge%2FpyuzaIMUfMvi2RfuqYwPxHJvrxeLFSzHyaCZS%2FYupuYU1c1b4o2731i6Svq5nq1tChX8LjgZ8XX4qUHVvb8SmFOQp6d%2B9CP7wNZdkF5iqMhop6RA3kH6Ulzi816XtRet%2BAXimSsWtP2j1p3Y%2BZNvseyBCHI3cvXHOwPU8si3UNe4%2F75VFf06SLDXRVOlgdI%2F1z3KxH11X0QTezUK9iPMnXChpCXwOTmXiL1bsJpWuG1tLHmXqDtSqJzCwfgT0bPhBa9uPsA9IpBof8sy17csQzdUT7mVoUhzBgcjcF6t6%2ByS06xooCi9RAvtRHHhNrujFn5TU9bUSi5yllNWbzwkKevVmjmd9SyzRrkqKSsiO6b2DHAsS0nKcsU1FuDa57uqggTW%2FMNQAnEI9fLEAz1En5SMApcvTTuBgYWej5dPGb1%2BCEmStqESDreipn2NtLw0%2BJW5lrWMh6cCLo%2Fk3hqIy8PLien1xmlYGJNShyVk9r0qa9zEFPboKWHJP5sC6lEJlq75FOxQVwfLjrQm0%2F84YRsXgvgBafBNZ6MNLArL4GOqUBCXK%2Bwg%2FKGrYSSnh5ePTUagtN35tDoS0d%2BdNJ91iJ1ibfgOmwQWMQ6TBkZ8YGYOnQldDLggvjlnMqhAHQDxoaDWP1sM1V%2Fdnhqe3o6ncnjeRz9g8nlH5ExxnXI6BRkF6V0pI4G2iUmTlW%2BnyH87AqJ7a%2FkY5BKbYzvNAYYIDS2EXrUWIEUvRpRwgmEil13U1CSl0XXwQ%2BOzl6ZZWbsScaDgx4geA0&amp;X-Amz-Signature=a69aa5ca7b40e95bcabaee84bdae29bea61219cb26de680da67e414dfce0478c&amp;X-Amz-SignedHeaders=host&amp;x-id=GetObject\"/>",
+							"otherinfo": ""
+						},
+						{
+							"id": "88",
+							"uri": "https://preimpactco2.osc-fr1.scalingo.io/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<link rel=\"preload\" as=\"image\" href=\"https://prod-files-secure.s3.us-west-2.amazonaws.com/a33bcf70-8792-422e-bd32-0327fc741a8b/ec2e9b5a-3bb8-4c97-a874-d5c0c1814a0f/stadefrance.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&amp;X-Amz-Credential=ASIAZI2LB466WWH5Q2TU%2F20250307%2Fus-west-2%2Fs3%2Faws4_request&amp;X-Amz-Date=20250307T164836Z&amp;X-Amz-Expires=3600&amp;X-Amz-Security-Token=IQoJb3JpZ2luX2VjEAEaCXVzLXdlc3QtMiJHMEUCIQCM4ON%2F73kz1R76Dht0Vx%2FggYBqDSdU5GNs45R%2BpJ7u1wIgaNqrPBboUZ1ODQj9BZFZfThpp%2BPrG%2BCBz7UHlU3GM5kq%2FwMIShAAGgw2Mzc0MjMxODM4MDUiDGKWZbRlVlg3U4K%2FmircAzdCICYj%2BV3Ayq6HpI60VkzUlBPxxp2udww0tFdKIDla0OSH51KUgIAuWOF1Pd%2BrAzU561IK1q0Ve4s3ogbZqCGge%2FpyuzaIMUfMvi2RfuqYwPxHJvrxeLFSzHyaCZS%2FYupuYU1c1b4o2731i6Svq5nq1tChX8LjgZ8XX4qUHVvb8SmFOQp6d%2B9CP7wNZdkF5iqMhop6RA3kH6Ulzi816XtRet%2BAXimSsWtP2j1p3Y%2BZNvseyBCHI3cvXHOwPU8si3UNe4%2F75VFf06SLDXRVOlgdI%2F1z3KxH11X0QTezUK9iPMnXChpCXwOTmXiL1bsJpWuG1tLHmXqDtSqJzCwfgT0bPhBa9uPsA9IpBof8sy17csQzdUT7mVoUhzBgcjcF6t6%2ByS06xooCi9RAvtRHHhNrujFn5TU9bUSi5yllNWbzwkKevVmjmd9SyzRrkqKSsiO6b2DHAsS0nKcsU1FuDa57uqggTW%2FMNQAnEI9fLEAz1En5SMApcvTTuBgYWej5dPGb1%2BCEmStqESDreipn2NtLw0%2BJW5lrWMh6cCLo%2Fk3hqIy8PLien1xmlYGJNShyVk9r0qa9zEFPboKWHJP5sC6lEJlq75FOxQVwfLjrQm0%2F84YRsXgvgBafBNZ6MNLArL4GOqUBCXK%2Bwg%2FKGrYSSnh5ePTUagtN35tDoS0d%2BdNJ91iJ1ibfgOmwQWMQ6TBkZ8YGYOnQldDLggvjlnMqhAHQDxoaDWP1sM1V%2Fdnhqe3o6ncnjeRz9g8nlH5ExxnXI6BRkF6V0pI4G2iUmTlW%2BnyH87AqJ7a%2FkY5BKbYzvNAYYIDS2EXrUWIEUvRpRwgmEil13U1CSl0XXwQ%2BOzl6ZZWbsScaDgx4geA0&amp;X-Amz-Signature=957b2757f8992ad0b51e4495d19d333dca984a95dfce6dcc1e98f19478221053&amp;X-Amz-SignedHeaders=host&amp;x-id=GetObject\"/>",
+							"otherinfo": ""
+						},
+						{
+							"id": "93",
+							"uri": "https://preimpactco2.osc-fr1.scalingo.io/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<link rel=\"preload\" href=\"https://cdn.jsdelivr.net/npm/@gouvfr/dsfr@1.12.1/dist/fonts/Marianne-Bold.woff2\" as=\"font\" type=\"font/woff2\" crossorigin=\"anonymous\"/>",
+							"otherinfo": ""
+						},
+						{
+							"id": "92",
+							"uri": "https://preimpactco2.osc-fr1.scalingo.io/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<link rel=\"preload\" href=\"https://cdn.jsdelivr.net/npm/@gouvfr/dsfr@1.12.1/dist/fonts/Marianne-Medium.woff2\" as=\"font\" type=\"font/woff2\" crossorigin=\"anonymous\"/>",
+							"otherinfo": ""
+						},
+						{
+							"id": "91",
+							"uri": "https://preimpactco2.osc-fr1.scalingo.io/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<link rel=\"preload\" href=\"https://cdn.jsdelivr.net/npm/@gouvfr/dsfr@1.12.1/dist/fonts/Marianne-Regular.woff2\" as=\"font\" type=\"font/woff2\" crossorigin=\"anonymous\"/>",
+							"otherinfo": ""
+						},
+						{
+							"id": "82",
+							"uri": "https://preimpactco2.osc-fr1.scalingo.io/rendez-vous?fromLabel=Accueil",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<link rel=\"preload\" href=\"https://cdn.jsdelivr.net/npm/@gouvfr/dsfr@1.12.1/dist/fonts/Marianne-Bold.woff2\" as=\"font\" type=\"font/woff2\" crossorigin=\"anonymous\"/>",
+							"otherinfo": ""
+						},
+						{
+							"id": "81",
+							"uri": "https://preimpactco2.osc-fr1.scalingo.io/rendez-vous?fromLabel=Accueil",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<link rel=\"preload\" href=\"https://cdn.jsdelivr.net/npm/@gouvfr/dsfr@1.12.1/dist/fonts/Marianne-Medium.woff2\" as=\"font\" type=\"font/woff2\" crossorigin=\"anonymous\"/>",
+							"otherinfo": ""
+						},
+						{
+							"id": "80",
+							"uri": "https://preimpactco2.osc-fr1.scalingo.io/rendez-vous?fromLabel=Accueil",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -284,13 +357,13 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "11",
+					"count": "19",
 					"solution": "<p>Provide a valid integrity attribute to the tag.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/Security/Subresource_Integrity</p>",
 					"cweid": "345",
 					"wascid": "15",
-					"sourceid": "6"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "90004",
@@ -303,7 +376,7 @@
 					"desc": "<p>Cross-Origin-Resource-Policy header is an opt-in header designed to counter side-channels attacks like Spectre. Resource should be specifically set as shareable amongst different origins.</p>",
 					"instances":[ 
 						{
-							"id": "25",
+							"id": "42",
 							"uri": "https://preimpactco2.osc-fr1.scalingo.io",
 							"method": "GET",
 							"param": "Cross-Origin-Resource-Policy",
@@ -313,7 +386,7 @@
 						},
 						{
 							"id": "65",
-							"uri": "https://preimpactco2.osc-fr1.scalingo.io/",
+							"uri": "https://preimpactco2.osc-fr1.scalingo.io/rendez-vous?fromLabel=Accueil",
 							"method": "GET",
 							"param": "Cross-Origin-Resource-Policy",
 							"attack": "",
@@ -321,7 +394,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "11",
+							"id": "19",
 							"uri": "https://preimpactco2.osc-fr1.scalingo.io/robots.txt",
 							"method": "GET",
 							"param": "Cross-Origin-Resource-Policy",
@@ -330,7 +403,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "10",
+							"id": "20",
 							"uri": "https://preimpactco2.osc-fr1.scalingo.io/sitemap.xml",
 							"method": "GET",
 							"param": "Cross-Origin-Resource-Policy",
@@ -339,7 +412,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "26",
+							"id": "43",
 							"uri": "https://preimpactco2.osc-fr1.scalingo.io",
 							"method": "GET",
 							"param": "Cross-Origin-Embedder-Policy",
@@ -349,7 +422,7 @@
 						},
 						{
 							"id": "66",
-							"uri": "https://preimpactco2.osc-fr1.scalingo.io/",
+							"uri": "https://preimpactco2.osc-fr1.scalingo.io/rendez-vous?fromLabel=Accueil",
 							"method": "GET",
 							"param": "Cross-Origin-Embedder-Policy",
 							"attack": "",
@@ -357,7 +430,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "12",
+							"id": "21",
 							"uri": "https://preimpactco2.osc-fr1.scalingo.io/sitemap.xml",
 							"method": "GET",
 							"param": "Cross-Origin-Embedder-Policy",
@@ -366,7 +439,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "27",
+							"id": "44",
 							"uri": "https://preimpactco2.osc-fr1.scalingo.io",
 							"method": "GET",
 							"param": "Cross-Origin-Opener-Policy",
@@ -376,7 +449,7 @@
 						},
 						{
 							"id": "67",
-							"uri": "https://preimpactco2.osc-fr1.scalingo.io/",
+							"uri": "https://preimpactco2.osc-fr1.scalingo.io/rendez-vous?fromLabel=Accueil",
 							"method": "GET",
 							"param": "Cross-Origin-Opener-Policy",
 							"attack": "",
@@ -384,7 +457,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "13",
+							"id": "22",
 							"uri": "https://preimpactco2.osc-fr1.scalingo.io/sitemap.xml",
 							"method": "GET",
 							"param": "Cross-Origin-Opener-Policy",
@@ -412,7 +485,7 @@
 					"desc": "<p>Permissions Policy Header is an added layer of security that helps to restrict from unauthorized access or usage of browser/client features by web resources. This policy ensures the user privacy by limiting or specifying the features of the browsers can be used by the web resources. Permissions Policy provides a set of standard HTTP headers that allow website owners to limit which features of browsers can be used by the page such as camera, microphone, location, full screen etc.</p>",
 					"instances":[ 
 						{
-							"id": "24",
+							"id": "41",
 							"uri": "https://preimpactco2.osc-fr1.scalingo.io",
 							"method": "GET",
 							"param": "",
@@ -421,7 +494,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "64",
+							"id": "78",
 							"uri": "https://preimpactco2.osc-fr1.scalingo.io/",
 							"method": "GET",
 							"param": "",
@@ -430,7 +503,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "126",
+							"id": "125",
 							"uri": "https://preimpactco2.osc-fr1.scalingo.io/budget",
 							"method": "GET",
 							"param": "",
@@ -439,7 +512,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "100",
+							"id": "84",
 							"uri": "https://preimpactco2.osc-fr1.scalingo.io/doc",
 							"method": "GET",
 							"param": "",
@@ -448,16 +521,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "90",
-							"uri": "https://preimpactco2.osc-fr1.scalingo.io/doc/exemples",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"id": "117",
+							"id": "150",
 							"uri": "https://preimpactco2.osc-fr1.scalingo.io/doc/questions-frequentes",
 							"method": "GET",
 							"param": "",
@@ -466,7 +530,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "103",
+							"id": "109",
 							"uri": "https://preimpactco2.osc-fr1.scalingo.io/outils",
 							"method": "GET",
 							"param": "",
@@ -475,7 +539,16 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "78",
+							"id": "128",
+							"uri": "https://preimpactco2.osc-fr1.scalingo.io/plan-du-site",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "64",
 							"uri": "https://preimpactco2.osc-fr1.scalingo.io/rendez-vous?fromLabel=Accueil",
 							"method": "GET",
 							"param": "",
@@ -484,7 +557,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "147",
+							"id": "152",
 							"uri": "https://preimpactco2.osc-fr1.scalingo.io/rendez-vous?fromLabel=footer",
 							"method": "GET",
 							"param": "",
@@ -493,7 +566,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "124",
+							"id": "113",
 							"uri": "https://preimpactco2.osc-fr1.scalingo.io/stats",
 							"method": "GET",
 							"param": "",
@@ -502,7 +575,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "123",
+							"id": "114",
 							"uri": "https://preimpactco2.osc-fr1.scalingo.io/suggestion?fromLabel=Accueil&simulatorName=du%20site",
 							"method": "GET",
 							"param": "",
@@ -530,7 +603,7 @@
 					"desc": "<p>The web/application server is leaking information via one or more \"X-Powered-By\" HTTP response headers. Access to such information may facilitate attackers identifying other frameworks/components your web application is reliant upon and the vulnerabilities such components may be subject to.</p>",
 					"instances":[ 
 						{
-							"id": "22",
+							"id": "6",
 							"uri": "https://preimpactco2.osc-fr1.scalingo.io",
 							"method": "GET",
 							"param": "",
@@ -539,7 +612,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "54",
+							"id": "61",
 							"uri": "https://preimpactco2.osc-fr1.scalingo.io/",
 							"method": "GET",
 							"param": "",
@@ -548,7 +621,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "125",
+							"id": "121",
 							"uri": "https://preimpactco2.osc-fr1.scalingo.io/budget",
 							"method": "GET",
 							"param": "",
@@ -557,7 +630,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "98",
+							"id": "79",
 							"uri": "https://preimpactco2.osc-fr1.scalingo.io/doc",
 							"method": "GET",
 							"param": "",
@@ -566,7 +639,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "88",
+							"id": "132",
 							"uri": "https://preimpactco2.osc-fr1.scalingo.io/doc/exemples",
 							"method": "GET",
 							"param": "",
@@ -575,7 +648,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "113",
+							"id": "126",
 							"uri": "https://preimpactco2.osc-fr1.scalingo.io/doc/questions-frequentes",
 							"method": "GET",
 							"param": "",
@@ -584,7 +657,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "101",
+							"id": "104",
 							"uri": "https://preimpactco2.osc-fr1.scalingo.io/outils",
 							"method": "GET",
 							"param": "",
@@ -593,7 +666,16 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "75",
+							"id": "122",
+							"uri": "https://preimpactco2.osc-fr1.scalingo.io/plan-du-site",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "X-Powered-By: Next.js",
+							"otherinfo": ""
+						},
+						{
+							"id": "51",
 							"uri": "https://preimpactco2.osc-fr1.scalingo.io/rendez-vous?fromLabel=Accueil",
 							"method": "GET",
 							"param": "",
@@ -602,16 +684,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "146",
-							"uri": "https://preimpactco2.osc-fr1.scalingo.io/rendez-vous?fromLabel=footer",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "X-Powered-By: Next.js",
-							"otherinfo": ""
-						},
-						{
-							"id": "120",
+							"id": "105",
 							"uri": "https://preimpactco2.osc-fr1.scalingo.io/stats",
 							"method": "GET",
 							"param": "",
@@ -620,7 +693,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "118",
+							"id": "106",
 							"uri": "https://preimpactco2.osc-fr1.scalingo.io/suggestion?fromLabel=Accueil&simulatorName=du%20site",
 							"method": "GET",
 							"param": "",
@@ -633,7 +706,7 @@
 					"solution": "<p>Ensure that your web server, application server, load balancer, etc. is configured to suppress \"X-Powered-By\" headers.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://owasp.org/www-project-web-security-testing-guide/v42/4-Web_Application_Security_Testing/01-Information_Gathering/08-Fingerprint_Web_Application_Framework</p><p>https://www.troyhunt.com/2012/02/shhh-dont-let-your-response-headers.html</p>",
-					"cweid": "200",
+					"cweid": "497",
 					"wascid": "13",
 					"sourceid": "1"
 				},
@@ -648,7 +721,7 @@
 					"desc": "<p>HTTP Strict Transport Security (HSTS) is a web security policy mechanism whereby a web server declares that complying user agents (such as a web browser) are to interact with it using only secure HTTPS connections (i.e. HTTP layered over TLS/SSL). HSTS is an IETF standards track protocol and is specified in RFC 6797.</p>",
 					"instances":[ 
 						{
-							"id": "150",
+							"id": "161",
 							"uri": "https://preimpactco2.osc-fr1.scalingo.io/outils/alimentation",
 							"method": "GET",
 							"param": "",
@@ -657,8 +730,8 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "149",
-							"uri": "https://preimpactco2.osc-fr1.scalingo.io/outils/comparateur",
+							"id": "171",
+							"uri": "https://preimpactco2.osc-fr1.scalingo.io/outils/api",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -666,7 +739,25 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "160",
+							"id": "170",
+							"uri": "https://preimpactco2.osc-fr1.scalingo.io/outils/detecteur",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "169",
+							"uri": "https://preimpactco2.osc-fr1.scalingo.io/outils/etiquettes",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "163",
 							"uri": "https://preimpactco2.osc-fr1.scalingo.io/outils/fruitsetlegumes",
 							"method": "GET",
 							"param": "",
@@ -675,8 +766,8 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "159",
-							"uri": "https://preimpactco2.osc-fr1.scalingo.io/outils/mobilier",
+							"id": "164",
+							"uri": "https://preimpactco2.osc-fr1.scalingo.io/outils/habillement",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -684,7 +775,25 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "161",
+							"id": "167",
+							"uri": "https://preimpactco2.osc-fr1.scalingo.io/outils/livraison",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "172",
+							"uri": "https://preimpactco2.osc-fr1.scalingo.io/outils/npm",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "165",
 							"uri": "https://preimpactco2.osc-fr1.scalingo.io/outils/numerique",
 							"method": "GET",
 							"param": "",
@@ -693,8 +802,26 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "151",
-							"uri": "https://preimpactco2.osc-fr1.scalingo.io/outils/quiz",
+							"id": "168",
+							"uri": "https://preimpactco2.osc-fr1.scalingo.io/outils/teletravail",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "162",
+							"uri": "https://preimpactco2.osc-fr1.scalingo.io/outils/transport",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "166",
+							"uri": "https://preimpactco2.osc-fr1.scalingo.io/outils/usagenumerique",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -702,13 +829,13 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "6",
+					"count": "12",
 					"solution": "<p>Ensure that your web server, application server, load balancer, etc. is configured to enforce Strict-Transport-Security.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://cheatsheetseries.owasp.org/cheatsheets/HTTP_Strict_Transport_Security_Cheat_Sheet.html</p><p>https://owasp.org/www-community/Security_Headers</p><p>https://en.wikipedia.org/wiki/HTTP_Strict_Transport_Security</p><p>https://caniuse.com/stricttransportsecurity</p><p>https://datatracker.ietf.org/doc/html/rfc6797</p>",
 					"cweid": "319",
 					"wascid": "15",
-					"sourceid": "433"
+					"sourceid": "892"
 				},
 				{
 					"pluginid": "10096",
@@ -734,9 +861,9 @@
 					"solution": "<p>Manually confirm that the timestamp data is not sensitive, and that the data cannot be aggregated to disclose exploitable patterns.</p>",
 					"otherinfo": "<p>1743339172, which evaluates to: 2025-03-30 12:52:52.</p>",
 					"reference": "<p>https://cwe.mitre.org/data/definitions/200.html</p>",
-					"cweid": "200",
+					"cweid": "497",
 					"wascid": "13",
-					"sourceid": "461"
+					"sourceid": "745"
 				},
 				{
 					"pluginid": "10094",
@@ -749,34 +876,34 @@
 					"desc": "<p>Base64 encoded data was disclosed by the application/web server. Note: in the interests of performance not all base64 strings in the response were analyzed individually, the entire response should be looked at by the analyst/security team/developer(s).</p>",
 					"instances":[ 
 						{
-							"id": "86",
+							"id": "28",
 							"uri": "https://preimpactco2.osc-fr1.scalingo.io",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "IQoJb3JpZ2luX2VjEHoaCXVzLXdlc3QtMiJGMEQCIDZWivYyEZ50GNxM2ltti5POkJPKay3XKnoXddHH",
-							"otherinfo": "!\n\torigin_ec\\x0010z\\x001a\tus-west-2\"F0D\\x0002 6V\uFFFD\uFFFD2\\x0011\uFFFDt\\x0018\uFFFDL\uFFFD[m\uFFFD\uFFFD\u0390\uFFFD\uFFFDk-\uFFFD*z\\x0017u\uFFFD\uFFFD"
+							"evidence": "IQoJb3JpZ2luX2VjEAEaCXVzLXdlc3QtMiJGMEQCIEBiNIFn0eF2YZFpZSOKOhfLMcIoUUPOTBKQlrRQ7Je6AiBSRGVymSy6fT4Vsv",
+							"otherinfo": "!\n\torigin_ec\\x0010\\x0001\\x001a\tus-west-2\"F0D\\x0002 @b4\uFFFDg\uFFFD\uFFFDva\uFFFDie#\uFFFD:\\x0017\uFFFD1\uFFFD(QC\uFFFDL\\x0012\uFFFD\uFFFD\uFFFDP\uC5FA\\x0002 RDer\uFFFD,\uFFFD}>\\x0015\uFFFD"
 						},
 						{
-							"id": "43",
+							"id": "68",
 							"uri": "https://preimpactco2.osc-fr1.scalingo.io",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "IQoJb3JpZ2luX2VjEHoaCXVzLXdlc3QtMiJHMEUCIQCdl5Uo",
-							"otherinfo": "!\n\torigin_ec\\x0010z\\x001a\tus-west-2\"G0E\\x0002!\\x0000\uFFFD\uFFFD\uFFFD("
+							"evidence": "IQoJb3JpZ2luX2VjEAEaCXVzLXdlc3QtMiJHMEUCIQCM4ON",
+							"otherinfo": "!\n\torigin_ec\\x0010\\x0001\\x001a\tus-west-2\"G0E\\x0002!\\x0000\uFFFD\uFFFD\uFFFD"
 						},
 						{
-							"id": "87",
+							"id": "70",
 							"uri": "https://preimpactco2.osc-fr1.scalingo.io/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "IQoJb3JpZ2luX2VjEHoaCXVzLXdlc3QtMiJGMEQCIDZWivYyEZ50GNxM2ltti5POkJPKay3XKnoXddHH",
-							"otherinfo": "!\n\torigin_ec\\x0010z\\x001a\tus-west-2\"F0D\\x0002 6V\uFFFD\uFFFD2\\x0011\uFFFDt\\x0018\uFFFDL\uFFFD[m\uFFFD\uFFFD\u0390\uFFFD\uFFFDk-\uFFFD*z\\x0017u\uFFFD\uFFFD"
+							"evidence": "IQoJb3JpZ2luX2VjEAEaCXVzLXdlc3QtMiJHMEUCIQCM4ON",
+							"otherinfo": "!\n\torigin_ec\\x0010\\x0001\\x001a\tus-west-2\"G0E\\x0002!\\x0000\uFFFD\uFFFD\uFFFD"
 						},
 						{
-							"id": "155",
+							"id": "158",
 							"uri": "https://preimpactco2.osc-fr1.scalingo.io/_next/static/chunks/6584-37bc2035f586e408.js",
 							"method": "GET",
 							"param": "",
@@ -785,7 +912,7 @@
 							"otherinfo": "\n\\x0017\uFFFD\uFFFD\uFFFD1\"zn\uFFFD\uFFFD(\uFFFD\u05A2\uFFFD\uFFFD\uFFFD\uFFFDOPL"
 						},
 						{
-							"id": "157",
+							"id": "159",
 							"uri": "https://preimpactco2.osc-fr1.scalingo.io/_next/static/chunks/9397-e64f70433a0bb1e2.js",
 							"method": "GET",
 							"param": "",
@@ -794,7 +921,7 @@
 							"otherinfo": "\r\uFFFD^r\uFFFD+I\uFFFD\uFFFD\uFFFD\u0716*[\uFFFD\uFFFD\uFFFDN+e{\uFFFD\uFFFD\uFFFDw\uFFFD"
 						},
 						{
-							"id": "158",
+							"id": "157",
 							"uri": "https://preimpactco2.osc-fr1.scalingo.io/_next/static/chunks/9732-90d61be5f386de2c.js",
 							"method": "GET",
 							"param": "",
@@ -803,7 +930,7 @@
 							"otherinfo": "ifB~UmlSFo0nDFIaQyJcUAHmA8NBXPB0XrtmdUTZoz_0e"
 						},
 						{
-							"id": "154",
+							"id": "155",
 							"uri": "https://preimpactco2.osc-fr1.scalingo.io/_next/static/css/a6e6ee60b315bf94.css",
 							"method": "GET",
 							"param": "",
@@ -812,7 +939,7 @@
 							"otherinfo": "N\uFFFD\uFFFD\uFFFD\uFFFD+\uFFFD*&\uFFFD\uFFFD\u2C89\u012A\uFFFDjW\uFFFD\uFFFD\uFFFDh\uFFFD\uFFFD\uFFFD\\x0001\uFFFD^"
 						},
 						{
-							"id": "153",
+							"id": "154",
 							"uri": "https://preimpactco2.osc-fr1.scalingo.io/_next/static/css/d16888061dbde394.css",
 							"method": "GET",
 							"param": "",
@@ -821,7 +948,7 @@
 							"otherinfo": "\n\\x0017\uFFFD\uFFFD\uFFFD1\"zn\uFFFD\uFFFD(\uFFFD\u05A2\uFFFD\uFFFD\uFFFD\uFFFDOPL"
 						},
 						{
-							"id": "152",
+							"id": "160",
 							"uri": "https://preimpactco2.osc-fr1.scalingo.io/accessibilite",
 							"method": "GET",
 							"param": "",
@@ -830,16 +957,16 @@
 							"otherinfo": "~\uFFFD\uFFFD\uFFFDb\uFFFD\uFFFDb\uFFFDy\u0797\uFFFD\uFFFD\u7FE9\uFFFD\uFFFD\uFFFDjy\uFFFDz_\uFFFD{\u98B1\uF79F\uFFFDq\uFFFD,\uFFFD\uFFFD\uFFFD\uFFFD\u05FEu\uFFFD>\uFFFD+^\uFFFD\uFFFD\\x001el\\x0019n{\uFFFD^\uFFFD_\uFFFDu\uFFFD"
 						},
 						{
-							"id": "104",
+							"id": "151",
 							"uri": "https://preimpactco2.osc-fr1.scalingo.io/doc/exemples",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "2BU9DqTP9IowIgCVBjYnqkd9Z7yB6wG1Xrr9gjI",
-							"otherinfo": "\uFFFD\\x0015=\\x000e\uFFFD\uFFFD\uFFFD0\"\\x0000\uFFFD\\x00066'\uFFFDG}g\uFFFD\uFFFD\uFFFD\\x0001\uFFFD^\uFFFD\uFFFD\uFFFD2"
+							"evidence": "IQoJb3JpZ2luX2VjEAEaCXVzLXdlc3QtMiJHMEUCIQCKQuKrRRf8fpYqr0mpjG",
+							"otherinfo": "!\n\torigin_ec\\x0010\\x0001\\x001a\tus-west-2\"G0E\\x0002!\\x0000\uFFFDB\uFFFDE\\x0017\uFFFD~\uFFFD*\uFFFDI\uFFFD\uFFFD"
 						},
 						{
-							"id": "148",
+							"id": "153",
 							"uri": "https://preimpactco2.osc-fr1.scalingo.io/doc/guide-utilisation",
 							"method": "GET",
 							"param": "",
@@ -848,7 +975,7 @@
 							"otherinfo": "r\uFFFD\uFFFDk}\uFFFDq\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD6\uFFFD\uFFFDw}\uFFFD\uFFFD}\uFFFD}\uFFFD\uFFFD\u056F\\x001b\uFFFDF\uFFFDo^\uFFFD\uFFFD\uFFFD=k_\uFFFD\uFFFD]\uFFFDo~t\uFFFD~}\uFFFD\uFFFD\uFFFDq\uFFFD_\uFFFD\uFFFD'\uFFFD+ey"
 						},
 						{
-							"id": "127",
+							"id": "111",
 							"uri": "https://preimpactco2.osc-fr1.scalingo.io/suggestion?fromLabel=Accueil&simulatorName=du%20site",
 							"method": "GET",
 							"param": "",
@@ -859,11 +986,11 @@
 					],
 					"count": "12",
 					"solution": "<p>Manually confirm that the Base64 data does not leak sensitive information, and that the data cannot be aggregated/used to exploit other vulnerabilities.</p>",
-					"otherinfo": "<p>!</p><p>\torigin_ec\\x0010z\\x001a\tus-west-2\"F0D\\x0002 6V\uFFFD\uFFFD2\\x0011\uFFFDt\\x0018\uFFFDL\uFFFD[m\uFFFD\uFFFD\u0390\uFFFD\uFFFDk-\uFFFD*z\\x0017u\uFFFD\uFFFD</p>",
+					"otherinfo": "<p>!</p><p>\torigin_ec\\x0010\\x0001\\x001a\tus-west-2\"F0D\\x0002 @b4\uFFFDg\uFFFD\uFFFDva\uFFFDie#\uFFFD:\\x0017\uFFFD1\uFFFD(QC\uFFFDL\\x0012\uFFFD\uFFFD\uFFFDP\uC5FA\\x0002 RDer\uFFFD,\uFFFD}>\\x0015\uFFFD</p>",
 					"reference": "<p>https://projects.webappsec.org/w/page/13246936/Information%20Leakage</p>",
-					"cweid": "200",
+					"cweid": "319",
 					"wascid": "13",
-					"sourceid": "6"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "10027",
@@ -873,7 +1000,7 @@
 					"riskcode": "0",
 					"confidence": "1",
 					"riskdesc": "Informational (Low)",
-					"desc": "<p>The response appears to contain suspicious comments which may help an attacker. Note: Matches made within script blocks or files are against the entire content not only comments.</p>",
+					"desc": "<p>The response appears to contain suspicious comments which may help an attacker.</p>",
 					"instances":[ 
 						{
 							"id": "4",
@@ -882,43 +1009,52 @@
 							"param": "",
 							"attack": "",
 							"evidence": "select",
-							"otherinfo": "The following pattern was used: \\bSELECT\\b and was detected in the element starting with: \"<script>self.__next_f.push([1,\"4a:[\\\"$\\\",\\\"div\\\",null,{\\\"className\\\":\\\"main-container Block_block__tPUWw\\\",\\\"id\\\":\\\"$undefined\\\"\", see evidence field for the suspicious comment/snippet."
+							"otherinfo": "The following pattern was used: \\bSELECT\\b and was detected in likely comment: \"//prod-files-secure.s3.us-west-2.amazonaws.com/a33bcf70-8792-422e-bd32-0327fc741a8b/3bb174cb-29e0-4c11-a15c-8f1935deb646/SocialM\", see evidence field for the suspicious comment/snippet."
 						},
 						{
-							"id": "50",
+							"id": "49",
 							"uri": "https://preimpactco2.osc-fr1.scalingo.io/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
 							"evidence": "select",
-							"otherinfo": "The following pattern was used: \\bSELECT\\b and was detected in the element starting with: \"<script>self.__next_f.push([1,\"4a:[\\\"$\\\",\\\"div\\\",null,{\\\"className\\\":\\\"main-container Block_block__tPUWw\\\",\\\"id\\\":\\\"$undefined\\\"\", see evidence field for the suspicious comment/snippet."
+							"otherinfo": "The following pattern was used: \\bSELECT\\b and was detected in likely comment: \"//prod-files-secure.s3.us-west-2.amazonaws.com/a33bcf70-8792-422e-bd32-0327fc741a8b/3bb174cb-29e0-4c11-a15c-8f1935deb646/SocialM\", see evidence field for the suspicious comment/snippet."
 						},
 						{
-							"id": "93",
+							"id": "118",
+							"uri": "https://preimpactco2.osc-fr1.scalingo.io/budget",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "from",
+							"otherinfo": "The following pattern was used: \\bFROM\\b and was detected in likely comment: \"//cdn.jsdelivr.net/npm/@gouvfr/dsfr@1.12.1/dist/fonts/Marianne-Regular.woff2\\\",{\\\"rel\\\":\\\"preload\\\",\\\"href\\\":\\\"https://cdn.jsdel\", see evidence field for the suspicious comment/snippet."
+						},
+						{
+							"id": "72",
 							"uri": "https://preimpactco2.osc-fr1.scalingo.io/doc",
 							"method": "GET",
 							"param": "",
 							"attack": "",
 							"evidence": "from",
-							"otherinfo": "The following pattern was used: \\bFROM\\b and was detected in the element starting with: \"<script>self.__next_f.push([1,\"0:{\\\"P\\\":null,\\\"b\\\":\\\"VwHi0BDpl6pbjT2g1vpcw\\\",\\\"p\\\":\\\"\\\",\\\"c\\\":[\\\"\\\",\\\"doc\\\"],\\\"i\\\":false,\\\"f\\\":[\", see evidence field for the suspicious comment/snippet."
+							"otherinfo": "The following pattern was used: \\bFROM\\b and was detected in likely comment: \"//cdn.jsdelivr.net/npm/@gouvfr/dsfr@1.12.1/dist/fonts/Marianne-Regular.woff2\\\",{\\\"rel\\\":\\\"preload\\\",\\\"href\\\":\\\"https://cdn.jsdel\", see evidence field for the suspicious comment/snippet."
 						},
 						{
-							"id": "74",
+							"id": "116",
 							"uri": "https://preimpactco2.osc-fr1.scalingo.io/doc/exemples",
 							"method": "GET",
 							"param": "",
 							"attack": "",
 							"evidence": "db",
-							"otherinfo": "The following pattern was used: \\bDB\\b and was detected in the element starting with: \"<script>self.__next_f.push([1,\"44:[[[\\\"$\\\",\\\"nav\\\",null,{\\\"role\\\":\\\"navigation\\\",\\\"aria-label\\\":\\\"Breadcrumb\\\",\\\"className\\\":\\\"m\", see evidence field for the suspicious comment/snippet."
+							"otherinfo": "The following pattern was used: \\bDB\\b and was detected in likely comment: \"//www.w3.org/2000/svg\\\",\\\"width\\\":\\\"17\\\",\\\"height\\\":\\\"16\\\",\\\"viewBox\\\":\\\"0 0 17 16\\\",\\\"fill\\\":\\\"none\\\",\\\"children\\\":[\\\"$\\\",\\\"pat\", see evidence field for the suspicious comment/snippet."
 						},
 						{
-							"id": "107",
-							"uri": "https://preimpactco2.osc-fr1.scalingo.io/doc/questions-frequentes",
+							"id": "97",
+							"uri": "https://preimpactco2.osc-fr1.scalingo.io/outils",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "select",
-							"otherinfo": "The following pattern was used: \\bSELECT\\b and was detected in the element starting with: \"<script>self.__next_f.push([1,\"44:[[[\\\"$\\\",\\\"nav\\\",null,{\\\"role\\\":\\\"navigation\\\",\\\"aria-label\\\":\\\"Breadcrumb\\\",\\\"className\\\":\\\"m\", see evidence field for the suspicious comment/snippet."
+							"evidence": "from",
+							"otherinfo": "The following pattern was used: \\bFROM\\b and was detected in likely comment: \"//cdn.jsdelivr.net/npm/@gouvfr/dsfr@1.12.1/dist/fonts/Marianne-Regular.woff2\\\",{\\\"rel\\\":\\\"preload\\\",\\\"href\\\":\\\"https://cdn.jsdel\", see evidence field for the suspicious comment/snippet."
 						},
 						{
 							"id": "96",
@@ -926,60 +1062,51 @@
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "from",
-							"otherinfo": "The following pattern was used: \\bFROM\\b and was detected in the element starting with: \"<script>self.__next_f.push([1,\"0:{\\\"P\\\":null,\\\"b\\\":\\\"VwHi0BDpl6pbjT2g1vpcw\\\",\\\"p\\\":\\\"\\\",\\\"c\\\":[\\\"\\\",\\\"outils?_rsc=1nm42\\\"],\\\"i\\\"\", see evidence field for the suspicious comment/snippet."
-						},
-						{
-							"id": "95",
-							"uri": "https://preimpactco2.osc-fr1.scalingo.io/outils",
-							"method": "GET",
-							"param": "",
-							"attack": "",
 							"evidence": "select",
-							"otherinfo": "The following pattern was used: \\bSELECT\\b and was detected in the element starting with: \"<script>self.__next_f.push([1,\"47:[\\\"$\\\",\\\"div\\\",null,{\\\"className\\\":\\\"main-container Block_block__tPUWw\\\",\\\"id\\\":\\\"$undefined\\\"\", see evidence field for the suspicious comment/snippet."
+							"otherinfo": "The following pattern was used: \\bSELECT\\b and was detected in likely comment: \"//prod-files-secure.s3.us-west-2.amazonaws.com/a33bcf70-8792-422e-bd32-0327fc741a8b/3bb174cb-29e0-4c11-a15c-8f1935deb646/SocialM\", see evidence field for the suspicious comment/snippet."
 						},
 						{
-							"id": "72",
+							"id": "46",
 							"uri": "https://preimpactco2.osc-fr1.scalingo.io/rendez-vous?fromLabel=Accueil",
 							"method": "GET",
 							"param": "",
 							"attack": "",
 							"evidence": "from",
-							"otherinfo": "The following pattern was used: \\bFROM\\b and was detected in the element starting with: \"<script>self.__next_f.push([1,\"0:{\\\"P\\\":null,\\\"b\\\":\\\"VwHi0BDpl6pbjT2g1vpcw\\\",\\\"p\\\":\\\"\\\",\\\"c\\\":[\\\"\\\",\\\"rendez-vous\\\"],\\\"i\\\":false\", see evidence field for the suspicious comment/snippet."
+							"otherinfo": "The following pattern was used: \\bFROM\\b and was detected in likely comment: \"//cdn.jsdelivr.net/npm/@gouvfr/dsfr@1.12.1/dist/fonts/Marianne-Regular.woff2\\\",{\\\"rel\\\":\\\"preload\\\",\\\"href\\\":\\\"https://cdn.jsdel\", see evidence field for the suspicious comment/snippet."
 						},
 						{
-							"id": "115",
+							"id": "99",
 							"uri": "https://preimpactco2.osc-fr1.scalingo.io/stats",
 							"method": "GET",
 							"param": "",
 							"attack": "",
 							"evidence": "from",
-							"otherinfo": "The following pattern was used: \\bFROM\\b and was detected in the element starting with: \"<script>self.__next_f.push([1,\"4d:I[29949,[\\\"7396\\\",\\\"static/chunks/7396-090d08028ea5aae4.js\\\",\\\"7871\\\",\\\"static/chunks/app/(pub\", see evidence field for the suspicious comment/snippet."
+							"otherinfo": "The following pattern was used: \\bFROM\\b and was detected in likely comment: \"//immobilier.lefigaro.fr\\\",\\\"visits\\\":250857},{\\\"label\\\":\\\"https://www.salon-agriculture.com\\\",\\\"visits\\\":27672},{\\\"label\\\":\\\"ht\", see evidence field for the suspicious comment/snippet."
 						},
 						{
-							"id": "110",
+							"id": "101",
 							"uri": "https://preimpactco2.osc-fr1.scalingo.io/suggestion?fromLabel=Accueil&simulatorName=du%20site",
 							"method": "GET",
 							"param": "",
 							"attack": "",
 							"evidence": "bug",
-							"otherinfo": "The following pattern was used: \\bBUG\\b and was detected in the element starting with: \"<script>self.__next_f.push([1,\"4b:[[\\\"$\\\",\\\"meta\\\",\\\"0\\\",{\\\"name\\\":\\\"viewport\\\",\\\"content\\\":\\\"width=device-width, initial-scale=\", see evidence field for the suspicious comment/snippet."
+							"otherinfo": "The following pattern was used: \\bBUG\\b and was detected in likely comment: \"//preimpactco2.osc-fr1.scalingo.io/meta/main.png\\\"}],[\\\"$\\\",\\\"meta\\\",\\\"6\\\",{\\\"name\\\":\\\"twitter:card\\\",\\\"content\\\":\\\"summary_larg\", see evidence field for the suspicious comment/snippet."
 						},
 						{
-							"id": "111",
+							"id": "102",
 							"uri": "https://preimpactco2.osc-fr1.scalingo.io/suggestion?fromLabel=Accueil&simulatorName=du%20site",
 							"method": "GET",
 							"param": "",
 							"attack": "",
 							"evidence": "from",
-							"otherinfo": "The following pattern was used: \\bFROM\\b and was detected in the element starting with: \"<script>self.__next_f.push([1,\"0:{\\\"P\\\":null,\\\"b\\\":\\\"VwHi0BDpl6pbjT2g1vpcw\\\",\\\"p\\\":\\\"\\\",\\\"c\\\":[\\\"\\\",\\\"suggestion\\\"],\\\"i\\\":false,\", see evidence field for the suspicious comment/snippet."
+							"otherinfo": "The following pattern was used: \\bFROM\\b and was detected in likely comment: \"//cdn.jsdelivr.net/npm/@gouvfr/dsfr@1.12.1/dist/fonts/Marianne-Regular.woff2\\\",{\\\"rel\\\":\\\"preload\\\",\\\"href\\\":\\\"https://cdn.jsdel\", see evidence field for the suspicious comment/snippet."
 						}
 					],
 					"count": "11",
 					"solution": "<p>Remove all comments that return information that may help an attacker and fix any underlying problems they refer to.</p>",
-					"otherinfo": "<p>The following pattern was used: \\bSELECT\\b and was detected in the element starting with: \"<script>self.__next_f.push([1,\"4a:[\\\"$\\\",\\\"div\\\",null,{\\\"className\\\":\\\"main-container Block_block__tPUWw\\\",\\\"id\\\":\\\"$undefined\\\"\", see evidence field for the suspicious comment/snippet.</p>",
+					"otherinfo": "<p>The following pattern was used: \\bSELECT\\b and was detected in likely comment: \"//prod-files-secure.s3.us-west-2.amazonaws.com/a33bcf70-8792-422e-bd32-0327fc741a8b/3bb174cb-29e0-4c11-a15c-8f1935deb646/SocialM\", see evidence field for the suspicious comment/snippet.</p>",
 					"reference": "",
-					"cweid": "200",
+					"cweid": "615",
 					"wascid": "13",
 					"sourceid": "1"
 				},
@@ -1003,7 +1130,7 @@
 							"otherinfo": "Links have been found with a target of '_self' - this is often used by modern frameworks to force a full page reload."
 						},
 						{
-							"id": "51",
+							"id": "50",
 							"uri": "https://preimpactco2.osc-fr1.scalingo.io/",
 							"method": "GET",
 							"param": "",
@@ -1012,7 +1139,7 @@
 							"otherinfo": "Links have been found with a target of '_self' - this is often used by modern frameworks to force a full page reload."
 						},
 						{
-							"id": "122",
+							"id": "119",
 							"uri": "https://preimpactco2.osc-fr1.scalingo.io/budget",
 							"method": "GET",
 							"param": "",
@@ -1021,7 +1148,7 @@
 							"otherinfo": "Links have been found with a target of '_self' - this is often used by modern frameworks to force a full page reload."
 						},
 						{
-							"id": "94",
+							"id": "73",
 							"uri": "https://preimpactco2.osc-fr1.scalingo.io/doc",
 							"method": "GET",
 							"param": "",
@@ -1030,7 +1157,7 @@
 							"otherinfo": "Links have been found with a target of '_self' - this is often used by modern frameworks to force a full page reload."
 						},
 						{
-							"id": "76",
+							"id": "117",
 							"uri": "https://preimpactco2.osc-fr1.scalingo.io/doc/exemples",
 							"method": "GET",
 							"param": "",
@@ -1039,7 +1166,7 @@
 							"otherinfo": "Links have been found with a target of '_self' - this is often used by modern frameworks to force a full page reload."
 						},
 						{
-							"id": "108",
+							"id": "123",
 							"uri": "https://preimpactco2.osc-fr1.scalingo.io/doc/questions-frequentes",
 							"method": "GET",
 							"param": "",
@@ -1048,7 +1175,7 @@
 							"otherinfo": "Links have been found with a target of '_self' - this is often used by modern frameworks to force a full page reload."
 						},
 						{
-							"id": "97",
+							"id": "98",
 							"uri": "https://preimpactco2.osc-fr1.scalingo.io/outils",
 							"method": "GET",
 							"param": "",
@@ -1057,7 +1184,16 @@
 							"otherinfo": "Links have been found with a target of '_self' - this is often used by modern frameworks to force a full page reload."
 						},
 						{
-							"id": "73",
+							"id": "120",
+							"uri": "https://preimpactco2.osc-fr1.scalingo.io/plan-du-site",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<a class=\"Link_link__kqI8J\" target=\"_self\" href=\"/\">Page d&#x27;accueil</a>",
+							"otherinfo": "Links have been found with a target of '_self' - this is often used by modern frameworks to force a full page reload."
+						},
+						{
+							"id": "47",
 							"uri": "https://preimpactco2.osc-fr1.scalingo.io/rendez-vous?fromLabel=Accueil",
 							"method": "GET",
 							"param": "",
@@ -1066,16 +1202,7 @@
 							"otherinfo": "Links have been found with a target of '_self' - this is often used by modern frameworks to force a full page reload."
 						},
 						{
-							"id": "128",
-							"uri": "https://preimpactco2.osc-fr1.scalingo.io/rendez-vous?fromLabel=footer",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "<a class=\"Link_link__kqI8J Breadcrumbs_link__4TInf\" target=\"_self\" href=\"/\">Accueil</a>",
-							"otherinfo": "Links have been found with a target of '_self' - this is often used by modern frameworks to force a full page reload."
-						},
-						{
-							"id": "116",
+							"id": "100",
 							"uri": "https://preimpactco2.osc-fr1.scalingo.io/stats",
 							"method": "GET",
 							"param": "",
@@ -1084,7 +1211,7 @@
 							"otherinfo": "Links have been found with a target of '_self' - this is often used by modern frameworks to force a full page reload."
 						},
 						{
-							"id": "112",
+							"id": "103",
 							"uri": "https://preimpactco2.osc-fr1.scalingo.io/suggestion?fromLabel=Accueil&simulatorName=du%20site",
 							"method": "GET",
 							"param": "",
@@ -1121,7 +1248,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "32",
+							"id": "37",
 							"uri": "https://preimpactco2.osc-fr1.scalingo.io/",
 							"method": "GET",
 							"param": "cache-control",
@@ -1130,7 +1257,16 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "91",
+							"id": "115",
+							"uri": "https://preimpactco2.osc-fr1.scalingo.io/budget",
+							"method": "GET",
+							"param": "cache-control",
+							"attack": "",
+							"evidence": "s-maxage=31536000,",
+							"otherinfo": ""
+						},
+						{
+							"id": "62",
 							"uri": "https://preimpactco2.osc-fr1.scalingo.io/doc",
 							"method": "GET",
 							"param": "cache-control",
@@ -1139,7 +1275,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "57",
+							"id": "108",
 							"uri": "https://preimpactco2.osc-fr1.scalingo.io/doc/exemples",
 							"method": "GET",
 							"param": "cache-control",
@@ -1148,16 +1284,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "105",
-							"uri": "https://preimpactco2.osc-fr1.scalingo.io/doc/questions-frequentes",
-							"method": "GET",
-							"param": "cache-control",
-							"attack": "",
-							"evidence": "s-maxage=1, stale-while-revalidate=31535999",
-							"otherinfo": ""
-						},
-						{
-							"id": "92",
+							"id": "85",
 							"uri": "https://preimpactco2.osc-fr1.scalingo.io/outils",
 							"method": "GET",
 							"param": "cache-control",
@@ -1166,7 +1293,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "56",
+							"id": "27",
 							"uri": "https://preimpactco2.osc-fr1.scalingo.io/rendez-vous?fromLabel=Accueil",
 							"method": "GET",
 							"param": "cache-control",
@@ -1175,7 +1302,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "6",
+							"id": "7",
 							"uri": "https://preimpactco2.osc-fr1.scalingo.io/robots.txt",
 							"method": "GET",
 							"param": "cache-control",
@@ -1184,7 +1311,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "7",
+							"id": "8",
 							"uri": "https://preimpactco2.osc-fr1.scalingo.io/sitemap.xml",
 							"method": "GET",
 							"param": "cache-control",
@@ -1193,16 +1320,16 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "109",
+							"id": "94",
 							"uri": "https://preimpactco2.osc-fr1.scalingo.io/stats",
 							"method": "GET",
 							"param": "cache-control",
 							"attack": "",
-							"evidence": "s-maxage=900, stale-while-revalidate=31535100",
+							"evidence": "s-maxage=3, stale-while-revalidate=31535997",
 							"otherinfo": ""
 						},
 						{
-							"id": "106",
+							"id": "95",
 							"uri": "https://preimpactco2.osc-fr1.scalingo.io/suggestion?fromLabel=Accueil&simulatorName=du%20site",
 							"method": "GET",
 							"param": "cache-control",
@@ -1230,7 +1357,7 @@
 					"desc": "<p>Specifies how and where the data would be used. For instance, if the value is audio, then the requested resource must be audio data and not any other type of resource.</p>",
 					"instances":[ 
 						{
-							"id": "46",
+							"id": "34",
 							"uri": "https://preimpactco2.osc-fr1.scalingo.io",
 							"method": "GET",
 							"param": "Sec-Fetch-Dest",
@@ -1239,7 +1366,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "18",
+							"id": "14",
 							"uri": "https://preimpactco2.osc-fr1.scalingo.io/robots.txt",
 							"method": "GET",
 							"param": "Sec-Fetch-Dest",
@@ -1248,7 +1375,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "19",
+							"id": "13",
 							"uri": "https://preimpactco2.osc-fr1.scalingo.io/sitemap.xml",
 							"method": "GET",
 							"param": "Sec-Fetch-Dest",
@@ -1276,7 +1403,7 @@
 					"desc": "<p>Allows to differentiate between requests for navigating between HTML pages and requests for loading resources like images, audio etc.</p>",
 					"instances":[ 
 						{
-							"id": "45",
+							"id": "31",
 							"uri": "https://preimpactco2.osc-fr1.scalingo.io",
 							"method": "GET",
 							"param": "Sec-Fetch-Mode",
@@ -1285,7 +1412,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "15",
+							"id": "12",
 							"uri": "https://preimpactco2.osc-fr1.scalingo.io/robots.txt",
 							"method": "GET",
 							"param": "Sec-Fetch-Mode",
@@ -1294,7 +1421,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "17",
+							"id": "11",
 							"uri": "https://preimpactco2.osc-fr1.scalingo.io/sitemap.xml",
 							"method": "GET",
 							"param": "Sec-Fetch-Mode",
@@ -1322,7 +1449,7 @@
 					"desc": "<p>Specifies the relationship between request initiator's origin and target's origin.</p>",
 					"instances":[ 
 						{
-							"id": "44",
+							"id": "29",
 							"uri": "https://preimpactco2.osc-fr1.scalingo.io",
 							"method": "GET",
 							"param": "Sec-Fetch-Site",
@@ -1331,7 +1458,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "14",
+							"id": "10",
 							"uri": "https://preimpactco2.osc-fr1.scalingo.io/robots.txt",
 							"method": "GET",
 							"param": "Sec-Fetch-Site",
@@ -1340,7 +1467,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "16",
+							"id": "9",
 							"uri": "https://preimpactco2.osc-fr1.scalingo.io/sitemap.xml",
 							"method": "GET",
 							"param": "Sec-Fetch-Site",
@@ -1368,7 +1495,7 @@
 					"desc": "<p>Specifies if a navigation request was initiated by a user.</p>",
 					"instances":[ 
 						{
-							"id": "47",
+							"id": "35",
 							"uri": "https://preimpactco2.osc-fr1.scalingo.io",
 							"method": "GET",
 							"param": "Sec-Fetch-User",
@@ -1377,7 +1504,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "20",
+							"id": "15",
 							"uri": "https://preimpactco2.osc-fr1.scalingo.io/robots.txt",
 							"method": "GET",
 							"param": "Sec-Fetch-User",
@@ -1386,7 +1513,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "21",
+							"id": "17",
 							"uri": "https://preimpactco2.osc-fr1.scalingo.io/sitemap.xml",
 							"method": "GET",
 							"param": "Sec-Fetch-User",
@@ -1414,7 +1541,7 @@
 					"desc": "<p>The response contents are storable by caching components such as proxy servers, and may be retrieved directly from the cache, rather than from the origin server by the caching servers, in response to similar requests from other users. If the response data is sensitive, personal or user-specific, this may result in sensitive information being leaked. In some cases, this may even result in a user gaining complete control of the session of another user, depending on the configuration of the caching components in use in their environment. This is primarily an issue where \"shared\" caching servers such as \"proxy\" caches are configured on the local network. This configuration is typically found in corporate or educational environments, for instance.</p>",
 					"instances":[ 
 						{
-							"id": "23",
+							"id": "36",
 							"uri": "https://preimpactco2.osc-fr1.scalingo.io",
 							"method": "GET",
 							"param": "",
@@ -1423,7 +1550,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "55",
+							"id": "71",
 							"uri": "https://preimpactco2.osc-fr1.scalingo.io/",
 							"method": "GET",
 							"param": "",
@@ -1432,7 +1559,16 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "99",
+							"id": "124",
+							"uri": "https://preimpactco2.osc-fr1.scalingo.io/budget",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "s-maxage=31536000",
+							"otherinfo": ""
+						},
+						{
+							"id": "83",
 							"uri": "https://preimpactco2.osc-fr1.scalingo.io/doc",
 							"method": "GET",
 							"param": "",
@@ -1441,25 +1577,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "89",
-							"uri": "https://preimpactco2.osc-fr1.scalingo.io/doc/exemples",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "s-maxage=1",
-							"otherinfo": ""
-						},
-						{
-							"id": "114",
-							"uri": "https://preimpactco2.osc-fr1.scalingo.io/doc/questions-frequentes",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "s-maxage=1",
-							"otherinfo": ""
-						},
-						{
-							"id": "102",
+							"id": "107",
 							"uri": "https://preimpactco2.osc-fr1.scalingo.io/outils",
 							"method": "GET",
 							"param": "",
@@ -1468,7 +1586,16 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "77",
+							"id": "127",
+							"uri": "https://preimpactco2.osc-fr1.scalingo.io/plan-du-site",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "s-maxage=31536000",
+							"otherinfo": ""
+						},
+						{
+							"id": "63",
 							"uri": "https://preimpactco2.osc-fr1.scalingo.io/rendez-vous?fromLabel=Accueil",
 							"method": "GET",
 							"param": "",
@@ -1477,16 +1604,16 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "121",
+							"id": "110",
 							"uri": "https://preimpactco2.osc-fr1.scalingo.io/stats",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "s-maxage=900",
+							"evidence": "s-maxage=3",
 							"otherinfo": ""
 						},
 						{
-							"id": "119",
+							"id": "112",
 							"uri": "https://preimpactco2.osc-fr1.scalingo.io/suggestion?fromLabel=Accueil&simulatorName=du%20site",
 							"method": "GET",
 							"param": "",
@@ -1514,7 +1641,7 @@
 					"desc": "<p>The response contents are storable by caching components such as proxy servers, but will not be retrieved directly from the cache, without validating the request upstream, in response to similar requests from other users.</p>",
 					"instances":[ 
 						{
-							"id": "9",
+							"id": "16",
 							"uri": "https://preimpactco2.osc-fr1.scalingo.io/robots.txt",
 							"method": "GET",
 							"param": "",
@@ -1523,7 +1650,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "8",
+							"id": "18",
 							"uri": "https://preimpactco2.osc-fr1.scalingo.io/sitemap.xml",
 							"method": "GET",
 							"param": "",
@@ -1538,7 +1665,7 @@
 					"reference": "<p>https://datatracker.ietf.org/doc/html/rfc7234</p><p>https://datatracker.ietf.org/doc/html/rfc7231</p><p>https://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html</p>",
 					"cweid": "524",
 					"wascid": "13",
-					"sourceid": "15"
+					"sourceid": "10"
 				},
 				{
 					"pluginid": "10031",
@@ -1551,7 +1678,7 @@
 					"desc": "<p>This check looks at user-supplied input in query string parameters and POST data to identify where certain HTML attribute values might be controlled. This provides hot-spot detection for XSS (cross-site scripting) that will require further review by a security analyst to determine exploitability.</p>",
 					"instances":[ 
 						{
-							"id": "134",
+							"id": "138",
 							"uri": "https://preimpactco2.osc-fr1.scalingo.io/rendez-vous?fromLabel=footer",
 							"method": "GET",
 							"param": "fromLabel",
@@ -1560,7 +1687,7 @@
 							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://preimpactco2.osc-fr1.scalingo.io/rendez-vous?fromLabel=footer\n\nappears to include user input in:\na(n) [div] tag [class] attribute\n\nThe user input found was:\nfromLabel=footer\n\nThe user-controlled value was:\nfooter_footerexplain__h7zng"
 						},
 						{
-							"id": "131",
+							"id": "135",
 							"uri": "https://preimpactco2.osc-fr1.scalingo.io/rendez-vous?fromLabel=footer",
 							"method": "GET",
 							"param": "fromLabel",
@@ -1569,7 +1696,7 @@
 							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://preimpactco2.osc-fr1.scalingo.io/rendez-vous?fromLabel=footer\n\nappears to include user input in:\na(n) [div] tag [class] attribute\n\nThe user input found was:\nfromLabel=footer\n\nThe user-controlled value was:\nfooter_header__nfzfh"
 						},
 						{
-							"id": "133",
+							"id": "137",
 							"uri": "https://preimpactco2.osc-fr1.scalingo.io/rendez-vous?fromLabel=footer",
 							"method": "GET",
 							"param": "fromLabel",
@@ -1578,7 +1705,7 @@
 							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://preimpactco2.osc-fr1.scalingo.io/rendez-vous?fromLabel=footer\n\nappears to include user input in:\na(n) [div] tag [class] attribute\n\nThe user input found was:\nfromLabel=footer\n\nThe user-controlled value was:\nfooter_internalcontainer__woxgq"
 						},
 						{
-							"id": "132",
+							"id": "136",
 							"uri": "https://preimpactco2.osc-fr1.scalingo.io/rendez-vous?fromLabel=footer",
 							"method": "GET",
 							"param": "fromLabel",
@@ -1587,7 +1714,7 @@
 							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://preimpactco2.osc-fr1.scalingo.io/rendez-vous?fromLabel=footer\n\nappears to include user input in:\na(n) [div] tag [class] attribute\n\nThe user input found was:\nfromLabel=footer\n\nThe user-controlled value was:\nfooter_logos__tj0ze"
 						},
 						{
-							"id": "135",
+							"id": "139",
 							"uri": "https://preimpactco2.osc-fr1.scalingo.io/rendez-vous?fromLabel=footer",
 							"method": "GET",
 							"param": "fromLabel",
@@ -1596,7 +1723,7 @@
 							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://preimpactco2.osc-fr1.scalingo.io/rendez-vous?fromLabel=footer\n\nappears to include user input in:\na(n) [div] tag [class] attribute\n\nThe user input found was:\nfromLabel=footer\n\nThe user-controlled value was:\nfooter_toplinks__jegjg"
 						},
 						{
-							"id": "129",
+							"id": "133",
 							"uri": "https://preimpactco2.osc-fr1.scalingo.io/rendez-vous?fromLabel=footer",
 							"method": "GET",
 							"param": "fromLabel",
@@ -1605,7 +1732,7 @@
 							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://preimpactco2.osc-fr1.scalingo.io/rendez-vous?fromLabel=footer\n\nappears to include user input in:\na(n) [footer] tag [class] attribute\n\nThe user input found was:\nfromLabel=footer\n\nThe user-controlled value was:\nfooter_footer__ena9m"
 						},
 						{
-							"id": "130",
+							"id": "134",
 							"uri": "https://preimpactco2.osc-fr1.scalingo.io/rendez-vous?fromLabel=footer",
 							"method": "GET",
 							"param": "fromLabel",
@@ -1614,7 +1741,7 @@
 							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://preimpactco2.osc-fr1.scalingo.io/rendez-vous?fromLabel=footer\n\nappears to include user input in:\na(n) [footer] tag [id] attribute\n\nThe user input found was:\nfromLabel=footer\n\nThe user-controlled value was:\nfooter"
 						},
 						{
-							"id": "136",
+							"id": "140",
 							"uri": "https://preimpactco2.osc-fr1.scalingo.io/rendez-vous?fromLabel=footer",
 							"method": "GET",
 							"param": "fromLabel",
@@ -1623,7 +1750,7 @@
 							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://preimpactco2.osc-fr1.scalingo.io/rendez-vous?fromLabel=footer\n\nappears to include user input in:\na(n) [h2] tag [class] attribute\n\nThe user input found was:\nfromLabel=footer\n\nThe user-controlled value was:\nfooter_linktitle__llrf3"
 						},
 						{
-							"id": "141",
+							"id": "145",
 							"uri": "https://preimpactco2.osc-fr1.scalingo.io/rendez-vous?fromLabel=footer",
 							"method": "GET",
 							"param": "fromLabel",
@@ -1632,7 +1759,7 @@
 							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://preimpactco2.osc-fr1.scalingo.io/rendez-vous?fromLabel=footer\n\nappears to include user input in:\na(n) [li] tag [class] attribute\n\nThe user input found was:\nfromLabel=footer\n\nThe user-controlled value was:\nfooter_bottomlink__oi1xo"
 						},
 						{
-							"id": "140",
+							"id": "144",
 							"uri": "https://preimpactco2.osc-fr1.scalingo.io/rendez-vous?fromLabel=footer",
 							"method": "GET",
 							"param": "fromLabel",
@@ -1641,7 +1768,7 @@
 							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://preimpactco2.osc-fr1.scalingo.io/rendez-vous?fromLabel=footer\n\nappears to include user input in:\na(n) [ul] tag [class] attribute\n\nThe user input found was:\nfromLabel=footer\n\nThe user-controlled value was:\nfooter_bottomlinks__zm1vi"
 						},
 						{
-							"id": "137",
+							"id": "141",
 							"uri": "https://preimpactco2.osc-fr1.scalingo.io/rendez-vous?fromLabel=footer",
 							"method": "GET",
 							"param": "fromLabel",
@@ -1656,7 +1783,7 @@
 					"reference": "<p>https://cheatsheetseries.owasp.org/cheatsheets/Input_Validation_Cheat_Sheet.html</p>",
 					"cweid": "20",
 					"wascid": "20",
-					"sourceid": "135"
+					"sourceid": "134"
 				}
 			]
 		}
