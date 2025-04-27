@@ -212,7 +212,7 @@ td {
 	</h2>
 
 	<h3>
-		Generated on Sun, 20 Apr 2025 04:13:28
+		Generated on Sun, 27 Apr 2025 04:13:11
 	</h3>
 
 	<h3>
@@ -237,7 +237,7 @@ td {
 					<div>High</div>
 				</td>
 				<td align="center">
-					<div>0</div>
+					<div>1</div>
 				</td>
 			</tr>
 			<tr>
@@ -296,9 +296,14 @@ td {
 					align="center">Number of Instances</th>
 			</tr>
 			<tr>
+				<td><a href="#10062">PII Disclosure</a></td>
+				<td align="center" class="risk-3">High</td>
+				<td align="center">1</td>
+			</tr>
+			<tr>
 				<td><a href="#10055">CSP: Wildcard Directive</a></td>
 				<td align="center" class="risk-2">Medium</td>
-				<td align="center">2</td>
+				<td align="center">3</td>
 			</tr>
 			<tr>
 				<td><a href="#10055">CSP: script-src unsafe-inline</a></td>
@@ -366,6 +371,91 @@ td {
 
 	
 		<h3>Alert Detail</h3>
+		
+			<table class="results">
+				<tr height="24">
+					<th width="20%" class="risk-3"><a
+						id="10062"></a>
+						<div>High</div></th>
+					<th class="risk-3">PII Disclosure</th>
+				</tr>
+				<tr>
+					<td width="20%">Description</td>
+					<td width="80%">
+							<div>The response contains Personally Identifiable Information, such as CC number, SSN and similar sensitive data.</div>
+							
+						</td>
+				</tr>
+				<TR vAlign="top">
+					<TD colspan="2"></TD>
+				</TR>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://facili-tacct.beta.gouv.fr/%2F_next%2Fstatic%2Fmedia%2Fconstellation3.79e8c501.png&amp;w=1080&amp;q=75">https://facili-tacct.beta.gouv.fr/%2F_next%2Fstatic%2Fmedia%2Fconstellation3.79e8c501.png&amp;w=1080&amp;q=75</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">4658246791271832</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">Credit Card Type detected: Visa
+Bank Identification Number: 465824
+Brand: VISA
+Category: ELECTRON
+Issuer: BANK WINDHOEK, LTD.</td>
+					</tr>
+				
+				<tr>
+					<td width="20%">Instances</td>
+					<td width="80%">1</td>
+				</tr>
+				<tr>
+					<td width="20%">Solution</td>
+					<td width="80%">
+							<div>Check the response for the potential presence of personally identifiable information (PII), ensure nothing sensitive is leaked by the application.</div>
+							
+						</td>
+				</tr>
+				<tr>
+					<td width="20%">Reference</td>
+					<td width="80%"></td>
+				</tr>
+				<tr>
+					<td width="20%">CWE Id</td>
+					<td width="80%"><a
+						href="https://cwe.mitre.org/data/definitions/359.html">359</a></td>
+				</tr>
+				<tr>
+					<td width="20%">WASC Id</td>
+					<td width="80%">13</td>
+				</tr>
+				<tr>
+					<td width="20%">Plugin Id</td>
+					<td width="80%"><a
+						href="https://www.zaproxy.org/docs/alerts/10062/">10062</a></td>
+				</tr>
+			</table>
+			<div class="spacer"></div>
 		
 			<table class="results">
 				<tr height="24">
@@ -449,9 +539,41 @@ img-src, connect-src</td>
 img-src, connect-src</td>
 					</tr>
 				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://facili-tacct.beta.gouv.fr/robots.txt">https://facili-tacct.beta.gouv.fr/robots.txt</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%">Content-Security-Policy</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">default-src &#39;none&#39;; connect-src * https://*.gouv.fr; font-src &#39;self&#39;; media-src &#39;self&#39;; img-src * &#39;self&#39; data: https:; script-src &#39;self&#39; &#39;unsafe-inline&#39; https://stats.beta.gouv.fr *.posthog.com; style-src &#39;self&#39; &#39;unsafe-inline&#39;; object-src &#39;self&#39; data:; frame-ancestors &#39;self&#39;; base-uri &#39;self&#39; https://*.gouv.fr; form-action &#39;self&#39; https://*.gouv.fr; block-all-mixed-content ; upgrade-insecure-requests ; frame-src &#39;none&#39;;</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">The following directives either allow wildcard sources (or ancestors), are not defined, or are overly broadly defined:
+img-src, connect-src</td>
+					</tr>
+				
 				<tr>
 					<td width="20%">Instances</td>
-					<td width="80%">2</td>
+					<td width="80%">3</td>
 				</tr>
 				<tr>
 					<td width="20%">Solution</td>
@@ -895,7 +1017,7 @@ img-src, connect-src</td>
 					<tr>
 						<td width="20%"
 							class="indent1">URL</td>
-						<td width="80%"><a href="https://facili-tacct.beta.gouv.fr/_next/static/chunks/1354-2af23e73f778d593.js">https://facili-tacct.beta.gouv.fr/_next/static/chunks/1354-2af23e73f778d593.js</a></td>
+						<td width="80%"><a href="https://facili-tacct.beta.gouv.fr/_next/static/chunks/410-b8457b4909989c4b.js">https://facili-tacct.beta.gouv.fr/_next/static/chunks/410-b8457b4909989c4b.js</a></td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -926,7 +1048,7 @@ img-src, connect-src</td>
 					<tr>
 						<td width="20%"
 							class="indent1">URL</td>
-						<td width="80%"><a href="https://facili-tacct.beta.gouv.fr/_next/static/chunks/8356-12a38548298742e9.js">https://facili-tacct.beta.gouv.fr/_next/static/chunks/8356-12a38548298742e9.js</a></td>
+						<td width="80%"><a href="https://facili-tacct.beta.gouv.fr/_next/static/chunks/7946-adaa48eafec82a82.js">https://facili-tacct.beta.gouv.fr/_next/static/chunks/7946-adaa48eafec82a82.js</a></td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -957,7 +1079,7 @@ img-src, connect-src</td>
 					<tr>
 						<td width="20%"
 							class="indent1">URL</td>
-						<td width="80%"><a href="https://facili-tacct.beta.gouv.fr/_next/static/chunks/app/(main)/accessibilite/page-1c6022a83fd4b967.js">https://facili-tacct.beta.gouv.fr/_next/static/chunks/app/(main)/accessibilite/page-1c6022a83fd4b967.js</a></td>
+						<td width="80%"><a href="https://facili-tacct.beta.gouv.fr/_next/static/chunks/app/(main)/accessibilite/page-ee792a6d042b43c6.js">https://facili-tacct.beta.gouv.fr/_next/static/chunks/app/(main)/accessibilite/page-ee792a6d042b43c6.js</a></td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -988,7 +1110,7 @@ img-src, connect-src</td>
 					<tr>
 						<td width="20%"
 							class="indent1">URL</td>
-						<td width="80%"><a href="https://facili-tacct.beta.gouv.fr/_next/static/chunks/app/(main)/layout-6a1cc6e56d90bb05.js">https://facili-tacct.beta.gouv.fr/_next/static/chunks/app/(main)/layout-6a1cc6e56d90bb05.js</a></td>
+						<td width="80%"><a href="https://facili-tacct.beta.gouv.fr/_next/static/chunks/app/(main)/layout-08d0b8692cd1580e.js">https://facili-tacct.beta.gouv.fr/_next/static/chunks/app/(main)/layout-08d0b8692cd1580e.js</a></td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -1019,7 +1141,7 @@ img-src, connect-src</td>
 					<tr>
 						<td width="20%"
 							class="indent1">URL</td>
-						<td width="80%"><a href="https://facili-tacct.beta.gouv.fr/_next/static/chunks/app/(main)/page-eb0e2085411d049d.js">https://facili-tacct.beta.gouv.fr/_next/static/chunks/app/(main)/page-eb0e2085411d049d.js</a></td>
+						<td width="80%"><a href="https://facili-tacct.beta.gouv.fr/_next/static/chunks/app/(main)/page-945c036f4cc3cd83.js">https://facili-tacct.beta.gouv.fr/_next/static/chunks/app/(main)/page-945c036f4cc3cd83.js</a></td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -1050,7 +1172,7 @@ img-src, connect-src</td>
 					<tr>
 						<td width="20%"
 							class="indent1">URL</td>
-						<td width="80%"><a href="https://facili-tacct.beta.gouv.fr/_next/static/chunks/app/layout-cd97757185752e59.js">https://facili-tacct.beta.gouv.fr/_next/static/chunks/app/layout-cd97757185752e59.js</a></td>
+						<td width="80%"><a href="https://facili-tacct.beta.gouv.fr/_next/static/chunks/app/layout-89608ce6c24550b3.js">https://facili-tacct.beta.gouv.fr/_next/static/chunks/app/layout-89608ce6c24550b3.js</a></td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -1082,7 +1204,7 @@ img-src, connect-src</td>
 					<tr>
 						<td width="20%"
 							class="indent1">URL</td>
-						<td width="80%"><a href="https://facili-tacct.beta.gouv.fr/_next/static/chunks/app/not-found-4736896074637a62.js">https://facili-tacct.beta.gouv.fr/_next/static/chunks/app/not-found-4736896074637a62.js</a></td>
+						<td width="80%"><a href="https://facili-tacct.beta.gouv.fr/_next/static/chunks/app/not-found-b65ad03e672368e8.js">https://facili-tacct.beta.gouv.fr/_next/static/chunks/app/not-found-b65ad03e672368e8.js</a></td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -1113,7 +1235,7 @@ img-src, connect-src</td>
 					<tr>
 						<td width="20%"
 							class="indent1">URL</td>
-						<td width="80%"><a href="https://facili-tacct.beta.gouv.fr/_next/static/css/3a0b8abe60b918e1.css">https://facili-tacct.beta.gouv.fr/_next/static/css/3a0b8abe60b918e1.css</a></td>
+						<td width="80%"><a href="https://facili-tacct.beta.gouv.fr/_next/static/css/5e98415a230a0c47.css">https://facili-tacct.beta.gouv.fr/_next/static/css/5e98415a230a0c47.css</a></td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -1321,7 +1443,7 @@ img-src, connect-src</td>
 					<tr>
 						<td width="20%"
 							class="indent1">URL</td>
-						<td width="80%"><a href="https://facili-tacct.beta.gouv.fr/_next/static/chunks/app/global-error-5a04cf04e4eca067.js">https://facili-tacct.beta.gouv.fr/_next/static/chunks/app/global-error-5a04cf04e4eca067.js</a></td>
+						<td width="80%"><a href="https://facili-tacct.beta.gouv.fr/_next/static/chunks/app/global-error-1659325f5eb84269.js">https://facili-tacct.beta.gouv.fr/_next/static/chunks/app/global-error-1659325f5eb84269.js</a></td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -2509,6 +2631,37 @@ img-src, connect-src</td>
 					<tr>
 						<td width="20%"
 							class="indent1">URL</td>
+						<td width="80%"><a href="https://facili-tacct.beta.gouv.fr/_next/static/chunks/webpack-01ed8353f4d3b396.js">https://facili-tacct.beta.gouv.fr/_next/static/chunks/webpack-01ed8353f4d3b396.js</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">max-age=31536000</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
 						<td width="80%"><a href="https://facili-tacct.beta.gouv.fr/_next/static/css/1b1d10445b60e5f7.css">https://facili-tacct.beta.gouv.fr/_next/static/css/1b1d10445b60e5f7.css</a></td>
 					</tr>
 					<tr>
@@ -2603,37 +2756,6 @@ img-src, connect-src</td>
 						<td width="20%"
 							class="indent1">URL</td>
 						<td width="80%"><a href="https://facili-tacct.beta.gouv.fr/mentions-legales">https://facili-tacct.beta.gouv.fr/mentions-legales</a></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Method</td>
-						<td width="80%">GET</td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Parameter</td>
-						<td width="80%"></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Attack</td>
-						<td width="80%"></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Evidence</td>
-						<td width="80%">s-maxage=31536000</td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Other Info</td>
-						<td width="80%"></td>
-					</tr>
-				
-					<tr>
-						<td width="20%"
-							class="indent1">URL</td>
-						<td width="80%"><a href="https://facili-tacct.beta.gouv.fr/politique-de-confidentialite">https://facili-tacct.beta.gouv.fr/politique-de-confidentialite</a></td>
 					</tr>
 					<tr>
 						<td width="20%"
