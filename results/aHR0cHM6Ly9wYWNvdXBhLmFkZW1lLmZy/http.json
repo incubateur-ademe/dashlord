@@ -1,19 +1,19 @@
 {
   "scan": {
     "algorithmVersion": 4,
-    "grade": "D+",
+    "grade": "B+",
     "error": null,
-    "score": 40,
+    "score": 80,
     "statusCode": 200,
-    "testsFailed": 3,
-    "testsPassed": 7,
+    "testsFailed": 1,
+    "testsPassed": 9,
     "testsQuantity": 10,
     "responseHeaders": {
-      "date": "Sun, 04 May 2025 04:43:37 GMT",
+      "date": "Sun, 11 May 2025 04:36:56 GMT",
       "content-type": "text/html; charset=utf-8",
       "transfer-encoding": "chunked",
       "connection": "close",
-      "x-request-id": "460267d8-2fa6-41f4-8d6f-4dd56c90aa14",
+      "x-request-id": "79a84a21-85de-4686-bb39-83ccf3f7cb52",
       "content-security-policy": "default-src https://tally.so; connect-src 'self' https://*.gouv.fr https://api-adresse.data.gouv.fr https://data.ademe.fr https://sentry.incubateur.net; font-src 'self'; media-src 'self'; img-src 'self' data:; script-src 'self' 'unsafe-inline' https://stats.beta.gouv.fr https://tally.so 'unsafe-eval'; style-src 'self' 'unsafe-inline'; object-src 'self' data:; frame-ancestors 'self' https://tally.so; base-uri 'self' https://*.gouv.fr; form-action 'self' https://*.gouv.fr; block-all-mixed-content ; upgrade-insecure-requests ; frame-src https://tally.so;",
       "x-frame-options": "DENY",
       "x-content-type-options": "nosniff",
@@ -28,7 +28,8 @@
       "vary": "RSC, Next-Router-State-Tree, Next-Router-Prefetch, Next-Url, Accept-Encoding",
       "x-nextjs-cache": "HIT",
       "cache-control": "s-maxage=31536000, stale-while-revalidate",
-      "etag": "\"3wkkag12pc25gb\""
+      "etag": "\"bwd9q2rn8125gb\"",
+      "strict-transport-security": "max-age=31536000"
     }
   },
   "tests": {
@@ -129,13 +130,14 @@
     },
     "redirection": {
       "expectation": "redirection-to-https",
-      "pass": false,
-      "result": "redirection-missing",
-      "scoreModifier": -20,
-      "destination": "http://pacoupa.ademe.fr/",
-      "redirects": false,
+      "pass": true,
+      "result": "redirection-to-https",
+      "scoreModifier": 0,
+      "destination": "https://pacoupa.ademe.fr/",
+      "redirects": true,
       "route": [
-        "http://pacoupa.ademe.fr/"
+        "http://pacoupa.ademe.fr/",
+        "https://pacoupa.ademe.fr/"
       ],
       "statusCode": 200
     },
@@ -150,12 +152,12 @@
     },
     "strict-transport-security": {
       "expectation": "hsts-implemented-max-age-at-least-six-months",
-      "pass": false,
-      "result": "hsts-not-implemented",
-      "scoreModifier": -20,
-      "data": null,
+      "pass": true,
+      "result": "hsts-implemented-max-age-at-least-six-months",
+      "scoreModifier": 0,
+      "data": "max-age=31536000",
       "includeSubDomains": false,
-      "maxAge": null,
+      "maxAge": 31536000,
       "preload": false,
       "preloaded": false
     },
