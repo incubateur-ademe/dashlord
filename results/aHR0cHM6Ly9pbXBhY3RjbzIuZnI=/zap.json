@@ -1,7 +1,7 @@
 {
 	"@programName": "ZAP",
 	"@version": "2.16.1",
-	"@generated": "Sun, 4 May 2025 02:06:30",
+	"@generated": "Sun, 11 May 2025 02:04:45",
 	"site":[ 
 		{
 			"@name": "https://impactco2.fr",
@@ -9,6 +9,52 @@
 			"@port": "443",
 			"@ssl": "true",
 			"alerts": [ 
+				{
+					"pluginid": "10062",
+					"alertRef": "10062",
+					"alert": "PII Disclosure",
+					"name": "PII Disclosure",
+					"riskcode": "3",
+					"confidence": "3",
+					"riskdesc": "High (High)",
+					"desc": "<p>The response contains Personally Identifiable Information, such as CC number, SSN and similar sensitive data.</p>",
+					"instances":[ 
+						{
+							"id": "176",
+							"uri": "https://impactco2.fr/doc/exemples?tool=Comparateur%2520carbone",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "58016278355919",
+							"otherinfo": "Credit Card Type detected: Maestro\nBank Identification Number: 580162\nBrand: MAESTRO\nCategory: \nIssuer: "
+						},
+						{
+							"id": "179",
+							"uri": "https://impactco2.fr/doc/exemples?tool=Impact%2520Livraison",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "58016278355919",
+							"otherinfo": "Credit Card Type detected: Maestro\nBank Identification Number: 580162\nBrand: MAESTRO\nCategory: \nIssuer: "
+						},
+						{
+							"id": "182",
+							"uri": "https://impactco2.fr/doc/exemples?tool=Impact%2520Transport",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "58016278355919",
+							"otherinfo": "Credit Card Type detected: Maestro\nBank Identification Number: 580162\nBrand: MAESTRO\nCategory: \nIssuer: "
+						}
+					],
+					"count": "3",
+					"solution": "<p>Check the response for the potential presence of personally identifiable information (PII), ensure nothing sensitive is leaked by the application.</p>",
+					"otherinfo": "<p>Credit Card Type detected: Maestro</p><p>Bank Identification Number: 580162</p><p>Brand: MAESTRO</p><p>Category: </p><p>Issuer: </p>",
+					"reference": "",
+					"cweid": "359",
+					"wascid": "13",
+					"sourceid": "1562"
+				},
 				{
 					"pluginid": "10055",
 					"alertRef": "10055-13",
@@ -20,7 +66,7 @@
 					"desc": "<p>The Content Security Policy fails to define one of the directives that has no fallback. Missing/excluding them is the same as allowing anything.</p>",
 					"instances":[ 
 						{
-							"id": "1",
+							"id": "34",
 							"uri": "https://impactco2.fr",
 							"method": "GET",
 							"param": "Content-Security-Policy",
@@ -29,8 +75,8 @@
 							"otherinfo": "The directive(s): frame-ancestors is/are among the directives that do not fallback to default-src."
 						},
 						{
-							"id": "43",
-							"uri": "https://impactco2.fr/outils",
+							"id": "29",
+							"uri": "https://impactco2.fr/doc",
 							"method": "GET",
 							"param": "Content-Security-Policy",
 							"attack": "",
@@ -57,7 +103,7 @@
 					"desc": "<p>Content Security Policy (CSP) is an added layer of security that helps to detect and mitigate certain types of attacks. Including (but not limited to) Cross Site Scripting (XSS), and data injection attacks. These attacks are used for everything from data theft to site defacement or distribution of malware. CSP provides a set of standard HTTP headers that allow website owners to declare approved sources of content that browsers should be allowed to load on that page \u2014 covered types are JavaScript, CSS, HTML frames, fonts, images and embeddable objects such as Java applets, ActiveX, audio and video files.</p>",
 					"instances":[ 
 						{
-							"id": "2",
+							"id": "35",
 							"uri": "https://impactco2.fr",
 							"method": "GET",
 							"param": "Content-Security-Policy",
@@ -66,8 +112,8 @@
 							"otherinfo": "The following directives either allow wildcard sources (or ancestors), are not defined, or are overly broadly defined:\nstyle-src, img-src, font-src"
 						},
 						{
-							"id": "44",
-							"uri": "https://impactco2.fr/outils",
+							"id": "30",
+							"uri": "https://impactco2.fr/doc",
 							"method": "GET",
 							"param": "Content-Security-Policy",
 							"attack": "",
@@ -94,7 +140,7 @@
 					"desc": "<p>Content Security Policy (CSP) is an added layer of security that helps to detect and mitigate certain types of attacks. Including (but not limited to) Cross Site Scripting (XSS), and data injection attacks. These attacks are used for everything from data theft to site defacement or distribution of malware. CSP provides a set of standard HTTP headers that allow website owners to declare approved sources of content that browsers should be allowed to load on that page \u2014 covered types are JavaScript, CSS, HTML frames, fonts, images and embeddable objects such as Java applets, ActiveX, audio and video files.</p>",
 					"instances":[ 
 						{
-							"id": "3",
+							"id": "36",
 							"uri": "https://impactco2.fr",
 							"method": "GET",
 							"param": "Content-Security-Policy",
@@ -103,8 +149,8 @@
 							"otherinfo": "script-src includes unsafe-inline."
 						},
 						{
-							"id": "45",
-							"uri": "https://impactco2.fr/outils",
+							"id": "31",
+							"uri": "https://impactco2.fr/doc",
 							"method": "GET",
 							"param": "Content-Security-Policy",
 							"attack": "",
@@ -131,7 +177,7 @@
 					"desc": "<p>Content Security Policy (CSP) is an added layer of security that helps to detect and mitigate certain types of attacks. Including (but not limited to) Cross Site Scripting (XSS), and data injection attacks. These attacks are used for everything from data theft to site defacement or distribution of malware. CSP provides a set of standard HTTP headers that allow website owners to declare approved sources of content that browsers should be allowed to load on that page \u2014 covered types are JavaScript, CSS, HTML frames, fonts, images and embeddable objects such as Java applets, ActiveX, audio and video files.</p>",
 					"instances":[ 
 						{
-							"id": "4",
+							"id": "37",
 							"uri": "https://impactco2.fr",
 							"method": "GET",
 							"param": "Content-Security-Policy",
@@ -140,8 +186,8 @@
 							"otherinfo": "style-src includes unsafe-inline."
 						},
 						{
-							"id": "46",
-							"uri": "https://impactco2.fr/outils",
+							"id": "32",
+							"uri": "https://impactco2.fr/doc",
 							"method": "GET",
 							"param": "Content-Security-Policy",
 							"attack": "",
@@ -168,7 +214,7 @@
 					"desc": "<p>The response does not protect against 'ClickJacking' attacks. It should include either Content-Security-Policy with 'frame-ancestors' directive or X-Frame-Options.</p>",
 					"instances":[ 
 						{
-							"id": "163",
+							"id": "164",
 							"uri": "https://impactco2.fr/iframes/alimentation",
 							"method": "GET",
 							"param": "x-frame-options",
@@ -177,7 +223,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "164",
+							"id": "166",
 							"uri": "https://impactco2.fr/iframes/boisson",
 							"method": "GET",
 							"param": "x-frame-options",
@@ -186,7 +232,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "166",
+							"id": "174",
 							"uri": "https://impactco2.fr/iframes/caspratiques",
 							"method": "GET",
 							"param": "x-frame-options",
@@ -204,8 +250,8 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "168",
-							"uri": "https://impactco2.fr/iframes/electromenager",
+							"id": "173",
+							"uri": "https://impactco2.fr/iframes/comparateur",
 							"method": "GET",
 							"param": "x-frame-options",
 							"attack": "",
@@ -213,8 +259,26 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "165",
-							"uri": "https://impactco2.fr/iframes/fruitsetlegumes",
+							"id": "172",
+							"uri": "https://impactco2.fr/iframes/comparateur/etiquette",
+							"method": "GET",
+							"param": "x-frame-options",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "163",
+							"uri": "https://impactco2.fr/iframes/comparateur/etiquette-animee",
+							"method": "GET",
+							"param": "x-frame-options",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "168",
+							"uri": "https://impactco2.fr/iframes/electromenager",
 							"method": "GET",
 							"param": "x-frame-options",
 							"attack": "",
@@ -231,26 +295,17 @@
 							"otherinfo": ""
 						},
 						{
+							"id": "165",
+							"uri": "https://impactco2.fr/iframes/habillement/osez-changer",
+							"method": "GET",
+							"param": "x-frame-options",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
 							"id": "170",
 							"uri": "https://impactco2.fr/iframes/livraison",
-							"method": "GET",
-							"param": "x-frame-options",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"id": "174",
-							"uri": "https://impactco2.fr/iframes/mobilier",
-							"method": "GET",
-							"param": "x-frame-options",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"id": "172",
-							"uri": "https://impactco2.fr/iframes/numerique",
 							"method": "GET",
 							"param": "x-frame-options",
 							"attack": "",
@@ -265,15 +320,6 @@
 							"attack": "",
 							"evidence": "",
 							"otherinfo": ""
-						},
-						{
-							"id": "173",
-							"uri": "https://impactco2.fr/iframes/usagenumerique",
-							"method": "GET",
-							"param": "x-frame-options",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
 						}
 					],
 					"count": "12",
@@ -282,7 +328,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Frame-Options</p>",
 					"cweid": "1021",
 					"wascid": "15",
-					"sourceid": "923"
+					"sourceid": "971"
 				},
 				{
 					"pluginid": "90003",
@@ -295,7 +341,7 @@
 					"desc": "<p>The integrity attribute is missing on a script or link tag served by an external server. The integrity tag prevents an attacker who have gained access to this server from injecting a malicious content.</p>",
 					"instances":[ 
 						{
-							"id": "67",
+							"id": "78",
 							"uri": "https://impactco2.fr",
 							"method": "GET",
 							"param": "",
@@ -304,7 +350,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "66",
+							"id": "77",
 							"uri": "https://impactco2.fr",
 							"method": "GET",
 							"param": "",
@@ -313,7 +359,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "65",
+							"id": "76",
 							"uri": "https://impactco2.fr",
 							"method": "GET",
 							"param": "",
@@ -322,7 +368,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "81",
+							"id": "87",
 							"uri": "https://impactco2.fr/",
 							"method": "GET",
 							"param": "",
@@ -331,26 +377,26 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "80",
+							"id": "86",
 							"uri": "https://impactco2.fr/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
 							"evidence": "<link rel=\"preload\" href=\"https://cdn.jsdelivr.net/npm/@gouvfr/dsfr@1.12.1/dist/fonts/Marianne-Medium.woff2\" as=\"font\" type=\"font/woff2\" crossorigin=\"anonymous\"/>",
-							"otherinfo": ""
-						},
-						{
-							"id": "79",
-							"uri": "https://impactco2.fr/",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "<link rel=\"preload\" href=\"https://cdn.jsdelivr.net/npm/@gouvfr/dsfr@1.12.1/dist/fonts/Marianne-Regular.woff2\" as=\"font\" type=\"font/woff2\" crossorigin=\"anonymous\"/>",
 							"otherinfo": ""
 						},
 						{
 							"id": "84",
-							"uri": "https://impactco2.fr/outils",
+							"uri": "https://impactco2.fr/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<link rel=\"preload\" href=\"https://cdn.jsdelivr.net/npm/@gouvfr/dsfr@1.12.1/dist/fonts/Marianne-Regular.woff2\" as=\"font\" type=\"font/woff2\" crossorigin=\"anonymous\"/>",
+							"otherinfo": ""
+						},
+						{
+							"id": "75",
+							"uri": "https://impactco2.fr/doc",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -358,8 +404,8 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "83",
-							"uri": "https://impactco2.fr/outils",
+							"id": "74",
+							"uri": "https://impactco2.fr/doc",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -367,8 +413,8 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "82",
-							"uri": "https://impactco2.fr/outils",
+							"id": "73",
+							"uri": "https://impactco2.fr/doc",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -395,7 +441,7 @@
 					"desc": "<p>Cross-Origin-Resource-Policy header is an opt-in header designed to counter side-channels attacks like Spectre. Resource should be specifically set as shareable amongst different origins.</p>",
 					"instances":[ 
 						{
-							"id": "54",
+							"id": "66",
 							"uri": "https://impactco2.fr",
 							"method": "GET",
 							"param": "Cross-Origin-Resource-Policy",
@@ -404,8 +450,8 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "72",
-							"uri": "https://impactco2.fr/",
+							"id": "62",
+							"uri": "https://impactco2.fr/doc",
 							"method": "GET",
 							"param": "Cross-Origin-Resource-Policy",
 							"attack": "",
@@ -422,7 +468,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "29",
+							"id": "21",
 							"uri": "https://impactco2.fr/sitemap-0.xml",
 							"method": "GET",
 							"param": "Cross-Origin-Resource-Policy",
@@ -431,7 +477,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "14",
+							"id": "5",
 							"uri": "https://impactco2.fr/sitemap.xml",
 							"method": "GET",
 							"param": "Cross-Origin-Resource-Policy",
@@ -440,7 +486,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "55",
+							"id": "67",
 							"uri": "https://impactco2.fr",
 							"method": "GET",
 							"param": "Cross-Origin-Embedder-Policy",
@@ -449,8 +495,8 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "73",
-							"uri": "https://impactco2.fr/",
+							"id": "63",
+							"uri": "https://impactco2.fr/doc",
 							"method": "GET",
 							"param": "Cross-Origin-Embedder-Policy",
 							"attack": "",
@@ -458,7 +504,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "30",
+							"id": "22",
 							"uri": "https://impactco2.fr/sitemap-0.xml",
 							"method": "GET",
 							"param": "Cross-Origin-Embedder-Policy",
@@ -467,7 +513,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "15",
+							"id": "6",
 							"uri": "https://impactco2.fr/sitemap.xml",
 							"method": "GET",
 							"param": "Cross-Origin-Embedder-Policy",
@@ -476,7 +522,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "56",
+							"id": "68",
 							"uri": "https://impactco2.fr",
 							"method": "GET",
 							"param": "Cross-Origin-Opener-Policy",
@@ -485,8 +531,8 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "74",
-							"uri": "https://impactco2.fr/",
+							"id": "64",
+							"uri": "https://impactco2.fr/doc",
 							"method": "GET",
 							"param": "Cross-Origin-Opener-Policy",
 							"attack": "",
@@ -494,7 +540,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "31",
+							"id": "23",
 							"uri": "https://impactco2.fr/sitemap-0.xml",
 							"method": "GET",
 							"param": "Cross-Origin-Opener-Policy",
@@ -503,7 +549,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "16",
+							"id": "7",
 							"uri": "https://impactco2.fr/sitemap.xml",
 							"method": "GET",
 							"param": "Cross-Origin-Opener-Policy",
@@ -531,7 +577,7 @@
 					"desc": "<p>Permissions Policy Header is an added layer of security that helps to restrict from unauthorized access or usage of browser/client features by web resources. This policy ensures the user privacy by limiting or specifying the features of the browsers can be used by the web resources. Permissions Policy provides a set of standard HTTP headers that allow website owners to limit which features of browsers can be used by the page such as camera, microphone, location, full screen etc.</p>",
 					"instances":[ 
 						{
-							"id": "53",
+							"id": "65",
 							"uri": "https://impactco2.fr",
 							"method": "GET",
 							"param": "",
@@ -540,7 +586,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "71",
+							"id": "72",
 							"uri": "https://impactco2.fr/",
 							"method": "GET",
 							"param": "",
@@ -549,7 +595,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "104",
+							"id": "61",
 							"uri": "https://impactco2.fr/doc",
 							"method": "GET",
 							"param": "",
@@ -558,16 +604,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "134",
-							"uri": "https://impactco2.fr/doc/questions-frequentes",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"id": "76",
+							"id": "109",
 							"uri": "https://impactco2.fr/outils",
 							"method": "GET",
 							"param": "",
@@ -576,7 +613,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "128",
+							"id": "113",
 							"uri": "https://impactco2.fr/outils/comparateur",
 							"method": "GET",
 							"param": "",
@@ -585,7 +622,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "131",
+							"id": "122",
 							"uri": "https://impactco2.fr/outils/livraison",
 							"method": "GET",
 							"param": "",
@@ -594,7 +631,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "101",
+							"id": "124",
 							"uri": "https://impactco2.fr/outils/transport",
 							"method": "GET",
 							"param": "",
@@ -603,7 +640,16 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "107",
+							"id": "127",
+							"uri": "https://impactco2.fr/rendez-vous?fromLabel=Accueil",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "98",
 							"uri": "https://impactco2.fr/rendez-vous?fromLabel=home",
 							"method": "GET",
 							"param": "",
@@ -612,7 +658,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "109",
+							"id": "100",
 							"uri": "https://impactco2.fr/rendez-vous?fromLabel=home-banner",
 							"method": "GET",
 							"param": "",
@@ -621,7 +667,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "130",
+							"id": "135",
 							"uri": "https://impactco2.fr/suggestion?fromLabel=Accueil&simulatorName=du%20site",
 							"method": "GET",
 							"param": "",
@@ -649,7 +695,7 @@
 					"desc": "<p>The web/application server is leaking information via one or more \"X-Powered-By\" HTTP response headers. Access to such information may facilitate attackers identifying other frameworks/components your web application is reliant upon and the vulnerabilities such components may be subject to.</p>",
 					"instances":[ 
 						{
-							"id": "32",
+							"id": "56",
 							"uri": "https://impactco2.fr",
 							"method": "GET",
 							"param": "",
@@ -658,7 +704,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "62",
+							"id": "58",
 							"uri": "https://impactco2.fr/",
 							"method": "GET",
 							"param": "",
@@ -667,7 +713,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "96",
+							"id": "52",
 							"uri": "https://impactco2.fr/doc",
 							"method": "GET",
 							"param": "",
@@ -676,7 +722,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "129",
+							"id": "132",
 							"uri": "https://impactco2.fr/doc/questions-frequentes",
 							"method": "GET",
 							"param": "",
@@ -685,7 +731,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "64",
+							"id": "101",
 							"uri": "https://impactco2.fr/outils",
 							"method": "GET",
 							"param": "",
@@ -694,7 +740,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "122",
+							"id": "107",
 							"uri": "https://impactco2.fr/outils/comparateur",
 							"method": "GET",
 							"param": "",
@@ -703,7 +749,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "125",
+							"id": "117",
 							"uri": "https://impactco2.fr/outils/livraison",
 							"method": "GET",
 							"param": "",
@@ -712,7 +758,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "90",
+							"id": "118",
 							"uri": "https://impactco2.fr/outils/transport",
 							"method": "GET",
 							"param": "",
@@ -721,7 +767,16 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "98",
+							"id": "126",
+							"uri": "https://impactco2.fr/rendez-vous?fromLabel=Accueil",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "X-Powered-By: Next.js",
+							"otherinfo": ""
+						},
+						{
+							"id": "91",
 							"uri": "https://impactco2.fr/rendez-vous?fromLabel=home",
 							"method": "GET",
 							"param": "",
@@ -730,17 +785,8 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "105",
+							"id": "92",
 							"uri": "https://impactco2.fr/rendez-vous?fromLabel=home-banner",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "X-Powered-By: Next.js",
-							"otherinfo": ""
-						},
-						{
-							"id": "123",
-							"uri": "https://impactco2.fr/suggestion?fromLabel=Accueil&simulatorName=du%20site",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -767,7 +813,7 @@
 					"desc": "<p>HTTP Strict Transport Security (HSTS) is a web security policy mechanism whereby a web server declares that complying user agents (such as a web browser) are to interact with it using only secure HTTPS connections (i.e. HTTP layered over TLS/SSL). HSTS is an IETF standards track protocol and is specified in RFC 6797.</p>",
 					"instances":[ 
 						{
-							"id": "25",
+							"id": "53",
 							"uri": "https://impactco2.fr",
 							"method": "GET",
 							"param": "",
@@ -776,7 +822,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "59",
+							"id": "55",
 							"uri": "https://impactco2.fr/",
 							"method": "GET",
 							"param": "",
@@ -785,7 +831,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "95",
+							"id": "51",
 							"uri": "https://impactco2.fr/doc",
 							"method": "GET",
 							"param": "",
@@ -794,7 +840,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "61",
+							"id": "99",
 							"uri": "https://impactco2.fr/outils",
 							"method": "GET",
 							"param": "",
@@ -803,7 +849,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "119",
+							"id": "105",
 							"uri": "https://impactco2.fr/outils/comparateur",
 							"method": "GET",
 							"param": "",
@@ -812,7 +858,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "86",
+							"id": "116",
 							"uri": "https://impactco2.fr/outils/transport",
 							"method": "GET",
 							"param": "",
@@ -821,7 +867,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "97",
+							"id": "89",
 							"uri": "https://impactco2.fr/rendez-vous?fromLabel=home",
 							"method": "GET",
 							"param": "",
@@ -830,7 +876,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "103",
+							"id": "90",
 							"uri": "https://impactco2.fr/rendez-vous?fromLabel=home-banner",
 							"method": "GET",
 							"param": "",
@@ -839,7 +885,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "9",
+							"id": "2",
 							"uri": "https://impactco2.fr/robots.txt",
 							"method": "GET",
 							"param": "",
@@ -848,7 +894,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "27",
+							"id": "19",
 							"uri": "https://impactco2.fr/sitemap-0.xml",
 							"method": "GET",
 							"param": "",
@@ -857,7 +903,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "10",
+							"id": "3",
 							"uri": "https://impactco2.fr/sitemap.xml",
 							"method": "GET",
 							"param": "",
@@ -885,7 +931,7 @@
 					"desc": "<p>A timestamp was disclosed by the application/web server. - Unix</p>",
 					"instances":[ 
 						{
-							"id": "162",
+							"id": "161",
 							"uri": "https://impactco2.fr/_next/static/chunks/3398-fc736731209f6f6f.js",
 							"method": "GET",
 							"param": "",
@@ -900,7 +946,7 @@
 					"reference": "<p>https://cwe.mitre.org/data/definitions/200.html</p>",
 					"cweid": "497",
 					"wascid": "13",
-					"sourceid": "877"
+					"sourceid": "881"
 				},
 				{
 					"pluginid": "10094",
@@ -913,8 +959,17 @@
 					"desc": "<p>Base64 encoded data was disclosed by the application/web server. Note: in the interests of performance not all base64 strings in the response were analyzed individually, the entire response should be looked at by the analyst/security team/developer(s).</p>",
 					"instances":[ 
 						{
+							"id": "162",
+							"uri": "https://impactco2.fr/_next/static/chunks/3609-d4391f33ecb37e3f.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "aWZCflVtbFNGbzBuREZJYVF5SmNVQUhtQThOQlhQQjBYcnRtZFVUWm96XzBl",
+							"otherinfo": "ifB~UmlSFo0nDFIaQyJcUAHmA8NBXPB0XrtmdUTZoz_0e"
+						},
+						{
 							"id": "159",
-							"uri": "https://impactco2.fr/_next/static/css/54911c12e9277d58.css",
+							"uri": "https://impactco2.fr/_next/static/css/87399b1c29ee9561.css",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -931,15 +986,6 @@
 							"otherinfo": "N\uFFFD\uFFFD\uFFFD\uFFFD+\uFFFD*&\uFFFD\uFFFD\u2C89\u012A\uFFFDjW\uFFFD\uFFFD\uFFFDh\uFFFD\uFFFD\uFFFD\\x0001\uFFFD^"
 						},
 						{
-							"id": "161",
-							"uri": "https://impactco2.fr/accessibilite",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "fr/institutionnel/6257-plan-annuel-de-mise-en-accessibilite-des-sites-webBlue-de-l-ademe",
-							"otherinfo": "~\uFFFD\uFFFD\uFFFDb\uFFFD\uFFFDb\uFFFDy\u0797\uFFFD\uFFFD\u7FE9\uFFFD\uFFFD\uFFFDjy\uFFFDz_\uFFFD{\u98B1\uF79F\uFFFDq\uFFFD,\uFFFD\uFFFD\uFFFD\uFFFD\u05FEu\uFFFD>\uFFFD+^\uFFFD\uFFFD\\x001el\\x0019n{\uFFFD^\uFFFD_\uFFFDu\uFFFD"
-						},
-						{
 							"id": "158",
 							"uri": "https://impactco2.fr/doc/guide-utilisation",
 							"method": "GET",
@@ -949,34 +995,34 @@
 							"otherinfo": "\t\uFFFDm\uFFFD\uFFFD\uFFFDu\uFFFD+j\uFFFD\uFFFDn~\u04CF\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD"
 						},
 						{
-							"id": "133",
+							"id": "119",
 							"uri": "https://impactco2.fr/outils/comparateur",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "IQoJb3JpZ2luX2VjEGEaCXVzLXdlc3QtMiJHMEUCIBnPNW3mYC",
-							"otherinfo": "!\n\torigin_ec\\x0010a\\x001a\tus-west-2\"G0E\\x0002 \\x0019\uFFFD5m\uFFFD`"
+							"evidence": "IQoJb3JpZ2luX2VjEAkaCXVzLXdlc3QtMiJHMEUCIQDfErD2s2yRY3sEUYovUPkjJeyB",
+							"otherinfo": "!\n\torigin_ec\\x0010\t\\x001a\tus-west-2\"G0E\\x0002!\\x0000\uFFFD\\x0012\uFFFD\uFFFD\uFFFDl\uFFFDc{\\x0004Q\uFFFD/P\uFFFD#%\uFFFD"
 						},
 						{
-							"id": "135",
+							"id": "128",
 							"uri": "https://impactco2.fr/outils/livraison",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "IQoJb3JpZ2luX2VjEGEaCXVzLXdlc3QtMiJHMEUCIQDCYp5lOHG3vKyiWyvQ07OW3TIupn7ZZQtPjUfdlrKIdAIgRejpph4jzzIfxHjHmafbHIJnHlISUhjx63",
-							"otherinfo": "!\n\torigin_ec\\x0010a\\x001a\tus-west-2\"G0E\\x0002!\\x0000\uFFFDb\uFFFDe8q\uFFFD\uFFFD\uFFFD\uFFFD[+\uFFFD\u04F3\uFFFD\uFFFD2.\uFFFD~\uFFFDe\\x000bO\uFFFDG\u0756\uFFFD\uFFFDt\\x0002 E\uFFFD\uFFFD\\x001e#\uFFFD2\\x001f\uFFFDx\u01D9\uFFFD\uFFFD\\x001c\uFFFDg\\x001eR\\x0012R\\x0018\uFFFD\uFFFD"
+							"evidence": "IQoJb3JpZ2luX2VjEAoaCXVzLXdlc3QtMiJHMEUCIDZFQ3bWWvAFXAf8ln",
+							"otherinfo": "!\n\torigin_ec\\x0010\n\\x001a\tus-west-2\"G0E\\x0002 6ECv\uFFFDZ\uFFFD\\x0005\\\\x0007\uFFFD\uFFFD"
 						},
 						{
-							"id": "111",
+							"id": "131",
 							"uri": "https://impactco2.fr/outils/transport",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "IQoJb3JpZ2luX2VjEGEaCXVzLXdlc3QtMiJHMEUCIQDCYp5lOHG3vKyiWyvQ07OW3TIupn7ZZQtPjUfdlrKIdAIgRejpph4jzzIfxHjHmafbHIJnHlISUhjx63",
-							"otherinfo": "!\n\torigin_ec\\x0010a\\x001a\tus-west-2\"G0E\\x0002!\\x0000\uFFFDb\uFFFDe8q\uFFFD\uFFFD\uFFFD\uFFFD[+\uFFFD\u04F3\uFFFD\uFFFD2.\uFFFD~\uFFFDe\\x000bO\uFFFDG\u0756\uFFFD\uFFFDt\\x0002 E\uFFFD\uFFFD\\x001e#\uFFFD2\\x001f\uFFFDx\u01D9\uFFFD\uFFFD\\x001c\uFFFDg\\x001eR\\x0012R\\x0018\uFFFD\uFFFD"
+							"evidence": "IQoJb3JpZ2luX2VjEAoaCXVzLXdlc3QtMiJHMEUCIDZFQ3bWWvAFXAf8ln",
+							"otherinfo": "!\n\torigin_ec\\x0010\n\\x001a\tus-west-2\"G0E\\x0002 6ECv\uFFFDZ\uFFFD\\x0005\\\\x0007\uFFFD\uFFFD"
 						},
 						{
-							"id": "154",
+							"id": "133",
 							"uri": "https://impactco2.fr/rendez-vous?fromLabel=Accueil",
 							"method": "GET",
 							"param": "",
@@ -985,7 +1031,7 @@
 							"otherinfo": "\n\\x0017\uFFFD\uFFFD\uFFFD1\"zn\uFFFD\uFFFD(\uFFFD\u05A2\uFFFD\uFFFD\uFFFD\uFFFDOPL"
 						},
 						{
-							"id": "153",
+							"id": "155",
 							"uri": "https://impactco2.fr/rendez-vous?fromLabel=footer",
 							"method": "GET",
 							"param": "",
@@ -994,7 +1040,7 @@
 							"otherinfo": "\n\\x0017\uFFFD\uFFFD\uFFFD1\"zn\uFFFD\uFFFD(\uFFFD\u05A2\uFFFD\uFFFD\uFFFD\uFFFDOPL"
 						},
 						{
-							"id": "110",
+							"id": "104",
 							"uri": "https://impactco2.fr/rendez-vous?fromLabel=home",
 							"method": "GET",
 							"param": "",
@@ -1003,7 +1049,7 @@
 							"otherinfo": "\n\\x0017\uFFFD\uFFFD\uFFFD1\"zn\uFFFD\uFFFD(\uFFFD\u05A2\uFFFD\uFFFD\uFFFD\uFFFDOPL"
 						},
 						{
-							"id": "112",
+							"id": "106",
 							"uri": "https://impactco2.fr/rendez-vous?fromLabel=home-banner",
 							"method": "GET",
 							"param": "",
@@ -1012,7 +1058,7 @@
 							"otherinfo": "\n\\x0017\uFFFD\uFFFD\uFFFD1\"zn\uFFFD\uFFFD(\uFFFD\u05A2\uFFFD\uFFFD\uFFFD\uFFFDOPL"
 						},
 						{
-							"id": "132",
+							"id": "136",
 							"uri": "https://impactco2.fr/suggestion?fromLabel=Accueil&simulatorName=du%20site",
 							"method": "GET",
 							"param": "",
@@ -1023,11 +1069,11 @@
 					],
 					"count": "12",
 					"solution": "<p>Manually confirm that the Base64 data does not leak sensitive information, and that the data cannot be aggregated/used to exploit other vulnerabilities.</p>",
-					"otherinfo": "<p></p><p>\\x0017\uFFFD\uFFFD\uFFFD1\"zn\uFFFD\uFFFD(\uFFFD\u05A2\uFFFD\uFFFD\uFFFD\uFFFDOPL</p>",
+					"otherinfo": "<p>ifB~UmlSFo0nDFIaQyJcUAHmA8NBXPB0XrtmdUTZoz_0e</p>",
 					"reference": "<p>https://projects.webappsec.org/w/page/13246936/Information%20Leakage</p>",
 					"cweid": "319",
 					"wascid": "13",
-					"sourceid": "852"
+					"sourceid": "878"
 				},
 				{
 					"pluginid": "10019",
@@ -1055,7 +1101,7 @@
 					"reference": "<p>https://learn.microsoft.com/en-us/previous-versions/windows/internet-explorer/ie-developer/compatibility/gg622941(v=vs.85)</p>",
 					"cweid": "345",
 					"wascid": "12",
-					"sourceid": "1679"
+					"sourceid": "1541"
 				},
 				{
 					"pluginid": "10027",
@@ -1068,7 +1114,7 @@
 					"desc": "<p>The response appears to contain suspicious comments which may help an attacker.</p>",
 					"instances":[ 
 						{
-							"id": "5",
+							"id": "45",
 							"uri": "https://impactco2.fr",
 							"method": "GET",
 							"param": "",
@@ -1077,7 +1123,7 @@
 							"otherinfo": "The following pattern was used: \\bSELECT\\b and was detected in likely comment: \"//base-empreinte.ademe.fr/\\\"]]],[\\\" et \\\"],[\\\"Agribalyse\\\",[[\\\"a\\\",\\\"https://agribalyse.ademe.fr/\\\"]]],[\\\").\\\"]]},\\\"created_time\", see evidence field for the suspicious comment/snippet."
 						},
 						{
-							"id": "57",
+							"id": "49",
 							"uri": "https://impactco2.fr/",
 							"method": "GET",
 							"param": "",
@@ -1104,7 +1150,7 @@
 							"otherinfo": "The following pattern was used: \\bDB\\b and was detected in likely comment: \"//www.w3.org/2000/svg\\\",\\\"width\\\":\\\"17\\\",\\\"height\\\":\\\"16\\\",\\\"viewBox\\\":\\\"0 0 17 16\\\",\\\"fill\\\":\\\"none\\\",\\\"children\\\":[\\\"$\\\",\\\"pat\", see evidence field for the suspicious comment/snippet."
 						},
 						{
-							"id": "155",
+							"id": "154",
 							"uri": "https://impactco2.fr/doc/guide-utilisation",
 							"method": "GET",
 							"param": "",
@@ -1113,7 +1159,7 @@
 							"otherinfo": "The following pattern was used: \\bSELECT\\b and was detected in likely comment: \"//impactco2.fr/outils/transport\\\"],[\\\"b\\\"]]],[\\\" permet \u00E0 votre public de mesurer l\u2019impact carbone d\u2019un d\u00E9placement afin de \\\"],\", see evidence field for the suspicious comment/snippet."
 						},
 						{
-							"id": "124",
+							"id": "129",
 							"uri": "https://impactco2.fr/doc/questions-frequentes",
 							"method": "GET",
 							"param": "",
@@ -1122,7 +1168,7 @@
 							"otherinfo": "The following pattern was used: \\bSELECT\\b and was detected in likely comment: \"//www.w3.org/2000/svg\\\",\\\"width\\\":\\\"17\\\",\\\"height\\\":\\\"16\\\",\\\"viewBox\\\":\\\"0 0 17 16\\\",\\\"fill\\\":\\\"none\\\",\\\"children\\\":[\\\"$\\\",\\\"pat\", see evidence field for the suspicious comment/snippet."
 						},
 						{
-							"id": "49",
+							"id": "94",
 							"uri": "https://impactco2.fr/outils",
 							"method": "GET",
 							"param": "",
@@ -1131,7 +1177,7 @@
 							"otherinfo": "The following pattern was used: \\bSELECT\\b and was detected in likely comment: \"//base-empreinte.ademe.fr/\\\"]]],[\\\" et \\\"],[\\\"Agribalyse\\\",[[\\\"a\\\",\\\"https://agribalyse.ademe.fr/\\\"]]],[\\\").\\\"]]},\\\"created_time\", see evidence field for the suspicious comment/snippet."
 						},
 						{
-							"id": "115",
+							"id": "102",
 							"uri": "https://impactco2.fr/outils/comparateur",
 							"method": "GET",
 							"param": "",
@@ -1140,7 +1186,7 @@
 							"otherinfo": "The following pattern was used: \\bSELECT\\b and was detected in likely comment: \"//base-empreinte.ademe.fr/\\\"]]],[\\\" et \\\"],[\\\"Agribalyse\\\",[[\\\"a\\\",\\\"https://agribalyse.ademe.fr/\\\"]]],[\\\").\\\"]]},\\\"created_time\", see evidence field for the suspicious comment/snippet."
 						},
 						{
-							"id": "120",
+							"id": "114",
 							"uri": "https://impactco2.fr/outils/livraison",
 							"method": "GET",
 							"param": "",
@@ -1149,7 +1195,7 @@
 							"otherinfo": "The following pattern was used: \\bSELECT\\b and was detected in likely comment: \"//base-empreinte.ademe.fr/\\\"]]],[\\\" et \\\"],[\\\"Agribalyse\\\",[[\\\"a\\\",\\\"https://agribalyse.ademe.fr/\\\"]]],[\\\").\\\"]]},\\\"created_time\", see evidence field for the suspicious comment/snippet."
 						},
 						{
-							"id": "77",
+							"id": "111",
 							"uri": "https://impactco2.fr/outils/transport",
 							"method": "GET",
 							"param": "",
@@ -1158,7 +1204,7 @@
 							"otherinfo": "The following pattern was used: \\bSELECT\\b and was detected in likely comment: \"//base-empreinte.ademe.fr/\\\"]]],[\\\" et \\\"],[\\\"Agribalyse\\\",[[\\\"a\\\",\\\"https://agribalyse.ademe.fr/\\\"]]],[\\\").\\\"]]},\\\"created_time\", see evidence field for the suspicious comment/snippet."
 						},
 						{
-							"id": "117",
+							"id": "134",
 							"uri": "https://impactco2.fr/suggestion?fromLabel=Accueil&simulatorName=du%20site",
 							"method": "GET",
 							"param": "",
@@ -1173,7 +1219,7 @@
 					"reference": "",
 					"cweid": "615",
 					"wascid": "13",
-					"sourceid": "1"
+					"sourceid": "6"
 				},
 				{
 					"pluginid": "10109",
@@ -1186,7 +1232,7 @@
 					"desc": "<p>The application appears to be a modern web application. If you need to explore it automatically then the Ajax Spider may well be more effective than the standard one.</p>",
 					"instances":[ 
 						{
-							"id": "6",
+							"id": "46",
 							"uri": "https://impactco2.fr",
 							"method": "GET",
 							"param": "",
@@ -1195,7 +1241,7 @@
 							"otherinfo": "Links have been found with a target of '_self' - this is often used by modern frameworks to force a full page reload."
 						},
 						{
-							"id": "58",
+							"id": "50",
 							"uri": "https://impactco2.fr/",
 							"method": "GET",
 							"param": "",
@@ -1204,7 +1250,7 @@
 							"otherinfo": "Links have been found with a target of '_self' - this is often used by modern frameworks to force a full page reload."
 						},
 						{
-							"id": "92",
+							"id": "44",
 							"uri": "https://impactco2.fr/doc",
 							"method": "GET",
 							"param": "",
@@ -1213,7 +1259,7 @@
 							"otherinfo": "Links have been found with a target of '_self' - this is often used by modern frameworks to force a full page reload."
 						},
 						{
-							"id": "126",
+							"id": "130",
 							"uri": "https://impactco2.fr/doc/questions-frequentes",
 							"method": "GET",
 							"param": "",
@@ -1222,7 +1268,7 @@
 							"otherinfo": "Links have been found with a target of '_self' - this is often used by modern frameworks to force a full page reload."
 						},
 						{
-							"id": "51",
+							"id": "95",
 							"uri": "https://impactco2.fr/outils",
 							"method": "GET",
 							"param": "",
@@ -1231,7 +1277,7 @@
 							"otherinfo": "Links have been found with a target of '_self' - this is often used by modern frameworks to force a full page reload."
 						},
 						{
-							"id": "116",
+							"id": "103",
 							"uri": "https://impactco2.fr/outils/comparateur",
 							"method": "GET",
 							"param": "",
@@ -1240,7 +1286,7 @@
 							"otherinfo": "Links have been found with a target of '_self' - this is often used by modern frameworks to force a full page reload."
 						},
 						{
-							"id": "121",
+							"id": "115",
 							"uri": "https://impactco2.fr/outils/livraison",
 							"method": "GET",
 							"param": "",
@@ -1249,7 +1295,7 @@
 							"otherinfo": "Links have been found with a target of '_self' - this is often used by modern frameworks to force a full page reload."
 						},
 						{
-							"id": "78",
+							"id": "112",
 							"uri": "https://impactco2.fr/outils/transport",
 							"method": "GET",
 							"param": "",
@@ -1258,7 +1304,16 @@
 							"otherinfo": "Links have been found with a target of '_self' - this is often used by modern frameworks to force a full page reload."
 						},
 						{
-							"id": "94",
+							"id": "123",
+							"uri": "https://impactco2.fr/rendez-vous?fromLabel=Accueil",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<a class=\"Link_link__kqI8J Header_link__7__6t\" target=\"_self\" href=\"/outils\"><svg aria-hidden=\"true\" xmlns=\"http://www.w3.org/2000/svg\" width=\"20\" height=\"20\" viewBox=\"0 0 20 20\" fill=\"none\"><path d=\"M15.4636 19.9909H4.54545C2.04545 19.9909 0 17.9555 0 15.4475V4.54339C0 2.03544 2.03636 0 4.54545 0H15.4636C17.9636 0 20 2.03544 20 4.54339V15.4566C20 17.9555 17.9636 20 15.4636 20V19.9909ZM4.54545 1.81736C3.04545 1.81736 1.81818 3.03498 1.81818 4.54339V15.4566C1.81818 16.9559 3.03636 18.1826 4.54545 18.1826H15.4636C16.9636 18.1826 18.1818 16.965 18.1818 15.4566V4.54339C18.1818 3.04407 16.9636 1.81736 15.4636 1.81736H4.54545Z\" fill=\"currentcolor\"></path><path d=\"M7.27273 13.6302C7.03636 13.6302 6.80909 13.5393 6.62727 13.3667L3.9 10.6406C3.54545 10.2862 3.54545 9.71377 3.9 9.35938L6.62727 6.63335C6.98182 6.27896 7.55454 6.27896 7.90909 6.63335C8.26364 6.98773 8.26364 7.5602 7.90909 7.91458L5.82727 9.99546L7.90909 12.0763C8.26364 12.4307 8.26364 13.0032 7.90909 13.3576C7.72727 13.5393 7.5 13.6211 7.26364 13.6211L7.27273 13.6302Z\" fill=\"currentcolor\"></path><path d=\"M12.7273 13.6302C12.4909 13.6302 12.2636 13.5393 12.0818 13.3667C11.7273 13.0123 11.7273 12.4398 12.0818 12.0854L14.1636 10.0045L12.0818 7.92367C11.7273 7.56929 11.7273 6.99682 12.0818 6.64244C12.4364 6.28805 13.0091 6.28805 13.3636 6.64244L16.0909 9.36847C16.4455 9.72285 16.4455 10.2953 16.0909 10.6497L13.3636 13.3757C13.1818 13.5575 12.9545 13.6393 12.7182 13.6393L12.7273 13.6302Z\" fill=\"currentcolor\"></path></svg>Les outils</a>",
+							"otherinfo": "Links have been found with a target of '_self' - this is often used by modern frameworks to force a full page reload."
+						},
+						{
+							"id": "85",
 							"uri": "https://impactco2.fr/rendez-vous?fromLabel=home",
 							"method": "GET",
 							"param": "",
@@ -1267,17 +1322,8 @@
 							"otherinfo": "Links have been found with a target of '_self' - this is often used by modern frameworks to force a full page reload."
 						},
 						{
-							"id": "100",
+							"id": "88",
 							"uri": "https://impactco2.fr/rendez-vous?fromLabel=home-banner",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "<a class=\"Link_link__kqI8J Header_link__7__6t\" target=\"_self\" href=\"/outils\"><svg aria-hidden=\"true\" xmlns=\"http://www.w3.org/2000/svg\" width=\"20\" height=\"20\" viewBox=\"0 0 20 20\" fill=\"none\"><path d=\"M15.4636 19.9909H4.54545C2.04545 19.9909 0 17.9555 0 15.4475V4.54339C0 2.03544 2.03636 0 4.54545 0H15.4636C17.9636 0 20 2.03544 20 4.54339V15.4566C20 17.9555 17.9636 20 15.4636 20V19.9909ZM4.54545 1.81736C3.04545 1.81736 1.81818 3.03498 1.81818 4.54339V15.4566C1.81818 16.9559 3.03636 18.1826 4.54545 18.1826H15.4636C16.9636 18.1826 18.1818 16.965 18.1818 15.4566V4.54339C18.1818 3.04407 16.9636 1.81736 15.4636 1.81736H4.54545Z\" fill=\"currentcolor\"></path><path d=\"M7.27273 13.6302C7.03636 13.6302 6.80909 13.5393 6.62727 13.3667L3.9 10.6406C3.54545 10.2862 3.54545 9.71377 3.9 9.35938L6.62727 6.63335C6.98182 6.27896 7.55454 6.27896 7.90909 6.63335C8.26364 6.98773 8.26364 7.5602 7.90909 7.91458L5.82727 9.99546L7.90909 12.0763C8.26364 12.4307 8.26364 13.0032 7.90909 13.3576C7.72727 13.5393 7.5 13.6211 7.26364 13.6211L7.27273 13.6302Z\" fill=\"currentcolor\"></path><path d=\"M12.7273 13.6302C12.4909 13.6302 12.2636 13.5393 12.0818 13.3667C11.7273 13.0123 11.7273 12.4398 12.0818 12.0854L14.1636 10.0045L12.0818 7.92367C11.7273 7.56929 11.7273 6.99682 12.0818 6.64244C12.4364 6.28805 13.0091 6.28805 13.3636 6.64244L16.0909 9.36847C16.4455 9.72285 16.4455 10.2953 16.0909 10.6497L13.3636 13.3757C13.1818 13.5575 12.9545 13.6393 12.7182 13.6393L12.7273 13.6302Z\" fill=\"currentcolor\"></path></svg>Les outils</a>",
-							"otherinfo": "Links have been found with a target of '_self' - this is often used by modern frameworks to force a full page reload."
-						},
-						{
-							"id": "118",
-							"uri": "https://impactco2.fr/suggestion?fromLabel=Accueil&simulatorName=du%20site",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1291,7 +1337,7 @@
 					"reference": "",
 					"cweid": "-1",
 					"wascid": "-1",
-					"sourceid": "1"
+					"sourceid": "6"
 				},
 				{
 					"pluginid": "10049",
@@ -1304,7 +1350,7 @@
 					"desc": "<p>The response contents are not storable by caching components such as proxy servers. If the response does not contain sensitive, personal or user-specific information, it may benefit from being stored and cached, to improve performance.</p>",
 					"instances":[ 
 						{
-							"id": "127",
+							"id": "110",
 							"uri": "https://impactco2.fr/outils/comparateur",
 							"method": "GET",
 							"param": "",
@@ -1313,8 +1359,8 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "99",
-							"uri": "https://impactco2.fr/outils/transport",
+							"id": "121",
+							"uri": "https://impactco2.fr/outils/livraison",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1328,7 +1374,7 @@
 					"reference": "<p>https://datatracker.ietf.org/doc/html/rfc7234</p><p>https://datatracker.ietf.org/doc/html/rfc7231</p><p>https://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html</p>",
 					"cweid": "524",
 					"wascid": "13",
-					"sourceid": "475"
+					"sourceid": "403"
 				},
 				{
 					"pluginid": "10015",
@@ -1341,7 +1387,7 @@
 					"desc": "<p>The cache-control header has not been set properly or is missing, allowing the browser and proxies to cache content. For static assets like css, js, or image files this might be intended, however, the resources should be reviewed to ensure that no sensitive content will be cached.</p>",
 					"instances":[ 
 						{
-							"id": "0",
+							"id": "33",
 							"uri": "https://impactco2.fr",
 							"method": "GET",
 							"param": "cache-control",
@@ -1350,7 +1396,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "47",
+							"id": "43",
 							"uri": "https://impactco2.fr/",
 							"method": "GET",
 							"param": "cache-control",
@@ -1359,7 +1405,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "85",
+							"id": "28",
 							"uri": "https://impactco2.fr/doc",
 							"method": "GET",
 							"param": "cache-control",
@@ -1368,7 +1414,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "114",
+							"id": "125",
 							"uri": "https://impactco2.fr/doc/questions-frequentes",
 							"method": "GET",
 							"param": "cache-control",
@@ -1377,7 +1423,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "42",
+							"id": "93",
 							"uri": "https://impactco2.fr/outils",
 							"method": "GET",
 							"param": "cache-control",
@@ -1386,7 +1432,16 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "91",
+							"id": "120",
+							"uri": "https://impactco2.fr/rendez-vous?fromLabel=Accueil",
+							"method": "GET",
+							"param": "cache-control",
+							"attack": "",
+							"evidence": "s-maxage=31536000",
+							"otherinfo": ""
+						},
+						{
+							"id": "79",
 							"uri": "https://impactco2.fr/rendez-vous?fromLabel=home",
 							"method": "GET",
 							"param": "cache-control",
@@ -1395,7 +1450,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "93",
+							"id": "80",
 							"uri": "https://impactco2.fr/rendez-vous?fromLabel=home-banner",
 							"method": "GET",
 							"param": "cache-control",
@@ -1404,7 +1459,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "8",
+							"id": "1",
 							"uri": "https://impactco2.fr/robots.txt",
 							"method": "GET",
 							"param": "cache-control",
@@ -1413,34 +1468,16 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "26",
+							"id": "18",
 							"uri": "https://impactco2.fr/sitemap-0.xml",
 							"method": "GET",
 							"param": "cache-control",
 							"attack": "",
 							"evidence": "public, max-age=0",
 							"otherinfo": ""
-						},
-						{
-							"id": "7",
-							"uri": "https://impactco2.fr/sitemap.xml",
-							"method": "GET",
-							"param": "cache-control",
-							"attack": "",
-							"evidence": "public, max-age=0",
-							"otherinfo": ""
-						},
-						{
-							"id": "113",
-							"uri": "https://impactco2.fr/suggestion?fromLabel=Accueil&simulatorName=du%20site",
-							"method": "GET",
-							"param": "cache-control",
-							"attack": "",
-							"evidence": "s-maxage=31536000",
-							"otherinfo": ""
 						}
 					],
-					"count": "11",
+					"count": "10",
 					"solution": "<p>For secure content, ensure the cache-control HTTP header is set with \"no-cache, no-store, must-revalidate\". If an asset should be cached consider setting the directives \"public, max-age, immutable\".</p>",
 					"otherinfo": "",
 					"reference": "<p>https://cheatsheetseries.owasp.org/cheatsheets/Session_Management_Cheat_Sheet.html#web-content-caching</p><p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cache-Control</p><p>https://grayduck.mn/2021/09/13/cache-control-recommendations/</p>",
@@ -1459,7 +1496,7 @@
 					"desc": "<p>Specifies how and where the data would be used. For instance, if the value is audio, then the requested resource must be audio data and not any other type of resource.</p>",
 					"instances":[ 
 						{
-							"id": "19",
+							"id": "16",
 							"uri": "https://impactco2.fr/robots.txt",
 							"method": "GET",
 							"param": "Sec-Fetch-Dest",
@@ -1468,7 +1505,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "35",
+							"id": "26",
 							"uri": "https://impactco2.fr/sitemap-0.xml",
 							"method": "GET",
 							"param": "Sec-Fetch-Dest",
@@ -1477,7 +1514,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "23",
+							"id": "11",
 							"uri": "https://impactco2.fr/sitemap.xml",
 							"method": "GET",
 							"param": "Sec-Fetch-Dest",
@@ -1505,7 +1542,7 @@
 					"desc": "<p>Allows to differentiate between requests for navigating between HTML pages and requests for loading resources like images, audio etc.</p>",
 					"instances":[ 
 						{
-							"id": "18",
+							"id": "15",
 							"uri": "https://impactco2.fr/robots.txt",
 							"method": "GET",
 							"param": "Sec-Fetch-Mode",
@@ -1514,7 +1551,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "34",
+							"id": "25",
 							"uri": "https://impactco2.fr/sitemap-0.xml",
 							"method": "GET",
 							"param": "Sec-Fetch-Mode",
@@ -1523,7 +1560,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "22",
+							"id": "10",
 							"uri": "https://impactco2.fr/sitemap.xml",
 							"method": "GET",
 							"param": "Sec-Fetch-Mode",
@@ -1551,7 +1588,7 @@
 					"desc": "<p>Specifies the relationship between request initiator's origin and target's origin.</p>",
 					"instances":[ 
 						{
-							"id": "17",
+							"id": "14",
 							"uri": "https://impactco2.fr/robots.txt",
 							"method": "GET",
 							"param": "Sec-Fetch-Site",
@@ -1560,7 +1597,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "33",
+							"id": "24",
 							"uri": "https://impactco2.fr/sitemap-0.xml",
 							"method": "GET",
 							"param": "Sec-Fetch-Site",
@@ -1569,7 +1606,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "20",
+							"id": "8",
 							"uri": "https://impactco2.fr/sitemap.xml",
 							"method": "GET",
 							"param": "Sec-Fetch-Site",
@@ -1597,7 +1634,7 @@
 					"desc": "<p>Specifies if a navigation request was initiated by a user.</p>",
 					"instances":[ 
 						{
-							"id": "21",
+							"id": "17",
 							"uri": "https://impactco2.fr/robots.txt",
 							"method": "GET",
 							"param": "Sec-Fetch-User",
@@ -1606,7 +1643,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "36",
+							"id": "27",
 							"uri": "https://impactco2.fr/sitemap-0.xml",
 							"method": "GET",
 							"param": "Sec-Fetch-User",
@@ -1615,7 +1652,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "24",
+							"id": "12",
 							"uri": "https://impactco2.fr/sitemap.xml",
 							"method": "GET",
 							"param": "Sec-Fetch-User",
@@ -1643,7 +1680,7 @@
 					"desc": "<p>The response contents are storable by caching components such as proxy servers, and may be retrieved directly from the cache, rather than from the origin server by the caching servers, in response to similar requests from other users. If the response data is sensitive, personal or user-specific, this may result in sensitive information being leaked. In some cases, this may even result in a user gaining complete control of the session of another user, depending on the configuration of the caching components in use in their environment. This is primarily an issue where \"shared\" caching servers such as \"proxy\" caches are configured on the local network. This configuration is typically found in corporate or educational environments, for instance.</p>",
 					"instances":[ 
 						{
-							"id": "48",
+							"id": "60",
 							"uri": "https://impactco2.fr",
 							"method": "GET",
 							"param": "",
@@ -1652,7 +1689,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "68",
+							"id": "70",
 							"uri": "https://impactco2.fr/",
 							"method": "GET",
 							"param": "",
@@ -1661,7 +1698,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "102",
+							"id": "59",
 							"uri": "https://impactco2.fr/doc",
 							"method": "GET",
 							"param": "",
@@ -1670,7 +1707,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "70",
+							"id": "108",
 							"uri": "https://impactco2.fr/outils",
 							"method": "GET",
 							"param": "",
@@ -1679,7 +1716,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "106",
+							"id": "96",
 							"uri": "https://impactco2.fr/rendez-vous?fromLabel=home",
 							"method": "GET",
 							"param": "",
@@ -1688,7 +1725,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "108",
+							"id": "97",
 							"uri": "https://impactco2.fr/rendez-vous?fromLabel=home-banner",
 							"method": "GET",
 							"param": "",
@@ -1716,7 +1753,7 @@
 					"desc": "<p>The response contents are storable by caching components such as proxy servers, but will not be retrieved directly from the cache, without validating the request upstream, in response to similar requests from other users.</p>",
 					"instances":[ 
 						{
-							"id": "12",
+							"id": "9",
 							"uri": "https://impactco2.fr/robots.txt",
 							"method": "GET",
 							"param": "",
@@ -1725,7 +1762,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "28",
+							"id": "20",
 							"uri": "https://impactco2.fr/sitemap-0.xml",
 							"method": "GET",
 							"param": "",
@@ -1734,7 +1771,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "11",
+							"id": "4",
 							"uri": "https://impactco2.fr/sitemap.xml",
 							"method": "GET",
 							"param": "",
@@ -1762,7 +1799,7 @@
 					"desc": "<p>This check looks at user-supplied input in query string parameters and POST data to identify where certain HTML attribute values might be controlled. This provides hot-spot detection for XSS (cross-site scripting) that will require further review by a security analyst to determine exploitability.</p>",
 					"instances":[ 
 						{
-							"id": "142",
+							"id": "143",
 							"uri": "https://impactco2.fr/rendez-vous?fromLabel=footer",
 							"method": "GET",
 							"param": "fromLabel",
@@ -1771,7 +1808,7 @@
 							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://impactco2.fr/rendez-vous?fromLabel=footer\n\nappears to include user input in:\na(n) [div] tag [class] attribute\n\nThe user input found was:\nfromLabel=footer\n\nThe user-controlled value was:\nfooter_footerexplain__h7zng"
 						},
 						{
-							"id": "139",
+							"id": "140",
 							"uri": "https://impactco2.fr/rendez-vous?fromLabel=footer",
 							"method": "GET",
 							"param": "fromLabel",
@@ -1780,7 +1817,7 @@
 							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://impactco2.fr/rendez-vous?fromLabel=footer\n\nappears to include user input in:\na(n) [div] tag [class] attribute\n\nThe user input found was:\nfromLabel=footer\n\nThe user-controlled value was:\nfooter_header__nfzfh"
 						},
 						{
-							"id": "141",
+							"id": "142",
 							"uri": "https://impactco2.fr/rendez-vous?fromLabel=footer",
 							"method": "GET",
 							"param": "fromLabel",
@@ -1789,7 +1826,7 @@
 							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://impactco2.fr/rendez-vous?fromLabel=footer\n\nappears to include user input in:\na(n) [div] tag [class] attribute\n\nThe user input found was:\nfromLabel=footer\n\nThe user-controlled value was:\nfooter_internalcontainer__woxgq"
 						},
 						{
-							"id": "140",
+							"id": "141",
 							"uri": "https://impactco2.fr/rendez-vous?fromLabel=footer",
 							"method": "GET",
 							"param": "fromLabel",
@@ -1798,7 +1835,7 @@
 							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://impactco2.fr/rendez-vous?fromLabel=footer\n\nappears to include user input in:\na(n) [div] tag [class] attribute\n\nThe user input found was:\nfromLabel=footer\n\nThe user-controlled value was:\nfooter_logos__tj0ze"
 						},
 						{
-							"id": "143",
+							"id": "144",
 							"uri": "https://impactco2.fr/rendez-vous?fromLabel=footer",
 							"method": "GET",
 							"param": "fromLabel",
@@ -1807,7 +1844,7 @@
 							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://impactco2.fr/rendez-vous?fromLabel=footer\n\nappears to include user input in:\na(n) [div] tag [class] attribute\n\nThe user input found was:\nfromLabel=footer\n\nThe user-controlled value was:\nfooter_toplinks__jegjg"
 						},
 						{
-							"id": "136",
+							"id": "137",
 							"uri": "https://impactco2.fr/rendez-vous?fromLabel=footer",
 							"method": "GET",
 							"param": "fromLabel",
@@ -1816,7 +1853,7 @@
 							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://impactco2.fr/rendez-vous?fromLabel=footer\n\nappears to include user input in:\na(n) [div] tag [class] attribute\n\nThe user input found was:\nfromLabel=footer\n\nThe user-controlled value was:\nfooterbanner_banner__trhwg"
 						},
 						{
-							"id": "137",
+							"id": "138",
 							"uri": "https://impactco2.fr/rendez-vous?fromLabel=footer",
 							"method": "GET",
 							"param": "fromLabel",
@@ -1825,7 +1862,7 @@
 							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://impactco2.fr/rendez-vous?fromLabel=footer\n\nappears to include user input in:\na(n) [footer] tag [class] attribute\n\nThe user input found was:\nfromLabel=footer\n\nThe user-controlled value was:\nfooter_footer__ena9m"
 						},
 						{
-							"id": "138",
+							"id": "139",
 							"uri": "https://impactco2.fr/rendez-vous?fromLabel=footer",
 							"method": "GET",
 							"param": "fromLabel",
@@ -1834,7 +1871,7 @@
 							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://impactco2.fr/rendez-vous?fromLabel=footer\n\nappears to include user input in:\na(n) [footer] tag [id] attribute\n\nThe user input found was:\nfromLabel=footer\n\nThe user-controlled value was:\nfooter"
 						},
 						{
-							"id": "144",
+							"id": "145",
 							"uri": "https://impactco2.fr/rendez-vous?fromLabel=footer",
 							"method": "GET",
 							"param": "fromLabel",
@@ -1843,7 +1880,7 @@
 							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://impactco2.fr/rendez-vous?fromLabel=footer\n\nappears to include user input in:\na(n) [h2] tag [class] attribute\n\nThe user input found was:\nfromLabel=footer\n\nThe user-controlled value was:\nfooter_linktitle__llrf3"
 						},
 						{
-							"id": "149",
+							"id": "150",
 							"uri": "https://impactco2.fr/rendez-vous?fromLabel=footer",
 							"method": "GET",
 							"param": "fromLabel",
@@ -1852,7 +1889,7 @@
 							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://impactco2.fr/rendez-vous?fromLabel=footer\n\nappears to include user input in:\na(n) [li] tag [class] attribute\n\nThe user input found was:\nfromLabel=footer\n\nThe user-controlled value was:\nfooter_bottomlink__oi1xo"
 						},
 						{
-							"id": "148",
+							"id": "149",
 							"uri": "https://impactco2.fr/rendez-vous?fromLabel=footer",
 							"method": "GET",
 							"param": "fromLabel",
@@ -1861,7 +1898,7 @@
 							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://impactco2.fr/rendez-vous?fromLabel=footer\n\nappears to include user input in:\na(n) [ul] tag [class] attribute\n\nThe user input found was:\nfromLabel=footer\n\nThe user-controlled value was:\nfooter_bottomlinks__zm1vi"
 						},
 						{
-							"id": "145",
+							"id": "146",
 							"uri": "https://impactco2.fr/rendez-vous?fromLabel=footer",
 							"method": "GET",
 							"param": "fromLabel",
@@ -1876,7 +1913,7 @@
 					"reference": "<p>https://cheatsheetseries.owasp.org/cheatsheets/Input_Validation_Cheat_Sheet.html</p>",
 					"cweid": "20",
 					"wascid": "20",
-					"sourceid": "807"
+					"sourceid": "598"
 				}
 			]
 		}
