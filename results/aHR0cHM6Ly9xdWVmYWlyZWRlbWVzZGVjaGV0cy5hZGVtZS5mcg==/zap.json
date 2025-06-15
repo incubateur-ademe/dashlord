@@ -1,7 +1,7 @@
 {
 	"@programName": "ZAP",
 	"@version": "2.16.1",
-	"@generated": "Sun, 8 Jun 2025 03:06:33",
+	"@generated": "Sun, 15 Jun 2025 03:08:37",
 	"site":[ 
 		{
 			"@name": "https://quefairedemesdechets.ademe.fr",
@@ -9,6 +9,34 @@
 			"@port": "443",
 			"@ssl": "true",
 			"alerts": [ 
+				{
+					"pluginid": "10062",
+					"alertRef": "10062",
+					"alert": "PII Disclosure",
+					"name": "PII Disclosure",
+					"riskcode": "3",
+					"confidence": "3",
+					"riskdesc": "High (High)",
+					"desc": "<p>The response contains Personally Identifiable Information, such as CC number, SSN and similar sensitive data.</p>",
+					"instances":[ 
+						{
+							"id": "165",
+							"uri": "https://quefairedemesdechets.ademe.fr/dechet/seringue-avec-aiguille/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "507556026403",
+							"otherinfo": "Credit Card Type detected: Maestro\nBank Identification Number: 507556\nBrand: MAESTRO\nCategory: \nIssuer: "
+						}
+					],
+					"count": "1",
+					"solution": "<p>Check the response for the potential presence of personally identifiable information (PII), ensure nothing sensitive is leaked by the application.</p>",
+					"otherinfo": "<p>Credit Card Type detected: Maestro</p><p>Bank Identification Number: 507556</p><p>Brand: MAESTRO</p><p>Category: </p><p>Issuer: </p>",
+					"reference": "",
+					"cweid": "359",
+					"wascid": "13",
+					"sourceid": "841"
+				},
 				{
 					"pluginid": "10038",
 					"alertRef": "10038-1",
@@ -20,7 +48,7 @@
 					"desc": "<p>Content Security Policy (CSP) is an added layer of security that helps to detect and mitigate certain types of attacks, including Cross Site Scripting (XSS) and data injection attacks. These attacks are used for everything from data theft to site defacement or distribution of malware. CSP provides a set of standard HTTP headers that allow website owners to declare approved sources of content that browsers should be allowed to load on that page \u2014 covered types are JavaScript, CSS, HTML frames, fonts, images and embeddable objects such as Java applets, ActiveX, audio and video files.</p>",
 					"instances":[ 
 						{
-							"id": "13",
+							"id": "23",
 							"uri": "https://quefairedemesdechets.ademe.fr",
 							"method": "GET",
 							"param": "",
@@ -29,7 +57,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "126",
+							"id": "121",
 							"uri": "https://quefairedemesdechets.ademe.fr/dechet/aspirateur/",
 							"method": "GET",
 							"param": "",
@@ -38,7 +66,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "108",
+							"id": "114",
 							"uri": "https://quefairedemesdechets.ademe.fr/dechet/chaise/",
 							"method": "GET",
 							"param": "",
@@ -47,7 +75,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "122",
+							"id": "118",
 							"uri": "https://quefairedemesdechets.ademe.fr/dechet/chaussures/",
 							"method": "GET",
 							"param": "",
@@ -56,7 +84,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "45",
+							"id": "79",
 							"uri": "https://quefairedemesdechets.ademe.fr/dechet/chemise/",
 							"method": "GET",
 							"param": "",
@@ -65,7 +93,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "90",
+							"id": "73",
 							"uri": "https://quefairedemesdechets.ademe.fr/dechet/ecran/",
 							"method": "GET",
 							"param": "",
@@ -74,7 +102,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "42",
+							"id": "86",
 							"uri": "https://quefairedemesdechets.ademe.fr/dechet/lave-linge/",
 							"method": "GET",
 							"param": "",
@@ -92,7 +120,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "49",
+							"id": "19",
 							"uri": "https://quefairedemesdechets.ademe.fr/dechet/os-de-viande/",
 							"method": "GET",
 							"param": "",
@@ -101,7 +129,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "86",
+							"id": "7",
 							"uri": "https://quefairedemesdechets.ademe.fr/dechet/poireaux/",
 							"method": "GET",
 							"param": "",
@@ -110,7 +138,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "80",
+							"id": "83",
 							"uri": "https://quefairedemesdechets.ademe.fr/dechet/pomme-abimee/",
 							"method": "GET",
 							"param": "",
@@ -125,7 +153,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/Security/CSP/Introducing_Content_Security_Policy</p><p>https://cheatsheetseries.owasp.org/cheatsheets/Content_Security_Policy_Cheat_Sheet.html</p><p>https://www.w3.org/TR/CSP/</p><p>https://w3c.github.io/webappsec-csp/</p><p>https://web.dev/articles/csp</p><p>https://caniuse.com/#feat=contentsecuritypolicy</p><p>https://content-security-policy.com/</p>",
 					"cweid": "693",
 					"wascid": "15",
-					"sourceid": "1"
+					"sourceid": "6"
 				},
 				{
 					"pluginid": "90003",
@@ -138,7 +166,7 @@
 					"desc": "<p>The integrity attribute is missing on a script or link tag served by an external server. The integrity tag prevents an attacker who have gained access to this server from injecting a malicious content.</p>",
 					"instances":[ 
 						{
-							"id": "162",
+							"id": "166",
 							"uri": "https://quefairedemesdechets.ademe.fr/bonus-reparation/",
 							"method": "GET",
 							"param": "",
@@ -156,7 +184,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "74",
+							"id": "107",
 							"uri": "https://quefairedemesdechets.ademe.fr/dechet/chemise/",
 							"method": "GET",
 							"param": "",
@@ -165,7 +193,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "110",
+							"id": "103",
 							"uri": "https://quefairedemesdechets.ademe.fr/dechet/ecran/",
 							"method": "GET",
 							"param": "",
@@ -174,7 +202,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "111",
+							"id": "104",
 							"uri": "https://quefairedemesdechets.ademe.fr/dechet/ecran/",
 							"method": "GET",
 							"param": "",
@@ -183,7 +211,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "144",
+							"id": "138",
 							"uri": "https://quefairedemesdechets.ademe.fr/dechet/manteau/",
 							"method": "GET",
 							"param": "",
@@ -201,7 +229,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "75",
+							"id": "44",
 							"uri": "https://quefairedemesdechets.ademe.fr/dechet/os-de-viande/",
 							"method": "GET",
 							"param": "",
@@ -210,7 +238,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "113",
+							"id": "38",
 							"uri": "https://quefairedemesdechets.ademe.fr/dechet/poireaux/",
 							"method": "GET",
 							"param": "",
@@ -219,7 +247,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "105",
+							"id": "111",
 							"uri": "https://quefairedemesdechets.ademe.fr/dechet/pomme-abimee/",
 							"method": "GET",
 							"param": "",
@@ -234,7 +262,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/Security/Subresource_Integrity</p>",
 					"cweid": "345",
 					"wascid": "15",
-					"sourceid": "898"
+					"sourceid": "905"
 				},
 				{
 					"pluginid": "10020",
@@ -247,7 +275,7 @@
 					"desc": "<p>An X-Frame-Options header was present in the response but the value was not correctly set.</p>",
 					"instances":[ 
 						{
-							"id": "2",
+							"id": "1",
 							"uri": "https://quefairedemesdechets.ademe.fr",
 							"method": "GET",
 							"param": "x-frame-options",
@@ -256,7 +284,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "119",
+							"id": "117",
 							"uri": "https://quefairedemesdechets.ademe.fr/dechet/aspirateur/",
 							"method": "GET",
 							"param": "x-frame-options",
@@ -265,7 +293,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "104",
+							"id": "108",
 							"uri": "https://quefairedemesdechets.ademe.fr/dechet/chaise/",
 							"method": "GET",
 							"param": "x-frame-options",
@@ -274,7 +302,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "120",
+							"id": "110",
 							"uri": "https://quefairedemesdechets.ademe.fr/dechet/chaussures/",
 							"method": "GET",
 							"param": "x-frame-options",
@@ -283,7 +311,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "39",
+							"id": "69",
 							"uri": "https://quefairedemesdechets.ademe.fr/dechet/chemise/",
 							"method": "GET",
 							"param": "x-frame-options",
@@ -292,7 +320,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "83",
+							"id": "70",
 							"uri": "https://quefairedemesdechets.ademe.fr/dechet/ecran/",
 							"method": "GET",
 							"param": "x-frame-options",
@@ -301,7 +329,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "38",
+							"id": "76",
 							"uri": "https://quefairedemesdechets.ademe.fr/dechet/lave-linge/",
 							"method": "GET",
 							"param": "x-frame-options",
@@ -310,7 +338,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "118",
+							"id": "122",
 							"uri": "https://quefairedemesdechets.ademe.fr/dechet/ordinateur-portable/",
 							"method": "GET",
 							"param": "x-frame-options",
@@ -319,7 +347,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "40",
+							"id": "17",
 							"uri": "https://quefairedemesdechets.ademe.fr/dechet/os-de-viande/",
 							"method": "GET",
 							"param": "x-frame-options",
@@ -328,7 +356,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "84",
+							"id": "2",
 							"uri": "https://quefairedemesdechets.ademe.fr/dechet/poireaux/",
 							"method": "GET",
 							"param": "x-frame-options",
@@ -337,7 +365,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "70",
+							"id": "71",
 							"uri": "https://quefairedemesdechets.ademe.fr/dechet/pomme-abimee/",
 							"method": "GET",
 							"param": "x-frame-options",
@@ -365,7 +393,7 @@
 					"desc": "<p>A cookie has been set with its SameSite attribute set to \"none\", which means that the cookie can be sent as a result of a 'cross-site' request. The SameSite attribute is an effective counter measure to cross-site request forgery, cross-site script inclusion, and timing attacks.</p>",
 					"instances":[ 
 						{
-							"id": "14",
+							"id": "24",
 							"uri": "https://quefairedemesdechets.ademe.fr",
 							"method": "GET",
 							"param": "sc-sticky-session",
@@ -374,7 +402,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "109",
+							"id": "116",
 							"uri": "https://quefairedemesdechets.ademe.fr/dechet/chaise/",
 							"method": "GET",
 							"param": "sc-sticky-session",
@@ -383,7 +411,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "123",
+							"id": "119",
 							"uri": "https://quefairedemesdechets.ademe.fr/dechet/chaussures/",
 							"method": "GET",
 							"param": "sc-sticky-session",
@@ -392,7 +420,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "46",
+							"id": "80",
 							"uri": "https://quefairedemesdechets.ademe.fr/dechet/chemise/",
 							"method": "GET",
 							"param": "sc-sticky-session",
@@ -401,7 +429,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "91",
+							"id": "74",
 							"uri": "https://quefairedemesdechets.ademe.fr/dechet/ecran/",
 							"method": "GET",
 							"param": "sc-sticky-session",
@@ -410,7 +438,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "43",
+							"id": "88",
 							"uri": "https://quefairedemesdechets.ademe.fr/dechet/lave-linge/",
 							"method": "GET",
 							"param": "sc-sticky-session",
@@ -419,7 +447,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "50",
+							"id": "20",
 							"uri": "https://quefairedemesdechets.ademe.fr/dechet/os-de-viande/",
 							"method": "GET",
 							"param": "sc-sticky-session",
@@ -428,7 +456,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "87",
+							"id": "8",
 							"uri": "https://quefairedemesdechets.ademe.fr/dechet/poireaux/",
 							"method": "GET",
 							"param": "sc-sticky-session",
@@ -437,7 +465,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "81",
+							"id": "84",
 							"uri": "https://quefairedemesdechets.ademe.fr/dechet/pomme-abimee/",
 							"method": "GET",
 							"param": "sc-sticky-session",
@@ -446,7 +474,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "1",
+							"id": "4",
 							"uri": "https://quefairedemesdechets.ademe.fr/robots.txt",
 							"method": "GET",
 							"param": "sc-sticky-session",
@@ -455,7 +483,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "53",
+							"id": "51",
 							"uri": "https://quefairedemesdechets.ademe.fr/sitemap.xml",
 							"method": "GET",
 							"param": "sc-sticky-session",
@@ -470,7 +498,7 @@
 					"reference": "<p>https://tools.ietf.org/html/draft-ietf-httpbis-cookie-same-site</p>",
 					"cweid": "1275",
 					"wascid": "13",
-					"sourceid": "1"
+					"sourceid": "6"
 				},
 				{
 					"pluginid": "10017",
@@ -483,7 +511,7 @@
 					"desc": "<p>The page includes one or more script files from a third-party domain.</p>",
 					"instances":[ 
 						{
-							"id": "155",
+							"id": "162",
 							"uri": "https://quefairedemesdechets.ademe.fr/bonus-reparation/",
 							"method": "GET",
 							"param": "https://lvao.ademe.fr/static/carte.js",
@@ -492,7 +520,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "124",
+							"id": "120",
 							"uri": "https://quefairedemesdechets.ademe.fr/dechet/chaussures/",
 							"method": "GET",
 							"param": "https://impactco2.fr/iframe.js",
@@ -501,7 +529,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "47",
+							"id": "81",
 							"uri": "https://quefairedemesdechets.ademe.fr/dechet/chemise/",
 							"method": "GET",
 							"param": "https://impactco2.fr/iframe.js",
@@ -510,7 +538,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "92",
+							"id": "75",
 							"uri": "https://quefairedemesdechets.ademe.fr/dechet/ecran/",
 							"method": "GET",
 							"param": "https://impactco2.fr/iframe.js",
@@ -519,7 +547,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "93",
+							"id": "77",
 							"uri": "https://quefairedemesdechets.ademe.fr/dechet/ecran/",
 							"method": "GET",
 							"param": "https://impactco2.fr/iframe.js",
@@ -537,7 +565,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "128",
+							"id": "130",
 							"uri": "https://quefairedemesdechets.ademe.fr/dechet/ordinateur-portable/",
 							"method": "GET",
 							"param": "https://impactco2.fr/iframe.js",
@@ -546,7 +574,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "51",
+							"id": "21",
 							"uri": "https://quefairedemesdechets.ademe.fr/dechet/os-de-viande/",
 							"method": "GET",
 							"param": "https://impactco2.fr/iframe.js",
@@ -555,7 +583,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "88",
+							"id": "9",
 							"uri": "https://quefairedemesdechets.ademe.fr/dechet/poireaux/",
 							"method": "GET",
 							"param": "https://impactco2.fr/iframe.js",
@@ -564,7 +592,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "82",
+							"id": "87",
 							"uri": "https://quefairedemesdechets.ademe.fr/dechet/pomme-abimee/",
 							"method": "GET",
 							"param": "https://impactco2.fr/iframe.js",
@@ -579,7 +607,7 @@
 					"reference": "",
 					"cweid": "829",
 					"wascid": "15",
-					"sourceid": "898"
+					"sourceid": "905"
 				},
 				{
 					"pluginid": "90004",
@@ -592,7 +620,7 @@
 					"desc": "<p>Cross-Origin-Resource-Policy header is an opt-in header designed to counter side-channels attacks like Spectre. Resource should be specifically set as shareable amongst different origins.</p>",
 					"instances":[ 
 						{
-							"id": "23",
+							"id": "59",
 							"uri": "https://quefairedemesdechets.ademe.fr",
 							"method": "GET",
 							"param": "Cross-Origin-Resource-Policy",
@@ -601,8 +629,8 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "62",
-							"uri": "https://quefairedemesdechets.ademe.fr/dechet/chemise/",
+							"id": "92",
+							"uri": "https://quefairedemesdechets.ademe.fr/dechet/ecran/",
 							"method": "GET",
 							"param": "Cross-Origin-Resource-Policy",
 							"attack": "",
@@ -610,16 +638,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "57",
-							"uri": "https://quefairedemesdechets.ademe.fr/dechet/lave-linge/",
-							"method": "GET",
-							"param": "Cross-Origin-Resource-Policy",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"id": "67",
+							"id": "36",
 							"uri": "https://quefairedemesdechets.ademe.fr/dechet/os-de-viande/",
 							"method": "GET",
 							"param": "Cross-Origin-Resource-Policy",
@@ -628,7 +647,16 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "6",
+							"id": "31",
+							"uri": "https://quefairedemesdechets.ademe.fr/dechet/poireaux/",
+							"method": "GET",
+							"param": "Cross-Origin-Resource-Policy",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "11",
 							"uri": "https://quefairedemesdechets.ademe.fr/robots.txt",
 							"method": "GET",
 							"param": "Cross-Origin-Resource-Policy",
@@ -637,7 +665,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "73",
+							"id": "54",
 							"uri": "https://quefairedemesdechets.ademe.fr/sitemap.xml",
 							"method": "GET",
 							"param": "Cross-Origin-Resource-Policy",
@@ -646,7 +674,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "25",
+							"id": "60",
 							"uri": "https://quefairedemesdechets.ademe.fr",
 							"method": "GET",
 							"param": "Cross-Origin-Embedder-Policy",
@@ -655,8 +683,8 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "63",
-							"uri": "https://quefairedemesdechets.ademe.fr/dechet/chemise/",
+							"id": "93",
+							"uri": "https://quefairedemesdechets.ademe.fr/dechet/ecran/",
 							"method": "GET",
 							"param": "Cross-Origin-Embedder-Policy",
 							"attack": "",
@@ -664,16 +692,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "59",
-							"uri": "https://quefairedemesdechets.ademe.fr/dechet/lave-linge/",
-							"method": "GET",
-							"param": "Cross-Origin-Embedder-Policy",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"id": "68",
+							"id": "37",
 							"uri": "https://quefairedemesdechets.ademe.fr/dechet/os-de-viande/",
 							"method": "GET",
 							"param": "Cross-Origin-Embedder-Policy",
@@ -682,7 +701,16 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "77",
+							"id": "32",
+							"uri": "https://quefairedemesdechets.ademe.fr/dechet/poireaux/",
+							"method": "GET",
+							"param": "Cross-Origin-Embedder-Policy",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "55",
 							"uri": "https://quefairedemesdechets.ademe.fr/sitemap.xml",
 							"method": "GET",
 							"param": "Cross-Origin-Embedder-Policy",
@@ -697,7 +725,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Cross-Origin_Resource_Policy</p>",
 					"cweid": "693",
 					"wascid": "14",
-					"sourceid": "1"
+					"sourceid": "6"
 				},
 				{
 					"pluginid": "10063",
@@ -710,7 +738,7 @@
 					"desc": "<p>Permissions Policy Header is an added layer of security that helps to restrict from unauthorized access or usage of browser/client features by web resources. This policy ensures the user privacy by limiting or specifying the features of the browsers can be used by the web resources. Permissions Policy provides a set of standard HTTP headers that allow website owners to limit which features of browsers can be used by the page such as camera, microphone, location, full screen etc.</p>",
 					"instances":[ 
 						{
-							"id": "22",
+							"id": "58",
 							"uri": "https://quefairedemesdechets.ademe.fr",
 							"method": "GET",
 							"param": "",
@@ -719,7 +747,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "132",
+							"id": "131",
 							"uri": "https://quefairedemesdechets.ademe.fr/dechet/aspirateur/",
 							"method": "GET",
 							"param": "",
@@ -728,7 +756,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "117",
+							"id": "126",
 							"uri": "https://quefairedemesdechets.ademe.fr/dechet/chaise/",
 							"method": "GET",
 							"param": "",
@@ -737,7 +765,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "131",
+							"id": "129",
 							"uri": "https://quefairedemesdechets.ademe.fr/dechet/chaussures/",
 							"method": "GET",
 							"param": "",
@@ -746,7 +774,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "61",
+							"id": "97",
 							"uri": "https://quefairedemesdechets.ademe.fr/dechet/chemise/",
 							"method": "GET",
 							"param": "",
@@ -755,7 +783,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "103",
+							"id": "91",
 							"uri": "https://quefairedemesdechets.ademe.fr/dechet/ecran/",
 							"method": "GET",
 							"param": "",
@@ -764,7 +792,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "56",
+							"id": "100",
 							"uri": "https://quefairedemesdechets.ademe.fr/dechet/lave-linge/",
 							"method": "GET",
 							"param": "",
@@ -782,7 +810,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "66",
+							"id": "35",
 							"uri": "https://quefairedemesdechets.ademe.fr/dechet/os-de-viande/",
 							"method": "GET",
 							"param": "",
@@ -791,7 +819,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "100",
+							"id": "30",
 							"uri": "https://quefairedemesdechets.ademe.fr/dechet/poireaux/",
 							"method": "GET",
 							"param": "",
@@ -800,7 +828,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "96",
+							"id": "102",
 							"uri": "https://quefairedemesdechets.ademe.fr/dechet/pomme-abimee/",
 							"method": "GET",
 							"param": "",
@@ -815,7 +843,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Permissions-Policy</p><p>https://developer.chrome.com/blog/feature-policy/</p><p>https://scotthelme.co.uk/a-new-security-header-feature-policy/</p><p>https://w3c.github.io/webappsec-feature-policy/</p><p>https://www.smashingmagazine.com/2018/12/feature-policy/</p>",
 					"cweid": "693",
 					"wascid": "15",
-					"sourceid": "1"
+					"sourceid": "6"
 				},
 				{
 					"pluginid": "10021",
@@ -828,7 +856,7 @@
 					"desc": "<p>The Anti-MIME-Sniffing header X-Content-Type-Options was not set to 'nosniff'. This allows older versions of Internet Explorer and Chrome to perform MIME-sniffing on the response body, potentially causing the response body to be interpreted and displayed as a content type other than the declared content type. Current (early 2014) and legacy versions of Firefox will use the declared content type (if one is set), rather than performing MIME-sniffing.</p>",
 					"instances":[ 
 						{
-							"id": "151",
+							"id": "156",
 							"uri": "https://quefairedemesdechets.ademe.fr/static/assistant/bloc-marque.98629baf2653.svg",
 							"method": "GET",
 							"param": "x-content-type-options",
@@ -837,7 +865,7 @@
 							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
 						},
 						{
-							"id": "146",
+							"id": "149",
 							"uri": "https://quefairedemesdechets.ademe.fr/static/css/dsfr-django-overrides.0f6aed406760.css",
 							"method": "GET",
 							"param": "x-content-type-options",
@@ -846,7 +874,7 @@
 							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
 						},
 						{
-							"id": "156",
+							"id": "157",
 							"uri": "https://quefairedemesdechets.ademe.fr/static/dsfr/dist/dsfr/dsfr.min.dd46eba9ee39.css",
 							"method": "GET",
 							"param": "x-content-type-options",
@@ -855,7 +883,7 @@
 							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
 						},
 						{
-							"id": "154",
+							"id": "152",
 							"uri": "https://quefairedemesdechets.ademe.fr/static/dsfr/dist/dsfr/dsfr.module.min.89403a0fff7f.js",
 							"method": "GET",
 							"param": "x-content-type-options",
@@ -864,7 +892,7 @@
 							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
 						},
 						{
-							"id": "160",
+							"id": "155",
 							"uri": "https://quefairedemesdechets.ademe.fr/static/dsfr/dist/dsfr/dsfr.nomodule.min.5f71e646b1ff.js",
 							"method": "GET",
 							"param": "x-content-type-options",
@@ -873,7 +901,7 @@
 							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
 						},
 						{
-							"id": "152",
+							"id": "153",
 							"uri": "https://quefairedemesdechets.ademe.fr/static/dsfr/dist/utility/utility.min.25b24814dc14.css",
 							"method": "GET",
 							"param": "x-content-type-options",
@@ -882,7 +910,7 @@
 							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
 						},
 						{
-							"id": "143",
+							"id": "144",
 							"uri": "https://quefairedemesdechets.ademe.fr/static/favicon/apple-touch-icon.6a43f8b0d7b5.png",
 							"method": "GET",
 							"param": "x-content-type-options",
@@ -891,7 +919,7 @@
 							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
 						},
 						{
-							"id": "139",
+							"id": "141",
 							"uri": "https://quefairedemesdechets.ademe.fr/static/favicon/favicon-96x96.93872697f812.png",
 							"method": "GET",
 							"param": "x-content-type-options",
@@ -900,7 +928,7 @@
 							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
 						},
 						{
-							"id": "142",
+							"id": "143",
 							"uri": "https://quefairedemesdechets.ademe.fr/static/favicon/favicon.24fa95135437.ico",
 							"method": "GET",
 							"param": "x-content-type-options",
@@ -909,7 +937,7 @@
 							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
 						},
 						{
-							"id": "141",
+							"id": "142",
 							"uri": "https://quefairedemesdechets.ademe.fr/static/favicon/favicon.71bf354122b6.svg",
 							"method": "GET",
 							"param": "x-content-type-options",
@@ -918,7 +946,7 @@
 							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
 						},
 						{
-							"id": "145",
+							"id": "146",
 							"uri": "https://quefairedemesdechets.ademe.fr/static/favicon/site.198e5e243aa3.webmanifest",
 							"method": "GET",
 							"param": "x-content-type-options",
@@ -927,7 +955,7 @@
 							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
 						},
 						{
-							"id": "161",
+							"id": "163",
 							"uri": "https://quefairedemesdechets.ademe.fr/static/qfdmd.dce35d02e903.js",
 							"method": "GET",
 							"param": "x-content-type-options",
@@ -942,7 +970,7 @@
 					"reference": "<p>https://learn.microsoft.com/en-us/previous-versions/windows/internet-explorer/ie-developer/compatibility/gg622941(v=vs.85)</p><p>https://owasp.org/www-community/Security_Headers</p>",
 					"cweid": "693",
 					"wascid": "15",
-					"sourceid": "894"
+					"sourceid": "895"
 				},
 				{
 					"pluginid": "10094",
@@ -955,31 +983,31 @@
 					"desc": "<p>Base64 encoded data was disclosed by the application/web server. Note: in the interests of performance not all base64 strings in the response were analyzed individually, the entire response should be looked at by the analyst/security team/developer(s).</p>",
 					"instances":[ 
 						{
-							"id": "28",
+							"id": "68",
 							"uri": "https://quefairedemesdechets.ademe.fr",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "DI0fdIXx2i0bG6vT/CE+Uc4kfLvmBHveSjIRv2c0YfIgt4tngpqJYgIup52F67eH9cEXRtBSYDoOlXbaHn6TXw==",
-							"otherinfo": "\\x000c\uFFFD\\x001ft\uFFFD\uFFFD\uFFFD-\\x001b\\x001b\uFFFD\uFFFD\uFFFD!>Q\uFFFD$|\uFFFD\uFFFD\\x0004{\uFFFDJ2\\x0011\uFFFDg4a\uFFFD \uFFFD\uFFFDg\uFFFD\uFFFD\uFFFDb\\x0002.\uFFFD\uFFFD\uFFFD\uBDC7\uFFFD\uFFFD\\x0017F\uFFFDR`:\\x000e\uFFFDv\uFFFD\\x001e~\uFFFD_"
+							"evidence": "dQgAC4dFpIh1nIGWlAVtjXr2fIC48XxFGVasI8bDcqbKCLRsz+YEaFB7jdnAeX/PBoox2j0KT3Z9MCU5IR1JOQ==",
+							"otherinfo": "u\\x0008\\x0000\\x000b\uFFFDE\uFFFD\uFFFDu\uFFFD\uFFFD\uFFFD\uFFFD\\x0005m\uFFFDz\uFFFD|\uFFFD\uFFFD\uFFFD|E\\x0019V\uFFFD#\uFFFD\uFFFDr\uFFFD\uFFFD\\x0008\uFFFDl\uFFFD\uFFFD\\x0004hP{\uFFFD\uFFFD\uFFFDy\uFFFD\\x0006\uFFFD1\uFFFD=\nOv}0%9!\\x001dI9"
 						},
 						{
-							"id": "33",
+							"id": "67",
 							"uri": "https://quefairedemesdechets.ademe.fr",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "DI0fdIXx2i0bG6vT/CE+UZVdxX+tyKEZbm36vSh1IY6y0oM0479w+VgbDyPicSPtwnw0DUEh0I20znW9y1b+qw==",
-							"otherinfo": "\\x000c\uFFFD\\x001ft\uFFFD\uFFFD\uFFFD-\\x001b\\x001b\uFFFD\uFFFD\uFFFD!>Q\uFFFD]\uFFFD\uFFFD\u0221\\x0019nm\uFFFD\uFFFD(u!\uFFFD\uFFFD\u04834\uFFFDp\uFFFDX\\x001b\\x000f#\uFFFDq#\uFFFD\uFFFD|4\rA!\u040D\uFFFD\uFFFDu\uFFFD\uFFFDV\uFFFD\uFFFD"
+							"evidence": "dQgAC4dFpIh1nIGWlAVtjZS+TZHEu41agHRF2E1CEs2bNylVLZ0CGMi+4m3lbxv8mf+J8GEyZeXgU+Vw7zhIPw==",
+							"otherinfo": "u\\x0008\\x0000\\x000b\uFFFDE\uFFFD\uFFFDu\uFFFD\uFFFD\uFFFD\uFFFD\\x0005m\uFFFD\uFFFD\uFFFDM\uFFFD\u013B\uFFFDZ\uFFFDtE\uFFFDMB\\x0012\u035B7)U-\uFFFD\\x0002\\x0018\u023E\uFFFDm\uFFFDo\\x001b\uFFFD\uFFFD\uFFFD\uFFFD\uFFFDa2e\uFFFD\uFFFDS\uFFFDp\uFFFD8H?"
 						},
 						{
-							"id": "125",
+							"id": "132",
 							"uri": "https://quefairedemesdechets.ademe.fr/dechet/chaise/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "DI0fdIXx2i0bG6vT/CE+UZVdxX+tyKEZbm36vSh1IY6y0oM0479w+VgbDyPicSPtwnw0DUEh0I20znW9y1b+qw==",
-							"otherinfo": "\\x000c\uFFFD\\x001ft\uFFFD\uFFFD\uFFFD-\\x001b\\x001b\uFFFD\uFFFD\uFFFD!>Q\uFFFD]\uFFFD\uFFFD\u0221\\x0019nm\uFFFD\uFFFD(u!\uFFFD\uFFFD\u04834\uFFFDp\uFFFDX\\x001b\\x000f#\uFFFDq#\uFFFD\uFFFD|4\rA!\u040D\uFFFD\uFFFDu\uFFFD\uFFFDV\uFFFD\uFFFD"
+							"evidence": "dQgAC4dFpIh1nIGWlAVtjZS+TZHEu41agHRF2E1CEs2bNylVLZ0CGMi+4m3lbxv8mf+J8GEyZeXgU+Vw7zhIPw==",
+							"otherinfo": "u\\x0008\\x0000\\x000b\uFFFDE\uFFFD\uFFFDu\uFFFD\uFFFD\uFFFD\uFFFD\\x0005m\uFFFD\uFFFD\uFFFDM\uFFFD\u013B\uFFFDZ\uFFFDtE\uFFFDMB\\x0012\u035B7)U-\uFFFD\\x0002\\x0018\u023E\uFFFDm\uFFFDo\\x001b\uFFFD\uFFFD\uFFFD\uFFFD\uFFFDa2e\uFFFD\uFFFDS\uFFFDp\uFFFD8H?"
 						},
 						{
 							"id": "135",
@@ -987,85 +1015,85 @@
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "DI0fdIXx2i0bG6vT/CE+UZVdxX+tyKEZbm36vSh1IY6y0oM0479w+VgbDyPicSPtwnw0DUEh0I20znW9y1b+qw==",
-							"otherinfo": "\\x000c\uFFFD\\x001ft\uFFFD\uFFFD\uFFFD-\\x001b\\x001b\uFFFD\uFFFD\uFFFD!>Q\uFFFD]\uFFFD\uFFFD\u0221\\x0019nm\uFFFD\uFFFD(u!\uFFFD\uFFFD\u04834\uFFFDp\uFFFDX\\x001b\\x000f#\uFFFDq#\uFFFD\uFFFD|4\rA!\u040D\uFFFD\uFFFDu\uFFFD\uFFFDV\uFFFD\uFFFD"
+							"evidence": "dQgAC4dFpIh1nIGWlAVtjZS+TZHEu41agHRF2E1CEs2bNylVLZ0CGMi+4m3lbxv8mf+J8GEyZeXgU+Vw7zhIPw==",
+							"otherinfo": "u\\x0008\\x0000\\x000b\uFFFDE\uFFFD\uFFFDu\uFFFD\uFFFD\uFFFD\uFFFD\\x0005m\uFFFD\uFFFD\uFFFDM\uFFFD\u013B\uFFFDZ\uFFFDtE\uFFFDMB\\x0012\u035B7)U-\uFFFD\\x0002\\x0018\u023E\uFFFDm\uFFFDo\\x001b\uFFFD\uFFFD\uFFFD\uFFFD\uFFFDa2e\uFFFD\uFFFDS\uFFFDp\uFFFD8H?"
 						},
 						{
-							"id": "76",
+							"id": "109",
 							"uri": "https://quefairedemesdechets.ademe.fr/dechet/chemise/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "DI0fdIXx2i0bG6vT/CE+UZVdxX+tyKEZbm36vSh1IY6y0oM0479w+VgbDyPicSPtwnw0DUEh0I20znW9y1b+qw==",
-							"otherinfo": "\\x000c\uFFFD\\x001ft\uFFFD\uFFFD\uFFFD-\\x001b\\x001b\uFFFD\uFFFD\uFFFD!>Q\uFFFD]\uFFFD\uFFFD\u0221\\x0019nm\uFFFD\uFFFD(u!\uFFFD\uFFFD\u04834\uFFFDp\uFFFDX\\x001b\\x000f#\uFFFDq#\uFFFD\uFFFD|4\rA!\u040D\uFFFD\uFFFDu\uFFFD\uFFFDV\uFFFD\uFFFD"
+							"evidence": "dQgAC4dFpIh1nIGWlAVtjZS+TZHEu41agHRF2E1CEs2bNylVLZ0CGMi+4m3lbxv8mf+J8GEyZeXgU+Vw7zhIPw==",
+							"otherinfo": "u\\x0008\\x0000\\x000b\uFFFDE\uFFFD\uFFFDu\uFFFD\uFFFD\uFFFD\uFFFD\\x0005m\uFFFD\uFFFD\uFFFDM\uFFFD\u013B\uFFFDZ\uFFFDtE\uFFFDMB\\x0012\u035B7)U-\uFFFD\\x0002\\x0018\u023E\uFFFDm\uFFFDo\\x001b\uFFFD\uFFFD\uFFFD\uFFFD\uFFFDa2e\uFFFD\uFFFDS\uFFFDp\uFFFD8H?"
 						},
 						{
-							"id": "112",
+							"id": "105",
 							"uri": "https://quefairedemesdechets.ademe.fr/dechet/ecran/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "DI0fdIXx2i0bG6vT/CE+UZVdxX+tyKEZbm36vSh1IY6y0oM0479w+VgbDyPicSPtwnw0DUEh0I20znW9y1b+qw==",
-							"otherinfo": "\\x000c\uFFFD\\x001ft\uFFFD\uFFFD\uFFFD-\\x001b\\x001b\uFFFD\uFFFD\uFFFD!>Q\uFFFD]\uFFFD\uFFFD\u0221\\x0019nm\uFFFD\uFFFD(u!\uFFFD\uFFFD\u04834\uFFFDp\uFFFDX\\x001b\\x000f#\uFFFDq#\uFFFD\uFFFD|4\rA!\u040D\uFFFD\uFFFDu\uFFFD\uFFFDV\uFFFD\uFFFD"
+							"evidence": "dQgAC4dFpIh1nIGWlAVtjZS+TZHEu41agHRF2E1CEs2bNylVLZ0CGMi+4m3lbxv8mf+J8GEyZeXgU+Vw7zhIPw==",
+							"otherinfo": "u\\x0008\\x0000\\x000b\uFFFDE\uFFFD\uFFFDu\uFFFD\uFFFD\uFFFD\uFFFD\\x0005m\uFFFD\uFFFD\uFFFDM\uFFFD\u013B\uFFFDZ\uFFFDtE\uFFFDMB\\x0012\u035B7)U-\uFFFD\\x0002\\x0018\u023E\uFFFDm\uFFFDo\\x001b\uFFFD\uFFFD\uFFFD\uFFFD\uFFFDa2e\uFFFD\uFFFDS\uFFFDp\uFFFD8H?"
 						},
 						{
-							"id": "69",
+							"id": "106",
 							"uri": "https://quefairedemesdechets.ademe.fr/dechet/lave-linge/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "DI0fdIXx2i0bG6vT/CE+UZVdxX+tyKEZbm36vSh1IY6y0oM0479w+VgbDyPicSPtwnw0DUEh0I20znW9y1b+qw==",
-							"otherinfo": "\\x000c\uFFFD\\x001ft\uFFFD\uFFFD\uFFFD-\\x001b\\x001b\uFFFD\uFFFD\uFFFD!>Q\uFFFD]\uFFFD\uFFFD\u0221\\x0019nm\uFFFD\uFFFD(u!\uFFFD\uFFFD\u04834\uFFFDp\uFFFDX\\x001b\\x000f#\uFFFDq#\uFFFD\uFFFD|4\rA!\u040D\uFFFD\uFFFDu\uFFFD\uFFFDV\uFFFD\uFFFD"
+							"evidence": "dQgAC4dFpIh1nIGWlAVtjZS+TZHEu41agHRF2E1CEs2bNylVLZ0CGMi+4m3lbxv8mf+J8GEyZeXgU+Vw7zhIPw==",
+							"otherinfo": "u\\x0008\\x0000\\x000b\uFFFDE\uFFFD\uFFFDu\uFFFD\uFFFD\uFFFD\uFFFD\\x0005m\uFFFD\uFFFD\uFFFDM\uFFFD\u013B\uFFFDZ\uFFFDtE\uFFFDMB\\x0012\u035B7)U-\uFFFD\\x0002\\x0018\u023E\uFFFDm\uFFFDo\\x001b\uFFFD\uFFFD\uFFFD\uFFFD\uFFFDa2e\uFFFD\uFFFDS\uFFFDp\uFFFD8H?"
 						},
 						{
-							"id": "78",
+							"id": "45",
 							"uri": "https://quefairedemesdechets.ademe.fr/dechet/os-de-viande/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "DI0fdIXx2i0bG6vT/CE+UZVdxX+tyKEZbm36vSh1IY6y0oM0479w+VgbDyPicSPtwnw0DUEh0I20znW9y1b+qw==",
-							"otherinfo": "\\x000c\uFFFD\\x001ft\uFFFD\uFFFD\uFFFD-\\x001b\\x001b\uFFFD\uFFFD\uFFFD!>Q\uFFFD]\uFFFD\uFFFD\u0221\\x0019nm\uFFFD\uFFFD(u!\uFFFD\uFFFD\u04834\uFFFDp\uFFFDX\\x001b\\x000f#\uFFFDq#\uFFFD\uFFFD|4\rA!\u040D\uFFFD\uFFFDu\uFFFD\uFFFDV\uFFFD\uFFFD"
+							"evidence": "dQgAC4dFpIh1nIGWlAVtjZS+TZHEu41agHRF2E1CEs2bNylVLZ0CGMi+4m3lbxv8mf+J8GEyZeXgU+Vw7zhIPw==",
+							"otherinfo": "u\\x0008\\x0000\\x000b\uFFFDE\uFFFD\uFFFDu\uFFFD\uFFFD\uFFFD\uFFFD\\x0005m\uFFFD\uFFFD\uFFFDM\uFFFD\u013B\uFFFDZ\uFFFDtE\uFFFDMB\\x0012\u035B7)U-\uFFFD\\x0002\\x0018\u023E\uFFFDm\uFFFDo\\x001b\uFFFD\uFFFD\uFFFD\uFFFD\uFFFDa2e\uFFFD\uFFFDS\uFFFDp\uFFFD8H?"
 						},
 						{
-							"id": "114",
+							"id": "39",
 							"uri": "https://quefairedemesdechets.ademe.fr/dechet/poireaux/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "DI0fdIXx2i0bG6vT/CE+UZVdxX+tyKEZbm36vSh1IY6y0oM0479w+VgbDyPicSPtwnw0DUEh0I20znW9y1b+qw==",
-							"otherinfo": "\\x000c\uFFFD\\x001ft\uFFFD\uFFFD\uFFFD-\\x001b\\x001b\uFFFD\uFFFD\uFFFD!>Q\uFFFD]\uFFFD\uFFFD\u0221\\x0019nm\uFFFD\uFFFD(u!\uFFFD\uFFFD\u04834\uFFFDp\uFFFDX\\x001b\\x000f#\uFFFDq#\uFFFD\uFFFD|4\rA!\u040D\uFFFD\uFFFDu\uFFFD\uFFFDV\uFFFD\uFFFD"
+							"evidence": "dQgAC4dFpIh1nIGWlAVtjZS+TZHEu41agHRF2E1CEs2bNylVLZ0CGMi+4m3lbxv8mf+J8GEyZeXgU+Vw7zhIPw==",
+							"otherinfo": "u\\x0008\\x0000\\x000b\uFFFDE\uFFFD\uFFFDu\uFFFD\uFFFD\uFFFD\uFFFD\\x0005m\uFFFD\uFFFD\uFFFDM\uFFFD\u013B\uFFFDZ\uFFFDtE\uFFFDMB\\x0012\u035B7)U-\uFFFD\\x0002\\x0018\u023E\uFFFDm\uFFFDo\\x001b\uFFFD\uFFFD\uFFFD\uFFFD\uFFFDa2e\uFFFD\uFFFDS\uFFFDp\uFFFD8H?"
 						},
 						{
-							"id": "106",
+							"id": "112",
 							"uri": "https://quefairedemesdechets.ademe.fr/dechet/pomme-abimee/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "DI0fdIXx2i0bG6vT/CE+UZVdxX+tyKEZbm36vSh1IY6y0oM0479w+VgbDyPicSPtwnw0DUEh0I20znW9y1b+qw==",
-							"otherinfo": "\\x000c\uFFFD\\x001ft\uFFFD\uFFFD\uFFFD-\\x001b\\x001b\uFFFD\uFFFD\uFFFD!>Q\uFFFD]\uFFFD\uFFFD\u0221\\x0019nm\uFFFD\uFFFD(u!\uFFFD\uFFFD\u04834\uFFFDp\uFFFDX\\x001b\\x000f#\uFFFDq#\uFFFD\uFFFD|4\rA!\u040D\uFFFD\uFFFDu\uFFFD\uFFFDV\uFFFD\uFFFD"
+							"evidence": "dQgAC4dFpIh1nIGWlAVtjZS+TZHEu41agHRF2E1CEs2bNylVLZ0CGMi+4m3lbxv8mf+J8GEyZeXgU+Vw7zhIPw==",
+							"otherinfo": "u\\x0008\\x0000\\x000b\uFFFDE\uFFFD\uFFFDu\uFFFD\uFFFD\uFFFD\uFFFD\\x0005m\uFFFD\uFFFD\uFFFDM\uFFFD\u013B\uFFFDZ\uFFFDtE\uFFFDMB\\x0012\u035B7)U-\uFFFD\\x0002\\x0018\u023E\uFFFDm\uFFFDo\\x001b\uFFFD\uFFFD\uFFFD\uFFFD\uFFFDa2e\uFFFD\uFFFDS\uFFFDp\uFFFD8H?"
 						},
 						{
-							"id": "7",
+							"id": "12",
 							"uri": "https://quefairedemesdechets.ademe.fr/robots.txt",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "DI0fdIXx2i0bG6vT/CE+UZVdxX+tyKEZbm36vSh1IY6y0oM0479w+VgbDyPicSPtwnw0DUEh0I20znW9y1b+qw==",
-							"otherinfo": "\\x000c\uFFFD\\x001ft\uFFFD\uFFFD\uFFFD-\\x001b\\x001b\uFFFD\uFFFD\uFFFD!>Q\uFFFD]\uFFFD\uFFFD\u0221\\x0019nm\uFFFD\uFFFD(u!\uFFFD\uFFFD\u04834\uFFFDp\uFFFDX\\x001b\\x000f#\uFFFDq#\uFFFD\uFFFD|4\rA!\u040D\uFFFD\uFFFDu\uFFFD\uFFFDV\uFFFD\uFFFD"
+							"evidence": "dQgAC4dFpIh1nIGWlAVtjZS+TZHEu41agHRF2E1CEs2bNylVLZ0CGMi+4m3lbxv8mf+J8GEyZeXgU+Vw7zhIPw==",
+							"otherinfo": "u\\x0008\\x0000\\x000b\uFFFDE\uFFFD\uFFFDu\uFFFD\uFFFD\uFFFD\uFFFD\\x0005m\uFFFD\uFFFD\uFFFDM\uFFFD\u013B\uFFFDZ\uFFFDtE\uFFFDMB\\x0012\u035B7)U-\uFFFD\\x0002\\x0018\u023E\uFFFDm\uFFFDo\\x001b\uFFFD\uFFFD\uFFFD\uFFFD\uFFFDa2e\uFFFD\uFFFDS\uFFFDp\uFFFD8H?"
 						},
 						{
-							"id": "97",
+							"id": "66",
 							"uri": "https://quefairedemesdechets.ademe.fr/sitemap.xml",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "DI0fdIXx2i0bG6vT/CE+UZVdxX+tyKEZbm36vSh1IY6y0oM0479w+VgbDyPicSPtwnw0DUEh0I20znW9y1b+qw==",
-							"otherinfo": "\\x000c\uFFFD\\x001ft\uFFFD\uFFFD\uFFFD-\\x001b\\x001b\uFFFD\uFFFD\uFFFD!>Q\uFFFD]\uFFFD\uFFFD\u0221\\x0019nm\uFFFD\uFFFD(u!\uFFFD\uFFFD\u04834\uFFFDp\uFFFDX\\x001b\\x000f#\uFFFDq#\uFFFD\uFFFD|4\rA!\u040D\uFFFD\uFFFDu\uFFFD\uFFFDV\uFFFD\uFFFD"
+							"evidence": "dQgAC4dFpIh1nIGWlAVtjZS+TZHEu41agHRF2E1CEs2bNylVLZ0CGMi+4m3lbxv8mf+J8GEyZeXgU+Vw7zhIPw==",
+							"otherinfo": "u\\x0008\\x0000\\x000b\uFFFDE\uFFFD\uFFFDu\uFFFD\uFFFD\uFFFD\uFFFD\\x0005m\uFFFD\uFFFD\uFFFDM\uFFFD\u013B\uFFFDZ\uFFFDtE\uFFFDMB\\x0012\u035B7)U-\uFFFD\\x0002\\x0018\u023E\uFFFDm\uFFFDo\\x001b\uFFFD\uFFFD\uFFFD\uFFFD\uFFFDa2e\uFFFD\uFFFDS\uFFFDp\uFFFD8H?"
 						}
 					],
 					"count": "12",
 					"solution": "<p>Manually confirm that the Base64 data does not leak sensitive information, and that the data cannot be aggregated/used to exploit other vulnerabilities.</p>",
-					"otherinfo": "<p>\\x000c\uFFFD\\x001ft\uFFFD\uFFFD\uFFFD-\\x001b\\x001b\uFFFD\uFFFD\uFFFD!>Q\uFFFD$|\uFFFD\uFFFD\\x0004{\uFFFDJ2\\x0011\uFFFDg4a\uFFFD \uFFFD\uFFFDg\uFFFD\uFFFD\uFFFDb\\x0002.\uFFFD\uFFFD\uFFFD\uBDC7\uFFFD\uFFFD\\x0017F\uFFFDR`:\\x000e\uFFFDv\uFFFD\\x001e~\uFFFD_</p>",
+					"otherinfo": "<p>u\\x0008\\x0000\\x000b\uFFFDE\uFFFD\uFFFDu\uFFFD\uFFFD\uFFFD\uFFFD\\x0005m\uFFFDz\uFFFD|\uFFFD\uFFFD\uFFFD|E\\x0019V\uFFFD#\uFFFD\uFFFDr\uFFFD\uFFFD\\x0008\uFFFDl\uFFFD\uFFFD\\x0004hP{\uFFFD\uFFFD\uFFFDy\uFFFD\\x0006\uFFFD1\uFFFD=</p><p>Ov}0%9!\\x001dI9</p>",
 					"reference": "<p>https://projects.webappsec.org/w/page/13246936/Information%20Leakage</p>",
 					"cweid": "319",
 					"wascid": "13",
@@ -1082,7 +1110,7 @@
 					"desc": "<p>The response appears to contain suspicious comments which may help an attacker.</p>",
 					"instances":[ 
 						{
-							"id": "153",
+							"id": "151",
 							"uri": "https://quefairedemesdechets.ademe.fr/static/dsfr/dist/dsfr/dsfr.module.min.89403a0fff7f.js",
 							"method": "GET",
 							"param": "",
@@ -1091,7 +1119,7 @@
 							"otherinfo": "The following pattern was used: \\bQUERY\\b and was detected in likely comment: \"//www.w3.org/2000/svg' viewbox='0 0 ${this._width} ${this._height}' width='${this._width}px' height='${this._height}px'>${this._\", see evidence field for the suspicious comment/snippet."
 						},
 						{
-							"id": "158",
+							"id": "154",
 							"uri": "https://quefairedemesdechets.ademe.fr/static/dsfr/dist/dsfr/dsfr.nomodule.min.5f71e646b1ff.js",
 							"method": "GET",
 							"param": "",
@@ -1100,7 +1128,7 @@
 							"otherinfo": "The following pattern was used: \\bQUERY\\b and was detected in likely comment: \"//www.w3.org/2000/svg' viewbox='0 0 \"+this._width+\" \"+this._height+\"' width='\"+this._width+\"px' height='\"+this._height+\"px'>\"+th\", see evidence field for the suspicious comment/snippet."
 						},
 						{
-							"id": "159",
+							"id": "161",
 							"uri": "https://quefairedemesdechets.ademe.fr/static/qfdmd.dce35d02e903.js",
 							"method": "GET",
 							"param": "",
@@ -1115,7 +1143,7 @@
 					"reference": "",
 					"cweid": "615",
 					"wascid": "13",
-					"sourceid": "887"
+					"sourceid": "891"
 				},
 				{
 					"pluginid": "10109",
@@ -1128,7 +1156,7 @@
 					"desc": "<p>The application appears to be a modern web application. If you need to explore it automatically then the Ajax Spider may well be more effective than the standard one.</p>",
 					"instances":[ 
 						{
-							"id": "149",
+							"id": "148",
 							"uri": "https://quefairedemesdechets.ademe.fr/accessibilite/",
 							"method": "GET",
 							"param": "",
@@ -1137,7 +1165,7 @@
 							"otherinfo": "Links have been found that do not have traditional href attributes, which is an indication that this is a modern web application."
 						},
 						{
-							"id": "164",
+							"id": "159",
 							"uri": "https://quefairedemesdechets.ademe.fr/assistant/recherche?input=ZAP",
 							"method": "GET",
 							"param": "",
@@ -1146,7 +1174,7 @@
 							"otherinfo": "Links have been found with a target of '_self' - this is often used by modern frameworks to force a full page reload."
 						},
 						{
-							"id": "157",
+							"id": "164",
 							"uri": "https://quefairedemesdechets.ademe.fr/bonus-reparation/",
 							"method": "GET",
 							"param": "",
@@ -1155,25 +1183,7 @@
 							"otherinfo": "Links have been found that do not have traditional href attributes, which is an indication that this is a modern web application."
 						},
 						{
-							"id": "168",
-							"uri": "https://quefairedemesdechets.ademe.fr/carte?action_displayed=preter%7Clouer%7Cmettreenlocation%7Cdonner%7Cechanger%7Crevendre&action_list=preter%7Clouer%7Cmettreenlocation%7Cdonner%7Cechanger%7Crevendre&direction=jai&first_dir=jai&limit=25&sc_id=87&sous_categorie_objet=Gros+%C3%A9lectrom%C3%A9nager+%28hors+r%C3%A9frig%C3%A9rant%29",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "<noscript>\n                <div class=\"fr-container fr-my-3w\">\n                    <div class=\"fr-alert fr-alert--error\">\n                        <h3 class=\"fr-alert__title\">L'application n\u00E9cessite Javascript pour \u00EAtre ex\u00E9cut\u00E9e correctement</h3>\n                        <p>Javascript est d\u00E9sactiv\u00E9 dans votre navigateur. Veuillez l'activer pour une meilleure exp\u00E9rience.</p>\n                        <p>Vous trouverez sur le lien suivant comment activer Javascript dans votre navigateur : <a href=\"https://www.enable-javascript.com/fr/\" target=\"_blank\" rel=\"noreferrer\">https://www.enable-javascript.com/fr/</a></p>\n                    </div>\n                </div>\n            </noscript>",
-							"otherinfo": "A noScript tag has been found, which is an indication that the application works differently with JavaScript enabled compared to when it is not."
-						},
-						{
-							"id": "166",
-							"uri": "https://quefairedemesdechets.ademe.fr/carte?action_displayed=reparer%7Ctrier&action_list=reparer%7Ctrier&direction=jai&first_dir=jai&limit=25&sc_id=87&sous_categorie_objet=Gros+%C3%A9lectrom%C3%A9nager+%28hors+r%C3%A9frig%C3%A9rant%29",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "<noscript>\n                <div class=\"fr-container fr-my-3w\">\n                    <div class=\"fr-alert fr-alert--error\">\n                        <h3 class=\"fr-alert__title\">L'application n\u00E9cessite Javascript pour \u00EAtre ex\u00E9cut\u00E9e correctement</h3>\n                        <p>Javascript est d\u00E9sactiv\u00E9 dans votre navigateur. Veuillez l'activer pour une meilleure exp\u00E9rience.</p>\n                        <p>Vous trouverez sur le lien suivant comment activer Javascript dans votre navigateur : <a href=\"https://www.enable-javascript.com/fr/\" target=\"_blank\" rel=\"noreferrer\">https://www.enable-javascript.com/fr/</a></p>\n                    </div>\n                </div>\n            </noscript>",
-							"otherinfo": "A noScript tag has been found, which is an indication that the application works differently with JavaScript enabled compared to when it is not."
-						},
-						{
-							"id": "147",
+							"id": "145",
 							"uri": "https://quefairedemesdechets.ademe.fr/cgu/",
 							"method": "GET",
 							"param": "",
@@ -1182,7 +1192,7 @@
 							"otherinfo": "Links have been found that do not have traditional href attributes, which is an indication that this is a modern web application."
 						},
 						{
-							"id": "167",
+							"id": "168",
 							"uri": "https://quefairedemesdechets.ademe.fr/comment-%C3%A7a-marche/",
 							"method": "GET",
 							"param": "",
@@ -1191,7 +1201,7 @@
 							"otherinfo": "Links have been found that do not have traditional href attributes, which is an indication that this is a modern web application."
 						},
 						{
-							"id": "148",
+							"id": "147",
 							"uri": "https://quefairedemesdechets.ademe.fr/donnees-personnelles/",
 							"method": "GET",
 							"param": "",
@@ -1209,7 +1219,7 @@
 							"otherinfo": "Links have been found that do not have traditional href attributes, which is an indication that this is a modern web application."
 						},
 						{
-							"id": "138",
+							"id": "139",
 							"uri": "https://quefairedemesdechets.ademe.fr/plan-du-site/",
 							"method": "GET",
 							"param": "",
@@ -1218,8 +1228,26 @@
 							"otherinfo": "Links have been found that do not have traditional href attributes, which is an indication that this is a modern web application."
 						},
 						{
-							"id": "163",
+							"id": "158",
 							"uri": "https://quefairedemesdechets.ademe.fr/quefairedemesdechets.ademe.fr/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<script type=\"text/javascript\">\n  var _paq = window._paq = window._paq || [];\n  _paq.push(['trackPageView']);\n  _paq.push(['enableLinkTracking']);\n  (function() {\n    var u=\"//stats.beta.gouv.fr/\";\n    _paq.push(['setTrackerUrl', u+'matomo.php']);\n    _paq.push(['setSiteId', 82]);\n    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];\n    g.type='text/javascript'; g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);\n  })();\n</script>",
+							"otherinfo": "No links have been found while there are scripts, which is an indication that this is a modern web application."
+						},
+						{
+							"id": "169",
+							"uri": "https://quefairedemesdechets.ademe.fr/quefairedemesdechets.ademe.fr/dechet/os-de-viande/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<script type=\"text/javascript\">\n  var _paq = window._paq = window._paq || [];\n  _paq.push(['trackPageView']);\n  _paq.push(['enableLinkTracking']);\n  (function() {\n    var u=\"//stats.beta.gouv.fr/\";\n    _paq.push(['setTrackerUrl', u+'matomo.php']);\n    _paq.push(['setSiteId', 82]);\n    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];\n    g.type='text/javascript'; g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);\n  })();\n</script>",
+							"otherinfo": "No links have been found while there are scripts, which is an indication that this is a modern web application."
+						},
+						{
+							"id": "167",
+							"uri": "https://quefairedemesdechets.ademe.fr/quefairedemesdechets.ademe.fr/dechet/poireaux/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1242,7 +1270,7 @@
 					"reference": "",
 					"cweid": "-1",
 					"wascid": "-1",
-					"sourceid": "878"
+					"sourceid": "879"
 				},
 				{
 					"pluginid": "10015",
@@ -1255,7 +1283,7 @@
 					"desc": "<p>The cache-control header has not been set properly or is missing, allowing the browser and proxies to cache content. For static assets like css, js, or image files this might be intended, however, the resources should be reviewed to ensure that no sensitive content will be cached.</p>",
 					"instances":[ 
 						{
-							"id": "12",
+							"id": "22",
 							"uri": "https://quefairedemesdechets.ademe.fr",
 							"method": "GET",
 							"param": "cache-control",
@@ -1264,7 +1292,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "107",
+							"id": "113",
 							"uri": "https://quefairedemesdechets.ademe.fr/dechet/chaise/",
 							"method": "GET",
 							"param": "cache-control",
@@ -1273,7 +1301,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "121",
+							"id": "115",
 							"uri": "https://quefairedemesdechets.ademe.fr/dechet/chaussures/",
 							"method": "GET",
 							"param": "cache-control",
@@ -1282,7 +1310,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "44",
+							"id": "78",
 							"uri": "https://quefairedemesdechets.ademe.fr/dechet/chemise/",
 							"method": "GET",
 							"param": "cache-control",
@@ -1291,7 +1319,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "89",
+							"id": "72",
 							"uri": "https://quefairedemesdechets.ademe.fr/dechet/ecran/",
 							"method": "GET",
 							"param": "cache-control",
@@ -1300,7 +1328,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "41",
+							"id": "85",
 							"uri": "https://quefairedemesdechets.ademe.fr/dechet/lave-linge/",
 							"method": "GET",
 							"param": "cache-control",
@@ -1309,7 +1337,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "48",
+							"id": "18",
 							"uri": "https://quefairedemesdechets.ademe.fr/dechet/os-de-viande/",
 							"method": "GET",
 							"param": "cache-control",
@@ -1318,7 +1346,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "85",
+							"id": "6",
 							"uri": "https://quefairedemesdechets.ademe.fr/dechet/poireaux/",
 							"method": "GET",
 							"param": "cache-control",
@@ -1327,7 +1355,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "79",
+							"id": "82",
 							"uri": "https://quefairedemesdechets.ademe.fr/dechet/pomme-abimee/",
 							"method": "GET",
 							"param": "cache-control",
@@ -1336,7 +1364,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "0",
+							"id": "3",
 							"uri": "https://quefairedemesdechets.ademe.fr/robots.txt",
 							"method": "GET",
 							"param": "cache-control",
@@ -1345,7 +1373,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "52",
+							"id": "50",
 							"uri": "https://quefairedemesdechets.ademe.fr/sitemap.xml",
 							"method": "GET",
 							"param": "cache-control",
@@ -1360,7 +1388,7 @@
 					"reference": "<p>https://cheatsheetseries.owasp.org/cheatsheets/Session_Management_Cheat_Sheet.html#web-content-caching</p><p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cache-Control</p><p>https://grayduck.mn/2021/09/13/cache-control-recommendations/</p>",
 					"cweid": "525",
 					"wascid": "13",
-					"sourceid": "1"
+					"sourceid": "6"
 				},
 				{
 					"pluginid": "90005",
@@ -1373,8 +1401,8 @@
 					"desc": "<p>Specifies how and where the data would be used. For instance, if the value is audio, then the requested resource must be audio data and not any other type of resource.</p>",
 					"instances":[ 
 						{
-							"id": "31",
-							"uri": "https://quefairedemesdechets.ademe.fr",
+							"id": "48",
+							"uri": "https://quefairedemesdechets.ademe.fr/dechet/os-de-viande/",
 							"method": "GET",
 							"param": "Sec-Fetch-Dest",
 							"attack": "",
@@ -1382,7 +1410,16 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "10",
+							"id": "42",
+							"uri": "https://quefairedemesdechets.ademe.fr/dechet/poireaux/",
+							"method": "GET",
+							"param": "Sec-Fetch-Dest",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "15",
 							"uri": "https://quefairedemesdechets.ademe.fr/robots.txt",
 							"method": "GET",
 							"param": "Sec-Fetch-Dest",
@@ -1391,13 +1428,13 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "2",
+					"count": "3",
 					"solution": "<p>Ensure that Sec-Fetch-Dest header is included in request headers.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Dest</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "1"
+					"sourceid": "61"
 				},
 				{
 					"pluginid": "90005",
@@ -1410,8 +1447,8 @@
 					"desc": "<p>Allows to differentiate between requests for navigating between HTML pages and requests for loading resources like images, audio etc.</p>",
 					"instances":[ 
 						{
-							"id": "30",
-							"uri": "https://quefairedemesdechets.ademe.fr",
+							"id": "47",
+							"uri": "https://quefairedemesdechets.ademe.fr/dechet/os-de-viande/",
 							"method": "GET",
 							"param": "Sec-Fetch-Mode",
 							"attack": "",
@@ -1419,7 +1456,16 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "9",
+							"id": "41",
+							"uri": "https://quefairedemesdechets.ademe.fr/dechet/poireaux/",
+							"method": "GET",
+							"param": "Sec-Fetch-Mode",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "14",
 							"uri": "https://quefairedemesdechets.ademe.fr/robots.txt",
 							"method": "GET",
 							"param": "Sec-Fetch-Mode",
@@ -1428,13 +1474,13 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "2",
+					"count": "3",
 					"solution": "<p>Ensure that Sec-Fetch-Mode header is included in request headers.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Mode</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "1"
+					"sourceid": "61"
 				},
 				{
 					"pluginid": "90005",
@@ -1447,8 +1493,8 @@
 					"desc": "<p>Specifies the relationship between request initiator's origin and target's origin.</p>",
 					"instances":[ 
 						{
-							"id": "29",
-							"uri": "https://quefairedemesdechets.ademe.fr",
+							"id": "46",
+							"uri": "https://quefairedemesdechets.ademe.fr/dechet/os-de-viande/",
 							"method": "GET",
 							"param": "Sec-Fetch-Site",
 							"attack": "",
@@ -1456,7 +1502,16 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "8",
+							"id": "40",
+							"uri": "https://quefairedemesdechets.ademe.fr/dechet/poireaux/",
+							"method": "GET",
+							"param": "Sec-Fetch-Site",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "13",
 							"uri": "https://quefairedemesdechets.ademe.fr/robots.txt",
 							"method": "GET",
 							"param": "Sec-Fetch-Site",
@@ -1465,13 +1520,13 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "2",
+					"count": "3",
 					"solution": "<p>Ensure that Sec-Fetch-Site header is included in request headers.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Site</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "1"
+					"sourceid": "61"
 				},
 				{
 					"pluginid": "90005",
@@ -1484,8 +1539,8 @@
 					"desc": "<p>Specifies if a navigation request was initiated by a user.</p>",
 					"instances":[ 
 						{
-							"id": "32",
-							"uri": "https://quefairedemesdechets.ademe.fr",
+							"id": "49",
+							"uri": "https://quefairedemesdechets.ademe.fr/dechet/os-de-viande/",
 							"method": "GET",
 							"param": "Sec-Fetch-User",
 							"attack": "",
@@ -1493,7 +1548,16 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "11",
+							"id": "43",
+							"uri": "https://quefairedemesdechets.ademe.fr/dechet/poireaux/",
+							"method": "GET",
+							"param": "Sec-Fetch-User",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "16",
 							"uri": "https://quefairedemesdechets.ademe.fr/robots.txt",
 							"method": "GET",
 							"param": "Sec-Fetch-User",
@@ -1502,13 +1566,13 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "2",
+					"count": "3",
 					"solution": "<p>Ensure that Sec-Fetch-User header is included in user initiated requests.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-User</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "1"
+					"sourceid": "61"
 				},
 				{
 					"pluginid": "10112",
@@ -1521,111 +1585,111 @@
 					"desc": "<p>The given response has been identified as containing a session management token. The 'Other Info' field contains a set of header tokens that can be used in the Header Based Session Management Method. If the request is in a context which has a Session Management Method set to \"Auto-Detect\" then this rule will change the session management to use the tokens identified.</p>",
 					"instances":[ 
 						{
-							"id": "20",
+							"id": "61",
 							"uri": "https://quefairedemesdechets.ademe.fr",
 							"method": "GET",
 							"param": "sc-sticky-session",
 							"attack": "",
-							"evidence": "DI0fdIXx2i0bG6vT/CE+UZVdxX+tyKEZbm36vSh1IY6y0oM0479w+VgbDyPicSPtwnw0DUEh0I20znW9y1b+qw==",
+							"evidence": "dQgAC4dFpIh1nIGWlAVtjXr2fIC48XxFGVasI8bDcqbKCLRsz+YEaFB7jdnAeX/PBoox2j0KT3Z9MCU5IR1JOQ==",
 							"otherinfo": "\ncookie:sc-sticky-session"
 						},
 						{
-							"id": "18",
+							"id": "56",
 							"uri": "https://quefairedemesdechets.ademe.fr",
 							"method": "GET",
 							"param": "sc-sticky-session",
 							"attack": "",
-							"evidence": "DI0fdIXx2i0bG6vT/CE+Uc4kfLvmBHveSjIRv2c0YfIgt4tngpqJYgIup52F67eH9cEXRtBSYDoOlXbaHn6TXw==",
+							"evidence": "dQgAC4dFpIh1nIGWlAVtjZS+TZHEu41agHRF2E1CEs2bNylVLZ0CGMi+4m3lbxv8mf+J8GEyZeXgU+Vw7zhIPw==",
 							"otherinfo": "\ncookie:sc-sticky-session"
 						},
 						{
-							"id": "115",
+							"id": "123",
 							"uri": "https://quefairedemesdechets.ademe.fr/dechet/chaise/",
 							"method": "GET",
 							"param": "sc-sticky-session",
 							"attack": "",
-							"evidence": "DI0fdIXx2i0bG6vT/CE+UZVdxX+tyKEZbm36vSh1IY6y0oM0479w+VgbDyPicSPtwnw0DUEh0I20znW9y1b+qw==",
+							"evidence": "dQgAC4dFpIh1nIGWlAVtjZS+TZHEu41agHRF2E1CEs2bNylVLZ0CGMi+4m3lbxv8mf+J8GEyZeXgU+Vw7zhIPw==",
 							"otherinfo": "\ncookie:sc-sticky-session"
 						},
 						{
-							"id": "129",
+							"id": "124",
 							"uri": "https://quefairedemesdechets.ademe.fr/dechet/chaussures/",
 							"method": "GET",
 							"param": "sc-sticky-session",
 							"attack": "",
-							"evidence": "DI0fdIXx2i0bG6vT/CE+UZVdxX+tyKEZbm36vSh1IY6y0oM0479w+VgbDyPicSPtwnw0DUEh0I20znW9y1b+qw==",
-							"otherinfo": "\ncookie:sc-sticky-session"
-						},
-						{
-							"id": "58",
-							"uri": "https://quefairedemesdechets.ademe.fr/dechet/chemise/",
-							"method": "GET",
-							"param": "sc-sticky-session",
-							"attack": "",
-							"evidence": "DI0fdIXx2i0bG6vT/CE+UZVdxX+tyKEZbm36vSh1IY6y0oM0479w+VgbDyPicSPtwnw0DUEh0I20znW9y1b+qw==",
-							"otherinfo": "\ncookie:sc-sticky-session"
-						},
-						{
-							"id": "101",
-							"uri": "https://quefairedemesdechets.ademe.fr/dechet/ecran/",
-							"method": "GET",
-							"param": "sc-sticky-session",
-							"attack": "",
-							"evidence": "DI0fdIXx2i0bG6vT/CE+UZVdxX+tyKEZbm36vSh1IY6y0oM0479w+VgbDyPicSPtwnw0DUEh0I20znW9y1b+qw==",
-							"otherinfo": "\ncookie:sc-sticky-session"
-						},
-						{
-							"id": "54",
-							"uri": "https://quefairedemesdechets.ademe.fr/dechet/lave-linge/",
-							"method": "GET",
-							"param": "sc-sticky-session",
-							"attack": "",
-							"evidence": "DI0fdIXx2i0bG6vT/CE+UZVdxX+tyKEZbm36vSh1IY6y0oM0479w+VgbDyPicSPtwnw0DUEh0I20znW9y1b+qw==",
-							"otherinfo": "\ncookie:sc-sticky-session"
-						},
-						{
-							"id": "64",
-							"uri": "https://quefairedemesdechets.ademe.fr/dechet/os-de-viande/",
-							"method": "GET",
-							"param": "sc-sticky-session",
-							"attack": "",
-							"evidence": "DI0fdIXx2i0bG6vT/CE+UZVdxX+tyKEZbm36vSh1IY6y0oM0479w+VgbDyPicSPtwnw0DUEh0I20znW9y1b+qw==",
-							"otherinfo": "\ncookie:sc-sticky-session"
-						},
-						{
-							"id": "98",
-							"uri": "https://quefairedemesdechets.ademe.fr/dechet/poireaux/",
-							"method": "GET",
-							"param": "sc-sticky-session",
-							"attack": "",
-							"evidence": "DI0fdIXx2i0bG6vT/CE+UZVdxX+tyKEZbm36vSh1IY6y0oM0479w+VgbDyPicSPtwnw0DUEh0I20znW9y1b+qw==",
+							"evidence": "dQgAC4dFpIh1nIGWlAVtjZS+TZHEu41agHRF2E1CEs2bNylVLZ0CGMi+4m3lbxv8mf+J8GEyZeXgU+Vw7zhIPw==",
 							"otherinfo": "\ncookie:sc-sticky-session"
 						},
 						{
 							"id": "94",
+							"uri": "https://quefairedemesdechets.ademe.fr/dechet/chemise/",
+							"method": "GET",
+							"param": "sc-sticky-session",
+							"attack": "",
+							"evidence": "dQgAC4dFpIh1nIGWlAVtjZS+TZHEu41agHRF2E1CEs2bNylVLZ0CGMi+4m3lbxv8mf+J8GEyZeXgU+Vw7zhIPw==",
+							"otherinfo": "\ncookie:sc-sticky-session"
+						},
+						{
+							"id": "89",
+							"uri": "https://quefairedemesdechets.ademe.fr/dechet/ecran/",
+							"method": "GET",
+							"param": "sc-sticky-session",
+							"attack": "",
+							"evidence": "dQgAC4dFpIh1nIGWlAVtjZS+TZHEu41agHRF2E1CEs2bNylVLZ0CGMi+4m3lbxv8mf+J8GEyZeXgU+Vw7zhIPw==",
+							"otherinfo": "\ncookie:sc-sticky-session"
+						},
+						{
+							"id": "96",
+							"uri": "https://quefairedemesdechets.ademe.fr/dechet/lave-linge/",
+							"method": "GET",
+							"param": "sc-sticky-session",
+							"attack": "",
+							"evidence": "dQgAC4dFpIh1nIGWlAVtjZS+TZHEu41agHRF2E1CEs2bNylVLZ0CGMi+4m3lbxv8mf+J8GEyZeXgU+Vw7zhIPw==",
+							"otherinfo": "\ncookie:sc-sticky-session"
+						},
+						{
+							"id": "33",
+							"uri": "https://quefairedemesdechets.ademe.fr/dechet/os-de-viande/",
+							"method": "GET",
+							"param": "sc-sticky-session",
+							"attack": "",
+							"evidence": "dQgAC4dFpIh1nIGWlAVtjZS+TZHEu41agHRF2E1CEs2bNylVLZ0CGMi+4m3lbxv8mf+J8GEyZeXgU+Vw7zhIPw==",
+							"otherinfo": "\ncookie:sc-sticky-session"
+						},
+						{
+							"id": "25",
+							"uri": "https://quefairedemesdechets.ademe.fr/dechet/poireaux/",
+							"method": "GET",
+							"param": "sc-sticky-session",
+							"attack": "",
+							"evidence": "dQgAC4dFpIh1nIGWlAVtjZS+TZHEu41agHRF2E1CEs2bNylVLZ0CGMi+4m3lbxv8mf+J8GEyZeXgU+Vw7zhIPw==",
+							"otherinfo": "\ncookie:sc-sticky-session"
+						},
+						{
+							"id": "98",
 							"uri": "https://quefairedemesdechets.ademe.fr/dechet/pomme-abimee/",
 							"method": "GET",
 							"param": "sc-sticky-session",
 							"attack": "",
-							"evidence": "DI0fdIXx2i0bG6vT/CE+UZVdxX+tyKEZbm36vSh1IY6y0oM0479w+VgbDyPicSPtwnw0DUEh0I20znW9y1b+qw==",
+							"evidence": "dQgAC4dFpIh1nIGWlAVtjZS+TZHEu41agHRF2E1CEs2bNylVLZ0CGMi+4m3lbxv8mf+J8GEyZeXgU+Vw7zhIPw==",
 							"otherinfo": "\ncookie:sc-sticky-session"
 						},
 						{
-							"id": "4",
+							"id": "5",
 							"uri": "https://quefairedemesdechets.ademe.fr/robots.txt",
 							"method": "GET",
 							"param": "sc-sticky-session",
 							"attack": "",
-							"evidence": "DI0fdIXx2i0bG6vT/CE+UZVdxX+tyKEZbm36vSh1IY6y0oM0479w+VgbDyPicSPtwnw0DUEh0I20znW9y1b+qw==",
+							"evidence": "dQgAC4dFpIh1nIGWlAVtjZS+TZHEu41agHRF2E1CEs2bNylVLZ0CGMi+4m3lbxv8mf+J8GEyZeXgU+Vw7zhIPw==",
 							"otherinfo": "\ncookie:sc-sticky-session"
 						},
 						{
-							"id": "71",
+							"id": "52",
 							"uri": "https://quefairedemesdechets.ademe.fr/sitemap.xml",
 							"method": "GET",
 							"param": "sc-sticky-session",
 							"attack": "",
-							"evidence": "DI0fdIXx2i0bG6vT/CE+UZVdxX+tyKEZbm36vSh1IY6y0oM0479w+VgbDyPicSPtwnw0DUEh0I20znW9y1b+qw==",
+							"evidence": "dQgAC4dFpIh1nIGWlAVtjZS+TZHEu41agHRF2E1CEs2bNylVLZ0CGMi+4m3lbxv8mf+J8GEyZeXgU+Vw7zhIPw==",
 							"otherinfo": "\ncookie:sc-sticky-session"
 						}
 					],
@@ -1635,7 +1699,7 @@
 					"reference": "<p>https://www.zaproxy.org/docs/desktop/addons/authentication-helper/session-mgmt-id</p>",
 					"cweid": "-1",
 					"wascid": "-1",
-					"sourceid": "6"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "10049",
@@ -1648,7 +1712,7 @@
 					"desc": "<p>The response contents are storable by caching components such as proxy servers, and may be retrieved directly from the cache, rather than from the origin server by the caching servers, in response to similar requests from other users. If the response data is sensitive, personal or user-specific, this may result in sensitive information being leaked. In some cases, this may even result in a user gaining complete control of the session of another user, depending on the configuration of the caching components in use in their environment. This is primarily an issue where \"shared\" caching servers such as \"proxy\" caches are configured on the local network. This configuration is typically found in corporate or educational environments, for instance.</p>",
 					"instances":[ 
 						{
-							"id": "19",
+							"id": "57",
 							"uri": "https://quefairedemesdechets.ademe.fr",
 							"method": "GET",
 							"param": "",
@@ -1657,7 +1721,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "116",
+							"id": "125",
 							"uri": "https://quefairedemesdechets.ademe.fr/dechet/chaise/",
 							"method": "GET",
 							"param": "",
@@ -1666,7 +1730,7 @@
 							"otherinfo": "In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234."
 						},
 						{
-							"id": "130",
+							"id": "128",
 							"uri": "https://quefairedemesdechets.ademe.fr/dechet/chaussures/",
 							"method": "GET",
 							"param": "",
@@ -1675,7 +1739,7 @@
 							"otherinfo": "In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234."
 						},
 						{
-							"id": "60",
+							"id": "95",
 							"uri": "https://quefairedemesdechets.ademe.fr/dechet/chemise/",
 							"method": "GET",
 							"param": "",
@@ -1684,7 +1748,7 @@
 							"otherinfo": "In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234."
 						},
 						{
-							"id": "102",
+							"id": "90",
 							"uri": "https://quefairedemesdechets.ademe.fr/dechet/ecran/",
 							"method": "GET",
 							"param": "",
@@ -1693,7 +1757,7 @@
 							"otherinfo": "In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234."
 						},
 						{
-							"id": "55",
+							"id": "99",
 							"uri": "https://quefairedemesdechets.ademe.fr/dechet/lave-linge/",
 							"method": "GET",
 							"param": "",
@@ -1702,7 +1766,7 @@
 							"otherinfo": "In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234."
 						},
 						{
-							"id": "65",
+							"id": "34",
 							"uri": "https://quefairedemesdechets.ademe.fr/dechet/os-de-viande/",
 							"method": "GET",
 							"param": "",
@@ -1711,7 +1775,7 @@
 							"otherinfo": "In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234."
 						},
 						{
-							"id": "99",
+							"id": "29",
 							"uri": "https://quefairedemesdechets.ademe.fr/dechet/poireaux/",
 							"method": "GET",
 							"param": "",
@@ -1720,7 +1784,7 @@
 							"otherinfo": "In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234."
 						},
 						{
-							"id": "95",
+							"id": "101",
 							"uri": "https://quefairedemesdechets.ademe.fr/dechet/pomme-abimee/",
 							"method": "GET",
 							"param": "",
@@ -1729,7 +1793,7 @@
 							"otherinfo": "In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234."
 						},
 						{
-							"id": "5",
+							"id": "10",
 							"uri": "https://quefairedemesdechets.ademe.fr/robots.txt",
 							"method": "GET",
 							"param": "",
@@ -1738,7 +1802,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "72",
+							"id": "53",
 							"uri": "https://quefairedemesdechets.ademe.fr/sitemap.xml",
 							"method": "GET",
 							"param": "",
@@ -1753,7 +1817,7 @@
 					"reference": "<p>https://datatracker.ietf.org/doc/html/rfc7234</p><p>https://datatracker.ietf.org/doc/html/rfc7231</p><p>https://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html</p>",
 					"cweid": "524",
 					"wascid": "13",
-					"sourceid": "1"
+					"sourceid": "6"
 				},
 				{
 					"pluginid": "10031",
@@ -1766,7 +1830,7 @@
 					"desc": "<p>This check looks at user-supplied input in query string parameters and POST data to identify where certain HTML attribute values might be controlled. This provides hot-spot detection for XSS (cross-site scripting) that will require further review by a security analyst to determine exploitability.</p>",
 					"instances":[ 
 						{
-							"id": "165",
+							"id": "160",
 							"uri": "https://quefairedemesdechets.ademe.fr/assistant/recherche?input=ZAP",
 							"method": "GET",
 							"param": "input",
@@ -1775,112 +1839,112 @@
 							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://quefairedemesdechets.ademe.fr/assistant/recherche?input=ZAP\n\nappears to include user input in:\na(n) [input] tag [value] attribute\n\nThe user input found was:\ninput=ZAP\n\nThe user-controlled value was:\nzap"
 						},
 						{
-							"id": "179",
-							"uri": "https://quefairedemesdechets.ademe.fr/carte?action_displayed=preter%7Clouer%7Cmettreenlocation%7Cdonner%7Cechanger%7Crevendre&action_list=preter%7Clouer%7Cmettreenlocation%7Cdonner%7Cechanger%7Crevendre&direction=jai&first_dir=jai&limit=25&sc_id=87&sous_categorie_objet=Gros+%C3%A9lectrom%C3%A9nager+%28hors+r%C3%A9frig%C3%A9rant%29",
+							"id": "180",
+							"uri": "https://quefairedemesdechets.ademe.fr/carte?action_displayed=preter%7Clouer%7Cmettreenlocation%7Cdonner%7Cechanger%7Crevendre&action_list=preter%7Clouer%7Cmettreenlocation%7Cdonner%7Cechanger%7Crevendre&direction=jai&first_dir=jai&limit=25&sc_id=107&sous_categorie_objet=V%C3%AAtement",
 							"method": "GET",
 							"param": "direction",
 							"attack": "",
 							"evidence": "",
-							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://quefairedemesdechets.ademe.fr/carte?action_displayed=preter%7Clouer%7Cmettreenlocation%7Cdonner%7Cechanger%7Crevendre&action_list=preter%7Clouer%7Cmettreenlocation%7Cdonner%7Cechanger%7Crevendre&direction=jai&first_dir=jai&limit=25&sc_id=87&sous_categorie_objet=Gros+%C3%A9lectrom%C3%A9nager+%28hors+r%C3%A9frig%C3%A9rant%29\n\nappears to include user input in:\na(n) [input] tag [value] attribute\n\nThe user input found was:\ndirection=jai\n\nThe user-controlled value was:\njai"
+							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://quefairedemesdechets.ademe.fr/carte?action_displayed=preter%7Clouer%7Cmettreenlocation%7Cdonner%7Cechanger%7Crevendre&action_list=preter%7Clouer%7Cmettreenlocation%7Cdonner%7Cechanger%7Crevendre&direction=jai&first_dir=jai&limit=25&sc_id=107&sous_categorie_objet=V%C3%AAtement\n\nappears to include user input in:\na(n) [input] tag [value] attribute\n\nThe user input found was:\ndirection=jai\n\nThe user-controlled value was:\njai"
 						},
 						{
-							"id": "180",
-							"uri": "https://quefairedemesdechets.ademe.fr/carte?action_displayed=preter%7Clouer%7Cmettreenlocation%7Cdonner%7Cechanger%7Crevendre&action_list=preter%7Clouer%7Cmettreenlocation%7Cdonner%7Cechanger%7Crevendre&direction=jai&first_dir=jai&limit=25&sc_id=87&sous_categorie_objet=Gros+%C3%A9lectrom%C3%A9nager+%28hors+r%C3%A9frig%C3%A9rant%29",
+							"id": "181",
+							"uri": "https://quefairedemesdechets.ademe.fr/carte?action_displayed=preter%7Clouer%7Cmettreenlocation%7Cdonner%7Cechanger%7Crevendre&action_list=preter%7Clouer%7Cmettreenlocation%7Cdonner%7Cechanger%7Crevendre&direction=jai&first_dir=jai&limit=25&sc_id=107&sous_categorie_objet=V%C3%AAtement",
 							"method": "GET",
 							"param": "first_dir",
 							"attack": "",
 							"evidence": "",
-							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://quefairedemesdechets.ademe.fr/carte?action_displayed=preter%7Clouer%7Cmettreenlocation%7Cdonner%7Cechanger%7Crevendre&action_list=preter%7Clouer%7Cmettreenlocation%7Cdonner%7Cechanger%7Crevendre&direction=jai&first_dir=jai&limit=25&sc_id=87&sous_categorie_objet=Gros+%C3%A9lectrom%C3%A9nager+%28hors+r%C3%A9frig%C3%A9rant%29\n\nappears to include user input in:\na(n) [input] tag [value] attribute\n\nThe user input found was:\nfirst_dir=jai\n\nThe user-controlled value was:\njai"
+							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://quefairedemesdechets.ademe.fr/carte?action_displayed=preter%7Clouer%7Cmettreenlocation%7Cdonner%7Cechanger%7Crevendre&action_list=preter%7Clouer%7Cmettreenlocation%7Cdonner%7Cechanger%7Crevendre&direction=jai&first_dir=jai&limit=25&sc_id=107&sous_categorie_objet=V%C3%AAtement\n\nappears to include user input in:\na(n) [input] tag [value] attribute\n\nThe user input found was:\nfirst_dir=jai\n\nThe user-controlled value was:\njai"
 						},
 						{
-							"id": "178",
-							"uri": "https://quefairedemesdechets.ademe.fr/carte?action_displayed=preter%7Clouer%7Cmettreenlocation%7Cdonner%7Cechanger%7Crevendre&action_list=preter%7Clouer%7Cmettreenlocation%7Cdonner%7Cechanger%7Crevendre&direction=jai&first_dir=jai&limit=25&sc_id=87&sous_categorie_objet=Gros+%C3%A9lectrom%C3%A9nager+%28hors+r%C3%A9frig%C3%A9rant%29",
+							"id": "179",
+							"uri": "https://quefairedemesdechets.ademe.fr/carte?action_displayed=preter%7Clouer%7Cmettreenlocation%7Cdonner%7Cechanger%7Crevendre&action_list=preter%7Clouer%7Cmettreenlocation%7Cdonner%7Cechanger%7Crevendre&direction=jai&first_dir=jai&limit=25&sc_id=107&sous_categorie_objet=V%C3%AAtement",
 							"method": "GET",
 							"param": "limit",
 							"attack": "",
 							"evidence": "",
-							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://quefairedemesdechets.ademe.fr/carte?action_displayed=preter%7Clouer%7Cmettreenlocation%7Cdonner%7Cechanger%7Crevendre&action_list=preter%7Clouer%7Cmettreenlocation%7Cdonner%7Cechanger%7Crevendre&direction=jai&first_dir=jai&limit=25&sc_id=87&sous_categorie_objet=Gros+%C3%A9lectrom%C3%A9nager+%28hors+r%C3%A9frig%C3%A9rant%29\n\nappears to include user input in:\na(n) [input] tag [value] attribute\n\nThe user input found was:\nlimit=25\n\nThe user-controlled value was:\n25"
+							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://quefairedemesdechets.ademe.fr/carte?action_displayed=preter%7Clouer%7Cmettreenlocation%7Cdonner%7Cechanger%7Crevendre&action_list=preter%7Clouer%7Cmettreenlocation%7Cdonner%7Cechanger%7Crevendre&direction=jai&first_dir=jai&limit=25&sc_id=107&sous_categorie_objet=V%C3%AAtement\n\nappears to include user input in:\na(n) [input] tag [value] attribute\n\nThe user input found was:\nlimit=25\n\nThe user-controlled value was:\n25"
 						},
 						{
-							"id": "184",
-							"uri": "https://quefairedemesdechets.ademe.fr/carte?action_displayed=preter%7Clouer%7Cmettreenlocation%7Cdonner%7Cechanger%7Crevendre&action_list=preter%7Clouer%7Cmettreenlocation%7Cdonner%7Cechanger%7Crevendre&direction=jai&first_dir=jai&limit=25&sc_id=87&sous_categorie_objet=Gros+%C3%A9lectrom%C3%A9nager+%28hors+r%C3%A9frig%C3%A9rant%29",
+							"id": "185",
+							"uri": "https://quefairedemesdechets.ademe.fr/carte?action_displayed=preter%7Clouer%7Cmettreenlocation%7Cdonner%7Cechanger%7Crevendre&action_list=preter%7Clouer%7Cmettreenlocation%7Cdonner%7Cechanger%7Crevendre&direction=jai&first_dir=jai&limit=25&sc_id=107&sous_categorie_objet=V%C3%AAtement",
 							"method": "GET",
 							"param": "sc_id",
 							"attack": "",
 							"evidence": "",
-							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://quefairedemesdechets.ademe.fr/carte?action_displayed=preter%7Clouer%7Cmettreenlocation%7Cdonner%7Cechanger%7Crevendre&action_list=preter%7Clouer%7Cmettreenlocation%7Cdonner%7Cechanger%7Crevendre&direction=jai&first_dir=jai&limit=25&sc_id=87&sous_categorie_objet=Gros+%C3%A9lectrom%C3%A9nager+%28hors+r%C3%A9frig%C3%A9rant%29\n\nappears to include user input in:\na(n) [input] tag [value] attribute\n\nThe user input found was:\nsc_id=87\n\nThe user-controlled value was:\n87"
+							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://quefairedemesdechets.ademe.fr/carte?action_displayed=preter%7Clouer%7Cmettreenlocation%7Cdonner%7Cechanger%7Crevendre&action_list=preter%7Clouer%7Cmettreenlocation%7Cdonner%7Cechanger%7Crevendre&direction=jai&first_dir=jai&limit=25&sc_id=107&sous_categorie_objet=V%C3%AAtement\n\nappears to include user input in:\na(n) [input] tag [value] attribute\n\nThe user input found was:\nsc_id=107\n\nThe user-controlled value was:\n107"
 						},
 						{
-							"id": "183",
-							"uri": "https://quefairedemesdechets.ademe.fr/carte?action_displayed=preter%7Clouer%7Cmettreenlocation%7Cdonner%7Cechanger%7Crevendre&action_list=preter%7Clouer%7Cmettreenlocation%7Cdonner%7Cechanger%7Crevendre&direction=jai&first_dir=jai&limit=25&sc_id=87&sous_categorie_objet=Gros+%C3%A9lectrom%C3%A9nager+%28hors+r%C3%A9frig%C3%A9rant%29",
+							"id": "184",
+							"uri": "https://quefairedemesdechets.ademe.fr/carte?action_displayed=preter%7Clouer%7Cmettreenlocation%7Cdonner%7Cechanger%7Crevendre&action_list=preter%7Clouer%7Cmettreenlocation%7Cdonner%7Cechanger%7Crevendre&direction=jai&first_dir=jai&limit=25&sc_id=107&sous_categorie_objet=V%C3%AAtement",
 							"method": "GET",
 							"param": "sous_categorie_objet",
 							"attack": "",
 							"evidence": "",
-							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://quefairedemesdechets.ademe.fr/carte?action_displayed=preter%7Clouer%7Cmettreenlocation%7Cdonner%7Cechanger%7Crevendre&action_list=preter%7Clouer%7Cmettreenlocation%7Cdonner%7Cechanger%7Crevendre&direction=jai&first_dir=jai&limit=25&sc_id=87&sous_categorie_objet=Gros+%C3%A9lectrom%C3%A9nager+%28hors+r%C3%A9frig%C3%A9rant%29\n\nappears to include user input in:\na(n) [input] tag [value] attribute\n\nThe user input found was:\nsous_categorie_objet=Gros \u00E9lectrom\u00E9nager (hors r\u00E9frig\u00E9rant)\n\nThe user-controlled value was:\ngros \u00E9lectrom\u00E9nager (hors r\u00E9frig\u00E9rant)"
+							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://quefairedemesdechets.ademe.fr/carte?action_displayed=preter%7Clouer%7Cmettreenlocation%7Cdonner%7Cechanger%7Crevendre&action_list=preter%7Clouer%7Cmettreenlocation%7Cdonner%7Cechanger%7Crevendre&direction=jai&first_dir=jai&limit=25&sc_id=107&sous_categorie_objet=V%C3%AAtement\n\nappears to include user input in:\na(n) [input] tag [value] attribute\n\nThe user input found was:\nsous_categorie_objet=V\u00EAtement\n\nThe user-controlled value was:\nv\u00EAtement"
 						},
 						{
-							"id": "174",
-							"uri": "https://quefairedemesdechets.ademe.fr/carte?action_displayed=reparer%7Ctrier&action_list=reparer%7Ctrier&direction=jai&first_dir=jai&limit=25&sc_id=87&sous_categorie_objet=Gros+%C3%A9lectrom%C3%A9nager+%28hors+r%C3%A9frig%C3%A9rant%29",
+							"id": "175",
+							"uri": "https://quefairedemesdechets.ademe.fr/carte?action_displayed=reparer%7Ctrier&action_list=reparer%7Ctrier&direction=jai&first_dir=jai&limit=25&sc_id=107&sous_categorie_objet=V%C3%AAtement",
 							"method": "GET",
 							"param": "action_displayed",
 							"attack": "",
 							"evidence": "",
-							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://quefairedemesdechets.ademe.fr/carte?action_displayed=reparer%7Ctrier&action_list=reparer%7Ctrier&direction=jai&first_dir=jai&limit=25&sc_id=87&sous_categorie_objet=Gros+%C3%A9lectrom%C3%A9nager+%28hors+r%C3%A9frig%C3%A9rant%29\n\nappears to include user input in:\na(n) [input] tag [value] attribute\n\nThe user input found was:\naction_displayed=reparer|trier\n\nThe user-controlled value was:\nreparer|trier"
+							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://quefairedemesdechets.ademe.fr/carte?action_displayed=reparer%7Ctrier&action_list=reparer%7Ctrier&direction=jai&first_dir=jai&limit=25&sc_id=107&sous_categorie_objet=V%C3%AAtement\n\nappears to include user input in:\na(n) [input] tag [value] attribute\n\nThe user input found was:\naction_displayed=reparer|trier\n\nThe user-controlled value was:\nreparer|trier"
 						},
 						{
-							"id": "175",
-							"uri": "https://quefairedemesdechets.ademe.fr/carte?action_displayed=reparer%7Ctrier&action_list=reparer%7Ctrier&direction=jai&first_dir=jai&limit=25&sc_id=87&sous_categorie_objet=Gros+%C3%A9lectrom%C3%A9nager+%28hors+r%C3%A9frig%C3%A9rant%29",
+							"id": "176",
+							"uri": "https://quefairedemesdechets.ademe.fr/carte?action_displayed=reparer%7Ctrier&action_list=reparer%7Ctrier&direction=jai&first_dir=jai&limit=25&sc_id=107&sous_categorie_objet=V%C3%AAtement",
 							"method": "GET",
 							"param": "action_list",
 							"attack": "",
 							"evidence": "",
-							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://quefairedemesdechets.ademe.fr/carte?action_displayed=reparer%7Ctrier&action_list=reparer%7Ctrier&direction=jai&first_dir=jai&limit=25&sc_id=87&sous_categorie_objet=Gros+%C3%A9lectrom%C3%A9nager+%28hors+r%C3%A9frig%C3%A9rant%29\n\nappears to include user input in:\na(n) [input] tag [value] attribute\n\nThe user input found was:\naction_list=reparer|trier\n\nThe user-controlled value was:\nreparer|trier"
+							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://quefairedemesdechets.ademe.fr/carte?action_displayed=reparer%7Ctrier&action_list=reparer%7Ctrier&direction=jai&first_dir=jai&limit=25&sc_id=107&sous_categorie_objet=V%C3%AAtement\n\nappears to include user input in:\na(n) [input] tag [value] attribute\n\nThe user input found was:\naction_list=reparer|trier\n\nThe user-controlled value was:\nreparer|trier"
 						},
 						{
-							"id": "170",
-							"uri": "https://quefairedemesdechets.ademe.fr/carte?action_displayed=reparer%7Ctrier&action_list=reparer%7Ctrier&direction=jai&first_dir=jai&limit=25&sc_id=87&sous_categorie_objet=Gros+%C3%A9lectrom%C3%A9nager+%28hors+r%C3%A9frig%C3%A9rant%29",
+							"id": "171",
+							"uri": "https://quefairedemesdechets.ademe.fr/carte?action_displayed=reparer%7Ctrier&action_list=reparer%7Ctrier&direction=jai&first_dir=jai&limit=25&sc_id=107&sous_categorie_objet=V%C3%AAtement",
 							"method": "GET",
 							"param": "direction",
 							"attack": "",
 							"evidence": "",
-							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://quefairedemesdechets.ademe.fr/carte?action_displayed=reparer%7Ctrier&action_list=reparer%7Ctrier&direction=jai&first_dir=jai&limit=25&sc_id=87&sous_categorie_objet=Gros+%C3%A9lectrom%C3%A9nager+%28hors+r%C3%A9frig%C3%A9rant%29\n\nappears to include user input in:\na(n) [input] tag [value] attribute\n\nThe user input found was:\ndirection=jai\n\nThe user-controlled value was:\njai"
+							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://quefairedemesdechets.ademe.fr/carte?action_displayed=reparer%7Ctrier&action_list=reparer%7Ctrier&direction=jai&first_dir=jai&limit=25&sc_id=107&sous_categorie_objet=V%C3%AAtement\n\nappears to include user input in:\na(n) [input] tag [value] attribute\n\nThe user input found was:\ndirection=jai\n\nThe user-controlled value was:\njai"
 						},
 						{
-							"id": "171",
-							"uri": "https://quefairedemesdechets.ademe.fr/carte?action_displayed=reparer%7Ctrier&action_list=reparer%7Ctrier&direction=jai&first_dir=jai&limit=25&sc_id=87&sous_categorie_objet=Gros+%C3%A9lectrom%C3%A9nager+%28hors+r%C3%A9frig%C3%A9rant%29",
+							"id": "172",
+							"uri": "https://quefairedemesdechets.ademe.fr/carte?action_displayed=reparer%7Ctrier&action_list=reparer%7Ctrier&direction=jai&first_dir=jai&limit=25&sc_id=107&sous_categorie_objet=V%C3%AAtement",
 							"method": "GET",
 							"param": "first_dir",
 							"attack": "",
 							"evidence": "",
-							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://quefairedemesdechets.ademe.fr/carte?action_displayed=reparer%7Ctrier&action_list=reparer%7Ctrier&direction=jai&first_dir=jai&limit=25&sc_id=87&sous_categorie_objet=Gros+%C3%A9lectrom%C3%A9nager+%28hors+r%C3%A9frig%C3%A9rant%29\n\nappears to include user input in:\na(n) [input] tag [value] attribute\n\nThe user input found was:\nfirst_dir=jai\n\nThe user-controlled value was:\njai"
+							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://quefairedemesdechets.ademe.fr/carte?action_displayed=reparer%7Ctrier&action_list=reparer%7Ctrier&direction=jai&first_dir=jai&limit=25&sc_id=107&sous_categorie_objet=V%C3%AAtement\n\nappears to include user input in:\na(n) [input] tag [value] attribute\n\nThe user input found was:\nfirst_dir=jai\n\nThe user-controlled value was:\njai"
 						},
 						{
-							"id": "169",
-							"uri": "https://quefairedemesdechets.ademe.fr/carte?action_displayed=reparer%7Ctrier&action_list=reparer%7Ctrier&direction=jai&first_dir=jai&limit=25&sc_id=87&sous_categorie_objet=Gros+%C3%A9lectrom%C3%A9nager+%28hors+r%C3%A9frig%C3%A9rant%29",
+							"id": "170",
+							"uri": "https://quefairedemesdechets.ademe.fr/carte?action_displayed=reparer%7Ctrier&action_list=reparer%7Ctrier&direction=jai&first_dir=jai&limit=25&sc_id=107&sous_categorie_objet=V%C3%AAtement",
 							"method": "GET",
 							"param": "limit",
 							"attack": "",
 							"evidence": "",
-							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://quefairedemesdechets.ademe.fr/carte?action_displayed=reparer%7Ctrier&action_list=reparer%7Ctrier&direction=jai&first_dir=jai&limit=25&sc_id=87&sous_categorie_objet=Gros+%C3%A9lectrom%C3%A9nager+%28hors+r%C3%A9frig%C3%A9rant%29\n\nappears to include user input in:\na(n) [input] tag [value] attribute\n\nThe user input found was:\nlimit=25\n\nThe user-controlled value was:\n25"
+							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://quefairedemesdechets.ademe.fr/carte?action_displayed=reparer%7Ctrier&action_list=reparer%7Ctrier&direction=jai&first_dir=jai&limit=25&sc_id=107&sous_categorie_objet=V%C3%AAtement\n\nappears to include user input in:\na(n) [input] tag [value] attribute\n\nThe user input found was:\nlimit=25\n\nThe user-controlled value was:\n25"
 						},
 						{
-							"id": "177",
-							"uri": "https://quefairedemesdechets.ademe.fr/carte?action_displayed=reparer%7Ctrier&action_list=reparer%7Ctrier&direction=jai&first_dir=jai&limit=25&sc_id=87&sous_categorie_objet=Gros+%C3%A9lectrom%C3%A9nager+%28hors+r%C3%A9frig%C3%A9rant%29",
+							"id": "178",
+							"uri": "https://quefairedemesdechets.ademe.fr/carte?action_displayed=reparer%7Ctrier&action_list=reparer%7Ctrier&direction=jai&first_dir=jai&limit=25&sc_id=107&sous_categorie_objet=V%C3%AAtement",
 							"method": "GET",
 							"param": "sc_id",
 							"attack": "",
 							"evidence": "",
-							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://quefairedemesdechets.ademe.fr/carte?action_displayed=reparer%7Ctrier&action_list=reparer%7Ctrier&direction=jai&first_dir=jai&limit=25&sc_id=87&sous_categorie_objet=Gros+%C3%A9lectrom%C3%A9nager+%28hors+r%C3%A9frig%C3%A9rant%29\n\nappears to include user input in:\na(n) [input] tag [value] attribute\n\nThe user input found was:\nsc_id=87\n\nThe user-controlled value was:\n87"
+							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://quefairedemesdechets.ademe.fr/carte?action_displayed=reparer%7Ctrier&action_list=reparer%7Ctrier&direction=jai&first_dir=jai&limit=25&sc_id=107&sous_categorie_objet=V%C3%AAtement\n\nappears to include user input in:\na(n) [input] tag [value] attribute\n\nThe user input found was:\nsc_id=107\n\nThe user-controlled value was:\n107"
 						},
 						{
-							"id": "176",
-							"uri": "https://quefairedemesdechets.ademe.fr/carte?action_displayed=reparer%7Ctrier&action_list=reparer%7Ctrier&direction=jai&first_dir=jai&limit=25&sc_id=87&sous_categorie_objet=Gros+%C3%A9lectrom%C3%A9nager+%28hors+r%C3%A9frig%C3%A9rant%29",
+							"id": "177",
+							"uri": "https://quefairedemesdechets.ademe.fr/carte?action_displayed=reparer%7Ctrier&action_list=reparer%7Ctrier&direction=jai&first_dir=jai&limit=25&sc_id=107&sous_categorie_objet=V%C3%AAtement",
 							"method": "GET",
 							"param": "sous_categorie_objet",
 							"attack": "",
 							"evidence": "",
-							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://quefairedemesdechets.ademe.fr/carte?action_displayed=reparer%7Ctrier&action_list=reparer%7Ctrier&direction=jai&first_dir=jai&limit=25&sc_id=87&sous_categorie_objet=Gros+%C3%A9lectrom%C3%A9nager+%28hors+r%C3%A9frig%C3%A9rant%29\n\nappears to include user input in:\na(n) [input] tag [value] attribute\n\nThe user input found was:\nsous_categorie_objet=Gros \u00E9lectrom\u00E9nager (hors r\u00E9frig\u00E9rant)\n\nThe user-controlled value was:\ngros \u00E9lectrom\u00E9nager (hors r\u00E9frig\u00E9rant)"
+							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://quefairedemesdechets.ademe.fr/carte?action_displayed=reparer%7Ctrier&action_list=reparer%7Ctrier&direction=jai&first_dir=jai&limit=25&sc_id=107&sous_categorie_objet=V%C3%AAtement\n\nappears to include user input in:\na(n) [input] tag [value] attribute\n\nThe user input found was:\nsous_categorie_objet=V\u00EAtement\n\nThe user-controlled value was:\nv\u00EAtement"
 						}
 					],
 					"count": "13",
@@ -1889,7 +1953,7 @@
 					"reference": "<p>https://cheatsheetseries.owasp.org/cheatsheets/Input_Validation_Cheat_Sheet.html</p>",
 					"cweid": "20",
 					"wascid": "20",
-					"sourceid": "912"
+					"sourceid": "901"
 				}
 			]
 		}
