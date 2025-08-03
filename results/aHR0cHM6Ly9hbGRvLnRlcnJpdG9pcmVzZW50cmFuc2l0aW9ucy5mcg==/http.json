@@ -1,27 +1,31 @@
 {
   "scan": {
     "algorithmVersion": 4,
-    "grade": "F",
+    "grade": "C",
     "error": null,
-    "score": 5,
+    "score": 50,
     "statusCode": 200,
-    "testsFailed": 6,
-    "testsPassed": 4,
+    "testsFailed": 3,
+    "testsPassed": 7,
     "testsQuantity": 10,
     "responseHeaders": {
-      "date": "Sun, 27 Jul 2025 04:28:20 GMT",
+      "date": "Sun, 03 Aug 2025 04:28:50 GMT",
       "content-type": "text/html; charset=utf-8",
       "transfer-encoding": "chunked",
       "connection": "close",
+      "server-timing": "cfCacheStatus;desc=\"DYNAMIC\", cfEdge;dur=11,cfOrigin;dur=255",
+      "x-content-type-options": "nosniff",
+      "strict-transport-security": "max-age=15552000; includeSubDomains; preload",
       "x-powered-by": "Express",
-      "etag": "W/\"2945d-CJ8xFYHAbvZ7qwmGsqcZE3VLxTc\"",
-      "x-envoy-upstream-service-time": "91",
+      "vary": "accept-encoding",
+      "x-envoy-upstream-service-time": "163",
       "x-koyeb-backend": "par",
-      "x-koyeb-glb": "was",
+      "x-koyeb-glb": "sfo",
       "cf-cache-status": "DYNAMIC",
       "server": "cloudflare",
-      "cf-ray": "965963b3f9983b02-IAD",
-      "alt-svc": "h3=\":443\"; ma=86400"
+      "nel": "{\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}",
+      "report-to": "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=ssu2ZZ9lXwmkRop5y5%2FtadYWc42WHWBYLX%2BoyhmtyU49mCiX08WMnN0Jtxv9L10G69UB0lcHlsmioj4Dkt5m%2FoNOo5ZyUD7T8969%2F97It22BkPwLl5upSF0tSUaosFfD\"}]}",
+      "cf-ray": "9693120c8c21f9cc-SJC"
     }
   },
   "tests": {
@@ -53,13 +57,14 @@
     },
     "redirection": {
       "expectation": "redirection-to-https",
-      "pass": false,
-      "result": "redirection-missing",
-      "scoreModifier": -20,
-      "destination": "http://aldo.territoiresentransitions.fr/",
-      "redirects": false,
+      "pass": true,
+      "result": "redirection-to-https",
+      "scoreModifier": 0,
+      "destination": "https://aldo.territoiresentransitions.fr/",
+      "redirects": true,
       "route": [
-        "http://aldo.territoiresentransitions.fr/"
+        "http://aldo.territoiresentransitions.fr/",
+        "https://aldo.territoiresentransitions.fr/"
       ],
       "statusCode": 200
     },
@@ -74,13 +79,13 @@
     },
     "strict-transport-security": {
       "expectation": "hsts-implemented-max-age-at-least-six-months",
-      "pass": false,
-      "result": "hsts-not-implemented",
-      "scoreModifier": -20,
-      "data": null,
-      "includeSubDomains": false,
-      "maxAge": null,
-      "preload": false,
+      "pass": true,
+      "result": "hsts-implemented-max-age-at-least-six-months",
+      "scoreModifier": 0,
+      "data": "max-age=15552000; includeSubDomains; preload",
+      "includeSubDomains": true,
+      "maxAge": 15552000,
+      "preload": true,
       "preloaded": false
     },
     "subresource-integrity": {
@@ -92,15 +97,19 @@
         "https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js": {
           "crossorigin": null,
           "integrity": null
+        },
+        "https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015": {
+          "crossorigin": "anonymous",
+          "integrity": "sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ=="
         }
       }
     },
     "x-content-type-options": {
       "expectation": "x-content-type-options-nosniff",
-      "pass": false,
-      "result": "x-content-type-options-not-implemented",
-      "scoreModifier": -5,
-      "data": null
+      "pass": true,
+      "result": "x-content-type-options-nosniff",
+      "scoreModifier": 0,
+      "data": "nosniff"
     },
     "x-frame-options": {
       "expectation": "x-frame-options-sameorigin-or-deny",
