@@ -51,13 +51,13 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - id: init
-        uses: "SocialGouv/dashlord-actions/init@v1"
+        uses: "SocialGouv/dashlord-actions/init@main"
         with:
           url: ${{ github.event.inputs.url }}
           tool: ${{ github.event.inputs.tool }}
       - id: updown-init
         if: ${{ matrix.sites.tools.updownio }}
-        uses: "SocialGouv/dashlord-actions/updown-init@v1"
+        uses: "SocialGouv/dashlord-actions/updown-init@main"
         env:
           UPDOWNIO_API_KEY: ${{ secrets.UPDOWNIO_API_KEY }}
 
@@ -85,7 +85,7 @@ jobs:
       - name: dsfr
         continue-on-error: true
         timeout-minutes: 10
-        uses: "socialgouv/dashlord-actions/dsfr@v1"
+        uses: "socialgouv/dashlord-actions/dsfr@main"
         if: ${{ matrix.sites.tools.dsfr }}
         with:
           url: ${{ matrix.sites.url }}
@@ -94,7 +94,7 @@ jobs:
       - name: eco-index
         continue-on-error: true
         timeout-minutes: 10
-        uses: "socialgouv/dashlord-actions/ecoindex@v1"
+        uses: "socialgouv/dashlord-actions/ecoindex@main"
         if: ${{ matrix.sites.tools.ecoindex }}
         with:
           url: ${{ matrix.sites.url }}
@@ -115,7 +115,7 @@ jobs:
       - name: Déclaration a11y
         continue-on-error: true
         timeout-minutes: 10
-        uses: "socialgouv/dashlord-actions/declaration-a11y@v1"
+        uses: "socialgouv/dashlord-actions/declaration-a11y@main"
         if: ${{ matrix.sites.tools['declaration-a11y'] }}
         with:
           url: ${{ matrix.sites.url }}
@@ -326,7 +326,7 @@ jobs:
         continue-on-error: true
         timeout-minutes: 10
         if: ${{ matrix.sites.tools.trivy && matrix.sites.docker }}
-        uses: "SocialGouv/dashlord-actions/trivy@v1"
+        uses: "SocialGouv/dashlord-actions/trivy@main"
         with:
           images: ${{ join(matrix.sites.docker) }}
           output: scans/trivy.json
@@ -336,7 +336,7 @@ jobs:
         id: sonarcloud
         continue-on-error: true
         timeout-minutes: 10
-        uses: SocialGouv/dashlord-actions/sonarcloud@v1
+        uses: "SocialGouv/dashlord-actions/sonarcloud@main"
         with:
           repos: ${{ join(matrix.sites.repositories) }}
           output: "scans/sonarcloud.json"
@@ -350,7 +350,7 @@ jobs:
           url: ${{ matrix.sites.url }}
           output: scans/404.json
 
-      - uses: SocialGouv/dashlord-actions/save@v1
+      - uses: "SocialGouv/dashlord-actions/save@main"
         with:
           url: ${{ matrix.sites.url }}
           # only clean up previous stats when all tools runned
