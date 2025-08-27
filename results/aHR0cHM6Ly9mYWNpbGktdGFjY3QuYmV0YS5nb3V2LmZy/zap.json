@@ -1,7 +1,7 @@
 {
 	"@programName": "ZAP",
 	"@version": "2.16.1",
-	"@generated": "Sun, 24 Aug 2025 04:27:23",
+	"@generated": "Wed, 27 Aug 2025 12:21:32",
 	"site":[ 
 		{
 			"@name": "https://facili-tacct.beta.gouv.fr",
@@ -9,6 +9,34 @@
 			"@port": "443",
 			"@ssl": "true",
 			"alerts": [ 
+				{
+					"pluginid": "10062",
+					"alertRef": "10062",
+					"alert": "PII Disclosure",
+					"name": "PII Disclosure",
+					"riskcode": "3",
+					"confidence": "3",
+					"riskdesc": "High (High)",
+					"desc": "<p>The response contains Personally Identifiable Information, such as CC number, SSN and similar sensitive data.</p>",
+					"instances":[ 
+						{
+							"id": "88",
+							"uri": "https://facili-tacct.beta.gouv.fr/ressources/articles/%2F_next%2Fstatic%2Fmedia%2Fjardin_francais.1a2bedc8.png&w=640&q=75",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "5816887085502253",
+							"otherinfo": "Credit Card Type detected: Maestro\nBank Identification Number: 581688\nBrand: MAESTRO\nCategory: STANDARD\nIssuer: "
+						}
+					],
+					"count": "1",
+					"solution": "<p>Check the response for the potential presence of personally identifiable information (PII), ensure nothing sensitive is leaked by the application.</p>",
+					"otherinfo": "<p>Credit Card Type detected: Maestro</p><p>Bank Identification Number: 581688</p><p>Brand: MAESTRO</p><p>Category: STANDARD</p><p>Issuer: </p>",
+					"reference": "",
+					"cweid": "359",
+					"wascid": "13",
+					"sourceid": "1069"
+				},
 				{
 					"pluginid": "10055",
 					"alertRef": "10055-4",
@@ -20,7 +48,7 @@
 					"desc": "<p>Content Security Policy (CSP) is an added layer of security that helps to detect and mitigate certain types of attacks. Including (but not limited to) Cross Site Scripting (XSS), and data injection attacks. These attacks are used for everything from data theft to site defacement or distribution of malware. CSP provides a set of standard HTTP headers that allow website owners to declare approved sources of content that browsers should be allowed to load on that page \u2014 covered types are JavaScript, CSS, HTML frames, fonts, images and embeddable objects such as Java applets, ActiveX, audio and video files.</p>",
 					"instances":[ 
 						{
-							"id": "4",
+							"id": "3",
 							"uri": "https://facili-tacct.beta.gouv.fr",
 							"method": "GET",
 							"param": "Content-Security-Policy",
@@ -30,7 +58,7 @@
 						},
 						{
 							"id": "29",
-							"uri": "https://facili-tacct.beta.gouv.fr/accessibilite",
+							"uri": "https://facili-tacct.beta.gouv.fr/",
 							"method": "GET",
 							"param": "Content-Security-Policy",
 							"attack": "",
@@ -38,7 +66,7 @@
 							"otherinfo": "The following directives either allow wildcard sources (or ancestors), are not defined, or are overly broadly defined:\nimg-src, connect-src"
 						},
 						{
-							"id": "45",
+							"id": "33",
 							"uri": "https://facili-tacct.beta.gouv.fr/ressources",
 							"method": "GET",
 							"param": "Content-Security-Policy",
@@ -66,7 +94,7 @@
 					"desc": "<p>Content Security Policy (CSP) is an added layer of security that helps to detect and mitigate certain types of attacks. Including (but not limited to) Cross Site Scripting (XSS), and data injection attacks. These attacks are used for everything from data theft to site defacement or distribution of malware. CSP provides a set of standard HTTP headers that allow website owners to declare approved sources of content that browsers should be allowed to load on that page \u2014 covered types are JavaScript, CSS, HTML frames, fonts, images and embeddable objects such as Java applets, ActiveX, audio and video files.</p>",
 					"instances":[ 
 						{
-							"id": "7",
+							"id": "4",
 							"uri": "https://facili-tacct.beta.gouv.fr",
 							"method": "GET",
 							"param": "Content-Security-Policy",
@@ -76,7 +104,7 @@
 						},
 						{
 							"id": "30",
-							"uri": "https://facili-tacct.beta.gouv.fr/accessibilite",
+							"uri": "https://facili-tacct.beta.gouv.fr/",
 							"method": "GET",
 							"param": "Content-Security-Policy",
 							"attack": "",
@@ -84,7 +112,7 @@
 							"otherinfo": "script-src includes unsafe-inline."
 						},
 						{
-							"id": "46",
+							"id": "34",
 							"uri": "https://facili-tacct.beta.gouv.fr/ressources",
 							"method": "GET",
 							"param": "Content-Security-Policy",
@@ -99,7 +127,7 @@
 					"reference": "<p>https://www.w3.org/TR/CSP/</p><p>https://caniuse.com/#search=content+security+policy</p><p>https://content-security-policy.com/</p><p>https://github.com/HtmlUnit/htmlunit-csp</p><p>https://developers.google.com/web/fundamentals/security/csp#policy_applies_to_a_wide_variety_of_resources</p>",
 					"cweid": "693",
 					"wascid": "15",
-					"sourceid": "1"
+					"sourceid": "6"
 				},
 				{
 					"pluginid": "10055",
@@ -112,7 +140,7 @@
 					"desc": "<p>Content Security Policy (CSP) is an added layer of security that helps to detect and mitigate certain types of attacks. Including (but not limited to) Cross Site Scripting (XSS), and data injection attacks. These attacks are used for everything from data theft to site defacement or distribution of malware. CSP provides a set of standard HTTP headers that allow website owners to declare approved sources of content that browsers should be allowed to load on that page \u2014 covered types are JavaScript, CSS, HTML frames, fonts, images and embeddable objects such as Java applets, ActiveX, audio and video files.</p>",
 					"instances":[ 
 						{
-							"id": "8",
+							"id": "6",
 							"uri": "https://facili-tacct.beta.gouv.fr",
 							"method": "GET",
 							"param": "Content-Security-Policy",
@@ -122,7 +150,7 @@
 						},
 						{
 							"id": "31",
-							"uri": "https://facili-tacct.beta.gouv.fr/accessibilite",
+							"uri": "https://facili-tacct.beta.gouv.fr/",
 							"method": "GET",
 							"param": "Content-Security-Policy",
 							"attack": "",
@@ -130,7 +158,7 @@
 							"otherinfo": "style-src includes unsafe-inline."
 						},
 						{
-							"id": "47",
+							"id": "35",
 							"uri": "https://facili-tacct.beta.gouv.fr/ressources",
 							"method": "GET",
 							"param": "Content-Security-Policy",
@@ -145,7 +173,7 @@
 					"reference": "<p>https://www.w3.org/TR/CSP/</p><p>https://caniuse.com/#search=content+security+policy</p><p>https://content-security-policy.com/</p><p>https://github.com/HtmlUnit/htmlunit-csp</p><p>https://developers.google.com/web/fundamentals/security/csp#policy_applies_to_a_wide_variety_of_resources</p>",
 					"cweid": "693",
 					"wascid": "15",
-					"sourceid": "1"
+					"sourceid": "6"
 				},
 				{
 					"pluginid": "10096",
@@ -158,22 +186,22 @@
 					"desc": "<p>A timestamp was disclosed by the application/web server. - Unix</p>",
 					"instances":[ 
 						{
-							"id": "32",
-							"uri": "https://facili-tacct.beta.gouv.fr/accessibilite",
+							"id": "47",
+							"uri": "https://facili-tacct.beta.gouv.fr/_next/static/css/af1b211d5488f388.css",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "1724987065",
-							"otherinfo": "1724987065, which evaluates to: 2024-08-30 03:04:25."
+							"evidence": "1607843137",
+							"otherinfo": "1607843137, which evaluates to: 2020-12-13 07:05:37."
 						}
 					],
 					"count": "1",
 					"solution": "<p>Manually confirm that the timestamp data is not sensitive, and that the data cannot be aggregated to disclose exploitable patterns.</p>",
-					"otherinfo": "<p>1724987065, which evaluates to: 2024-08-30 03:04:25.</p>",
+					"otherinfo": "<p>1607843137, which evaluates to: 2020-12-13 07:05:37.</p>",
 					"reference": "<p>https://cwe.mitre.org/data/definitions/200.html</p>",
 					"cweid": "497",
 					"wascid": "13",
-					"sourceid": "120"
+					"sourceid": "134"
 				},
 				{
 					"pluginid": "10094",
@@ -186,7 +214,7 @@
 					"desc": "<p>Base64 encoded data was disclosed by the application/web server. Note: in the interests of performance not all base64 strings in the response were analyzed individually, the entire response should be looked at by the analyst/security team/developer(s).</p>",
 					"instances":[ 
 						{
-							"id": "50",
+							"id": "41",
 							"uri": "https://facili-tacct.beta.gouv.fr",
 							"method": "GET",
 							"param": "",
@@ -195,7 +223,7 @@
 							"otherinfo": "\uFFFD\uFFFD\uFFFD\uFFFD\\x001a&x\uFFFD\uFFFDy:)Z\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFDw'"
 						},
 						{
-							"id": "61",
+							"id": "37",
 							"uri": "https://facili-tacct.beta.gouv.fr/",
 							"method": "GET",
 							"param": "",
@@ -204,17 +232,35 @@
 							"otherinfo": "\uFFFD\uFFFD\uFFFD\uFFFD\\x001a&x\uFFFD\uFFFDy:)Z\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFDw'"
 						},
 						{
-							"id": "74",
-							"uri": "https://facili-tacct.beta.gouv.fr/_next/static/chunks/app/(main)/layout-d79dfdd456935997.js",
+							"id": "63",
+							"uri": "https://facili-tacct.beta.gouv.fr/_next/static/chunks/app/(main)/layout-0609157e58ffed21.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "main_homePageTopWrapper__5l3Jz",
-							"otherinfo": "\uFFFD\uFFFD\uFFFD\uFFFD\\x001a&x\uFFFD\uFFFDy:)Z\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFDw'"
+							"evidence": "components_selectedTabButton__97Nq4",
+							"otherinfo": "r\uFFFD\uFFFD\uFFFDw\uFFFD\uFFFD\uFFFD\uFFFDzW\uFFFD\uFFFD\uFFFDSi\uFFFDn\uFFFD\uFFFD'\uFFFD\uFFFD{6\uFFFD"
 						},
 						{
-							"id": "76",
-							"uri": "https://facili-tacct.beta.gouv.fr/_next/static/chunks/app/(main)/page-abc3c5d1c3f5ea20.js",
+							"id": "64",
+							"uri": "https://facili-tacct.beta.gouv.fr/_next/static/chunks/app/(main)/page-939c676ca90c431f.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "components_selectedTabButton__97Nq4",
+							"otherinfo": "r\uFFFD\uFFFD\uFFFDw\uFFFD\uFFFD\uFFFD\uFFFDzW\uFFFD\uFFFD\uFFFDSi\uFFFDn\uFFFD\uFFFD'\uFFFD\uFFFD{6\uFFFD"
+						},
+						{
+							"id": "55",
+							"uri": "https://facili-tacct.beta.gouv.fr/_next/static/chunks/app/layout-7cb0524043d401e4.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "phc_nsb48oCvlg6fbb8KXqc9VHKB5LeA6ep3l4HMJfECv8R",
+							"otherinfo": "\uFFFD\\x0017?\uFFFD\uFFFD\uFFFD\uD9C2\uDFD6\\x000e\uFFFDm\uFFFD\n^\uFFFD=Tr\uFFFD\u4DC0\uFFFD\uFFFDw\uFFFD\uFFFD\uFFFD%\uFFFD\\x0002\uFFFD\uFFFD"
+						},
+						{
+							"id": "57",
+							"uri": "https://facili-tacct.beta.gouv.fr/_next/static/chunks/app/not-found-0e5a024bdf236c16.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -223,25 +269,7 @@
 						},
 						{
 							"id": "66",
-							"uri": "https://facili-tacct.beta.gouv.fr/_next/static/chunks/app/layout-0958a6f868a31460.js",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAMAAADz0U65AAAASFBMVEX////jCQ/mKC3xgIQ3N6jd3fH86OnhAAEAAI/9+/vt7PdFRbC1tN98fMf01NbzmJsYGJzqVFciIp7S0euhoddgYLvlGB3orK1jzlTyAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAO0lEQVR4nAXBhwGAMAwEsUu1P40O+2+KhHturGj4XhDJ8AziM3IvSOvlng1RA30OlA7jfC5qNGMAaAs/Qa0B266IshMAAAAASUVORK5CYII=",
-							"otherinfo": "\uFFFDPNG\r\n\\x001a\n\\x0000\\x0000\\x0000\rIHDR\\x0000\\x0000\\x0000\\x0008\\x0000\\x0000\\x0000\\x0008\\x0008\\x0003\\x0000\\x0000\\x0000\uFFFD\uFFFDN\uFFFD\\x0000\\x0000\\x0000HPLTE\uFFFD\uFFFD\uFFFD\uFFFD\t\\x000f\uFFFD(-\uFFFD77\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\\x0000\\x0001\\x0000\\x0000\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFDEE\uFFFD\uFFFD\uFFFD\uFFFD||\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\\x0018\\x0018\uFFFD\uFFFDTW\"\"\uFFFD\uFFFD\uFFFD\uB861\uFFFD``\uFFFD\uFFFD\\x0018\\x001d\u8B2Dc\uFFFDT\uFFFD\\x0000\\x0000\\x0000\tpHYs\\x0000\\x0000\\x000b\\x0013\\x0000\\x0000\\x000b\\x0013\\x0001\\x0000\uFFFD\uFFFD\\x0018\\x0000\\x0000\\x0000;IDATx\uFFFD\\x0005\uFFFD\uFFFD\\x0001\uFFFD0\\x000c\\x0004\uFFFDK\uFFFD?\uFFFD\\x000e\uFFFDo\uFFFD\uFFFD{n\uFFFDh\uFFFD^\\x0010\uFFFD\uFFFD\\x000c\uFFFD3r/H\uFFFD\uFFFD\rQ\\x0003}\\x000e\uFFFD\\x000e\uFFFD|.j4c\\x0000h\\x000b?A\uFFFD\\x0001\u06EE\uFFFD\uFFFD\\x0013\\x0000\\x0000\\x0000\\x0000IEND\uFFFDB`\uFFFD"
-						},
-						{
-							"id": "67",
-							"uri": "https://facili-tacct.beta.gouv.fr/_next/static/chunks/app/not-found-2b3def0b806135b3.js",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "Icon_fr-icon--valign-top__TmV6M",
-							"otherinfo": "!\uFFFD'\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD'\uFFFD\uFFFD\u0696('\uFFFD\uFFFD)\uFFFD\uFFFD\uFFFDW\uFFFD"
-						},
-						{
-							"id": "70",
-							"uri": "https://facili-tacct.beta.gouv.fr/_next/static/css/8e5c0f271df33515.css",
+							"uri": "https://facili-tacct.beta.gouv.fr/_next/static/css/90d63a478fb3163e.css",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -249,7 +277,7 @@
 							"otherinfo": "\uFFFDo\uFFFD~\uFFFD\uFFFD~/\uFFFD\\x001dzW\uFFFD~\uFFFD\uFFFD\uFFFD\uFFFDey\uFFFDn"
 						},
 						{
-							"id": "57",
+							"id": "48",
 							"uri": "https://facili-tacct.beta.gouv.fr/_next/static/css/af1b211d5488f388.css",
 							"method": "GET",
 							"param": "",
@@ -258,7 +286,7 @@
 							"otherinfo": "r\uFFFD\uFFFD\uFFFDw\uFFFD\uFFFD\uFFFD\uFFFDzW\uFFFD\uFFFD\uFFFDSi\uFFFDn\uFFFD\uFFFD'\uFFFD\uFFFD{6\uFFFD"
 						},
 						{
-							"id": "54",
+							"id": "39",
 							"uri": "https://facili-tacct.beta.gouv.fr/ressources",
 							"method": "GET",
 							"param": "",
@@ -267,22 +295,22 @@
 							"otherinfo": "\uFFFD\uFFFD,\uFFFD\uFFFD\uFFFDz\uFFFD\uFFFDz\uFFFD(\uFFFD\uFFFD\\x001e\uFFFDj\u06A6\uFFFD\uFFFD\uFFFD\uFFFD\uFFFDg\uFFFD"
 						},
 						{
-							"id": "84",
-							"uri": "https://facili-tacct.beta.gouv.fr/ressources/articles/ilot-chaleur-urbain-erreurs-a-eviter",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "article_grayQuoteWrapper__V9Vx1",
-							"otherinfo": "j\uFFFDbrW\uFFFD\uFFFD\uFFFD\uFFFDB\uFFFD-yj\u06A6\uFFFD\uFFFD\uFFFD\uFFFD}W\\x001d"
-						},
-						{
-							"id": "87",
+							"id": "77",
 							"uri": "https://facili-tacct.beta.gouv.fr/ressources/articles/mobilisation-diagnostic-vulnerabilite",
 							"method": "GET",
 							"param": "",
 							"attack": "",
 							"evidence": "iVBORw0KGgoAAAANSUhEUgAAAAgAAAADCAMAAACZFr56AAAAGFBMVEXr7O3e3+D6+/vv9/jy8vLS0tK5urukpaUty3ssAAAACXBIWXMAABYlAAAWJQFJUiTwAAAAH0lEQVR4nAXBgQEAMAiDMGh1/v/xEtrgKKWSe8yyiXwC8AA5yC8qVgAAAABJRU5ErkJggg==",
 							"otherinfo": "\uFFFDPNG\r\n\\x001a\n\\x0000\\x0000\\x0000\rIHDR\\x0000\\x0000\\x0000\\x0008\\x0000\\x0000\\x0000\\x0003\\x0008\\x0003\\x0000\\x0000\\x0000\uFFFD\\x0016\uFFFDz\\x0000\\x0000\\x0000\\x0018PLTE\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\u04B9\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD-\uFFFD{,\\x0000\\x0000\\x0000\tpHYs\\x0000\\x0000\\x0016%\\x0000\\x0000\\x0016%\\x0001IR$\uFFFD\\x0000\\x0000\\x0000\\x001fIDATx\uFFFD\\x0005\uFFFD\uFFFD\\x0001\\x00000\\x0008\uFFFD0hu\uFFFD\uFFFD\uFFFD\\x0012\uFFFD\uFFFD(\uFFFD\uFFFD{\u0332\uFFFD|\\x0002\uFFFD\\x00009\uFFFD/*V\\x0000\\x0000\\x0000\\x0000IEND\uFFFDB`\uFFFD"
+						},
+						{
+							"id": "71",
+							"uri": "https://facili-tacct.beta.gouv.fr/ressources/articles/stagiaire-diagnostic-vulnerabilite-climat",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "article_grayQuoteWrapper__V9Vx1",
+							"otherinfo": "j\uFFFDbrW\uFFFD\uFFFD\uFFFD\uFFFDB\uFFFD-yj\u06A6\uFFFD\uFFFD\uFFFD\uFFFD}W\\x001d"
 						}
 					],
 					"count": "11",
@@ -304,7 +332,7 @@
 					"desc": "<p>The Content-Type header was either missing or empty.</p>",
 					"instances":[ 
 						{
-							"id": "80",
+							"id": "68",
 							"uri": "https://facili-tacct.beta.gouv.fr/api/",
 							"method": "GET",
 							"param": "content-type",
@@ -313,7 +341,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "82",
+							"id": "67",
 							"uri": "https://facili-tacct.beta.gouv.fr/iframe/",
 							"method": "GET",
 							"param": "content-type",
@@ -322,7 +350,16 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "26",
+							"id": "25",
+							"uri": "https://facili-tacct.beta.gouv.fr/ressources/articles/ilot-chaleur-urbain-erreurs-a-eviter/",
+							"method": "GET",
+							"param": "content-type",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "0",
 							"uri": "https://facili-tacct.beta.gouv.fr/ressources/articles/stagiaire-diagnostic-vulnerabilite-climat/",
 							"method": "GET",
 							"param": "content-type",
@@ -331,7 +368,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "100",
+							"id": "87",
 							"uri": "https://facili-tacct.beta.gouv.fr/ressources/articles?title=Article%20CdC%20sur%20la%20facilitation",
 							"method": "GET",
 							"param": "content-type",
@@ -340,7 +377,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "99",
+							"id": "86",
 							"uri": "https://facili-tacct.beta.gouv.fr/ressources/articles?title=La%2520facilitation%2520d%E2%80%99ateliers%2520:%2520une%2520d%C3%A9marche%2520%C3%A9prouv%C3%A9e%2520d%E2%80%99engagement",
 							"method": "GET",
 							"param": "content-type",
@@ -349,7 +386,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "81",
+							"id": "69",
 							"uri": "https://facili-tacct.beta.gouv.fr/sandbox/",
 							"method": "GET",
 							"param": "content-type",
@@ -358,13 +395,13 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "6",
+					"count": "7",
 					"solution": "<p>Ensure each page is setting the specific and appropriate content-type value for the content being delivered.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://learn.microsoft.com/en-us/previous-versions/windows/internet-explorer/ie-developer/compatibility/gg622941(v=vs.85)</p>",
 					"cweid": "345",
 					"wascid": "12",
-					"sourceid": "234"
+					"sourceid": "238"
 				},
 				{
 					"pluginid": "10027",
@@ -377,53 +414,17 @@
 					"desc": "<p>The response appears to contain suspicious comments which may help an attacker.</p>",
 					"instances":[ 
 						{
-							"id": "69",
-							"uri": "https://facili-tacct.beta.gouv.fr/_next/static/chunks/336a3fb0-29624aebf9fc4201.js",
+							"id": "85",
+							"uri": "https://facili-tacct.beta.gouv.fr/_next/static/chunks/3629-424aa6e118194ff5.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
 							"evidence": "select",
-							"otherinfo": "The following pattern was used: \\bSELECT\\b and was detected in likely comment: \"//react.dev/errors/\"+e;if(1<arguments.length){n+=\"?args[]=\"+encodeURIComponent(arguments[1]);for(var t=2;t<arguments.length;t++)\", see evidence field for the suspicious comment/snippet."
+							"otherinfo": "The following pattern was used: \\bSELECT\\b and was detected in likely comment: \"//www.w3.org/2000/svg\",width:t,height:n,role:a,\"aria-label\":s,\"aria-labelledby\":f,\"aria-describedby\":u,focusable:c,tabIndex:c?0:\", see evidence field for the suspicious comment/snippet."
 						},
 						{
-							"id": "97",
-							"uri": "https://facili-tacct.beta.gouv.fr/_next/static/chunks/3561-0f6f7de5805c6e27.js",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "select",
-							"otherinfo": "The following pattern was used: \\bSELECT\\b and was detected in likely comment: \"//.test(window.navigator.userAgent),G=null,X=!1,Q=N,Z=e=>{e.to&&(u=e.to),e.now&&(y.now=e.now),void 0!==e.colors&&(G=e.colors),nu\", see evidence field for the suspicious comment/snippet."
-						},
-						{
-							"id": "68",
-							"uri": "https://facili-tacct.beta.gouv.fr/_next/static/chunks/6412-717f615fbc83fc38.js",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "from",
-							"otherinfo": "The following pattern was used: \\bFROM\\b and was detected in likely comment: \"//fonts.googleapis.com/css\",\"https://use.typekit.net/\"].some(t=>e.props.href.startsWith(t))){let t={...e.props||{}};return t[\"da\", see evidence field for the suspicious comment/snippet."
-						},
-						{
-							"id": "73",
-							"uri": "https://facili-tacct.beta.gouv.fr/_next/static/chunks/6896-7d74d1427f520665.js",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "where",
-							"otherinfo": "The following pattern was used: \\bWHERE\\b and was detected in likely comment: \"//www.w3.org/2000/svg\",width:\"80px\",height:\"80px\",viewBox:\"0 0 80 80\"},[\"artwork-decorative\",\"artwork-minor\",\"artwork-major\"].ma\", see evidence field for the suspicious comment/snippet."
-						},
-						{
-							"id": "79",
-							"uri": "https://facili-tacct.beta.gouv.fr/_next/static/chunks/8314-21667711ec0e272d.js",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "bug",
-							"otherinfo": "The following pattern was used: \\bBUG\\b and was detected in likely comment: \"//react.dev/errors/\"+e;if(1<arguments.length){t+=\"?args[]=\"+encodeURIComponent(arguments[1]);for(var r=2;r<arguments.length;r++)\", see evidence field for the suspicious comment/snippet."
-						},
-						{
-							"id": "71",
-							"uri": "https://facili-tacct.beta.gouv.fr/_next/static/chunks/9381-a66bdde9fe2b50be.js",
+							"id": "61",
+							"uri": "https://facili-tacct.beta.gouv.fr/_next/static/chunks/4850-cb375ff856084c5c.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -431,8 +432,26 @@
 							"otherinfo": "The following pattern was used: \\bSELECT\\b and was detected in likely comment: \"//mui.com/production-error/?code=${e}`);return t.forEach(e=>r.searchParams.append(\"args[]\",e)),`Minified MUI error #${e}; visit \", see evidence field for the suspicious comment/snippet."
 						},
 						{
-							"id": "72",
-							"uri": "https://facili-tacct.beta.gouv.fr/_next/static/chunks/app/(main)/layout-d79dfdd456935997.js",
+							"id": "58",
+							"uri": "https://facili-tacct.beta.gouv.fr/_next/static/chunks/5194-9e0f0e660a011d77.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "from",
+							"otherinfo": "The following pattern was used: \\bFROM\\b and was detected in likely comment: \"//www.w3.org/2000/svg' \"+s+\"%3E%3Cfilter id='b' color-interpolation-filters='sRGB'%3E%3CfeGaussianBlur stdDeviation='20'/%3E%3Cf\", see evidence field for the suspicious comment/snippet."
+						},
+						{
+							"id": "59",
+							"uri": "https://facili-tacct.beta.gouv.fr/_next/static/chunks/9278-48c5088cb775a94c.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "query",
+							"otherinfo": "The following pattern was used: \\bQUERY\\b and was detected in likely comment: \"//example.com/\").pathname}catch{return\"/\"}}let m=new WeakSet;function g(e,t,r){m.has(t)||(m.add(t),[\"back\",\"forward\",\"push\",\"rep\", see evidence field for the suspicious comment/snippet."
+						},
+						{
+							"id": "62",
+							"uri": "https://facili-tacct.beta.gouv.fr/_next/static/chunks/app/(main)/layout-0609157e58ffed21.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -440,25 +459,25 @@
 							"otherinfo": "The following pattern was used: \\bUSER\\b and was detected in likely comment: \"//agirpourlatransition.ademe.fr\",children:\"agirpourlatransition.ademe.fr\"})}),(0,n.jsx)(\"li\",{className:\"fr-footer__content-item\", see evidence field for the suspicious comment/snippet."
 						},
 						{
-							"id": "75",
-							"uri": "https://facili-tacct.beta.gouv.fr/_next/static/chunks/app/global-error-3e0474bcad8d8e16.js",
+							"id": "54",
+							"uri": "https://facili-tacct.beta.gouv.fr/_next/static/chunks/cb32ee05-8d4d341264b212b2.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "from",
-							"otherinfo": "The following pattern was used: \\bFROM\\b and was detected in likely comment: \"//fonts.googleapis.com/css\",\"https://use.typekit.net/\"].some(t=>e.props.href.startsWith(t))){let t={...e.props||{}};return t[\"da\", see evidence field for the suspicious comment/snippet."
+							"evidence": "select",
+							"otherinfo": "The following pattern was used: \\bSELECT\\b and was detected in likely comment: \"//react.dev/errors/\"+e;if(1<arguments.length){n+=\"?args[]=\"+encodeURIComponent(arguments[1]);for(var t=2;t<arguments.length;t++)\", see evidence field for the suspicious comment/snippet."
 						},
 						{
-							"id": "78",
-							"uri": "https://facili-tacct.beta.gouv.fr/_next/static/chunks/f9a1229c-254963bad2f7bbef.js",
+							"id": "60",
+							"uri": "https://facili-tacct.beta.gouv.fr/_next/static/chunks/f9a1229c-80e624ac4d0513b0.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
 							"evidence": "bug",
-							"otherinfo": "The following pattern was used: \\bBUG\\b and was detected in likely comment: \"//app.posthog.com/home#panel=support%3Asupport%3A.\"),ee.critical(e)}}},P=function(e){var t={};return S(e,function(e,i){W(e)&&e.l\", see evidence field for the suspicious comment/snippet."
+							"otherinfo": "The following pattern was used: \\bBUG\\b and was detected in likely comment: \"//app.posthog.com/home#panel=support%3Asupport%3A.\"),Z.critical(e)}}},P=function(e){var t={};return S(e,function(e,i){z(e)&&e.le\", see evidence field for the suspicious comment/snippet."
 						},
 						{
-							"id": "77",
+							"id": "65",
 							"uri": "https://facili-tacct.beta.gouv.fr/_next/static/chunks/polyfills-42372ed130431b0a.js",
 							"method": "GET",
 							"param": "",
@@ -467,22 +486,22 @@
 							"otherinfo": "The following pattern was used: \\bFROM\\b and was detected in likely comment: \"//github.com/zloirock/core-js/blob/v3.38.1/LICENSE\",source:\"https://github.com/zloirock/core-js\"})}),nt=function(t,e){return rt[\", see evidence field for the suspicious comment/snippet."
 						},
 						{
-							"id": "88",
+							"id": "73",
 							"uri": "https://facili-tacct.beta.gouv.fr/ressources/articles/mise-en-recit-territoire-adaptation-climat",
 							"method": "GET",
 							"param": "",
 							"attack": "",
 							"evidence": "from",
-							"otherinfo": "The following pattern was used: \\bFROM\\b and was detected in likely comment: \"//librairie.ademe.fr/7215-questionner-l-imaginaire-pour-faire-reagir-en-atelier-tacct-retour-d-experience-de-clermont-auvergne-m\", see evidence field for the suspicious comment/snippet."
+							"otherinfo": "The following pattern was used: \\bFROM\\b and was detected in likely comment: \"//www.cerdd.org/Parcours-thematiques/Mise-en-recits\\\",\\\"target\\\":\\\"_blank\\\",\\\"rel\\\":\\\"noreferrer\\\",\\\"data-sentry-element\\\":\\\"Lin\", see evidence field for the suspicious comment/snippet."
 						}
 					],
-					"count": "11",
+					"count": "9",
 					"solution": "<p>Remove all comments that return information that may help an attacker and fix any underlying problems they refer to.</p>",
-					"otherinfo": "<p>The following pattern was used: \\bSELECT\\b and was detected in likely comment: \"//react.dev/errors/\"+e;if(1<arguments.length){n+=\"?args[]=\"+encodeURIComponent(arguments[1]);for(var t=2;t<arguments.length;t++)\", see evidence field for the suspicious comment/snippet.</p>",
+					"otherinfo": "<p>The following pattern was used: \\bSELECT\\b and was detected in likely comment: \"//www.w3.org/2000/svg\",width:t,height:n,role:a,\"aria-label\":s,\"aria-labelledby\":f,\"aria-describedby\":u,focusable:c,tabIndex:c?0:\", see evidence field for the suspicious comment/snippet.</p>",
 					"reference": "",
 					"cweid": "615",
 					"wascid": "13",
-					"sourceid": "158"
+					"sourceid": "705"
 				},
 				{
 					"pluginid": "10109",
@@ -495,7 +514,7 @@
 					"desc": "<p>The application appears to be a modern web application. If you need to explore it automatically then the Ajax Spider may well be more effective than the standard one.</p>",
 					"instances":[ 
 						{
-							"id": "49",
+							"id": "36",
 							"uri": "https://facili-tacct.beta.gouv.fr/ressources",
 							"method": "GET",
 							"param": "",
@@ -504,7 +523,7 @@
 							"otherinfo": "Links have been found that do not have traditional href attributes, which is an indication that this is a modern web application."
 						},
 						{
-							"id": "85",
+							"id": "72",
 							"uri": "https://facili-tacct.beta.gouv.fr/ressources/articles/analyser-diagnostic-vulnerabilite",
 							"method": "GET",
 							"param": "",
@@ -513,7 +532,7 @@
 							"otherinfo": "Links have been found that do not have traditional href attributes, which is an indication that this is a modern web application."
 						},
 						{
-							"id": "94",
+							"id": "81",
 							"uri": "https://facili-tacct.beta.gouv.fr/ressources/articles/atelier-climastory-sensibilisation-adaptation",
 							"method": "GET",
 							"param": "",
@@ -522,7 +541,7 @@
 							"otherinfo": "Links have been found that do not have traditional href attributes, which is an indication that this is a modern web application."
 						},
 						{
-							"id": "93",
+							"id": "79",
 							"uri": "https://facili-tacct.beta.gouv.fr/ressources/articles/ateliers-adacc-adaptation",
 							"method": "GET",
 							"param": "",
@@ -531,7 +550,7 @@
 							"otherinfo": "Links have been found that do not have traditional href attributes, which is an indication that this is a modern web application."
 						},
 						{
-							"id": "90",
+							"id": "76",
 							"uri": "https://facili-tacct.beta.gouv.fr/ressources/articles/facilitation-ateliers-mobilisation",
 							"method": "GET",
 							"param": "",
@@ -540,7 +559,7 @@
 							"otherinfo": "Links have been found that do not have traditional href attributes, which is an indication that this is a modern web application."
 						},
 						{
-							"id": "91",
+							"id": "78",
 							"uri": "https://facili-tacct.beta.gouv.fr/ressources/articles/facilitation-cahier-charges",
 							"method": "GET",
 							"param": "",
@@ -549,7 +568,7 @@
 							"otherinfo": "Links have been found that do not have traditional href attributes, which is an indication that this is a modern web application."
 						},
 						{
-							"id": "83",
+							"id": "82",
 							"uri": "https://facili-tacct.beta.gouv.fr/ressources/articles/ilot-chaleur-urbain-erreurs-a-eviter",
 							"method": "GET",
 							"param": "",
@@ -558,7 +577,7 @@
 							"otherinfo": "Links have been found that do not have traditional href attributes, which is an indication that this is a modern web application."
 						},
 						{
-							"id": "89",
+							"id": "74",
 							"uri": "https://facili-tacct.beta.gouv.fr/ressources/articles/mise-en-recit-territoire-adaptation-climat",
 							"method": "GET",
 							"param": "",
@@ -567,7 +586,7 @@
 							"otherinfo": "Links have been found that do not have traditional href attributes, which is an indication that this is a modern web application."
 						},
 						{
-							"id": "86",
+							"id": "75",
 							"uri": "https://facili-tacct.beta.gouv.fr/ressources/articles/mobilisation-diagnostic-vulnerabilite",
 							"method": "GET",
 							"param": "",
@@ -576,7 +595,7 @@
 							"otherinfo": "Links have been found that do not have traditional href attributes, which is an indication that this is a modern web application."
 						},
 						{
-							"id": "96",
+							"id": "83",
 							"uri": "https://facili-tacct.beta.gouv.fr/ressources/articles/pnacc-tracc-comment-suis-je-concerne",
 							"method": "GET",
 							"param": "",
@@ -585,7 +604,7 @@
 							"otherinfo": "Links have been found that do not have traditional href attributes, which is an indication that this is a modern web application."
 						},
 						{
-							"id": "92",
+							"id": "80",
 							"uri": "https://facili-tacct.beta.gouv.fr/ressources/articles/reussir-mobilisation-acteurs-adaptation",
 							"method": "GET",
 							"param": "",
@@ -594,7 +613,7 @@
 							"otherinfo": "Links have been found that do not have traditional href attributes, which is an indication that this is a modern web application."
 						},
 						{
-							"id": "95",
+							"id": "70",
 							"uri": "https://facili-tacct.beta.gouv.fr/ressources/articles/stagiaire-diagnostic-vulnerabilite-climat",
 							"method": "GET",
 							"param": "",
@@ -609,7 +628,7 @@
 					"reference": "",
 					"cweid": "-1",
 					"wascid": "-1",
-					"sourceid": "125"
+					"sourceid": "123"
 				},
 				{
 					"pluginid": "10049",
@@ -622,7 +641,7 @@
 					"desc": "<p>The response contents are not storable by caching components such as proxy servers. If the response does not contain sensitive, personal or user-specific information, it may benefit from being stored and cached, to improve performance.</p>",
 					"instances":[ 
 						{
-							"id": "14",
+							"id": "27",
 							"uri": "https://facili-tacct.beta.gouv.fr/ressources/articles/ilot-chaleur-urbain-erreurs-a-eviter/",
 							"method": "GET",
 							"param": "",
@@ -631,7 +650,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "27",
+							"id": "14",
 							"uri": "https://facili-tacct.beta.gouv.fr/ressources/articles/stagiaire-diagnostic-vulnerabilite-climat/",
 							"method": "GET",
 							"param": "",
@@ -646,7 +665,7 @@
 					"reference": "<p>https://datatracker.ietf.org/doc/html/rfc7234</p><p>https://datatracker.ietf.org/doc/html/rfc7231</p><p>https://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html</p>",
 					"cweid": "524",
 					"wascid": "13",
-					"sourceid": "99"
+					"sourceid": "120"
 				},
 				{
 					"pluginid": "10015",
@@ -668,7 +687,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "59",
+							"id": "28",
 							"uri": "https://facili-tacct.beta.gouv.fr/",
 							"method": "GET",
 							"param": "cache-control",
@@ -677,7 +696,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "28",
+							"id": "56",
 							"uri": "https://facili-tacct.beta.gouv.fr/accessibilite",
 							"method": "GET",
 							"param": "cache-control",
@@ -686,7 +705,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "98",
+							"id": "84",
 							"uri": "https://facili-tacct.beta.gouv.fr/iframe",
 							"method": "GET",
 							"param": "cache-control",
@@ -695,7 +714,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "60",
+							"id": "50",
 							"uri": "https://facili-tacct.beta.gouv.fr/mentions-legales",
 							"method": "GET",
 							"param": "cache-control",
@@ -704,7 +723,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "65",
+							"id": "53",
 							"uri": "https://facili-tacct.beta.gouv.fr/politique-de-confidentialite",
 							"method": "GET",
 							"param": "cache-control",
@@ -713,7 +732,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "63",
+							"id": "52",
 							"uri": "https://facili-tacct.beta.gouv.fr/politique-des-cookies",
 							"method": "GET",
 							"param": "cache-control",
@@ -722,7 +741,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "44",
+							"id": "32",
 							"uri": "https://facili-tacct.beta.gouv.fr/ressources",
 							"method": "GET",
 							"param": "cache-control",
@@ -755,7 +774,7 @@
 					"reference": "<p>https://cheatsheetseries.owasp.org/cheatsheets/Session_Management_Cheat_Sheet.html#web-content-caching</p><p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cache-Control</p><p>https://grayduck.mn/2021/09/13/cache-control-recommendations/</p>",
 					"cweid": "525",
 					"wascid": "13",
-					"sourceid": "1"
+					"sourceid": "6"
 				},
 				{
 					"pluginid": "90005",
@@ -769,7 +788,7 @@
 					"instances":[ 
 						{
 							"id": "12",
-							"uri": "https://facili-tacct.beta.gouv.fr/ressources/articles/ilot-chaleur-urbain-erreurs-a-eviter/",
+							"uri": "https://facili-tacct.beta.gouv.fr/ressources/articles/stagiaire-diagnostic-vulnerabilite-climat/",
 							"method": "GET",
 							"param": "Sec-Fetch-Dest",
 							"attack": "",
@@ -815,7 +834,7 @@
 					"instances":[ 
 						{
 							"id": "11",
-							"uri": "https://facili-tacct.beta.gouv.fr/ressources/articles/ilot-chaleur-urbain-erreurs-a-eviter/",
+							"uri": "https://facili-tacct.beta.gouv.fr/ressources/articles/stagiaire-diagnostic-vulnerabilite-climat/",
 							"method": "GET",
 							"param": "Sec-Fetch-Mode",
 							"attack": "",
@@ -861,7 +880,7 @@
 					"instances":[ 
 						{
 							"id": "10",
-							"uri": "https://facili-tacct.beta.gouv.fr/ressources/articles/ilot-chaleur-urbain-erreurs-a-eviter/",
+							"uri": "https://facili-tacct.beta.gouv.fr/ressources/articles/stagiaire-diagnostic-vulnerabilite-climat/",
 							"method": "GET",
 							"param": "Sec-Fetch-Site",
 							"attack": "",
@@ -907,7 +926,7 @@
 					"instances":[ 
 						{
 							"id": "13",
-							"uri": "https://facili-tacct.beta.gouv.fr/ressources/articles/ilot-chaleur-urbain-erreurs-a-eviter/",
+							"uri": "https://facili-tacct.beta.gouv.fr/ressources/articles/stagiaire-diagnostic-vulnerabilite-climat/",
 							"method": "GET",
 							"param": "Sec-Fetch-User",
 							"attack": "",
@@ -952,7 +971,7 @@
 					"desc": "<p>The response contents are storable by caching components such as proxy servers, and may be retrieved directly from the cache, rather than from the origin server by the caching servers, in response to similar requests from other users. If the response data is sensitive, personal or user-specific, this may result in sensitive information being leaked. In some cases, this may even result in a user gaining complete control of the session of another user, depending on the configuration of the caching components in use in their environment. This is primarily an issue where \"shared\" caching servers such as \"proxy\" caches are configured on the local network. This configuration is typically found in corporate or educational environments, for instance.</p>",
 					"instances":[ 
 						{
-							"id": "51",
+							"id": "42",
 							"uri": "https://facili-tacct.beta.gouv.fr",
 							"method": "GET",
 							"param": "",
@@ -961,7 +980,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "62",
+							"id": "38",
 							"uri": "https://facili-tacct.beta.gouv.fr/",
 							"method": "GET",
 							"param": "",
@@ -970,7 +989,16 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "56",
+							"id": "51",
+							"uri": "https://facili-tacct.beta.gouv.fr/_next/static/chunks/webpack-7f407beeed5a3f6d.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "max-age=31536000",
+							"otherinfo": ""
+						},
+						{
+							"id": "46",
 							"uri": "https://facili-tacct.beta.gouv.fr/_next/static/css/1b1d10445b60e5f7.css",
 							"method": "GET",
 							"param": "",
@@ -979,7 +1007,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "58",
+							"id": "49",
 							"uri": "https://facili-tacct.beta.gouv.fr/_next/static/css/af1b211d5488f388.css",
 							"method": "GET",
 							"param": "",
@@ -988,25 +1016,16 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "48",
-							"uri": "https://facili-tacct.beta.gouv.fr/accessibilite",
+							"id": "45",
+							"uri": "https://facili-tacct.beta.gouv.fr/_next/static/css/d38371ce126a8c5b.css",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "s-maxage=31536000",
+							"evidence": "max-age=31536000",
 							"otherinfo": ""
 						},
 						{
-							"id": "64",
-							"uri": "https://facili-tacct.beta.gouv.fr/mentions-legales",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "s-maxage=31536000",
-							"otherinfo": ""
-						},
-						{
-							"id": "55",
+							"id": "40",
 							"uri": "https://facili-tacct.beta.gouv.fr/ressources",
 							"method": "GET",
 							"param": "",
@@ -1043,7 +1062,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "25",
+							"id": "26",
 							"uri": "https://facili-tacct.beta.gouv.fr/sitemap.xml",
 							"method": "GET",
 							"param": "",
