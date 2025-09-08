@@ -49,13 +49,18 @@ jobs:
       sites: ${{ steps.init.outputs.sites }}
       config: ${{ steps.init.outputs.config }}
     steps:
+      - name: Set tags output
+        id: tags
+        run: |
+         TAGS_INPUT=${{ github.event.inputs.tags }}
+         echo "::set-output name=value::${TAGS_INPUT:-"production"}"
       - uses: actions/checkout@v4
       - id: init
         uses: "SocialGouv/dashlord-actions/init@v1"
         with:
           url: ${{ github.event.inputs.url }}
           tool: ${{ github.event.inputs.tool }}
-          tags: ${{ github.event.inputs.tags }}
+          tags: ${{ github.tags.outputs.value }}
       - id: updown-init
         if: ${{ matrix.sites.tools.updownio }}
         uses: "SocialGouv/dashlord-actions/updown-init@v1"
