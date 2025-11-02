@@ -1,8 +1,8 @@
 {
 	"@programName": "ZAP",
 	"@version": "2.16.1",
-	"@generated": "Sun, 26 Oct 2025 02:45:45",
-	"created": "2025-10-26T02:45:45.952694698Z",
+	"@generated": "Sun, 2 Nov 2025 02:38:52",
+	"created": "2025-11-02T02:38:52.435481519Z",
 	"site":[ 
 		{
 			"@name": "https://mission-transition-ecologique.beta.gouv.fr",
@@ -10,6 +10,34 @@
 			"@port": "443",
 			"@ssl": "true",
 			"alerts": [ 
+				{
+					"pluginid": "10055",
+					"alertRef": "10055-13",
+					"alert": "CSP: Failure to Define Directive with No Fallback",
+					"name": "CSP: Failure to Define Directive with No Fallback",
+					"riskcode": "2",
+					"confidence": "3",
+					"riskdesc": "Medium (High)",
+					"desc": "<p>The Content Security Policy fails to define one of the directives that has no fallback. Missing/excluding them is the same as allowing anything.</p>",
+					"instances":[ 
+						{
+							"id": "58",
+							"uri": "https://mission-transition-ecologique.beta.gouv.fr/iframe",
+							"method": "GET",
+							"param": "Content-Security-Policy",
+							"attack": "",
+							"evidence": "base-uri 'self'; font-src 'self'; form-action 'self'; img-src 'self' data:; object-src 'self'; script-src-attr 'none'; style-src 'self' 'unsafe-inline' https://baserow.io https://tee-metabase.osc-fr1.scalingo.io; script-src 'self' 'nonce-CIi+N15gSMKnC3nfbyaR8xTF' 'strict-dynamic'; upgrade-insecure-requests; script-src-elem 'self' 'unsafe-inline' 'nonce-CIi+N15gSMKnC3nfbyaR8xTF' https://stats.beta.gouv.fr https://eu.i.posthog.com https://eu-assets.i.posthog.com https://baserow.io https://tee-metabase.osc-fr1.scalingo.io; worker-src 'self' blob:; connect-src 'self' https://stats.beta.gouv.fr https://baserow.io https://tee-metabase.osc-fr1.scalingo.io https://eu.i.posthog.com https://eu-assets.i.posthog.com https://sentry.incubateur.net; frame-src 'self' https://baserow.io https://tee-metabase.osc-fr1.scalingo.io; manifest-src 'self'; default-src 'none';",
+							"otherinfo": "The directive(s): frame-ancestors is/are among the directives that do not fallback to default-src."
+						}
+					],
+					"count": "1",
+					"solution": "<p>Ensure that your web server, application server, load balancer, etc. is properly configured to set the Content-Security-Policy header.</p>",
+					"otherinfo": "<p>The directive(s): frame-ancestors is/are among the directives that do not fallback to default-src.</p>",
+					"reference": "<p>https://www.w3.org/TR/CSP/</p><p>https://caniuse.com/#search=content+security+policy</p><p>https://content-security-policy.com/</p><p>https://github.com/HtmlUnit/htmlunit-csp</p><p>https://web.dev/articles/csp#resource-options</p>",
+					"cweid": "693",
+					"wascid": "15",
+					"sourceid": "75"
+				},
 				{
 					"pluginid": "10055",
 					"alertRef": "10055-5",
@@ -21,39 +49,39 @@
 					"desc": "<p>Content Security Policy (CSP) is an added layer of security that helps to detect and mitigate certain types of attacks. Including (but not limited to) Cross Site Scripting (XSS), and data injection attacks. These attacks are used for everything from data theft to site defacement or distribution of malware. CSP provides a set of standard HTTP headers that allow website owners to declare approved sources of content that browsers should be allowed to load on that page \u2014 covered types are JavaScript, CSS, HTML frames, fonts, images and embeddable objects such as Java applets, ActiveX, audio and video files.</p>",
 					"instances":[ 
 						{
-							"id": "24",
+							"id": "44",
 							"uri": "https://mission-transition-ecologique.beta.gouv.fr/",
 							"method": "GET",
 							"param": "content-security-policy",
 							"attack": "",
-							"evidence": "base-uri 'self'; font-src 'self'; form-action 'self'; frame-ancestors 'self'; img-src 'self' data:; object-src 'self'; script-src-attr 'none'; style-src 'self' 'unsafe-inline' https://baserow.io https://tee-metabase.osc-fr1.scalingo.io; script-src 'self' 'strict-dynamic' 'sha256-pAWsbSB02rnrh8Ufv+E2pDFtq2wB6Ob+pkINk6ih+n4=' 'sha256-vSaKKqewqObKagHzQdJzPPPAn9qPzD7OQ9qSVE62lys=' 'sha384-BBITb7H077QtzZE9GRNje0zN3U8YOYQ76ynx7DguiM0VbTbpX6QmK8Jf4DvLS6Jt' 'sha384-oG7rvEJ301uSUrZ7E0pwKQH2l37rI0OfkywGUz0+otmW9DbSweRl4Rk0KEqfbPTZ' 'sha384-cMNR5Gv5G3oYwMv2aIEWTBiqNa1tF6H7HN7MJQAk3SuxeOMiRnqNLo72qRGyzHK8' 'sha384-zkN1Yj1bjZUK/OMYZodS8A0Q62qCUc7AtDNZRkgCz/L6HsLYMBh2tMU4N9yLYrjv' 'sha384-0/vzVENixo8f+tzk8Vz2Atl1YeGKYCOzQNPJg/99qZwQ26gt14Rrm6uI8fX2mZNb' 'sha384-9WzpQ6G2+i3TNjwylM5fVAr+5PkORuuRwmehKuMqqlrbOiY99Itvi0lyBeOWDDwL' 'sha384-EDnDJTqy5EVQevVliN7XecRYwwL1gDsUKhIAfTu5yVkDqj1Yt6mmhfMskaeOc701' 'sha384-04wefklqUry3BWpKWuI9RqMwY26Ek1hDkFHOCabpNWBDvmPN/n9Us6SnQccK9Sgp' 'sha384-VxqcPRGr84jnJ8+hnn5Lgze50/0+aq3bs7a3Q/f1JtHwsMdtJMnt8VW19af8zJVT' 'sha384-KxnMViZwFuvv1mq28Z5w23KXrubIoDzO69VOBypCoafjjs+Ljv866bJoQ0NNPLmu' 'sha384-IlKVg3W4Xz8SUkHzUUmleHKkNAETCOPW0iwDNhU+UfoI4+ko91HRIlLsVNvXyyzj' 'sha384-Kv9qujlVAQt4aEtD0oLsVLbemUA1IU+x43iWxycUbI93kGzgmGXtSqbOFATE7nMg' 'sha384-luO8EFCVrIEgheZGdPhVjZZeCWgCcJRQGt2v6oKaIUIqyUQoEOwEy/7ipa+otaQ1' 'sha384-MOoIzTxaSZ+cYJhrxm5i0iv3eLC60XcEE+FpAJt1ophLGkWAGlwbOydRj4YpTXBe' 'sha384-hX3nUZT4n942qWV8cuJ3psmWFViJ534O410V2A27wg8IN+JphLiYbFSvatnkLG/X' 'sha384-cxg/b9bGDpgiTOo0lxIgO+qTs4ut+3bpK4qGWPKJHzqItx/HDNDR5HndfmNsvWVM' 'sha384-31j42QIeNsc+YPeX0QuByUUl7cGOk+vL7crNiOUEVm1UHIQiskLrtQ+7riKBdYms' 'sha384-P+ipqe7aYbxv0L7+ZS7BWtRAmYAYTvoBnhVrE1FZQVwxYeMzNNkH4R+wpWJdoTu/' 'sha384-H74+1VJZb4stRWqT213K28P29+qcM2y1AgIL2sksXkHT2wpaMTKHF68P8Arwi1C2' 'sha384-iTMxUTj553eWxZXmBXHwUCtgUOApzDYtJdaxwyG6k7iugGzWCTJaIivZGbZMDsXA' 'sha384-xTq6cBc/OOMzO4VNOnUCJDQpIPCCJqThnzoiXSIC4N0VhoKy7BK1+DlfsQ75dVqM' 'sha384-QlSbaOOrPBfZeHiS5w/votX9G/SCOFw49ERy7F7uVnOvPluEd9dM8d55nEuUPEDC' 'sha384-U6TIvOzAGuhtw/oL7TR0O7sbBoA1QJvYSsS+XIB339temlWa3473AcdqaVf1rmgg' 'sha384-uzuhiChxLGgoPqfgd4L4G/M2+l8vPbNwSFIuv01D9sfhgyaQOXj2FhX33Z7cq/yh' 'sha384-ghmNs7M4J3YC4P2LehGsl1Hy57cj2iOKAmRPm/HQL8NnKCQdzMF5SdspVInrwx9+' 'sha384-FtCzALYaJPX0fBvvU6GAXM3wFyksSJAEZTeyLCqIbhDhnBrXNoaKMycbxQeyoAEV' 'sha384-lMLTSBlAvAKPL0OXsLDEaNXPPSNLmVl4n8rB2sYM9ox/TDHx3NSm2Kkj3OFxAyH3' 'sha384-fKTBcx1jnXhilRbXMjKIY3M0FuHYP/h7m5DipWhX3QYeFLIjLm7PIlXgLx2PSUz9' 'sha384-LYP9rIluBueTIyKDW0hR5MBKpiYCG/pZUUBSCito8tK8Glx//ahcNDjvSzh0ImnS' 'sha384-VvplLrU7nB01FuXaKL1sjTtqMLZ9yqRgKagS6X6526mfZXT0H6OO6jN6NLFYx7U4' 'sha384-bvIGyoeAzmwLgKWSp4p5aukJ3VE1LrapFt+QF9zrzSOYzZKg6/rBlOP2w0GJM3Zd' 'sha384-pGrCQuM3cG6pVfg1dsdWSoAWm+XScppBfweer+kXYzGy61ojjvffw/iMILfkyXdA' 'sha384-mGAe1gqJDSAqcq+0+b8svKZfiyU39c/6cgXqtY/I7b+niwLj1x2Nf+dMEziEh/Yi' 'sha384-7pNww6WKKR0cFXZlZ+y06pRZA4Q4pJVlEDsalE8qolN3LM+G1oOJXPQfOJx93m6J' 'sha384-nib3AJMhIbjIRDFOovzxiC4fYRivsHQ79zzbN6XVK71kpYmloQO6e9FS9bfIyWpr' 'sha384-FTZUt2MOhil5BF2l3AgMml1Un1/vsfLuEIvdm1BDLD3CyPN6K802FZ31ZpDWacNP' 'sha384-UDQb7vQfAHha5rCmFM6n3TMKW3LWD9MYNRiuyEju8NwjmCkl5gwGAHCfZYPfPUki' 'sha384-z/0mGYwTf+XJa3bGPsRhHirKGJE4LkZlkJKeQVmvGDO+xwRN4GkO2kMqZ1zi+3qH' 'sha384-co/zVd34aIm5tHC2U0tLVJ0OwJ15ILUA8JBTqBiCZffozWXhxtIhZiNsE6pQ5ov2'; upgrade-insecure-requests; script-src-elem 'self' 'unsafe-inline' https://stats.beta.gouv.fr https://eu.i.posthog.com https://eu-assets.i.posthog.com https://baserow.io https://tee-metabase.osc-fr1.scalingo.io; worker-src 'self' blob:; connect-src 'self' https://stats.beta.gouv.fr https://baserow.io https://tee-metabase.osc-fr1.scalingo.io https://eu.i.posthog.com https://eu-assets.i.posthog.com https://sentry.incubateur.net; frame-src 'self' https://baserow.io https://tee-metabase.osc-fr1.scalingo.io; manifest-src 'self'; default-src 'none';",
+							"evidence": "base-uri 'self'; font-src 'self'; form-action 'self'; frame-ancestors 'self'; img-src 'self' data:; object-src 'self'; script-src-attr 'none'; style-src 'self' 'unsafe-inline' https://baserow.io https://tee-metabase.osc-fr1.scalingo.io; script-src 'self' 'strict-dynamic' 'sha256-pAWsbSB02rnrh8Ufv+E2pDFtq2wB6Ob+pkINk6ih+n4=' 'sha256-DEBUY/Wb39sJZPJ3xKsEOoYsjEi6h78VMgjMzi4sLu4=' 'sha384-t4JFGe/8gcbE6w8VoR5dg8xx6dwtc1ejGy0IpKuK3x3yaCFGDBFY7wMQpD0/Mq6O' 'sha384-/hSPZ6Ri0f7eNPusGg3iw6cOF+gGEOY/ZbWbk3i1HbjwMc6JatHN9x0SWtPZhrbR' 'sha384-48N2DcmZmGWR6DNfXmqO7b0BgtpOhv1YJ7XIyQk8A2qCOEDosHAqA56ztEX4eRh3' 'sha384-M7xx96ifQs9vJnFRKcvOsDNNCDwHIXAE1dNEudLheJcHrvQjEaqSl7UJfP5Gi+Iy' 'sha384-tKMVEXBeKLjPAAkLkG2tJVrhFo6hBY+pZKgAqw5PFy4JElvLWzPq/zeZHfCu+rDa' 'sha384-iZV8wQe0v2reku5JDgbBuZDQbEerbTdln13VBEagc/hS31acB2/ZDpOYyLjJP+SL' 'sha384-takSuNFWeCYZeP4IzxG+cRuGL9M9fmgEM+dE4UXIEsPfno8gqkb3jJAFTDgfkn01' 'sha384-s4/wOkrH8YsJNwr8znoiUpdj5wzbufBgcsjRaq8n3sSLEUsSY3fzw/qQVs3htU4p' 'sha384-tNtXoXhUhT/niFgxBsWgxdRIb9hWEkmCUFuDqae043WiVyK4U+ytFN8lwjigTuGG' 'sha384-tGkvJaDUoFY3azltRTBoGZeqEJJ0Dqca+GBjwrUa+e86iILJmcN1zsTEmbhiy9iC' 'sha384-unF0pjpPFM7QcEPu7bSXaDE+yB9F+72ME74bUNQV9OO+L2WsQTpalmalf8/gECPY' 'sha384-M2hYU9mqDjpIX7KLgJXMxtxMAmn44BUc4hpM+04x96qC+UbLQrKDCFVwIu32gO12' 'sha384-83IkGrDrdbc9NKA3Hbw/vSrBjraJwW2ZgK6O8mlyeHMvrZtbrflISDcZKfKDA+TC' 'sha384-OU9YBmSjGFTeaWdWVMD3VsSLecaHn2qPTRmqZUeks/dPj5RYFioYOAKbq/J3L+vo' 'sha384-42M22OL4oBrGTwImrxwcBnFR8GB+7sax2w2Hf31AEsgnMagZ3jxnQAoZ7sCZrHcT' 'sha384-JXaz78FU2SOTzxnQ8XKf47nI8KNNRpOR4TAA+ITkfmlHKD3IO/0K3ATY1JoB7Xrw' 'sha384-ldp61S/IZ5w9BXNJApYBpsD82xa5Fajz5qV00BLp2aIkBU9hdHdEfRhkZ4iBERu9' 'sha384-Dc3Dv79zLXxeFzGy5P4tkHbmyZgiZ479n/qT0/jAmb5efUIOx7jak0JpCbaEi17z' 'sha384-gn7wFRHNkkazqmyFL+b0r8HTW9ErGqLmvyeniK+VXxIzHwXb5ts+pfuLviakMMd/' 'sha384-2/yCCNeIIhewh/RaTsoyWteoA30bxGADaxKNPTXoLNpod4oqES1r+EzmkesVaJyX' 'sha384-9SNG31TKjlDbBTIdGBP6RBJX8JkqGu2XxTp1wJ9UBMCXd+eMSFcV8arvTp82HXrp' 'sha384-rH9mCxPSb/9x3Uqe83l3bsdFo2Ong1ZDb8JnEmGxLdO4kNscZNeDa94/9DbGUcep' 'sha384-LbT7O0tCQ1qYBFLKqsOU/yZbXaypOk2JQSymK0EeIbowrmXUbtrmhOr7Hs3YMY4D' 'sha384-4NNkvGcdr6SgkIJFsAi23U7AIxmhIhT1ZArS+4jnCO3N8LUBdMQw4wUgva7redex' 'sha384-ELpOXAhSJ3ExBPyhbAXfESQQI9HushSRB0BBz7vzgIMvqS+0wdSDAk+BgBAOHytZ' 'sha384-rlSFRvZrHXJpJ+b/ums6lGj0ofoCFpbJAX9wbqMnOguhVSQszn6WYlCJF16a5rhK' 'sha384-XfLvkpet6ok7dcJfiHIPrWSCEaKFtOTkKfBOHF5RVlXFKDoVH11AJAloRq+ghTTn' 'sha384-+0pRARq2gP0mxLwB+s8MJesWffstOTWKmQ0C/XQw1oKYxHSkeGlRSW881ihjJwmJ' 'sha384-7pYHhf7b1GxTHuCxQLvoQsCBgYvbOPcsmL6/TBCpQ2r2csuVzaOtq3fXTHgUUEIL' 'sha384-GTxfP0ZF6VXPVxu6Ful+qCsIvD6i4xPBf4sEid16Mf/p0/VBdZM4/UfEAHZgaG89' 'sha384-cVwItDV2ccEcgkuFU0z0oPOT+tB4VHiNxtGip34zG/ymFk1dvcQuBdSdqmzjjLf4' 'sha384-cCikPlhX/Y8Iyz/ZNJBuXp/JgoT6zwR5NFD1F+EoDAZDXRSfFO/2NWu4qc4cc/pp' 'sha384-tE8Ubez5nlgHXNsTF+p7pjKrvaxPIecDJZdzphyjkEymZljCch/MFcMQ7Tvl8s8H' 'sha384-BnhiVPBmT8egl/uBohkla1hlh67C1CByFORX019wwDebNrNw+jS2NSk4CjetUsr2' 'sha384-L4yGh1CSFY8ZJWAx4sM6qcIGRBeNYacrwJzNRBAvs6AjVU0zlqf2GP0Xo+qc+bc/' 'sha384-/hoaw+wnWL3zdVxNsa5bPv86KdVKkfFPGuW1xG+Nfwak25ZLvFkYAEvdG4Hb6Lns' 'sha384-QSYuZV1+n6JjWnymmrBJ23gkr//JY3JKTyh/dw+WErjMlKTPNNYN/+2F9LY+UhkG' 'sha384-J/qVZZE4fHVMDDZ24DO4Ver9uUE3FffWasuEwyXzXzO+6ER6b6XjnJeCk7MvyehP' 'sha384-6OjogO8AQa0O/UktwXa/vNYRd4FTxChgo3zYvgHKXIUQMnkjufyvQr8gmRSH1w/8'; upgrade-insecure-requests; script-src-elem 'self' 'unsafe-inline' https://stats.beta.gouv.fr https://eu.i.posthog.com https://eu-assets.i.posthog.com https://baserow.io https://tee-metabase.osc-fr1.scalingo.io; worker-src 'self' blob:; connect-src 'self' https://stats.beta.gouv.fr https://baserow.io https://tee-metabase.osc-fr1.scalingo.io https://eu.i.posthog.com https://eu-assets.i.posthog.com https://sentry.incubateur.net; frame-src 'self' https://baserow.io https://tee-metabase.osc-fr1.scalingo.io; manifest-src 'self'; default-src 'none';",
 							"otherinfo": "script-src includes unsafe-inline."
 						},
 						{
-							"id": "26",
+							"id": "46",
 							"uri": "https://mission-transition-ecologique.beta.gouv.fr/",
 							"method": "GET",
 							"param": "Content-Security-Policy",
 							"attack": "",
-							"evidence": "base-uri 'self'; font-src 'self'; form-action 'self'; img-src 'self' data:; object-src 'self'; script-src-attr 'none'; style-src 'self' 'unsafe-inline' https://baserow.io https://tee-metabase.osc-fr1.scalingo.io; script-src 'self' 'strict-dynamic' 'sha256-pAWsbSB02rnrh8Ufv+E2pDFtq2wB6Ob+pkINk6ih+n4=' 'sha256-vSaKKqewqObKagHzQdJzPPPAn9qPzD7OQ9qSVE62lys=' 'sha384-BBITb7H077QtzZE9GRNje0zN3U8YOYQ76ynx7DguiM0VbTbpX6QmK8Jf4DvLS6Jt' 'sha384-oG7rvEJ301uSUrZ7E0pwKQH2l37rI0OfkywGUz0+otmW9DbSweRl4Rk0KEqfbPTZ' 'sha384-cMNR5Gv5G3oYwMv2aIEWTBiqNa1tF6H7HN7MJQAk3SuxeOMiRnqNLo72qRGyzHK8' 'sha384-zkN1Yj1bjZUK/OMYZodS8A0Q62qCUc7AtDNZRkgCz/L6HsLYMBh2tMU4N9yLYrjv' 'sha384-0/vzVENixo8f+tzk8Vz2Atl1YeGKYCOzQNPJg/99qZwQ26gt14Rrm6uI8fX2mZNb' 'sha384-9WzpQ6G2+i3TNjwylM5fVAr+5PkORuuRwmehKuMqqlrbOiY99Itvi0lyBeOWDDwL' 'sha384-EDnDJTqy5EVQevVliN7XecRYwwL1gDsUKhIAfTu5yVkDqj1Yt6mmhfMskaeOc701' 'sha384-04wefklqUry3BWpKWuI9RqMwY26Ek1hDkFHOCabpNWBDvmPN/n9Us6SnQccK9Sgp' 'sha384-VxqcPRGr84jnJ8+hnn5Lgze50/0+aq3bs7a3Q/f1JtHwsMdtJMnt8VW19af8zJVT' 'sha384-KxnMViZwFuvv1mq28Z5w23KXrubIoDzO69VOBypCoafjjs+Ljv866bJoQ0NNPLmu' 'sha384-IlKVg3W4Xz8SUkHzUUmleHKkNAETCOPW0iwDNhU+UfoI4+ko91HRIlLsVNvXyyzj' 'sha384-Kv9qujlVAQt4aEtD0oLsVLbemUA1IU+x43iWxycUbI93kGzgmGXtSqbOFATE7nMg' 'sha384-luO8EFCVrIEgheZGdPhVjZZeCWgCcJRQGt2v6oKaIUIqyUQoEOwEy/7ipa+otaQ1' 'sha384-MOoIzTxaSZ+cYJhrxm5i0iv3eLC60XcEE+FpAJt1ophLGkWAGlwbOydRj4YpTXBe' 'sha384-hX3nUZT4n942qWV8cuJ3psmWFViJ534O410V2A27wg8IN+JphLiYbFSvatnkLG/X' 'sha384-cxg/b9bGDpgiTOo0lxIgO+qTs4ut+3bpK4qGWPKJHzqItx/HDNDR5HndfmNsvWVM' 'sha384-31j42QIeNsc+YPeX0QuByUUl7cGOk+vL7crNiOUEVm1UHIQiskLrtQ+7riKBdYms' 'sha384-P+ipqe7aYbxv0L7+ZS7BWtRAmYAYTvoBnhVrE1FZQVwxYeMzNNkH4R+wpWJdoTu/' 'sha384-H74+1VJZb4stRWqT213K28P29+qcM2y1AgIL2sksXkHT2wpaMTKHF68P8Arwi1C2' 'sha384-iTMxUTj553eWxZXmBXHwUCtgUOApzDYtJdaxwyG6k7iugGzWCTJaIivZGbZMDsXA' 'sha384-xTq6cBc/OOMzO4VNOnUCJDQpIPCCJqThnzoiXSIC4N0VhoKy7BK1+DlfsQ75dVqM' 'sha384-QlSbaOOrPBfZeHiS5w/votX9G/SCOFw49ERy7F7uVnOvPluEd9dM8d55nEuUPEDC' 'sha384-U6TIvOzAGuhtw/oL7TR0O7sbBoA1QJvYSsS+XIB339temlWa3473AcdqaVf1rmgg' 'sha384-uzuhiChxLGgoPqfgd4L4G/M2+l8vPbNwSFIuv01D9sfhgyaQOXj2FhX33Z7cq/yh' 'sha384-ghmNs7M4J3YC4P2LehGsl1Hy57cj2iOKAmRPm/HQL8NnKCQdzMF5SdspVInrwx9+' 'sha384-FtCzALYaJPX0fBvvU6GAXM3wFyksSJAEZTeyLCqIbhDhnBrXNoaKMycbxQeyoAEV' 'sha384-lMLTSBlAvAKPL0OXsLDEaNXPPSNLmVl4n8rB2sYM9ox/TDHx3NSm2Kkj3OFxAyH3' 'sha384-fKTBcx1jnXhilRbXMjKIY3M0FuHYP/h7m5DipWhX3QYeFLIjLm7PIlXgLx2PSUz9' 'sha384-LYP9rIluBueTIyKDW0hR5MBKpiYCG/pZUUBSCito8tK8Glx//ahcNDjvSzh0ImnS' 'sha384-VvplLrU7nB01FuXaKL1sjTtqMLZ9yqRgKagS6X6526mfZXT0H6OO6jN6NLFYx7U4' 'sha384-bvIGyoeAzmwLgKWSp4p5aukJ3VE1LrapFt+QF9zrzSOYzZKg6/rBlOP2w0GJM3Zd' 'sha384-pGrCQuM3cG6pVfg1dsdWSoAWm+XScppBfweer+kXYzGy61ojjvffw/iMILfkyXdA' 'sha384-mGAe1gqJDSAqcq+0+b8svKZfiyU39c/6cgXqtY/I7b+niwLj1x2Nf+dMEziEh/Yi' 'sha384-7pNww6WKKR0cFXZlZ+y06pRZA4Q4pJVlEDsalE8qolN3LM+G1oOJXPQfOJx93m6J' 'sha384-nib3AJMhIbjIRDFOovzxiC4fYRivsHQ79zzbN6XVK71kpYmloQO6e9FS9bfIyWpr' 'sha384-FTZUt2MOhil5BF2l3AgMml1Un1/vsfLuEIvdm1BDLD3CyPN6K802FZ31ZpDWacNP' 'sha384-UDQb7vQfAHha5rCmFM6n3TMKW3LWD9MYNRiuyEju8NwjmCkl5gwGAHCfZYPfPUki' 'sha384-z/0mGYwTf+XJa3bGPsRhHirKGJE4LkZlkJKeQVmvGDO+xwRN4GkO2kMqZ1zi+3qH' 'sha384-co/zVd34aIm5tHC2U0tLVJ0OwJ15ILUA8JBTqBiCZffozWXhxtIhZiNsE6pQ5ov2'; upgrade-insecure-requests; script-src-elem 'self' 'unsafe-inline' https://stats.beta.gouv.fr https://eu.i.posthog.com https://eu-assets.i.posthog.com https://baserow.io https://tee-metabase.osc-fr1.scalingo.io; worker-src 'self' blob:; connect-src 'self' https://stats.beta.gouv.fr https://baserow.io https://tee-metabase.osc-fr1.scalingo.io https://eu.i.posthog.com https://eu-assets.i.posthog.com https://sentry.incubateur.net; frame-src 'self' https://baserow.io https://tee-metabase.osc-fr1.scalingo.io; manifest-src 'self'; default-src 'none';",
+							"evidence": "base-uri 'self'; font-src 'self'; form-action 'self'; img-src 'self' data:; object-src 'self'; script-src-attr 'none'; style-src 'self' 'unsafe-inline' https://baserow.io https://tee-metabase.osc-fr1.scalingo.io; script-src 'self' 'strict-dynamic' 'sha256-pAWsbSB02rnrh8Ufv+E2pDFtq2wB6Ob+pkINk6ih+n4=' 'sha256-DEBUY/Wb39sJZPJ3xKsEOoYsjEi6h78VMgjMzi4sLu4=' 'sha384-t4JFGe/8gcbE6w8VoR5dg8xx6dwtc1ejGy0IpKuK3x3yaCFGDBFY7wMQpD0/Mq6O' 'sha384-/hSPZ6Ri0f7eNPusGg3iw6cOF+gGEOY/ZbWbk3i1HbjwMc6JatHN9x0SWtPZhrbR' 'sha384-48N2DcmZmGWR6DNfXmqO7b0BgtpOhv1YJ7XIyQk8A2qCOEDosHAqA56ztEX4eRh3' 'sha384-M7xx96ifQs9vJnFRKcvOsDNNCDwHIXAE1dNEudLheJcHrvQjEaqSl7UJfP5Gi+Iy' 'sha384-tKMVEXBeKLjPAAkLkG2tJVrhFo6hBY+pZKgAqw5PFy4JElvLWzPq/zeZHfCu+rDa' 'sha384-iZV8wQe0v2reku5JDgbBuZDQbEerbTdln13VBEagc/hS31acB2/ZDpOYyLjJP+SL' 'sha384-takSuNFWeCYZeP4IzxG+cRuGL9M9fmgEM+dE4UXIEsPfno8gqkb3jJAFTDgfkn01' 'sha384-s4/wOkrH8YsJNwr8znoiUpdj5wzbufBgcsjRaq8n3sSLEUsSY3fzw/qQVs3htU4p' 'sha384-tNtXoXhUhT/niFgxBsWgxdRIb9hWEkmCUFuDqae043WiVyK4U+ytFN8lwjigTuGG' 'sha384-tGkvJaDUoFY3azltRTBoGZeqEJJ0Dqca+GBjwrUa+e86iILJmcN1zsTEmbhiy9iC' 'sha384-unF0pjpPFM7QcEPu7bSXaDE+yB9F+72ME74bUNQV9OO+L2WsQTpalmalf8/gECPY' 'sha384-M2hYU9mqDjpIX7KLgJXMxtxMAmn44BUc4hpM+04x96qC+UbLQrKDCFVwIu32gO12' 'sha384-83IkGrDrdbc9NKA3Hbw/vSrBjraJwW2ZgK6O8mlyeHMvrZtbrflISDcZKfKDA+TC' 'sha384-OU9YBmSjGFTeaWdWVMD3VsSLecaHn2qPTRmqZUeks/dPj5RYFioYOAKbq/J3L+vo' 'sha384-42M22OL4oBrGTwImrxwcBnFR8GB+7sax2w2Hf31AEsgnMagZ3jxnQAoZ7sCZrHcT' 'sha384-JXaz78FU2SOTzxnQ8XKf47nI8KNNRpOR4TAA+ITkfmlHKD3IO/0K3ATY1JoB7Xrw' 'sha384-ldp61S/IZ5w9BXNJApYBpsD82xa5Fajz5qV00BLp2aIkBU9hdHdEfRhkZ4iBERu9' 'sha384-Dc3Dv79zLXxeFzGy5P4tkHbmyZgiZ479n/qT0/jAmb5efUIOx7jak0JpCbaEi17z' 'sha384-gn7wFRHNkkazqmyFL+b0r8HTW9ErGqLmvyeniK+VXxIzHwXb5ts+pfuLviakMMd/' 'sha384-2/yCCNeIIhewh/RaTsoyWteoA30bxGADaxKNPTXoLNpod4oqES1r+EzmkesVaJyX' 'sha384-9SNG31TKjlDbBTIdGBP6RBJX8JkqGu2XxTp1wJ9UBMCXd+eMSFcV8arvTp82HXrp' 'sha384-rH9mCxPSb/9x3Uqe83l3bsdFo2Ong1ZDb8JnEmGxLdO4kNscZNeDa94/9DbGUcep' 'sha384-LbT7O0tCQ1qYBFLKqsOU/yZbXaypOk2JQSymK0EeIbowrmXUbtrmhOr7Hs3YMY4D' 'sha384-4NNkvGcdr6SgkIJFsAi23U7AIxmhIhT1ZArS+4jnCO3N8LUBdMQw4wUgva7redex' 'sha384-ELpOXAhSJ3ExBPyhbAXfESQQI9HushSRB0BBz7vzgIMvqS+0wdSDAk+BgBAOHytZ' 'sha384-rlSFRvZrHXJpJ+b/ums6lGj0ofoCFpbJAX9wbqMnOguhVSQszn6WYlCJF16a5rhK' 'sha384-XfLvkpet6ok7dcJfiHIPrWSCEaKFtOTkKfBOHF5RVlXFKDoVH11AJAloRq+ghTTn' 'sha384-+0pRARq2gP0mxLwB+s8MJesWffstOTWKmQ0C/XQw1oKYxHSkeGlRSW881ihjJwmJ' 'sha384-7pYHhf7b1GxTHuCxQLvoQsCBgYvbOPcsmL6/TBCpQ2r2csuVzaOtq3fXTHgUUEIL' 'sha384-GTxfP0ZF6VXPVxu6Ful+qCsIvD6i4xPBf4sEid16Mf/p0/VBdZM4/UfEAHZgaG89' 'sha384-cVwItDV2ccEcgkuFU0z0oPOT+tB4VHiNxtGip34zG/ymFk1dvcQuBdSdqmzjjLf4' 'sha384-cCikPlhX/Y8Iyz/ZNJBuXp/JgoT6zwR5NFD1F+EoDAZDXRSfFO/2NWu4qc4cc/pp' 'sha384-tE8Ubez5nlgHXNsTF+p7pjKrvaxPIecDJZdzphyjkEymZljCch/MFcMQ7Tvl8s8H' 'sha384-BnhiVPBmT8egl/uBohkla1hlh67C1CByFORX019wwDebNrNw+jS2NSk4CjetUsr2' 'sha384-L4yGh1CSFY8ZJWAx4sM6qcIGRBeNYacrwJzNRBAvs6AjVU0zlqf2GP0Xo+qc+bc/' 'sha384-/hoaw+wnWL3zdVxNsa5bPv86KdVKkfFPGuW1xG+Nfwak25ZLvFkYAEvdG4Hb6Lns' 'sha384-QSYuZV1+n6JjWnymmrBJ23gkr//JY3JKTyh/dw+WErjMlKTPNNYN/+2F9LY+UhkG' 'sha384-J/qVZZE4fHVMDDZ24DO4Ver9uUE3FffWasuEwyXzXzO+6ER6b6XjnJeCk7MvyehP' 'sha384-6OjogO8AQa0O/UktwXa/vNYRd4FTxChgo3zYvgHKXIUQMnkjufyvQr8gmRSH1w/8'; upgrade-insecure-requests; script-src-elem 'self' 'unsafe-inline' https://stats.beta.gouv.fr https://eu.i.posthog.com https://eu-assets.i.posthog.com https://baserow.io https://tee-metabase.osc-fr1.scalingo.io; worker-src 'self' blob:; connect-src 'self' https://stats.beta.gouv.fr https://baserow.io https://tee-metabase.osc-fr1.scalingo.io https://eu.i.posthog.com https://eu-assets.i.posthog.com https://sentry.incubateur.net; frame-src 'self' https://baserow.io https://tee-metabase.osc-fr1.scalingo.io; manifest-src 'self'; default-src 'none';",
 							"otherinfo": "script-src includes unsafe-inline."
 						},
 						{
-							"id": "16",
+							"id": "7",
 							"uri": "https://mission-transition-ecologique.beta.gouv.fr/ajouter-une-aide-entreprises",
 							"method": "GET",
 							"param": "content-security-policy",
 							"attack": "",
-							"evidence": "base-uri 'self'; font-src 'self'; form-action 'self'; frame-ancestors 'self'; img-src 'self' data:; object-src 'self'; script-src-attr 'none'; style-src 'self' 'unsafe-inline' https://baserow.io https://tee-metabase.osc-fr1.scalingo.io; script-src 'self' 'strict-dynamic' 'sha256-+N3EmF3RGB0ZQIZNw+W3mqGWhRmCu6mcpiW/AqLTIbQ=' 'sha256-57VHVKh8rn0xgyocmSiB5nwHoQL4Br74Q4h1rz4wZe4=' 'sha384-BBITb7H077QtzZE9GRNje0zN3U8YOYQ76ynx7DguiM0VbTbpX6QmK8Jf4DvLS6Jt' 'sha384-oG7rvEJ301uSUrZ7E0pwKQH2l37rI0OfkywGUz0+otmW9DbSweRl4Rk0KEqfbPTZ' 'sha384-cMNR5Gv5G3oYwMv2aIEWTBiqNa1tF6H7HN7MJQAk3SuxeOMiRnqNLo72qRGyzHK8' 'sha384-zkN1Yj1bjZUK/OMYZodS8A0Q62qCUc7AtDNZRkgCz/L6HsLYMBh2tMU4N9yLYrjv' 'sha384-0/vzVENixo8f+tzk8Vz2Atl1YeGKYCOzQNPJg/99qZwQ26gt14Rrm6uI8fX2mZNb' 'sha384-9WzpQ6G2+i3TNjwylM5fVAr+5PkORuuRwmehKuMqqlrbOiY99Itvi0lyBeOWDDwL' 'sha384-EDnDJTqy5EVQevVliN7XecRYwwL1gDsUKhIAfTu5yVkDqj1Yt6mmhfMskaeOc701' 'sha384-04wefklqUry3BWpKWuI9RqMwY26Ek1hDkFHOCabpNWBDvmPN/n9Us6SnQccK9Sgp' 'sha384-VxqcPRGr84jnJ8+hnn5Lgze50/0+aq3bs7a3Q/f1JtHwsMdtJMnt8VW19af8zJVT' 'sha384-KxnMViZwFuvv1mq28Z5w23KXrubIoDzO69VOBypCoafjjs+Ljv866bJoQ0NNPLmu' 'sha384-IlKVg3W4Xz8SUkHzUUmleHKkNAETCOPW0iwDNhU+UfoI4+ko91HRIlLsVNvXyyzj' 'sha384-Kv9qujlVAQt4aEtD0oLsVLbemUA1IU+x43iWxycUbI93kGzgmGXtSqbOFATE7nMg' 'sha384-luO8EFCVrIEgheZGdPhVjZZeCWgCcJRQGt2v6oKaIUIqyUQoEOwEy/7ipa+otaQ1' 'sha384-MOoIzTxaSZ+cYJhrxm5i0iv3eLC60XcEE+FpAJt1ophLGkWAGlwbOydRj4YpTXBe' 'sha384-hX3nUZT4n942qWV8cuJ3psmWFViJ534O410V2A27wg8IN+JphLiYbFSvatnkLG/X' 'sha384-cxg/b9bGDpgiTOo0lxIgO+qTs4ut+3bpK4qGWPKJHzqItx/HDNDR5HndfmNsvWVM' 'sha384-DYiQca+mqeyrpr+hq8Dl/hYPjyPQy/NDX58JRNvRF2BBFUUO0C0femBv/BVtpKrq' 'sha384-pGrCQuM3cG6pVfg1dsdWSoAWm+XScppBfweer+kXYzGy61ojjvffw/iMILfkyXdA' 'sha384-XDKCtFNXtwh3qYkVbwQVdxZJjjQDToZywGmXkNCBMCGOxM2ZpoZuIWs2zFHZTvTD' 'sha384-mGAe1gqJDSAqcq+0+b8svKZfiyU39c/6cgXqtY/I7b+niwLj1x2Nf+dMEziEh/Yi'; upgrade-insecure-requests; script-src-elem 'self' 'unsafe-inline' https://stats.beta.gouv.fr https://eu.i.posthog.com https://eu-assets.i.posthog.com https://baserow.io https://tee-metabase.osc-fr1.scalingo.io; worker-src 'self' blob:; connect-src 'self' https://stats.beta.gouv.fr https://baserow.io https://tee-metabase.osc-fr1.scalingo.io https://eu.i.posthog.com https://eu-assets.i.posthog.com https://sentry.incubateur.net; frame-src 'self' https://baserow.io https://tee-metabase.osc-fr1.scalingo.io; manifest-src 'self'; default-src 'none';",
+							"evidence": "base-uri 'self'; font-src 'self'; form-action 'self'; frame-ancestors 'self'; img-src 'self' data:; object-src 'self'; script-src-attr 'none'; style-src 'self' 'unsafe-inline' https://baserow.io https://tee-metabase.osc-fr1.scalingo.io; script-src 'self' 'strict-dynamic' 'sha256-+N3EmF3RGB0ZQIZNw+W3mqGWhRmCu6mcpiW/AqLTIbQ=' 'sha256-yGpCio0B++QPmzS/VTTEONvH0asBvp1dEU9ylc5yxwI=' 'sha384-t4JFGe/8gcbE6w8VoR5dg8xx6dwtc1ejGy0IpKuK3x3yaCFGDBFY7wMQpD0/Mq6O' 'sha384-/hSPZ6Ri0f7eNPusGg3iw6cOF+gGEOY/ZbWbk3i1HbjwMc6JatHN9x0SWtPZhrbR' 'sha384-48N2DcmZmGWR6DNfXmqO7b0BgtpOhv1YJ7XIyQk8A2qCOEDosHAqA56ztEX4eRh3' 'sha384-M7xx96ifQs9vJnFRKcvOsDNNCDwHIXAE1dNEudLheJcHrvQjEaqSl7UJfP5Gi+Iy' 'sha384-tKMVEXBeKLjPAAkLkG2tJVrhFo6hBY+pZKgAqw5PFy4JElvLWzPq/zeZHfCu+rDa' 'sha384-iZV8wQe0v2reku5JDgbBuZDQbEerbTdln13VBEagc/hS31acB2/ZDpOYyLjJP+SL' 'sha384-takSuNFWeCYZeP4IzxG+cRuGL9M9fmgEM+dE4UXIEsPfno8gqkb3jJAFTDgfkn01' 'sha384-s4/wOkrH8YsJNwr8znoiUpdj5wzbufBgcsjRaq8n3sSLEUsSY3fzw/qQVs3htU4p' 'sha384-tNtXoXhUhT/niFgxBsWgxdRIb9hWEkmCUFuDqae043WiVyK4U+ytFN8lwjigTuGG' 'sha384-tGkvJaDUoFY3azltRTBoGZeqEJJ0Dqca+GBjwrUa+e86iILJmcN1zsTEmbhiy9iC' 'sha384-unF0pjpPFM7QcEPu7bSXaDE+yB9F+72ME74bUNQV9OO+L2WsQTpalmalf8/gECPY' 'sha384-M2hYU9mqDjpIX7KLgJXMxtxMAmn44BUc4hpM+04x96qC+UbLQrKDCFVwIu32gO12' 'sha384-83IkGrDrdbc9NKA3Hbw/vSrBjraJwW2ZgK6O8mlyeHMvrZtbrflISDcZKfKDA+TC' 'sha384-OU9YBmSjGFTeaWdWVMD3VsSLecaHn2qPTRmqZUeks/dPj5RYFioYOAKbq/J3L+vo' 'sha384-42M22OL4oBrGTwImrxwcBnFR8GB+7sax2w2Hf31AEsgnMagZ3jxnQAoZ7sCZrHcT' 'sha384-JXaz78FU2SOTzxnQ8XKf47nI8KNNRpOR4TAA+ITkfmlHKD3IO/0K3ATY1JoB7Xrw' 'sha384-GuKJMvGrSLJ41FLt+03737z1MoVWHhhpopbN85dCtpzK1vufmjB/BfS//FMftZx5' 'sha384-cCikPlhX/Y8Iyz/ZNJBuXp/JgoT6zwR5NFD1F+EoDAZDXRSfFO/2NWu4qc4cc/pp' 'sha384-74TvbbiaVc8V5h/M7TJXJMff/ShUHrEOZcaWQwyscPr26VOatYua9xRGIl3sap9M' 'sha384-tE8Ubez5nlgHXNsTF+p7pjKrvaxPIecDJZdzphyjkEymZljCch/MFcMQ7Tvl8s8H'; upgrade-insecure-requests; script-src-elem 'self' 'unsafe-inline' https://stats.beta.gouv.fr https://eu.i.posthog.com https://eu-assets.i.posthog.com https://baserow.io https://tee-metabase.osc-fr1.scalingo.io; worker-src 'self' blob:; connect-src 'self' https://stats.beta.gouv.fr https://baserow.io https://tee-metabase.osc-fr1.scalingo.io https://eu.i.posthog.com https://eu-assets.i.posthog.com https://sentry.incubateur.net; frame-src 'self' https://baserow.io https://tee-metabase.osc-fr1.scalingo.io; manifest-src 'self'; default-src 'none';",
 							"otherinfo": "script-src includes unsafe-inline."
 						},
 						{
-							"id": "18",
+							"id": "9",
 							"uri": "https://mission-transition-ecologique.beta.gouv.fr/ajouter-une-aide-entreprises",
 							"method": "GET",
 							"param": "Content-Security-Policy",
 							"attack": "",
-							"evidence": "base-uri 'self'; font-src 'self'; form-action 'self'; img-src 'self' data:; object-src 'self'; script-src-attr 'none'; style-src 'self' 'unsafe-inline' https://baserow.io https://tee-metabase.osc-fr1.scalingo.io; script-src 'self' 'strict-dynamic' 'sha256-+N3EmF3RGB0ZQIZNw+W3mqGWhRmCu6mcpiW/AqLTIbQ=' 'sha256-57VHVKh8rn0xgyocmSiB5nwHoQL4Br74Q4h1rz4wZe4=' 'sha384-BBITb7H077QtzZE9GRNje0zN3U8YOYQ76ynx7DguiM0VbTbpX6QmK8Jf4DvLS6Jt' 'sha384-oG7rvEJ301uSUrZ7E0pwKQH2l37rI0OfkywGUz0+otmW9DbSweRl4Rk0KEqfbPTZ' 'sha384-cMNR5Gv5G3oYwMv2aIEWTBiqNa1tF6H7HN7MJQAk3SuxeOMiRnqNLo72qRGyzHK8' 'sha384-zkN1Yj1bjZUK/OMYZodS8A0Q62qCUc7AtDNZRkgCz/L6HsLYMBh2tMU4N9yLYrjv' 'sha384-0/vzVENixo8f+tzk8Vz2Atl1YeGKYCOzQNPJg/99qZwQ26gt14Rrm6uI8fX2mZNb' 'sha384-9WzpQ6G2+i3TNjwylM5fVAr+5PkORuuRwmehKuMqqlrbOiY99Itvi0lyBeOWDDwL' 'sha384-EDnDJTqy5EVQevVliN7XecRYwwL1gDsUKhIAfTu5yVkDqj1Yt6mmhfMskaeOc701' 'sha384-04wefklqUry3BWpKWuI9RqMwY26Ek1hDkFHOCabpNWBDvmPN/n9Us6SnQccK9Sgp' 'sha384-VxqcPRGr84jnJ8+hnn5Lgze50/0+aq3bs7a3Q/f1JtHwsMdtJMnt8VW19af8zJVT' 'sha384-KxnMViZwFuvv1mq28Z5w23KXrubIoDzO69VOBypCoafjjs+Ljv866bJoQ0NNPLmu' 'sha384-IlKVg3W4Xz8SUkHzUUmleHKkNAETCOPW0iwDNhU+UfoI4+ko91HRIlLsVNvXyyzj' 'sha384-Kv9qujlVAQt4aEtD0oLsVLbemUA1IU+x43iWxycUbI93kGzgmGXtSqbOFATE7nMg' 'sha384-luO8EFCVrIEgheZGdPhVjZZeCWgCcJRQGt2v6oKaIUIqyUQoEOwEy/7ipa+otaQ1' 'sha384-MOoIzTxaSZ+cYJhrxm5i0iv3eLC60XcEE+FpAJt1ophLGkWAGlwbOydRj4YpTXBe' 'sha384-hX3nUZT4n942qWV8cuJ3psmWFViJ534O410V2A27wg8IN+JphLiYbFSvatnkLG/X' 'sha384-cxg/b9bGDpgiTOo0lxIgO+qTs4ut+3bpK4qGWPKJHzqItx/HDNDR5HndfmNsvWVM' 'sha384-DYiQca+mqeyrpr+hq8Dl/hYPjyPQy/NDX58JRNvRF2BBFUUO0C0femBv/BVtpKrq' 'sha384-pGrCQuM3cG6pVfg1dsdWSoAWm+XScppBfweer+kXYzGy61ojjvffw/iMILfkyXdA' 'sha384-XDKCtFNXtwh3qYkVbwQVdxZJjjQDToZywGmXkNCBMCGOxM2ZpoZuIWs2zFHZTvTD' 'sha384-mGAe1gqJDSAqcq+0+b8svKZfiyU39c/6cgXqtY/I7b+niwLj1x2Nf+dMEziEh/Yi'; upgrade-insecure-requests; script-src-elem 'self' 'unsafe-inline' https://stats.beta.gouv.fr https://eu.i.posthog.com https://eu-assets.i.posthog.com https://baserow.io https://tee-metabase.osc-fr1.scalingo.io; worker-src 'self' blob:; connect-src 'self' https://stats.beta.gouv.fr https://baserow.io https://tee-metabase.osc-fr1.scalingo.io https://eu.i.posthog.com https://eu-assets.i.posthog.com https://sentry.incubateur.net; frame-src 'self' https://baserow.io https://tee-metabase.osc-fr1.scalingo.io; manifest-src 'self'; default-src 'none';",
+							"evidence": "base-uri 'self'; font-src 'self'; form-action 'self'; img-src 'self' data:; object-src 'self'; script-src-attr 'none'; style-src 'self' 'unsafe-inline' https://baserow.io https://tee-metabase.osc-fr1.scalingo.io; script-src 'self' 'strict-dynamic' 'sha256-+N3EmF3RGB0ZQIZNw+W3mqGWhRmCu6mcpiW/AqLTIbQ=' 'sha256-yGpCio0B++QPmzS/VTTEONvH0asBvp1dEU9ylc5yxwI=' 'sha384-t4JFGe/8gcbE6w8VoR5dg8xx6dwtc1ejGy0IpKuK3x3yaCFGDBFY7wMQpD0/Mq6O' 'sha384-/hSPZ6Ri0f7eNPusGg3iw6cOF+gGEOY/ZbWbk3i1HbjwMc6JatHN9x0SWtPZhrbR' 'sha384-48N2DcmZmGWR6DNfXmqO7b0BgtpOhv1YJ7XIyQk8A2qCOEDosHAqA56ztEX4eRh3' 'sha384-M7xx96ifQs9vJnFRKcvOsDNNCDwHIXAE1dNEudLheJcHrvQjEaqSl7UJfP5Gi+Iy' 'sha384-tKMVEXBeKLjPAAkLkG2tJVrhFo6hBY+pZKgAqw5PFy4JElvLWzPq/zeZHfCu+rDa' 'sha384-iZV8wQe0v2reku5JDgbBuZDQbEerbTdln13VBEagc/hS31acB2/ZDpOYyLjJP+SL' 'sha384-takSuNFWeCYZeP4IzxG+cRuGL9M9fmgEM+dE4UXIEsPfno8gqkb3jJAFTDgfkn01' 'sha384-s4/wOkrH8YsJNwr8znoiUpdj5wzbufBgcsjRaq8n3sSLEUsSY3fzw/qQVs3htU4p' 'sha384-tNtXoXhUhT/niFgxBsWgxdRIb9hWEkmCUFuDqae043WiVyK4U+ytFN8lwjigTuGG' 'sha384-tGkvJaDUoFY3azltRTBoGZeqEJJ0Dqca+GBjwrUa+e86iILJmcN1zsTEmbhiy9iC' 'sha384-unF0pjpPFM7QcEPu7bSXaDE+yB9F+72ME74bUNQV9OO+L2WsQTpalmalf8/gECPY' 'sha384-M2hYU9mqDjpIX7KLgJXMxtxMAmn44BUc4hpM+04x96qC+UbLQrKDCFVwIu32gO12' 'sha384-83IkGrDrdbc9NKA3Hbw/vSrBjraJwW2ZgK6O8mlyeHMvrZtbrflISDcZKfKDA+TC' 'sha384-OU9YBmSjGFTeaWdWVMD3VsSLecaHn2qPTRmqZUeks/dPj5RYFioYOAKbq/J3L+vo' 'sha384-42M22OL4oBrGTwImrxwcBnFR8GB+7sax2w2Hf31AEsgnMagZ3jxnQAoZ7sCZrHcT' 'sha384-JXaz78FU2SOTzxnQ8XKf47nI8KNNRpOR4TAA+ITkfmlHKD3IO/0K3ATY1JoB7Xrw' 'sha384-GuKJMvGrSLJ41FLt+03737z1MoVWHhhpopbN85dCtpzK1vufmjB/BfS//FMftZx5' 'sha384-cCikPlhX/Y8Iyz/ZNJBuXp/JgoT6zwR5NFD1F+EoDAZDXRSfFO/2NWu4qc4cc/pp' 'sha384-74TvbbiaVc8V5h/M7TJXJMff/ShUHrEOZcaWQwyscPr26VOatYua9xRGIl3sap9M' 'sha384-tE8Ubez5nlgHXNsTF+p7pjKrvaxPIecDJZdzphyjkEymZljCch/MFcMQ7Tvl8s8H'; upgrade-insecure-requests; script-src-elem 'self' 'unsafe-inline' https://stats.beta.gouv.fr https://eu.i.posthog.com https://eu-assets.i.posthog.com https://baserow.io https://tee-metabase.osc-fr1.scalingo.io; worker-src 'self' blob:; connect-src 'self' https://stats.beta.gouv.fr https://baserow.io https://tee-metabase.osc-fr1.scalingo.io https://eu.i.posthog.com https://eu-assets.i.posthog.com https://sentry.incubateur.net; frame-src 'self' https://baserow.io https://tee-metabase.osc-fr1.scalingo.io; manifest-src 'self'; default-src 'none';",
 							"otherinfo": "script-src includes unsafe-inline."
 						}
 					],
@@ -76,57 +104,57 @@
 					"desc": "<p>Content Security Policy (CSP) is an added layer of security that helps to detect and mitigate certain types of attacks. Including (but not limited to) Cross Site Scripting (XSS), and data injection attacks. These attacks are used for everything from data theft to site defacement or distribution of malware. CSP provides a set of standard HTTP headers that allow website owners to declare approved sources of content that browsers should be allowed to load on that page \u2014 covered types are JavaScript, CSS, HTML frames, fonts, images and embeddable objects such as Java applets, ActiveX, audio and video files.</p>",
 					"instances":[ 
 						{
-							"id": "25",
+							"id": "45",
 							"uri": "https://mission-transition-ecologique.beta.gouv.fr/",
 							"method": "GET",
 							"param": "content-security-policy",
 							"attack": "",
-							"evidence": "base-uri 'self'; font-src 'self'; form-action 'self'; frame-ancestors 'self'; img-src 'self' data:; object-src 'self'; script-src-attr 'none'; style-src 'self' 'unsafe-inline' https://baserow.io https://tee-metabase.osc-fr1.scalingo.io; script-src 'self' 'strict-dynamic' 'sha256-pAWsbSB02rnrh8Ufv+E2pDFtq2wB6Ob+pkINk6ih+n4=' 'sha256-vSaKKqewqObKagHzQdJzPPPAn9qPzD7OQ9qSVE62lys=' 'sha384-BBITb7H077QtzZE9GRNje0zN3U8YOYQ76ynx7DguiM0VbTbpX6QmK8Jf4DvLS6Jt' 'sha384-oG7rvEJ301uSUrZ7E0pwKQH2l37rI0OfkywGUz0+otmW9DbSweRl4Rk0KEqfbPTZ' 'sha384-cMNR5Gv5G3oYwMv2aIEWTBiqNa1tF6H7HN7MJQAk3SuxeOMiRnqNLo72qRGyzHK8' 'sha384-zkN1Yj1bjZUK/OMYZodS8A0Q62qCUc7AtDNZRkgCz/L6HsLYMBh2tMU4N9yLYrjv' 'sha384-0/vzVENixo8f+tzk8Vz2Atl1YeGKYCOzQNPJg/99qZwQ26gt14Rrm6uI8fX2mZNb' 'sha384-9WzpQ6G2+i3TNjwylM5fVAr+5PkORuuRwmehKuMqqlrbOiY99Itvi0lyBeOWDDwL' 'sha384-EDnDJTqy5EVQevVliN7XecRYwwL1gDsUKhIAfTu5yVkDqj1Yt6mmhfMskaeOc701' 'sha384-04wefklqUry3BWpKWuI9RqMwY26Ek1hDkFHOCabpNWBDvmPN/n9Us6SnQccK9Sgp' 'sha384-VxqcPRGr84jnJ8+hnn5Lgze50/0+aq3bs7a3Q/f1JtHwsMdtJMnt8VW19af8zJVT' 'sha384-KxnMViZwFuvv1mq28Z5w23KXrubIoDzO69VOBypCoafjjs+Ljv866bJoQ0NNPLmu' 'sha384-IlKVg3W4Xz8SUkHzUUmleHKkNAETCOPW0iwDNhU+UfoI4+ko91HRIlLsVNvXyyzj' 'sha384-Kv9qujlVAQt4aEtD0oLsVLbemUA1IU+x43iWxycUbI93kGzgmGXtSqbOFATE7nMg' 'sha384-luO8EFCVrIEgheZGdPhVjZZeCWgCcJRQGt2v6oKaIUIqyUQoEOwEy/7ipa+otaQ1' 'sha384-MOoIzTxaSZ+cYJhrxm5i0iv3eLC60XcEE+FpAJt1ophLGkWAGlwbOydRj4YpTXBe' 'sha384-hX3nUZT4n942qWV8cuJ3psmWFViJ534O410V2A27wg8IN+JphLiYbFSvatnkLG/X' 'sha384-cxg/b9bGDpgiTOo0lxIgO+qTs4ut+3bpK4qGWPKJHzqItx/HDNDR5HndfmNsvWVM' 'sha384-31j42QIeNsc+YPeX0QuByUUl7cGOk+vL7crNiOUEVm1UHIQiskLrtQ+7riKBdYms' 'sha384-P+ipqe7aYbxv0L7+ZS7BWtRAmYAYTvoBnhVrE1FZQVwxYeMzNNkH4R+wpWJdoTu/' 'sha384-H74+1VJZb4stRWqT213K28P29+qcM2y1AgIL2sksXkHT2wpaMTKHF68P8Arwi1C2' 'sha384-iTMxUTj553eWxZXmBXHwUCtgUOApzDYtJdaxwyG6k7iugGzWCTJaIivZGbZMDsXA' 'sha384-xTq6cBc/OOMzO4VNOnUCJDQpIPCCJqThnzoiXSIC4N0VhoKy7BK1+DlfsQ75dVqM' 'sha384-QlSbaOOrPBfZeHiS5w/votX9G/SCOFw49ERy7F7uVnOvPluEd9dM8d55nEuUPEDC' 'sha384-U6TIvOzAGuhtw/oL7TR0O7sbBoA1QJvYSsS+XIB339temlWa3473AcdqaVf1rmgg' 'sha384-uzuhiChxLGgoPqfgd4L4G/M2+l8vPbNwSFIuv01D9sfhgyaQOXj2FhX33Z7cq/yh' 'sha384-ghmNs7M4J3YC4P2LehGsl1Hy57cj2iOKAmRPm/HQL8NnKCQdzMF5SdspVInrwx9+' 'sha384-FtCzALYaJPX0fBvvU6GAXM3wFyksSJAEZTeyLCqIbhDhnBrXNoaKMycbxQeyoAEV' 'sha384-lMLTSBlAvAKPL0OXsLDEaNXPPSNLmVl4n8rB2sYM9ox/TDHx3NSm2Kkj3OFxAyH3' 'sha384-fKTBcx1jnXhilRbXMjKIY3M0FuHYP/h7m5DipWhX3QYeFLIjLm7PIlXgLx2PSUz9' 'sha384-LYP9rIluBueTIyKDW0hR5MBKpiYCG/pZUUBSCito8tK8Glx//ahcNDjvSzh0ImnS' 'sha384-VvplLrU7nB01FuXaKL1sjTtqMLZ9yqRgKagS6X6526mfZXT0H6OO6jN6NLFYx7U4' 'sha384-bvIGyoeAzmwLgKWSp4p5aukJ3VE1LrapFt+QF9zrzSOYzZKg6/rBlOP2w0GJM3Zd' 'sha384-pGrCQuM3cG6pVfg1dsdWSoAWm+XScppBfweer+kXYzGy61ojjvffw/iMILfkyXdA' 'sha384-mGAe1gqJDSAqcq+0+b8svKZfiyU39c/6cgXqtY/I7b+niwLj1x2Nf+dMEziEh/Yi' 'sha384-7pNww6WKKR0cFXZlZ+y06pRZA4Q4pJVlEDsalE8qolN3LM+G1oOJXPQfOJx93m6J' 'sha384-nib3AJMhIbjIRDFOovzxiC4fYRivsHQ79zzbN6XVK71kpYmloQO6e9FS9bfIyWpr' 'sha384-FTZUt2MOhil5BF2l3AgMml1Un1/vsfLuEIvdm1BDLD3CyPN6K802FZ31ZpDWacNP' 'sha384-UDQb7vQfAHha5rCmFM6n3TMKW3LWD9MYNRiuyEju8NwjmCkl5gwGAHCfZYPfPUki' 'sha384-z/0mGYwTf+XJa3bGPsRhHirKGJE4LkZlkJKeQVmvGDO+xwRN4GkO2kMqZ1zi+3qH' 'sha384-co/zVd34aIm5tHC2U0tLVJ0OwJ15ILUA8JBTqBiCZffozWXhxtIhZiNsE6pQ5ov2'; upgrade-insecure-requests; script-src-elem 'self' 'unsafe-inline' https://stats.beta.gouv.fr https://eu.i.posthog.com https://eu-assets.i.posthog.com https://baserow.io https://tee-metabase.osc-fr1.scalingo.io; worker-src 'self' blob:; connect-src 'self' https://stats.beta.gouv.fr https://baserow.io https://tee-metabase.osc-fr1.scalingo.io https://eu.i.posthog.com https://eu-assets.i.posthog.com https://sentry.incubateur.net; frame-src 'self' https://baserow.io https://tee-metabase.osc-fr1.scalingo.io; manifest-src 'self'; default-src 'none';",
+							"evidence": "base-uri 'self'; font-src 'self'; form-action 'self'; frame-ancestors 'self'; img-src 'self' data:; object-src 'self'; script-src-attr 'none'; style-src 'self' 'unsafe-inline' https://baserow.io https://tee-metabase.osc-fr1.scalingo.io; script-src 'self' 'strict-dynamic' 'sha256-pAWsbSB02rnrh8Ufv+E2pDFtq2wB6Ob+pkINk6ih+n4=' 'sha256-DEBUY/Wb39sJZPJ3xKsEOoYsjEi6h78VMgjMzi4sLu4=' 'sha384-t4JFGe/8gcbE6w8VoR5dg8xx6dwtc1ejGy0IpKuK3x3yaCFGDBFY7wMQpD0/Mq6O' 'sha384-/hSPZ6Ri0f7eNPusGg3iw6cOF+gGEOY/ZbWbk3i1HbjwMc6JatHN9x0SWtPZhrbR' 'sha384-48N2DcmZmGWR6DNfXmqO7b0BgtpOhv1YJ7XIyQk8A2qCOEDosHAqA56ztEX4eRh3' 'sha384-M7xx96ifQs9vJnFRKcvOsDNNCDwHIXAE1dNEudLheJcHrvQjEaqSl7UJfP5Gi+Iy' 'sha384-tKMVEXBeKLjPAAkLkG2tJVrhFo6hBY+pZKgAqw5PFy4JElvLWzPq/zeZHfCu+rDa' 'sha384-iZV8wQe0v2reku5JDgbBuZDQbEerbTdln13VBEagc/hS31acB2/ZDpOYyLjJP+SL' 'sha384-takSuNFWeCYZeP4IzxG+cRuGL9M9fmgEM+dE4UXIEsPfno8gqkb3jJAFTDgfkn01' 'sha384-s4/wOkrH8YsJNwr8znoiUpdj5wzbufBgcsjRaq8n3sSLEUsSY3fzw/qQVs3htU4p' 'sha384-tNtXoXhUhT/niFgxBsWgxdRIb9hWEkmCUFuDqae043WiVyK4U+ytFN8lwjigTuGG' 'sha384-tGkvJaDUoFY3azltRTBoGZeqEJJ0Dqca+GBjwrUa+e86iILJmcN1zsTEmbhiy9iC' 'sha384-unF0pjpPFM7QcEPu7bSXaDE+yB9F+72ME74bUNQV9OO+L2WsQTpalmalf8/gECPY' 'sha384-M2hYU9mqDjpIX7KLgJXMxtxMAmn44BUc4hpM+04x96qC+UbLQrKDCFVwIu32gO12' 'sha384-83IkGrDrdbc9NKA3Hbw/vSrBjraJwW2ZgK6O8mlyeHMvrZtbrflISDcZKfKDA+TC' 'sha384-OU9YBmSjGFTeaWdWVMD3VsSLecaHn2qPTRmqZUeks/dPj5RYFioYOAKbq/J3L+vo' 'sha384-42M22OL4oBrGTwImrxwcBnFR8GB+7sax2w2Hf31AEsgnMagZ3jxnQAoZ7sCZrHcT' 'sha384-JXaz78FU2SOTzxnQ8XKf47nI8KNNRpOR4TAA+ITkfmlHKD3IO/0K3ATY1JoB7Xrw' 'sha384-ldp61S/IZ5w9BXNJApYBpsD82xa5Fajz5qV00BLp2aIkBU9hdHdEfRhkZ4iBERu9' 'sha384-Dc3Dv79zLXxeFzGy5P4tkHbmyZgiZ479n/qT0/jAmb5efUIOx7jak0JpCbaEi17z' 'sha384-gn7wFRHNkkazqmyFL+b0r8HTW9ErGqLmvyeniK+VXxIzHwXb5ts+pfuLviakMMd/' 'sha384-2/yCCNeIIhewh/RaTsoyWteoA30bxGADaxKNPTXoLNpod4oqES1r+EzmkesVaJyX' 'sha384-9SNG31TKjlDbBTIdGBP6RBJX8JkqGu2XxTp1wJ9UBMCXd+eMSFcV8arvTp82HXrp' 'sha384-rH9mCxPSb/9x3Uqe83l3bsdFo2Ong1ZDb8JnEmGxLdO4kNscZNeDa94/9DbGUcep' 'sha384-LbT7O0tCQ1qYBFLKqsOU/yZbXaypOk2JQSymK0EeIbowrmXUbtrmhOr7Hs3YMY4D' 'sha384-4NNkvGcdr6SgkIJFsAi23U7AIxmhIhT1ZArS+4jnCO3N8LUBdMQw4wUgva7redex' 'sha384-ELpOXAhSJ3ExBPyhbAXfESQQI9HushSRB0BBz7vzgIMvqS+0wdSDAk+BgBAOHytZ' 'sha384-rlSFRvZrHXJpJ+b/ums6lGj0ofoCFpbJAX9wbqMnOguhVSQszn6WYlCJF16a5rhK' 'sha384-XfLvkpet6ok7dcJfiHIPrWSCEaKFtOTkKfBOHF5RVlXFKDoVH11AJAloRq+ghTTn' 'sha384-+0pRARq2gP0mxLwB+s8MJesWffstOTWKmQ0C/XQw1oKYxHSkeGlRSW881ihjJwmJ' 'sha384-7pYHhf7b1GxTHuCxQLvoQsCBgYvbOPcsmL6/TBCpQ2r2csuVzaOtq3fXTHgUUEIL' 'sha384-GTxfP0ZF6VXPVxu6Ful+qCsIvD6i4xPBf4sEid16Mf/p0/VBdZM4/UfEAHZgaG89' 'sha384-cVwItDV2ccEcgkuFU0z0oPOT+tB4VHiNxtGip34zG/ymFk1dvcQuBdSdqmzjjLf4' 'sha384-cCikPlhX/Y8Iyz/ZNJBuXp/JgoT6zwR5NFD1F+EoDAZDXRSfFO/2NWu4qc4cc/pp' 'sha384-tE8Ubez5nlgHXNsTF+p7pjKrvaxPIecDJZdzphyjkEymZljCch/MFcMQ7Tvl8s8H' 'sha384-BnhiVPBmT8egl/uBohkla1hlh67C1CByFORX019wwDebNrNw+jS2NSk4CjetUsr2' 'sha384-L4yGh1CSFY8ZJWAx4sM6qcIGRBeNYacrwJzNRBAvs6AjVU0zlqf2GP0Xo+qc+bc/' 'sha384-/hoaw+wnWL3zdVxNsa5bPv86KdVKkfFPGuW1xG+Nfwak25ZLvFkYAEvdG4Hb6Lns' 'sha384-QSYuZV1+n6JjWnymmrBJ23gkr//JY3JKTyh/dw+WErjMlKTPNNYN/+2F9LY+UhkG' 'sha384-J/qVZZE4fHVMDDZ24DO4Ver9uUE3FffWasuEwyXzXzO+6ER6b6XjnJeCk7MvyehP' 'sha384-6OjogO8AQa0O/UktwXa/vNYRd4FTxChgo3zYvgHKXIUQMnkjufyvQr8gmRSH1w/8'; upgrade-insecure-requests; script-src-elem 'self' 'unsafe-inline' https://stats.beta.gouv.fr https://eu.i.posthog.com https://eu-assets.i.posthog.com https://baserow.io https://tee-metabase.osc-fr1.scalingo.io; worker-src 'self' blob:; connect-src 'self' https://stats.beta.gouv.fr https://baserow.io https://tee-metabase.osc-fr1.scalingo.io https://eu.i.posthog.com https://eu-assets.i.posthog.com https://sentry.incubateur.net; frame-src 'self' https://baserow.io https://tee-metabase.osc-fr1.scalingo.io; manifest-src 'self'; default-src 'none';",
 							"otherinfo": "style-src includes unsafe-inline."
 						},
 						{
-							"id": "27",
+							"id": "47",
 							"uri": "https://mission-transition-ecologique.beta.gouv.fr/",
 							"method": "GET",
 							"param": "Content-Security-Policy",
 							"attack": "",
-							"evidence": "base-uri 'self'; font-src 'self'; form-action 'self'; img-src 'self' data:; object-src 'self'; script-src-attr 'none'; style-src 'self' 'unsafe-inline' https://baserow.io https://tee-metabase.osc-fr1.scalingo.io; script-src 'self' 'strict-dynamic' 'sha256-pAWsbSB02rnrh8Ufv+E2pDFtq2wB6Ob+pkINk6ih+n4=' 'sha256-vSaKKqewqObKagHzQdJzPPPAn9qPzD7OQ9qSVE62lys=' 'sha384-BBITb7H077QtzZE9GRNje0zN3U8YOYQ76ynx7DguiM0VbTbpX6QmK8Jf4DvLS6Jt' 'sha384-oG7rvEJ301uSUrZ7E0pwKQH2l37rI0OfkywGUz0+otmW9DbSweRl4Rk0KEqfbPTZ' 'sha384-cMNR5Gv5G3oYwMv2aIEWTBiqNa1tF6H7HN7MJQAk3SuxeOMiRnqNLo72qRGyzHK8' 'sha384-zkN1Yj1bjZUK/OMYZodS8A0Q62qCUc7AtDNZRkgCz/L6HsLYMBh2tMU4N9yLYrjv' 'sha384-0/vzVENixo8f+tzk8Vz2Atl1YeGKYCOzQNPJg/99qZwQ26gt14Rrm6uI8fX2mZNb' 'sha384-9WzpQ6G2+i3TNjwylM5fVAr+5PkORuuRwmehKuMqqlrbOiY99Itvi0lyBeOWDDwL' 'sha384-EDnDJTqy5EVQevVliN7XecRYwwL1gDsUKhIAfTu5yVkDqj1Yt6mmhfMskaeOc701' 'sha384-04wefklqUry3BWpKWuI9RqMwY26Ek1hDkFHOCabpNWBDvmPN/n9Us6SnQccK9Sgp' 'sha384-VxqcPRGr84jnJ8+hnn5Lgze50/0+aq3bs7a3Q/f1JtHwsMdtJMnt8VW19af8zJVT' 'sha384-KxnMViZwFuvv1mq28Z5w23KXrubIoDzO69VOBypCoafjjs+Ljv866bJoQ0NNPLmu' 'sha384-IlKVg3W4Xz8SUkHzUUmleHKkNAETCOPW0iwDNhU+UfoI4+ko91HRIlLsVNvXyyzj' 'sha384-Kv9qujlVAQt4aEtD0oLsVLbemUA1IU+x43iWxycUbI93kGzgmGXtSqbOFATE7nMg' 'sha384-luO8EFCVrIEgheZGdPhVjZZeCWgCcJRQGt2v6oKaIUIqyUQoEOwEy/7ipa+otaQ1' 'sha384-MOoIzTxaSZ+cYJhrxm5i0iv3eLC60XcEE+FpAJt1ophLGkWAGlwbOydRj4YpTXBe' 'sha384-hX3nUZT4n942qWV8cuJ3psmWFViJ534O410V2A27wg8IN+JphLiYbFSvatnkLG/X' 'sha384-cxg/b9bGDpgiTOo0lxIgO+qTs4ut+3bpK4qGWPKJHzqItx/HDNDR5HndfmNsvWVM' 'sha384-31j42QIeNsc+YPeX0QuByUUl7cGOk+vL7crNiOUEVm1UHIQiskLrtQ+7riKBdYms' 'sha384-P+ipqe7aYbxv0L7+ZS7BWtRAmYAYTvoBnhVrE1FZQVwxYeMzNNkH4R+wpWJdoTu/' 'sha384-H74+1VJZb4stRWqT213K28P29+qcM2y1AgIL2sksXkHT2wpaMTKHF68P8Arwi1C2' 'sha384-iTMxUTj553eWxZXmBXHwUCtgUOApzDYtJdaxwyG6k7iugGzWCTJaIivZGbZMDsXA' 'sha384-xTq6cBc/OOMzO4VNOnUCJDQpIPCCJqThnzoiXSIC4N0VhoKy7BK1+DlfsQ75dVqM' 'sha384-QlSbaOOrPBfZeHiS5w/votX9G/SCOFw49ERy7F7uVnOvPluEd9dM8d55nEuUPEDC' 'sha384-U6TIvOzAGuhtw/oL7TR0O7sbBoA1QJvYSsS+XIB339temlWa3473AcdqaVf1rmgg' 'sha384-uzuhiChxLGgoPqfgd4L4G/M2+l8vPbNwSFIuv01D9sfhgyaQOXj2FhX33Z7cq/yh' 'sha384-ghmNs7M4J3YC4P2LehGsl1Hy57cj2iOKAmRPm/HQL8NnKCQdzMF5SdspVInrwx9+' 'sha384-FtCzALYaJPX0fBvvU6GAXM3wFyksSJAEZTeyLCqIbhDhnBrXNoaKMycbxQeyoAEV' 'sha384-lMLTSBlAvAKPL0OXsLDEaNXPPSNLmVl4n8rB2sYM9ox/TDHx3NSm2Kkj3OFxAyH3' 'sha384-fKTBcx1jnXhilRbXMjKIY3M0FuHYP/h7m5DipWhX3QYeFLIjLm7PIlXgLx2PSUz9' 'sha384-LYP9rIluBueTIyKDW0hR5MBKpiYCG/pZUUBSCito8tK8Glx//ahcNDjvSzh0ImnS' 'sha384-VvplLrU7nB01FuXaKL1sjTtqMLZ9yqRgKagS6X6526mfZXT0H6OO6jN6NLFYx7U4' 'sha384-bvIGyoeAzmwLgKWSp4p5aukJ3VE1LrapFt+QF9zrzSOYzZKg6/rBlOP2w0GJM3Zd' 'sha384-pGrCQuM3cG6pVfg1dsdWSoAWm+XScppBfweer+kXYzGy61ojjvffw/iMILfkyXdA' 'sha384-mGAe1gqJDSAqcq+0+b8svKZfiyU39c/6cgXqtY/I7b+niwLj1x2Nf+dMEziEh/Yi' 'sha384-7pNww6WKKR0cFXZlZ+y06pRZA4Q4pJVlEDsalE8qolN3LM+G1oOJXPQfOJx93m6J' 'sha384-nib3AJMhIbjIRDFOovzxiC4fYRivsHQ79zzbN6XVK71kpYmloQO6e9FS9bfIyWpr' 'sha384-FTZUt2MOhil5BF2l3AgMml1Un1/vsfLuEIvdm1BDLD3CyPN6K802FZ31ZpDWacNP' 'sha384-UDQb7vQfAHha5rCmFM6n3TMKW3LWD9MYNRiuyEju8NwjmCkl5gwGAHCfZYPfPUki' 'sha384-z/0mGYwTf+XJa3bGPsRhHirKGJE4LkZlkJKeQVmvGDO+xwRN4GkO2kMqZ1zi+3qH' 'sha384-co/zVd34aIm5tHC2U0tLVJ0OwJ15ILUA8JBTqBiCZffozWXhxtIhZiNsE6pQ5ov2'; upgrade-insecure-requests; script-src-elem 'self' 'unsafe-inline' https://stats.beta.gouv.fr https://eu.i.posthog.com https://eu-assets.i.posthog.com https://baserow.io https://tee-metabase.osc-fr1.scalingo.io; worker-src 'self' blob:; connect-src 'self' https://stats.beta.gouv.fr https://baserow.io https://tee-metabase.osc-fr1.scalingo.io https://eu.i.posthog.com https://eu-assets.i.posthog.com https://sentry.incubateur.net; frame-src 'self' https://baserow.io https://tee-metabase.osc-fr1.scalingo.io; manifest-src 'self'; default-src 'none';",
+							"evidence": "base-uri 'self'; font-src 'self'; form-action 'self'; img-src 'self' data:; object-src 'self'; script-src-attr 'none'; style-src 'self' 'unsafe-inline' https://baserow.io https://tee-metabase.osc-fr1.scalingo.io; script-src 'self' 'strict-dynamic' 'sha256-pAWsbSB02rnrh8Ufv+E2pDFtq2wB6Ob+pkINk6ih+n4=' 'sha256-DEBUY/Wb39sJZPJ3xKsEOoYsjEi6h78VMgjMzi4sLu4=' 'sha384-t4JFGe/8gcbE6w8VoR5dg8xx6dwtc1ejGy0IpKuK3x3yaCFGDBFY7wMQpD0/Mq6O' 'sha384-/hSPZ6Ri0f7eNPusGg3iw6cOF+gGEOY/ZbWbk3i1HbjwMc6JatHN9x0SWtPZhrbR' 'sha384-48N2DcmZmGWR6DNfXmqO7b0BgtpOhv1YJ7XIyQk8A2qCOEDosHAqA56ztEX4eRh3' 'sha384-M7xx96ifQs9vJnFRKcvOsDNNCDwHIXAE1dNEudLheJcHrvQjEaqSl7UJfP5Gi+Iy' 'sha384-tKMVEXBeKLjPAAkLkG2tJVrhFo6hBY+pZKgAqw5PFy4JElvLWzPq/zeZHfCu+rDa' 'sha384-iZV8wQe0v2reku5JDgbBuZDQbEerbTdln13VBEagc/hS31acB2/ZDpOYyLjJP+SL' 'sha384-takSuNFWeCYZeP4IzxG+cRuGL9M9fmgEM+dE4UXIEsPfno8gqkb3jJAFTDgfkn01' 'sha384-s4/wOkrH8YsJNwr8znoiUpdj5wzbufBgcsjRaq8n3sSLEUsSY3fzw/qQVs3htU4p' 'sha384-tNtXoXhUhT/niFgxBsWgxdRIb9hWEkmCUFuDqae043WiVyK4U+ytFN8lwjigTuGG' 'sha384-tGkvJaDUoFY3azltRTBoGZeqEJJ0Dqca+GBjwrUa+e86iILJmcN1zsTEmbhiy9iC' 'sha384-unF0pjpPFM7QcEPu7bSXaDE+yB9F+72ME74bUNQV9OO+L2WsQTpalmalf8/gECPY' 'sha384-M2hYU9mqDjpIX7KLgJXMxtxMAmn44BUc4hpM+04x96qC+UbLQrKDCFVwIu32gO12' 'sha384-83IkGrDrdbc9NKA3Hbw/vSrBjraJwW2ZgK6O8mlyeHMvrZtbrflISDcZKfKDA+TC' 'sha384-OU9YBmSjGFTeaWdWVMD3VsSLecaHn2qPTRmqZUeks/dPj5RYFioYOAKbq/J3L+vo' 'sha384-42M22OL4oBrGTwImrxwcBnFR8GB+7sax2w2Hf31AEsgnMagZ3jxnQAoZ7sCZrHcT' 'sha384-JXaz78FU2SOTzxnQ8XKf47nI8KNNRpOR4TAA+ITkfmlHKD3IO/0K3ATY1JoB7Xrw' 'sha384-ldp61S/IZ5w9BXNJApYBpsD82xa5Fajz5qV00BLp2aIkBU9hdHdEfRhkZ4iBERu9' 'sha384-Dc3Dv79zLXxeFzGy5P4tkHbmyZgiZ479n/qT0/jAmb5efUIOx7jak0JpCbaEi17z' 'sha384-gn7wFRHNkkazqmyFL+b0r8HTW9ErGqLmvyeniK+VXxIzHwXb5ts+pfuLviakMMd/' 'sha384-2/yCCNeIIhewh/RaTsoyWteoA30bxGADaxKNPTXoLNpod4oqES1r+EzmkesVaJyX' 'sha384-9SNG31TKjlDbBTIdGBP6RBJX8JkqGu2XxTp1wJ9UBMCXd+eMSFcV8arvTp82HXrp' 'sha384-rH9mCxPSb/9x3Uqe83l3bsdFo2Ong1ZDb8JnEmGxLdO4kNscZNeDa94/9DbGUcep' 'sha384-LbT7O0tCQ1qYBFLKqsOU/yZbXaypOk2JQSymK0EeIbowrmXUbtrmhOr7Hs3YMY4D' 'sha384-4NNkvGcdr6SgkIJFsAi23U7AIxmhIhT1ZArS+4jnCO3N8LUBdMQw4wUgva7redex' 'sha384-ELpOXAhSJ3ExBPyhbAXfESQQI9HushSRB0BBz7vzgIMvqS+0wdSDAk+BgBAOHytZ' 'sha384-rlSFRvZrHXJpJ+b/ums6lGj0ofoCFpbJAX9wbqMnOguhVSQszn6WYlCJF16a5rhK' 'sha384-XfLvkpet6ok7dcJfiHIPrWSCEaKFtOTkKfBOHF5RVlXFKDoVH11AJAloRq+ghTTn' 'sha384-+0pRARq2gP0mxLwB+s8MJesWffstOTWKmQ0C/XQw1oKYxHSkeGlRSW881ihjJwmJ' 'sha384-7pYHhf7b1GxTHuCxQLvoQsCBgYvbOPcsmL6/TBCpQ2r2csuVzaOtq3fXTHgUUEIL' 'sha384-GTxfP0ZF6VXPVxu6Ful+qCsIvD6i4xPBf4sEid16Mf/p0/VBdZM4/UfEAHZgaG89' 'sha384-cVwItDV2ccEcgkuFU0z0oPOT+tB4VHiNxtGip34zG/ymFk1dvcQuBdSdqmzjjLf4' 'sha384-cCikPlhX/Y8Iyz/ZNJBuXp/JgoT6zwR5NFD1F+EoDAZDXRSfFO/2NWu4qc4cc/pp' 'sha384-tE8Ubez5nlgHXNsTF+p7pjKrvaxPIecDJZdzphyjkEymZljCch/MFcMQ7Tvl8s8H' 'sha384-BnhiVPBmT8egl/uBohkla1hlh67C1CByFORX019wwDebNrNw+jS2NSk4CjetUsr2' 'sha384-L4yGh1CSFY8ZJWAx4sM6qcIGRBeNYacrwJzNRBAvs6AjVU0zlqf2GP0Xo+qc+bc/' 'sha384-/hoaw+wnWL3zdVxNsa5bPv86KdVKkfFPGuW1xG+Nfwak25ZLvFkYAEvdG4Hb6Lns' 'sha384-QSYuZV1+n6JjWnymmrBJ23gkr//JY3JKTyh/dw+WErjMlKTPNNYN/+2F9LY+UhkG' 'sha384-J/qVZZE4fHVMDDZ24DO4Ver9uUE3FffWasuEwyXzXzO+6ER6b6XjnJeCk7MvyehP' 'sha384-6OjogO8AQa0O/UktwXa/vNYRd4FTxChgo3zYvgHKXIUQMnkjufyvQr8gmRSH1w/8'; upgrade-insecure-requests; script-src-elem 'self' 'unsafe-inline' https://stats.beta.gouv.fr https://eu.i.posthog.com https://eu-assets.i.posthog.com https://baserow.io https://tee-metabase.osc-fr1.scalingo.io; worker-src 'self' blob:; connect-src 'self' https://stats.beta.gouv.fr https://baserow.io https://tee-metabase.osc-fr1.scalingo.io https://eu.i.posthog.com https://eu-assets.i.posthog.com https://sentry.incubateur.net; frame-src 'self' https://baserow.io https://tee-metabase.osc-fr1.scalingo.io; manifest-src 'self'; default-src 'none';",
 							"otherinfo": "style-src includes unsafe-inline."
 						},
 						{
-							"id": "17",
+							"id": "8",
 							"uri": "https://mission-transition-ecologique.beta.gouv.fr/ajouter-une-aide-entreprises",
 							"method": "GET",
 							"param": "content-security-policy",
 							"attack": "",
-							"evidence": "base-uri 'self'; font-src 'self'; form-action 'self'; frame-ancestors 'self'; img-src 'self' data:; object-src 'self'; script-src-attr 'none'; style-src 'self' 'unsafe-inline' https://baserow.io https://tee-metabase.osc-fr1.scalingo.io; script-src 'self' 'strict-dynamic' 'sha256-+N3EmF3RGB0ZQIZNw+W3mqGWhRmCu6mcpiW/AqLTIbQ=' 'sha256-57VHVKh8rn0xgyocmSiB5nwHoQL4Br74Q4h1rz4wZe4=' 'sha384-BBITb7H077QtzZE9GRNje0zN3U8YOYQ76ynx7DguiM0VbTbpX6QmK8Jf4DvLS6Jt' 'sha384-oG7rvEJ301uSUrZ7E0pwKQH2l37rI0OfkywGUz0+otmW9DbSweRl4Rk0KEqfbPTZ' 'sha384-cMNR5Gv5G3oYwMv2aIEWTBiqNa1tF6H7HN7MJQAk3SuxeOMiRnqNLo72qRGyzHK8' 'sha384-zkN1Yj1bjZUK/OMYZodS8A0Q62qCUc7AtDNZRkgCz/L6HsLYMBh2tMU4N9yLYrjv' 'sha384-0/vzVENixo8f+tzk8Vz2Atl1YeGKYCOzQNPJg/99qZwQ26gt14Rrm6uI8fX2mZNb' 'sha384-9WzpQ6G2+i3TNjwylM5fVAr+5PkORuuRwmehKuMqqlrbOiY99Itvi0lyBeOWDDwL' 'sha384-EDnDJTqy5EVQevVliN7XecRYwwL1gDsUKhIAfTu5yVkDqj1Yt6mmhfMskaeOc701' 'sha384-04wefklqUry3BWpKWuI9RqMwY26Ek1hDkFHOCabpNWBDvmPN/n9Us6SnQccK9Sgp' 'sha384-VxqcPRGr84jnJ8+hnn5Lgze50/0+aq3bs7a3Q/f1JtHwsMdtJMnt8VW19af8zJVT' 'sha384-KxnMViZwFuvv1mq28Z5w23KXrubIoDzO69VOBypCoafjjs+Ljv866bJoQ0NNPLmu' 'sha384-IlKVg3W4Xz8SUkHzUUmleHKkNAETCOPW0iwDNhU+UfoI4+ko91HRIlLsVNvXyyzj' 'sha384-Kv9qujlVAQt4aEtD0oLsVLbemUA1IU+x43iWxycUbI93kGzgmGXtSqbOFATE7nMg' 'sha384-luO8EFCVrIEgheZGdPhVjZZeCWgCcJRQGt2v6oKaIUIqyUQoEOwEy/7ipa+otaQ1' 'sha384-MOoIzTxaSZ+cYJhrxm5i0iv3eLC60XcEE+FpAJt1ophLGkWAGlwbOydRj4YpTXBe' 'sha384-hX3nUZT4n942qWV8cuJ3psmWFViJ534O410V2A27wg8IN+JphLiYbFSvatnkLG/X' 'sha384-cxg/b9bGDpgiTOo0lxIgO+qTs4ut+3bpK4qGWPKJHzqItx/HDNDR5HndfmNsvWVM' 'sha384-DYiQca+mqeyrpr+hq8Dl/hYPjyPQy/NDX58JRNvRF2BBFUUO0C0femBv/BVtpKrq' 'sha384-pGrCQuM3cG6pVfg1dsdWSoAWm+XScppBfweer+kXYzGy61ojjvffw/iMILfkyXdA' 'sha384-XDKCtFNXtwh3qYkVbwQVdxZJjjQDToZywGmXkNCBMCGOxM2ZpoZuIWs2zFHZTvTD' 'sha384-mGAe1gqJDSAqcq+0+b8svKZfiyU39c/6cgXqtY/I7b+niwLj1x2Nf+dMEziEh/Yi'; upgrade-insecure-requests; script-src-elem 'self' 'unsafe-inline' https://stats.beta.gouv.fr https://eu.i.posthog.com https://eu-assets.i.posthog.com https://baserow.io https://tee-metabase.osc-fr1.scalingo.io; worker-src 'self' blob:; connect-src 'self' https://stats.beta.gouv.fr https://baserow.io https://tee-metabase.osc-fr1.scalingo.io https://eu.i.posthog.com https://eu-assets.i.posthog.com https://sentry.incubateur.net; frame-src 'self' https://baserow.io https://tee-metabase.osc-fr1.scalingo.io; manifest-src 'self'; default-src 'none';",
+							"evidence": "base-uri 'self'; font-src 'self'; form-action 'self'; frame-ancestors 'self'; img-src 'self' data:; object-src 'self'; script-src-attr 'none'; style-src 'self' 'unsafe-inline' https://baserow.io https://tee-metabase.osc-fr1.scalingo.io; script-src 'self' 'strict-dynamic' 'sha256-+N3EmF3RGB0ZQIZNw+W3mqGWhRmCu6mcpiW/AqLTIbQ=' 'sha256-yGpCio0B++QPmzS/VTTEONvH0asBvp1dEU9ylc5yxwI=' 'sha384-t4JFGe/8gcbE6w8VoR5dg8xx6dwtc1ejGy0IpKuK3x3yaCFGDBFY7wMQpD0/Mq6O' 'sha384-/hSPZ6Ri0f7eNPusGg3iw6cOF+gGEOY/ZbWbk3i1HbjwMc6JatHN9x0SWtPZhrbR' 'sha384-48N2DcmZmGWR6DNfXmqO7b0BgtpOhv1YJ7XIyQk8A2qCOEDosHAqA56ztEX4eRh3' 'sha384-M7xx96ifQs9vJnFRKcvOsDNNCDwHIXAE1dNEudLheJcHrvQjEaqSl7UJfP5Gi+Iy' 'sha384-tKMVEXBeKLjPAAkLkG2tJVrhFo6hBY+pZKgAqw5PFy4JElvLWzPq/zeZHfCu+rDa' 'sha384-iZV8wQe0v2reku5JDgbBuZDQbEerbTdln13VBEagc/hS31acB2/ZDpOYyLjJP+SL' 'sha384-takSuNFWeCYZeP4IzxG+cRuGL9M9fmgEM+dE4UXIEsPfno8gqkb3jJAFTDgfkn01' 'sha384-s4/wOkrH8YsJNwr8znoiUpdj5wzbufBgcsjRaq8n3sSLEUsSY3fzw/qQVs3htU4p' 'sha384-tNtXoXhUhT/niFgxBsWgxdRIb9hWEkmCUFuDqae043WiVyK4U+ytFN8lwjigTuGG' 'sha384-tGkvJaDUoFY3azltRTBoGZeqEJJ0Dqca+GBjwrUa+e86iILJmcN1zsTEmbhiy9iC' 'sha384-unF0pjpPFM7QcEPu7bSXaDE+yB9F+72ME74bUNQV9OO+L2WsQTpalmalf8/gECPY' 'sha384-M2hYU9mqDjpIX7KLgJXMxtxMAmn44BUc4hpM+04x96qC+UbLQrKDCFVwIu32gO12' 'sha384-83IkGrDrdbc9NKA3Hbw/vSrBjraJwW2ZgK6O8mlyeHMvrZtbrflISDcZKfKDA+TC' 'sha384-OU9YBmSjGFTeaWdWVMD3VsSLecaHn2qPTRmqZUeks/dPj5RYFioYOAKbq/J3L+vo' 'sha384-42M22OL4oBrGTwImrxwcBnFR8GB+7sax2w2Hf31AEsgnMagZ3jxnQAoZ7sCZrHcT' 'sha384-JXaz78FU2SOTzxnQ8XKf47nI8KNNRpOR4TAA+ITkfmlHKD3IO/0K3ATY1JoB7Xrw' 'sha384-GuKJMvGrSLJ41FLt+03737z1MoVWHhhpopbN85dCtpzK1vufmjB/BfS//FMftZx5' 'sha384-cCikPlhX/Y8Iyz/ZNJBuXp/JgoT6zwR5NFD1F+EoDAZDXRSfFO/2NWu4qc4cc/pp' 'sha384-74TvbbiaVc8V5h/M7TJXJMff/ShUHrEOZcaWQwyscPr26VOatYua9xRGIl3sap9M' 'sha384-tE8Ubez5nlgHXNsTF+p7pjKrvaxPIecDJZdzphyjkEymZljCch/MFcMQ7Tvl8s8H'; upgrade-insecure-requests; script-src-elem 'self' 'unsafe-inline' https://stats.beta.gouv.fr https://eu.i.posthog.com https://eu-assets.i.posthog.com https://baserow.io https://tee-metabase.osc-fr1.scalingo.io; worker-src 'self' blob:; connect-src 'self' https://stats.beta.gouv.fr https://baserow.io https://tee-metabase.osc-fr1.scalingo.io https://eu.i.posthog.com https://eu-assets.i.posthog.com https://sentry.incubateur.net; frame-src 'self' https://baserow.io https://tee-metabase.osc-fr1.scalingo.io; manifest-src 'self'; default-src 'none';",
 							"otherinfo": "style-src includes unsafe-inline."
 						},
 						{
-							"id": "19",
+							"id": "10",
 							"uri": "https://mission-transition-ecologique.beta.gouv.fr/ajouter-une-aide-entreprises",
 							"method": "GET",
 							"param": "Content-Security-Policy",
 							"attack": "",
-							"evidence": "base-uri 'self'; font-src 'self'; form-action 'self'; img-src 'self' data:; object-src 'self'; script-src-attr 'none'; style-src 'self' 'unsafe-inline' https://baserow.io https://tee-metabase.osc-fr1.scalingo.io; script-src 'self' 'strict-dynamic' 'sha256-+N3EmF3RGB0ZQIZNw+W3mqGWhRmCu6mcpiW/AqLTIbQ=' 'sha256-57VHVKh8rn0xgyocmSiB5nwHoQL4Br74Q4h1rz4wZe4=' 'sha384-BBITb7H077QtzZE9GRNje0zN3U8YOYQ76ynx7DguiM0VbTbpX6QmK8Jf4DvLS6Jt' 'sha384-oG7rvEJ301uSUrZ7E0pwKQH2l37rI0OfkywGUz0+otmW9DbSweRl4Rk0KEqfbPTZ' 'sha384-cMNR5Gv5G3oYwMv2aIEWTBiqNa1tF6H7HN7MJQAk3SuxeOMiRnqNLo72qRGyzHK8' 'sha384-zkN1Yj1bjZUK/OMYZodS8A0Q62qCUc7AtDNZRkgCz/L6HsLYMBh2tMU4N9yLYrjv' 'sha384-0/vzVENixo8f+tzk8Vz2Atl1YeGKYCOzQNPJg/99qZwQ26gt14Rrm6uI8fX2mZNb' 'sha384-9WzpQ6G2+i3TNjwylM5fVAr+5PkORuuRwmehKuMqqlrbOiY99Itvi0lyBeOWDDwL' 'sha384-EDnDJTqy5EVQevVliN7XecRYwwL1gDsUKhIAfTu5yVkDqj1Yt6mmhfMskaeOc701' 'sha384-04wefklqUry3BWpKWuI9RqMwY26Ek1hDkFHOCabpNWBDvmPN/n9Us6SnQccK9Sgp' 'sha384-VxqcPRGr84jnJ8+hnn5Lgze50/0+aq3bs7a3Q/f1JtHwsMdtJMnt8VW19af8zJVT' 'sha384-KxnMViZwFuvv1mq28Z5w23KXrubIoDzO69VOBypCoafjjs+Ljv866bJoQ0NNPLmu' 'sha384-IlKVg3W4Xz8SUkHzUUmleHKkNAETCOPW0iwDNhU+UfoI4+ko91HRIlLsVNvXyyzj' 'sha384-Kv9qujlVAQt4aEtD0oLsVLbemUA1IU+x43iWxycUbI93kGzgmGXtSqbOFATE7nMg' 'sha384-luO8EFCVrIEgheZGdPhVjZZeCWgCcJRQGt2v6oKaIUIqyUQoEOwEy/7ipa+otaQ1' 'sha384-MOoIzTxaSZ+cYJhrxm5i0iv3eLC60XcEE+FpAJt1ophLGkWAGlwbOydRj4YpTXBe' 'sha384-hX3nUZT4n942qWV8cuJ3psmWFViJ534O410V2A27wg8IN+JphLiYbFSvatnkLG/X' 'sha384-cxg/b9bGDpgiTOo0lxIgO+qTs4ut+3bpK4qGWPKJHzqItx/HDNDR5HndfmNsvWVM' 'sha384-DYiQca+mqeyrpr+hq8Dl/hYPjyPQy/NDX58JRNvRF2BBFUUO0C0femBv/BVtpKrq' 'sha384-pGrCQuM3cG6pVfg1dsdWSoAWm+XScppBfweer+kXYzGy61ojjvffw/iMILfkyXdA' 'sha384-XDKCtFNXtwh3qYkVbwQVdxZJjjQDToZywGmXkNCBMCGOxM2ZpoZuIWs2zFHZTvTD' 'sha384-mGAe1gqJDSAqcq+0+b8svKZfiyU39c/6cgXqtY/I7b+niwLj1x2Nf+dMEziEh/Yi'; upgrade-insecure-requests; script-src-elem 'self' 'unsafe-inline' https://stats.beta.gouv.fr https://eu.i.posthog.com https://eu-assets.i.posthog.com https://baserow.io https://tee-metabase.osc-fr1.scalingo.io; worker-src 'self' blob:; connect-src 'self' https://stats.beta.gouv.fr https://baserow.io https://tee-metabase.osc-fr1.scalingo.io https://eu.i.posthog.com https://eu-assets.i.posthog.com https://sentry.incubateur.net; frame-src 'self' https://baserow.io https://tee-metabase.osc-fr1.scalingo.io; manifest-src 'self'; default-src 'none';",
+							"evidence": "base-uri 'self'; font-src 'self'; form-action 'self'; img-src 'self' data:; object-src 'self'; script-src-attr 'none'; style-src 'self' 'unsafe-inline' https://baserow.io https://tee-metabase.osc-fr1.scalingo.io; script-src 'self' 'strict-dynamic' 'sha256-+N3EmF3RGB0ZQIZNw+W3mqGWhRmCu6mcpiW/AqLTIbQ=' 'sha256-yGpCio0B++QPmzS/VTTEONvH0asBvp1dEU9ylc5yxwI=' 'sha384-t4JFGe/8gcbE6w8VoR5dg8xx6dwtc1ejGy0IpKuK3x3yaCFGDBFY7wMQpD0/Mq6O' 'sha384-/hSPZ6Ri0f7eNPusGg3iw6cOF+gGEOY/ZbWbk3i1HbjwMc6JatHN9x0SWtPZhrbR' 'sha384-48N2DcmZmGWR6DNfXmqO7b0BgtpOhv1YJ7XIyQk8A2qCOEDosHAqA56ztEX4eRh3' 'sha384-M7xx96ifQs9vJnFRKcvOsDNNCDwHIXAE1dNEudLheJcHrvQjEaqSl7UJfP5Gi+Iy' 'sha384-tKMVEXBeKLjPAAkLkG2tJVrhFo6hBY+pZKgAqw5PFy4JElvLWzPq/zeZHfCu+rDa' 'sha384-iZV8wQe0v2reku5JDgbBuZDQbEerbTdln13VBEagc/hS31acB2/ZDpOYyLjJP+SL' 'sha384-takSuNFWeCYZeP4IzxG+cRuGL9M9fmgEM+dE4UXIEsPfno8gqkb3jJAFTDgfkn01' 'sha384-s4/wOkrH8YsJNwr8znoiUpdj5wzbufBgcsjRaq8n3sSLEUsSY3fzw/qQVs3htU4p' 'sha384-tNtXoXhUhT/niFgxBsWgxdRIb9hWEkmCUFuDqae043WiVyK4U+ytFN8lwjigTuGG' 'sha384-tGkvJaDUoFY3azltRTBoGZeqEJJ0Dqca+GBjwrUa+e86iILJmcN1zsTEmbhiy9iC' 'sha384-unF0pjpPFM7QcEPu7bSXaDE+yB9F+72ME74bUNQV9OO+L2WsQTpalmalf8/gECPY' 'sha384-M2hYU9mqDjpIX7KLgJXMxtxMAmn44BUc4hpM+04x96qC+UbLQrKDCFVwIu32gO12' 'sha384-83IkGrDrdbc9NKA3Hbw/vSrBjraJwW2ZgK6O8mlyeHMvrZtbrflISDcZKfKDA+TC' 'sha384-OU9YBmSjGFTeaWdWVMD3VsSLecaHn2qPTRmqZUeks/dPj5RYFioYOAKbq/J3L+vo' 'sha384-42M22OL4oBrGTwImrxwcBnFR8GB+7sax2w2Hf31AEsgnMagZ3jxnQAoZ7sCZrHcT' 'sha384-JXaz78FU2SOTzxnQ8XKf47nI8KNNRpOR4TAA+ITkfmlHKD3IO/0K3ATY1JoB7Xrw' 'sha384-GuKJMvGrSLJ41FLt+03737z1MoVWHhhpopbN85dCtpzK1vufmjB/BfS//FMftZx5' 'sha384-cCikPlhX/Y8Iyz/ZNJBuXp/JgoT6zwR5NFD1F+EoDAZDXRSfFO/2NWu4qc4cc/pp' 'sha384-74TvbbiaVc8V5h/M7TJXJMff/ShUHrEOZcaWQwyscPr26VOatYua9xRGIl3sap9M' 'sha384-tE8Ubez5nlgHXNsTF+p7pjKrvaxPIecDJZdzphyjkEymZljCch/MFcMQ7Tvl8s8H'; upgrade-insecure-requests; script-src-elem 'self' 'unsafe-inline' https://stats.beta.gouv.fr https://eu.i.posthog.com https://eu-assets.i.posthog.com https://baserow.io https://tee-metabase.osc-fr1.scalingo.io; worker-src 'self' blob:; connect-src 'self' https://stats.beta.gouv.fr https://baserow.io https://tee-metabase.osc-fr1.scalingo.io https://eu.i.posthog.com https://eu-assets.i.posthog.com https://sentry.incubateur.net; frame-src 'self' https://baserow.io https://tee-metabase.osc-fr1.scalingo.io; manifest-src 'self'; default-src 'none';",
 							"otherinfo": "style-src includes unsafe-inline."
 						},
 						{
-							"id": "38",
+							"id": "55",
 							"uri": "https://mission-transition-ecologique.beta.gouv.fr/api",
 							"method": "GET",
 							"param": "content-security-policy",
 							"attack": "",
-							"evidence": "base-uri 'self'; font-src 'self'; form-action 'self'; frame-ancestors 'self'; img-src 'self' data:; object-src 'self'; script-src-attr 'none'; style-src 'self' 'unsafe-inline' https://baserow.io https://tee-metabase.osc-fr1.scalingo.io; script-src 'self' 'nonce-A13uJPHzpFgl8zbx6ZxqLwq1' 'strict-dynamic'; upgrade-insecure-requests; script-src-elem 'self' 'unsafe-inline' 'nonce-A13uJPHzpFgl8zbx6ZxqLwq1' https://stats.beta.gouv.fr https://eu.i.posthog.com https://eu-assets.i.posthog.com https://baserow.io https://tee-metabase.osc-fr1.scalingo.io; worker-src 'self' blob:; connect-src 'self' https://stats.beta.gouv.fr https://baserow.io https://tee-metabase.osc-fr1.scalingo.io https://eu.i.posthog.com https://eu-assets.i.posthog.com https://sentry.incubateur.net; frame-src 'self' https://baserow.io https://tee-metabase.osc-fr1.scalingo.io; manifest-src 'self'; default-src 'none';",
+							"evidence": "base-uri 'self'; font-src 'self'; form-action 'self'; frame-ancestors 'self'; img-src 'self' data:; object-src 'self'; script-src-attr 'none'; style-src 'self' 'unsafe-inline' https://baserow.io https://tee-metabase.osc-fr1.scalingo.io; script-src 'self' 'nonce-Dz9vqraU+5X6DVFgfxOKk2HS' 'strict-dynamic'; upgrade-insecure-requests; script-src-elem 'self' 'unsafe-inline' 'nonce-Dz9vqraU+5X6DVFgfxOKk2HS' https://stats.beta.gouv.fr https://eu.i.posthog.com https://eu-assets.i.posthog.com https://baserow.io https://tee-metabase.osc-fr1.scalingo.io; worker-src 'self' blob:; connect-src 'self' https://stats.beta.gouv.fr https://baserow.io https://tee-metabase.osc-fr1.scalingo.io https://eu.i.posthog.com https://eu-assets.i.posthog.com https://sentry.incubateur.net; frame-src 'self' https://baserow.io https://tee-metabase.osc-fr1.scalingo.io; manifest-src 'self'; default-src 'none';",
 							"otherinfo": "style-src includes unsafe-inline."
 						},
 						{
-							"id": "62",
-							"uri": "https://mission-transition-ecologique.beta.gouv.fr/iframe/*",
+							"id": "59",
+							"uri": "https://mission-transition-ecologique.beta.gouv.fr/iframe",
 							"method": "GET",
-							"param": "content-security-policy",
+							"param": "Content-Security-Policy",
 							"attack": "",
-							"evidence": "base-uri 'self'; font-src 'self'; form-action 'self'; frame-ancestors 'self'; img-src 'self' data:; object-src 'self'; script-src-attr 'none'; style-src 'self' 'unsafe-inline' https://baserow.io https://tee-metabase.osc-fr1.scalingo.io; script-src 'self' 'nonce-pF7tN6Emgpik/7l9aqui6kWK' 'strict-dynamic'; upgrade-insecure-requests; script-src-elem 'self' 'unsafe-inline' 'nonce-pF7tN6Emgpik/7l9aqui6kWK' https://stats.beta.gouv.fr https://eu.i.posthog.com https://eu-assets.i.posthog.com https://baserow.io https://tee-metabase.osc-fr1.scalingo.io; worker-src 'self' blob:; connect-src 'self' https://stats.beta.gouv.fr https://baserow.io https://tee-metabase.osc-fr1.scalingo.io https://eu.i.posthog.com https://eu-assets.i.posthog.com https://sentry.incubateur.net; frame-src 'self' https://baserow.io https://tee-metabase.osc-fr1.scalingo.io; manifest-src 'self'; default-src 'none';",
+							"evidence": "base-uri 'self'; font-src 'self'; form-action 'self'; img-src 'self' data:; object-src 'self'; script-src-attr 'none'; style-src 'self' 'unsafe-inline' https://baserow.io https://tee-metabase.osc-fr1.scalingo.io; script-src 'self' 'nonce-CIi+N15gSMKnC3nfbyaR8xTF' 'strict-dynamic'; upgrade-insecure-requests; script-src-elem 'self' 'unsafe-inline' 'nonce-CIi+N15gSMKnC3nfbyaR8xTF' https://stats.beta.gouv.fr https://eu.i.posthog.com https://eu-assets.i.posthog.com https://baserow.io https://tee-metabase.osc-fr1.scalingo.io; worker-src 'self' blob:; connect-src 'self' https://stats.beta.gouv.fr https://baserow.io https://tee-metabase.osc-fr1.scalingo.io https://eu.i.posthog.com https://eu-assets.i.posthog.com https://sentry.incubateur.net; frame-src 'self' https://baserow.io https://tee-metabase.osc-fr1.scalingo.io; manifest-src 'self'; default-src 'none';",
 							"otherinfo": "style-src includes unsafe-inline."
 						}
 					],
@@ -149,53 +177,8 @@
 					"desc": "<p>Content Security Policy (CSP) is an added layer of security that helps to detect and mitigate certain types of attacks, including Cross Site Scripting (XSS) and data injection attacks. These attacks are used for everything from data theft to site defacement or distribution of malware. CSP provides a set of standard HTTP headers that allow website owners to declare approved sources of content that browsers should be allowed to load on that page \u2014 covered types are JavaScript, CSS, HTML frames, fonts, images and embeddable objects such as Java applets, ActiveX, audio and video files.</p>",
 					"instances":[ 
 						{
-							"id": "129",
-							"uri": "https://mission-transition-ecologique.beta.gouv.fr/aides-entreprise/etude-reemploi-reutilisation-reparation",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"id": "130",
-							"uri": "https://mission-transition-ecologique.beta.gouv.fr/aides-entreprise/etude-rehabilitation-solaires-thermiques-collectives",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"id": "131",
-							"uri": "https://mission-transition-ecologique.beta.gouv.fr/aides-entreprise/etude-reseaux-energie-renouvelable",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"id": "132",
-							"uri": "https://mission-transition-ecologique.beta.gouv.fr/aides-entreprise/etude-solaire-thermique",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"id": "133",
-							"uri": "https://mission-transition-ecologique.beta.gouv.fr/aides-entreprise/etude-test-geothermie",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"id": "134",
-							"uri": "https://mission-transition-ecologique.beta.gouv.fr/aides-entreprise/evaluation-carbone-lise",
+							"id": "140",
+							"uri": "https://mission-transition-ecologique.beta.gouv.fr/%7B%7BsiteUrl%7D%7D",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -204,25 +187,7 @@
 						},
 						{
 							"id": "135",
-							"uri": "https://mission-transition-ecologique.beta.gouv.fr/aides-entreprise/extreme-defi-mobilite",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"id": "136",
-							"uri": "https://mission-transition-ecologique.beta.gouv.fr/aides-entreprise/fasep",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"id": "137",
-							"uri": "https://mission-transition-ecologique.beta.gouv.fr/aides-entreprise/fiscalite-energetique-occitanie",
+							"uri": "https://mission-transition-ecologique.beta.gouv.fr/aides-entreprise/etude-economie-de-la-fonctionnalite",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -231,7 +196,7 @@
 						},
 						{
 							"id": "138",
-							"uri": "https://mission-transition-ecologique.beta.gouv.fr/aides-entreprise/flotte-de-velos-a-disposition",
+							"uri": "https://mission-transition-ecologique.beta.gouv.fr/aides-entreprise/etude-et-investissement-qualite-de-l-air",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -239,8 +204,71 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "3",
+							"id": "139",
+							"uri": "https://mission-transition-ecologique.beta.gouv.fr/aides-entreprise/etude-faisabilite-hydrogene",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "4",
 							"uri": "https://mission-transition-ecologique.beta.gouv.fr/api/health",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "131",
+							"uri": "https://mission-transition-ecologique.beta.gouv.fr/projets-entreprise/abris-velos",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "137",
+							"uri": "https://mission-transition-ecologique.beta.gouv.fr/projets-entreprise/engins-propres",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "132",
+							"uri": "https://mission-transition-ecologique.beta.gouv.fr/projets-entreprise/fret-faible-impact",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "136",
+							"uri": "https://mission-transition-ecologique.beta.gouv.fr/projets-entreprise/recuperateur-eau-pluie",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "133",
+							"uri": "https://mission-transition-ecologique.beta.gouv.fr/projets-entreprise/utilitaire-camion-propre",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "134",
+							"uri": "https://mission-transition-ecologique.beta.gouv.fr/projets-entreprise/vehicules-lourds-propres",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -254,7 +282,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/CSP</p><p>https://cheatsheetseries.owasp.org/cheatsheets/Content_Security_Policy_Cheat_Sheet.html</p><p>https://www.w3.org/TR/CSP/</p><p>https://w3c.github.io/webappsec-csp/</p><p>https://web.dev/articles/csp</p><p>https://caniuse.com/#feat=contentsecuritypolicy</p><p>https://content-security-policy.com/</p>",
 					"cweid": "693",
 					"wascid": "15",
-					"sourceid": "798"
+					"sourceid": "861"
 				},
 				{
 					"pluginid": "10098",
@@ -267,7 +295,7 @@
 					"desc": "<p>Web browser data loading may be possible, due to a Cross Origin Resource Sharing (CORS) misconfiguration on the web server.</p>",
 					"instances":[ 
 						{
-							"id": "29",
+							"id": "49",
 							"uri": "https://mission-transition-ecologique.beta.gouv.fr/",
 							"method": "GET",
 							"param": "",
@@ -285,7 +313,7 @@
 							"otherinfo": "The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing."
 						},
 						{
-							"id": "21",
+							"id": "12",
 							"uri": "https://mission-transition-ecologique.beta.gouv.fr/ajouter-une-aide-entreprises",
 							"method": "GET",
 							"param": "",
@@ -294,7 +322,7 @@
 							"otherinfo": "The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing."
 						},
 						{
-							"id": "39",
+							"id": "56",
 							"uri": "https://mission-transition-ecologique.beta.gouv.fr/api",
 							"method": "GET",
 							"param": "",
@@ -312,7 +340,7 @@
 							"otherinfo": "The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing."
 						},
 						{
-							"id": "74",
+							"id": "75",
 							"uri": "https://mission-transition-ecologique.beta.gouv.fr/demo/*",
 							"method": "GET",
 							"param": "",
@@ -321,7 +349,7 @@
 							"otherinfo": "The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing."
 						},
 						{
-							"id": "67",
+							"id": "60",
 							"uri": "https://mission-transition-ecologique.beta.gouv.fr/iframe",
 							"method": "GET",
 							"param": "",
@@ -330,7 +358,7 @@
 							"otherinfo": "The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing."
 						},
 						{
-							"id": "64",
+							"id": "70",
 							"uri": "https://mission-transition-ecologique.beta.gouv.fr/iframe/*",
 							"method": "GET",
 							"param": "",
@@ -339,7 +367,16 @@
 							"otherinfo": "The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing."
 						},
 						{
-							"id": "4",
+							"id": "91",
+							"uri": "https://mission-transition-ecologique.beta.gouv.fr/mentions-legales",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "access-control-allow-origin: *",
+							"otherinfo": "The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing."
+						},
+						{
+							"id": "2",
 							"uri": "https://mission-transition-ecologique.beta.gouv.fr/robots.txt",
 							"method": "GET",
 							"param": "",
@@ -348,17 +385,8 @@
 							"otherinfo": "The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing."
 						},
 						{
-							"id": "63",
+							"id": "67",
 							"uri": "https://mission-transition-ecologique.beta.gouv.fr/sitemap.xml",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "access-control-allow-origin: *",
-							"otherinfo": "The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing."
-						},
-						{
-							"id": "89",
-							"uri": "https://mission-transition-ecologique.beta.gouv.fr/stats",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -385,7 +413,7 @@
 					"desc": "<p>The response does not protect against 'ClickJacking' attacks. It should include either Content-Security-Policy with 'frame-ancestors' directive or X-Frame-Options.</p>",
 					"instances":[ 
 						{
-							"id": "0",
+							"id": "1",
 							"uri": "https://mission-transition-ecologique.beta.gouv.fr/api/health",
 							"method": "GET",
 							"param": "x-frame-options",
@@ -394,7 +422,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "65",
+							"id": "54",
 							"uri": "https://mission-transition-ecologique.beta.gouv.fr/iframe",
 							"method": "GET",
 							"param": "x-frame-options",
@@ -422,7 +450,7 @@
 					"desc": "<p>The integrity attribute is missing on a script or link tag served by an external server. The integrity tag prevents an attacker who have gained access to this server from injecting a malicious content.</p>",
 					"instances":[ 
 						{
-							"id": "60",
+							"id": "89",
 							"uri": "https://mission-transition-ecologique.beta.gouv.fr/",
 							"method": "GET",
 							"param": "",
@@ -431,7 +459,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "91",
+							"id": "88",
 							"uri": "https://mission-transition-ecologique.beta.gouv.fr/accessibilite",
 							"method": "GET",
 							"param": "",
@@ -440,7 +468,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "59",
+							"id": "21",
 							"uri": "https://mission-transition-ecologique.beta.gouv.fr/ajouter-une-aide-entreprises",
 							"method": "GET",
 							"param": "",
@@ -449,16 +477,16 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "52",
+							"id": "73",
 							"uri": "https://mission-transition-ecologique.beta.gouv.fr/api",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "<link nonce=\"A13uJPHzpFgl8zbx6ZxqLwq1\" href=\"https://stats.beta.gouv.fr/matomo.js\" rel=\"preload\" referrerpolicy=\"no-referrer\" fetchpriority=\"low\" as=\"script\">",
+							"evidence": "<link nonce=\"Dz9vqraU+5X6DVFgfxOKk2HS\" href=\"https://stats.beta.gouv.fr/matomo.js\" rel=\"preload\" referrerpolicy=\"no-referrer\" fetchpriority=\"low\" as=\"script\">",
 							"otherinfo": ""
 						},
 						{
-							"id": "102",
+							"id": "111",
 							"uri": "https://mission-transition-ecologique.beta.gouv.fr/budget",
 							"method": "GET",
 							"param": "",
@@ -472,25 +500,25 @@
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "<link nonce=\"ggrEDOQwn34WobtXuT3uHwgY\" href=\"https://stats.beta.gouv.fr/matomo.js\" rel=\"preload\" referrerpolicy=\"no-referrer\" fetchpriority=\"low\" as=\"script\">",
+							"evidence": "<link nonce=\"/vx6eGvvJ55u4a0vYqTMtsrf\" href=\"https://stats.beta.gouv.fr/matomo.js\" rel=\"preload\" referrerpolicy=\"no-referrer\" fetchpriority=\"low\" as=\"script\">",
 							"otherinfo": ""
 						},
 						{
-							"id": "113",
+							"id": "101",
 							"uri": "https://mission-transition-ecologique.beta.gouv.fr/donnees-personnelles",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "<link nonce=\"i3F4CObRMo/vvIfrp9tyh85Y\" href=\"https://stats.beta.gouv.fr/matomo.js\" rel=\"preload\" referrerpolicy=\"no-referrer\" fetchpriority=\"low\" as=\"script\">",
+							"evidence": "<link nonce=\"me9zkIzqZRg3hf+1qqDj7b+C\" href=\"https://stats.beta.gouv.fr/matomo.js\" rel=\"preload\" referrerpolicy=\"no-referrer\" fetchpriority=\"low\" as=\"script\">",
 							"otherinfo": ""
 						},
 						{
-							"id": "73",
+							"id": "68",
 							"uri": "https://mission-transition-ecologique.beta.gouv.fr/iframe",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "<link nonce=\"N8Bi3uZGN3u2UjwOk04km3SY\" href=\"https://stats.beta.gouv.fr/matomo.js\" rel=\"preload\" referrerpolicy=\"no-referrer\" fetchpriority=\"low\" as=\"script\">",
+							"evidence": "<link nonce=\"CIi+N15gSMKnC3nfbyaR8xTF\" href=\"https://stats.beta.gouv.fr/matomo.js\" rel=\"preload\" referrerpolicy=\"no-referrer\" fetchpriority=\"low\" as=\"script\">",
 							"otherinfo": ""
 						},
 						{
@@ -499,16 +527,16 @@
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "<link nonce=\"pF7tN6Emgpik/7l9aqui6kWK\" href=\"https://stats.beta.gouv.fr/matomo.js\" rel=\"preload\" referrerpolicy=\"no-referrer\" fetchpriority=\"low\" as=\"script\">",
+							"evidence": "<link nonce=\"rIC9jCoUtOHoJJql7CDk9AA3\" href=\"https://stats.beta.gouv.fr/matomo.js\" rel=\"preload\" referrerpolicy=\"no-referrer\" fetchpriority=\"low\" as=\"script\">",
 							"otherinfo": ""
 						},
 						{
-							"id": "106",
+							"id": "100",
 							"uri": "https://mission-transition-ecologique.beta.gouv.fr/mentions-legales",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "<link nonce=\"24e1UpxxsoflS4I+czbekSGA\" href=\"https://stats.beta.gouv.fr/matomo.js\" rel=\"preload\" referrerpolicy=\"no-referrer\" fetchpriority=\"low\" as=\"script\">",
+							"evidence": "<link nonce=\"GxUP86ZFtxiOBiGocsSUbY1X\" href=\"https://stats.beta.gouv.fr/matomo.js\" rel=\"preload\" referrerpolicy=\"no-referrer\" fetchpriority=\"low\" as=\"script\">",
 							"otherinfo": ""
 						},
 						{
@@ -517,16 +545,16 @@
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "<link nonce=\"Aa2cMUrEfjG/Eqjvp7GcBZ9G\" href=\"https://stats.beta.gouv.fr/matomo.js\" rel=\"preload\" referrerpolicy=\"no-referrer\" fetchpriority=\"low\" as=\"script\">",
+							"evidence": "<link nonce=\"86XhqIWX8D0CmbZlGajXMg5q\" href=\"https://stats.beta.gouv.fr/matomo.js\" rel=\"preload\" referrerpolicy=\"no-referrer\" fetchpriority=\"low\" as=\"script\">",
 							"otherinfo": ""
 						},
 						{
-							"id": "100",
+							"id": "110",
 							"uri": "https://mission-transition-ecologique.beta.gouv.fr/stats",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "<link nonce=\"V2138E/wEjHNyfrivefRkA20\" href=\"https://stats.beta.gouv.fr/matomo.js\" rel=\"preload\" referrerpolicy=\"no-referrer\" fetchpriority=\"low\" as=\"script\">",
+							"evidence": "<link nonce=\"Pb9BzyxAJ9WFuEQiU4j1rmLW\" href=\"https://stats.beta.gouv.fr/matomo.js\" rel=\"preload\" referrerpolicy=\"no-referrer\" fetchpriority=\"low\" as=\"script\">",
 							"otherinfo": ""
 						}
 					],
@@ -540,25 +568,16 @@
 				},
 				{
 					"pluginid": "90004",
-					"alertRef": "90004-1",
+					"alertRef": "90004-2",
 					"alert": "Insufficient Site Isolation Against Spectre Vulnerability",
 					"name": "Insufficient Site Isolation Against Spectre Vulnerability",
 					"riskcode": "1",
 					"confidence": "2",
 					"riskdesc": "Low (Medium)",
-					"desc": "<p>Cross-Origin-Resource-Policy header is an opt-in header designed to counter side-channels attacks like Spectre. Resource should be specifically set as shareable amongst different origins.</p>",
+					"desc": "<p>Cross-Origin-Embedder-Policy header is a response header that prevents a document from loading any cross-origin resources that don't explicitly grant the document permission (using CORP or CORS).</p>",
 					"instances":[ 
 						{
-							"id": "108",
-							"uri": "https://mission-transition-ecologique.beta.gouv.fr/_nuxt/default.GevFenRm.css",
-							"method": "GET",
-							"param": "Cross-Origin-Resource-Policy",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"id": "55",
+							"id": "53",
 							"uri": "https://mission-transition-ecologique.beta.gouv.fr/",
 							"method": "GET",
 							"param": "Cross-Origin-Embedder-Policy",
@@ -576,7 +595,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "58",
+							"id": "20",
 							"uri": "https://mission-transition-ecologique.beta.gouv.fr/ajouter-une-aide-entreprises",
 							"method": "GET",
 							"param": "Cross-Origin-Embedder-Policy",
@@ -585,7 +604,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "36",
+							"id": "32",
 							"uri": "https://mission-transition-ecologique.beta.gouv.fr/api/health",
 							"method": "GET",
 							"param": "Cross-Origin-Embedder-Policy",
@@ -594,7 +613,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "98",
+							"id": "109",
 							"uri": "https://mission-transition-ecologique.beta.gouv.fr/budget",
 							"method": "GET",
 							"param": "Cross-Origin-Embedder-Policy",
@@ -603,7 +622,16 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "71",
+							"id": "99",
+							"uri": "https://mission-transition-ecologique.beta.gouv.fr/donnees-personnelles",
+							"method": "GET",
+							"param": "Cross-Origin-Embedder-Policy",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "64",
 							"uri": "https://mission-transition-ecologique.beta.gouv.fr/iframe",
 							"method": "GET",
 							"param": "Cross-Origin-Embedder-Policy",
@@ -612,7 +640,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "104",
+							"id": "96",
 							"uri": "https://mission-transition-ecologique.beta.gouv.fr/mentions-legales",
 							"method": "GET",
 							"param": "Cross-Origin-Embedder-Policy",
@@ -621,7 +649,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "96",
+							"id": "107",
 							"uri": "https://mission-transition-ecologique.beta.gouv.fr/stats",
 							"method": "GET",
 							"param": "Cross-Origin-Embedder-Policy",
@@ -630,7 +658,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "37",
+							"id": "33",
 							"uri": "https://mission-transition-ecologique.beta.gouv.fr/api/health",
 							"method": "GET",
 							"param": "Cross-Origin-Opener-Policy",
@@ -640,12 +668,12 @@
 						}
 					],
 					"count": "10",
-					"solution": "<p>Ensure that the application/web server sets the Cross-Origin-Resource-Policy header appropriately, and that it sets the Cross-Origin-Resource-Policy header to 'same-origin' for all web pages.</p><p>'same-site' is considered as less secured and should be avoided.</p><p>If resources must be shared, set the header to 'cross-origin'.</p><p>If possible, ensure that the end user uses a standards-compliant and modern web browser that supports the Cross-Origin-Resource-Policy header (https://caniuse.com/mdn-http_headers_cross-origin-resource-policy).</p>",
+					"solution": "<p>Ensure that the application/web server sets the Cross-Origin-Embedder-Policy header appropriately, and that it sets the Cross-Origin-Embedder-Policy header to 'require-corp' for documents.</p><p>If possible, ensure that the end user uses a standards-compliant and modern web browser that supports the Cross-Origin-Embedder-Policy header (https://caniuse.com/mdn-http_headers_cross-origin-embedder-policy).</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Cross-Origin-Embedder-Policy</p>",
 					"cweid": "693",
 					"wascid": "14",
-					"sourceid": "448"
+					"sourceid": "4"
 				},
 				{
 					"pluginid": "10063",
@@ -658,8 +686,8 @@
 					"desc": "<p>Permissions Policy Header is an added layer of security that helps to restrict from unauthorized access or usage of browser/client features by web resources. This policy ensures the user privacy by limiting or specifying the features of the browsers can be used by the web resources. Permissions Policy provides a set of standard HTTP headers that allow website owners to limit which features of browsers can be used by the page such as camera, microphone, location, full screen etc.</p>",
 					"instances":[ 
 						{
-							"id": "124",
-							"uri": "https://mission-transition-ecologique.beta.gouv.fr/_nuxt/3ZhxVDBJ.js",
+							"id": "118",
+							"uri": "https://mission-transition-ecologique.beta.gouv.fr/_nuxt/B2WN05tw.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -667,8 +695,8 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "121",
-							"uri": "https://mission-transition-ecologique.beta.gouv.fr/_nuxt/B-wYnFgz.js",
+							"id": "126",
+							"uri": "https://mission-transition-ecologique.beta.gouv.fr/_nuxt/Bqax2Fa-.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -676,17 +704,8 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "117",
-							"uri": "https://mission-transition-ecologique.beta.gouv.fr/_nuxt/B8cCJ1g7.js",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"id": "122",
-							"uri": "https://mission-transition-ecologique.beta.gouv.fr/_nuxt/C-d0Qdja.js",
+							"id": "125",
+							"uri": "https://mission-transition-ecologique.beta.gouv.fr/_nuxt/BzJSsCJX.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -695,7 +714,16 @@
 						},
 						{
 							"id": "123",
-							"uri": "https://mission-transition-ecologique.beta.gouv.fr/_nuxt/C61wjmC0.js",
+							"uri": "https://mission-transition-ecologique.beta.gouv.fr/_nuxt/C3gnHO2Q.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "127",
+							"uri": "https://mission-transition-ecologique.beta.gouv.fr/_nuxt/CBza2uWr.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -704,7 +732,7 @@
 						},
 						{
 							"id": "119",
-							"uri": "https://mission-transition-ecologique.beta.gouv.fr/_nuxt/CY_YDH9D.js",
+							"uri": "https://mission-transition-ecologique.beta.gouv.fr/_nuxt/D4-rtvs9.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -713,7 +741,7 @@
 						},
 						{
 							"id": "120",
-							"uri": "https://mission-transition-ecologique.beta.gouv.fr/_nuxt/DQ52pjLv.js",
+							"uri": "https://mission-transition-ecologique.beta.gouv.fr/_nuxt/DAW_ZLle.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -721,8 +749,8 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "116",
-							"uri": "https://mission-transition-ecologique.beta.gouv.fr/_nuxt/HxIs0utt.js",
+							"id": "121",
+							"uri": "https://mission-transition-ecologique.beta.gouv.fr/_nuxt/Dvgxgizg.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -730,8 +758,8 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "118",
-							"uri": "https://mission-transition-ecologique.beta.gouv.fr/_nuxt/zHCaKZhf.js",
+							"id": "122",
+							"uri": "https://mission-transition-ecologique.beta.gouv.fr/_nuxt/fFKoc_h2.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -739,8 +767,8 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "114",
-							"uri": "https://mission-transition-ecologique.beta.gouv.fr/ajouter-une-aide-entreprises/_payload.js?b4d1856a-e98b-43d7-aa91-11af075d3d47",
+							"id": "124",
+							"uri": "https://mission-transition-ecologique.beta.gouv.fr/_nuxt/zzjwJ8qw.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -748,7 +776,16 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "35",
+							"id": "117",
+							"uri": "https://mission-transition-ecologique.beta.gouv.fr/ajouter-une-aide-entreprises/_payload.js?776f7411-b754-4d92-9803-d2c22e8ef3cf",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "31",
 							"uri": "https://mission-transition-ecologique.beta.gouv.fr/api/health",
 							"method": "GET",
 							"param": "",
@@ -757,13 +794,13 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "11",
+					"count": "12",
 					"solution": "<p>Ensure that your web server, application server, load balancer, etc. is configured to set the Permissions-Policy header.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Permissions-Policy</p><p>https://developer.chrome.com/blog/feature-policy/</p><p>https://scotthelme.co.uk/a-new-security-header-feature-policy/</p><p>https://w3c.github.io/webappsec-feature-policy/</p><p>https://www.smashingmagazine.com/2018/12/feature-policy/</p>",
 					"cweid": "693",
 					"wascid": "15",
-					"sourceid": "502"
+					"sourceid": "553"
 				},
 				{
 					"pluginid": "10037",
@@ -776,7 +813,7 @@
 					"desc": "<p>The web/application server is leaking information via one or more \"X-Powered-By\" HTTP response headers. Access to such information may facilitate attackers identifying other frameworks/components your web application is reliant upon and the vulnerabilities such components may be subject to.</p>",
 					"instances":[ 
 						{
-							"id": "126",
+							"id": "128",
 							"uri": "https://mission-transition-ecologique.beta.gouv.fr/aides-entreprise",
 							"method": "GET",
 							"param": "",
@@ -785,7 +822,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "125",
+							"id": "116",
 							"uri": "https://mission-transition-ecologique.beta.gouv.fr/projets-entreprise",
 							"method": "GET",
 							"param": "",
@@ -800,7 +837,7 @@
 					"reference": "<p>https://owasp.org/www-project-web-security-testing-guide/v42/4-Web_Application_Security_Testing/01-Information_Gathering/08-Fingerprint_Web_Application_Framework</p><p>https://www.troyhunt.com/shhh-dont-let-your-response-headers/</p>",
 					"cweid": "497",
 					"wascid": "13",
-					"sourceid": "460"
+					"sourceid": "398"
 				},
 				{
 					"pluginid": "10094",
@@ -813,13 +850,13 @@
 					"desc": "<p>Base64 encoded data was disclosed by the application/web server. Note: in the interests of performance not all base64 strings in the response were analyzed individually, the entire response should be looked at by the analyst/security team/developer(s).</p>",
 					"instances":[ 
 						{
-							"id": "53",
+							"id": "51",
 							"uri": "https://mission-transition-ecologique.beta.gouv.fr/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "sha384-BBITb7H077QtzZE9GRNje0zN3U8YOYQ76ynx7DguiM0VbTbpX6QmK8Jf4DvLS6Jt",
-							"otherinfo": "\uFFFD\\x0016\uFFFD\uFFFD\\x0004\uFFFD\uFFFD\uFFFD};\uFFFD\\x000bsdOFD\uFFFD\uFFFD\uFFFD3wS\uFFFD\\x000ea\\x000e\uFFFD\uFFFD|{\\x000e\\x000b\uFFFD3E[M\uFFFDW\uFFFD\t\uFFFD\uFFFD\uFFFD\\x000e\uFFFD\uFFFD\uFFFD"
+							"evidence": "sha384-t4JFGe/8gcbE6w8VoR5dg8xx6dwtc1ejGy0IpKuK3x3yaCFGDBFY7wMQpD0/Mq6O",
+							"otherinfo": "\uFFFD\\x0016\uFFFD\uFFFD\uFFFD\uFFFDF{\uFFFD q\uFFFD:\uFFFD\uFFFDhG\uFFFD`\uFFFD\\x001czw\\x000b\\\uFFFD\uFFFD\uFFFD\uFFFDB)*\uFFFD\uFFFD|\uFFFD\\x0008Q\uFFFD\\x0004V;\uFFFD\uFFFD)\\x000fO\u032B\uFFFD"
 						},
 						{
 							"id": "85",
@@ -827,35 +864,35 @@
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "sha384-BBITb7H077QtzZE9GRNje0zN3U8YOYQ76ynx7DguiM0VbTbpX6QmK8Jf4DvLS6Jt",
-							"otherinfo": "\uFFFD\\x0016\uFFFD\uFFFD\\x0004\uFFFD\uFFFD\uFFFD};\uFFFD\\x000bsdOFD\uFFFD\uFFFD\uFFFD3wS\uFFFD\\x000ea\\x000e\uFFFD\uFFFD|{\\x000e\\x000b\uFFFD3E[M\uFFFDW\uFFFD\t\uFFFD\uFFFD\uFFFD\\x000e\uFFFD\uFFFD\uFFFD"
+							"evidence": "sha384-t4JFGe/8gcbE6w8VoR5dg8xx6dwtc1ejGy0IpKuK3x3yaCFGDBFY7wMQpD0/Mq6O",
+							"otherinfo": "\uFFFD\\x0016\uFFFD\uFFFD\uFFFD\uFFFDF{\uFFFD q\uFFFD:\uFFFD\uFFFDhG\uFFFD`\uFFFD\\x001czw\\x000b\\\uFFFD\uFFFD\uFFFD\uFFFDB)*\uFFFD\uFFFD|\uFFFD\\x0008Q\uFFFD\\x0004V;\uFFFD\uFFFD)\\x000fO\u032B\uFFFD"
 						},
 						{
-							"id": "56",
+							"id": "14",
 							"uri": "https://mission-transition-ecologique.beta.gouv.fr/ajouter-une-aide-entreprises",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "sha384-BBITb7H077QtzZE9GRNje0zN3U8YOYQ76ynx7DguiM0VbTbpX6QmK8Jf4DvLS6Jt",
-							"otherinfo": "\uFFFD\\x0016\uFFFD\uFFFD\\x0004\uFFFD\uFFFD\uFFFD};\uFFFD\\x000bsdOFD\uFFFD\uFFFD\uFFFD3wS\uFFFD\\x000ea\\x000e\uFFFD\uFFFD|{\\x000e\\x000b\uFFFD3E[M\uFFFDW\uFFFD\t\uFFFD\uFFFD\uFFFD\\x000e\uFFFD\uFFFD\uFFFD"
+							"evidence": "sha384-t4JFGe/8gcbE6w8VoR5dg8xx6dwtc1ejGy0IpKuK3x3yaCFGDBFY7wMQpD0/Mq6O",
+							"otherinfo": "\uFFFD\\x0016\uFFFD\uFFFD\uFFFD\uFFFDF{\uFFFD q\uFFFD:\uFFFD\uFFFDhG\uFFFD`\uFFFD\\x001czw\\x000b\\\uFFFD\uFFFD\uFFFD\uFFFDB)*\uFFFD\uFFFD|\uFFFD\\x0008Q\uFFFD\\x0004V;\uFFFD\uFFFD)\\x000fO\u032B\uFFFD"
 						},
 						{
-							"id": "49",
+							"id": "65",
 							"uri": "https://mission-transition-ecologique.beta.gouv.fr/api",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "nonce-A13uJPHzpFgl8zbx6ZxqLwq1",
-							"otherinfo": "\uFFFD\uFFFD\uFFFD{\uFFFD5\uFFFD\uFFFDO\\x001f:E\uFFFD_3o\\x001e\uFFFD\u01A2\uFFFD"
+							"evidence": "nonce-Dz9vqraU+5X6DVFgfxOKk2HS",
+							"otherinfo": "\uFFFD\uFFFD\uFFFD{\uFFFD\uFFFD\uFFFD\uFFFD\uFFFDiO\uFFFD_\uFFFD\uFFFD\\x0016\\x0007\uFFFD8\uFFFD6\\x001d"
 						},
 						{
-							"id": "97",
+							"id": "108",
 							"uri": "https://mission-transition-ecologique.beta.gouv.fr/budget",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "sha384-BBITb7H077QtzZE9GRNje0zN3U8YOYQ76ynx7DguiM0VbTbpX6QmK8Jf4DvLS6Jt",
-							"otherinfo": "\uFFFD\\x0016\uFFFD\uFFFD\\x0004\uFFFD\uFFFD\uFFFD};\uFFFD\\x000bsdOFD\uFFFD\uFFFD\uFFFD3wS\uFFFD\\x000ea\\x000e\uFFFD\uFFFD|{\\x000e\\x000b\uFFFD3E[M\uFFFDW\uFFFD\t\uFFFD\uFFFD\uFFFD\\x000e\uFFFD\uFFFD\uFFFD"
+							"evidence": "sha384-t4JFGe/8gcbE6w8VoR5dg8xx6dwtc1ejGy0IpKuK3x3yaCFGDBFY7wMQpD0/Mq6O",
+							"otherinfo": "\uFFFD\\x0016\uFFFD\uFFFD\uFFFD\uFFFDF{\uFFFD q\uFFFD:\uFFFD\uFFFDhG\uFFFD`\uFFFD\\x001czw\\x000b\\\uFFFD\uFFFD\uFFFD\uFFFDB)*\uFFFD\uFFFD|\uFFFD\\x0008Q\uFFFD\\x0004V;\uFFFD\uFFFD)\\x000fO\u032B\uFFFD"
 						},
 						{
 							"id": "78",
@@ -863,26 +900,26 @@
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "nonce-ggrEDOQwn34WobtXuT3uHwgY",
-							"otherinfo": "\uFFFD\uFFFD\uFFFD{\uFFFD \uFFFD@\uFFFDC\t\uFFFD\uFFFDj\\x001b\uFFFD{\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD"
+							"evidence": "nonce-/vx6eGvvJ55u4a0vYqTMtsrf",
+							"otherinfo": "\uFFFD\uFFFD\uFFFD{\uFFFD\uFFFD\u01E7\uFFFD\uFFFD\uFFFDy\uFFFD\uFFFD\\x001a\uFFFD\uFFFD*L\uFFFDl\uFFFD"
 						},
 						{
-							"id": "109",
+							"id": "98",
 							"uri": "https://mission-transition-ecologique.beta.gouv.fr/donnees-personnelles",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "nonce-i3F4CObRMo/vvIfrp9tyh85Y",
-							"otherinfo": "\uFFFD\uFFFD\uFFFD{\uFFFD\\x0017\uFFFD\uFFFDm\\x0013(\uFFFD\uFFFD\uFFFD~\uFFFD}\uFFFD(|\uFFFD"
+							"evidence": "nonce-me9zkIzqZRg3hf+1qqDj7b+C",
+							"otherinfo": "\uFFFD\uFFFD\uFFFD{\uFFFD\uFFFD9\\x0008\u03A6Q\uFFFDx_\uFFFDZ\uFFFD\\x000e>\uFFFD\uFFFD"
 						},
 						{
-							"id": "69",
+							"id": "62",
 							"uri": "https://mission-transition-ecologique.beta.gouv.fr/iframe",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "nonce-N8Bi3uZGN3u2UjwOk04km3SY",
-							"otherinfo": "\uFFFD\uFFFD\uFFFD{\uFFFD|\\x0006-\uFFFDdcw\uFFFDe#\uFFFD\uFFFD4\uFFFDI\uFFFDI"
+							"evidence": "nonce-CIi+N15gSMKnC3nfbyaR8xTF",
+							"otherinfo": "\uFFFD\uFFFD\uFFFD{\uFFFD\uFFFD\uFFFD\uFFFDu\uFFFD\\x0004\uFFFD*p\uFFFD\uFFFD\uFFFD\uFFFDi\\x001f1L"
 						},
 						{
 							"id": "72",
@@ -890,40 +927,40 @@
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "nonce-pF7tN6Emgpik/7l9aqui6kWK",
-							"otherinfo": "\uFFFD\uFFFD\uFFFD{\uFFFDE\uFFFD\uFFFDz\\x0012h)\uFFFDO\uFFFD\uFFFD\u05AA\uFFFD.\uFFFDX"
+							"evidence": "nonce-rIC9jCoUtOHoJJql7CDk9AA3",
+							"otherinfo": "\uFFFD\uFFFD\uFFFD{\uFFFD\uFFFD\\x000b\uFFFD\u00A1KN\\x001e\uFFFDI\uFFFD^\uFFFD\\x000eO@\\x0003"
 						},
 						{
-							"id": "103",
+							"id": "94",
 							"uri": "https://mission-transition-ecologique.beta.gouv.fr/mentions-legales",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "nonce-24e1UpxxsoflS4I+czbekSGA",
-							"otherinfo": "\uFFFD\uFFFD\uFFFD{\uFFFD{U)\uFFFD\\x001b(~T\uFFFD#\uFFFD3m\uFFFD\\x0012\\x0018"
+							"evidence": "nonce-GxUP86ZFtxiOBiGocsSUbY1X",
+							"otherinfo": "\uFFFD\uFFFD\uFFFD{\uFFFDP\uFFFD:d[q\uFFFD\uFFFDb\\x001a\uFFFD,IF\uFFFD\uFFFD"
 						},
 						{
-							"id": "111",
+							"id": "114",
 							"uri": "https://mission-transition-ecologique.beta.gouv.fr/questions-frequentes",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "nonce-Aa2cMUrEfjG/Eqjvp7GcBZ9G",
-							"otherinfo": "\uFFFD\uFFFD\uFFFD{\uFFFD\\x001a\uFFFD\uFFFD\\x0014\uFFFDG\uFFFD\\x001b\uFFFD*\uFFFD\uFFFD{\\x0019\uFFFDY\uFFFD"
+							"evidence": "nonce-86XhqIWX8D0CmbZlGajXMg5q",
+							"otherinfo": "\uFFFD\uFFFD\uFFFD{\uFFFD:^\\x001a\uFFFDY\\x0003\uFFFD)\uFFFDfQ\uFFFD\uFFFDs \uFFFD"
 						},
 						{
-							"id": "94",
+							"id": "106",
 							"uri": "https://mission-transition-ecologique.beta.gouv.fr/stats",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "nonce-V2138E/wEjHNyfrivefRkA20",
-							"otherinfo": "\uFFFD\uFFFD\uFFFD{\uFFFDv\uFFFD\\x0004\uFFFD\\x0001#\\x001c\u071F\uFFFD+\uFFFD}\\x0019\\x0000\uFFFD"
+							"evidence": "nonce-Pb9BzyxAJ9WFuEQiU4j1rmLW",
+							"otherinfo": "\uFFFD\uFFFD\uFFFD{\uFFFD\uFFFD\uFFFD\\x001c\uFFFD\uFFFD\\x0002}X[\uFFFDB%8\uFFFDZ\uFFFD-"
 						}
 					],
 					"count": "12",
 					"solution": "<p>Manually confirm that the Base64 data does not leak sensitive information, and that the data cannot be aggregated/used to exploit other vulnerabilities.</p>",
-					"otherinfo": "<p>\uFFFD\\x0016\uFFFD\uFFFD\\x0004\uFFFD\uFFFD\uFFFD};\uFFFD\\x000bsdOFD\uFFFD\uFFFD\uFFFD3wS\uFFFD\\x000ea\\x000e\uFFFD\uFFFD|{\\x000e\\x000b\uFFFD3E[M\uFFFDW\uFFFD\t\uFFFD\uFFFD\uFFFD\\x000e\uFFFD\uFFFD\uFFFD</p>",
+					"otherinfo": "<p>\uFFFD\\x0016\uFFFD\uFFFD\uFFFD\uFFFDF{\uFFFD q\uFFFD:\uFFFD\uFFFDhG\uFFFD`\uFFFD\\x001czw\\x000b\\\uFFFD\uFFFD\uFFFD\uFFFDB)*\uFFFD\uFFFD|\uFFFD\\x0008Q\uFFFD\\x0004V;\uFFFD\uFFFD)\\x000fO\u032B\uFFFD</p>",
 					"reference": "<p>https://projects.webappsec.org/w/page/13246936/Information%20Leakage</p>",
 					"cweid": "319",
 					"wascid": "13",
@@ -940,7 +977,7 @@
 					"desc": "<p>The message contained both CSP specified via header and via Meta tag. It was not possible to union these policies in order to perform an analysis. Therefore, they have been evaluated individually.</p>",
 					"instances":[ 
 						{
-							"id": "28",
+							"id": "48",
 							"uri": "https://mission-transition-ecologique.beta.gouv.fr/",
 							"method": "GET",
 							"param": "",
@@ -949,7 +986,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "20",
+							"id": "11",
 							"uri": "https://mission-transition-ecologique.beta.gouv.fr/ajouter-une-aide-entreprises",
 							"method": "GET",
 							"param": "",
@@ -977,17 +1014,8 @@
 					"desc": "<p>The response appears to contain suspicious comments which may help an attacker.</p>",
 					"instances":[ 
 						{
-							"id": "127",
-							"uri": "https://mission-transition-ecologique.beta.gouv.fr/_nuxt/Do6JNbaJ.js",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "query",
-							"otherinfo": "The following pattern was used: \\bQUERY\\b and was detected in likely comment: \"//www.w3.org/2000/svg\",Wx=\"http://www.w3.org/1998/Math/MathML\",Rr=typeof document<\"u\"?document:null,Hg=Rr&&Rr.createElement(\"tem\", see evidence field for the suspicious comment/snippet."
-						},
-						{
-							"id": "139",
-							"uri": "https://mission-transition-ecologique.beta.gouv.fr/_nuxt/rn_AmtL3.js",
+							"id": "141",
+							"uri": "https://mission-transition-ecologique.beta.gouv.fr/_nuxt/BRpOmpaR.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -995,22 +1023,31 @@
 							"otherinfo": "The following pattern was used: \\bQUERY\\b and was detected in likely comment: \"//annuaire-entreprises.data.gouv.fr/\",target:\"_blank\"},\" Cliquez ici \")],-1)]))):_(\"\",!0),T.option.wildcard?(s(),l(\"p\",mo,[q(b(e\", see evidence field for the suspicious comment/snippet."
 						},
 						{
-							"id": "128",
-							"uri": "https://mission-transition-ecologique.beta.gouv.fr/aides-entreprise/aide-travaux-tourisme-aura",
+							"id": "129",
+							"uri": "https://mission-transition-ecologique.beta.gouv.fr/_nuxt/CgL0NlSg.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
 							"evidence": "query",
-							"otherinfo": "The following pattern was used: \\bQUERY\\b and was detected in likely comment: \"//IgjPuMF4\">window.__NUXT__=(function(a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z,A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,\", see evidence field for the suspicious comment/snippet."
+							"otherinfo": "The following pattern was used: \\bQUERY\\b and was detected in likely comment: \"//www.w3.org/2000/svg\",Wx=\"http://www.w3.org/1998/Math/MathML\",Rr=typeof document<\"u\"?document:null,Hg=Rr&&Rr.createElement(\"tem\", see evidence field for the suspicious comment/snippet."
+						},
+						{
+							"id": "130",
+							"uri": "https://mission-transition-ecologique.beta.gouv.fr/projets-entreprise/fournisseurs-locaux",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "query",
+							"otherinfo": "The following pattern was used: \\bQUERY\\b and was detected in likely comment: \"//W7iNWd\">window.__NUXT__=(function(a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z,A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,\", see evidence field for the suspicious comment/snippet."
 						}
 					],
 					"count": "3",
 					"solution": "<p>Remove all comments that return information that may help an attacker and fix any underlying problems they refer to.</p>",
-					"otherinfo": "<p>The following pattern was used: \\bQUERY\\b and was detected in likely comment: \"//www.w3.org/2000/svg\",Wx=\"http://www.w3.org/1998/Math/MathML\",Rr=typeof document<\"u\"?document:null,Hg=Rr&&Rr.createElement(\"tem\", see evidence field for the suspicious comment/snippet.</p>",
+					"otherinfo": "<p>The following pattern was used: \\bQUERY\\b and was detected in likely comment: \"//annuaire-entreprises.data.gouv.fr/\",target:\"_blank\"},\" Cliquez ici \")],-1)]))):_(\"\",!0),T.option.wildcard?(s(),l(\"p\",mo,[q(b(e\", see evidence field for the suspicious comment/snippet.</p>",
 					"reference": "",
 					"cweid": "615",
 					"wascid": "13",
-					"sourceid": "542"
+					"sourceid": "1183"
 				},
 				{
 					"pluginid": "10109",
@@ -1023,7 +1060,7 @@
 					"desc": "<p>The application appears to be a modern web application. If you need to explore it automatically then the Ajax Spider may well be more effective than the standard one.</p>",
 					"instances":[ 
 						{
-							"id": "51",
+							"id": "50",
 							"uri": "https://mission-transition-ecologique.beta.gouv.fr/",
 							"method": "GET",
 							"param": "",
@@ -1041,7 +1078,7 @@
 							"otherinfo": "Links have been found with a target of '_self' - this is often used by modern frameworks to force a full page reload."
 						},
 						{
-							"id": "22",
+							"id": "13",
 							"uri": "https://mission-transition-ecologique.beta.gouv.fr/ajouter-une-aide-entreprises",
 							"method": "GET",
 							"param": "",
@@ -1050,7 +1087,7 @@
 							"otherinfo": "Links have been found with a target of '_self' - this is often used by modern frameworks to force a full page reload."
 						},
 						{
-							"id": "48",
+							"id": "61",
 							"uri": "https://mission-transition-ecologique.beta.gouv.fr/api",
 							"method": "GET",
 							"param": "",
@@ -1059,7 +1096,7 @@
 							"otherinfo": "Links have been found with a target of '_self' - this is often used by modern frameworks to force a full page reload."
 						},
 						{
-							"id": "93",
+							"id": "105",
 							"uri": "https://mission-transition-ecologique.beta.gouv.fr/budget",
 							"method": "GET",
 							"param": "",
@@ -1068,7 +1105,7 @@
 							"otherinfo": "Links have been found with a target of '_self' - this is often used by modern frameworks to force a full page reload."
 						},
 						{
-							"id": "77",
+							"id": "76",
 							"uri": "https://mission-transition-ecologique.beta.gouv.fr/demo/*",
 							"method": "GET",
 							"param": "",
@@ -1077,7 +1114,7 @@
 							"otherinfo": "Links have been found with a target of '_self' - this is often used by modern frameworks to force a full page reload."
 						},
 						{
-							"id": "107",
+							"id": "97",
 							"uri": "https://mission-transition-ecologique.beta.gouv.fr/donnees-personnelles",
 							"method": "GET",
 							"param": "",
@@ -1086,7 +1123,7 @@
 							"otherinfo": "Links have been found with a target of '_self' - this is often used by modern frameworks to force a full page reload."
 						},
 						{
-							"id": "68",
+							"id": "71",
 							"uri": "https://mission-transition-ecologique.beta.gouv.fr/iframe/*",
 							"method": "GET",
 							"param": "",
@@ -1095,7 +1132,7 @@
 							"otherinfo": "Links have been found with a target of '_self' - this is often used by modern frameworks to force a full page reload."
 						},
 						{
-							"id": "101",
+							"id": "92",
 							"uri": "https://mission-transition-ecologique.beta.gouv.fr/mentions-legales",
 							"method": "GET",
 							"param": "",
@@ -1104,8 +1141,8 @@
 							"otherinfo": "Links have been found with a target of '_self' - this is often used by modern frameworks to force a full page reload."
 						},
 						{
-							"id": "110",
-							"uri": "https://mission-transition-ecologique.beta.gouv.fr/questions-frequentes",
+							"id": "113",
+							"uri": "https://mission-transition-ecologique.beta.gouv.fr/projets-entreprise",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1113,7 +1150,7 @@
 							"otherinfo": "Links have been found with a target of '_self' - this is often used by modern frameworks to force a full page reload."
 						},
 						{
-							"id": "92",
+							"id": "104",
 							"uri": "https://mission-transition-ecologique.beta.gouv.fr/stats",
 							"method": "GET",
 							"param": "",
@@ -1141,7 +1178,7 @@
 					"desc": "<p>The cache-control header has not been set properly or is missing, allowing the browser and proxies to cache content. For static assets like css, js, or image files this might be intended, however, the resources should be reviewed to ensure that no sensitive content will be cached.</p>",
 					"instances":[ 
 						{
-							"id": "23",
+							"id": "43",
 							"uri": "https://mission-transition-ecologique.beta.gouv.fr/",
 							"method": "GET",
 							"param": "cache-control",
@@ -1159,7 +1196,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "15",
+							"id": "6",
 							"uri": "https://mission-transition-ecologique.beta.gouv.fr/ajouter-une-aide-entreprises",
 							"method": "GET",
 							"param": "cache-control",
@@ -1168,7 +1205,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "2",
+							"id": "3",
 							"uri": "https://mission-transition-ecologique.beta.gouv.fr/api/health",
 							"method": "GET",
 							"param": "cache-control",
@@ -1177,7 +1214,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "90",
+							"id": "103",
 							"uri": "https://mission-transition-ecologique.beta.gouv.fr/budget",
 							"method": "GET",
 							"param": "cache-control",
@@ -1186,7 +1223,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "105",
+							"id": "93",
 							"uri": "https://mission-transition-ecologique.beta.gouv.fr/donnees-personnelles",
 							"method": "GET",
 							"param": "cache-control",
@@ -1195,7 +1232,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "66",
+							"id": "57",
 							"uri": "https://mission-transition-ecologique.beta.gouv.fr/iframe",
 							"method": "GET",
 							"param": "cache-control",
@@ -1204,7 +1241,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "99",
+							"id": "90",
 							"uri": "https://mission-transition-ecologique.beta.gouv.fr/mentions-legales",
 							"method": "GET",
 							"param": "cache-control",
@@ -1213,34 +1250,16 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "1",
-							"uri": "https://mission-transition-ecologique.beta.gouv.fr/robots.txt",
-							"method": "GET",
-							"param": "cache-control",
-							"attack": "",
-							"evidence": "max-age=14400, must-revalidate",
-							"otherinfo": ""
-						},
-						{
-							"id": "61",
+							"id": "66",
 							"uri": "https://mission-transition-ecologique.beta.gouv.fr/sitemap.xml",
 							"method": "GET",
 							"param": "cache-control",
 							"attack": "",
 							"evidence": "public, max-age=2678400, s-maxage=2678400, stale-while-revalidate=3600",
 							"otherinfo": ""
-						},
-						{
-							"id": "88",
-							"uri": "https://mission-transition-ecologique.beta.gouv.fr/stats",
-							"method": "GET",
-							"param": "cache-control",
-							"attack": "",
-							"evidence": "s-maxage=86400, stale-while-revalidate",
-							"otherinfo": ""
 						}
 					],
-					"count": "11",
+					"count": "9",
 					"solution": "<p>For secure content, ensure the cache-control HTTP header is set with \"no-cache, no-store, must-revalidate\". If an asset should be cached consider setting the directives \"public, max-age, immutable\".</p>",
 					"otherinfo": "",
 					"reference": "<p>https://cheatsheetseries.owasp.org/cheatsheets/Session_Management_Cheat_Sheet.html#web-content-caching</p><p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Cache-Control</p><p>https://grayduck.mn/2021/09/13/cache-control-recommendations/</p>",
@@ -1259,7 +1278,16 @@
 					"desc": "<p>Specifies how and where the data would be used. For instance, if the value is audio, then the requested resource must be audio data and not any other type of resource.</p>",
 					"instances":[ 
 						{
-							"id": "32",
+							"id": "17",
+							"uri": "https://mission-transition-ecologique.beta.gouv.fr/ajouter-une-aide-entreprises",
+							"method": "GET",
+							"param": "Sec-Fetch-Dest",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "28",
 							"uri": "https://mission-transition-ecologique.beta.gouv.fr/api/health",
 							"method": "GET",
 							"param": "Sec-Fetch-Dest",
@@ -1268,7 +1296,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "8",
+							"id": "36",
 							"uri": "https://mission-transition-ecologique.beta.gouv.fr/robots.txt",
 							"method": "GET",
 							"param": "Sec-Fetch-Dest",
@@ -1277,13 +1305,13 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "2",
+					"count": "3",
 					"solution": "<p>Ensure that Sec-Fetch-Dest header is included in request headers.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Sec-Fetch-Dest</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "1"
+					"sourceid": "15"
 				},
 				{
 					"pluginid": "90005",
@@ -1296,7 +1324,16 @@
 					"desc": "<p>Allows to differentiate between requests for navigating between HTML pages and requests for loading resources like images, audio etc.</p>",
 					"instances":[ 
 						{
-							"id": "31",
+							"id": "16",
+							"uri": "https://mission-transition-ecologique.beta.gouv.fr/ajouter-une-aide-entreprises",
+							"method": "GET",
+							"param": "Sec-Fetch-Mode",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "27",
 							"uri": "https://mission-transition-ecologique.beta.gouv.fr/api/health",
 							"method": "GET",
 							"param": "Sec-Fetch-Mode",
@@ -1305,7 +1342,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "7",
+							"id": "35",
 							"uri": "https://mission-transition-ecologique.beta.gouv.fr/robots.txt",
 							"method": "GET",
 							"param": "Sec-Fetch-Mode",
@@ -1314,13 +1351,13 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "2",
+					"count": "3",
 					"solution": "<p>Ensure that Sec-Fetch-Mode header is included in request headers.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Sec-Fetch-Mode</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "1"
+					"sourceid": "15"
 				},
 				{
 					"pluginid": "90005",
@@ -1333,7 +1370,16 @@
 					"desc": "<p>Specifies the relationship between request initiator's origin and target's origin.</p>",
 					"instances":[ 
 						{
-							"id": "30",
+							"id": "15",
+							"uri": "https://mission-transition-ecologique.beta.gouv.fr/ajouter-une-aide-entreprises",
+							"method": "GET",
+							"param": "Sec-Fetch-Site",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "26",
 							"uri": "https://mission-transition-ecologique.beta.gouv.fr/api/health",
 							"method": "GET",
 							"param": "Sec-Fetch-Site",
@@ -1342,7 +1388,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "6",
+							"id": "34",
 							"uri": "https://mission-transition-ecologique.beta.gouv.fr/robots.txt",
 							"method": "GET",
 							"param": "Sec-Fetch-Site",
@@ -1351,13 +1397,13 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "2",
+					"count": "3",
 					"solution": "<p>Ensure that Sec-Fetch-Site header is included in request headers.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Sec-Fetch-Site</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "1"
+					"sourceid": "15"
 				},
 				{
 					"pluginid": "90005",
@@ -1370,7 +1416,16 @@
 					"desc": "<p>Specifies if a navigation request was initiated by a user.</p>",
 					"instances":[ 
 						{
-							"id": "33",
+							"id": "18",
+							"uri": "https://mission-transition-ecologique.beta.gouv.fr/ajouter-une-aide-entreprises",
+							"method": "GET",
+							"param": "Sec-Fetch-User",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "29",
 							"uri": "https://mission-transition-ecologique.beta.gouv.fr/api/health",
 							"method": "GET",
 							"param": "Sec-Fetch-User",
@@ -1379,7 +1434,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "9",
+							"id": "37",
 							"uri": "https://mission-transition-ecologique.beta.gouv.fr/robots.txt",
 							"method": "GET",
 							"param": "Sec-Fetch-User",
@@ -1388,13 +1443,13 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "2",
+					"count": "3",
 					"solution": "<p>Ensure that Sec-Fetch-User header is included in user initiated requests.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Sec-Fetch-User</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "1"
+					"sourceid": "15"
 				},
 				{
 					"pluginid": "10049",
@@ -1407,7 +1462,7 @@
 					"desc": "<p>The response contents are storable by caching components such as proxy servers, and may be retrieved directly from the cache, rather than from the origin server by the caching servers, in response to similar requests from other users. If the response data is sensitive, personal or user-specific, this may result in sensitive information being leaked. In some cases, this may even result in a user gaining complete control of the session of another user, depending on the configuration of the caching components in use in their environment. This is primarily an issue where \"shared\" caching servers such as \"proxy\" caches are configured on the local network. This configuration is typically found in corporate or educational environments, for instance.</p>",
 					"instances":[ 
 						{
-							"id": "54",
+							"id": "52",
 							"uri": "https://mission-transition-ecologique.beta.gouv.fr/",
 							"method": "GET",
 							"param": "",
@@ -1425,7 +1480,7 @@
 							"otherinfo": "In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234."
 						},
 						{
-							"id": "57",
+							"id": "19",
 							"uri": "https://mission-transition-ecologique.beta.gouv.fr/ajouter-une-aide-entreprises",
 							"method": "GET",
 							"param": "",
@@ -1434,7 +1489,7 @@
 							"otherinfo": "In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234."
 						},
 						{
-							"id": "34",
+							"id": "30",
 							"uri": "https://mission-transition-ecologique.beta.gouv.fr/api/health",
 							"method": "GET",
 							"param": "",
@@ -1443,7 +1498,7 @@
 							"otherinfo": "In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234."
 						},
 						{
-							"id": "70",
+							"id": "63",
 							"uri": "https://mission-transition-ecologique.beta.gouv.fr/iframe",
 							"method": "GET",
 							"param": "",
@@ -1452,7 +1507,16 @@
 							"otherinfo": "In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234."
 						},
 						{
-							"id": "10",
+							"id": "95",
+							"uri": "https://mission-transition-ecologique.beta.gouv.fr/mentions-legales",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234."
+						},
+						{
+							"id": "38",
 							"uri": "https://mission-transition-ecologique.beta.gouv.fr/robots.txt",
 							"method": "GET",
 							"param": "",
@@ -1461,21 +1525,12 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "76",
+							"id": "77",
 							"uri": "https://mission-transition-ecologique.beta.gouv.fr/sitemap.xml",
 							"method": "GET",
 							"param": "",
 							"attack": "",
 							"evidence": "s-maxage=2678400",
-							"otherinfo": ""
-						},
-						{
-							"id": "95",
-							"uri": "https://mission-transition-ecologique.beta.gouv.fr/stats",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "s-maxage=86400",
 							"otherinfo": ""
 						}
 					],
@@ -1498,7 +1553,7 @@
 					"desc": "<p>The response contents are storable by caching components such as proxy servers, but will not be retrieved directly from the cache, without validating the request upstream, in response to similar requests from other users.</p>",
 					"instances":[ 
 						{
-							"id": "50",
+							"id": "69",
 							"uri": "https://mission-transition-ecologique.beta.gouv.fr/api",
 							"method": "GET",
 							"param": "",
@@ -1516,7 +1571,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "75",
+							"id": "74",
 							"uri": "https://mission-transition-ecologique.beta.gouv.fr/iframe/*",
 							"method": "GET",
 							"param": "",
