@@ -57,16 +57,16 @@ jobs:
         run: |
          TAGS_INPUT=${{ github.event.inputs.tags }}
          echo "::set-output name=value::${TAGS_INPUT:-"production"}"
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       - id: init
-        uses: "SocialGouv/dashlord-actions/init@v1"
+        uses: SocialGouv/dashlord-actions/init@bda592c644a12e09736c4884426abd37280faa2d # 1.44.0
         with:
           url: ${{ github.event.inputs.url }}
           tool: ${{ github.event.inputs.tool }}
           tags: ${{ steps.tags.outputs.value }}
       - id: updown-init
         if: ${{ matrix.sites.tools.updownio }}
-        uses: "SocialGouv/dashlord-actions/updown-init@v1"
+        uses: SocialGouv/dashlord-actions/updown-init@bda592c644a12e09736c4884426abd37280faa2d # 1.44.0
         env:
           UPDOWNIO_API_KEY: ${{ secrets.UPDOWNIO_API_KEY }}
 
@@ -81,12 +81,12 @@ jobs:
       matrix:
         sites: ${{ fromJson(needs.init.outputs.sites) }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
 
       - run: |
           mkdir scans
 
-      - uses: actions/cache@v4
+      - uses: actions/cache@v5
         with:
           path: "**/node_modules"
           key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
@@ -94,7 +94,7 @@ jobs:
       - name: dsfr
         continue-on-error: true
         timeout-minutes: 10
-        uses: "SocialGouv/dashlord-actions/dsfr@v1"
+        uses: SocialGouv/dashlord-actions/dsfr@bda592c644a12e09736c4884426abd37280faa2d # 1.44.0
         if: ${{ matrix.sites.tools.dsfr }}
         with:
           url: ${{ matrix.sites.url }}
@@ -103,14 +103,14 @@ jobs:
       - name: eco-index
         continue-on-error: true
         timeout-minutes: 10
-        uses: "SocialGouv/dashlord-actions/ecoindex@v1"
+        uses: SocialGouv/dashlord-actions/ecoindex@bda592c644a12e09736c4884426abd37280faa2d # 1.44.0
         if: ${{ matrix.sites.tools.ecoindex }}
         with:
           url: ${{ matrix.sites.url }}
           output: scans/ecoindex.json
 
       - name: Screenshot Website
-        uses: swinton/screenshot-website@v1.x
+        uses: swinton/screenshot-website@80a97add3949213d227d3366c2309c9ba721f6b5 # v1.0.2
         if: ${{ matrix.sites.tools.screenshot }}
         continue-on-error: true
         timeout-minutes: 10
@@ -124,7 +124,7 @@ jobs:
       - name: Déclaration a11y
         continue-on-error: true
         timeout-minutes: 10
-        uses: "SocialGouv/dashlord-actions/declaration-a11y@v1"
+        uses: SocialGouv/dashlord-actions/declaration-a11y@bda592c644a12e09736c4884426abd37280faa2d # 1.44.0
         if: ${{ matrix.sites.tools['declaration-a11y'] }}
         with:
           url: ${{ matrix.sites.url }}
@@ -132,7 +132,7 @@ jobs:
 
       - name: Wappalyzer scan
         if: ${{ matrix.sites.tools.wappalyzer }}
-        uses: "socialgouv/wappalyzer-action@master"
+        uses: SocialGouv/wappalyzer-action@84f8eefc908ae35051802c73da6f8b1b936c2273 # branch : master
         continue-on-error: true
         timeout-minutes: 10
         with:
@@ -141,7 +141,7 @@ jobs:
 
       - name: ZAP Scan
         if: ${{ matrix.sites.tools.zap }}
-        uses: zaproxy/action-baseline@v0.14.0
+        uses: zaproxy/action-baseline@de8ad967d3548d44ef623df22cf95c3b0baf8b25 # v0.15.0
         continue-on-error: true
         timeout-minutes: 10
         with:
@@ -155,7 +155,7 @@ jobs:
         if: ${{ matrix.sites.tools.lighthouse }}
         continue-on-error: true
         timeout-minutes: 20
-        uses: socialgouv/dashlord-actions/lhci@v1
+        uses: SocialGouv/dashlord-actions/lhci@bda592c644a12e09736c4884426abd37280faa2d # 1.44.0
         with:
           url: "${{ join(matrix.sites.subpages, ',') }}"
 
@@ -164,7 +164,7 @@ jobs:
         continue-on-error: true
         id: http
         timeout-minutes: 10
-        uses: SocialGouv/httpobs-action@master
+        uses: SocialGouv/httpobs-action@b1131f9d2670adf33189aa758c74545de8873378 # branch : master
         with:
           url: "${{ matrix.sites.url }}"
           output: "scans/http.json"
@@ -173,7 +173,7 @@ jobs:
         if: steps.http.outcome=='failure'
         continue-on-error: true
         timeout-minutes: 10
-        uses: SocialGouv/httpobs-action@master
+        uses: SocialGouv/httpobs-action@b1131f9d2670adf33189aa758c74545de8873378 # branch : master
         with:
           url: "${{ matrix.sites.url }}"
           output: "scans/http.json"
@@ -190,7 +190,7 @@ jobs:
 
       - name: Déclaration RGPD
         continue-on-error: true
-        uses: SocialGouv/dashlord-actions/declaration-rgpd@v1
+        uses: SocialGouv/dashlord-actions/declaration-rgpd@bda592c644a12e09736c4884426abd37280faa2d # 1.44.0
         if: ${{ matrix.sites.tools['declaration-rgpd'] }}
         with:
           thirdparties: ${{ steps.thirdparties.outputs.json }}
@@ -208,7 +208,7 @@ jobs:
         if: ${{ matrix.sites.tools.testssl }}
         continue-on-error: true
         timeout-minutes: 10
-        uses: "mbogh/test-ssl-action@v1.1"
+        uses: mbogh/test-ssl-action@6bad4e83e29bca36d5570a00736a0b9d63e52643 # NodeJS v20
         with:
           host: ${{ steps.hostname.outputs.value }}
           output: scans
@@ -219,7 +219,7 @@ jobs:
         if: ${{ matrix.sites.tools.nmap }}
         continue-on-error: true
         timeout-minutes: 10
-        uses: "MTES-MCT/nmap-action@main"
+        uses: "MTES-MCT/nmap-action@35d94744caa271668174832306f9db5e61bd20c1" # branch : main
         with:
           host: ${{ steps.hostname.outputs.value }}
           outputDir: "scans"
@@ -231,7 +231,7 @@ jobs:
         if: ${{ matrix.sites.tools.nuclei }}
         continue-on-error: true
         timeout-minutes: 10
-        uses: "SocialGouv/dashlord-nuclei-action@master"
+        uses: "SocialGouv/dashlord-nuclei-action@31e71ca2c2e7fde8cb4a872063f4b471a0e04c26" # branch : master
         with:
           url: ${{ matrix.sites.url }}
           output: "scans/nuclei.log"
@@ -240,7 +240,7 @@ jobs:
         if: ${{ matrix.sites.tools.updownio }}
         continue-on-error: true
         timeout-minutes: 10
-        uses: "MTES-MCT/updownio-action@main"
+        uses: MTES-MCT/updownio-action@e364973d068215e4cffae8e4033a7a8712779c23 # v0.1.0
         with:
           apiKey: ${{ secrets.UPDOWNIO_API_KEY }}
           url: ${{ matrix.sites.url }}
@@ -251,7 +251,7 @@ jobs:
         continue-on-error: true
         timeout-minutes: 10
         id: betagouv
-        uses: betagouv/dashlord-startup-action@main
+        uses: betagouv/dashlord-startup-action@93cbc26a096e16ca9b285e7e23b80f5535604ba6 # branch : main
         with:
           id: "${{ matrix.sites.betaId }}"
           output: "scans/betagouv.json"
@@ -259,7 +259,7 @@ jobs:
       - name: Stats page from beta
         continue-on-error: true
         timeout-minutes: 10
-        uses: "betagouv/check-url-action@main"
+        uses: "betagouv/check-url-action@4abfd436fe4cbe5f064f17cb969ce6194b0bc716" # branch : main
         if: ${{ matrix.sites.tools.stats }}
         id: stats
         with:
@@ -271,7 +271,7 @@ jobs:
       - name: Stats page retry on url
         continue-on-error: true
         timeout-minutes: 10
-        uses: "betagouv/check-url-action@main"
+        uses: "betagouv/check-url-action@4abfd436fe4cbe5f064f17cb969ce6194b0bc716" # branch : main
         if: ${{ steps.stats.outcome=='failure' }}
         with:
           url: ${{ format('{0}/stats', matrix.sites.url) }}
@@ -282,7 +282,7 @@ jobs:
       - name: Budget page from beta
         continue-on-error: true
         timeout-minutes: 10
-        uses: "betagouv/check-url-action@main"
+        uses: "betagouv/check-url-action@4abfd436fe4cbe5f064f17cb969ce6194b0bc716" # branch : main
         if: ${{ matrix.sites.tools.budget_page }}
         id: budget_page
         with:
@@ -293,7 +293,7 @@ jobs:
       - name: Budget page retry on url
         continue-on-error: true
         timeout-minutes: 10
-        uses: "betagouv/check-url-action@main"
+        uses: "betagouv/check-url-action@4abfd436fe4cbe5f064f17cb969ce6194b0bc716" # branch : main
         if: ${{ steps.budget_page.outcome=='failure' }}
         with:
           url: ${{ format('{0}/budget', matrix.sites.url) }}
@@ -303,7 +303,7 @@ jobs:
       - name: Open Github repository
         continue-on-error: true
         timeout-minutes: 10
-        uses: "betagouv/check-url-action@main"
+        uses: "betagouv/check-url-action@4abfd436fe4cbe5f064f17cb969ce6194b0bc716" # branch : main
         if: ${{ matrix.sites.tools.betagouv }}
         with:
           url: ${{ steps.betagouv.outputs.github_repository }}
@@ -313,7 +313,7 @@ jobs:
         continue-on-error: true
         timeout-minutes: 10
         if: ${{ matrix.sites.tools.dependabot && matrix.sites.repositories }}
-        uses: "MTES-MCT/dependabotalerts-action@main"
+        uses: "MTES-MCT/dependabotalerts-action@3d7d27756ad09279b6893a050aa79bcc5cdd3c48" # branch : main
         with:
           token: ${{ secrets.DEPENDABOTALERTS_TOKEN }}
           repositories: ${{ join(matrix.sites.repositories) }}
@@ -324,7 +324,7 @@ jobs:
       - name: Code quality alerts
         if: ${{ matrix.sites.tools.codescan && matrix.sites.repositories }}
         continue-on-error: true
-        uses: "MTES-MCT/codescanalerts-action@main"
+        uses: "MTES-MCT/codescanalerts-action@e8fe792a23b2378c1428a24de787011333a37518" # branch : main
         with:
           token: ${{ secrets.CODESCANALERTS_TOKEN }}
           repositories: ${{ join(matrix.sites.repositories) }}
@@ -335,7 +335,7 @@ jobs:
         continue-on-error: true
         timeout-minutes: 10
         if: ${{ matrix.sites.tools.trivy && matrix.sites.docker }}
-        uses: "SocialGouv/dashlord-actions/trivy@v1"
+        uses: SocialGouv/dashlord-actions/trivy@bda592c644a12e09736c4884426abd37280faa2d # 1.44.0
         with:
           images: ${{ join(matrix.sites.docker) }}
           output: scans/trivy.json
@@ -345,7 +345,7 @@ jobs:
         id: sonarcloud
         continue-on-error: true
         timeout-minutes: 10
-        uses: "SocialGouv/dashlord-actions/sonarcloud@v1"
+        uses: SocialGouv/dashlord-actions/sonarcloud@bda592c644a12e09736c4884426abd37280faa2d # 1.44.0
         with:
           repos: ${{ join(matrix.sites.repositories) }}
           output: "scans/sonarcloud.json"
@@ -353,19 +353,19 @@ jobs:
       - name: Detect 404s
         continue-on-error: true
         timeout-minutes: 10
-        uses: "socialgouv/detect-404-action@master"
+        uses: "SocialGouv/detect-404-action@d9cfb10876e3403195e7cc2a306d2b166d1792b8" # branch : master
         if: ${{ matrix.sites.tools['404'] }}
         with:
           url: ${{ matrix.sites.url }}
           output: scans/404.json
 
-      - uses: "SocialGouv/dashlord-actions/save@v1"
+      - uses: SocialGouv/dashlord-actions/save@bda592c644a12e09736c4884426abd37280faa2d # 1.44.0
         with:
           url: ${{ matrix.sites.url }}
           # only clean up previous stats when all tools runned
           cleanup: ${{ github.event.inputs.tool == 'all' && true || false }}
 
-      - uses: EndBug/add-and-commit@v9
+      - uses: EndBug/add-and-commit@a94899bca583c204427a224a7af87c02f9b325d5 # v9.1.4
         with:
           add: "results"
           author_name: "incubateur-ademe-admin"
