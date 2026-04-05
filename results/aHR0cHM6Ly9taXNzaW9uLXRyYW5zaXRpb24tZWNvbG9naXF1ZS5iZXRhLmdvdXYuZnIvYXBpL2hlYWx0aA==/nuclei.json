@@ -1,85 +1,6 @@
 [
   [
     {
-      "template": "dns/spf-record-detect.yaml",
-      "template-url": "https://templates.nuclei.sh/public/spf-record-detect",
-      "template-id": "spf-record-detect",
-      "template-path": "/home/runner/nuclei-templates/dns/spf-record-detect.yaml",
-      "info": {
-        "name": "SPF Record - Detection",
-        "author": [
-          "rxerium"
-        ],
-        "tags": [
-          "dns",
-          "spf",
-          "discovery"
-        ],
-        "description": "An SPF TXT record was detected\n",
-        "reference": [
-          "https://www.mimecast.com/content/how-to-create-an-spf-txt-record"
-        ],
-        "severity": "info",
-        "metadata": {
-          "max-request": 1
-        }
-      },
-      "type": "dns",
-      "host": "mission-transition-ecologique.beta.gouv.fr.",
-      "matched-at": "mission-transition-ecologique.beta.gouv.fr",
-      "extracted-results": [
-        "v=spf1 include:_spf.google.com -all\""
-      ],
-      "request": ";; opcode: QUERY, status: NOERROR, id: 43355\n;; flags: rd ad; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;mission-transition-ecologique.beta.gouv.fr.\tIN\t TXT\n",
-      "response": ";; opcode: QUERY, status: NOERROR, id: 43355\n;; flags: qr rd ra; QUERY: 1, ANSWER: 4, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 512\n\n;; QUESTION SECTION:\n;mission-transition-ecologique.beta.gouv.fr.\tIN\t TXT\n\n;; ANSWER SECTION:\nmission-transition-ecologique.beta.gouv.fr.\t600\tIN\tTXT\t\"v=spf1 include:_spf.google.com -all\"\nmission-transition-ecologique.beta.gouv.fr.\t600\tIN\tTXT\t\"google-site-verification=3AfPWw9xL2RdWxuf5CJ0NZlmGUEEGOFDEu9Kg7IM6Cw\"\nmission-transition-ecologique.beta.gouv.fr.\t600\tIN\tTXT\t\"brevo-code:6109b304ca0ab51bb666afa10c8b5073\"\nmission-transition-ecologique.beta.gouv.fr.\t600\tIN\tTXT\t\"google-site-verification=cYyloPg1rNO63Sj-DrmjqWqY_2Ml3mDLKagn2WELMYM\"\n",
-      "timestamp": "2026-03-29T04:03:15.949831006Z",
-      "matcher-status": true
-    },
-    {
-      "template": "dns/txt-fingerprint.yaml",
-      "template-url": "https://templates.nuclei.sh/public/txt-fingerprint",
-      "template-id": "txt-fingerprint",
-      "template-path": "/home/runner/nuclei-templates/dns/txt-fingerprint.yaml",
-      "info": {
-        "name": "DNS TXT Record Detected",
-        "author": [
-          "pdteam"
-        ],
-        "tags": [
-          "dns",
-          "txt",
-          "discovery"
-        ],
-        "description": "A DNS TXT record was detected. The TXT record lets a domain admin leave notes on a DNS server.",
-        "reference": [
-          "https://www.netspi.com/blog/technical/network-penetration-testing/analyzing-dns-txt-records-to-fingerprint-service-providers/"
-        ],
-        "severity": "info",
-        "metadata": {
-          "max-request": 1
-        },
-        "classification": {
-          "cve-id": null,
-          "cwe-id": [
-            "cwe-200"
-          ]
-        }
-      },
-      "type": "dns",
-      "host": "mission-transition-ecologique.beta.gouv.fr.",
-      "matched-at": "mission-transition-ecologique.beta.gouv.fr",
-      "extracted-results": [
-        "\"google-site-verification=cYyloPg1rNO63Sj-DrmjqWqY_2Ml3mDLKagn2WELMYM\"",
-        "\"v=spf1 include:_spf.google.com -all\"",
-        "\"google-site-verification=3AfPWw9xL2RdWxuf5CJ0NZlmGUEEGOFDEu9Kg7IM6Cw\"",
-        "\"brevo-code:6109b304ca0ab51bb666afa10c8b5073\""
-      ],
-      "request": ";; opcode: QUERY, status: NOERROR, id: 43355\n;; flags: rd ad; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;mission-transition-ecologique.beta.gouv.fr.\tIN\t TXT\n",
-      "response": ";; opcode: QUERY, status: NOERROR, id: 43355\n;; flags: qr rd ra; QUERY: 1, ANSWER: 4, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 512\n\n;; QUESTION SECTION:\n;mission-transition-ecologique.beta.gouv.fr.\tIN\t TXT\n\n;; ANSWER SECTION:\nmission-transition-ecologique.beta.gouv.fr.\t600\tIN\tTXT\t\"v=spf1 include:_spf.google.com -all\"\nmission-transition-ecologique.beta.gouv.fr.\t600\tIN\tTXT\t\"google-site-verification=3AfPWw9xL2RdWxuf5CJ0NZlmGUEEGOFDEu9Kg7IM6Cw\"\nmission-transition-ecologique.beta.gouv.fr.\t600\tIN\tTXT\t\"brevo-code:6109b304ca0ab51bb666afa10c8b5073\"\nmission-transition-ecologique.beta.gouv.fr.\t600\tIN\tTXT\t\"google-site-verification=cYyloPg1rNO63Sj-DrmjqWqY_2Ml3mDLKagn2WELMYM\"\n",
-      "timestamp": "2026-03-29T04:03:15.949982649Z",
-      "matcher-status": true
-    },
-    {
       "template": "dns/caa-fingerprint.yaml",
       "template-url": "https://templates.nuclei.sh/public/caa-fingerprint",
       "template-id": "caa-fingerprint",
@@ -112,9 +33,9 @@
       "type": "dns",
       "host": "mission-transition-ecologique.beta.gouv.fr.",
       "matched-at": "mission-transition-ecologique.beta.gouv.fr",
-      "request": ";; opcode: QUERY, status: NOERROR, id: 4369\n;; flags: rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;mission-transition-ecologique.beta.gouv.fr.\tIN\t CAA\n",
-      "response": ";; opcode: QUERY, status: NOERROR, id: 4369\n;; flags: qr rd ra; QUERY: 1, ANSWER: 0, AUTHORITY: 1, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 1232\n\n;; QUESTION SECTION:\n;mission-transition-ecologique.beta.gouv.fr.\tIN\t CAA\n\n;; AUTHORITY SECTION:\nmission-transition-ecologique.beta.gouv.fr.\t60\tIN\tSOA\tdns102.ovh.net. tech.ovh.net. 2025050510 86400 3600 3600000 60\n",
-      "timestamp": "2026-03-29T04:03:16.234491407Z",
+      "request": ";; opcode: QUERY, status: NOERROR, id: 7826\n;; flags: rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;mission-transition-ecologique.beta.gouv.fr.\tIN\t CAA\n",
+      "response": ";; opcode: QUERY, status: NOERROR, id: 7826\n;; flags: qr rd ra; QUERY: 1, ANSWER: 0, AUTHORITY: 1, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 1232\n\n;; QUESTION SECTION:\n;mission-transition-ecologique.beta.gouv.fr.\tIN\t CAA\n\n;; AUTHORITY SECTION:\nmission-transition-ecologique.beta.gouv.fr.\t60\tIN\tSOA\tdns102.ovh.net. tech.ovh.net. 2025050510 86400 3600 3600000 60\n",
+      "timestamp": "2026-04-05T04:04:58.77953017Z",
       "matcher-status": true
     },
     {
@@ -154,9 +75,88 @@
       "extracted-results": [
         "1 SMTP.GOOGLE.COM."
       ],
-      "request": ";; opcode: QUERY, status: NOERROR, id: 635\n;; flags: rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;mission-transition-ecologique.beta.gouv.fr.\tIN\t MX\n",
-      "response": ";; opcode: QUERY, status: NOERROR, id: 635\n;; flags: qr rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 1232\n\n;; QUESTION SECTION:\n;mission-transition-ecologique.beta.gouv.fr.\tIN\t MX\n\n;; ANSWER SECTION:\nmission-transition-ecologique.beta.gouv.fr.\t3600\tIN\tMX\t1 SMTP.GOOGLE.COM.\n",
-      "timestamp": "2026-03-29T04:03:17.080365998Z",
+      "request": ";; opcode: QUERY, status: NOERROR, id: 38130\n;; flags: rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;mission-transition-ecologique.beta.gouv.fr.\tIN\t MX\n",
+      "response": ";; opcode: QUERY, status: NOERROR, id: 38130\n;; flags: qr rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 512\n\n;; QUESTION SECTION:\n;mission-transition-ecologique.beta.gouv.fr.\tIN\t MX\n\n;; ANSWER SECTION:\nmission-transition-ecologique.beta.gouv.fr.\t3600\tIN\tMX\t1 SMTP.GOOGLE.COM.\n",
+      "timestamp": "2026-04-05T04:04:58.859096099Z",
+      "matcher-status": true
+    },
+    {
+      "template": "dns/spf-record-detect.yaml",
+      "template-url": "https://templates.nuclei.sh/public/spf-record-detect",
+      "template-id": "spf-record-detect",
+      "template-path": "/home/runner/nuclei-templates/dns/spf-record-detect.yaml",
+      "info": {
+        "name": "SPF Record - Detection",
+        "author": [
+          "rxerium"
+        ],
+        "tags": [
+          "dns",
+          "spf",
+          "discovery"
+        ],
+        "description": "An SPF TXT record was detected\n",
+        "reference": [
+          "https://www.mimecast.com/content/how-to-create-an-spf-txt-record"
+        ],
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        }
+      },
+      "type": "dns",
+      "host": "mission-transition-ecologique.beta.gouv.fr.",
+      "matched-at": "mission-transition-ecologique.beta.gouv.fr",
+      "extracted-results": [
+        "v=spf1 include:_spf.google.com -all\""
+      ],
+      "request": ";; opcode: QUERY, status: NOERROR, id: 45583\n;; flags: rd ad; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;mission-transition-ecologique.beta.gouv.fr.\tIN\t TXT\n",
+      "response": ";; opcode: QUERY, status: NOERROR, id: 45583\n;; flags: qr rd ra; QUERY: 1, ANSWER: 4, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 512\n\n;; QUESTION SECTION:\n;mission-transition-ecologique.beta.gouv.fr.\tIN\t TXT\n\n;; ANSWER SECTION:\nmission-transition-ecologique.beta.gouv.fr.\t600\tIN\tTXT\t\"v=spf1 include:_spf.google.com -all\"\nmission-transition-ecologique.beta.gouv.fr.\t600\tIN\tTXT\t\"brevo-code:6109b304ca0ab51bb666afa10c8b5073\"\nmission-transition-ecologique.beta.gouv.fr.\t600\tIN\tTXT\t\"google-site-verification=cYyloPg1rNO63Sj-DrmjqWqY_2Ml3mDLKagn2WELMYM\"\nmission-transition-ecologique.beta.gouv.fr.\t600\tIN\tTXT\t\"google-site-verification=3AfPWw9xL2RdWxuf5CJ0NZlmGUEEGOFDEu9Kg7IM6Cw\"\n",
+      "timestamp": "2026-04-05T04:04:58.859372084Z",
+      "matcher-status": true
+    },
+    {
+      "template": "dns/txt-fingerprint.yaml",
+      "template-url": "https://templates.nuclei.sh/public/txt-fingerprint",
+      "template-id": "txt-fingerprint",
+      "template-path": "/home/runner/nuclei-templates/dns/txt-fingerprint.yaml",
+      "info": {
+        "name": "DNS TXT Record Detected",
+        "author": [
+          "pdteam"
+        ],
+        "tags": [
+          "dns",
+          "txt",
+          "discovery"
+        ],
+        "description": "A DNS TXT record was detected. The TXT record lets a domain admin leave notes on a DNS server.",
+        "reference": [
+          "https://www.netspi.com/blog/technical/network-penetration-testing/analyzing-dns-txt-records-to-fingerprint-service-providers/"
+        ],
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        },
+        "classification": {
+          "cve-id": null,
+          "cwe-id": [
+            "cwe-200"
+          ]
+        }
+      },
+      "type": "dns",
+      "host": "mission-transition-ecologique.beta.gouv.fr.",
+      "matched-at": "mission-transition-ecologique.beta.gouv.fr",
+      "extracted-results": [
+        "\"v=spf1 include:_spf.google.com -all\"",
+        "\"brevo-code:6109b304ca0ab51bb666afa10c8b5073\"",
+        "\"google-site-verification=cYyloPg1rNO63Sj-DrmjqWqY_2Ml3mDLKagn2WELMYM\"",
+        "\"google-site-verification=3AfPWw9xL2RdWxuf5CJ0NZlmGUEEGOFDEu9Kg7IM6Cw\""
+      ],
+      "request": ";; opcode: QUERY, status: NOERROR, id: 45583\n;; flags: rd ad; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;mission-transition-ecologique.beta.gouv.fr.\tIN\t TXT\n",
+      "response": ";; opcode: QUERY, status: NOERROR, id: 45583\n;; flags: qr rd ra; QUERY: 1, ANSWER: 4, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 512\n\n;; QUESTION SECTION:\n;mission-transition-ecologique.beta.gouv.fr.\tIN\t TXT\n\n;; ANSWER SECTION:\nmission-transition-ecologique.beta.gouv.fr.\t600\tIN\tTXT\t\"v=spf1 include:_spf.google.com -all\"\nmission-transition-ecologique.beta.gouv.fr.\t600\tIN\tTXT\t\"brevo-code:6109b304ca0ab51bb666afa10c8b5073\"\nmission-transition-ecologique.beta.gouv.fr.\t600\tIN\tTXT\t\"google-site-verification=cYyloPg1rNO63Sj-DrmjqWqY_2Ml3mDLKagn2WELMYM\"\nmission-transition-ecologique.beta.gouv.fr.\t600\tIN\tTXT\t\"google-site-verification=3AfPWw9xL2RdWxuf5CJ0NZlmGUEEGOFDEu9Kg7IM6Cw\"\n",
+      "timestamp": "2026-04-05T04:04:58.859457994Z",
       "matcher-status": true
     },
     {
@@ -193,9 +193,9 @@
         "ns102.ovh.net.",
         "dns102.ovh.net."
       ],
-      "request": ";; opcode: QUERY, status: NOERROR, id: 22377\n;; flags: rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;mission-transition-ecologique.beta.gouv.fr.\tIN\t NS\n",
-      "response": ";; opcode: QUERY, status: NOERROR, id: 22377\n;; flags: qr rd ra; QUERY: 1, ANSWER: 2, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 512\n\n;; QUESTION SECTION:\n;mission-transition-ecologique.beta.gouv.fr.\tIN\t NS\n\n;; ANSWER SECTION:\nmission-transition-ecologique.beta.gouv.fr.\t3600\tIN\tNS\tns102.ovh.net.\nmission-transition-ecologique.beta.gouv.fr.\t3600\tIN\tNS\tdns102.ovh.net.\n",
-      "timestamp": "2026-03-29T04:03:17.106028832Z",
+      "request": ";; opcode: QUERY, status: NOERROR, id: 29856\n;; flags: rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;mission-transition-ecologique.beta.gouv.fr.\tIN\t NS\n",
+      "response": ";; opcode: QUERY, status: NOERROR, id: 29856\n;; flags: qr rd ra; QUERY: 1, ANSWER: 2, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 1232\n\n;; QUESTION SECTION:\n;mission-transition-ecologique.beta.gouv.fr.\tIN\t NS\n\n;; ANSWER SECTION:\nmission-transition-ecologique.beta.gouv.fr.\t3600\tIN\tNS\tns102.ovh.net.\nmission-transition-ecologique.beta.gouv.fr.\t3600\tIN\tNS\tdns102.ovh.net.\n",
+      "timestamp": "2026-04-05T04:04:58.938900541Z",
       "matcher-status": true
     },
     {
@@ -230,9 +230,9 @@
       "extracted-results": [
         "v=DKIM1; k=rsa; p=MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAhI034P73jp45qVw2X6U8nO0Q4rm+lD7RRMpyUy1nP7ooWOYE1wNTtFRkylzQKL1v/X7Tx403O4lmbuVhxOuqSe7loity8oNsUk/KEgQGCsJjTVy0V3N+UQ3aGLl7jSRDlgnkY/ziG0wi7BYZoakFLHZpf/NwJesBGbZxMdZJhYST3jdLc8kZ6Y9cGlwd\" \"t9AID6VK0Pr7twicneYNYsx+zEndLOgkpixhiTHYoQ3HtNt/U0SQpeeSdfnIrctlIgRX3an7u5AmxoYlF41EyWfX8viumZYaUsNKPX2zD7ZKfqFw1R38zD/0KLJYLLC4SWfcdtw1qZnIrqMEIJv6ZTMZawIDAQAB\""
       ],
-      "request": ";; opcode: QUERY, status: NOERROR, id: 37904\n;; flags: rd ad; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;google._domainkey.mission-transition-ecologique.beta.gouv.fr.\tIN\t TXT\n",
-      "response": ";; opcode: QUERY, status: NOERROR, id: 37904\n;; flags: qr rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 512\n\n;; QUESTION SECTION:\n;google._domainkey.mission-transition-ecologique.beta.gouv.fr.\tIN\t TXT\n\n;; ANSWER SECTION:\ngoogle._domainkey.mission-transition-ecologique.beta.gouv.fr.\t3600\tIN\tTXT\t\"v=DKIM1; k=rsa; p=MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAhI034P73jp45qVw2X6U8nO0Q4rm+lD7RRMpyUy1nP7ooWOYE1wNTtFRkylzQKL1v/X7Tx403O4lmbuVhxOuqSe7loity8oNsUk/KEgQGCsJjTVy0V3N+UQ3aGLl7jSRDlgnkY/ziG0wi7BYZoakFLHZpf/NwJesBGbZxMdZJhYST3jdLc8kZ6Y9cGlwd\" \"t9AID6VK0Pr7twicneYNYsx+zEndLOgkpixhiTHYoQ3HtNt/U0SQpeeSdfnIrctlIgRX3an7u5AmxoYlF41EyWfX8viumZYaUsNKPX2zD7ZKfqFw1R38zD/0KLJYLLC4SWfcdtw1qZnIrqMEIJv6ZTMZawIDAQAB\"\n",
-      "timestamp": "2026-03-29T04:03:18.643339421Z",
+      "request": ";; opcode: QUERY, status: NOERROR, id: 34795\n;; flags: rd ad; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;google._domainkey.mission-transition-ecologique.beta.gouv.fr.\tIN\t TXT\n",
+      "response": ";; opcode: QUERY, status: NOERROR, id: 34795\n;; flags: qr rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 512\n\n;; QUESTION SECTION:\n;google._domainkey.mission-transition-ecologique.beta.gouv.fr.\tIN\t TXT\n\n;; ANSWER SECTION:\ngoogle._domainkey.mission-transition-ecologique.beta.gouv.fr.\t3600\tIN\tTXT\t\"v=DKIM1; k=rsa; p=MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAhI034P73jp45qVw2X6U8nO0Q4rm+lD7RRMpyUy1nP7ooWOYE1wNTtFRkylzQKL1v/X7Tx403O4lmbuVhxOuqSe7loity8oNsUk/KEgQGCsJjTVy0V3N+UQ3aGLl7jSRDlgnkY/ziG0wi7BYZoakFLHZpf/NwJesBGbZxMdZJhYST3jdLc8kZ6Y9cGlwd\" \"t9AID6VK0Pr7twicneYNYsx+zEndLOgkpixhiTHYoQ3HtNt/U0SQpeeSdfnIrctlIgRX3an7u5AmxoYlF41EyWfX8viumZYaUsNKPX2zD7ZKfqFw1R38zD/0KLJYLLC4SWfcdtw1qZnIrqMEIJv6ZTMZawIDAQAB\"\n",
+      "timestamp": "2026-04-05T04:05:00.307367006Z",
       "matcher-status": true
     },
     {
@@ -272,135 +272,9 @@
         "script-src 'none'; frame-ancestors 'none';"
       ],
       "request": "GET /api/health HTTP/1.1\r\nHost: mission-transition-ecologique.beta.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
-      "response": "HTTP/1.1 429 Too Many Requests\r\nConnection: close\r\nContent-Length: 188\r\nAccess-Control-Allow-Origin: *\r\nCache-Control: no-cache\r\nContent-Security-Policy: script-src 'none'; frame-ancestors 'none';\r\nContent-Type: application/json\r\nDate: Sun, 29 Mar 2026 04:03:30 GMT\r\nReferrer-Policy: no-referrer\r\nStrict-Transport-Security: max-age=15552000; includeSubDomains;\r\nX-Content-Type-Options: nosniff\r\nX-Download-Options: noopen\r\nX-Frame-Options: DENY\r\nX-Permitted-Cross-Domain-Policies: none\r\nX-Request-Id: 4afec336-da32-4bd6-8ccc-f2b5ca8b1d65\r\nX-Xss-Protection: 0\r\n\r\n{\n  \"error\": true,\n  \"url\": \"https://mission-transition-ecologique.beta.gouv.fr/api/health\",\n  \"statusCode\": 429,\n  \"statusMessage\": \"Too Many Requests\",\n  \"message\": \"Too Many Requests\"\n}",
-      "ip": "148.253.96.193",
-      "timestamp": "2026-03-29T04:03:30.189512843Z",
-      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://mission-transition-ecologique.beta.gouv.fr/api/health'",
-      "matcher-status": true
-    },
-    {
-      "template": "http/misconfiguration/http-missing-security-headers.yaml",
-      "template-url": "https://templates.nuclei.sh/public/http-missing-security-headers",
-      "template-id": "http-missing-security-headers",
-      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/http-missing-security-headers.yaml",
-      "info": {
-        "name": "HTTP Missing Security Headers",
-        "author": [
-          "socketz",
-          "geeknik",
-          "g4l1t0",
-          "convisoappsec",
-          "kurohost",
-          "dawid-czarnecki",
-          "forgedhallpass",
-          "jub0bs",
-          "userdehghani",
-          "celbahraoui"
-        ],
-        "tags": [
-          "misconfig",
-          "headers",
-          "generic",
-          "vuln"
-        ],
-        "description": "This template searches for missing HTTP security headers. The impact of these missing headers can vary.\n",
-        "severity": "info",
-        "metadata": {
-          "max-request": 1
-        }
-      },
-      "matcher-name": "permissions-policy",
-      "type": "http",
-      "host": "https://mission-transition-ecologique.beta.gouv.fr/api/health",
-      "matched-at": "https://mission-transition-ecologique.beta.gouv.fr/api/health",
-      "request": "GET /api/health HTTP/1.1\r\nHost: mission-transition-ecologique.beta.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
-      "response": "HTTP/1.1 429 Too Many Requests\r\nConnection: close\r\nContent-Length: 188\r\nAccess-Control-Allow-Origin: *\r\nCache-Control: no-cache\r\nContent-Security-Policy: script-src 'none'; frame-ancestors 'none';\r\nContent-Type: application/json\r\nDate: Sun, 29 Mar 2026 04:03:49 GMT\r\nReferrer-Policy: no-referrer\r\nStrict-Transport-Security: max-age=15552000; includeSubDomains;\r\nX-Content-Type-Options: nosniff\r\nX-Download-Options: noopen\r\nX-Frame-Options: DENY\r\nX-Permitted-Cross-Domain-Policies: none\r\nX-Request-Id: 244ad0c3-4573-4c07-a869-05cfe0731172\r\nX-Xss-Protection: 0\r\n\r\n{\n  \"error\": true,\n  \"url\": \"https://mission-transition-ecologique.beta.gouv.fr/api/health\",\n  \"statusCode\": 429,\n  \"statusMessage\": \"Too Many Requests\",\n  \"message\": \"Too Many Requests\"\n}",
-      "ip": "148.253.96.193",
-      "timestamp": "2026-03-29T04:03:49.312748495Z",
-      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://mission-transition-ecologique.beta.gouv.fr/api/health'",
-      "matcher-status": true
-    },
-    {
-      "template": "http/misconfiguration/http-missing-security-headers.yaml",
-      "template-url": "https://templates.nuclei.sh/public/http-missing-security-headers",
-      "template-id": "http-missing-security-headers",
-      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/http-missing-security-headers.yaml",
-      "info": {
-        "name": "HTTP Missing Security Headers",
-        "author": [
-          "socketz",
-          "geeknik",
-          "g4l1t0",
-          "convisoappsec",
-          "kurohost",
-          "dawid-czarnecki",
-          "forgedhallpass",
-          "jub0bs",
-          "userdehghani",
-          "celbahraoui"
-        ],
-        "tags": [
-          "misconfig",
-          "headers",
-          "generic",
-          "vuln"
-        ],
-        "description": "This template searches for missing HTTP security headers. The impact of these missing headers can vary.\n",
-        "severity": "info",
-        "metadata": {
-          "max-request": 1
-        }
-      },
-      "matcher-name": "clear-site-data",
-      "type": "http",
-      "host": "https://mission-transition-ecologique.beta.gouv.fr/api/health",
-      "matched-at": "https://mission-transition-ecologique.beta.gouv.fr/api/health",
-      "request": "GET /api/health HTTP/1.1\r\nHost: mission-transition-ecologique.beta.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
-      "response": "HTTP/1.1 429 Too Many Requests\r\nConnection: close\r\nContent-Length: 188\r\nAccess-Control-Allow-Origin: *\r\nCache-Control: no-cache\r\nContent-Security-Policy: script-src 'none'; frame-ancestors 'none';\r\nContent-Type: application/json\r\nDate: Sun, 29 Mar 2026 04:03:49 GMT\r\nReferrer-Policy: no-referrer\r\nStrict-Transport-Security: max-age=15552000; includeSubDomains;\r\nX-Content-Type-Options: nosniff\r\nX-Download-Options: noopen\r\nX-Frame-Options: DENY\r\nX-Permitted-Cross-Domain-Policies: none\r\nX-Request-Id: 244ad0c3-4573-4c07-a869-05cfe0731172\r\nX-Xss-Protection: 0\r\n\r\n{\n  \"error\": true,\n  \"url\": \"https://mission-transition-ecologique.beta.gouv.fr/api/health\",\n  \"statusCode\": 429,\n  \"statusMessage\": \"Too Many Requests\",\n  \"message\": \"Too Many Requests\"\n}",
-      "ip": "148.253.96.193",
-      "timestamp": "2026-03-29T04:03:49.312794541Z",
-      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://mission-transition-ecologique.beta.gouv.fr/api/health'",
-      "matcher-status": true
-    },
-    {
-      "template": "http/misconfiguration/http-missing-security-headers.yaml",
-      "template-url": "https://templates.nuclei.sh/public/http-missing-security-headers",
-      "template-id": "http-missing-security-headers",
-      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/http-missing-security-headers.yaml",
-      "info": {
-        "name": "HTTP Missing Security Headers",
-        "author": [
-          "socketz",
-          "geeknik",
-          "g4l1t0",
-          "convisoappsec",
-          "kurohost",
-          "dawid-czarnecki",
-          "forgedhallpass",
-          "jub0bs",
-          "userdehghani",
-          "celbahraoui"
-        ],
-        "tags": [
-          "misconfig",
-          "headers",
-          "generic",
-          "vuln"
-        ],
-        "description": "This template searches for missing HTTP security headers. The impact of these missing headers can vary.\n",
-        "severity": "info",
-        "metadata": {
-          "max-request": 1
-        }
-      },
-      "matcher-name": "cross-origin-embedder-policy",
-      "type": "http",
-      "host": "https://mission-transition-ecologique.beta.gouv.fr/api/health",
-      "matched-at": "https://mission-transition-ecologique.beta.gouv.fr/api/health",
-      "request": "GET /api/health HTTP/1.1\r\nHost: mission-transition-ecologique.beta.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
-      "response": "HTTP/1.1 429 Too Many Requests\r\nConnection: close\r\nContent-Length: 188\r\nAccess-Control-Allow-Origin: *\r\nCache-Control: no-cache\r\nContent-Security-Policy: script-src 'none'; frame-ancestors 'none';\r\nContent-Type: application/json\r\nDate: Sun, 29 Mar 2026 04:03:49 GMT\r\nReferrer-Policy: no-referrer\r\nStrict-Transport-Security: max-age=15552000; includeSubDomains;\r\nX-Content-Type-Options: nosniff\r\nX-Download-Options: noopen\r\nX-Frame-Options: DENY\r\nX-Permitted-Cross-Domain-Policies: none\r\nX-Request-Id: 244ad0c3-4573-4c07-a869-05cfe0731172\r\nX-Xss-Protection: 0\r\n\r\n{\n  \"error\": true,\n  \"url\": \"https://mission-transition-ecologique.beta.gouv.fr/api/health\",\n  \"statusCode\": 429,\n  \"statusMessage\": \"Too Many Requests\",\n  \"message\": \"Too Many Requests\"\n}",
-      "ip": "148.253.96.193",
-      "timestamp": "2026-03-29T04:03:49.312811733Z",
+      "response": "HTTP/1.1 429 Too Many Requests\r\nConnection: close\r\nContent-Length: 188\r\nAccess-Control-Allow-Origin: *\r\nCache-Control: no-cache\r\nContent-Security-Policy: script-src 'none'; frame-ancestors 'none';\r\nContent-Type: application/json\r\nDate: Sun, 05 Apr 2026 04:05:05 GMT\r\nReferrer-Policy: no-referrer\r\nStrict-Transport-Security: max-age=15552000; includeSubDomains;\r\nX-Content-Type-Options: nosniff\r\nX-Download-Options: noopen\r\nX-Frame-Options: DENY\r\nX-Permitted-Cross-Domain-Policies: none\r\nX-Request-Id: 9baf6a9e-d3a8-4489-978b-0f8e942865b5\r\nX-Xss-Protection: 0\r\n\r\n{\n  \"error\": true,\n  \"url\": \"https://mission-transition-ecologique.beta.gouv.fr/api/health\",\n  \"statusCode\": 429,\n  \"statusMessage\": \"Too Many Requests\",\n  \"message\": \"Too Many Requests\"\n}",
+      "ip": "80.247.13.145",
+      "timestamp": "2026-04-05T04:05:05.105647007Z",
       "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://mission-transition-ecologique.beta.gouv.fr/api/health'",
       "matcher-status": true
     },
@@ -440,9 +314,9 @@
       "host": "https://mission-transition-ecologique.beta.gouv.fr/api/health",
       "matched-at": "https://mission-transition-ecologique.beta.gouv.fr/api/health",
       "request": "GET /api/health HTTP/1.1\r\nHost: mission-transition-ecologique.beta.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
-      "response": "HTTP/1.1 429 Too Many Requests\r\nConnection: close\r\nContent-Length: 188\r\nAccess-Control-Allow-Origin: *\r\nCache-Control: no-cache\r\nContent-Security-Policy: script-src 'none'; frame-ancestors 'none';\r\nContent-Type: application/json\r\nDate: Sun, 29 Mar 2026 04:03:49 GMT\r\nReferrer-Policy: no-referrer\r\nStrict-Transport-Security: max-age=15552000; includeSubDomains;\r\nX-Content-Type-Options: nosniff\r\nX-Download-Options: noopen\r\nX-Frame-Options: DENY\r\nX-Permitted-Cross-Domain-Policies: none\r\nX-Request-Id: 244ad0c3-4573-4c07-a869-05cfe0731172\r\nX-Xss-Protection: 0\r\n\r\n{\n  \"error\": true,\n  \"url\": \"https://mission-transition-ecologique.beta.gouv.fr/api/health\",\n  \"statusCode\": 429,\n  \"statusMessage\": \"Too Many Requests\",\n  \"message\": \"Too Many Requests\"\n}",
-      "ip": "148.253.96.193",
-      "timestamp": "2026-03-29T04:03:49.312826981Z",
+      "response": "HTTP/1.1 429 Too Many Requests\r\nConnection: close\r\nContent-Length: 188\r\nAccess-Control-Allow-Origin: *\r\nCache-Control: no-cache\r\nContent-Security-Policy: script-src 'none'; frame-ancestors 'none';\r\nContent-Type: application/json\r\nDate: Sun, 05 Apr 2026 04:05:17 GMT\r\nReferrer-Policy: no-referrer\r\nStrict-Transport-Security: max-age=15552000; includeSubDomains;\r\nX-Content-Type-Options: nosniff\r\nX-Download-Options: noopen\r\nX-Frame-Options: DENY\r\nX-Permitted-Cross-Domain-Policies: none\r\nX-Request-Id: 502b08ea-8e53-49f1-8b06-538b36f2150d\r\nX-Xss-Protection: 0\r\n\r\n{\n  \"error\": true,\n  \"url\": \"https://mission-transition-ecologique.beta.gouv.fr/api/health\",\n  \"statusCode\": 429,\n  \"statusMessage\": \"Too Many Requests\",\n  \"message\": \"Too Many Requests\"\n}",
+      "ip": "80.247.13.145",
+      "timestamp": "2026-04-05T04:05:17.990077774Z",
       "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://mission-transition-ecologique.beta.gouv.fr/api/health'",
       "matcher-status": true
     },
@@ -482,9 +356,135 @@
       "host": "https://mission-transition-ecologique.beta.gouv.fr/api/health",
       "matched-at": "https://mission-transition-ecologique.beta.gouv.fr/api/health",
       "request": "GET /api/health HTTP/1.1\r\nHost: mission-transition-ecologique.beta.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
-      "response": "HTTP/1.1 429 Too Many Requests\r\nConnection: close\r\nContent-Length: 188\r\nAccess-Control-Allow-Origin: *\r\nCache-Control: no-cache\r\nContent-Security-Policy: script-src 'none'; frame-ancestors 'none';\r\nContent-Type: application/json\r\nDate: Sun, 29 Mar 2026 04:03:49 GMT\r\nReferrer-Policy: no-referrer\r\nStrict-Transport-Security: max-age=15552000; includeSubDomains;\r\nX-Content-Type-Options: nosniff\r\nX-Download-Options: noopen\r\nX-Frame-Options: DENY\r\nX-Permitted-Cross-Domain-Policies: none\r\nX-Request-Id: 244ad0c3-4573-4c07-a869-05cfe0731172\r\nX-Xss-Protection: 0\r\n\r\n{\n  \"error\": true,\n  \"url\": \"https://mission-transition-ecologique.beta.gouv.fr/api/health\",\n  \"statusCode\": 429,\n  \"statusMessage\": \"Too Many Requests\",\n  \"message\": \"Too Many Requests\"\n}",
-      "ip": "148.253.96.193",
-      "timestamp": "2026-03-29T04:03:49.312840006Z",
+      "response": "HTTP/1.1 429 Too Many Requests\r\nConnection: close\r\nContent-Length: 188\r\nAccess-Control-Allow-Origin: *\r\nCache-Control: no-cache\r\nContent-Security-Policy: script-src 'none'; frame-ancestors 'none';\r\nContent-Type: application/json\r\nDate: Sun, 05 Apr 2026 04:05:17 GMT\r\nReferrer-Policy: no-referrer\r\nStrict-Transport-Security: max-age=15552000; includeSubDomains;\r\nX-Content-Type-Options: nosniff\r\nX-Download-Options: noopen\r\nX-Frame-Options: DENY\r\nX-Permitted-Cross-Domain-Policies: none\r\nX-Request-Id: 502b08ea-8e53-49f1-8b06-538b36f2150d\r\nX-Xss-Protection: 0\r\n\r\n{\n  \"error\": true,\n  \"url\": \"https://mission-transition-ecologique.beta.gouv.fr/api/health\",\n  \"statusCode\": 429,\n  \"statusMessage\": \"Too Many Requests\",\n  \"message\": \"Too Many Requests\"\n}",
+      "ip": "80.247.13.145",
+      "timestamp": "2026-04-05T04:05:17.990113059Z",
+      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://mission-transition-ecologique.beta.gouv.fr/api/health'",
+      "matcher-status": true
+    },
+    {
+      "template": "http/misconfiguration/http-missing-security-headers.yaml",
+      "template-url": "https://templates.nuclei.sh/public/http-missing-security-headers",
+      "template-id": "http-missing-security-headers",
+      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/http-missing-security-headers.yaml",
+      "info": {
+        "name": "HTTP Missing Security Headers",
+        "author": [
+          "socketz",
+          "geeknik",
+          "g4l1t0",
+          "convisoappsec",
+          "kurohost",
+          "dawid-czarnecki",
+          "forgedhallpass",
+          "jub0bs",
+          "userdehghani",
+          "celbahraoui"
+        ],
+        "tags": [
+          "misconfig",
+          "headers",
+          "generic",
+          "vuln"
+        ],
+        "description": "This template searches for missing HTTP security headers. The impact of these missing headers can vary.\n",
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        }
+      },
+      "matcher-name": "permissions-policy",
+      "type": "http",
+      "host": "https://mission-transition-ecologique.beta.gouv.fr/api/health",
+      "matched-at": "https://mission-transition-ecologique.beta.gouv.fr/api/health",
+      "request": "GET /api/health HTTP/1.1\r\nHost: mission-transition-ecologique.beta.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 429 Too Many Requests\r\nConnection: close\r\nContent-Length: 188\r\nAccess-Control-Allow-Origin: *\r\nCache-Control: no-cache\r\nContent-Security-Policy: script-src 'none'; frame-ancestors 'none';\r\nContent-Type: application/json\r\nDate: Sun, 05 Apr 2026 04:05:17 GMT\r\nReferrer-Policy: no-referrer\r\nStrict-Transport-Security: max-age=15552000; includeSubDomains;\r\nX-Content-Type-Options: nosniff\r\nX-Download-Options: noopen\r\nX-Frame-Options: DENY\r\nX-Permitted-Cross-Domain-Policies: none\r\nX-Request-Id: 502b08ea-8e53-49f1-8b06-538b36f2150d\r\nX-Xss-Protection: 0\r\n\r\n{\n  \"error\": true,\n  \"url\": \"https://mission-transition-ecologique.beta.gouv.fr/api/health\",\n  \"statusCode\": 429,\n  \"statusMessage\": \"Too Many Requests\",\n  \"message\": \"Too Many Requests\"\n}",
+      "ip": "80.247.13.145",
+      "timestamp": "2026-04-05T04:05:17.990136002Z",
+      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://mission-transition-ecologique.beta.gouv.fr/api/health'",
+      "matcher-status": true
+    },
+    {
+      "template": "http/misconfiguration/http-missing-security-headers.yaml",
+      "template-url": "https://templates.nuclei.sh/public/http-missing-security-headers",
+      "template-id": "http-missing-security-headers",
+      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/http-missing-security-headers.yaml",
+      "info": {
+        "name": "HTTP Missing Security Headers",
+        "author": [
+          "socketz",
+          "geeknik",
+          "g4l1t0",
+          "convisoappsec",
+          "kurohost",
+          "dawid-czarnecki",
+          "forgedhallpass",
+          "jub0bs",
+          "userdehghani",
+          "celbahraoui"
+        ],
+        "tags": [
+          "misconfig",
+          "headers",
+          "generic",
+          "vuln"
+        ],
+        "description": "This template searches for missing HTTP security headers. The impact of these missing headers can vary.\n",
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        }
+      },
+      "matcher-name": "clear-site-data",
+      "type": "http",
+      "host": "https://mission-transition-ecologique.beta.gouv.fr/api/health",
+      "matched-at": "https://mission-transition-ecologique.beta.gouv.fr/api/health",
+      "request": "GET /api/health HTTP/1.1\r\nHost: mission-transition-ecologique.beta.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 429 Too Many Requests\r\nConnection: close\r\nContent-Length: 188\r\nAccess-Control-Allow-Origin: *\r\nCache-Control: no-cache\r\nContent-Security-Policy: script-src 'none'; frame-ancestors 'none';\r\nContent-Type: application/json\r\nDate: Sun, 05 Apr 2026 04:05:17 GMT\r\nReferrer-Policy: no-referrer\r\nStrict-Transport-Security: max-age=15552000; includeSubDomains;\r\nX-Content-Type-Options: nosniff\r\nX-Download-Options: noopen\r\nX-Frame-Options: DENY\r\nX-Permitted-Cross-Domain-Policies: none\r\nX-Request-Id: 502b08ea-8e53-49f1-8b06-538b36f2150d\r\nX-Xss-Protection: 0\r\n\r\n{\n  \"error\": true,\n  \"url\": \"https://mission-transition-ecologique.beta.gouv.fr/api/health\",\n  \"statusCode\": 429,\n  \"statusMessage\": \"Too Many Requests\",\n  \"message\": \"Too Many Requests\"\n}",
+      "ip": "80.247.13.145",
+      "timestamp": "2026-04-05T04:05:17.990152032Z",
+      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://mission-transition-ecologique.beta.gouv.fr/api/health'",
+      "matcher-status": true
+    },
+    {
+      "template": "http/misconfiguration/http-missing-security-headers.yaml",
+      "template-url": "https://templates.nuclei.sh/public/http-missing-security-headers",
+      "template-id": "http-missing-security-headers",
+      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/http-missing-security-headers.yaml",
+      "info": {
+        "name": "HTTP Missing Security Headers",
+        "author": [
+          "socketz",
+          "geeknik",
+          "g4l1t0",
+          "convisoappsec",
+          "kurohost",
+          "dawid-czarnecki",
+          "forgedhallpass",
+          "jub0bs",
+          "userdehghani",
+          "celbahraoui"
+        ],
+        "tags": [
+          "misconfig",
+          "headers",
+          "generic",
+          "vuln"
+        ],
+        "description": "This template searches for missing HTTP security headers. The impact of these missing headers can vary.\n",
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        }
+      },
+      "matcher-name": "cross-origin-embedder-policy",
+      "type": "http",
+      "host": "https://mission-transition-ecologique.beta.gouv.fr/api/health",
+      "matched-at": "https://mission-transition-ecologique.beta.gouv.fr/api/health",
+      "request": "GET /api/health HTTP/1.1\r\nHost: mission-transition-ecologique.beta.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 429 Too Many Requests\r\nConnection: close\r\nContent-Length: 188\r\nAccess-Control-Allow-Origin: *\r\nCache-Control: no-cache\r\nContent-Security-Policy: script-src 'none'; frame-ancestors 'none';\r\nContent-Type: application/json\r\nDate: Sun, 05 Apr 2026 04:05:17 GMT\r\nReferrer-Policy: no-referrer\r\nStrict-Transport-Security: max-age=15552000; includeSubDomains;\r\nX-Content-Type-Options: nosniff\r\nX-Download-Options: noopen\r\nX-Frame-Options: DENY\r\nX-Permitted-Cross-Domain-Policies: none\r\nX-Request-Id: 502b08ea-8e53-49f1-8b06-538b36f2150d\r\nX-Xss-Protection: 0\r\n\r\n{\n  \"error\": true,\n  \"url\": \"https://mission-transition-ecologique.beta.gouv.fr/api/health\",\n  \"statusCode\": 429,\n  \"statusMessage\": \"Too Many Requests\",\n  \"message\": \"Too Many Requests\"\n}",
+      "ip": "80.247.13.145",
+      "timestamp": "2026-04-05T04:05:17.990164726Z",
       "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://mission-transition-ecologique.beta.gouv.fr/api/health'",
       "matcher-status": true
     },
@@ -515,8 +515,8 @@
       "extracted-results": [
         "Let's Encrypt"
       ],
-      "ip": "148.253.96.193",
-      "timestamp": "2026-03-29T04:18:46.46730227Z",
+      "ip": "80.247.13.145",
+      "timestamp": "2026-04-05T04:19:19.702905433Z",
       "matcher-status": true
     },
     {
@@ -546,8 +546,8 @@
       "extracted-results": [
         "mission-transition-ecologique.beta.gouv.fr"
       ],
-      "ip": "148.253.96.193",
-      "timestamp": "2026-03-29T04:18:46.467456769Z",
+      "ip": "80.247.13.145",
+      "timestamp": "2026-04-05T04:19:19.703049963Z",
       "matcher-status": true
     },
     {
@@ -578,8 +578,8 @@
       "extracted-results": [
         "tls12"
       ],
-      "ip": "148.253.96.193",
-      "timestamp": "2026-03-29T04:18:53.91639068Z",
+      "ip": "80.247.13.145",
+      "timestamp": "2026-04-05T04:19:25.861800643Z",
       "matcher-status": true
     },
     {
@@ -610,8 +610,8 @@
       "extracted-results": [
         "tls13"
       ],
-      "ip": "148.253.96.193",
-      "timestamp": "2026-03-29T04:18:54.207245816Z",
+      "ip": "80.247.13.145",
+      "timestamp": "2026-04-05T04:19:26.035167538Z",
       "matcher-status": true
     }
   ]
