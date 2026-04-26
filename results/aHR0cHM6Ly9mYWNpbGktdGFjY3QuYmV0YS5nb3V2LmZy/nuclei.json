@@ -1,21 +1,25 @@
 [
   [
     {
-      "template": "dns/nameserver-fingerprint.yaml",
-      "template-url": "https://templates.nuclei.sh/public/nameserver-fingerprint",
-      "template-id": "nameserver-fingerprint",
-      "template-path": "/home/runner/nuclei-templates/dns/nameserver-fingerprint.yaml",
+      "template": "dns/mx-fingerprint.yaml",
+      "template-url": "https://templates.nuclei.sh/public/mx-fingerprint",
+      "template-id": "mx-fingerprint",
+      "template-path": "/home/runner/nuclei-templates/dns/mx-fingerprint.yaml",
       "info": {
-        "name": "NS Record Detection",
+        "name": "MX Record Detection",
         "author": [
           "pdteam"
         ],
         "tags": [
           "dns",
-          "ns",
+          "mx",
           "discovery"
         ],
-        "description": "An NS record was detected. An NS record delegates a subdomain to a set of name servers.",
+        "description": "An MX record was detected. MX records direct emails to a mail exchange server.",
+        "reference": [
+          "https://www.cloudflare.com/learning/dns/dns-records/dns-mx-record/",
+          "https://mxtoolbox.com/"
+        ],
         "severity": "info",
         "metadata": {
           "max-request": 1
@@ -31,12 +35,13 @@
       "host": "facili-tacct.beta.gouv.fr.",
       "matched-at": "facili-tacct.beta.gouv.fr",
       "extracted-results": [
-        "ns104.ovh.net.",
-        "dns104.ovh.net."
+        "100 mx3.mail.ovh.net.",
+        "5 mx2.mail.ovh.net.",
+        "1 mx1.mail.ovh.net."
       ],
-      "request": ";; opcode: QUERY, status: NOERROR, id: 49580\n;; flags: rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;facili-tacct.beta.gouv.fr.\tIN\t NS\n",
-      "response": ";; opcode: QUERY, status: NOERROR, id: 49580\n;; flags: qr rd ra; QUERY: 1, ANSWER: 2, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 1232\n\n;; QUESTION SECTION:\n;facili-tacct.beta.gouv.fr.\tIN\t NS\n\n;; ANSWER SECTION:\nfacili-tacct.beta.gouv.fr.\t3600\tIN\tNS\tns104.ovh.net.\nfacili-tacct.beta.gouv.fr.\t3600\tIN\tNS\tdns104.ovh.net.\n",
-      "timestamp": "2026-04-19T05:38:14.388490892Z",
+      "request": ";; opcode: QUERY, status: NOERROR, id: 21719\n;; flags: rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;facili-tacct.beta.gouv.fr.\tIN\t MX\n",
+      "response": ";; opcode: QUERY, status: NOERROR, id: 21719\n;; flags: qr rd ra; QUERY: 1, ANSWER: 3, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 512\n\n;; QUESTION SECTION:\n;facili-tacct.beta.gouv.fr.\tIN\t MX\n\n;; ANSWER SECTION:\nfacili-tacct.beta.gouv.fr.\t3600\tIN\tMX\t100 mx3.mail.ovh.net.\nfacili-tacct.beta.gouv.fr.\t3600\tIN\tMX\t5 mx2.mail.ovh.net.\nfacili-tacct.beta.gouv.fr.\t3600\tIN\tMX\t1 mx1.mail.ovh.net.\n",
+      "timestamp": "2026-04-26T05:50:13.617568094Z",
       "matcher-status": true
     },
     {
@@ -69,9 +74,9 @@
       "extracted-results": [
         "v=spf1 include:mx.ovh.com -all\""
       ],
-      "request": ";; opcode: QUERY, status: NOERROR, id: 19263\n;; flags: rd ad; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;facili-tacct.beta.gouv.fr.\tIN\t TXT\n",
-      "response": ";; opcode: QUERY, status: NOERROR, id: 19263\n;; flags: qr rd ra; QUERY: 1, ANSWER: 2, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 1232\n\n;; QUESTION SECTION:\n;facili-tacct.beta.gouv.fr.\tIN\t TXT\n\n;; ANSWER SECTION:\nfacili-tacct.beta.gouv.fr.\t600\tIN\tTXT\t\"v=spf1 include:mx.ovh.com -all\"\nfacili-tacct.beta.gouv.fr.\t600\tIN\tTXT\t\"google-site-verification=MEPRD9Cv1GOzv5LVTckGvmCjNpNWLQliWG7ksedZEzw\"\n",
-      "timestamp": "2026-04-19T05:38:14.400906616Z",
+      "request": ";; opcode: QUERY, status: NOERROR, id: 3743\n;; flags: rd ad; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;facili-tacct.beta.gouv.fr.\tIN\t TXT\n",
+      "response": ";; opcode: QUERY, status: NOERROR, id: 3743\n;; flags: qr rd ra; QUERY: 1, ANSWER: 2, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 1232\n\n;; QUESTION SECTION:\n;facili-tacct.beta.gouv.fr.\tIN\t TXT\n\n;; ANSWER SECTION:\nfacili-tacct.beta.gouv.fr.\t600\tIN\tTXT\t\"google-site-verification=MEPRD9Cv1GOzv5LVTckGvmCjNpNWLQliWG7ksedZEzw\"\nfacili-tacct.beta.gouv.fr.\t600\tIN\tTXT\t\"v=spf1 include:mx.ovh.com -all\"\n",
+      "timestamp": "2026-04-26T05:50:13.726735009Z",
       "matcher-status": true
     },
     {
@@ -108,12 +113,12 @@
       "host": "facili-tacct.beta.gouv.fr.",
       "matched-at": "facili-tacct.beta.gouv.fr",
       "extracted-results": [
-        "\"v=spf1 include:mx.ovh.com -all\"",
-        "\"google-site-verification=MEPRD9Cv1GOzv5LVTckGvmCjNpNWLQliWG7ksedZEzw\""
+        "\"google-site-verification=MEPRD9Cv1GOzv5LVTckGvmCjNpNWLQliWG7ksedZEzw\"",
+        "\"v=spf1 include:mx.ovh.com -all\""
       ],
-      "request": ";; opcode: QUERY, status: NOERROR, id: 19263\n;; flags: rd ad; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;facili-tacct.beta.gouv.fr.\tIN\t TXT\n",
-      "response": ";; opcode: QUERY, status: NOERROR, id: 19263\n;; flags: qr rd ra; QUERY: 1, ANSWER: 2, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 1232\n\n;; QUESTION SECTION:\n;facili-tacct.beta.gouv.fr.\tIN\t TXT\n\n;; ANSWER SECTION:\nfacili-tacct.beta.gouv.fr.\t600\tIN\tTXT\t\"v=spf1 include:mx.ovh.com -all\"\nfacili-tacct.beta.gouv.fr.\t600\tIN\tTXT\t\"google-site-verification=MEPRD9Cv1GOzv5LVTckGvmCjNpNWLQliWG7ksedZEzw\"\n",
-      "timestamp": "2026-04-19T05:38:14.400987097Z",
+      "request": ";; opcode: QUERY, status: NOERROR, id: 3743\n;; flags: rd ad; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;facili-tacct.beta.gouv.fr.\tIN\t TXT\n",
+      "response": ";; opcode: QUERY, status: NOERROR, id: 3743\n;; flags: qr rd ra; QUERY: 1, ANSWER: 2, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 1232\n\n;; QUESTION SECTION:\n;facili-tacct.beta.gouv.fr.\tIN\t TXT\n\n;; ANSWER SECTION:\nfacili-tacct.beta.gouv.fr.\t600\tIN\tTXT\t\"google-site-verification=MEPRD9Cv1GOzv5LVTckGvmCjNpNWLQliWG7ksedZEzw\"\nfacili-tacct.beta.gouv.fr.\t600\tIN\tTXT\t\"v=spf1 include:mx.ovh.com -all\"\n",
+      "timestamp": "2026-04-26T05:50:13.726826367Z",
       "matcher-status": true
     },
     {
@@ -149,31 +154,27 @@
       "type": "dns",
       "host": "facili-tacct.beta.gouv.fr.",
       "matched-at": "facili-tacct.beta.gouv.fr",
-      "request": ";; opcode: QUERY, status: NOERROR, id: 26501\n;; flags: rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;facili-tacct.beta.gouv.fr.\tIN\t CAA\n",
-      "response": ";; opcode: QUERY, status: NOERROR, id: 26501\n;; flags: qr rd ra; QUERY: 1, ANSWER: 0, AUTHORITY: 1, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 512\n\n;; QUESTION SECTION:\n;facili-tacct.beta.gouv.fr.\tIN\t CAA\n\n;; AUTHORITY SECTION:\nfacili-tacct.beta.gouv.fr.\t60\tIN\tSOA\tdns104.ovh.net. tech.ovh.net. 2026040708 86400 3600 3600000 60\n",
-      "timestamp": "2026-04-19T05:38:14.409668116Z",
+      "request": ";; opcode: QUERY, status: NOERROR, id: 48547\n;; flags: rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;facili-tacct.beta.gouv.fr.\tIN\t CAA\n",
+      "response": ";; opcode: QUERY, status: NOERROR, id: 48547\n;; flags: qr rd ra; QUERY: 1, ANSWER: 0, AUTHORITY: 1, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 512\n\n;; QUESTION SECTION:\n;facili-tacct.beta.gouv.fr.\tIN\t CAA\n\n;; AUTHORITY SECTION:\nfacili-tacct.beta.gouv.fr.\t60\tIN\tSOA\tdns104.ovh.net. tech.ovh.net. 2026040708 86400 3600 3600000 60\n",
+      "timestamp": "2026-04-26T05:50:13.729435619Z",
       "matcher-status": true
     },
     {
-      "template": "dns/mx-fingerprint.yaml",
-      "template-url": "https://templates.nuclei.sh/public/mx-fingerprint",
-      "template-id": "mx-fingerprint",
-      "template-path": "/home/runner/nuclei-templates/dns/mx-fingerprint.yaml",
+      "template": "dns/nameserver-fingerprint.yaml",
+      "template-url": "https://templates.nuclei.sh/public/nameserver-fingerprint",
+      "template-id": "nameserver-fingerprint",
+      "template-path": "/home/runner/nuclei-templates/dns/nameserver-fingerprint.yaml",
       "info": {
-        "name": "MX Record Detection",
+        "name": "NS Record Detection",
         "author": [
           "pdteam"
         ],
         "tags": [
           "dns",
-          "mx",
+          "ns",
           "discovery"
         ],
-        "description": "An MX record was detected. MX records direct emails to a mail exchange server.",
-        "reference": [
-          "https://www.cloudflare.com/learning/dns/dns-records/dns-mx-record/",
-          "https://mxtoolbox.com/"
-        ],
+        "description": "An NS record was detected. An NS record delegates a subdomain to a set of name servers.",
         "severity": "info",
         "metadata": {
           "max-request": 1
@@ -189,13 +190,12 @@
       "host": "facili-tacct.beta.gouv.fr.",
       "matched-at": "facili-tacct.beta.gouv.fr",
       "extracted-results": [
-        "100 mx3.mail.ovh.net.",
-        "1 mx1.mail.ovh.net.",
-        "5 mx2.mail.ovh.net."
+        "dns104.ovh.net.",
+        "ns104.ovh.net."
       ],
-      "request": ";; opcode: QUERY, status: NOERROR, id: 8840\n;; flags: rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;facili-tacct.beta.gouv.fr.\tIN\t MX\n",
-      "response": ";; opcode: QUERY, status: NOERROR, id: 8840\n;; flags: qr rd ra; QUERY: 1, ANSWER: 3, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 512\n\n;; QUESTION SECTION:\n;facili-tacct.beta.gouv.fr.\tIN\t MX\n\n;; ANSWER SECTION:\nfacili-tacct.beta.gouv.fr.\t3600\tIN\tMX\t100 mx3.mail.ovh.net.\nfacili-tacct.beta.gouv.fr.\t3600\tIN\tMX\t1 mx1.mail.ovh.net.\nfacili-tacct.beta.gouv.fr.\t3600\tIN\tMX\t5 mx2.mail.ovh.net.\n",
-      "timestamp": "2026-04-19T05:38:14.413834334Z",
+      "request": ";; opcode: QUERY, status: NOERROR, id: 46479\n;; flags: rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;facili-tacct.beta.gouv.fr.\tIN\t NS\n",
+      "response": ";; opcode: QUERY, status: NOERROR, id: 46479\n;; flags: qr rd ra; QUERY: 1, ANSWER: 2, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 1232\n\n;; QUESTION SECTION:\n;facili-tacct.beta.gouv.fr.\tIN\t NS\n\n;; ANSWER SECTION:\nfacili-tacct.beta.gouv.fr.\t3600\tIN\tNS\tdns104.ovh.net.\nfacili-tacct.beta.gouv.fr.\t3600\tIN\tNS\tns104.ovh.net.\n",
+      "timestamp": "2026-04-26T05:50:13.805413724Z",
       "matcher-status": true
     },
     {
@@ -225,8 +225,8 @@
       "extracted-results": [
         "Let's Encrypt"
       ],
-      "ip": "80.247.12.255",
-      "timestamp": "2026-04-19T05:56:06.992139092Z",
+      "ip": "80.247.13.145",
+      "timestamp": "2026-04-26T06:07:46.194897964Z",
       "matcher-status": true
     },
     {
@@ -256,8 +256,8 @@
       "extracted-results": [
         "facili-tacct.beta.gouv.fr"
       ],
-      "ip": "80.247.12.255",
-      "timestamp": "2026-04-19T05:56:06.992303057Z",
+      "ip": "80.247.13.145",
+      "timestamp": "2026-04-26T06:07:46.195062651Z",
       "matcher-status": true
     },
     {
@@ -288,8 +288,8 @@
       "extracted-results": [
         "tls12"
       ],
-      "ip": "80.247.12.255",
-      "timestamp": "2026-04-19T05:56:12.002028056Z",
+      "ip": "80.247.13.145",
+      "timestamp": "2026-04-26T06:07:58.249932886Z",
       "matcher-status": true
     },
     {
@@ -320,8 +320,8 @@
       "extracted-results": [
         "tls13"
       ],
-      "ip": "80.247.12.255",
-      "timestamp": "2026-04-19T05:56:12.222872951Z",
+      "ip": "80.247.13.145",
+      "timestamp": "2026-04-26T06:07:58.508362892Z",
       "matcher-status": true
     }
   ]
