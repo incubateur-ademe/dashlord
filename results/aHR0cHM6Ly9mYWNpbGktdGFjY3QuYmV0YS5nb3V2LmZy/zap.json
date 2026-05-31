@@ -1,8 +1,8 @@
 {
 	"@programName": "ZAP",
 	"@version": "2.17.0",
-	"@generated": "Sun, 24 May 2026 06:11:09",
-	"created": "2026-05-24T06:11:09.977224776Z",
+	"@generated": "Sun, 31 May 2026 06:22:51",
+	"created": "2026-05-31T06:22:51.846369145Z",
 	"insights":[
 		{
 			"level": "Low",
@@ -213,14 +213,14 @@
 							"method": "GET",
 							"param": "set-cookie",
 							"attack": "",
-							"evidence": "1779603066",
-							"otherinfo": "1779603066, which evaluates to: 2026-05-24 06:11:06."
+							"evidence": "1780208568",
+							"otherinfo": "1780208568, which evaluates to: 2026-05-31 06:22:48."
 						}
 					],
 					"count": "1",
 					"systemic": false,
 					"solution": "<p>Manually confirm that the timestamp data is not sensitive, and that the data cannot be aggregated to disclose exploitable patterns.</p>",
-					"otherinfo": "<p>1779603066, which evaluates to: 2026-05-24 06:11:06.</p>",
+					"otherinfo": "<p>1780208568, which evaluates to: 2026-05-31 06:22:48.</p>",
 					"reference": "<p>https://cwe.mitre.org/data/definitions/200.html</p>",
 					"cweid": "497",
 					"wascid": "13",
@@ -237,20 +237,20 @@
 					"desc": "<p>Base64 encoded data was disclosed by the application/web server. Note: in the interests of performance not all base64 strings in the response were analyzed individually, the entire response should be looked at by the analyst/security team/developer(s).</p>",
 					"instances":[ 
 						{
-							"id": "17",
+							"id": "21",
 							"uri": "https://facili-tacct.beta.gouv.fr",
 							"nodeName": "https:\/\/facili-tacct.beta.gouv.fr",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "XB9f9v2lGD_ICJ1DI0VZxgqOO0wo4tRDRBzMHXM60gs-1779603066",
-							"otherinfo": "\\\\x001f_\uFFFD\uFFFD\uFFFD\\x0018?\uFFFD\\x0008\uFFFDC#EY\uFFFD\n\uFFFD;L(\uFFFD\uFFFDCD\\x001c\uFFFD\\x001ds:\uFFFD\\x000b>\u05FE\uFFFD\uFFFDM\uFFFD\uFFFD"
+							"evidence": "yMJyBX3lW6x18z1w7z5BpJpSLRTj2i1BUIij5uxMLfo-1780208568",
+							"otherinfo": "\uFFFD\uFFFDr\\x0005}\uFFFD[\uFFFDu\uFFFD=p\uFFFD>A\uFFFD\uFFFDR-\\x0014\uFFFD\uFFFD-AP\uFFFD\uFFFD\uFFFD\uFFFDL-\uFFFD>\u05FF4\uFFFDO9\uFFFD"
 						}
 					],
 					"count": "1",
 					"systemic": false,
 					"solution": "<p>Manually confirm that the Base64 data does not leak sensitive information, and that the data cannot be aggregated/used to exploit other vulnerabilities.</p>",
-					"otherinfo": "<p>\\\\x001f_\uFFFD\uFFFD\uFFFD\\x0018?\uFFFD\\x0008\uFFFDC#EY\uFFFD</p><p>\uFFFD;L(\uFFFD\uFFFDCD\\x001c\uFFFD\\x001ds:\uFFFD\\x000b>\u05FE\uFFFD\uFFFDM\uFFFD\uFFFD</p>",
+					"otherinfo": "<p>\uFFFD\uFFFDr\\x0005}\uFFFD[\uFFFDu\uFFFD=p\uFFFD>A\uFFFD\uFFFDR-\\x0014\uFFFD\uFFFD-AP\uFFFD\uFFFD\uFFFD\uFFFDL-\uFFFD>\u05FF4\uFFFDO9\uFFFD</p>",
 					"reference": "<p>https://projects.webappsec.org/w/page/13246936/Information%20Leakage</p>",
 					"cweid": "319",
 					"wascid": "13",
@@ -297,7 +297,7 @@
 					"desc": "<p>Specifies how and where the data would be used. For instance, if the value is audio, then the requested resource must be audio data and not any other type of resource.</p>",
 					"instances":[ 
 						{
-							"id": "7",
+							"id": "20",
 							"uri": "https://facili-tacct.beta.gouv.fr",
 							"nodeName": "https:\/\/facili-tacct.beta.gouv.fr",
 							"method": "GET",
@@ -308,6 +308,16 @@
 						},
 						{
 							"id": "8",
+							"uri": "https://facili-tacct.beta.gouv.fr/robots.txt",
+							"nodeName": "https:\/\/facili-tacct.beta.gouv.fr\/robots.txt",
+							"method": "GET",
+							"param": "Sec-Fetch-Dest",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "7",
 							"uri": "https://facili-tacct.beta.gouv.fr/sitemap.xml",
 							"nodeName": "https:\/\/facili-tacct.beta.gouv.fr\/sitemap.xml",
 							"method": "GET",
@@ -317,7 +327,7 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "2",
+					"count": "3",
 					"systemic": false,
 					"solution": "<p>Ensure that Sec-Fetch-Dest header is included in request headers.</p>",
 					"otherinfo": "",
@@ -337,7 +347,7 @@
 					"desc": "<p>Allows to differentiate between requests for navigating between HTML pages and requests for loading resources like images, audio etc.</p>",
 					"instances":[ 
 						{
-							"id": "5",
+							"id": "19",
 							"uri": "https://facili-tacct.beta.gouv.fr",
 							"nodeName": "https:\/\/facili-tacct.beta.gouv.fr",
 							"method": "GET",
@@ -348,6 +358,16 @@
 						},
 						{
 							"id": "6",
+							"uri": "https://facili-tacct.beta.gouv.fr/robots.txt",
+							"nodeName": "https:\/\/facili-tacct.beta.gouv.fr\/robots.txt",
+							"method": "GET",
+							"param": "Sec-Fetch-Mode",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "5",
 							"uri": "https://facili-tacct.beta.gouv.fr/sitemap.xml",
 							"nodeName": "https:\/\/facili-tacct.beta.gouv.fr\/sitemap.xml",
 							"method": "GET",
@@ -357,7 +377,7 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "2",
+					"count": "3",
 					"systemic": false,
 					"solution": "<p>Ensure that Sec-Fetch-Mode header is included in request headers.</p>",
 					"otherinfo": "",
@@ -377,9 +397,19 @@
 					"desc": "<p>Specifies the relationship between request initiator's origin and target's origin.</p>",
 					"instances":[ 
 						{
-							"id": "4",
+							"id": "18",
 							"uri": "https://facili-tacct.beta.gouv.fr",
 							"nodeName": "https:\/\/facili-tacct.beta.gouv.fr",
+							"method": "GET",
+							"param": "Sec-Fetch-Site",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "4",
+							"uri": "https://facili-tacct.beta.gouv.fr/robots.txt",
+							"nodeName": "https:\/\/facili-tacct.beta.gouv.fr\/robots.txt",
 							"method": "GET",
 							"param": "Sec-Fetch-Site",
 							"attack": "",
@@ -397,7 +427,7 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "2",
+					"count": "3",
 					"systemic": false,
 					"solution": "<p>Ensure that Sec-Fetch-Site header is included in request headers.</p>",
 					"otherinfo": "",
@@ -417,9 +447,19 @@
 					"desc": "<p>Specifies if a navigation request was initiated by a user.</p>",
 					"instances":[ 
 						{
-							"id": "9",
+							"id": "22",
 							"uri": "https://facili-tacct.beta.gouv.fr",
 							"nodeName": "https:\/\/facili-tacct.beta.gouv.fr",
+							"method": "GET",
+							"param": "Sec-Fetch-User",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "9",
+							"uri": "https://facili-tacct.beta.gouv.fr/robots.txt",
+							"nodeName": "https:\/\/facili-tacct.beta.gouv.fr\/robots.txt",
 							"method": "GET",
 							"param": "Sec-Fetch-User",
 							"attack": "",
@@ -437,7 +477,7 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "2",
+					"count": "3",
 					"systemic": false,
 					"solution": "<p>Ensure that Sec-Fetch-User header is included in user initiated requests.</p>",
 					"otherinfo": "",
@@ -487,7 +527,7 @@
 					"desc": "<p>The response contents are storable by caching components such as proxy servers, and may be retrieved directly from the cache, rather than from the origin server by the caching servers, in response to similar requests from other users. If the response data is sensitive, personal or user-specific, this may result in sensitive information being leaked. In some cases, this may even result in a user gaining complete control of the session of another user, depending on the configuration of the caching components in use in their environment. This is primarily an issue where \"shared\" caching servers such as \"proxy\" caches are configured on the local network. This configuration is typically found in corporate or educational environments, for instance.</p>",
 					"instances":[ 
 						{
-							"id": "1",
+							"id": "17",
 							"uri": "https://facili-tacct.beta.gouv.fr",
 							"nodeName": "https:\/\/facili-tacct.beta.gouv.fr",
 							"method": "GET",
@@ -497,7 +537,7 @@
 							"otherinfo": "In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234."
 						},
 						{
-							"id": "22",
+							"id": "1",
 							"uri": "https://facili-tacct.beta.gouv.fr/robots.txt",
 							"nodeName": "https:\/\/facili-tacct.beta.gouv.fr\/robots.txt",
 							"method": "GET",
