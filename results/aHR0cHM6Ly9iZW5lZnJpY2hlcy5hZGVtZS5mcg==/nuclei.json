@@ -1,23 +1,23 @@
 [
   [
     {
-      "template": "dns/txt-fingerprint.yaml",
-      "template-url": "https://templates.nuclei.sh/public/txt-fingerprint",
-      "template-id": "txt-fingerprint",
-      "template-path": "/home/runner/nuclei-templates/dns/txt-fingerprint.yaml",
+      "template": "dns/caa-fingerprint.yaml",
+      "template-url": "https://templates.nuclei.sh/public/caa-fingerprint",
+      "template-id": "caa-fingerprint",
+      "template-path": "/home/runner/nuclei-templates/dns/caa-fingerprint.yaml",
       "info": {
-        "name": "DNS TXT Record Detected",
+        "name": "CAA Record",
         "author": [
           "pdteam"
         ],
         "tags": [
           "dns",
-          "txt",
+          "caa",
           "discovery"
         ],
-        "description": "A DNS TXT record was detected. The TXT record lets a domain admin leave notes on a DNS server.",
+        "description": "A CAA record was discovered. A CAA record is used to specify which certificate authorities (CAs) are allowed to issue certificates for a domain.",
         "reference": [
-          "https://www.netspi.com/blog/technical/network-penetration-testing/analyzing-dns-txt-records-to-fingerprint-service-providers/"
+          "https://support.dnsimple.com/articles/caa-record/#whats-a-caa-record"
         ],
         "severity": "info",
         "metadata": {
@@ -33,12 +33,9 @@
       "type": "dns",
       "host": "benefriches.ademe.fr.",
       "matched-at": "benefriches.ademe.fr",
-      "extracted-results": [
-        "\"brevo-code:0cceb1c4d9657133758ccf85483fa716\""
-      ],
-      "request": ";; opcode: QUERY, status: NOERROR, id: 6386\n;; flags: rd ad; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;benefriches.ademe.fr.\tIN\t TXT\n",
-      "response": ";; opcode: QUERY, status: NOERROR, id: 6386\n;; flags: qr rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 1232\n\n;; QUESTION SECTION:\n;benefriches.ademe.fr.\tIN\t TXT\n\n;; ANSWER SECTION:\nbenefriches.ademe.fr.\t300\tIN\tTXT\t\"brevo-code:0cceb1c4d9657133758ccf85483fa716\"\n",
-      "timestamp": "2026-06-14T06:35:28.183114159Z",
+      "request": ";; opcode: QUERY, status: NOERROR, id: 29268\n;; flags: rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;benefriches.ademe.fr.\tIN\t CAA\n",
+      "response": ";; opcode: QUERY, status: NOERROR, id: 29268\n;; flags: qr rd ra; QUERY: 1, ANSWER: 0, AUTHORITY: 1, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 1232\n\n;; QUESTION SECTION:\n;benefriches.ademe.fr.\tIN\t CAA\n\n;; AUTHORITY SECTION:\nbenefriches.ademe.fr.\t1800\tIN\tSOA\tnancy.ns.cloudflare.com. dns.cloudflare.com. 2403645400 10000 2400 604800 1800\n",
+      "timestamp": "2026-06-21T06:50:06.694622083Z",
       "matcher-status": true
     },
     {
@@ -77,50 +74,12 @@
       "host": "benefriches.ademe.fr.",
       "matched-at": "benefriches.ademe.fr",
       "extracted-results": [
-        "2606:4700:3032::6815:173f",
-        "2606:4700:3037::ac43:d175"
+        "2606:4700:3037::ac43:d175",
+        "2606:4700:3032::6815:173f"
       ],
-      "request": ";; opcode: QUERY, status: NOERROR, id: 63586\n;; flags: rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;benefriches.ademe.fr.\tIN\t AAAA\n",
-      "response": ";; opcode: QUERY, status: NOERROR, id: 63586\n;; flags: qr rd ra; QUERY: 1, ANSWER: 2, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 512\n\n;; QUESTION SECTION:\n;benefriches.ademe.fr.\tIN\t AAAA\n\n;; ANSWER SECTION:\nbenefriches.ademe.fr.\t300\tIN\tAAAA\t2606:4700:3032::6815:173f\nbenefriches.ademe.fr.\t300\tIN\tAAAA\t2606:4700:3037::ac43:d175\n",
-      "timestamp": "2026-06-14T06:35:28.220876007Z",
-      "matcher-status": true
-    },
-    {
-      "template": "dns/caa-fingerprint.yaml",
-      "template-url": "https://templates.nuclei.sh/public/caa-fingerprint",
-      "template-id": "caa-fingerprint",
-      "template-path": "/home/runner/nuclei-templates/dns/caa-fingerprint.yaml",
-      "info": {
-        "name": "CAA Record",
-        "author": [
-          "pdteam"
-        ],
-        "tags": [
-          "dns",
-          "caa",
-          "discovery"
-        ],
-        "description": "A CAA record was discovered. A CAA record is used to specify which certificate authorities (CAs) are allowed to issue certificates for a domain.",
-        "reference": [
-          "https://support.dnsimple.com/articles/caa-record/#whats-a-caa-record"
-        ],
-        "severity": "info",
-        "metadata": {
-          "max-request": 1
-        },
-        "classification": {
-          "cve-id": null,
-          "cwe-id": [
-            "cwe-200"
-          ]
-        }
-      },
-      "type": "dns",
-      "host": "benefriches.ademe.fr.",
-      "matched-at": "benefriches.ademe.fr",
-      "request": ";; opcode: QUERY, status: NOERROR, id: 49926\n;; flags: rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;benefriches.ademe.fr.\tIN\t CAA\n",
-      "response": ";; opcode: QUERY, status: NOERROR, id: 49926\n;; flags: qr rd ra; QUERY: 1, ANSWER: 0, AUTHORITY: 1, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 1232\n\n;; QUESTION SECTION:\n;benefriches.ademe.fr.\tIN\t CAA\n\n;; AUTHORITY SECTION:\nbenefriches.ademe.fr.\t1800\tIN\tSOA\tnancy.ns.cloudflare.com. dns.cloudflare.com. 2403645400 10000 2400 604800 1800\n",
-      "timestamp": "2026-06-14T06:35:29.192328106Z",
+      "request": ";; opcode: QUERY, status: NOERROR, id: 27901\n;; flags: rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;benefriches.ademe.fr.\tIN\t AAAA\n",
+      "response": ";; opcode: QUERY, status: NOERROR, id: 27901\n;; flags: qr rd ra; QUERY: 1, ANSWER: 2, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 1232\n\n;; QUESTION SECTION:\n;benefriches.ademe.fr.\tIN\t AAAA\n\n;; ANSWER SECTION:\nbenefriches.ademe.fr.\t300\tIN\tAAAA\t2606:4700:3037::ac43:d175\nbenefriches.ademe.fr.\t300\tIN\tAAAA\t2606:4700:3032::6815:173f\n",
+      "timestamp": "2026-06-21T06:50:06.705028589Z",
       "matcher-status": true
     },
     {
@@ -157,9 +116,9 @@
         "nancy.ns.cloudflare.com.",
         "tosana.ns.cloudflare.com."
       ],
-      "request": ";; opcode: QUERY, status: NOERROR, id: 11468\n;; flags: rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;benefriches.ademe.fr.\tIN\t NS\n",
-      "response": ";; opcode: QUERY, status: NOERROR, id: 11468\n;; flags: qr rd ra; QUERY: 1, ANSWER: 2, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 1232\n\n;; QUESTION SECTION:\n;benefriches.ademe.fr.\tIN\t NS\n\n;; ANSWER SECTION:\nbenefriches.ademe.fr.\t86400\tIN\tNS\tnancy.ns.cloudflare.com.\nbenefriches.ademe.fr.\t86400\tIN\tNS\ttosana.ns.cloudflare.com.\n",
-      "timestamp": "2026-06-14T06:35:29.19234775Z",
+      "request": ";; opcode: QUERY, status: NOERROR, id: 29866\n;; flags: rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;benefriches.ademe.fr.\tIN\t NS\n",
+      "response": ";; opcode: QUERY, status: NOERROR, id: 29866\n;; flags: qr rd ra; QUERY: 1, ANSWER: 2, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 1232\n\n;; QUESTION SECTION:\n;benefriches.ademe.fr.\tIN\t NS\n\n;; ANSWER SECTION:\nbenefriches.ademe.fr.\t86400\tIN\tNS\tnancy.ns.cloudflare.com.\nbenefriches.ademe.fr.\t86400\tIN\tNS\ttosana.ns.cloudflare.com.\n",
+      "timestamp": "2026-06-21T06:50:06.70893251Z",
       "matcher-status": true
     },
     {
@@ -200,9 +159,50 @@
       "extracted-results": [
         "\"v=DMARC1; p=none; rua=mailto:rua@dmarc.brevo.com\""
       ],
-      "request": ";; opcode: QUERY, status: NOERROR, id: 30915\n;; flags: rd ad; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;_dmarc.benefriches.ademe.fr.\tIN\t TXT\n",
-      "response": ";; opcode: QUERY, status: NOERROR, id: 30915\n;; flags: qr rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 512\n\n;; QUESTION SECTION:\n;_dmarc.benefriches.ademe.fr.\tIN\t TXT\n\n;; ANSWER SECTION:\n_dmarc.benefriches.ademe.fr.\t300\tIN\tTXT\t\"v=DMARC1; p=none; rua=mailto:rua@dmarc.brevo.com\"\n",
-      "timestamp": "2026-06-14T06:35:29.259995991Z",
+      "request": ";; opcode: QUERY, status: NOERROR, id: 19827\n;; flags: rd ad; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;_dmarc.benefriches.ademe.fr.\tIN\t TXT\n",
+      "response": ";; opcode: QUERY, status: NOERROR, id: 19827\n;; flags: qr rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 1232\n\n;; QUESTION SECTION:\n;_dmarc.benefriches.ademe.fr.\tIN\t TXT\n\n;; ANSWER SECTION:\n_dmarc.benefriches.ademe.fr.\t300\tIN\tTXT\t\"v=DMARC1; p=none; rua=mailto:rua@dmarc.brevo.com\"\n",
+      "timestamp": "2026-06-21T06:50:06.723788447Z",
+      "matcher-status": true
+    },
+    {
+      "template": "dns/txt-fingerprint.yaml",
+      "template-url": "https://templates.nuclei.sh/public/txt-fingerprint",
+      "template-id": "txt-fingerprint",
+      "template-path": "/home/runner/nuclei-templates/dns/txt-fingerprint.yaml",
+      "info": {
+        "name": "DNS TXT Record Detected",
+        "author": [
+          "pdteam"
+        ],
+        "tags": [
+          "dns",
+          "txt",
+          "discovery"
+        ],
+        "description": "A DNS TXT record was detected. The TXT record lets a domain admin leave notes on a DNS server.",
+        "reference": [
+          "https://www.netspi.com/blog/technical/network-penetration-testing/analyzing-dns-txt-records-to-fingerprint-service-providers/"
+        ],
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        },
+        "classification": {
+          "cve-id": null,
+          "cwe-id": [
+            "cwe-200"
+          ]
+        }
+      },
+      "type": "dns",
+      "host": "benefriches.ademe.fr.",
+      "matched-at": "benefriches.ademe.fr",
+      "extracted-results": [
+        "\"brevo-code:0cceb1c4d9657133758ccf85483fa716\""
+      ],
+      "request": ";; opcode: QUERY, status: NOERROR, id: 26899\n;; flags: rd ad; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;benefriches.ademe.fr.\tIN\t TXT\n",
+      "response": ";; opcode: QUERY, status: NOERROR, id: 26899\n;; flags: qr rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 512\n\n;; QUESTION SECTION:\n;benefriches.ademe.fr.\tIN\t TXT\n\n;; ANSWER SECTION:\nbenefriches.ademe.fr.\t300\tIN\tTXT\t\"brevo-code:0cceb1c4d9657133758ccf85483fa716\"\n",
+      "timestamp": "2026-06-21T06:50:06.732745959Z",
       "matcher-status": true
     },
     {
@@ -237,9 +237,9 @@
       "type": "dns",
       "host": "benefriches.ademe.fr.",
       "matched-at": "benefriches.ademe.fr",
-      "request": ";; opcode: QUERY, status: NOERROR, id: 50753\n;; flags: rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;benefriches.ademe.fr.\tIN\t NS\n",
-      "response": ";; opcode: QUERY, status: NOERROR, id: 50753\n;; flags: qr rd ra; QUERY: 1, ANSWER: 2, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 512\n\n;; QUESTION SECTION:\n;benefriches.ademe.fr.\tIN\t NS\n\n;; ANSWER SECTION:\nbenefriches.ademe.fr.\t21600\tIN\tNS\tnancy.ns.cloudflare.com.\nbenefriches.ademe.fr.\t21600\tIN\tNS\ttosana.ns.cloudflare.com.\n",
-      "timestamp": "2026-06-14T06:35:29.272566916Z",
+      "request": ";; opcode: QUERY, status: NOERROR, id: 4620\n;; flags: rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;benefriches.ademe.fr.\tIN\t NS\n",
+      "response": ";; opcode: QUERY, status: NOERROR, id: 4620\n;; flags: qr rd ra; QUERY: 1, ANSWER: 2, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 1232\n\n;; QUESTION SECTION:\n;benefriches.ademe.fr.\tIN\t NS\n\n;; ANSWER SECTION:\nbenefriches.ademe.fr.\t86400\tIN\tNS\tnancy.ns.cloudflare.com.\nbenefriches.ademe.fr.\t86400\tIN\tNS\ttosana.ns.cloudflare.com.\n",
+      "timestamp": "2026-06-21T06:50:06.788337167Z",
       "matcher-status": true
     },
     {
@@ -272,9 +272,9 @@
       "host": "https://benefriches.ademe.fr",
       "matched-at": "https://benefriches.ademe.fr",
       "request": "GET / HTTP/1.1\r\nHost: benefriches.ademe.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
-      "response": "HTTP/1.1 200 OK\r\nConnection: close\r\nTransfer-Encoding: chunked\r\nAlt-Svc: h3=\":443\"; ma=86400\r\nCf-Cache-Status: DYNAMIC\r\nCf-Ray: a0b750cdf9b562e2-ORD\r\nContent-Security-Policy: default-src 'self'; script-src 'self' 'wasm-unsafe-eval' https://tally.so/widgets/embed.js https://stats.beta.gouv.fr https://*.crisp.chat; connect-src 'self' data: https://stats.beta.gouv.fr/matomo.php https://data.geopf.fr/geocodage/search/ https://geo.api.gouv.fr/communes/ https://cdnjs.cloudflare.com/ajax/libs/twemoji/ https://mutafriches.beta.gouv.fr https://*.crisp.chat wss://*.relay.crisp.chat wss://*.relay.rescue.crisp.chat; style-src 'self' 'unsafe-inline' https://*.crisp.chat; font-src 'self' https://*.crisp.chat; img-src 'self' blob: data: https://*.crisp.chat https://a.tile.openstreetmap.org https://b.tile.openstreetmap.org https://c.tile.openstreetmap.org; worker-src blob: https://*.crisp.chat; frame-ancestors 'none'; frame-src https://tally.so https://benefriches-metabase.osc-secnum-fr1.scalingo.io https://mutafriches.beta.gouv.fr;\r\nContent-Type: text/html; charset=utf-8\r\nDate: Sun, 14 Jun 2026 06:35:33 GMT\r\nLast-Modified: Wed, 10 Jun 2026 14:31:58 GMT\r\nNel: {\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}\r\nReport-To: {\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=T6Qzh2FQD9BzwGnPiszoHUtYjcdkt6rzbZc3Aq%2B%2Fzy8sQA966xJNCweK7oybXIW%2BKOcNBrVVOuChgkpKmPvk75rckNI5Ru9M8FdNM%2Ba2caG2YBU%2FgGFHWDnf2zDbIlkdrGihSNKIBg%3D%3D\"}]}\r\nServer: cloudflare\r\nSet-Cookie: __cf_bm=d83mNQuL1MbPXfVtu6hyGii1dnrmRyPl5awyTquBbsY-1781418933.4367049-1.0.1.1-Kfwu3CPmm_Ts0A4mwB8jFEgglwlVh4miAH2VA7VZm1ZPGotrMarCOaM3uGzK_uYp0TCw63Dg9LF.AiCRxdVNkHgxnb6haHjX1nHI7u60f2uEneoSD_33CJN89Tyy0zjQ; HttpOnly; SameSite=None; Secure; Path=/; Domain=benefriches.ademe.fr; Expires=Sun, 14 Jun 2026 07:05:33 GMT\r\nStrict-Transport-Security: max-age=31536000\r\nVary: Accept-Encoding\r\nX-Content-Type-Options: nosniff\r\nX-Frame-Options: DENY\r\nX-Request-Id: ed3275c6-db42-4b65-b02f-16555413a946\r\n\r\n<!doctype html>\n<html lang=\"fr\">\n  <head>\n    <meta charset=\"UTF-8\" />\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n    <link rel=\"icon\" href=\"/favicon/favicon-32.png\" sizes=\"32x32\" type=\"image/png\" />\n    <link rel=\"icon\" href=\"/favicon/favicon-128.png\" sizes=\"128x128\" type=\"image/png\" />\n    <link rel=\"icon\" href=\"/favicon/favicon-192.png\" sizes=\"192x192\" type=\"image/png\" />\n    <link rel=\"apple-touch-icon\" href=\"/favicon/favicon-180.png\" />\n    <link rel=\"manifest\" href=\"/favicon/manifest.webmanifest\" crossorigin=\"use-credentials\" />\n\n    <script async src=\"https://tally.so/widgets/embed.js\"></script>\n    <script src=\"/js/env-vars.js\"></script>\n    <title>Bénéfriches, l'outil qui calcule la valeur réelle de votre projet d'aménagement</title>\n    <meta\n      name=\"description\"\n      content=\"Bénéfriches quantifie et monétarise les impacts environnementaux, sociaux et économiques d'un projet d'aménagement, sur friche ou en extension urbaine.\"\n    />\n    <script type=\"module\" crossorigin src=\"/assets/main-DJWPgaYM.js\"></script>\n    <link rel=\"modulepreload\" crossorigin href=\"/assets/main-BlhMVDgA.js\">\n    <link rel=\"modulepreload\" crossorigin href=\"/assets/ExternalLink-DbXMLBbq.js\">\n    <link rel=\"stylesheet\" crossorigin href=\"/assets/main-CzZmoXvu.css\">\n    <link rel=\"stylesheet\" crossorigin href=\"/assets/main-BxVlsu8B.css\">\n  </head>\n\n  <body>\n    <div id=\"root\"></div>\n  <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML=\"window.__CF$cv$params={r:'a0b750cdf9b562e2',t:'MTc4MTQxODkzMw=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);\";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>\n</html>\n",
+      "response": "HTTP/1.1 200 OK\r\nConnection: close\r\nTransfer-Encoding: chunked\r\nAlt-Svc: h3=\":443\"; ma=86400\r\nCf-Cache-Status: DYNAMIC\r\nCf-Ray: a0f113db3ab1b787-DFW\r\nContent-Security-Policy: default-src 'self'; script-src 'self' 'wasm-unsafe-eval' https://tally.so/widgets/embed.js https://stats.beta.gouv.fr https://*.crisp.chat; connect-src 'self' data: https://stats.beta.gouv.fr/matomo.php https://data.geopf.fr/geocodage/search/ https://geo.api.gouv.fr/communes/ https://cdnjs.cloudflare.com/ajax/libs/twemoji/ https://mutafriches.beta.gouv.fr https://*.crisp.chat wss://*.relay.crisp.chat wss://*.relay.rescue.crisp.chat; style-src 'self' 'unsafe-inline' https://*.crisp.chat; font-src 'self' https://*.crisp.chat; img-src 'self' blob: data: https://*.crisp.chat https://a.tile.openstreetmap.org https://b.tile.openstreetmap.org https://c.tile.openstreetmap.org; worker-src blob: https://*.crisp.chat; frame-ancestors 'none'; frame-src https://tally.so https://benefriches-metabase.osc-secnum-fr1.scalingo.io https://mutafriches.beta.gouv.fr;\r\nContent-Type: text/html; charset=utf-8\r\nDate: Sun, 21 Jun 2026 06:50:11 GMT\r\nLast-Modified: Thu, 18 Jun 2026 08:38:45 GMT\r\nNel: {\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}\r\nReport-To: {\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=kau6pSt4eV1J9iULEZZPI0Ott4iYygkZWMH%2FfdfHIMzJ5g%2BJFoZC5kYxXwCu54OclfaQCspdqlOVFuzfKlBj9TQ1zT9DIS7JLrQ7KkMX%2F9fAZ3MCcWW5VkVAIs4xPpEXOUyVoMzeSg%3D%3D\"}]}\r\nServer: cloudflare\r\nSet-Cookie: __cf_bm=kbZ1bOuSfSztBLa.Jh1w9Z2ABaB4SLySRhtel0QBOoU-1782024611.0765884-1.0.1.1-RDVS.hycOwbyXHW3jfsJWQ9Nj33Qx4pVGc2njfkDPmmQlejwSt8Q3ViBbNsogcqaxVakJRLdfIWtUaCCAnV2Y_NhWWrmgaQyT5Q2g_dcA8kJ.8x4Q3uFCn9uSRJk8Goq; HttpOnly; SameSite=None; Secure; Path=/; Domain=benefriches.ademe.fr; Expires=Sun, 21 Jun 2026 07:20:11 GMT\r\nStrict-Transport-Security: max-age=31536000\r\nVary: Accept-Encoding\r\nX-Content-Type-Options: nosniff\r\nX-Frame-Options: DENY\r\nX-Request-Id: 42d73621-2759-4ca7-80d2-076bf5da4c98\r\n\r\n<!doctype html>\n<html lang=\"fr\">\n  <head>\n    <meta charset=\"UTF-8\" />\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n    <link rel=\"icon\" href=\"/favicon/favicon-32.png\" sizes=\"32x32\" type=\"image/png\" />\n    <link rel=\"icon\" href=\"/favicon/favicon-128.png\" sizes=\"128x128\" type=\"image/png\" />\n    <link rel=\"icon\" href=\"/favicon/favicon-192.png\" sizes=\"192x192\" type=\"image/png\" />\n    <link rel=\"apple-touch-icon\" href=\"/favicon/favicon-180.png\" />\n    <link rel=\"manifest\" href=\"/favicon/manifest.webmanifest\" crossorigin=\"use-credentials\" />\n\n    <script async src=\"https://tally.so/widgets/embed.js\"></script>\n    <script src=\"/js/env-vars.js\"></script>\n    <title>Bénéfriches, l'outil qui calcule la valeur réelle de votre projet d'aménagement</title>\n    <meta\n      name=\"description\"\n      content=\"Bénéfriches quantifie et monétarise les impacts environnementaux, sociaux et économiques d'un projet d'aménagement, sur friche ou en extension urbaine.\"\n    />\n    <script type=\"module\" crossorigin src=\"/assets/main-BxaSq3FF.js\"></script>\n    <link rel=\"modulepreload\" crossorigin href=\"/assets/main-BIi8q7ro.js\">\n    <link rel=\"modulepreload\" crossorigin href=\"/assets/ExternalLink-BGfqCvLk.js\">\n    <link rel=\"stylesheet\" crossorigin href=\"/assets/main-8UXFL98B.css\">\n    <link rel=\"stylesheet\" crossorigin href=\"/assets/main-BxVlsu8B.css\">\n  </head>\n\n  <body>\n    <div id=\"root\"></div>\n  <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML=\"window.__CF$cv$params={r:'a0f113db3ab1b787',t:'MTc4MjAyNDYxMQ=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);\";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>\n</html>\n",
       "ip": "104.21.23.63",
-      "timestamp": "2026-06-14T06:35:33.557518644Z",
+      "timestamp": "2026-06-21T06:50:11.231273435Z",
       "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://benefriches.ademe.fr'",
       "matcher-status": true
     },
@@ -307,9 +307,9 @@
       "host": "https://benefriches.ademe.fr",
       "matched-at": "https://benefriches.ademe.fr",
       "request": "GET / HTTP/1.1\r\nHost: benefriches.ademe.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
-      "response": "HTTP/1.1 200 OK\r\nConnection: close\r\nTransfer-Encoding: chunked\r\nAlt-Svc: h3=\":443\"; ma=86400\r\nCf-Cache-Status: DYNAMIC\r\nCf-Ray: a0b750cdf9b562e2-ORD\r\nContent-Security-Policy: default-src 'self'; script-src 'self' 'wasm-unsafe-eval' https://tally.so/widgets/embed.js https://stats.beta.gouv.fr https://*.crisp.chat; connect-src 'self' data: https://stats.beta.gouv.fr/matomo.php https://data.geopf.fr/geocodage/search/ https://geo.api.gouv.fr/communes/ https://cdnjs.cloudflare.com/ajax/libs/twemoji/ https://mutafriches.beta.gouv.fr https://*.crisp.chat wss://*.relay.crisp.chat wss://*.relay.rescue.crisp.chat; style-src 'self' 'unsafe-inline' https://*.crisp.chat; font-src 'self' https://*.crisp.chat; img-src 'self' blob: data: https://*.crisp.chat https://a.tile.openstreetmap.org https://b.tile.openstreetmap.org https://c.tile.openstreetmap.org; worker-src blob: https://*.crisp.chat; frame-ancestors 'none'; frame-src https://tally.so https://benefriches-metabase.osc-secnum-fr1.scalingo.io https://mutafriches.beta.gouv.fr;\r\nContent-Type: text/html; charset=utf-8\r\nDate: Sun, 14 Jun 2026 06:35:33 GMT\r\nLast-Modified: Wed, 10 Jun 2026 14:31:58 GMT\r\nNel: {\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}\r\nReport-To: {\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=T6Qzh2FQD9BzwGnPiszoHUtYjcdkt6rzbZc3Aq%2B%2Fzy8sQA966xJNCweK7oybXIW%2BKOcNBrVVOuChgkpKmPvk75rckNI5Ru9M8FdNM%2Ba2caG2YBU%2FgGFHWDnf2zDbIlkdrGihSNKIBg%3D%3D\"}]}\r\nServer: cloudflare\r\nSet-Cookie: __cf_bm=d83mNQuL1MbPXfVtu6hyGii1dnrmRyPl5awyTquBbsY-1781418933.4367049-1.0.1.1-Kfwu3CPmm_Ts0A4mwB8jFEgglwlVh4miAH2VA7VZm1ZPGotrMarCOaM3uGzK_uYp0TCw63Dg9LF.AiCRxdVNkHgxnb6haHjX1nHI7u60f2uEneoSD_33CJN89Tyy0zjQ; HttpOnly; SameSite=None; Secure; Path=/; Domain=benefriches.ademe.fr; Expires=Sun, 14 Jun 2026 07:05:33 GMT\r\nStrict-Transport-Security: max-age=31536000\r\nVary: Accept-Encoding\r\nX-Content-Type-Options: nosniff\r\nX-Frame-Options: DENY\r\nX-Request-Id: ed3275c6-db42-4b65-b02f-16555413a946\r\n\r\n<!doctype html>\n<html lang=\"fr\">\n  <head>\n    <meta charset=\"UTF-8\" />\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n    <link rel=\"icon\" href=\"/favicon/favicon-32.png\" sizes=\"32x32\" type=\"image/png\" />\n    <link rel=\"icon\" href=\"/favicon/favicon-128.png\" sizes=\"128x128\" type=\"image/png\" />\n    <link rel=\"icon\" href=\"/favicon/favicon-192.png\" sizes=\"192x192\" type=\"image/png\" />\n    <link rel=\"apple-touch-icon\" href=\"/favicon/favicon-180.png\" />\n    <link rel=\"manifest\" href=\"/favicon/manifest.webmanifest\" crossorigin=\"use-credentials\" />\n\n    <script async src=\"https://tally.so/widgets/embed.js\"></script>\n    <script src=\"/js/env-vars.js\"></script>\n    <title>Bénéfriches, l'outil qui calcule la valeur réelle de votre projet d'aménagement</title>\n    <meta\n      name=\"description\"\n      content=\"Bénéfriches quantifie et monétarise les impacts environnementaux, sociaux et économiques d'un projet d'aménagement, sur friche ou en extension urbaine.\"\n    />\n    <script type=\"module\" crossorigin src=\"/assets/main-DJWPgaYM.js\"></script>\n    <link rel=\"modulepreload\" crossorigin href=\"/assets/main-BlhMVDgA.js\">\n    <link rel=\"modulepreload\" crossorigin href=\"/assets/ExternalLink-DbXMLBbq.js\">\n    <link rel=\"stylesheet\" crossorigin href=\"/assets/main-CzZmoXvu.css\">\n    <link rel=\"stylesheet\" crossorigin href=\"/assets/main-BxVlsu8B.css\">\n  </head>\n\n  <body>\n    <div id=\"root\"></div>\n  <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML=\"window.__CF$cv$params={r:'a0b750cdf9b562e2',t:'MTc4MTQxODkzMw=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);\";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>\n</html>\n",
+      "response": "HTTP/1.1 200 OK\r\nConnection: close\r\nTransfer-Encoding: chunked\r\nAlt-Svc: h3=\":443\"; ma=86400\r\nCf-Cache-Status: DYNAMIC\r\nCf-Ray: a0f113db3ab1b787-DFW\r\nContent-Security-Policy: default-src 'self'; script-src 'self' 'wasm-unsafe-eval' https://tally.so/widgets/embed.js https://stats.beta.gouv.fr https://*.crisp.chat; connect-src 'self' data: https://stats.beta.gouv.fr/matomo.php https://data.geopf.fr/geocodage/search/ https://geo.api.gouv.fr/communes/ https://cdnjs.cloudflare.com/ajax/libs/twemoji/ https://mutafriches.beta.gouv.fr https://*.crisp.chat wss://*.relay.crisp.chat wss://*.relay.rescue.crisp.chat; style-src 'self' 'unsafe-inline' https://*.crisp.chat; font-src 'self' https://*.crisp.chat; img-src 'self' blob: data: https://*.crisp.chat https://a.tile.openstreetmap.org https://b.tile.openstreetmap.org https://c.tile.openstreetmap.org; worker-src blob: https://*.crisp.chat; frame-ancestors 'none'; frame-src https://tally.so https://benefriches-metabase.osc-secnum-fr1.scalingo.io https://mutafriches.beta.gouv.fr;\r\nContent-Type: text/html; charset=utf-8\r\nDate: Sun, 21 Jun 2026 06:50:11 GMT\r\nLast-Modified: Thu, 18 Jun 2026 08:38:45 GMT\r\nNel: {\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}\r\nReport-To: {\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=kau6pSt4eV1J9iULEZZPI0Ott4iYygkZWMH%2FfdfHIMzJ5g%2BJFoZC5kYxXwCu54OclfaQCspdqlOVFuzfKlBj9TQ1zT9DIS7JLrQ7KkMX%2F9fAZ3MCcWW5VkVAIs4xPpEXOUyVoMzeSg%3D%3D\"}]}\r\nServer: cloudflare\r\nSet-Cookie: __cf_bm=kbZ1bOuSfSztBLa.Jh1w9Z2ABaB4SLySRhtel0QBOoU-1782024611.0765884-1.0.1.1-RDVS.hycOwbyXHW3jfsJWQ9Nj33Qx4pVGc2njfkDPmmQlejwSt8Q3ViBbNsogcqaxVakJRLdfIWtUaCCAnV2Y_NhWWrmgaQyT5Q2g_dcA8kJ.8x4Q3uFCn9uSRJk8Goq; HttpOnly; SameSite=None; Secure; Path=/; Domain=benefriches.ademe.fr; Expires=Sun, 21 Jun 2026 07:20:11 GMT\r\nStrict-Transport-Security: max-age=31536000\r\nVary: Accept-Encoding\r\nX-Content-Type-Options: nosniff\r\nX-Frame-Options: DENY\r\nX-Request-Id: 42d73621-2759-4ca7-80d2-076bf5da4c98\r\n\r\n<!doctype html>\n<html lang=\"fr\">\n  <head>\n    <meta charset=\"UTF-8\" />\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n    <link rel=\"icon\" href=\"/favicon/favicon-32.png\" sizes=\"32x32\" type=\"image/png\" />\n    <link rel=\"icon\" href=\"/favicon/favicon-128.png\" sizes=\"128x128\" type=\"image/png\" />\n    <link rel=\"icon\" href=\"/favicon/favicon-192.png\" sizes=\"192x192\" type=\"image/png\" />\n    <link rel=\"apple-touch-icon\" href=\"/favicon/favicon-180.png\" />\n    <link rel=\"manifest\" href=\"/favicon/manifest.webmanifest\" crossorigin=\"use-credentials\" />\n\n    <script async src=\"https://tally.so/widgets/embed.js\"></script>\n    <script src=\"/js/env-vars.js\"></script>\n    <title>Bénéfriches, l'outil qui calcule la valeur réelle de votre projet d'aménagement</title>\n    <meta\n      name=\"description\"\n      content=\"Bénéfriches quantifie et monétarise les impacts environnementaux, sociaux et économiques d'un projet d'aménagement, sur friche ou en extension urbaine.\"\n    />\n    <script type=\"module\" crossorigin src=\"/assets/main-BxaSq3FF.js\"></script>\n    <link rel=\"modulepreload\" crossorigin href=\"/assets/main-BIi8q7ro.js\">\n    <link rel=\"modulepreload\" crossorigin href=\"/assets/ExternalLink-BGfqCvLk.js\">\n    <link rel=\"stylesheet\" crossorigin href=\"/assets/main-8UXFL98B.css\">\n    <link rel=\"stylesheet\" crossorigin href=\"/assets/main-BxVlsu8B.css\">\n  </head>\n\n  <body>\n    <div id=\"root\"></div>\n  <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML=\"window.__CF$cv$params={r:'a0f113db3ab1b787',t:'MTc4MjAyNDYxMQ=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);\";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>\n</html>\n",
       "ip": "104.21.23.63",
-      "timestamp": "2026-06-14T06:35:33.560259699Z",
+      "timestamp": "2026-06-21T06:50:11.234109769Z",
       "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://benefriches.ademe.fr'",
       "matcher-status": true
     },
@@ -356,9 +356,9 @@
         "default-src 'self'; script-src 'self' 'wasm-unsafe-eval' https://tally.so/widgets/embed.js https://stats.beta.gouv.fr https://*.crisp.chat; connect-src 'self' data: https://stats.beta.gouv.fr/matomo.php https://data.geopf.fr/geocodage/search/ https://geo.api.gouv.fr/communes/ https://cdnjs.cloudflare.com/ajax/libs/twemoji/ https://mutafriches.beta.gouv.fr https://*.crisp.chat wss://*.relay.crisp.chat wss://*.relay.rescue.crisp.chat; style-src 'self' 'unsafe-inline' https://*.crisp.chat; font-src 'self' https://*.crisp.chat; img-src 'self' blob: data: https://*.crisp.chat https://a.tile.openstreetmap.org https://b.tile.openstreetmap.org https://c.tile.openstreetmap.org; worker-src blob: https://*.crisp.chat; frame-ancestors 'none'; frame-src https://tally.so https://benefriches-metabase.osc-secnum-fr1.scalingo.io https://mutafriches.beta.gouv.fr;"
       ],
       "request": "GET / HTTP/1.1\r\nHost: benefriches.ademe.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
-      "response": "HTTP/1.1 200 OK\r\nConnection: close\r\nTransfer-Encoding: chunked\r\nAlt-Svc: h3=\":443\"; ma=86400\r\nCf-Cache-Status: DYNAMIC\r\nCf-Ray: a0b750cdf9b562e2-ORD\r\nContent-Security-Policy: default-src 'self'; script-src 'self' 'wasm-unsafe-eval' https://tally.so/widgets/embed.js https://stats.beta.gouv.fr https://*.crisp.chat; connect-src 'self' data: https://stats.beta.gouv.fr/matomo.php https://data.geopf.fr/geocodage/search/ https://geo.api.gouv.fr/communes/ https://cdnjs.cloudflare.com/ajax/libs/twemoji/ https://mutafriches.beta.gouv.fr https://*.crisp.chat wss://*.relay.crisp.chat wss://*.relay.rescue.crisp.chat; style-src 'self' 'unsafe-inline' https://*.crisp.chat; font-src 'self' https://*.crisp.chat; img-src 'self' blob: data: https://*.crisp.chat https://a.tile.openstreetmap.org https://b.tile.openstreetmap.org https://c.tile.openstreetmap.org; worker-src blob: https://*.crisp.chat; frame-ancestors 'none'; frame-src https://tally.so https://benefriches-metabase.osc-secnum-fr1.scalingo.io https://mutafriches.beta.gouv.fr;\r\nContent-Type: text/html; charset=utf-8\r\nDate: Sun, 14 Jun 2026 06:35:33 GMT\r\nLast-Modified: Wed, 10 Jun 2026 14:31:58 GMT\r\nNel: {\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}\r\nReport-To: {\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=T6Qzh2FQD9BzwGnPiszoHUtYjcdkt6rzbZc3Aq%2B%2Fzy8sQA966xJNCweK7oybXIW%2BKOcNBrVVOuChgkpKmPvk75rckNI5Ru9M8FdNM%2Ba2caG2YBU%2FgGFHWDnf2zDbIlkdrGihSNKIBg%3D%3D\"}]}\r\nServer: cloudflare\r\nSet-Cookie: __cf_bm=d83mNQuL1MbPXfVtu6hyGii1dnrmRyPl5awyTquBbsY-1781418933.4367049-1.0.1.1-Kfwu3CPmm_Ts0A4mwB8jFEgglwlVh4miAH2VA7VZm1ZPGotrMarCOaM3uGzK_uYp0TCw63Dg9LF.AiCRxdVNkHgxnb6haHjX1nHI7u60f2uEneoSD_33CJN89Tyy0zjQ; HttpOnly; SameSite=None; Secure; Path=/; Domain=benefriches.ademe.fr; Expires=Sun, 14 Jun 2026 07:05:33 GMT\r\nStrict-Transport-Security: max-age=31536000\r\nVary: Accept-Encoding\r\nX-Content-Type-Options: nosniff\r\nX-Frame-Options: DENY\r\nX-Request-Id: ed3275c6-db42-4b65-b02f-16555413a946\r\n\r\n<!doctype html>\n<html lang=\"fr\">\n  <head>\n    <meta charset=\"UTF-8\" />\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n    <link rel=\"icon\" href=\"/favicon/favicon-32.png\" sizes=\"32x32\" type=\"image/png\" />\n    <link rel=\"icon\" href=\"/favicon/favicon-128.png\" sizes=\"128x128\" type=\"image/png\" />\n    <link rel=\"icon\" href=\"/favicon/favicon-192.png\" sizes=\"192x192\" type=\"image/png\" />\n    <link rel=\"apple-touch-icon\" href=\"/favicon/favicon-180.png\" />\n    <link rel=\"manifest\" href=\"/favicon/manifest.webmanifest\" crossorigin=\"use-credentials\" />\n\n    <script async src=\"https://tally.so/widgets/embed.js\"></script>\n    <script src=\"/js/env-vars.js\"></script>\n    <title>Bénéfriches, l'outil qui calcule la valeur réelle de votre projet d'aménagement</title>\n    <meta\n      name=\"description\"\n      content=\"Bénéfriches quantifie et monétarise les impacts environnementaux, sociaux et économiques d'un projet d'aménagement, sur friche ou en extension urbaine.\"\n    />\n    <script type=\"module\" crossorigin src=\"/assets/main-DJWPgaYM.js\"></script>\n    <link rel=\"modulepreload\" crossorigin href=\"/assets/main-BlhMVDgA.js\">\n    <link rel=\"modulepreload\" crossorigin href=\"/assets/ExternalLink-DbXMLBbq.js\">\n    <link rel=\"stylesheet\" crossorigin href=\"/assets/main-CzZmoXvu.css\">\n    <link rel=\"stylesheet\" crossorigin href=\"/assets/main-BxVlsu8B.css\">\n  </head>\n\n  <body>\n    <div id=\"root\"></div>\n  <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML=\"window.__CF$cv$params={r:'a0b750cdf9b562e2',t:'MTc4MTQxODkzMw=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);\";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>\n</html>\n",
+      "response": "HTTP/1.1 200 OK\r\nConnection: close\r\nTransfer-Encoding: chunked\r\nAlt-Svc: h3=\":443\"; ma=86400\r\nCf-Cache-Status: DYNAMIC\r\nCf-Ray: a0f113db3ab1b787-DFW\r\nContent-Security-Policy: default-src 'self'; script-src 'self' 'wasm-unsafe-eval' https://tally.so/widgets/embed.js https://stats.beta.gouv.fr https://*.crisp.chat; connect-src 'self' data: https://stats.beta.gouv.fr/matomo.php https://data.geopf.fr/geocodage/search/ https://geo.api.gouv.fr/communes/ https://cdnjs.cloudflare.com/ajax/libs/twemoji/ https://mutafriches.beta.gouv.fr https://*.crisp.chat wss://*.relay.crisp.chat wss://*.relay.rescue.crisp.chat; style-src 'self' 'unsafe-inline' https://*.crisp.chat; font-src 'self' https://*.crisp.chat; img-src 'self' blob: data: https://*.crisp.chat https://a.tile.openstreetmap.org https://b.tile.openstreetmap.org https://c.tile.openstreetmap.org; worker-src blob: https://*.crisp.chat; frame-ancestors 'none'; frame-src https://tally.so https://benefriches-metabase.osc-secnum-fr1.scalingo.io https://mutafriches.beta.gouv.fr;\r\nContent-Type: text/html; charset=utf-8\r\nDate: Sun, 21 Jun 2026 06:50:11 GMT\r\nLast-Modified: Thu, 18 Jun 2026 08:38:45 GMT\r\nNel: {\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}\r\nReport-To: {\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=kau6pSt4eV1J9iULEZZPI0Ott4iYygkZWMH%2FfdfHIMzJ5g%2BJFoZC5kYxXwCu54OclfaQCspdqlOVFuzfKlBj9TQ1zT9DIS7JLrQ7KkMX%2F9fAZ3MCcWW5VkVAIs4xPpEXOUyVoMzeSg%3D%3D\"}]}\r\nServer: cloudflare\r\nSet-Cookie: __cf_bm=kbZ1bOuSfSztBLa.Jh1w9Z2ABaB4SLySRhtel0QBOoU-1782024611.0765884-1.0.1.1-RDVS.hycOwbyXHW3jfsJWQ9Nj33Qx4pVGc2njfkDPmmQlejwSt8Q3ViBbNsogcqaxVakJRLdfIWtUaCCAnV2Y_NhWWrmgaQyT5Q2g_dcA8kJ.8x4Q3uFCn9uSRJk8Goq; HttpOnly; SameSite=None; Secure; Path=/; Domain=benefriches.ademe.fr; Expires=Sun, 21 Jun 2026 07:20:11 GMT\r\nStrict-Transport-Security: max-age=31536000\r\nVary: Accept-Encoding\r\nX-Content-Type-Options: nosniff\r\nX-Frame-Options: DENY\r\nX-Request-Id: 42d73621-2759-4ca7-80d2-076bf5da4c98\r\n\r\n<!doctype html>\n<html lang=\"fr\">\n  <head>\n    <meta charset=\"UTF-8\" />\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n    <link rel=\"icon\" href=\"/favicon/favicon-32.png\" sizes=\"32x32\" type=\"image/png\" />\n    <link rel=\"icon\" href=\"/favicon/favicon-128.png\" sizes=\"128x128\" type=\"image/png\" />\n    <link rel=\"icon\" href=\"/favicon/favicon-192.png\" sizes=\"192x192\" type=\"image/png\" />\n    <link rel=\"apple-touch-icon\" href=\"/favicon/favicon-180.png\" />\n    <link rel=\"manifest\" href=\"/favicon/manifest.webmanifest\" crossorigin=\"use-credentials\" />\n\n    <script async src=\"https://tally.so/widgets/embed.js\"></script>\n    <script src=\"/js/env-vars.js\"></script>\n    <title>Bénéfriches, l'outil qui calcule la valeur réelle de votre projet d'aménagement</title>\n    <meta\n      name=\"description\"\n      content=\"Bénéfriches quantifie et monétarise les impacts environnementaux, sociaux et économiques d'un projet d'aménagement, sur friche ou en extension urbaine.\"\n    />\n    <script type=\"module\" crossorigin src=\"/assets/main-BxaSq3FF.js\"></script>\n    <link rel=\"modulepreload\" crossorigin href=\"/assets/main-BIi8q7ro.js\">\n    <link rel=\"modulepreload\" crossorigin href=\"/assets/ExternalLink-BGfqCvLk.js\">\n    <link rel=\"stylesheet\" crossorigin href=\"/assets/main-8UXFL98B.css\">\n    <link rel=\"stylesheet\" crossorigin href=\"/assets/main-BxVlsu8B.css\">\n  </head>\n\n  <body>\n    <div id=\"root\"></div>\n  <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML=\"window.__CF$cv$params={r:'a0f113db3ab1b787',t:'MTc4MjAyNDYxMQ=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);\";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>\n</html>\n",
       "ip": "104.21.23.63",
-      "timestamp": "2026-06-14T06:35:33.563242776Z",
+      "timestamp": "2026-06-21T06:50:11.237722199Z",
       "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://benefriches.ademe.fr'",
       "matcher-status": true
     },
@@ -400,12 +400,12 @@
       "host": "https://benefriches.ademe.fr",
       "matched-at": "https://benefriches.ademe.fr",
       "extracted-results": [
-        "__cf_bm=XaYF54hJKtyxy0RH1TI.PUDOdtr21PC0aiclHwEJoNw-1781418936.306282-1.0.1.1-QN48stPVQ0Sb7YJLv9tNMKtxOF84lQwBAP2VWGX9t2IWnqXMwwhm22JKXa88ZGC5GLSZ87yYt7QCZ6SIHIbAP.sP4_dLOYRCkGX_MrRceE5V5kelqi8B8vQfy09ZxgFp; HttpOnly; SameSite=None; Secure; Path=/; Domain=benefriches.ademe.fr; Expires=Sun, 14 Jun 2026 07:05:36 GMT"
+        "__cf_bm=Dx1BtmKgLOUakW5gUYk8DmutY4LdRiC2qYkN5kDm.KE-1782024614.0435886-1.0.1.1-jU3dFjc0nPyrkjnDddqVjoj2OmLjfaPCS2bjvLRtOvu0adJsVlsXuzEVYo2CE3HJAjAl0WGs6W5gY6t06QuwcoRRNt2BAgTagheLvCdKGQ46k8PPm2nhwDme5WzXgA.y; HttpOnly; SameSite=None; Secure; Path=/; Domain=benefriches.ademe.fr; Expires=Sun, 21 Jun 2026 07:20:14 GMT"
       ],
       "request": "GET / HTTP/1.1\r\nHost: benefriches.ademe.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
-      "response": "HTTP/1.1 200 OK\r\nConnection: close\r\nTransfer-Encoding: chunked\r\nAlt-Svc: h3=\":443\"; ma=86400\r\nCf-Cache-Status: DYNAMIC\r\nCf-Ray: a0b750dfed4a1233-ORD\r\nContent-Security-Policy: default-src 'self'; script-src 'self' 'wasm-unsafe-eval' https://tally.so/widgets/embed.js https://stats.beta.gouv.fr https://*.crisp.chat; connect-src 'self' data: https://stats.beta.gouv.fr/matomo.php https://data.geopf.fr/geocodage/search/ https://geo.api.gouv.fr/communes/ https://cdnjs.cloudflare.com/ajax/libs/twemoji/ https://mutafriches.beta.gouv.fr https://*.crisp.chat wss://*.relay.crisp.chat wss://*.relay.rescue.crisp.chat; style-src 'self' 'unsafe-inline' https://*.crisp.chat; font-src 'self' https://*.crisp.chat; img-src 'self' blob: data: https://*.crisp.chat https://a.tile.openstreetmap.org https://b.tile.openstreetmap.org https://c.tile.openstreetmap.org; worker-src blob: https://*.crisp.chat; frame-ancestors 'none'; frame-src https://tally.so https://benefriches-metabase.osc-secnum-fr1.scalingo.io https://mutafriches.beta.gouv.fr;\r\nContent-Type: text/html; charset=utf-8\r\nDate: Sun, 14 Jun 2026 06:35:36 GMT\r\nLast-Modified: Wed, 10 Jun 2026 14:31:58 GMT\r\nNel: {\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}\r\nReport-To: {\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=Ikj2cPLuj8pXSiYs%2FC6Vu5ZnEaTyl9R82NdC1EQqkW9yWa2WZs4HipxQmCPo%2BPDpzJDLgckoZa2t5O75KXPt7RPVs3HzTvN1yhP7ievjAlC1VfYPu3pHJM2MjuWDPhMKpkeio%2FatnQ%3D%3D\"}]}\r\nServer: cloudflare\r\nSet-Cookie: __cf_bm=XaYF54hJKtyxy0RH1TI.PUDOdtr21PC0aiclHwEJoNw-1781418936.306282-1.0.1.1-QN48stPVQ0Sb7YJLv9tNMKtxOF84lQwBAP2VWGX9t2IWnqXMwwhm22JKXa88ZGC5GLSZ87yYt7QCZ6SIHIbAP.sP4_dLOYRCkGX_MrRceE5V5kelqi8B8vQfy09ZxgFp; HttpOnly; SameSite=None; Secure; Path=/; Domain=benefriches.ademe.fr; Expires=Sun, 14 Jun 2026 07:05:36 GMT\r\nStrict-Transport-Security: max-age=31536000\r\nVary: Accept-Encoding\r\nX-Content-Type-Options: nosniff\r\nX-Frame-Options: DENY\r\nX-Request-Id: 33d40ed5-7555-487e-ab86-b9baf21ecf5d\r\n\r\n<!doctype html>\n<html lang=\"fr\">\n  <head>\n    <meta charset=\"UTF-8\" />\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n    <link rel=\"icon\" href=\"/favicon/favicon-32.png\" sizes=\"32x32\" type=\"image/png\" />\n    <link rel=\"icon\" href=\"/favicon/favicon-128.png\" sizes=\"128x128\" type=\"image/png\" />\n    <link rel=\"icon\" href=\"/favicon/favicon-192.png\" sizes=\"192x192\" type=\"image/png\" />\n    <link rel=\"apple-touch-icon\" href=\"/favicon/favicon-180.png\" />\n    <link rel=\"manifest\" href=\"/favicon/manifest.webmanifest\" crossorigin=\"use-credentials\" />\n\n    <script async src=\"https://tally.so/widgets/embed.js\"></script>\n    <script src=\"/js/env-vars.js\"></script>\n    <title>Bénéfriches, l'outil qui calcule la valeur réelle de votre projet d'aménagement</title>\n    <meta\n      name=\"description\"\n      content=\"Bénéfriches quantifie et monétarise les impacts environnementaux, sociaux et économiques d'un projet d'aménagement, sur friche ou en extension urbaine.\"\n    />\n    <script type=\"module\" crossorigin src=\"/assets/main-DJWPgaYM.js\"></script>\n    <link rel=\"modulepreload\" crossorigin href=\"/assets/main-BlhMVDgA.js\">\n    <link rel=\"modulepreload\" crossorigin href=\"/assets/ExternalLink-DbXMLBbq.js\">\n    <link rel=\"stylesheet\" crossorigin href=\"/assets/main-CzZmoXvu.css\">\n    <link rel=\"stylesheet\" crossorigin href=\"/assets/main-BxVlsu8B.css\">\n  </head>\n\n  <body>\n    <div id=\"root\"></div>\n  <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML=\"window.__CF$cv$params={r:'a0b750dfed4a1233',t:'MTc4MTQxODkzNg=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);\";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>\n</html>\n",
+      "response": "HTTP/1.1 200 OK\r\nConnection: close\r\nTransfer-Encoding: chunked\r\nAlt-Svc: h3=\":443\"; ma=86400\r\nCf-Cache-Status: DYNAMIC\r\nCf-Ray: a0f113edcc4b23b8-DFW\r\nContent-Security-Policy: default-src 'self'; script-src 'self' 'wasm-unsafe-eval' https://tally.so/widgets/embed.js https://stats.beta.gouv.fr https://*.crisp.chat; connect-src 'self' data: https://stats.beta.gouv.fr/matomo.php https://data.geopf.fr/geocodage/search/ https://geo.api.gouv.fr/communes/ https://cdnjs.cloudflare.com/ajax/libs/twemoji/ https://mutafriches.beta.gouv.fr https://*.crisp.chat wss://*.relay.crisp.chat wss://*.relay.rescue.crisp.chat; style-src 'self' 'unsafe-inline' https://*.crisp.chat; font-src 'self' https://*.crisp.chat; img-src 'self' blob: data: https://*.crisp.chat https://a.tile.openstreetmap.org https://b.tile.openstreetmap.org https://c.tile.openstreetmap.org; worker-src blob: https://*.crisp.chat; frame-ancestors 'none'; frame-src https://tally.so https://benefriches-metabase.osc-secnum-fr1.scalingo.io https://mutafriches.beta.gouv.fr;\r\nContent-Type: text/html; charset=utf-8\r\nDate: Sun, 21 Jun 2026 06:50:14 GMT\r\nLast-Modified: Thu, 18 Jun 2026 08:38:45 GMT\r\nNel: {\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}\r\nReport-To: {\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=QBFwO%2B5sy3NxtlMfQbgBeiyEpNWbw2F12dkVrL19d0ZM9HdGx23zMW975oli%2B%2Bf2f3lUMvxAco8z92H%2Fw3RWqv0BX5OuG7sZB3aNjOMPumSxDlSC%2F1tRFErMMAnPadq4R%2BrFSjhTgw%3D%3D\"}]}\r\nServer: cloudflare\r\nSet-Cookie: __cf_bm=Dx1BtmKgLOUakW5gUYk8DmutY4LdRiC2qYkN5kDm.KE-1782024614.0435886-1.0.1.1-jU3dFjc0nPyrkjnDddqVjoj2OmLjfaPCS2bjvLRtOvu0adJsVlsXuzEVYo2CE3HJAjAl0WGs6W5gY6t06QuwcoRRNt2BAgTagheLvCdKGQ46k8PPm2nhwDme5WzXgA.y; HttpOnly; SameSite=None; Secure; Path=/; Domain=benefriches.ademe.fr; Expires=Sun, 21 Jun 2026 07:20:14 GMT\r\nStrict-Transport-Security: max-age=31536000\r\nVary: Accept-Encoding\r\nX-Content-Type-Options: nosniff\r\nX-Frame-Options: DENY\r\nX-Request-Id: 9b7ff77e-2564-49ba-9d16-19478b860efd\r\n\r\n<!doctype html>\n<html lang=\"fr\">\n  <head>\n    <meta charset=\"UTF-8\" />\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n    <link rel=\"icon\" href=\"/favicon/favicon-32.png\" sizes=\"32x32\" type=\"image/png\" />\n    <link rel=\"icon\" href=\"/favicon/favicon-128.png\" sizes=\"128x128\" type=\"image/png\" />\n    <link rel=\"icon\" href=\"/favicon/favicon-192.png\" sizes=\"192x192\" type=\"image/png\" />\n    <link rel=\"apple-touch-icon\" href=\"/favicon/favicon-180.png\" />\n    <link rel=\"manifest\" href=\"/favicon/manifest.webmanifest\" crossorigin=\"use-credentials\" />\n\n    <script async src=\"https://tally.so/widgets/embed.js\"></script>\n    <script src=\"/js/env-vars.js\"></script>\n    <title>Bénéfriches, l'outil qui calcule la valeur réelle de votre projet d'aménagement</title>\n    <meta\n      name=\"description\"\n      content=\"Bénéfriches quantifie et monétarise les impacts environnementaux, sociaux et économiques d'un projet d'aménagement, sur friche ou en extension urbaine.\"\n    />\n    <script type=\"module\" crossorigin src=\"/assets/main-BxaSq3FF.js\"></script>\n    <link rel=\"modulepreload\" crossorigin href=\"/assets/main-BIi8q7ro.js\">\n    <link rel=\"modulepreload\" crossorigin href=\"/assets/ExternalLink-BGfqCvLk.js\">\n    <link rel=\"stylesheet\" crossorigin href=\"/assets/main-8UXFL98B.css\">\n    <link rel=\"stylesheet\" crossorigin href=\"/assets/main-BxVlsu8B.css\">\n  </head>\n\n  <body>\n    <div id=\"root\"></div>\n  <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML=\"window.__CF$cv$params={r:'a0f113edcc4b23b8',t:'MTc4MjAyNDYxNA=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);\";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>\n</html>\n",
       "ip": "104.21.23.63",
-      "timestamp": "2026-06-14T06:35:36.576431096Z",
+      "timestamp": "2026-06-21T06:50:14.238670829Z",
       "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://benefriches.ademe.fr'",
       "matcher-status": true
     },
@@ -435,205 +435,9 @@
       "host": "https://benefriches.ademe.fr",
       "matched-at": "https://benefriches.ademe.fr",
       "request": "GET / HTTP/1.1\r\nHost: benefriches.ademe.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
-      "response": "HTTP/1.1 200 OK\r\nConnection: close\r\nTransfer-Encoding: chunked\r\nAlt-Svc: h3=\":443\"; ma=86400\r\nCf-Cache-Status: DYNAMIC\r\nCf-Ray: a0b750dfed4a1233-ORD\r\nContent-Security-Policy: default-src 'self'; script-src 'self' 'wasm-unsafe-eval' https://tally.so/widgets/embed.js https://stats.beta.gouv.fr https://*.crisp.chat; connect-src 'self' data: https://stats.beta.gouv.fr/matomo.php https://data.geopf.fr/geocodage/search/ https://geo.api.gouv.fr/communes/ https://cdnjs.cloudflare.com/ajax/libs/twemoji/ https://mutafriches.beta.gouv.fr https://*.crisp.chat wss://*.relay.crisp.chat wss://*.relay.rescue.crisp.chat; style-src 'self' 'unsafe-inline' https://*.crisp.chat; font-src 'self' https://*.crisp.chat; img-src 'self' blob: data: https://*.crisp.chat https://a.tile.openstreetmap.org https://b.tile.openstreetmap.org https://c.tile.openstreetmap.org; worker-src blob: https://*.crisp.chat; frame-ancestors 'none'; frame-src https://tally.so https://benefriches-metabase.osc-secnum-fr1.scalingo.io https://mutafriches.beta.gouv.fr;\r\nContent-Type: text/html; charset=utf-8\r\nDate: Sun, 14 Jun 2026 06:35:36 GMT\r\nLast-Modified: Wed, 10 Jun 2026 14:31:58 GMT\r\nNel: {\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}\r\nReport-To: {\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=Ikj2cPLuj8pXSiYs%2FC6Vu5ZnEaTyl9R82NdC1EQqkW9yWa2WZs4HipxQmCPo%2BPDpzJDLgckoZa2t5O75KXPt7RPVs3HzTvN1yhP7ievjAlC1VfYPu3pHJM2MjuWDPhMKpkeio%2FatnQ%3D%3D\"}]}\r\nServer: cloudflare\r\nSet-Cookie: __cf_bm=XaYF54hJKtyxy0RH1TI.PUDOdtr21PC0aiclHwEJoNw-1781418936.306282-1.0.1.1-QN48stPVQ0Sb7YJLv9tNMKtxOF84lQwBAP2VWGX9t2IWnqXMwwhm22JKXa88ZGC5GLSZ87yYt7QCZ6SIHIbAP.sP4_dLOYRCkGX_MrRceE5V5kelqi8B8vQfy09ZxgFp; HttpOnly; SameSite=None; Secure; Path=/; Domain=benefriches.ademe.fr; Expires=Sun, 14 Jun 2026 07:05:36 GMT\r\nStrict-Transport-Security: max-age=31536000\r\nVary: Accept-Encoding\r\nX-Content-Type-Options: nosniff\r\nX-Frame-Options: DENY\r\nX-Request-Id: 33d40ed5-7555-487e-ab86-b9baf21ecf5d\r\n\r\n<!doctype html>\n<html lang=\"fr\">\n  <head>\n    <meta charset=\"UTF-8\" />\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n    <link rel=\"icon\" href=\"/favicon/favicon-32.png\" sizes=\"32x32\" type=\"image/png\" />\n    <link rel=\"icon\" href=\"/favicon/favicon-128.png\" sizes=\"128x128\" type=\"image/png\" />\n    <link rel=\"icon\" href=\"/favicon/favicon-192.png\" sizes=\"192x192\" type=\"image/png\" />\n    <link rel=\"apple-touch-icon\" href=\"/favicon/favicon-180.png\" />\n    <link rel=\"manifest\" href=\"/favicon/manifest.webmanifest\" crossorigin=\"use-credentials\" />\n\n    <script async src=\"https://tally.so/widgets/embed.js\"></script>\n    <script src=\"/js/env-vars.js\"></script>\n    <title>Bénéfriches, l'outil qui calcule la valeur réelle de votre projet d'aménagement</title>\n    <meta\n      name=\"description\"\n      content=\"Bénéfriches quantifie et monétarise les impacts environnementaux, sociaux et économiques d'un projet d'aménagement, sur friche ou en extension urbaine.\"\n    />\n    <script type=\"module\" crossorigin src=\"/assets/main-DJWPgaYM.js\"></script>\n    <link rel=\"modulepreload\" crossorigin href=\"/assets/main-BlhMVDgA.js\">\n    <link rel=\"modulepreload\" crossorigin href=\"/assets/ExternalLink-DbXMLBbq.js\">\n    <link rel=\"stylesheet\" crossorigin href=\"/assets/main-CzZmoXvu.css\">\n    <link rel=\"stylesheet\" crossorigin href=\"/assets/main-BxVlsu8B.css\">\n  </head>\n\n  <body>\n    <div id=\"root\"></div>\n  <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML=\"window.__CF$cv$params={r:'a0b750dfed4a1233',t:'MTc4MTQxODkzNg=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);\";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>\n</html>\n",
+      "response": "HTTP/1.1 200 OK\r\nConnection: close\r\nTransfer-Encoding: chunked\r\nAlt-Svc: h3=\":443\"; ma=86400\r\nCf-Cache-Status: DYNAMIC\r\nCf-Ray: a0f113edcc4b23b8-DFW\r\nContent-Security-Policy: default-src 'self'; script-src 'self' 'wasm-unsafe-eval' https://tally.so/widgets/embed.js https://stats.beta.gouv.fr https://*.crisp.chat; connect-src 'self' data: https://stats.beta.gouv.fr/matomo.php https://data.geopf.fr/geocodage/search/ https://geo.api.gouv.fr/communes/ https://cdnjs.cloudflare.com/ajax/libs/twemoji/ https://mutafriches.beta.gouv.fr https://*.crisp.chat wss://*.relay.crisp.chat wss://*.relay.rescue.crisp.chat; style-src 'self' 'unsafe-inline' https://*.crisp.chat; font-src 'self' https://*.crisp.chat; img-src 'self' blob: data: https://*.crisp.chat https://a.tile.openstreetmap.org https://b.tile.openstreetmap.org https://c.tile.openstreetmap.org; worker-src blob: https://*.crisp.chat; frame-ancestors 'none'; frame-src https://tally.so https://benefriches-metabase.osc-secnum-fr1.scalingo.io https://mutafriches.beta.gouv.fr;\r\nContent-Type: text/html; charset=utf-8\r\nDate: Sun, 21 Jun 2026 06:50:14 GMT\r\nLast-Modified: Thu, 18 Jun 2026 08:38:45 GMT\r\nNel: {\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}\r\nReport-To: {\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=QBFwO%2B5sy3NxtlMfQbgBeiyEpNWbw2F12dkVrL19d0ZM9HdGx23zMW975oli%2B%2Bf2f3lUMvxAco8z92H%2Fw3RWqv0BX5OuG7sZB3aNjOMPumSxDlSC%2F1tRFErMMAnPadq4R%2BrFSjhTgw%3D%3D\"}]}\r\nServer: cloudflare\r\nSet-Cookie: __cf_bm=Dx1BtmKgLOUakW5gUYk8DmutY4LdRiC2qYkN5kDm.KE-1782024614.0435886-1.0.1.1-jU3dFjc0nPyrkjnDddqVjoj2OmLjfaPCS2bjvLRtOvu0adJsVlsXuzEVYo2CE3HJAjAl0WGs6W5gY6t06QuwcoRRNt2BAgTagheLvCdKGQ46k8PPm2nhwDme5WzXgA.y; HttpOnly; SameSite=None; Secure; Path=/; Domain=benefriches.ademe.fr; Expires=Sun, 21 Jun 2026 07:20:14 GMT\r\nStrict-Transport-Security: max-age=31536000\r\nVary: Accept-Encoding\r\nX-Content-Type-Options: nosniff\r\nX-Frame-Options: DENY\r\nX-Request-Id: 9b7ff77e-2564-49ba-9d16-19478b860efd\r\n\r\n<!doctype html>\n<html lang=\"fr\">\n  <head>\n    <meta charset=\"UTF-8\" />\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n    <link rel=\"icon\" href=\"/favicon/favicon-32.png\" sizes=\"32x32\" type=\"image/png\" />\n    <link rel=\"icon\" href=\"/favicon/favicon-128.png\" sizes=\"128x128\" type=\"image/png\" />\n    <link rel=\"icon\" href=\"/favicon/favicon-192.png\" sizes=\"192x192\" type=\"image/png\" />\n    <link rel=\"apple-touch-icon\" href=\"/favicon/favicon-180.png\" />\n    <link rel=\"manifest\" href=\"/favicon/manifest.webmanifest\" crossorigin=\"use-credentials\" />\n\n    <script async src=\"https://tally.so/widgets/embed.js\"></script>\n    <script src=\"/js/env-vars.js\"></script>\n    <title>Bénéfriches, l'outil qui calcule la valeur réelle de votre projet d'aménagement</title>\n    <meta\n      name=\"description\"\n      content=\"Bénéfriches quantifie et monétarise les impacts environnementaux, sociaux et économiques d'un projet d'aménagement, sur friche ou en extension urbaine.\"\n    />\n    <script type=\"module\" crossorigin src=\"/assets/main-BxaSq3FF.js\"></script>\n    <link rel=\"modulepreload\" crossorigin href=\"/assets/main-BIi8q7ro.js\">\n    <link rel=\"modulepreload\" crossorigin href=\"/assets/ExternalLink-BGfqCvLk.js\">\n    <link rel=\"stylesheet\" crossorigin href=\"/assets/main-8UXFL98B.css\">\n    <link rel=\"stylesheet\" crossorigin href=\"/assets/main-BxVlsu8B.css\">\n  </head>\n\n  <body>\n    <div id=\"root\"></div>\n  <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML=\"window.__CF$cv$params={r:'a0f113edcc4b23b8',t:'MTc4MjAyNDYxNA=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);\";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>\n</html>\n",
       "ip": "104.21.23.63",
-      "timestamp": "2026-06-14T06:35:36.61318905Z",
-      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://benefriches.ademe.fr'",
-      "matcher-status": true
-    },
-    {
-      "template": "http/misconfiguration/http-missing-security-headers.yaml",
-      "template-url": "https://templates.nuclei.sh/public/http-missing-security-headers",
-      "template-id": "http-missing-security-headers",
-      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/http-missing-security-headers.yaml",
-      "info": {
-        "name": "HTTP Missing Security Headers",
-        "author": [
-          "socketz",
-          "geeknik",
-          "g4l1t0",
-          "convisoappsec",
-          "kurohost",
-          "dawid-czarnecki",
-          "forgedhallpass",
-          "jub0bs",
-          "userdehghani",
-          "celbahraoui",
-          "safejulian"
-        ],
-        "tags": [
-          "misconfig",
-          "headers",
-          "generic",
-          "vuln"
-        ],
-        "description": "This template searches for missing HTTP security headers. The impact of these missing headers can vary.\n",
-        "severity": "info",
-        "metadata": {
-          "max-request": 1
-        },
-        "classification": {
-          "cve-id": null,
-          "cwe-id": [
-            "cwe-693"
-          ]
-        }
-      },
-      "matcher-name": "referrer-policy",
-      "type": "http",
-      "host": "https://benefriches.ademe.fr",
-      "matched-at": "https://benefriches.ademe.fr",
-      "request": "GET / HTTP/1.1\r\nHost: benefriches.ademe.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
-      "response": "HTTP/1.1 200 OK\r\nConnection: close\r\nTransfer-Encoding: chunked\r\nAlt-Svc: h3=\":443\"; ma=86400\r\nCf-Cache-Status: DYNAMIC\r\nCf-Ray: a0b751054deb233f-ORD\r\nContent-Security-Policy: default-src 'self'; script-src 'self' 'wasm-unsafe-eval' https://tally.so/widgets/embed.js https://stats.beta.gouv.fr https://*.crisp.chat; connect-src 'self' data: https://stats.beta.gouv.fr/matomo.php https://data.geopf.fr/geocodage/search/ https://geo.api.gouv.fr/communes/ https://cdnjs.cloudflare.com/ajax/libs/twemoji/ https://mutafriches.beta.gouv.fr https://*.crisp.chat wss://*.relay.crisp.chat wss://*.relay.rescue.crisp.chat; style-src 'self' 'unsafe-inline' https://*.crisp.chat; font-src 'self' https://*.crisp.chat; img-src 'self' blob: data: https://*.crisp.chat https://a.tile.openstreetmap.org https://b.tile.openstreetmap.org https://c.tile.openstreetmap.org; worker-src blob: https://*.crisp.chat; frame-ancestors 'none'; frame-src https://tally.so https://benefriches-metabase.osc-secnum-fr1.scalingo.io https://mutafriches.beta.gouv.fr;\r\nContent-Type: text/html; charset=utf-8\r\nDate: Sun, 14 Jun 2026 06:35:42 GMT\r\nLast-Modified: Wed, 10 Jun 2026 14:31:58 GMT\r\nNel: {\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}\r\nReport-To: {\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=i1PPeCoHdbEV2tTiRRgW5iTUM1bt6erBelYtOrTdB9Pxsv9u%2F%2FfX1pWbcXYLbUD9qY698TgeOmXCucxe0q8nT69G%2BwWUqw0vtCESYjgGdXh4ZVZRYxNiTmgP1x%2FQMBVxEF5Lc9I4zQ%3D%3D\"}]}\r\nServer: cloudflare\r\nSet-Cookie: __cf_bm=yWfigP.zcwwRo2amu7MViD9DzqIqqYsZGychN4rwqLI-1781418942.2908192-1.0.1.1-c5LMzgr5dR7WaNyukseH0l8omUdNq9uiC8K2GpKXz7IY8a9AzbxgUNtdB6eojRHeAJB5LKY8wq_ajzUz9hrLYhUey0itjStEnW29aehgiNICJSz97Wq5ozm99bMybXv5; HttpOnly; SameSite=None; Secure; Path=/; Domain=benefriches.ademe.fr; Expires=Sun, 14 Jun 2026 07:05:42 GMT\r\nStrict-Transport-Security: max-age=31536000\r\nVary: Accept-Encoding\r\nX-Content-Type-Options: nosniff\r\nX-Frame-Options: DENY\r\nX-Request-Id: 72d45964-ee97-44f3-9ba1-cc7708581285\r\n\r\n<!doctype html>\n<html lang=\"fr\">\n  <head>\n    <meta charset=\"UTF-8\" />\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n    <link rel=\"icon\" href=\"/favicon/favicon-32.png\" sizes=\"32x32\" type=\"image/png\" />\n    <link rel=\"icon\" href=\"/favicon/favicon-128.png\" sizes=\"128x128\" type=\"image/png\" />\n    <link rel=\"icon\" href=\"/favicon/favicon-192.png\" sizes=\"192x192\" type=\"image/png\" />\n    <link rel=\"apple-touch-icon\" href=\"/favicon/favicon-180.png\" />\n    <link rel=\"manifest\" href=\"/favicon/manifest.webmanifest\" crossorigin=\"use-credentials\" />\n\n    <script async src=\"https://tally.so/widgets/embed.js\"></script>\n    <script src=\"/js/env-vars.js\"></script>\n    <title>Bénéfriches, l'outil qui calcule la valeur réelle de votre projet d'aménagement</title>\n    <meta\n      name=\"description\"\n      content=\"Bénéfriches quantifie et monétarise les impacts environnementaux, sociaux et économiques d'un projet d'aménagement, sur friche ou en extension urbaine.\"\n    />\n    <script type=\"module\" crossorigin src=\"/assets/main-DJWPgaYM.js\"></script>\n    <link rel=\"modulepreload\" crossorigin href=\"/assets/main-BlhMVDgA.js\">\n    <link rel=\"modulepreload\" crossorigin href=\"/assets/ExternalLink-DbXMLBbq.js\">\n    <link rel=\"stylesheet\" crossorigin href=\"/assets/main-CzZmoXvu.css\">\n    <link rel=\"stylesheet\" crossorigin href=\"/assets/main-BxVlsu8B.css\">\n  </head>\n\n  <body>\n    <div id=\"root\"></div>\n  <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML=\"window.__CF$cv$params={r:'a0b751054deb233f',t:'MTc4MTQxODk0Mg=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);\";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>\n</html>\n",
-      "ip": "104.21.23.63",
-      "timestamp": "2026-06-14T06:35:42.394376714Z",
-      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://benefriches.ademe.fr'",
-      "matcher-status": true
-    },
-    {
-      "template": "http/misconfiguration/http-missing-security-headers.yaml",
-      "template-url": "https://templates.nuclei.sh/public/http-missing-security-headers",
-      "template-id": "http-missing-security-headers",
-      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/http-missing-security-headers.yaml",
-      "info": {
-        "name": "HTTP Missing Security Headers",
-        "author": [
-          "socketz",
-          "geeknik",
-          "g4l1t0",
-          "convisoappsec",
-          "kurohost",
-          "dawid-czarnecki",
-          "forgedhallpass",
-          "jub0bs",
-          "userdehghani",
-          "celbahraoui",
-          "safejulian"
-        ],
-        "tags": [
-          "misconfig",
-          "headers",
-          "generic",
-          "vuln"
-        ],
-        "description": "This template searches for missing HTTP security headers. The impact of these missing headers can vary.\n",
-        "severity": "info",
-        "metadata": {
-          "max-request": 1
-        },
-        "classification": {
-          "cve-id": null,
-          "cwe-id": [
-            "cwe-693"
-          ]
-        }
-      },
-      "matcher-name": "cross-origin-embedder-policy",
-      "type": "http",
-      "host": "https://benefriches.ademe.fr",
-      "matched-at": "https://benefriches.ademe.fr",
-      "request": "GET / HTTP/1.1\r\nHost: benefriches.ademe.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
-      "response": "HTTP/1.1 200 OK\r\nConnection: close\r\nTransfer-Encoding: chunked\r\nAlt-Svc: h3=\":443\"; ma=86400\r\nCf-Cache-Status: DYNAMIC\r\nCf-Ray: a0b751054deb233f-ORD\r\nContent-Security-Policy: default-src 'self'; script-src 'self' 'wasm-unsafe-eval' https://tally.so/widgets/embed.js https://stats.beta.gouv.fr https://*.crisp.chat; connect-src 'self' data: https://stats.beta.gouv.fr/matomo.php https://data.geopf.fr/geocodage/search/ https://geo.api.gouv.fr/communes/ https://cdnjs.cloudflare.com/ajax/libs/twemoji/ https://mutafriches.beta.gouv.fr https://*.crisp.chat wss://*.relay.crisp.chat wss://*.relay.rescue.crisp.chat; style-src 'self' 'unsafe-inline' https://*.crisp.chat; font-src 'self' https://*.crisp.chat; img-src 'self' blob: data: https://*.crisp.chat https://a.tile.openstreetmap.org https://b.tile.openstreetmap.org https://c.tile.openstreetmap.org; worker-src blob: https://*.crisp.chat; frame-ancestors 'none'; frame-src https://tally.so https://benefriches-metabase.osc-secnum-fr1.scalingo.io https://mutafriches.beta.gouv.fr;\r\nContent-Type: text/html; charset=utf-8\r\nDate: Sun, 14 Jun 2026 06:35:42 GMT\r\nLast-Modified: Wed, 10 Jun 2026 14:31:58 GMT\r\nNel: {\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}\r\nReport-To: {\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=i1PPeCoHdbEV2tTiRRgW5iTUM1bt6erBelYtOrTdB9Pxsv9u%2F%2FfX1pWbcXYLbUD9qY698TgeOmXCucxe0q8nT69G%2BwWUqw0vtCESYjgGdXh4ZVZRYxNiTmgP1x%2FQMBVxEF5Lc9I4zQ%3D%3D\"}]}\r\nServer: cloudflare\r\nSet-Cookie: __cf_bm=yWfigP.zcwwRo2amu7MViD9DzqIqqYsZGychN4rwqLI-1781418942.2908192-1.0.1.1-c5LMzgr5dR7WaNyukseH0l8omUdNq9uiC8K2GpKXz7IY8a9AzbxgUNtdB6eojRHeAJB5LKY8wq_ajzUz9hrLYhUey0itjStEnW29aehgiNICJSz97Wq5ozm99bMybXv5; HttpOnly; SameSite=None; Secure; Path=/; Domain=benefriches.ademe.fr; Expires=Sun, 14 Jun 2026 07:05:42 GMT\r\nStrict-Transport-Security: max-age=31536000\r\nVary: Accept-Encoding\r\nX-Content-Type-Options: nosniff\r\nX-Frame-Options: DENY\r\nX-Request-Id: 72d45964-ee97-44f3-9ba1-cc7708581285\r\n\r\n<!doctype html>\n<html lang=\"fr\">\n  <head>\n    <meta charset=\"UTF-8\" />\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n    <link rel=\"icon\" href=\"/favicon/favicon-32.png\" sizes=\"32x32\" type=\"image/png\" />\n    <link rel=\"icon\" href=\"/favicon/favicon-128.png\" sizes=\"128x128\" type=\"image/png\" />\n    <link rel=\"icon\" href=\"/favicon/favicon-192.png\" sizes=\"192x192\" type=\"image/png\" />\n    <link rel=\"apple-touch-icon\" href=\"/favicon/favicon-180.png\" />\n    <link rel=\"manifest\" href=\"/favicon/manifest.webmanifest\" crossorigin=\"use-credentials\" />\n\n    <script async src=\"https://tally.so/widgets/embed.js\"></script>\n    <script src=\"/js/env-vars.js\"></script>\n    <title>Bénéfriches, l'outil qui calcule la valeur réelle de votre projet d'aménagement</title>\n    <meta\n      name=\"description\"\n      content=\"Bénéfriches quantifie et monétarise les impacts environnementaux, sociaux et économiques d'un projet d'aménagement, sur friche ou en extension urbaine.\"\n    />\n    <script type=\"module\" crossorigin src=\"/assets/main-DJWPgaYM.js\"></script>\n    <link rel=\"modulepreload\" crossorigin href=\"/assets/main-BlhMVDgA.js\">\n    <link rel=\"modulepreload\" crossorigin href=\"/assets/ExternalLink-DbXMLBbq.js\">\n    <link rel=\"stylesheet\" crossorigin href=\"/assets/main-CzZmoXvu.css\">\n    <link rel=\"stylesheet\" crossorigin href=\"/assets/main-BxVlsu8B.css\">\n  </head>\n\n  <body>\n    <div id=\"root\"></div>\n  <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML=\"window.__CF$cv$params={r:'a0b751054deb233f',t:'MTc4MTQxODk0Mg=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);\";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>\n</html>\n",
-      "ip": "104.21.23.63",
-      "timestamp": "2026-06-14T06:35:42.394413954Z",
-      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://benefriches.ademe.fr'",
-      "matcher-status": true
-    },
-    {
-      "template": "http/misconfiguration/http-missing-security-headers.yaml",
-      "template-url": "https://templates.nuclei.sh/public/http-missing-security-headers",
-      "template-id": "http-missing-security-headers",
-      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/http-missing-security-headers.yaml",
-      "info": {
-        "name": "HTTP Missing Security Headers",
-        "author": [
-          "socketz",
-          "geeknik",
-          "g4l1t0",
-          "convisoappsec",
-          "kurohost",
-          "dawid-czarnecki",
-          "forgedhallpass",
-          "jub0bs",
-          "userdehghani",
-          "celbahraoui",
-          "safejulian"
-        ],
-        "tags": [
-          "misconfig",
-          "headers",
-          "generic",
-          "vuln"
-        ],
-        "description": "This template searches for missing HTTP security headers. The impact of these missing headers can vary.\n",
-        "severity": "info",
-        "metadata": {
-          "max-request": 1
-        },
-        "classification": {
-          "cve-id": null,
-          "cwe-id": [
-            "cwe-693"
-          ]
-        }
-      },
-      "matcher-name": "cross-origin-opener-policy",
-      "type": "http",
-      "host": "https://benefriches.ademe.fr",
-      "matched-at": "https://benefriches.ademe.fr",
-      "request": "GET / HTTP/1.1\r\nHost: benefriches.ademe.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
-      "response": "HTTP/1.1 200 OK\r\nConnection: close\r\nTransfer-Encoding: chunked\r\nAlt-Svc: h3=\":443\"; ma=86400\r\nCf-Cache-Status: DYNAMIC\r\nCf-Ray: a0b751054deb233f-ORD\r\nContent-Security-Policy: default-src 'self'; script-src 'self' 'wasm-unsafe-eval' https://tally.so/widgets/embed.js https://stats.beta.gouv.fr https://*.crisp.chat; connect-src 'self' data: https://stats.beta.gouv.fr/matomo.php https://data.geopf.fr/geocodage/search/ https://geo.api.gouv.fr/communes/ https://cdnjs.cloudflare.com/ajax/libs/twemoji/ https://mutafriches.beta.gouv.fr https://*.crisp.chat wss://*.relay.crisp.chat wss://*.relay.rescue.crisp.chat; style-src 'self' 'unsafe-inline' https://*.crisp.chat; font-src 'self' https://*.crisp.chat; img-src 'self' blob: data: https://*.crisp.chat https://a.tile.openstreetmap.org https://b.tile.openstreetmap.org https://c.tile.openstreetmap.org; worker-src blob: https://*.crisp.chat; frame-ancestors 'none'; frame-src https://tally.so https://benefriches-metabase.osc-secnum-fr1.scalingo.io https://mutafriches.beta.gouv.fr;\r\nContent-Type: text/html; charset=utf-8\r\nDate: Sun, 14 Jun 2026 06:35:42 GMT\r\nLast-Modified: Wed, 10 Jun 2026 14:31:58 GMT\r\nNel: {\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}\r\nReport-To: {\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=i1PPeCoHdbEV2tTiRRgW5iTUM1bt6erBelYtOrTdB9Pxsv9u%2F%2FfX1pWbcXYLbUD9qY698TgeOmXCucxe0q8nT69G%2BwWUqw0vtCESYjgGdXh4ZVZRYxNiTmgP1x%2FQMBVxEF5Lc9I4zQ%3D%3D\"}]}\r\nServer: cloudflare\r\nSet-Cookie: __cf_bm=yWfigP.zcwwRo2amu7MViD9DzqIqqYsZGychN4rwqLI-1781418942.2908192-1.0.1.1-c5LMzgr5dR7WaNyukseH0l8omUdNq9uiC8K2GpKXz7IY8a9AzbxgUNtdB6eojRHeAJB5LKY8wq_ajzUz9hrLYhUey0itjStEnW29aehgiNICJSz97Wq5ozm99bMybXv5; HttpOnly; SameSite=None; Secure; Path=/; Domain=benefriches.ademe.fr; Expires=Sun, 14 Jun 2026 07:05:42 GMT\r\nStrict-Transport-Security: max-age=31536000\r\nVary: Accept-Encoding\r\nX-Content-Type-Options: nosniff\r\nX-Frame-Options: DENY\r\nX-Request-Id: 72d45964-ee97-44f3-9ba1-cc7708581285\r\n\r\n<!doctype html>\n<html lang=\"fr\">\n  <head>\n    <meta charset=\"UTF-8\" />\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n    <link rel=\"icon\" href=\"/favicon/favicon-32.png\" sizes=\"32x32\" type=\"image/png\" />\n    <link rel=\"icon\" href=\"/favicon/favicon-128.png\" sizes=\"128x128\" type=\"image/png\" />\n    <link rel=\"icon\" href=\"/favicon/favicon-192.png\" sizes=\"192x192\" type=\"image/png\" />\n    <link rel=\"apple-touch-icon\" href=\"/favicon/favicon-180.png\" />\n    <link rel=\"manifest\" href=\"/favicon/manifest.webmanifest\" crossorigin=\"use-credentials\" />\n\n    <script async src=\"https://tally.so/widgets/embed.js\"></script>\n    <script src=\"/js/env-vars.js\"></script>\n    <title>Bénéfriches, l'outil qui calcule la valeur réelle de votre projet d'aménagement</title>\n    <meta\n      name=\"description\"\n      content=\"Bénéfriches quantifie et monétarise les impacts environnementaux, sociaux et économiques d'un projet d'aménagement, sur friche ou en extension urbaine.\"\n    />\n    <script type=\"module\" crossorigin src=\"/assets/main-DJWPgaYM.js\"></script>\n    <link rel=\"modulepreload\" crossorigin href=\"/assets/main-BlhMVDgA.js\">\n    <link rel=\"modulepreload\" crossorigin href=\"/assets/ExternalLink-DbXMLBbq.js\">\n    <link rel=\"stylesheet\" crossorigin href=\"/assets/main-CzZmoXvu.css\">\n    <link rel=\"stylesheet\" crossorigin href=\"/assets/main-BxVlsu8B.css\">\n  </head>\n\n  <body>\n    <div id=\"root\"></div>\n  <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML=\"window.__CF$cv$params={r:'a0b751054deb233f',t:'MTc4MTQxODk0Mg=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);\";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>\n</html>\n",
-      "ip": "104.21.23.63",
-      "timestamp": "2026-06-14T06:35:42.394421466Z",
-      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://benefriches.ademe.fr'",
-      "matcher-status": true
-    },
-    {
-      "template": "http/misconfiguration/http-missing-security-headers.yaml",
-      "template-url": "https://templates.nuclei.sh/public/http-missing-security-headers",
-      "template-id": "http-missing-security-headers",
-      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/http-missing-security-headers.yaml",
-      "info": {
-        "name": "HTTP Missing Security Headers",
-        "author": [
-          "socketz",
-          "geeknik",
-          "g4l1t0",
-          "convisoappsec",
-          "kurohost",
-          "dawid-czarnecki",
-          "forgedhallpass",
-          "jub0bs",
-          "userdehghani",
-          "celbahraoui",
-          "safejulian"
-        ],
-        "tags": [
-          "misconfig",
-          "headers",
-          "generic",
-          "vuln"
-        ],
-        "description": "This template searches for missing HTTP security headers. The impact of these missing headers can vary.\n",
-        "severity": "info",
-        "metadata": {
-          "max-request": 1
-        },
-        "classification": {
-          "cve-id": null,
-          "cwe-id": [
-            "cwe-693"
-          ]
-        }
-      },
-      "matcher-name": "cross-origin-resource-policy",
-      "type": "http",
-      "host": "https://benefriches.ademe.fr",
-      "matched-at": "https://benefriches.ademe.fr",
-      "request": "GET / HTTP/1.1\r\nHost: benefriches.ademe.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
-      "response": "HTTP/1.1 200 OK\r\nConnection: close\r\nTransfer-Encoding: chunked\r\nAlt-Svc: h3=\":443\"; ma=86400\r\nCf-Cache-Status: DYNAMIC\r\nCf-Ray: a0b751054deb233f-ORD\r\nContent-Security-Policy: default-src 'self'; script-src 'self' 'wasm-unsafe-eval' https://tally.so/widgets/embed.js https://stats.beta.gouv.fr https://*.crisp.chat; connect-src 'self' data: https://stats.beta.gouv.fr/matomo.php https://data.geopf.fr/geocodage/search/ https://geo.api.gouv.fr/communes/ https://cdnjs.cloudflare.com/ajax/libs/twemoji/ https://mutafriches.beta.gouv.fr https://*.crisp.chat wss://*.relay.crisp.chat wss://*.relay.rescue.crisp.chat; style-src 'self' 'unsafe-inline' https://*.crisp.chat; font-src 'self' https://*.crisp.chat; img-src 'self' blob: data: https://*.crisp.chat https://a.tile.openstreetmap.org https://b.tile.openstreetmap.org https://c.tile.openstreetmap.org; worker-src blob: https://*.crisp.chat; frame-ancestors 'none'; frame-src https://tally.so https://benefriches-metabase.osc-secnum-fr1.scalingo.io https://mutafriches.beta.gouv.fr;\r\nContent-Type: text/html; charset=utf-8\r\nDate: Sun, 14 Jun 2026 06:35:42 GMT\r\nLast-Modified: Wed, 10 Jun 2026 14:31:58 GMT\r\nNel: {\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}\r\nReport-To: {\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=i1PPeCoHdbEV2tTiRRgW5iTUM1bt6erBelYtOrTdB9Pxsv9u%2F%2FfX1pWbcXYLbUD9qY698TgeOmXCucxe0q8nT69G%2BwWUqw0vtCESYjgGdXh4ZVZRYxNiTmgP1x%2FQMBVxEF5Lc9I4zQ%3D%3D\"}]}\r\nServer: cloudflare\r\nSet-Cookie: __cf_bm=yWfigP.zcwwRo2amu7MViD9DzqIqqYsZGychN4rwqLI-1781418942.2908192-1.0.1.1-c5LMzgr5dR7WaNyukseH0l8omUdNq9uiC8K2GpKXz7IY8a9AzbxgUNtdB6eojRHeAJB5LKY8wq_ajzUz9hrLYhUey0itjStEnW29aehgiNICJSz97Wq5ozm99bMybXv5; HttpOnly; SameSite=None; Secure; Path=/; Domain=benefriches.ademe.fr; Expires=Sun, 14 Jun 2026 07:05:42 GMT\r\nStrict-Transport-Security: max-age=31536000\r\nVary: Accept-Encoding\r\nX-Content-Type-Options: nosniff\r\nX-Frame-Options: DENY\r\nX-Request-Id: 72d45964-ee97-44f3-9ba1-cc7708581285\r\n\r\n<!doctype html>\n<html lang=\"fr\">\n  <head>\n    <meta charset=\"UTF-8\" />\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n    <link rel=\"icon\" href=\"/favicon/favicon-32.png\" sizes=\"32x32\" type=\"image/png\" />\n    <link rel=\"icon\" href=\"/favicon/favicon-128.png\" sizes=\"128x128\" type=\"image/png\" />\n    <link rel=\"icon\" href=\"/favicon/favicon-192.png\" sizes=\"192x192\" type=\"image/png\" />\n    <link rel=\"apple-touch-icon\" href=\"/favicon/favicon-180.png\" />\n    <link rel=\"manifest\" href=\"/favicon/manifest.webmanifest\" crossorigin=\"use-credentials\" />\n\n    <script async src=\"https://tally.so/widgets/embed.js\"></script>\n    <script src=\"/js/env-vars.js\"></script>\n    <title>Bénéfriches, l'outil qui calcule la valeur réelle de votre projet d'aménagement</title>\n    <meta\n      name=\"description\"\n      content=\"Bénéfriches quantifie et monétarise les impacts environnementaux, sociaux et économiques d'un projet d'aménagement, sur friche ou en extension urbaine.\"\n    />\n    <script type=\"module\" crossorigin src=\"/assets/main-DJWPgaYM.js\"></script>\n    <link rel=\"modulepreload\" crossorigin href=\"/assets/main-BlhMVDgA.js\">\n    <link rel=\"modulepreload\" crossorigin href=\"/assets/ExternalLink-DbXMLBbq.js\">\n    <link rel=\"stylesheet\" crossorigin href=\"/assets/main-CzZmoXvu.css\">\n    <link rel=\"stylesheet\" crossorigin href=\"/assets/main-BxVlsu8B.css\">\n  </head>\n\n  <body>\n    <div id=\"root\"></div>\n  <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML=\"window.__CF$cv$params={r:'a0b751054deb233f',t:'MTc4MTQxODk0Mg=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);\";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>\n</html>\n",
-      "ip": "104.21.23.63",
-      "timestamp": "2026-06-14T06:35:42.394431217Z",
+      "timestamp": "2026-06-21T06:50:14.27821472Z",
       "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://benefriches.ademe.fr'",
       "matcher-status": true
     },
@@ -680,9 +484,9 @@
       "host": "https://benefriches.ademe.fr",
       "matched-at": "https://benefriches.ademe.fr",
       "request": "GET / HTTP/1.1\r\nHost: benefriches.ademe.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
-      "response": "HTTP/1.1 200 OK\r\nConnection: close\r\nTransfer-Encoding: chunked\r\nAlt-Svc: h3=\":443\"; ma=86400\r\nCf-Cache-Status: DYNAMIC\r\nCf-Ray: a0b751054deb233f-ORD\r\nContent-Security-Policy: default-src 'self'; script-src 'self' 'wasm-unsafe-eval' https://tally.so/widgets/embed.js https://stats.beta.gouv.fr https://*.crisp.chat; connect-src 'self' data: https://stats.beta.gouv.fr/matomo.php https://data.geopf.fr/geocodage/search/ https://geo.api.gouv.fr/communes/ https://cdnjs.cloudflare.com/ajax/libs/twemoji/ https://mutafriches.beta.gouv.fr https://*.crisp.chat wss://*.relay.crisp.chat wss://*.relay.rescue.crisp.chat; style-src 'self' 'unsafe-inline' https://*.crisp.chat; font-src 'self' https://*.crisp.chat; img-src 'self' blob: data: https://*.crisp.chat https://a.tile.openstreetmap.org https://b.tile.openstreetmap.org https://c.tile.openstreetmap.org; worker-src blob: https://*.crisp.chat; frame-ancestors 'none'; frame-src https://tally.so https://benefriches-metabase.osc-secnum-fr1.scalingo.io https://mutafriches.beta.gouv.fr;\r\nContent-Type: text/html; charset=utf-8\r\nDate: Sun, 14 Jun 2026 06:35:42 GMT\r\nLast-Modified: Wed, 10 Jun 2026 14:31:58 GMT\r\nNel: {\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}\r\nReport-To: {\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=i1PPeCoHdbEV2tTiRRgW5iTUM1bt6erBelYtOrTdB9Pxsv9u%2F%2FfX1pWbcXYLbUD9qY698TgeOmXCucxe0q8nT69G%2BwWUqw0vtCESYjgGdXh4ZVZRYxNiTmgP1x%2FQMBVxEF5Lc9I4zQ%3D%3D\"}]}\r\nServer: cloudflare\r\nSet-Cookie: __cf_bm=yWfigP.zcwwRo2amu7MViD9DzqIqqYsZGychN4rwqLI-1781418942.2908192-1.0.1.1-c5LMzgr5dR7WaNyukseH0l8omUdNq9uiC8K2GpKXz7IY8a9AzbxgUNtdB6eojRHeAJB5LKY8wq_ajzUz9hrLYhUey0itjStEnW29aehgiNICJSz97Wq5ozm99bMybXv5; HttpOnly; SameSite=None; Secure; Path=/; Domain=benefriches.ademe.fr; Expires=Sun, 14 Jun 2026 07:05:42 GMT\r\nStrict-Transport-Security: max-age=31536000\r\nVary: Accept-Encoding\r\nX-Content-Type-Options: nosniff\r\nX-Frame-Options: DENY\r\nX-Request-Id: 72d45964-ee97-44f3-9ba1-cc7708581285\r\n\r\n<!doctype html>\n<html lang=\"fr\">\n  <head>\n    <meta charset=\"UTF-8\" />\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n    <link rel=\"icon\" href=\"/favicon/favicon-32.png\" sizes=\"32x32\" type=\"image/png\" />\n    <link rel=\"icon\" href=\"/favicon/favicon-128.png\" sizes=\"128x128\" type=\"image/png\" />\n    <link rel=\"icon\" href=\"/favicon/favicon-192.png\" sizes=\"192x192\" type=\"image/png\" />\n    <link rel=\"apple-touch-icon\" href=\"/favicon/favicon-180.png\" />\n    <link rel=\"manifest\" href=\"/favicon/manifest.webmanifest\" crossorigin=\"use-credentials\" />\n\n    <script async src=\"https://tally.so/widgets/embed.js\"></script>\n    <script src=\"/js/env-vars.js\"></script>\n    <title>Bénéfriches, l'outil qui calcule la valeur réelle de votre projet d'aménagement</title>\n    <meta\n      name=\"description\"\n      content=\"Bénéfriches quantifie et monétarise les impacts environnementaux, sociaux et économiques d'un projet d'aménagement, sur friche ou en extension urbaine.\"\n    />\n    <script type=\"module\" crossorigin src=\"/assets/main-DJWPgaYM.js\"></script>\n    <link rel=\"modulepreload\" crossorigin href=\"/assets/main-BlhMVDgA.js\">\n    <link rel=\"modulepreload\" crossorigin href=\"/assets/ExternalLink-DbXMLBbq.js\">\n    <link rel=\"stylesheet\" crossorigin href=\"/assets/main-CzZmoXvu.css\">\n    <link rel=\"stylesheet\" crossorigin href=\"/assets/main-BxVlsu8B.css\">\n  </head>\n\n  <body>\n    <div id=\"root\"></div>\n  <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML=\"window.__CF$cv$params={r:'a0b751054deb233f',t:'MTc4MTQxODk0Mg=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);\";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>\n</html>\n",
+      "response": "HTTP/1.1 200 OK\r\nConnection: close\r\nTransfer-Encoding: chunked\r\nAlt-Svc: h3=\":443\"; ma=86400\r\nCf-Cache-Status: DYNAMIC\r\nCf-Ray: a0f114162feb69d6-DFW\r\nContent-Security-Policy: default-src 'self'; script-src 'self' 'wasm-unsafe-eval' https://tally.so/widgets/embed.js https://stats.beta.gouv.fr https://*.crisp.chat; connect-src 'self' data: https://stats.beta.gouv.fr/matomo.php https://data.geopf.fr/geocodage/search/ https://geo.api.gouv.fr/communes/ https://cdnjs.cloudflare.com/ajax/libs/twemoji/ https://mutafriches.beta.gouv.fr https://*.crisp.chat wss://*.relay.crisp.chat wss://*.relay.rescue.crisp.chat; style-src 'self' 'unsafe-inline' https://*.crisp.chat; font-src 'self' https://*.crisp.chat; img-src 'self' blob: data: https://*.crisp.chat https://a.tile.openstreetmap.org https://b.tile.openstreetmap.org https://c.tile.openstreetmap.org; worker-src blob: https://*.crisp.chat; frame-ancestors 'none'; frame-src https://tally.so https://benefriches-metabase.osc-secnum-fr1.scalingo.io https://mutafriches.beta.gouv.fr;\r\nContent-Type: text/html; charset=utf-8\r\nDate: Sun, 21 Jun 2026 06:50:20 GMT\r\nLast-Modified: Thu, 18 Jun 2026 08:38:45 GMT\r\nNel: {\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}\r\nReport-To: {\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=zKYN0n18C18Of1HVvqUbjxH0rETXYdLoEUIui04LvLM33ezLkThT%2B%2FansxZ%2B%2FWEusJeh%2F7B9DShgo8Fwf6YOxjaEFRbBHDwUpGQYg6wfUavOLpMX19VE7QzjJFdLKsoDjxRFImxioQ%3D%3D\"}]}\r\nServer: cloudflare\r\nSet-Cookie: __cf_bm=Et5k_zUL2E9Jlgb.GYeeZ1cKNOOTJEGkDbXtzSLZUsk-1782024620.5088456-1.0.1.1-topkrzMTeJM0DEoa7sB45JKU_NHggTG0lBAfK8aQ6qyq_S__ABKtqpGGWROYdZJDvCT_A6EQfnCV_U.n_dyjo137zm77SxeMTw4h9aUqwOTjF9EPyg8O2Ffkv0V4TQPM; HttpOnly; SameSite=None; Secure; Path=/; Domain=benefriches.ademe.fr; Expires=Sun, 21 Jun 2026 07:20:20 GMT\r\nStrict-Transport-Security: max-age=31536000\r\nVary: Accept-Encoding\r\nX-Content-Type-Options: nosniff\r\nX-Frame-Options: DENY\r\nX-Request-Id: 89c13f33-05bb-4502-8ba8-7c559ed192d6\r\n\r\n<!doctype html>\n<html lang=\"fr\">\n  <head>\n    <meta charset=\"UTF-8\" />\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n    <link rel=\"icon\" href=\"/favicon/favicon-32.png\" sizes=\"32x32\" type=\"image/png\" />\n    <link rel=\"icon\" href=\"/favicon/favicon-128.png\" sizes=\"128x128\" type=\"image/png\" />\n    <link rel=\"icon\" href=\"/favicon/favicon-192.png\" sizes=\"192x192\" type=\"image/png\" />\n    <link rel=\"apple-touch-icon\" href=\"/favicon/favicon-180.png\" />\n    <link rel=\"manifest\" href=\"/favicon/manifest.webmanifest\" crossorigin=\"use-credentials\" />\n\n    <script async src=\"https://tally.so/widgets/embed.js\"></script>\n    <script src=\"/js/env-vars.js\"></script>\n    <title>Bénéfriches, l'outil qui calcule la valeur réelle de votre projet d'aménagement</title>\n    <meta\n      name=\"description\"\n      content=\"Bénéfriches quantifie et monétarise les impacts environnementaux, sociaux et économiques d'un projet d'aménagement, sur friche ou en extension urbaine.\"\n    />\n    <script type=\"module\" crossorigin src=\"/assets/main-BxaSq3FF.js\"></script>\n    <link rel=\"modulepreload\" crossorigin href=\"/assets/main-BIi8q7ro.js\">\n    <link rel=\"modulepreload\" crossorigin href=\"/assets/ExternalLink-BGfqCvLk.js\">\n    <link rel=\"stylesheet\" crossorigin href=\"/assets/main-8UXFL98B.css\">\n    <link rel=\"stylesheet\" crossorigin href=\"/assets/main-BxVlsu8B.css\">\n  </head>\n\n  <body>\n    <div id=\"root\"></div>\n  <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML=\"window.__CF$cv$params={r:'a0f114162feb69d6',t:'MTc4MjAyNDYyMA=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);\";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>\n</html>\n",
       "ip": "104.21.23.63",
-      "timestamp": "2026-06-14T06:35:42.394439296Z",
+      "timestamp": "2026-06-21T06:50:20.631128217Z",
       "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://benefriches.ademe.fr'",
       "matcher-status": true
     },
@@ -729,9 +533,205 @@
       "host": "https://benefriches.ademe.fr",
       "matched-at": "https://benefriches.ademe.fr",
       "request": "GET / HTTP/1.1\r\nHost: benefriches.ademe.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
-      "response": "HTTP/1.1 200 OK\r\nConnection: close\r\nTransfer-Encoding: chunked\r\nAlt-Svc: h3=\":443\"; ma=86400\r\nCf-Cache-Status: DYNAMIC\r\nCf-Ray: a0b751054deb233f-ORD\r\nContent-Security-Policy: default-src 'self'; script-src 'self' 'wasm-unsafe-eval' https://tally.so/widgets/embed.js https://stats.beta.gouv.fr https://*.crisp.chat; connect-src 'self' data: https://stats.beta.gouv.fr/matomo.php https://data.geopf.fr/geocodage/search/ https://geo.api.gouv.fr/communes/ https://cdnjs.cloudflare.com/ajax/libs/twemoji/ https://mutafriches.beta.gouv.fr https://*.crisp.chat wss://*.relay.crisp.chat wss://*.relay.rescue.crisp.chat; style-src 'self' 'unsafe-inline' https://*.crisp.chat; font-src 'self' https://*.crisp.chat; img-src 'self' blob: data: https://*.crisp.chat https://a.tile.openstreetmap.org https://b.tile.openstreetmap.org https://c.tile.openstreetmap.org; worker-src blob: https://*.crisp.chat; frame-ancestors 'none'; frame-src https://tally.so https://benefriches-metabase.osc-secnum-fr1.scalingo.io https://mutafriches.beta.gouv.fr;\r\nContent-Type: text/html; charset=utf-8\r\nDate: Sun, 14 Jun 2026 06:35:42 GMT\r\nLast-Modified: Wed, 10 Jun 2026 14:31:58 GMT\r\nNel: {\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}\r\nReport-To: {\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=i1PPeCoHdbEV2tTiRRgW5iTUM1bt6erBelYtOrTdB9Pxsv9u%2F%2FfX1pWbcXYLbUD9qY698TgeOmXCucxe0q8nT69G%2BwWUqw0vtCESYjgGdXh4ZVZRYxNiTmgP1x%2FQMBVxEF5Lc9I4zQ%3D%3D\"}]}\r\nServer: cloudflare\r\nSet-Cookie: __cf_bm=yWfigP.zcwwRo2amu7MViD9DzqIqqYsZGychN4rwqLI-1781418942.2908192-1.0.1.1-c5LMzgr5dR7WaNyukseH0l8omUdNq9uiC8K2GpKXz7IY8a9AzbxgUNtdB6eojRHeAJB5LKY8wq_ajzUz9hrLYhUey0itjStEnW29aehgiNICJSz97Wq5ozm99bMybXv5; HttpOnly; SameSite=None; Secure; Path=/; Domain=benefriches.ademe.fr; Expires=Sun, 14 Jun 2026 07:05:42 GMT\r\nStrict-Transport-Security: max-age=31536000\r\nVary: Accept-Encoding\r\nX-Content-Type-Options: nosniff\r\nX-Frame-Options: DENY\r\nX-Request-Id: 72d45964-ee97-44f3-9ba1-cc7708581285\r\n\r\n<!doctype html>\n<html lang=\"fr\">\n  <head>\n    <meta charset=\"UTF-8\" />\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n    <link rel=\"icon\" href=\"/favicon/favicon-32.png\" sizes=\"32x32\" type=\"image/png\" />\n    <link rel=\"icon\" href=\"/favicon/favicon-128.png\" sizes=\"128x128\" type=\"image/png\" />\n    <link rel=\"icon\" href=\"/favicon/favicon-192.png\" sizes=\"192x192\" type=\"image/png\" />\n    <link rel=\"apple-touch-icon\" href=\"/favicon/favicon-180.png\" />\n    <link rel=\"manifest\" href=\"/favicon/manifest.webmanifest\" crossorigin=\"use-credentials\" />\n\n    <script async src=\"https://tally.so/widgets/embed.js\"></script>\n    <script src=\"/js/env-vars.js\"></script>\n    <title>Bénéfriches, l'outil qui calcule la valeur réelle de votre projet d'aménagement</title>\n    <meta\n      name=\"description\"\n      content=\"Bénéfriches quantifie et monétarise les impacts environnementaux, sociaux et économiques d'un projet d'aménagement, sur friche ou en extension urbaine.\"\n    />\n    <script type=\"module\" crossorigin src=\"/assets/main-DJWPgaYM.js\"></script>\n    <link rel=\"modulepreload\" crossorigin href=\"/assets/main-BlhMVDgA.js\">\n    <link rel=\"modulepreload\" crossorigin href=\"/assets/ExternalLink-DbXMLBbq.js\">\n    <link rel=\"stylesheet\" crossorigin href=\"/assets/main-CzZmoXvu.css\">\n    <link rel=\"stylesheet\" crossorigin href=\"/assets/main-BxVlsu8B.css\">\n  </head>\n\n  <body>\n    <div id=\"root\"></div>\n  <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML=\"window.__CF$cv$params={r:'a0b751054deb233f',t:'MTc4MTQxODk0Mg=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);\";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>\n</html>\n",
+      "response": "HTTP/1.1 200 OK\r\nConnection: close\r\nTransfer-Encoding: chunked\r\nAlt-Svc: h3=\":443\"; ma=86400\r\nCf-Cache-Status: DYNAMIC\r\nCf-Ray: a0f114162feb69d6-DFW\r\nContent-Security-Policy: default-src 'self'; script-src 'self' 'wasm-unsafe-eval' https://tally.so/widgets/embed.js https://stats.beta.gouv.fr https://*.crisp.chat; connect-src 'self' data: https://stats.beta.gouv.fr/matomo.php https://data.geopf.fr/geocodage/search/ https://geo.api.gouv.fr/communes/ https://cdnjs.cloudflare.com/ajax/libs/twemoji/ https://mutafriches.beta.gouv.fr https://*.crisp.chat wss://*.relay.crisp.chat wss://*.relay.rescue.crisp.chat; style-src 'self' 'unsafe-inline' https://*.crisp.chat; font-src 'self' https://*.crisp.chat; img-src 'self' blob: data: https://*.crisp.chat https://a.tile.openstreetmap.org https://b.tile.openstreetmap.org https://c.tile.openstreetmap.org; worker-src blob: https://*.crisp.chat; frame-ancestors 'none'; frame-src https://tally.so https://benefriches-metabase.osc-secnum-fr1.scalingo.io https://mutafriches.beta.gouv.fr;\r\nContent-Type: text/html; charset=utf-8\r\nDate: Sun, 21 Jun 2026 06:50:20 GMT\r\nLast-Modified: Thu, 18 Jun 2026 08:38:45 GMT\r\nNel: {\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}\r\nReport-To: {\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=zKYN0n18C18Of1HVvqUbjxH0rETXYdLoEUIui04LvLM33ezLkThT%2B%2FansxZ%2B%2FWEusJeh%2F7B9DShgo8Fwf6YOxjaEFRbBHDwUpGQYg6wfUavOLpMX19VE7QzjJFdLKsoDjxRFImxioQ%3D%3D\"}]}\r\nServer: cloudflare\r\nSet-Cookie: __cf_bm=Et5k_zUL2E9Jlgb.GYeeZ1cKNOOTJEGkDbXtzSLZUsk-1782024620.5088456-1.0.1.1-topkrzMTeJM0DEoa7sB45JKU_NHggTG0lBAfK8aQ6qyq_S__ABKtqpGGWROYdZJDvCT_A6EQfnCV_U.n_dyjo137zm77SxeMTw4h9aUqwOTjF9EPyg8O2Ffkv0V4TQPM; HttpOnly; SameSite=None; Secure; Path=/; Domain=benefriches.ademe.fr; Expires=Sun, 21 Jun 2026 07:20:20 GMT\r\nStrict-Transport-Security: max-age=31536000\r\nVary: Accept-Encoding\r\nX-Content-Type-Options: nosniff\r\nX-Frame-Options: DENY\r\nX-Request-Id: 89c13f33-05bb-4502-8ba8-7c559ed192d6\r\n\r\n<!doctype html>\n<html lang=\"fr\">\n  <head>\n    <meta charset=\"UTF-8\" />\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n    <link rel=\"icon\" href=\"/favicon/favicon-32.png\" sizes=\"32x32\" type=\"image/png\" />\n    <link rel=\"icon\" href=\"/favicon/favicon-128.png\" sizes=\"128x128\" type=\"image/png\" />\n    <link rel=\"icon\" href=\"/favicon/favicon-192.png\" sizes=\"192x192\" type=\"image/png\" />\n    <link rel=\"apple-touch-icon\" href=\"/favicon/favicon-180.png\" />\n    <link rel=\"manifest\" href=\"/favicon/manifest.webmanifest\" crossorigin=\"use-credentials\" />\n\n    <script async src=\"https://tally.so/widgets/embed.js\"></script>\n    <script src=\"/js/env-vars.js\"></script>\n    <title>Bénéfriches, l'outil qui calcule la valeur réelle de votre projet d'aménagement</title>\n    <meta\n      name=\"description\"\n      content=\"Bénéfriches quantifie et monétarise les impacts environnementaux, sociaux et économiques d'un projet d'aménagement, sur friche ou en extension urbaine.\"\n    />\n    <script type=\"module\" crossorigin src=\"/assets/main-BxaSq3FF.js\"></script>\n    <link rel=\"modulepreload\" crossorigin href=\"/assets/main-BIi8q7ro.js\">\n    <link rel=\"modulepreload\" crossorigin href=\"/assets/ExternalLink-BGfqCvLk.js\">\n    <link rel=\"stylesheet\" crossorigin href=\"/assets/main-8UXFL98B.css\">\n    <link rel=\"stylesheet\" crossorigin href=\"/assets/main-BxVlsu8B.css\">\n  </head>\n\n  <body>\n    <div id=\"root\"></div>\n  <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML=\"window.__CF$cv$params={r:'a0f114162feb69d6',t:'MTc4MjAyNDYyMA=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);\";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>\n</html>\n",
       "ip": "104.21.23.63",
-      "timestamp": "2026-06-14T06:35:42.394446493Z",
+      "timestamp": "2026-06-21T06:50:20.631179735Z",
+      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://benefriches.ademe.fr'",
+      "matcher-status": true
+    },
+    {
+      "template": "http/misconfiguration/http-missing-security-headers.yaml",
+      "template-url": "https://templates.nuclei.sh/public/http-missing-security-headers",
+      "template-id": "http-missing-security-headers",
+      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/http-missing-security-headers.yaml",
+      "info": {
+        "name": "HTTP Missing Security Headers",
+        "author": [
+          "socketz",
+          "geeknik",
+          "g4l1t0",
+          "convisoappsec",
+          "kurohost",
+          "dawid-czarnecki",
+          "forgedhallpass",
+          "jub0bs",
+          "userdehghani",
+          "celbahraoui",
+          "safejulian"
+        ],
+        "tags": [
+          "misconfig",
+          "headers",
+          "generic",
+          "vuln"
+        ],
+        "description": "This template searches for missing HTTP security headers. The impact of these missing headers can vary.\n",
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        },
+        "classification": {
+          "cve-id": null,
+          "cwe-id": [
+            "cwe-693"
+          ]
+        }
+      },
+      "matcher-name": "referrer-policy",
+      "type": "http",
+      "host": "https://benefriches.ademe.fr",
+      "matched-at": "https://benefriches.ademe.fr",
+      "request": "GET / HTTP/1.1\r\nHost: benefriches.ademe.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 200 OK\r\nConnection: close\r\nTransfer-Encoding: chunked\r\nAlt-Svc: h3=\":443\"; ma=86400\r\nCf-Cache-Status: DYNAMIC\r\nCf-Ray: a0f114162feb69d6-DFW\r\nContent-Security-Policy: default-src 'self'; script-src 'self' 'wasm-unsafe-eval' https://tally.so/widgets/embed.js https://stats.beta.gouv.fr https://*.crisp.chat; connect-src 'self' data: https://stats.beta.gouv.fr/matomo.php https://data.geopf.fr/geocodage/search/ https://geo.api.gouv.fr/communes/ https://cdnjs.cloudflare.com/ajax/libs/twemoji/ https://mutafriches.beta.gouv.fr https://*.crisp.chat wss://*.relay.crisp.chat wss://*.relay.rescue.crisp.chat; style-src 'self' 'unsafe-inline' https://*.crisp.chat; font-src 'self' https://*.crisp.chat; img-src 'self' blob: data: https://*.crisp.chat https://a.tile.openstreetmap.org https://b.tile.openstreetmap.org https://c.tile.openstreetmap.org; worker-src blob: https://*.crisp.chat; frame-ancestors 'none'; frame-src https://tally.so https://benefriches-metabase.osc-secnum-fr1.scalingo.io https://mutafriches.beta.gouv.fr;\r\nContent-Type: text/html; charset=utf-8\r\nDate: Sun, 21 Jun 2026 06:50:20 GMT\r\nLast-Modified: Thu, 18 Jun 2026 08:38:45 GMT\r\nNel: {\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}\r\nReport-To: {\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=zKYN0n18C18Of1HVvqUbjxH0rETXYdLoEUIui04LvLM33ezLkThT%2B%2FansxZ%2B%2FWEusJeh%2F7B9DShgo8Fwf6YOxjaEFRbBHDwUpGQYg6wfUavOLpMX19VE7QzjJFdLKsoDjxRFImxioQ%3D%3D\"}]}\r\nServer: cloudflare\r\nSet-Cookie: __cf_bm=Et5k_zUL2E9Jlgb.GYeeZ1cKNOOTJEGkDbXtzSLZUsk-1782024620.5088456-1.0.1.1-topkrzMTeJM0DEoa7sB45JKU_NHggTG0lBAfK8aQ6qyq_S__ABKtqpGGWROYdZJDvCT_A6EQfnCV_U.n_dyjo137zm77SxeMTw4h9aUqwOTjF9EPyg8O2Ffkv0V4TQPM; HttpOnly; SameSite=None; Secure; Path=/; Domain=benefriches.ademe.fr; Expires=Sun, 21 Jun 2026 07:20:20 GMT\r\nStrict-Transport-Security: max-age=31536000\r\nVary: Accept-Encoding\r\nX-Content-Type-Options: nosniff\r\nX-Frame-Options: DENY\r\nX-Request-Id: 89c13f33-05bb-4502-8ba8-7c559ed192d6\r\n\r\n<!doctype html>\n<html lang=\"fr\">\n  <head>\n    <meta charset=\"UTF-8\" />\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n    <link rel=\"icon\" href=\"/favicon/favicon-32.png\" sizes=\"32x32\" type=\"image/png\" />\n    <link rel=\"icon\" href=\"/favicon/favicon-128.png\" sizes=\"128x128\" type=\"image/png\" />\n    <link rel=\"icon\" href=\"/favicon/favicon-192.png\" sizes=\"192x192\" type=\"image/png\" />\n    <link rel=\"apple-touch-icon\" href=\"/favicon/favicon-180.png\" />\n    <link rel=\"manifest\" href=\"/favicon/manifest.webmanifest\" crossorigin=\"use-credentials\" />\n\n    <script async src=\"https://tally.so/widgets/embed.js\"></script>\n    <script src=\"/js/env-vars.js\"></script>\n    <title>Bénéfriches, l'outil qui calcule la valeur réelle de votre projet d'aménagement</title>\n    <meta\n      name=\"description\"\n      content=\"Bénéfriches quantifie et monétarise les impacts environnementaux, sociaux et économiques d'un projet d'aménagement, sur friche ou en extension urbaine.\"\n    />\n    <script type=\"module\" crossorigin src=\"/assets/main-BxaSq3FF.js\"></script>\n    <link rel=\"modulepreload\" crossorigin href=\"/assets/main-BIi8q7ro.js\">\n    <link rel=\"modulepreload\" crossorigin href=\"/assets/ExternalLink-BGfqCvLk.js\">\n    <link rel=\"stylesheet\" crossorigin href=\"/assets/main-8UXFL98B.css\">\n    <link rel=\"stylesheet\" crossorigin href=\"/assets/main-BxVlsu8B.css\">\n  </head>\n\n  <body>\n    <div id=\"root\"></div>\n  <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML=\"window.__CF$cv$params={r:'a0f114162feb69d6',t:'MTc4MjAyNDYyMA=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);\";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>\n</html>\n",
+      "ip": "104.21.23.63",
+      "timestamp": "2026-06-21T06:50:20.631191413Z",
+      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://benefriches.ademe.fr'",
+      "matcher-status": true
+    },
+    {
+      "template": "http/misconfiguration/http-missing-security-headers.yaml",
+      "template-url": "https://templates.nuclei.sh/public/http-missing-security-headers",
+      "template-id": "http-missing-security-headers",
+      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/http-missing-security-headers.yaml",
+      "info": {
+        "name": "HTTP Missing Security Headers",
+        "author": [
+          "socketz",
+          "geeknik",
+          "g4l1t0",
+          "convisoappsec",
+          "kurohost",
+          "dawid-czarnecki",
+          "forgedhallpass",
+          "jub0bs",
+          "userdehghani",
+          "celbahraoui",
+          "safejulian"
+        ],
+        "tags": [
+          "misconfig",
+          "headers",
+          "generic",
+          "vuln"
+        ],
+        "description": "This template searches for missing HTTP security headers. The impact of these missing headers can vary.\n",
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        },
+        "classification": {
+          "cve-id": null,
+          "cwe-id": [
+            "cwe-693"
+          ]
+        }
+      },
+      "matcher-name": "cross-origin-embedder-policy",
+      "type": "http",
+      "host": "https://benefriches.ademe.fr",
+      "matched-at": "https://benefriches.ademe.fr",
+      "request": "GET / HTTP/1.1\r\nHost: benefriches.ademe.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 200 OK\r\nConnection: close\r\nTransfer-Encoding: chunked\r\nAlt-Svc: h3=\":443\"; ma=86400\r\nCf-Cache-Status: DYNAMIC\r\nCf-Ray: a0f114162feb69d6-DFW\r\nContent-Security-Policy: default-src 'self'; script-src 'self' 'wasm-unsafe-eval' https://tally.so/widgets/embed.js https://stats.beta.gouv.fr https://*.crisp.chat; connect-src 'self' data: https://stats.beta.gouv.fr/matomo.php https://data.geopf.fr/geocodage/search/ https://geo.api.gouv.fr/communes/ https://cdnjs.cloudflare.com/ajax/libs/twemoji/ https://mutafriches.beta.gouv.fr https://*.crisp.chat wss://*.relay.crisp.chat wss://*.relay.rescue.crisp.chat; style-src 'self' 'unsafe-inline' https://*.crisp.chat; font-src 'self' https://*.crisp.chat; img-src 'self' blob: data: https://*.crisp.chat https://a.tile.openstreetmap.org https://b.tile.openstreetmap.org https://c.tile.openstreetmap.org; worker-src blob: https://*.crisp.chat; frame-ancestors 'none'; frame-src https://tally.so https://benefriches-metabase.osc-secnum-fr1.scalingo.io https://mutafriches.beta.gouv.fr;\r\nContent-Type: text/html; charset=utf-8\r\nDate: Sun, 21 Jun 2026 06:50:20 GMT\r\nLast-Modified: Thu, 18 Jun 2026 08:38:45 GMT\r\nNel: {\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}\r\nReport-To: {\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=zKYN0n18C18Of1HVvqUbjxH0rETXYdLoEUIui04LvLM33ezLkThT%2B%2FansxZ%2B%2FWEusJeh%2F7B9DShgo8Fwf6YOxjaEFRbBHDwUpGQYg6wfUavOLpMX19VE7QzjJFdLKsoDjxRFImxioQ%3D%3D\"}]}\r\nServer: cloudflare\r\nSet-Cookie: __cf_bm=Et5k_zUL2E9Jlgb.GYeeZ1cKNOOTJEGkDbXtzSLZUsk-1782024620.5088456-1.0.1.1-topkrzMTeJM0DEoa7sB45JKU_NHggTG0lBAfK8aQ6qyq_S__ABKtqpGGWROYdZJDvCT_A6EQfnCV_U.n_dyjo137zm77SxeMTw4h9aUqwOTjF9EPyg8O2Ffkv0V4TQPM; HttpOnly; SameSite=None; Secure; Path=/; Domain=benefriches.ademe.fr; Expires=Sun, 21 Jun 2026 07:20:20 GMT\r\nStrict-Transport-Security: max-age=31536000\r\nVary: Accept-Encoding\r\nX-Content-Type-Options: nosniff\r\nX-Frame-Options: DENY\r\nX-Request-Id: 89c13f33-05bb-4502-8ba8-7c559ed192d6\r\n\r\n<!doctype html>\n<html lang=\"fr\">\n  <head>\n    <meta charset=\"UTF-8\" />\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n    <link rel=\"icon\" href=\"/favicon/favicon-32.png\" sizes=\"32x32\" type=\"image/png\" />\n    <link rel=\"icon\" href=\"/favicon/favicon-128.png\" sizes=\"128x128\" type=\"image/png\" />\n    <link rel=\"icon\" href=\"/favicon/favicon-192.png\" sizes=\"192x192\" type=\"image/png\" />\n    <link rel=\"apple-touch-icon\" href=\"/favicon/favicon-180.png\" />\n    <link rel=\"manifest\" href=\"/favicon/manifest.webmanifest\" crossorigin=\"use-credentials\" />\n\n    <script async src=\"https://tally.so/widgets/embed.js\"></script>\n    <script src=\"/js/env-vars.js\"></script>\n    <title>Bénéfriches, l'outil qui calcule la valeur réelle de votre projet d'aménagement</title>\n    <meta\n      name=\"description\"\n      content=\"Bénéfriches quantifie et monétarise les impacts environnementaux, sociaux et économiques d'un projet d'aménagement, sur friche ou en extension urbaine.\"\n    />\n    <script type=\"module\" crossorigin src=\"/assets/main-BxaSq3FF.js\"></script>\n    <link rel=\"modulepreload\" crossorigin href=\"/assets/main-BIi8q7ro.js\">\n    <link rel=\"modulepreload\" crossorigin href=\"/assets/ExternalLink-BGfqCvLk.js\">\n    <link rel=\"stylesheet\" crossorigin href=\"/assets/main-8UXFL98B.css\">\n    <link rel=\"stylesheet\" crossorigin href=\"/assets/main-BxVlsu8B.css\">\n  </head>\n\n  <body>\n    <div id=\"root\"></div>\n  <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML=\"window.__CF$cv$params={r:'a0f114162feb69d6',t:'MTc4MjAyNDYyMA=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);\";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>\n</html>\n",
+      "ip": "104.21.23.63",
+      "timestamp": "2026-06-21T06:50:20.631202259Z",
+      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://benefriches.ademe.fr'",
+      "matcher-status": true
+    },
+    {
+      "template": "http/misconfiguration/http-missing-security-headers.yaml",
+      "template-url": "https://templates.nuclei.sh/public/http-missing-security-headers",
+      "template-id": "http-missing-security-headers",
+      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/http-missing-security-headers.yaml",
+      "info": {
+        "name": "HTTP Missing Security Headers",
+        "author": [
+          "socketz",
+          "geeknik",
+          "g4l1t0",
+          "convisoappsec",
+          "kurohost",
+          "dawid-czarnecki",
+          "forgedhallpass",
+          "jub0bs",
+          "userdehghani",
+          "celbahraoui",
+          "safejulian"
+        ],
+        "tags": [
+          "misconfig",
+          "headers",
+          "generic",
+          "vuln"
+        ],
+        "description": "This template searches for missing HTTP security headers. The impact of these missing headers can vary.\n",
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        },
+        "classification": {
+          "cve-id": null,
+          "cwe-id": [
+            "cwe-693"
+          ]
+        }
+      },
+      "matcher-name": "cross-origin-opener-policy",
+      "type": "http",
+      "host": "https://benefriches.ademe.fr",
+      "matched-at": "https://benefriches.ademe.fr",
+      "request": "GET / HTTP/1.1\r\nHost: benefriches.ademe.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 200 OK\r\nConnection: close\r\nTransfer-Encoding: chunked\r\nAlt-Svc: h3=\":443\"; ma=86400\r\nCf-Cache-Status: DYNAMIC\r\nCf-Ray: a0f114162feb69d6-DFW\r\nContent-Security-Policy: default-src 'self'; script-src 'self' 'wasm-unsafe-eval' https://tally.so/widgets/embed.js https://stats.beta.gouv.fr https://*.crisp.chat; connect-src 'self' data: https://stats.beta.gouv.fr/matomo.php https://data.geopf.fr/geocodage/search/ https://geo.api.gouv.fr/communes/ https://cdnjs.cloudflare.com/ajax/libs/twemoji/ https://mutafriches.beta.gouv.fr https://*.crisp.chat wss://*.relay.crisp.chat wss://*.relay.rescue.crisp.chat; style-src 'self' 'unsafe-inline' https://*.crisp.chat; font-src 'self' https://*.crisp.chat; img-src 'self' blob: data: https://*.crisp.chat https://a.tile.openstreetmap.org https://b.tile.openstreetmap.org https://c.tile.openstreetmap.org; worker-src blob: https://*.crisp.chat; frame-ancestors 'none'; frame-src https://tally.so https://benefriches-metabase.osc-secnum-fr1.scalingo.io https://mutafriches.beta.gouv.fr;\r\nContent-Type: text/html; charset=utf-8\r\nDate: Sun, 21 Jun 2026 06:50:20 GMT\r\nLast-Modified: Thu, 18 Jun 2026 08:38:45 GMT\r\nNel: {\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}\r\nReport-To: {\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=zKYN0n18C18Of1HVvqUbjxH0rETXYdLoEUIui04LvLM33ezLkThT%2B%2FansxZ%2B%2FWEusJeh%2F7B9DShgo8Fwf6YOxjaEFRbBHDwUpGQYg6wfUavOLpMX19VE7QzjJFdLKsoDjxRFImxioQ%3D%3D\"}]}\r\nServer: cloudflare\r\nSet-Cookie: __cf_bm=Et5k_zUL2E9Jlgb.GYeeZ1cKNOOTJEGkDbXtzSLZUsk-1782024620.5088456-1.0.1.1-topkrzMTeJM0DEoa7sB45JKU_NHggTG0lBAfK8aQ6qyq_S__ABKtqpGGWROYdZJDvCT_A6EQfnCV_U.n_dyjo137zm77SxeMTw4h9aUqwOTjF9EPyg8O2Ffkv0V4TQPM; HttpOnly; SameSite=None; Secure; Path=/; Domain=benefriches.ademe.fr; Expires=Sun, 21 Jun 2026 07:20:20 GMT\r\nStrict-Transport-Security: max-age=31536000\r\nVary: Accept-Encoding\r\nX-Content-Type-Options: nosniff\r\nX-Frame-Options: DENY\r\nX-Request-Id: 89c13f33-05bb-4502-8ba8-7c559ed192d6\r\n\r\n<!doctype html>\n<html lang=\"fr\">\n  <head>\n    <meta charset=\"UTF-8\" />\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n    <link rel=\"icon\" href=\"/favicon/favicon-32.png\" sizes=\"32x32\" type=\"image/png\" />\n    <link rel=\"icon\" href=\"/favicon/favicon-128.png\" sizes=\"128x128\" type=\"image/png\" />\n    <link rel=\"icon\" href=\"/favicon/favicon-192.png\" sizes=\"192x192\" type=\"image/png\" />\n    <link rel=\"apple-touch-icon\" href=\"/favicon/favicon-180.png\" />\n    <link rel=\"manifest\" href=\"/favicon/manifest.webmanifest\" crossorigin=\"use-credentials\" />\n\n    <script async src=\"https://tally.so/widgets/embed.js\"></script>\n    <script src=\"/js/env-vars.js\"></script>\n    <title>Bénéfriches, l'outil qui calcule la valeur réelle de votre projet d'aménagement</title>\n    <meta\n      name=\"description\"\n      content=\"Bénéfriches quantifie et monétarise les impacts environnementaux, sociaux et économiques d'un projet d'aménagement, sur friche ou en extension urbaine.\"\n    />\n    <script type=\"module\" crossorigin src=\"/assets/main-BxaSq3FF.js\"></script>\n    <link rel=\"modulepreload\" crossorigin href=\"/assets/main-BIi8q7ro.js\">\n    <link rel=\"modulepreload\" crossorigin href=\"/assets/ExternalLink-BGfqCvLk.js\">\n    <link rel=\"stylesheet\" crossorigin href=\"/assets/main-8UXFL98B.css\">\n    <link rel=\"stylesheet\" crossorigin href=\"/assets/main-BxVlsu8B.css\">\n  </head>\n\n  <body>\n    <div id=\"root\"></div>\n  <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML=\"window.__CF$cv$params={r:'a0f114162feb69d6',t:'MTc4MjAyNDYyMA=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);\";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>\n</html>\n",
+      "ip": "104.21.23.63",
+      "timestamp": "2026-06-21T06:50:20.631212475Z",
+      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://benefriches.ademe.fr'",
+      "matcher-status": true
+    },
+    {
+      "template": "http/misconfiguration/http-missing-security-headers.yaml",
+      "template-url": "https://templates.nuclei.sh/public/http-missing-security-headers",
+      "template-id": "http-missing-security-headers",
+      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/http-missing-security-headers.yaml",
+      "info": {
+        "name": "HTTP Missing Security Headers",
+        "author": [
+          "socketz",
+          "geeknik",
+          "g4l1t0",
+          "convisoappsec",
+          "kurohost",
+          "dawid-czarnecki",
+          "forgedhallpass",
+          "jub0bs",
+          "userdehghani",
+          "celbahraoui",
+          "safejulian"
+        ],
+        "tags": [
+          "misconfig",
+          "headers",
+          "generic",
+          "vuln"
+        ],
+        "description": "This template searches for missing HTTP security headers. The impact of these missing headers can vary.\n",
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        },
+        "classification": {
+          "cve-id": null,
+          "cwe-id": [
+            "cwe-693"
+          ]
+        }
+      },
+      "matcher-name": "cross-origin-resource-policy",
+      "type": "http",
+      "host": "https://benefriches.ademe.fr",
+      "matched-at": "https://benefriches.ademe.fr",
+      "request": "GET / HTTP/1.1\r\nHost: benefriches.ademe.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 200 OK\r\nConnection: close\r\nTransfer-Encoding: chunked\r\nAlt-Svc: h3=\":443\"; ma=86400\r\nCf-Cache-Status: DYNAMIC\r\nCf-Ray: a0f114162feb69d6-DFW\r\nContent-Security-Policy: default-src 'self'; script-src 'self' 'wasm-unsafe-eval' https://tally.so/widgets/embed.js https://stats.beta.gouv.fr https://*.crisp.chat; connect-src 'self' data: https://stats.beta.gouv.fr/matomo.php https://data.geopf.fr/geocodage/search/ https://geo.api.gouv.fr/communes/ https://cdnjs.cloudflare.com/ajax/libs/twemoji/ https://mutafriches.beta.gouv.fr https://*.crisp.chat wss://*.relay.crisp.chat wss://*.relay.rescue.crisp.chat; style-src 'self' 'unsafe-inline' https://*.crisp.chat; font-src 'self' https://*.crisp.chat; img-src 'self' blob: data: https://*.crisp.chat https://a.tile.openstreetmap.org https://b.tile.openstreetmap.org https://c.tile.openstreetmap.org; worker-src blob: https://*.crisp.chat; frame-ancestors 'none'; frame-src https://tally.so https://benefriches-metabase.osc-secnum-fr1.scalingo.io https://mutafriches.beta.gouv.fr;\r\nContent-Type: text/html; charset=utf-8\r\nDate: Sun, 21 Jun 2026 06:50:20 GMT\r\nLast-Modified: Thu, 18 Jun 2026 08:38:45 GMT\r\nNel: {\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}\r\nReport-To: {\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=zKYN0n18C18Of1HVvqUbjxH0rETXYdLoEUIui04LvLM33ezLkThT%2B%2FansxZ%2B%2FWEusJeh%2F7B9DShgo8Fwf6YOxjaEFRbBHDwUpGQYg6wfUavOLpMX19VE7QzjJFdLKsoDjxRFImxioQ%3D%3D\"}]}\r\nServer: cloudflare\r\nSet-Cookie: __cf_bm=Et5k_zUL2E9Jlgb.GYeeZ1cKNOOTJEGkDbXtzSLZUsk-1782024620.5088456-1.0.1.1-topkrzMTeJM0DEoa7sB45JKU_NHggTG0lBAfK8aQ6qyq_S__ABKtqpGGWROYdZJDvCT_A6EQfnCV_U.n_dyjo137zm77SxeMTw4h9aUqwOTjF9EPyg8O2Ffkv0V4TQPM; HttpOnly; SameSite=None; Secure; Path=/; Domain=benefriches.ademe.fr; Expires=Sun, 21 Jun 2026 07:20:20 GMT\r\nStrict-Transport-Security: max-age=31536000\r\nVary: Accept-Encoding\r\nX-Content-Type-Options: nosniff\r\nX-Frame-Options: DENY\r\nX-Request-Id: 89c13f33-05bb-4502-8ba8-7c559ed192d6\r\n\r\n<!doctype html>\n<html lang=\"fr\">\n  <head>\n    <meta charset=\"UTF-8\" />\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n    <link rel=\"icon\" href=\"/favicon/favicon-32.png\" sizes=\"32x32\" type=\"image/png\" />\n    <link rel=\"icon\" href=\"/favicon/favicon-128.png\" sizes=\"128x128\" type=\"image/png\" />\n    <link rel=\"icon\" href=\"/favicon/favicon-192.png\" sizes=\"192x192\" type=\"image/png\" />\n    <link rel=\"apple-touch-icon\" href=\"/favicon/favicon-180.png\" />\n    <link rel=\"manifest\" href=\"/favicon/manifest.webmanifest\" crossorigin=\"use-credentials\" />\n\n    <script async src=\"https://tally.so/widgets/embed.js\"></script>\n    <script src=\"/js/env-vars.js\"></script>\n    <title>Bénéfriches, l'outil qui calcule la valeur réelle de votre projet d'aménagement</title>\n    <meta\n      name=\"description\"\n      content=\"Bénéfriches quantifie et monétarise les impacts environnementaux, sociaux et économiques d'un projet d'aménagement, sur friche ou en extension urbaine.\"\n    />\n    <script type=\"module\" crossorigin src=\"/assets/main-BxaSq3FF.js\"></script>\n    <link rel=\"modulepreload\" crossorigin href=\"/assets/main-BIi8q7ro.js\">\n    <link rel=\"modulepreload\" crossorigin href=\"/assets/ExternalLink-BGfqCvLk.js\">\n    <link rel=\"stylesheet\" crossorigin href=\"/assets/main-8UXFL98B.css\">\n    <link rel=\"stylesheet\" crossorigin href=\"/assets/main-BxVlsu8B.css\">\n  </head>\n\n  <body>\n    <div id=\"root\"></div>\n  <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML=\"window.__CF$cv$params={r:'a0f114162feb69d6',t:'MTc4MjAyNDYyMA=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);\";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>\n</html>\n",
+      "ip": "104.21.23.63",
+      "timestamp": "2026-06-21T06:50:20.63122281Z",
       "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://benefriches.ademe.fr'",
       "matcher-status": true
     },
@@ -778,9 +778,9 @@
         "https://tally.so/widgets/embed.js"
       ],
       "request": "GET / HTTP/1.1\r\nHost: benefriches.ademe.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
-      "response": "HTTP/1.1 200 OK\r\nConnection: close\r\nTransfer-Encoding: chunked\r\nAlt-Svc: h3=\":443\"; ma=86400\r\nCf-Cache-Status: DYNAMIC\r\nCf-Ray: a0b757e11a99e805-ORD\r\nContent-Security-Policy: default-src 'self'; script-src 'self' 'wasm-unsafe-eval' https://tally.so/widgets/embed.js https://stats.beta.gouv.fr https://*.crisp.chat; connect-src 'self' data: https://stats.beta.gouv.fr/matomo.php https://data.geopf.fr/geocodage/search/ https://geo.api.gouv.fr/communes/ https://cdnjs.cloudflare.com/ajax/libs/twemoji/ https://mutafriches.beta.gouv.fr https://*.crisp.chat wss://*.relay.crisp.chat wss://*.relay.rescue.crisp.chat; style-src 'self' 'unsafe-inline' https://*.crisp.chat; font-src 'self' https://*.crisp.chat; img-src 'self' blob: data: https://*.crisp.chat https://a.tile.openstreetmap.org https://b.tile.openstreetmap.org https://c.tile.openstreetmap.org; worker-src blob: https://*.crisp.chat; frame-ancestors 'none'; frame-src https://tally.so https://benefriches-metabase.osc-secnum-fr1.scalingo.io https://mutafriches.beta.gouv.fr;\r\nContent-Type: text/html; charset=utf-8\r\nDate: Sun, 14 Jun 2026 06:40:23 GMT\r\nLast-Modified: Wed, 10 Jun 2026 14:31:58 GMT\r\nNel: {\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}\r\nReport-To: {\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=d29AdNNWlpKm9RR2RMk6DeAlAkFTdm%2FpCaDfNRuDcVIetZsf5nSxvGJ%2FQRNBQzd0m5baxtiPGGCFLWC6Uw6yDukLnCWdl%2BKoX4JQyI938g9QphJsyEzU46jp%2B%2Fl60IzDsgr32sfrNQ%3D%3D\"}]}\r\nServer: cloudflare\r\nSet-Cookie: __cf_bm=S0IqxVmmtscdsnB8uypFgFe4Z_lsgk5AOW8RTg7wMCw-1781419223.2185118-1.0.1.1-Pvt_wxDsbx9iupM4m9e4AIrt9XV6FxD7WHfB98OuA2IOv4RYm3WuBFIe_cfpU83vu22YBnDbld_XcXbpKXOWLvRzaJzS1YLZyAa0QwOnGBXuMqz0Xqc1DgmPw2pW1SHH; HttpOnly; SameSite=None; Secure; Path=/; Domain=benefriches.ademe.fr; Expires=Sun, 14 Jun 2026 07:10:23 GMT\r\nStrict-Transport-Security: max-age=31536000\r\nVary: Accept-Encoding\r\nX-Content-Type-Options: nosniff\r\nX-Frame-Options: DENY\r\nX-Request-Id: abc98efb-385e-4aaa-9b1a-f4bbe59f300f\r\n\r\n<!doctype html>\n<html lang=\"fr\">\n  <head>\n    <meta charset=\"UTF-8\" />\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n    <link rel=\"icon\" href=\"/favicon/favicon-32.png\" sizes=\"32x32\" type=\"image/png\" />\n    <link rel=\"icon\" href=\"/favicon/favicon-128.png\" sizes=\"128x128\" type=\"image/png\" />\n    <link rel=\"icon\" href=\"/favicon/favicon-192.png\" sizes=\"192x192\" type=\"image/png\" />\n    <link rel=\"apple-touch-icon\" href=\"/favicon/favicon-180.png\" />\n    <link rel=\"manifest\" href=\"/favicon/manifest.webmanifest\" crossorigin=\"use-credentials\" />\n\n    <script async src=\"https://tally.so/widgets/embed.js\"></script>\n    <script src=\"/js/env-vars.js\"></script>\n    <title>Bénéfriches, l'outil qui calcule la valeur réelle de votre projet d'aménagement</title>\n    <meta\n      name=\"description\"\n      content=\"Bénéfriches quantifie et monétarise les impacts environnementaux, sociaux et économiques d'un projet d'aménagement, sur friche ou en extension urbaine.\"\n    />\n    <script type=\"module\" crossorigin src=\"/assets/main-DJWPgaYM.js\"></script>\n    <link rel=\"modulepreload\" crossorigin href=\"/assets/main-BlhMVDgA.js\">\n    <link rel=\"modulepreload\" crossorigin href=\"/assets/ExternalLink-DbXMLBbq.js\">\n    <link rel=\"stylesheet\" crossorigin href=\"/assets/main-CzZmoXvu.css\">\n    <link rel=\"stylesheet\" crossorigin href=\"/assets/main-BxVlsu8B.css\">\n  </head>\n\n  <body>\n    <div id=\"root\"></div>\n  <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML=\"window.__CF$cv$params={r:'a0b757e11a99e805',t:'MTc4MTQxOTIyMw=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);\";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>\n</html>\n",
+      "response": "HTTP/1.1 200 OK\r\nConnection: close\r\nTransfer-Encoding: chunked\r\nAlt-Svc: h3=\":443\"; ma=86400\r\nCf-Cache-Status: DYNAMIC\r\nCf-Ray: a0f11a680d446e6c-DFW\r\nContent-Security-Policy: default-src 'self'; script-src 'self' 'wasm-unsafe-eval' https://tally.so/widgets/embed.js https://stats.beta.gouv.fr https://*.crisp.chat; connect-src 'self' data: https://stats.beta.gouv.fr/matomo.php https://data.geopf.fr/geocodage/search/ https://geo.api.gouv.fr/communes/ https://cdnjs.cloudflare.com/ajax/libs/twemoji/ https://mutafriches.beta.gouv.fr https://*.crisp.chat wss://*.relay.crisp.chat wss://*.relay.rescue.crisp.chat; style-src 'self' 'unsafe-inline' https://*.crisp.chat; font-src 'self' https://*.crisp.chat; img-src 'self' blob: data: https://*.crisp.chat https://a.tile.openstreetmap.org https://b.tile.openstreetmap.org https://c.tile.openstreetmap.org; worker-src blob: https://*.crisp.chat; frame-ancestors 'none'; frame-src https://tally.so https://benefriches-metabase.osc-secnum-fr1.scalingo.io https://mutafriches.beta.gouv.fr;\r\nContent-Type: text/html; charset=utf-8\r\nDate: Sun, 21 Jun 2026 06:54:39 GMT\r\nLast-Modified: Thu, 18 Jun 2026 08:38:45 GMT\r\nNel: {\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}\r\nReport-To: {\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=sqTxRyuDqO215kzAFleim3%2Bb65TOToDXgD2c%2FVbxBYTSkpUE3%2Ba3J6VpPhJFKAWC3CWcYM6Oi%2FBNpDB3Jy0pWxyXT5SP5swKw%2BJFIHsGyYHGeU8KGOTxb4NAhP9jFp2JeuI5W1Qojg%3D%3D\"}]}\r\nServer: cloudflare\r\nSet-Cookie: __cf_bm=ooIsWkoBbQh4Nm5kGUyZqIiRtN7K.7S8YDAhlOn1IsE-1782024879.3670416-1.0.1.1-EuGjnREEKUkyrBhqP0sryauykAf_HRts6xXyMnJLmBejQVZMcoHpZjTAcFcc_vEeWZtTDA1rFTqjfUKaYOFvJLCaMTMRoQb0JaiDynPDUZgZPUJ1Mq8Y5IrYwXJvjJnQ; HttpOnly; SameSite=None; Secure; Path=/; Domain=benefriches.ademe.fr; Expires=Sun, 21 Jun 2026 07:24:39 GMT\r\nStrict-Transport-Security: max-age=31536000\r\nVary: Accept-Encoding\r\nX-Content-Type-Options: nosniff\r\nX-Frame-Options: DENY\r\nX-Request-Id: 570d43f6-6c82-4daa-bcf0-fe418f4a74e1\r\n\r\n<!doctype html>\n<html lang=\"fr\">\n  <head>\n    <meta charset=\"UTF-8\" />\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n    <link rel=\"icon\" href=\"/favicon/favicon-32.png\" sizes=\"32x32\" type=\"image/png\" />\n    <link rel=\"icon\" href=\"/favicon/favicon-128.png\" sizes=\"128x128\" type=\"image/png\" />\n    <link rel=\"icon\" href=\"/favicon/favicon-192.png\" sizes=\"192x192\" type=\"image/png\" />\n    <link rel=\"apple-touch-icon\" href=\"/favicon/favicon-180.png\" />\n    <link rel=\"manifest\" href=\"/favicon/manifest.webmanifest\" crossorigin=\"use-credentials\" />\n\n    <script async src=\"https://tally.so/widgets/embed.js\"></script>\n    <script src=\"/js/env-vars.js\"></script>\n    <title>Bénéfriches, l'outil qui calcule la valeur réelle de votre projet d'aménagement</title>\n    <meta\n      name=\"description\"\n      content=\"Bénéfriches quantifie et monétarise les impacts environnementaux, sociaux et économiques d'un projet d'aménagement, sur friche ou en extension urbaine.\"\n    />\n    <script type=\"module\" crossorigin src=\"/assets/main-BxaSq3FF.js\"></script>\n    <link rel=\"modulepreload\" crossorigin href=\"/assets/main-BIi8q7ro.js\">\n    <link rel=\"modulepreload\" crossorigin href=\"/assets/ExternalLink-BGfqCvLk.js\">\n    <link rel=\"stylesheet\" crossorigin href=\"/assets/main-8UXFL98B.css\">\n    <link rel=\"stylesheet\" crossorigin href=\"/assets/main-BxVlsu8B.css\">\n  </head>\n\n  <body>\n    <div id=\"root\"></div>\n  <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML=\"window.__CF$cv$params={r:'a0f11a680d446e6c',t:'MTc4MjAyNDg3OQ=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);\";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>\n</html>\n",
       "ip": "104.21.23.63",
-      "timestamp": "2026-06-14T06:40:23.321163789Z",
+      "timestamp": "2026-06-21T06:54:39.488225998Z",
       "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://benefriches.ademe.fr/'",
       "matcher-status": true
     },
@@ -825,12 +825,12 @@
       "host": "https://benefriches.ademe.fr",
       "matched-at": "https://benefriches.ademe.fr/api/docs/",
       "request": "GET /api/docs/ HTTP/1.1\r\nHost: benefriches.ademe.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: text/html, application/json\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
-      "response": "HTTP/1.1 200 OK\r\nConnection: close\r\nTransfer-Encoding: chunked\r\nAlt-Svc: h3=\":443\"; ma=86400\r\nCf-Cache-Status: DYNAMIC\r\nCf-Ray: a0b75e3f0b5ee815-ORD\r\nContent-Type: text/html; charset=utf-8\r\nDate: Sun, 14 Jun 2026 06:44:44 GMT\r\nNel: {\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}\r\nReport-To: {\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=736%2F%2FzIN2RU1K0SJ%2BLw51Tr6%2FZUd9kGdBpC1lEnKcPm2N1Me0B0ulsv%2FjUp1h243PUAK4h85lE1M438HK0xDBuMXr%2FpplUXcbruaT0BmIlQGX2tf9%2B%2FJK0QBYX6TShzQlFyjDfu%2F9g%3D%3D\"}]}\r\nServer: cloudflare\r\nServer-Timing: cfCacheStatus;desc=\"DYNAMIC\"\r\nServer-Timing: cfEdge;dur=3,cfOrigin;dur=101\r\nSet-Cookie: __cf_bm=een7N71TM6_4Qm4mE1t2aGCVvv7K9_fBUizS_Inn_3E-1781419484.0033443-1.0.1.1-6M4uD31yanbyN6paHuj4LHc6ooajz2XCuogzZSDpmltNspu39gT29cqb8lgTagFrg_kUzxM4D7LcrRaeBKqXLpyRFxwgqMRls6f9UoIyp_b911jOEuC.K7VrFVzxjLhT; HttpOnly; SameSite=None; Secure; Path=/; Domain=benefriches.ademe.fr; Expires=Sun, 14 Jun 2026 07:14:44 GMT\r\nStrict-Transport-Security: max-age=31536000\r\nVary: accept-encoding\r\nX-Powered-By: Express\r\nX-Request-Id: 367e3075-5cea-45e8-a0bd-8e1dc6dddac1\r\nX-Request-Id: 367e3075-5cea-45e8-a0bd-8e1dc6dddac1\r\n\r\n\n<!-- HTML for static distribution bundle build -->\n<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n  <meta charset=\"UTF-8\">\n  <title>Swagger UI</title>\n  <link rel=\"stylesheet\" type=\"text/css\" href=\"./swagger-ui.css\" >\n  <link rel=\"icon\" type=\"image/png\" href=\"./favicon-32x32.png\" sizes=\"32x32\" /><link rel=\"icon\" type=\"image/png\" href=\"./favicon-16x16.png\" sizes=\"16x16\" />\n  <style>\n    html\n    {\n      box-sizing: border-box;\n      overflow: -moz-scrollbars-vertical;\n      overflow-y: scroll;\n    }\n    *,\n    *:before,\n    *:after\n    {\n      box-sizing: inherit;\n    }\n\n    body {\n      margin:0;\n      background: #fafafa;\n    }\n  </style>\n</head>\n\n<body>\n\n<svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" style=\"position:absolute;width:0;height:0\">\n  <defs>\n    <symbol viewBox=\"0 0 20 20\" id=\"unlocked\">\n      <path d=\"M15.8 8H14V5.6C14 2.703 12.665 1 10 1 7.334 1 6 2.703 6 5.6V6h2v-.801C8 3.754 8.797 3 10 3c1.203 0 2 .754 2 2.199V8H4c-.553 0-1 .646-1 1.199V17c0 .549.428 1.139.951 1.307l1.197.387C5.672 18.861 6.55 19 7.1 19h5.8c.549 0 1.428-.139 1.951-.307l1.196-.387c.524-.167.953-.757.953-1.306V9.199C17 8.646 16.352 8 15.8 8z\"></path>\n    </symbol>\n\n    <symbol viewBox=\"0 0 20 20\" id=\"locked\">\n      <path d=\"M15.8 8H14V5.6C14 2.703 12.665 1 10 1 7.334 1 6 2.703 6 5.6V8H4c-.553 0-1 .646-1 1.199V17c0 .549.428 1.139.951 1.307l1.197.387C5.672 18.861 6.55 19 7.1 19h5.8c.549 0 1.428-.139 1.951-.307l1.196-.387c.524-.167.953-.757.953-1.306V9.199C17 8.646 16.352 8 15.8 8zM12 8H8V5.199C8 3.754 8.797 3 10 3c1.203 0 2 .754 2 2.199V8z\"/>\n    </symbol>\n\n    <symbol viewBox=\"0 0 20 20\" id=\"close\">\n      <path d=\"M14.348 14.849c-.469.469-1.229.469-1.697 0L10 11.819l-2.651 3.029c-.469.469-1.229.469-1.697 0-.469-.469-.469-1.229 0-1.697l2.758-3.15-2.759-3.152c-.469-.469-.469-1.228 0-1.697.469-.469 1.228-.469 1.697 0L10 8.183l2.651-3.031c.469-.469 1.228-.469 1.697 0 .469.469.469 1.229 0 1.697l-2.758 3.152 2.758 3.15c.469.469.469 1.229 0 1.698z\"/>\n    </symbol>\n\n    <symbol viewBox=\"0 0 20 20\" id=\"large-arrow\">\n      <path d=\"M13.25 10L6.109 2.58c-.268-.27-.268-.707 0-.979.268-.27.701-.27.969 0l7.83 7.908c.268.271.268.709 0 .979l-7.83 7.908c-.268.271-.701.27-.969 0-.268-.269-.268-.707 0-.979L13.25 10z\"/>\n    </symbol>\n\n    <symbol viewBox=\"0 0 20 20\" id=\"large-arrow-down\">\n      <path d=\"M17.418 6.109c.272-.268.709-.268.979 0s.271.701 0 .969l-7.908 7.83c-.27.268-.707.268-.979 0l-7.908-7.83c-.27-.268-.27-.701 0-.969.271-.268.709-.268.979 0L10 13.25l7.418-7.141z\"/>\n    </symbol>\n\n\n    <symbol viewBox=\"0 0 24 24\" id=\"jump-to\">\n      <path d=\"M19 7v4H5.83l3.58-3.59L8 6l-6 6 6 6 1.41-1.41L5.83 13H21V7z\"/>\n    </symbol>\n\n    <symbol viewBox=\"0 0 24 24\" id=\"expand\">\n      <path d=\"M10 18h4v-2h-4v2zM3 6v2h18V6H3zm3 7h12v-2H6v2z\"/>\n    </symbol>\n\n  </defs>\n</svg>\n\n<div id=\"swagger-ui\"></div>\n\n<script src=\"./swagger-ui-bundle.js\"> </script>\n<script src=\"./swagger-ui-standalone-preset.js\"> </script>\n<script src=\"./swagger-ui-init.js\"> </script>\n\n\n\n<style>\n  \n  .swagger-ui .topbar .download-url-wrapper { display: none }\n</style>\n<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML=\"window.__CF$cv$params={r:'a0b75e3f0b5ee815',t:'MTc4MTQxOTQ4NA=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);\";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><script defer src=\"https://static.cloudflareinsights.com/beacon.min.js/v833ccba57c9e4d2798f2e76cebdd09a11778172276447\" integrity=\"sha512-57MDmcccJXYtNnH+ZiBwzC4jb2rvgVCEokYN+L/nLlmO8rfYT/gIpW2A569iJ/3b+0UEasghjuZH/ma3wIs/EQ==\" data-cf-beacon='{\"version\":\"2024.11.0\",\"token\":\"7d4630a7382147dabf0962ed0e704918\",\"r\":1,\"server_timing\":{\"name\":{\"cfCacheStatus\":true,\"cfEdge\":true,\"cfExtPri\":true,\"cfL4\":true,\"cfOrigin\":true,\"cfSpeedBrain\":true},\"location_startswith\":null}}' crossorigin=\"anonymous\"></script>\n</body>\n\n</html>\n",
+      "response": "HTTP/1.1 200 OK\r\nConnection: close\r\nTransfer-Encoding: chunked\r\nAlt-Svc: h3=\":443\"; ma=86400\r\nCf-Cache-Status: DYNAMIC\r\nCf-Ray: a0f12071ca386de9-DFW\r\nContent-Type: text/html; charset=utf-8\r\nDate: Sun, 21 Jun 2026 06:58:46 GMT\r\nNel: {\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}\r\nReport-To: {\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=PGyqQWnfGogd5unpRYkWcTCxULYfY8ychZTId3DrB8j9hkdhavx%2BaFcQqfH95hWL7YNEBF%2FtDo8AsR7yUHXfTDwvDNDZ2lbZcjJ4RW48QNgakYBw%2BIkCgf9kuZW2xiqlwZXfKWfdIg%3D%3D\"}]}\r\nServer: cloudflare\r\nServer-Timing: cfCacheStatus;desc=\"DYNAMIC\"\r\nServer-Timing: cfEdge;dur=4,cfOrigin;dur=116\r\nSet-Cookie: __cf_bm=x94L9.xntYmQK.7eB9fvDHsehhTrDRGuElQCO1XLsBk-1782025126.6839182-1.0.1.1-5T7ZBpc4KUgURCkdgOxNKBboKaCXmvmovePRndMduywc09eU6rki0v2BGyF_wBNU97Noc8unAW0P.gYl1UOsk8lQr2ML6aV7jEgDEIw4EYRagChaiYXVxE9zwTFZTSGR; HttpOnly; SameSite=None; Secure; Path=/; Domain=benefriches.ademe.fr; Expires=Sun, 21 Jun 2026 07:28:46 GMT\r\nStrict-Transport-Security: max-age=31536000\r\nVary: accept-encoding\r\nX-Powered-By: Express\r\nX-Request-Id: 833c7e79-a1c5-4c25-8f19-30e45e9c94e1\r\nX-Request-Id: 833c7e79-a1c5-4c25-8f19-30e45e9c94e1\r\n\r\n\n<!-- HTML for static distribution bundle build -->\n<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n  <meta charset=\"UTF-8\">\n  <title>Swagger UI</title>\n  <link rel=\"stylesheet\" type=\"text/css\" href=\"./swagger-ui.css\" >\n  <link rel=\"icon\" type=\"image/png\" href=\"./favicon-32x32.png\" sizes=\"32x32\" /><link rel=\"icon\" type=\"image/png\" href=\"./favicon-16x16.png\" sizes=\"16x16\" />\n  <style>\n    html\n    {\n      box-sizing: border-box;\n      overflow: -moz-scrollbars-vertical;\n      overflow-y: scroll;\n    }\n    *,\n    *:before,\n    *:after\n    {\n      box-sizing: inherit;\n    }\n\n    body {\n      margin:0;\n      background: #fafafa;\n    }\n  </style>\n</head>\n\n<body>\n\n<svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" style=\"position:absolute;width:0;height:0\">\n  <defs>\n    <symbol viewBox=\"0 0 20 20\" id=\"unlocked\">\n      <path d=\"M15.8 8H14V5.6C14 2.703 12.665 1 10 1 7.334 1 6 2.703 6 5.6V6h2v-.801C8 3.754 8.797 3 10 3c1.203 0 2 .754 2 2.199V8H4c-.553 0-1 .646-1 1.199V17c0 .549.428 1.139.951 1.307l1.197.387C5.672 18.861 6.55 19 7.1 19h5.8c.549 0 1.428-.139 1.951-.307l1.196-.387c.524-.167.953-.757.953-1.306V9.199C17 8.646 16.352 8 15.8 8z\"></path>\n    </symbol>\n\n    <symbol viewBox=\"0 0 20 20\" id=\"locked\">\n      <path d=\"M15.8 8H14V5.6C14 2.703 12.665 1 10 1 7.334 1 6 2.703 6 5.6V8H4c-.553 0-1 .646-1 1.199V17c0 .549.428 1.139.951 1.307l1.197.387C5.672 18.861 6.55 19 7.1 19h5.8c.549 0 1.428-.139 1.951-.307l1.196-.387c.524-.167.953-.757.953-1.306V9.199C17 8.646 16.352 8 15.8 8zM12 8H8V5.199C8 3.754 8.797 3 10 3c1.203 0 2 .754 2 2.199V8z\"/>\n    </symbol>\n\n    <symbol viewBox=\"0 0 20 20\" id=\"close\">\n      <path d=\"M14.348 14.849c-.469.469-1.229.469-1.697 0L10 11.819l-2.651 3.029c-.469.469-1.229.469-1.697 0-.469-.469-.469-1.229 0-1.697l2.758-3.15-2.759-3.152c-.469-.469-.469-1.228 0-1.697.469-.469 1.228-.469 1.697 0L10 8.183l2.651-3.031c.469-.469 1.228-.469 1.697 0 .469.469.469 1.229 0 1.697l-2.758 3.152 2.758 3.15c.469.469.469 1.229 0 1.698z\"/>\n    </symbol>\n\n    <symbol viewBox=\"0 0 20 20\" id=\"large-arrow\">\n      <path d=\"M13.25 10L6.109 2.58c-.268-.27-.268-.707 0-.979.268-.27.701-.27.969 0l7.83 7.908c.268.271.268.709 0 .979l-7.83 7.908c-.268.271-.701.27-.969 0-.268-.269-.268-.707 0-.979L13.25 10z\"/>\n    </symbol>\n\n    <symbol viewBox=\"0 0 20 20\" id=\"large-arrow-down\">\n      <path d=\"M17.418 6.109c.272-.268.709-.268.979 0s.271.701 0 .969l-7.908 7.83c-.27.268-.707.268-.979 0l-7.908-7.83c-.27-.268-.27-.701 0-.969.271-.268.709-.268.979 0L10 13.25l7.418-7.141z\"/>\n    </symbol>\n\n\n    <symbol viewBox=\"0 0 24 24\" id=\"jump-to\">\n      <path d=\"M19 7v4H5.83l3.58-3.59L8 6l-6 6 6 6 1.41-1.41L5.83 13H21V7z\"/>\n    </symbol>\n\n    <symbol viewBox=\"0 0 24 24\" id=\"expand\">\n      <path d=\"M10 18h4v-2h-4v2zM3 6v2h18V6H3zm3 7h12v-2H6v2z\"/>\n    </symbol>\n\n  </defs>\n</svg>\n\n<div id=\"swagger-ui\"></div>\n\n<script src=\"./swagger-ui-bundle.js\"> </script>\n<script src=\"./swagger-ui-standalone-preset.js\"> </script>\n<script src=\"./swagger-ui-init.js\"> </script>\n\n\n\n<style>\n  \n  .swagger-ui .topbar .download-url-wrapper { display: none }\n</style>\n<script defer src=\"https://static.cloudflareinsights.com/beacon.min.js/v833ccba57c9e4d2798f2e76cebdd09a11778172276447\" integrity=\"sha512-57MDmcccJXYtNnH+ZiBwzC4jb2rvgVCEokYN+L/nLlmO8rfYT/gIpW2A569iJ/3b+0UEasghjuZH/ma3wIs/EQ==\" data-cf-beacon='{\"version\":\"2024.11.0\",\"token\":\"7d4630a7382147dabf0962ed0e704918\",\"r\":1,\"server_timing\":{\"name\":{\"cfCacheStatus\":true,\"cfEdge\":true,\"cfExtPri\":true,\"cfL4\":true,\"cfOrigin\":true,\"cfSpeedBrain\":true},\"location_startswith\":null}}' crossorigin=\"anonymous\"></script>\n<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML=\"window.__CF$cv$params={r:'a0f12071ca386de9',t:'MTc4MjAyNTEyNg=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);\";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>\n\n</html>\n",
       "meta": {
         "paths": "/api/docs/"
       },
       "ip": "104.21.23.63",
-      "timestamp": "2026-06-14T06:44:44.111832128Z",
+      "timestamp": "2026-06-21T06:58:46.815138597Z",
       "curl-command": "curl -X 'GET' -H 'Accept: text/html, application/json' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://benefriches.ademe.fr/api/docs/'",
       "matcher-status": true
     },
@@ -860,53 +860,10 @@
       "host": "https://benefriches.ademe.fr",
       "matched-at": "https://benefriches.ademe.fr/robots.txt",
       "request": "GET /robots.txt HTTP/1.1\r\nHost: benefriches.ademe.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
-      "response": "HTTP/1.1 200 OK\r\nConnection: close\r\nTransfer-Encoding: chunked\r\nCf-Ray: a0b75e7f9f73251b-ORD\r\nContent-Type: text/plain; charset=utf-8\r\nDate: Sun, 14 Jun 2026 06:44:54 GMT\r\nServer: cloudflare\r\n\r\n# As a condition of accessing this website, you agree to abide by the following\n# content signals:\n\n# (a)  If a Content-Signal = yes, you may collect content for the corresponding\n#      use.\n# (b)  If a Content-Signal = no, you may not collect content for the\n#      corresponding use.\n# (c)  If the website operator does not include a Content-Signal for a\n#      corresponding use, the website operator neither grants nor restricts\n#      permission via Content-Signal with respect to the corresponding use.\n\n# The content signals and their meanings are:\n\n# search:   building a search index and providing search results (e.g., returning\n#           hyperlinks and short excerpts from your website's contents). Search does not\n#           include providing AI-generated search summaries.\n# ai-input: inputting content into one or more AI models (e.g., retrieval\n#           augmented generation, grounding, or other real-time taking of content for\n#           generative AI search answers).\n# ai-train: training or fine-tuning AI models.\n\n# ANY RESTRICTIONS EXPRESSED VIA CONTENT SIGNALS ARE EXPRESS RESERVATIONS OF\n# RIGHTS UNDER ARTICLE 4 OF THE EUROPEAN UNION DIRECTIVE 2019/790 ON COPYRIGHT\n# AND RELATED RIGHTS IN THE DIGITAL SINGLE MARKET.\n\n# BEGIN Cloudflare Managed content\n\nUser-agent: *\nContent-Signal: search=yes,ai-train=no\nAllow: /\n\nUser-agent: Amazonbot\nDisallow: /\n\nUser-agent: Applebot-Extended\nDisallow: /\n\nUser-agent: Bytespider\nDisallow: /\n\nUser-agent: CCBot\nDisallow: /\n\nUser-agent: ClaudeBot\nDisallow: /\n\nUser-agent: CloudflareBrowserRenderingCrawler\nDisallow: /\n\nUser-agent: Google-Extended\nDisallow: /\n\nUser-agent: GPTBot\nDisallow: /\n\nUser-agent: meta-externalagent\nDisallow: /\n\n# END Cloudflare Managed Content\n\n<!doctype html>\n<html lang=\"fr\">\n  <head>\n    <meta charset=\"UTF-8\" />\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n    <link rel=\"icon\" href=\"/favicon/favicon-32.png\" sizes=\"32x32\" type=\"image/png\" />\n    <link rel=\"icon\" href=\"/favicon/favicon-128.png\" sizes=\"128x128\" type=\"image/png\" />\n    <link rel=\"icon\" href=\"/favicon/favicon-192.png\" sizes=\"192x192\" type=\"image/png\" />\n    <link rel=\"apple-touch-icon\" href=\"/favicon/favicon-180.png\" />\n    <link rel=\"manifest\" href=\"/favicon/manifest.webmanifest\" crossorigin=\"use-credentials\" />\n\n    <script async src=\"https://tally.so/widgets/embed.js\"></script>\n    <script src=\"/js/env-vars.js\"></script>\n    <title>Bénéfriches, l'outil qui calcule la valeur réelle de votre projet d'aménagement</title>\n    <meta\n      name=\"description\"\n      content=\"Bénéfriches quantifie et monétarise les impacts environnementaux, sociaux et économiques d'un projet d'aménagement, sur friche ou en extension urbaine.\"\n    />\n    <script type=\"module\" crossorigin src=\"/assets/main-DJWPgaYM.js\"></script>\n    <link rel=\"modulepreload\" crossorigin href=\"/assets/main-BlhMVDgA.js\">\n    <link rel=\"modulepreload\" crossorigin href=\"/assets/ExternalLink-DbXMLBbq.js\">\n    <link rel=\"stylesheet\" crossorigin href=\"/assets/main-CzZmoXvu.css\">\n    <link rel=\"stylesheet\" crossorigin href=\"/assets/main-BxVlsu8B.css\">\n  </head>\n\n  <body>\n    <div id=\"root\"></div>\n  </body>\n</html>\n",
+      "response": "HTTP/1.1 200 OK\r\nConnection: close\r\nTransfer-Encoding: chunked\r\nCf-Ray: a0f120981cdf4769-DFW\r\nContent-Type: text/plain; charset=utf-8\r\nDate: Sun, 21 Jun 2026 06:58:52 GMT\r\nServer: cloudflare\r\n\r\n# As a condition of accessing this website, you agree to abide by the following\n# content signals:\n\n# (a)  If a Content-Signal = yes, you may collect content for the corresponding\n#      use.\n# (b)  If a Content-Signal = no, you may not collect content for the\n#      corresponding use.\n# (c)  If the website operator does not include a Content-Signal for a\n#      corresponding use, the website operator neither grants nor restricts\n#      permission via Content-Signal with respect to the corresponding use.\n\n# The content signals and their meanings are:\n\n# search:   building a search index and providing search results (e.g., returning\n#           hyperlinks and short excerpts from your website's contents). Search does not\n#           include providing AI-generated search summaries.\n# ai-input: inputting content into one or more AI models (e.g., retrieval\n#           augmented generation, grounding, or other real-time taking of content for\n#           generative AI search answers).\n# ai-train: training or fine-tuning AI models.\n\n# ANY RESTRICTIONS EXPRESSED VIA CONTENT SIGNALS ARE EXPRESS RESERVATIONS OF\n# RIGHTS UNDER ARTICLE 4 OF THE EUROPEAN UNION DIRECTIVE 2019/790 ON COPYRIGHT\n# AND RELATED RIGHTS IN THE DIGITAL SINGLE MARKET.\n\n# BEGIN Cloudflare Managed content\n\nUser-agent: *\nContent-Signal: search=yes,ai-train=no\nAllow: /\n\nUser-agent: Amazonbot\nDisallow: /\n\nUser-agent: Applebot-Extended\nDisallow: /\n\nUser-agent: Bytespider\nDisallow: /\n\nUser-agent: CCBot\nDisallow: /\n\nUser-agent: ClaudeBot\nDisallow: /\n\nUser-agent: CloudflareBrowserRenderingCrawler\nDisallow: /\n\nUser-agent: Google-Extended\nDisallow: /\n\nUser-agent: GPTBot\nDisallow: /\n\nUser-agent: meta-externalagent\nDisallow: /\n\n# END Cloudflare Managed Content\n\n<!doctype html>\n<html lang=\"fr\">\n  <head>\n    <meta charset=\"UTF-8\" />\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n    <link rel=\"icon\" href=\"/favicon/favicon-32.png\" sizes=\"32x32\" type=\"image/png\" />\n    <link rel=\"icon\" href=\"/favicon/favicon-128.png\" sizes=\"128x128\" type=\"image/png\" />\n    <link rel=\"icon\" href=\"/favicon/favicon-192.png\" sizes=\"192x192\" type=\"image/png\" />\n    <link rel=\"apple-touch-icon\" href=\"/favicon/favicon-180.png\" />\n    <link rel=\"manifest\" href=\"/favicon/manifest.webmanifest\" crossorigin=\"use-credentials\" />\n\n    <script async src=\"https://tally.so/widgets/embed.js\"></script>\n    <script src=\"/js/env-vars.js\"></script>\n    <title>Bénéfriches, l'outil qui calcule la valeur réelle de votre projet d'aménagement</title>\n    <meta\n      name=\"description\"\n      content=\"Bénéfriches quantifie et monétarise les impacts environnementaux, sociaux et économiques d'un projet d'aménagement, sur friche ou en extension urbaine.\"\n    />\n    <script type=\"module\" crossorigin src=\"/assets/main-BxaSq3FF.js\"></script>\n    <link rel=\"modulepreload\" crossorigin href=\"/assets/main-BIi8q7ro.js\">\n    <link rel=\"modulepreload\" crossorigin href=\"/assets/ExternalLink-BGfqCvLk.js\">\n    <link rel=\"stylesheet\" crossorigin href=\"/assets/main-8UXFL98B.css\">\n    <link rel=\"stylesheet\" crossorigin href=\"/assets/main-BxVlsu8B.css\">\n  </head>\n\n  <body>\n    <div id=\"root\"></div>\n  </body>\n</html>\n",
       "ip": "104.21.23.63",
-      "timestamp": "2026-06-14T06:44:54.348061618Z",
+      "timestamp": "2026-06-21T06:58:52.832127609Z",
       "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://benefriches.ademe.fr/robots.txt'",
-      "matcher-status": true
-    },
-    {
-      "template": "http/technologies/waf-detect.yaml",
-      "template-url": "https://templates.nuclei.sh/public/waf-detect",
-      "template-id": "waf-detect",
-      "template-path": "/home/runner/nuclei-templates/http/technologies/waf-detect.yaml",
-      "info": {
-        "name": "WAF Detection",
-        "author": [
-          "dwisiswant0",
-          "lu4nx"
-        ],
-        "tags": [
-          "waf",
-          "tech",
-          "misc",
-          "discovery"
-        ],
-        "description": "A web application firewall was detected.",
-        "reference": [
-          "https://github.com/ekultek/whatwaf"
-        ],
-        "severity": "info",
-        "metadata": {
-          "max-request": 1
-        },
-        "classification": {
-          "cve-id": null,
-          "cwe-id": [
-            "cwe-200"
-          ]
-        }
-      },
-      "matcher-name": "cloudflare",
-      "type": "http",
-      "host": "https://benefriches.ademe.fr",
-      "matched-at": "https://benefriches.ademe.fr/",
-      "request": "POST / HTTP/1.1\r\nHost: benefriches.ademe.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nContent-Length: 27\r\nContent-Type: application/x-www-form-urlencoded\r\nAccept-Encoding: gzip\r\n\r\n_=<script>alert(1)</script>",
-      "response": "HTTP/1.1 405 Method Not Allowed\r\nConnection: close\r\nTransfer-Encoding: chunked\r\nAlt-Svc: h3=\":443\"; ma=86400\r\nCf-Cache-Status: DYNAMIC\r\nCf-Ray: a0b764e28d629123-ORD\r\nContent-Type: text/html; charset=utf-8\r\nDate: Sun, 14 Jun 2026 06:49:16 GMT\r\nNel: {\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}\r\nReport-To: {\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=yUF3kJOcPRxmD7JgrokYmmuU%2B%2FsUBcqG%2FtJnx7xGW68%2BWu5jFWd1SjYAqTduJ%2B%2BgkWX%2B%2FoyTN1Rcfhei8ngx4tnrRncAz3ghK08Aa5%2B9jPpLEUdu7y0GdoFHJ6ZuWXljkHnem0Kzmw%3D%3D\"}]}\r\nServer: cloudflare\r\nServer-Timing: cfCacheStatus;desc=\"DYNAMIC\"\r\nServer-Timing: cfEdge;dur=3,cfOrigin;dur=95\r\nSet-Cookie: __cf_bm=9nr4gYPVCqGskeZ7r04gl3xfMXlBjCVTOCdkigrEKZM-1781419755.9293058-1.0.1.1-KdVQQBwekLz9xyxcriKMYUaEublUwCjOAlB7iuA3EoMZMJuOqGkEKpSMdWCRxLVfwBh6.SdcTFK9Am.82mRUSz9dpQEExoPd17FM6mzXfhvqzDASLVYr.u6S7SC8pr6L; HttpOnly; SameSite=None; Secure; Path=/; Domain=benefriches.ademe.fr; Expires=Sun, 14 Jun 2026 07:19:16 GMT\r\nStrict-Transport-Security: max-age=31536000\r\nX-Request-Id: fdd08ad7-6a58-46f8-b191-75505b5370ed\r\n\r\n<html>\r\n<head><title>405 Not Allowed</title></head>\r\n<body>\r\n<center><h1>405 Not Allowed</h1></center>\r\n<hr><center>nginx</center>\r\n<script defer src=\"https://static.cloudflareinsights.com/beacon.min.js/v833ccba57c9e4d2798f2e76cebdd09a11778172276447\" integrity=\"sha512-57MDmcccJXYtNnH+ZiBwzC4jb2rvgVCEokYN+L/nLlmO8rfYT/gIpW2A569iJ/3b+0UEasghjuZH/ma3wIs/EQ==\" data-cf-beacon='{\"version\":\"2024.11.0\",\"token\":\"7d4630a7382147dabf0962ed0e704918\",\"r\":1,\"server_timing\":{\"name\":{\"cfCacheStatus\":true,\"cfEdge\":true,\"cfExtPri\":true,\"cfL4\":true,\"cfOrigin\":true,\"cfSpeedBrain\":true},\"location_startswith\":null}}' crossorigin=\"anonymous\"></script>\n<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML=\"window.__CF$cv$params={r:'a0b764e28d629123',t:'MTc4MTQxOTc1NQ=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);\";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>\r\n</html>\r\n",
-      "ip": "104.21.23.63",
-      "timestamp": "2026-06-14T06:49:16.043268391Z",
-      "curl-command": "curl -X 'POST' -d '_=<script>alert(1)</script>' -H 'Content-Type: application/x-www-form-urlencoded' -H 'Host: benefriches.ademe.fr' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://benefriches.ademe.fr/'",
       "matcher-status": true
     },
     {
@@ -946,9 +903,52 @@
       "host": "https://benefriches.ademe.fr",
       "matched-at": "https://benefriches.ademe.fr/",
       "request": "POST / HTTP/1.1\r\nHost: benefriches.ademe.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nContent-Length: 27\r\nContent-Type: application/x-www-form-urlencoded\r\nAccept-Encoding: gzip\r\n\r\n_=<script>alert(1)</script>",
-      "response": "HTTP/1.1 405 Method Not Allowed\r\nConnection: close\r\nTransfer-Encoding: chunked\r\nAlt-Svc: h3=\":443\"; ma=86400\r\nCf-Cache-Status: DYNAMIC\r\nCf-Ray: a0b764e28d629123-ORD\r\nContent-Type: text/html; charset=utf-8\r\nDate: Sun, 14 Jun 2026 06:49:16 GMT\r\nNel: {\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}\r\nReport-To: {\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=yUF3kJOcPRxmD7JgrokYmmuU%2B%2FsUBcqG%2FtJnx7xGW68%2BWu5jFWd1SjYAqTduJ%2B%2BgkWX%2B%2FoyTN1Rcfhei8ngx4tnrRncAz3ghK08Aa5%2B9jPpLEUdu7y0GdoFHJ6ZuWXljkHnem0Kzmw%3D%3D\"}]}\r\nServer: cloudflare\r\nServer-Timing: cfCacheStatus;desc=\"DYNAMIC\"\r\nServer-Timing: cfEdge;dur=3,cfOrigin;dur=95\r\nSet-Cookie: __cf_bm=9nr4gYPVCqGskeZ7r04gl3xfMXlBjCVTOCdkigrEKZM-1781419755.9293058-1.0.1.1-KdVQQBwekLz9xyxcriKMYUaEublUwCjOAlB7iuA3EoMZMJuOqGkEKpSMdWCRxLVfwBh6.SdcTFK9Am.82mRUSz9dpQEExoPd17FM6mzXfhvqzDASLVYr.u6S7SC8pr6L; HttpOnly; SameSite=None; Secure; Path=/; Domain=benefriches.ademe.fr; Expires=Sun, 14 Jun 2026 07:19:16 GMT\r\nStrict-Transport-Security: max-age=31536000\r\nX-Request-Id: fdd08ad7-6a58-46f8-b191-75505b5370ed\r\n\r\n<html>\r\n<head><title>405 Not Allowed</title></head>\r\n<body>\r\n<center><h1>405 Not Allowed</h1></center>\r\n<hr><center>nginx</center>\r\n<script defer src=\"https://static.cloudflareinsights.com/beacon.min.js/v833ccba57c9e4d2798f2e76cebdd09a11778172276447\" integrity=\"sha512-57MDmcccJXYtNnH+ZiBwzC4jb2rvgVCEokYN+L/nLlmO8rfYT/gIpW2A569iJ/3b+0UEasghjuZH/ma3wIs/EQ==\" data-cf-beacon='{\"version\":\"2024.11.0\",\"token\":\"7d4630a7382147dabf0962ed0e704918\",\"r\":1,\"server_timing\":{\"name\":{\"cfCacheStatus\":true,\"cfEdge\":true,\"cfExtPri\":true,\"cfL4\":true,\"cfOrigin\":true,\"cfSpeedBrain\":true},\"location_startswith\":null}}' crossorigin=\"anonymous\"></script>\n<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML=\"window.__CF$cv$params={r:'a0b764e28d629123',t:'MTc4MTQxOTc1NQ=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);\";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>\r\n</html>\r\n",
+      "response": "HTTP/1.1 405 Method Not Allowed\r\nConnection: close\r\nTransfer-Encoding: chunked\r\nAlt-Svc: h3=\":443\"; ma=86400\r\nCf-Cache-Status: DYNAMIC\r\nCf-Ray: a0f126b1ff5a5060-DFW\r\nContent-Type: text/html; charset=utf-8\r\nDate: Sun, 21 Jun 2026 07:03:02 GMT\r\nNel: {\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}\r\nReport-To: {\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=hhcxtgxrTxGeCQJPiRGjStJZqVNfRNPhWTKlUH7ZHB%2FIxcXhewfBKLBJ0xFl7OgEc9Z7LqT2iICKPlVJ20yNm%2FHAGIs%2Bi%2BYZi7ineML7d0MJo0fPqAn6OSyQt1Zv0nTrU6vBvZRoOA%3D%3D\"}]}\r\nServer: cloudflare\r\nServer-Timing: cfCacheStatus;desc=\"DYNAMIC\"\r\nServer-Timing: cfEdge;dur=3,cfOrigin;dur=109\r\nSet-Cookie: __cf_bm=Eu4U1O6SgKlKnBNtuR.sfFoxwY97eJe3RSnFkEcfLbs-1782025382.7157204-1.0.1.1-rro91.r0jrn08mFuen3BbhME693icnJw7nTOYfn5AGzotRdJU.nc8L.P.VfC9NF7cnCmWJxSBLnHZnMLZIzYMqX_9nGPZh1LNH06I333Ex_g9pkGBot1bAyz2sqncuP5; HttpOnly; SameSite=None; Secure; Path=/; Domain=benefriches.ademe.fr; Expires=Sun, 21 Jun 2026 07:33:02 GMT\r\nStrict-Transport-Security: max-age=31536000\r\nX-Request-Id: 8d50d157-bc32-4823-ab23-a3a5396c19b5\r\n\r\n<html>\r\n<head><title>405 Not Allowed</title></head>\r\n<body>\r\n<center><h1>405 Not Allowed</h1></center>\r\n<hr><center>nginx</center>\r\n<script defer src=\"https://static.cloudflareinsights.com/beacon.min.js/v833ccba57c9e4d2798f2e76cebdd09a11778172276447\" integrity=\"sha512-57MDmcccJXYtNnH+ZiBwzC4jb2rvgVCEokYN+L/nLlmO8rfYT/gIpW2A569iJ/3b+0UEasghjuZH/ma3wIs/EQ==\" data-cf-beacon='{\"version\":\"2024.11.0\",\"token\":\"7d4630a7382147dabf0962ed0e704918\",\"r\":1,\"server_timing\":{\"name\":{\"cfCacheStatus\":true,\"cfEdge\":true,\"cfExtPri\":true,\"cfL4\":true,\"cfOrigin\":true,\"cfSpeedBrain\":true},\"location_startswith\":null}}' crossorigin=\"anonymous\"></script>\n<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML=\"window.__CF$cv$params={r:'a0f126b1ff5a5060',t:'MTc4MjAyNTM4Mg=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);\";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>\r\n</html>\r\n",
       "ip": "104.21.23.63",
-      "timestamp": "2026-06-14T06:49:16.04330996Z",
+      "timestamp": "2026-06-21T07:03:02.852296239Z",
+      "curl-command": "curl -X 'POST' -d '_=<script>alert(1)</script>' -H 'Content-Type: application/x-www-form-urlencoded' -H 'Host: benefriches.ademe.fr' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://benefriches.ademe.fr/'",
+      "matcher-status": true
+    },
+    {
+      "template": "http/technologies/waf-detect.yaml",
+      "template-url": "https://templates.nuclei.sh/public/waf-detect",
+      "template-id": "waf-detect",
+      "template-path": "/home/runner/nuclei-templates/http/technologies/waf-detect.yaml",
+      "info": {
+        "name": "WAF Detection",
+        "author": [
+          "dwisiswant0",
+          "lu4nx"
+        ],
+        "tags": [
+          "waf",
+          "tech",
+          "misc",
+          "discovery"
+        ],
+        "description": "A web application firewall was detected.",
+        "reference": [
+          "https://github.com/ekultek/whatwaf"
+        ],
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        },
+        "classification": {
+          "cve-id": null,
+          "cwe-id": [
+            "cwe-200"
+          ]
+        }
+      },
+      "matcher-name": "cloudflare",
+      "type": "http",
+      "host": "https://benefriches.ademe.fr",
+      "matched-at": "https://benefriches.ademe.fr/",
+      "request": "POST / HTTP/1.1\r\nHost: benefriches.ademe.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nContent-Length: 27\r\nContent-Type: application/x-www-form-urlencoded\r\nAccept-Encoding: gzip\r\n\r\n_=<script>alert(1)</script>",
+      "response": "HTTP/1.1 405 Method Not Allowed\r\nConnection: close\r\nTransfer-Encoding: chunked\r\nAlt-Svc: h3=\":443\"; ma=86400\r\nCf-Cache-Status: DYNAMIC\r\nCf-Ray: a0f126b1ff5a5060-DFW\r\nContent-Type: text/html; charset=utf-8\r\nDate: Sun, 21 Jun 2026 07:03:02 GMT\r\nNel: {\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}\r\nReport-To: {\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=hhcxtgxrTxGeCQJPiRGjStJZqVNfRNPhWTKlUH7ZHB%2FIxcXhewfBKLBJ0xFl7OgEc9Z7LqT2iICKPlVJ20yNm%2FHAGIs%2Bi%2BYZi7ineML7d0MJo0fPqAn6OSyQt1Zv0nTrU6vBvZRoOA%3D%3D\"}]}\r\nServer: cloudflare\r\nServer-Timing: cfCacheStatus;desc=\"DYNAMIC\"\r\nServer-Timing: cfEdge;dur=3,cfOrigin;dur=109\r\nSet-Cookie: __cf_bm=Eu4U1O6SgKlKnBNtuR.sfFoxwY97eJe3RSnFkEcfLbs-1782025382.7157204-1.0.1.1-rro91.r0jrn08mFuen3BbhME693icnJw7nTOYfn5AGzotRdJU.nc8L.P.VfC9NF7cnCmWJxSBLnHZnMLZIzYMqX_9nGPZh1LNH06I333Ex_g9pkGBot1bAyz2sqncuP5; HttpOnly; SameSite=None; Secure; Path=/; Domain=benefriches.ademe.fr; Expires=Sun, 21 Jun 2026 07:33:02 GMT\r\nStrict-Transport-Security: max-age=31536000\r\nX-Request-Id: 8d50d157-bc32-4823-ab23-a3a5396c19b5\r\n\r\n<html>\r\n<head><title>405 Not Allowed</title></head>\r\n<body>\r\n<center><h1>405 Not Allowed</h1></center>\r\n<hr><center>nginx</center>\r\n<script defer src=\"https://static.cloudflareinsights.com/beacon.min.js/v833ccba57c9e4d2798f2e76cebdd09a11778172276447\" integrity=\"sha512-57MDmcccJXYtNnH+ZiBwzC4jb2rvgVCEokYN+L/nLlmO8rfYT/gIpW2A569iJ/3b+0UEasghjuZH/ma3wIs/EQ==\" data-cf-beacon='{\"version\":\"2024.11.0\",\"token\":\"7d4630a7382147dabf0962ed0e704918\",\"r\":1,\"server_timing\":{\"name\":{\"cfCacheStatus\":true,\"cfEdge\":true,\"cfExtPri\":true,\"cfL4\":true,\"cfOrigin\":true,\"cfSpeedBrain\":true},\"location_startswith\":null}}' crossorigin=\"anonymous\"></script>\n<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML=\"window.__CF$cv$params={r:'a0f126b1ff5a5060',t:'MTc4MjAyNTM4Mg=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);\";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>\r\n</html>\r\n",
+      "ip": "104.21.23.63",
+      "timestamp": "2026-06-21T07:03:02.852347397Z",
       "curl-command": "curl -X 'POST' -d '_=<script>alert(1)</script>' -H 'Content-Type: application/x-www-form-urlencoded' -H 'Host: benefriches.ademe.fr' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://benefriches.ademe.fr/'",
       "matcher-status": true
     },
@@ -980,7 +980,7 @@
         "Let's Encrypt"
       ],
       "ip": "104.21.23.63",
-      "timestamp": "2026-06-14T06:57:14.248851641Z",
+      "timestamp": "2026-06-21T07:12:19.879326386Z",
       "matcher-status": true
     },
     {
@@ -1012,7 +1012,7 @@
         "benefriches.ademe.fr"
       ],
       "ip": "104.21.23.63",
-      "timestamp": "2026-06-14T06:57:14.248998665Z",
+      "timestamp": "2026-06-21T07:12:19.879512448Z",
       "matcher-status": true
     },
     {
@@ -1048,7 +1048,7 @@
         " SAN: [*.benefriches.ademe.fr benefriches.ademe.fr]"
       ],
       "ip": "104.21.23.63",
-      "timestamp": "2026-06-14T06:57:14.249039392Z",
+      "timestamp": "2026-06-21T07:12:19.879556054Z",
       "matcher-status": true
     },
     {
@@ -1086,7 +1086,7 @@
         "tls11"
       ],
       "ip": "104.21.23.63",
-      "timestamp": "2026-06-14T06:57:14.266256744Z",
+      "timestamp": "2026-06-21T07:12:19.974619444Z",
       "matcher-status": true
     },
     {
@@ -1124,7 +1124,7 @@
         "tls10"
       ],
       "ip": "104.21.23.63",
-      "timestamp": "2026-06-14T06:57:14.283624406Z",
+      "timestamp": "2026-06-21T07:12:20.073156072Z",
       "matcher-status": true
     },
     {
@@ -1156,7 +1156,71 @@
         "tls10"
       ],
       "ip": "104.21.23.63",
-      "timestamp": "2026-06-14T06:57:18.198013959Z",
+      "timestamp": "2026-06-21T07:12:20.943741068Z",
+      "matcher-status": true
+    },
+    {
+      "template": "ssl/tls-version.yaml",
+      "template-url": "https://templates.nuclei.sh/public/tls-version",
+      "template-id": "tls-version",
+      "template-path": "/home/runner/nuclei-templates/ssl/tls-version.yaml",
+      "info": {
+        "name": "TLS Version - Detect",
+        "author": [
+          "pdteam",
+          "pussycat0x"
+        ],
+        "tags": [
+          "ssl",
+          "tls",
+          "discovery"
+        ],
+        "description": "TLS version detection is a security process used to determine the version of the Transport Layer Security (TLS) protocol used by a computer or server.\nIt is important to detect the TLS version in order to ensure secure communication between two computers or servers.\n",
+        "severity": "info",
+        "metadata": {
+          "max-request": 4
+        }
+      },
+      "type": "ssl",
+      "host": "benefriches.ademe.fr",
+      "matched-at": "benefriches.ademe.fr:443",
+      "extracted-results": [
+        "tls11"
+      ],
+      "ip": "104.21.23.63",
+      "timestamp": "2026-06-21T07:12:21.039229812Z",
+      "matcher-status": true
+    },
+    {
+      "template": "ssl/tls-version.yaml",
+      "template-url": "https://templates.nuclei.sh/public/tls-version",
+      "template-id": "tls-version",
+      "template-path": "/home/runner/nuclei-templates/ssl/tls-version.yaml",
+      "info": {
+        "name": "TLS Version - Detect",
+        "author": [
+          "pdteam",
+          "pussycat0x"
+        ],
+        "tags": [
+          "ssl",
+          "tls",
+          "discovery"
+        ],
+        "description": "TLS version detection is a security process used to determine the version of the Transport Layer Security (TLS) protocol used by a computer or server.\nIt is important to detect the TLS version in order to ensure secure communication between two computers or servers.\n",
+        "severity": "info",
+        "metadata": {
+          "max-request": 4
+        }
+      },
+      "type": "ssl",
+      "host": "benefriches.ademe.fr",
+      "matched-at": "benefriches.ademe.fr:443",
+      "extracted-results": [
+        "tls12"
+      ],
+      "ip": "104.21.23.63",
+      "timestamp": "2026-06-21T07:12:21.133517537Z",
       "matcher-status": true
     },
     {
@@ -1193,7 +1257,7 @@
         "[tls10 TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA]"
       ],
       "ip": "104.21.23.63",
-      "timestamp": "2026-06-14T06:57:18.222029749Z",
+      "timestamp": "2026-06-21T07:12:21.149099105Z",
       "matcher-status": true
     },
     {
@@ -1222,10 +1286,10 @@
       "host": "benefriches.ademe.fr",
       "matched-at": "benefriches.ademe.fr:443",
       "extracted-results": [
-        "tls11"
+        "tls13"
       ],
       "ip": "104.21.23.63",
-      "timestamp": "2026-06-14T06:57:18.224359425Z",
+      "timestamp": "2026-06-21T07:12:21.208605476Z",
       "matcher-status": true
     },
     {
@@ -1262,71 +1326,7 @@
         "[tls11 TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA]"
       ],
       "ip": "104.21.23.63",
-      "timestamp": "2026-06-14T06:57:18.239456798Z",
-      "matcher-status": true
-    },
-    {
-      "template": "ssl/tls-version.yaml",
-      "template-url": "https://templates.nuclei.sh/public/tls-version",
-      "template-id": "tls-version",
-      "template-path": "/home/runner/nuclei-templates/ssl/tls-version.yaml",
-      "info": {
-        "name": "TLS Version - Detect",
-        "author": [
-          "pdteam",
-          "pussycat0x"
-        ],
-        "tags": [
-          "ssl",
-          "tls",
-          "discovery"
-        ],
-        "description": "TLS version detection is a security process used to determine the version of the Transport Layer Security (TLS) protocol used by a computer or server.\nIt is important to detect the TLS version in order to ensure secure communication between two computers or servers.\n",
-        "severity": "info",
-        "metadata": {
-          "max-request": 4
-        }
-      },
-      "type": "ssl",
-      "host": "benefriches.ademe.fr",
-      "matched-at": "benefriches.ademe.fr:443",
-      "extracted-results": [
-        "tls12"
-      ],
-      "ip": "104.21.23.63",
-      "timestamp": "2026-06-14T06:57:18.241591364Z",
-      "matcher-status": true
-    },
-    {
-      "template": "ssl/tls-version.yaml",
-      "template-url": "https://templates.nuclei.sh/public/tls-version",
-      "template-id": "tls-version",
-      "template-path": "/home/runner/nuclei-templates/ssl/tls-version.yaml",
-      "info": {
-        "name": "TLS Version - Detect",
-        "author": [
-          "pdteam",
-          "pussycat0x"
-        ],
-        "tags": [
-          "ssl",
-          "tls",
-          "discovery"
-        ],
-        "description": "TLS version detection is a security process used to determine the version of the Transport Layer Security (TLS) protocol used by a computer or server.\nIt is important to detect the TLS version in order to ensure secure communication between two computers or servers.\n",
-        "severity": "info",
-        "metadata": {
-          "max-request": 4
-        }
-      },
-      "type": "ssl",
-      "host": "benefriches.ademe.fr",
-      "matched-at": "benefriches.ademe.fr:443",
-      "extracted-results": [
-        "tls13"
-      ],
-      "ip": "104.21.23.63",
-      "timestamp": "2026-06-14T06:57:18.254242972Z",
+      "timestamp": "2026-06-21T07:12:21.244479225Z",
       "matcher-status": true
     }
   ]
