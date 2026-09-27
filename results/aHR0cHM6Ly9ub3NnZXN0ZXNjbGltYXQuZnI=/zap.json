@@ -1,8 +1,8 @@
 {
 	"@programName": "ZAP",
 	"@version": "2.17.0",
-	"@generated": "Sun, 20 Sept 2026 04:19:17",
-	"created": "2026-09-20T04:19:17.281806367Z",
+	"@generated": "Sun, 27 Sept 2026 04:40:29",
+	"created": "2026-09-27T04:40:29.000425140Z",
 	"insights":[
 		{
 			"level": "Low",
@@ -10,7 +10,15 @@
 			"site": "",
 			"key": "insight.log.warn",
 			"description": "ZAP warnings logged - see the zap.log file for details",
-			"statistic": "1"
+			"statistic": "23"
+		},
+		{
+			"level": "Low",
+			"reason": "Exceeded High",
+			"site": "https://nosgestesclimat.fr",
+			"key": "insight.response.slow",
+			"description": "Percentage of slow responses",
+			"statistic": "99"
 		},
 		{
 			"level": "Info",
@@ -18,7 +26,7 @@
 			"site": "https://nosgestesclimat.fr",
 			"key": "insight.code.2xx",
 			"description": "Percentage of responses with status code 2xx",
-			"statistic": "5"
+			"statistic": "10"
 		},
 		{
 			"level": "Info",
@@ -26,7 +34,15 @@
 			"site": "https://nosgestesclimat.fr",
 			"key": "insight.code.3xx",
 			"description": "Percentage of responses with status code 3xx",
-			"statistic": "94"
+			"statistic": "89"
+		},
+		{
+			"level": "Info",
+			"reason": "Informational",
+			"site": "https://nosgestesclimat.fr",
+			"key": "insight.endpoint.ctype.application/javascript",
+			"description": "Percentage of endpoints with content type application/javascript",
+			"statistic": "2"
 		},
 		{
 			"level": "Info",
@@ -34,6 +50,14 @@
 			"site": "https://nosgestesclimat.fr",
 			"key": "insight.endpoint.ctype.application/xml",
 			"description": "Percentage of endpoints with content type application/xml",
+			"statistic": "2"
+		},
+		{
+			"level": "Info",
+			"reason": "Informational",
+			"site": "https://nosgestesclimat.fr",
+			"key": "insight.endpoint.ctype.font/woff2",
+			"description": "Percentage of endpoints with content type font/woff2",
 			"statistic": "1"
 		},
 		{
@@ -42,7 +66,7 @@
 			"site": "https://nosgestesclimat.fr",
 			"key": "insight.endpoint.ctype.text/html",
 			"description": "Percentage of endpoints with content type text/html",
-			"statistic": "5"
+			"statistic": "6"
 		},
 		{
 			"level": "Info",
@@ -50,7 +74,7 @@
 			"site": "https://nosgestesclimat.fr",
 			"key": "insight.endpoint.ctype.text/plain",
 			"description": "Percentage of endpoints with content type text/plain",
-			"statistic": "1"
+			"statistic": "2"
 		},
 		{
 			"level": "Info",
@@ -66,15 +90,7 @@
 			"site": "https://nosgestesclimat.fr",
 			"key": "insight.endpoint.total",
 			"description": "Count of total endpoints",
-			"statistic": "863"
-		},
-		{
-			"level": "Info",
-			"reason": "Informational",
-			"site": "https://nosgestesclimat.fr",
-			"key": "insight.response.slow",
-			"description": "Percentage of slow responses",
-			"statistic": "100"
+			"statistic": "1160"
 		}
 	],
 	"site":[ 
@@ -84,6 +100,36 @@
 			"@port": "443",
 			"@ssl": "true",
 			"alerts": [ 
+				{
+					"pluginid": "10202",
+					"alertRef": "10202",
+					"alert": "Absence of Anti-CSRF Tokens",
+					"name": "Absence of Anti-CSRF Tokens",
+					"riskcode": "2",
+					"confidence": "1",
+					"riskdesc": "Medium (Low)",
+					"desc": "<p>No Anti-CSRF tokens were found in a HTML submission form.</p><p>A cross-site request forgery is an attack that involves forcing a victim to send an HTTP request to a target destination without their knowledge or intent in order to perform an action as the victim. The underlying cause is application functionality using predictable URL/form actions in a repeatable way. The nature of the attack is that CSRF exploits the trust that a web site has for a user. By contrast, cross-site scripting (XSS) exploits the trust that a user has for a web site. Like XSS, CSRF attacks are not necessarily cross-site, but they can be. Cross-site request forgery is also known as CSRF, XSRF, one-click attack, session riding, confused deputy, and sea surf.</p><p></p><p>CSRF attacks are effective in a number of situations, including:</p><p>    * The victim has an active session on the target site.</p><p>    * The victim is authenticated via HTTP auth on the target site.</p><p>    * The victim is on the same local network as the target site.</p><p></p><p>CSRF has primarily been used to perform an action against a target site using the victim's privileges, but recent techniques have been discovered to disclose information by gaining access to the response. The risk of information disclosure is dramatically increased when the target site is vulnerable to XSS, because XSS can be used as a platform for CSRF, allowing the attack to operate within the bounds of the same-origin policy.</p>",
+					"instances":[ 
+						{
+							"id": "185",
+							"uri": "https://nosgestesclimat.fr/gestion-infolettres",
+							"nodeName": "https:\/\/nosgestesclimat.fr\/gestion-infolettres",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<form noValidate=\"\" action=\"\" encType=\"multipart/form-data\" method=\"POST\">",
+							"otherinfo": "No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token, _csrfToken] was found in the following HTML form: [Form 1: \"$ACTION_1:0\" \"$ACTION_1:1\" \"$ACTION_KEY\" \"$ACTION_REF_1\" \"checkbox-_R_156av5tivcnqivb_\" \"checkbox-_R_196av5tivcnqivb_\" \"checkbox-_R_1d6av5tivcnqivb_\" \"checkbox-_R_1h6av5tivcnqivb_\" \"input-_R_26av5tivcnqivb_\" ]."
+						}
+					],
+					"count": "1",
+					"systemic": false,
+					"solution": "<p>Phase: Architecture and Design</p><p>Use a vetted library or framework that does not allow this weakness to occur or provides constructs that make this weakness easier to avoid.</p><p>For example, use anti-CSRF packages such as the OWASP CSRFGuard.</p><p></p><p>Phase: Implementation</p><p>Ensure that your application is free of cross-site scripting issues, because most CSRF defenses can be bypassed using attacker-controlled script.</p><p></p><p>Phase: Architecture and Design</p><p>Generate a unique nonce for each form, place the nonce into the form, and verify the nonce upon receipt of the form. Be sure that the nonce is not predictable (CWE-330).</p><p>Note that this can be bypassed using XSS.</p><p></p><p>Identify especially dangerous operations. When the user performs a dangerous operation, send a separate confirmation request to ensure that the user intended to perform that operation.</p><p>Note that this can be bypassed using XSS.</p><p></p><p>Use the ESAPI Session Management control.</p><p>This control includes a component for CSRF.</p><p></p><p>Do not use the GET method for any request that triggers a state change.</p><p></p><p>Phase: Implementation</p><p>Check the HTTP Referer header to see if the request originated from an expected page. This could break legitimate functionality, because users or proxies may have disabled sending the Referer for privacy reasons.</p>",
+					"otherinfo": "<p>No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token, _csrfToken] was found in the following HTML form: [Form 1: \"$ACTION_1:0\" \"$ACTION_1:1\" \"$ACTION_KEY\" \"$ACTION_REF_1\" \"checkbox-_R_156av5tivcnqivb_\" \"checkbox-_R_196av5tivcnqivb_\" \"checkbox-_R_1d6av5tivcnqivb_\" \"checkbox-_R_1h6av5tivcnqivb_\" \"input-_R_26av5tivcnqivb_\" ].</p>",
+					"reference": "<p>https://cheatsheetseries.owasp.org/cheatsheets/Cross-Site_Request_Forgery_Prevention_Cheat_Sheet.html</p><p>https://cwe.mitre.org/data/definitions/352.html</p>",
+					"cweid": "352",
+					"wascid": "9",
+					"sourceid": "5871"
+				},
 				{
 					"pluginid": "10038",
 					"alertRef": "10038-1",
@@ -95,7 +141,7 @@
 					"desc": "<p>Content Security Policy (CSP) is an added layer of security that helps to detect and mitigate certain types of attacks, including Cross Site Scripting (XSS) and data injection attacks. These attacks are used for everything from data theft to site defacement or distribution of malware. CSP provides a set of standard HTTP headers that allow website owners to declare approved sources of content that browsers should be allowed to load on that page \u2014 covered types are JavaScript, CSS, HTML frames, fonts, images and embeddable objects such as Java applets, ActiveX, audio and video files.</p>",
 					"instances":[ 
 						{
-							"id": "8",
+							"id": "60",
 							"uri": "https://nosgestesclimat.fr",
 							"nodeName": "https:\/\/nosgestesclimat.fr",
 							"method": "GET",
@@ -105,7 +151,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "70",
+							"id": "84",
 							"uri": "https://nosgestesclimat.fr/",
 							"nodeName": "https:\/\/nosgestesclimat.fr\/",
 							"method": "GET",
@@ -115,17 +161,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "87",
-							"uri": "https://nosgestesclimat.fr/accessibilite",
-							"nodeName": "https:\/\/nosgestesclimat.fr\/accessibilite",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"id": "52",
+							"id": "49",
 							"uri": "https://nosgestesclimat.fr/app-crash",
 							"nodeName": "https:\/\/nosgestesclimat.fr\/app-crash",
 							"method": "GET",
@@ -135,7 +171,17 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "67",
+							"id": "95",
+							"uri": "https://nosgestesclimat.fr/budget",
+							"nodeName": "https:\/\/nosgestesclimat.fr\/budget",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "87",
 							"uri": "https://nosgestesclimat.fr/contact",
 							"nodeName": "https:\/\/nosgestesclimat.fr\/contact",
 							"method": "GET",
@@ -165,7 +211,7 @@
 					"desc": "<p>The response does not protect against 'ClickJacking' attacks. It should include either Content-Security-Policy with 'frame-ancestors' directive or X-Frame-Options.</p>",
 					"instances":[ 
 						{
-							"id": "6",
+							"id": "50",
 							"uri": "https://nosgestesclimat.fr",
 							"nodeName": "https:\/\/nosgestesclimat.fr",
 							"method": "GET",
@@ -175,7 +221,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "65",
+							"id": "77",
 							"uri": "https://nosgestesclimat.fr/",
 							"nodeName": "https:\/\/nosgestesclimat.fr\/",
 							"method": "GET",
@@ -185,17 +231,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "73",
-							"uri": "https://nosgestesclimat.fr/accessibilite",
-							"nodeName": "https:\/\/nosgestesclimat.fr\/accessibilite",
-							"method": "GET",
-							"param": "x-frame-options",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"id": "50",
+							"id": "47",
 							"uri": "https://nosgestesclimat.fr/app-crash",
 							"nodeName": "https:\/\/nosgestesclimat.fr\/app-crash",
 							"method": "GET",
@@ -205,7 +241,17 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "64",
+							"id": "91",
+							"uri": "https://nosgestesclimat.fr/budget",
+							"nodeName": "https:\/\/nosgestesclimat.fr\/budget",
+							"method": "GET",
+							"param": "x-frame-options",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "79",
 							"uri": "https://nosgestesclimat.fr/contact",
 							"nodeName": "https:\/\/nosgestesclimat.fr\/contact",
 							"method": "GET",
@@ -235,53 +281,53 @@
 					"desc": "<p>The integrity attribute is missing on a script or link tag served by an external server. The integrity tag prevents an attacker who have gained access to this server from injecting a malicious content.</p>",
 					"instances":[ 
 						{
-							"id": "141",
-							"uri": "https://nosgestesclimat.fr/empreinte-carbone",
-							"nodeName": "https:\/\/nosgestesclimat.fr\/empreinte-carbone",
+							"id": "152",
+							"uri": "https://nosgestesclimat.fr/documentation",
+							"nodeName": "https:\/\/nosgestesclimat.fr\/documentation",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "<link rel=\"preload\" as=\"image\" href=\"https://cdnjs.cloudflare.com/ajax/libs/twemoji/15.1.0/svg/1f1eb-1f1f7.svg\"/>",
+							"evidence": "<link rel=\"preload\" as=\"image\" href=\"https://cdnjs.cloudflare.com/ajax/libs/twemoji/15.1.0/svg/1f37d.svg\"/>",
 							"otherinfo": ""
 						},
 						{
-							"id": "143",
-							"uri": "https://nosgestesclimat.fr/empreinte-eau",
-							"nodeName": "https:\/\/nosgestesclimat.fr\/empreinte-eau",
+							"id": "151",
+							"uri": "https://nosgestesclimat.fr/documentation",
+							"nodeName": "https:\/\/nosgestesclimat.fr\/documentation",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "<link rel=\"preload\" as=\"image\" href=\"https://cdnjs.cloudflare.com/ajax/libs/twemoji/15.1.0/svg/1f1eb-1f1f7.svg\"/>",
+							"evidence": "<link rel=\"preload\" as=\"image\" href=\"https://cdnjs.cloudflare.com/ajax/libs/twemoji/15.1.0/svg/1f3db.svg\"/>",
+							"otherinfo": ""
+						},
+						{
+							"id": "150",
+							"uri": "https://nosgestesclimat.fr/documentation",
+							"nodeName": "https:\/\/nosgestesclimat.fr\/documentation",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<link rel=\"preload\" as=\"image\" href=\"https://cdnjs.cloudflare.com/ajax/libs/twemoji/15.1.0/svg/1f464.svg\"/>",
 							"otherinfo": ""
 						},
 						{
 							"id": "153",
-							"uri": "https://nosgestesclimat.fr/en/blog",
-							"nodeName": "https:\/\/nosgestesclimat.fr\/en\/blog",
+							"uri": "https://nosgestesclimat.fr/documentation",
+							"nodeName": "https:\/\/nosgestesclimat.fr\/documentation",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "<link rel=\"preload\" as=\"image\" href=\"https://cdnjs.cloudflare.com/ajax/libs/twemoji/15.1.0/svg/1f1eb-1f1f7.svg\"/>",
+							"evidence": "<link rel=\"preload\" as=\"image\" href=\"https://cdnjs.cloudflare.com/ajax/libs/twemoji/15.1.0/svg/1f6ae.svg\"/>",
 							"otherinfo": ""
 						},
 						{
-							"id": "144",
+							"id": "142",
 							"uri": "https://nosgestesclimat.fr/nos-relais",
 							"nodeName": "https:\/\/nosgestesclimat.fr\/nos-relais",
 							"method": "GET",
 							"param": "",
 							"attack": "",
 							"evidence": "<link rel=\"preload\" href=\"https://cdnjs.cloudflare.com/ajax/libs/twemoji/15.1.0/svg/2139.svg\" as=\"image\"/>",
-							"otherinfo": ""
-						},
-						{
-							"id": "147",
-							"uri": "https://nosgestesclimat.fr/plan-du-site",
-							"nodeName": "https:\/\/nosgestesclimat.fr\/plan-du-site",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "<link rel=\"preload\" as=\"image\" href=\"https://cdnjs.cloudflare.com/ajax/libs/twemoji/15.1.0/svg/1f1eb-1f1f7.svg\"/>",
 							"otherinfo": ""
 						}
 					],
@@ -292,7 +338,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/Security/Defenses/Subresource_Integrity</p>",
 					"cweid": "345",
 					"wascid": "15",
-					"sourceid": "3953"
+					"sourceid": "2909"
 				},
 				{
 					"pluginid": "10010",
@@ -305,7 +351,7 @@
 					"desc": "<p>A cookie has been set without the HttpOnly flag, which means that the cookie can be accessed by JavaScript. If a malicious script can be run on this page then the cookie will be accessible and can be transmitted to another site. If this is a session cookie then session hijacking may be possible.</p>",
 					"instances":[ 
 						{
-							"id": "149",
+							"id": "146",
 							"uri": "https://nosgestesclimat.fr/en/accessibilite",
 							"nodeName": "https:\/\/nosgestesclimat.fr\/en\/accessibilite",
 							"method": "GET",
@@ -315,7 +361,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "151",
+							"id": "148",
 							"uri": "https://nosgestesclimat.fr/en/blog",
 							"nodeName": "https:\/\/nosgestesclimat.fr\/en\/blog",
 							"method": "GET",
@@ -332,7 +378,7 @@
 					"reference": "<p>https://owasp.org/www-community/HttpOnly</p>",
 					"cweid": "1004",
 					"wascid": "13",
-					"sourceid": "4454"
+					"sourceid": "4473"
 				},
 				{
 					"pluginid": "10054",
@@ -345,7 +391,7 @@
 					"desc": "<p>A cookie has been set with its SameSite attribute set to \"none\", which means that the cookie can be sent as a result of a 'cross-site' request. The SameSite attribute is an effective counter measure to cross-site request forgery, cross-site script inclusion, and timing attacks.</p>",
 					"instances":[ 
 						{
-							"id": "150",
+							"id": "147",
 							"uri": "https://nosgestesclimat.fr/en/accessibilite",
 							"nodeName": "https:\/\/nosgestesclimat.fr\/en\/accessibilite",
 							"method": "GET",
@@ -355,7 +401,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "152",
+							"id": "149",
 							"uri": "https://nosgestesclimat.fr/en/blog",
 							"nodeName": "https:\/\/nosgestesclimat.fr\/en\/blog",
 							"method": "GET",
@@ -372,7 +418,7 @@
 					"reference": "<p>https://datatracker.ietf.org/doc/html/draft-ietf-httpbis-cookie-same-site</p>",
 					"cweid": "1275",
 					"wascid": "13",
-					"sourceid": "4454"
+					"sourceid": "4473"
 				},
 				{
 					"pluginid": "90004",
@@ -385,7 +431,7 @@
 					"desc": "<p>Cross-Origin-Embedder-Policy header is a response header that prevents a document from loading any cross-origin resources that don't explicitly grant the document permission (using CORP or CORS).</p>",
 					"instances":[ 
 						{
-							"id": "47",
+							"id": "30",
 							"uri": "https://nosgestesclimat.fr",
 							"nodeName": "https:\/\/nosgestesclimat.fr",
 							"method": "GET",
@@ -395,7 +441,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "61",
+							"id": "45",
 							"uri": "https://nosgestesclimat.fr/app-crash",
 							"nodeName": "https:\/\/nosgestesclimat.fr\/app-crash",
 							"method": "GET",
@@ -405,17 +451,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "84",
-							"uri": "https://nosgestesclimat.fr/contact",
-							"nodeName": "https:\/\/nosgestesclimat.fr\/contact",
-							"method": "GET",
-							"param": "Cross-Origin-Embedder-Policy",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"id": "41",
+							"id": "13",
 							"uri": "https://nosgestesclimat.fr/sitemap.xml",
 							"nodeName": "https:\/\/nosgestesclimat.fr\/sitemap.xml",
 							"method": "GET",
@@ -425,7 +461,7 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "4",
+					"count": "3",
 					"systemic": false,
 					"solution": "<p>Ensure that the application/web server sets the Cross-Origin-Embedder-Policy header appropriately, and that it sets the Cross-Origin-Embedder-Policy header to 'require-corp' for documents.</p><p>If possible, ensure that the end user uses a standards-compliant and modern web browser that supports the Cross-Origin-Embedder-Policy header (https://caniuse.com/mdn-http_headers_cross-origin-embedder-policy).</p>",
 					"otherinfo": "",
@@ -445,7 +481,7 @@
 					"desc": "<p>Cross-Origin-Opener-Policy header is a response header that allows a site to control if others included documents share the same browsing context. Sharing the same browsing context with untrusted documents might lead to data leak.</p>",
 					"instances":[ 
 						{
-							"id": "48",
+							"id": "31",
 							"uri": "https://nosgestesclimat.fr",
 							"nodeName": "https:\/\/nosgestesclimat.fr",
 							"method": "GET",
@@ -455,7 +491,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "62",
+							"id": "46",
 							"uri": "https://nosgestesclimat.fr/app-crash",
 							"nodeName": "https:\/\/nosgestesclimat.fr\/app-crash",
 							"method": "GET",
@@ -465,17 +501,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "85",
-							"uri": "https://nosgestesclimat.fr/contact",
-							"nodeName": "https:\/\/nosgestesclimat.fr\/contact",
-							"method": "GET",
-							"param": "Cross-Origin-Opener-Policy",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"id": "42",
+							"id": "14",
 							"uri": "https://nosgestesclimat.fr/sitemap.xml",
 							"nodeName": "https:\/\/nosgestesclimat.fr\/sitemap.xml",
 							"method": "GET",
@@ -485,7 +511,7 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "4",
+					"count": "3",
 					"systemic": false,
 					"solution": "<p>Ensure that the application/web server sets the Cross-Origin-Opener-Policy header appropriately, and that it sets the Cross-Origin-Opener-Policy header to 'same-origin' for documents.</p><p>'same-origin-allow-popups' is considered as less secured and should be avoided.</p><p>If possible, ensure that the end user uses a standards-compliant and modern web browser that supports the Cross-Origin-Opener-Policy header (https://caniuse.com/mdn-http_headers_cross-origin-opener-policy).</p>",
 					"otherinfo": "",
@@ -505,7 +531,7 @@
 					"desc": "<p>Cross-Origin-Resource-Policy header is an opt-in header designed to counter side-channels attacks like Spectre. Resource should be specifically set as shareable amongst different origins.</p>",
 					"instances":[ 
 						{
-							"id": "46",
+							"id": "29",
 							"uri": "https://nosgestesclimat.fr",
 							"nodeName": "https:\/\/nosgestesclimat.fr",
 							"method": "GET",
@@ -515,7 +541,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "60",
+							"id": "44",
 							"uri": "https://nosgestesclimat.fr/app-crash",
 							"nodeName": "https:\/\/nosgestesclimat.fr\/app-crash",
 							"method": "GET",
@@ -525,17 +551,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "83",
-							"uri": "https://nosgestesclimat.fr/contact",
-							"nodeName": "https:\/\/nosgestesclimat.fr\/contact",
-							"method": "GET",
-							"param": "Cross-Origin-Resource-Policy",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"id": "26",
+							"id": "12",
 							"uri": "https://nosgestesclimat.fr/robots.txt",
 							"nodeName": "https:\/\/nosgestesclimat.fr\/robots.txt",
 							"method": "GET",
@@ -545,7 +561,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "40",
+							"id": "11",
 							"uri": "https://nosgestesclimat.fr/sitemap.xml",
 							"nodeName": "https:\/\/nosgestesclimat.fr\/sitemap.xml",
 							"method": "GET",
@@ -555,7 +571,7 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "5",
+					"count": "4",
 					"systemic": false,
 					"solution": "<p>Ensure that the application/web server sets the Cross-Origin-Resource-Policy header appropriately, and that it sets the Cross-Origin-Resource-Policy header to 'same-origin' for all web pages.</p><p>'same-site' is considered as less secured and should be avoided.</p><p>If resources must be shared, set the header to 'cross-origin'.</p><p>If possible, ensure that the end user uses a standards-compliant and modern web browser that supports the Cross-Origin-Resource-Policy header (https://caniuse.com/mdn-http_headers_cross-origin-resource-policy).</p>",
 					"otherinfo": "",
@@ -575,7 +591,7 @@
 					"desc": "<p>Permissions Policy Header is an added layer of security that helps to restrict from unauthorized access or usage of browser/client features by web resources. This policy ensures the user privacy by limiting or specifying the features of the browsers can be used by the web resources. Permissions Policy provides a set of standard HTTP headers that allow website owners to limit which features of browsers can be used by the page such as camera, microphone, location, full screen etc.</p>",
 					"instances":[ 
 						{
-							"id": "45",
+							"id": "28",
 							"uri": "https://nosgestesclimat.fr",
 							"nodeName": "https:\/\/nosgestesclimat.fr",
 							"method": "GET",
@@ -585,7 +601,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "96",
+							"id": "65",
 							"uri": "https://nosgestesclimat.fr/",
 							"nodeName": "https:\/\/nosgestesclimat.fr\/",
 							"method": "GET",
@@ -595,17 +611,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "101",
-							"uri": "https://nosgestesclimat.fr/accessibilite",
-							"nodeName": "https:\/\/nosgestesclimat.fr\/accessibilite",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"id": "59",
+							"id": "43",
 							"uri": "https://nosgestesclimat.fr/app-crash",
 							"nodeName": "https:\/\/nosgestesclimat.fr\/app-crash",
 							"method": "GET",
@@ -615,7 +621,17 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "82",
+							"id": "83",
+							"uri": "https://nosgestesclimat.fr/budget",
+							"nodeName": "https:\/\/nosgestesclimat.fr\/budget",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "75",
 							"uri": "https://nosgestesclimat.fr/contact",
 							"nodeName": "https:\/\/nosgestesclimat.fr\/contact",
 							"method": "GET",
@@ -645,7 +661,7 @@
 					"desc": "<p>The web/application server is leaking information via one or more \"X-Powered-By\" HTTP response headers. Access to such information may facilitate attackers identifying other frameworks/components your web application is reliant upon and the vulnerabilities such components may be subject to.</p>",
 					"instances":[ 
 						{
-							"id": "14",
+							"id": "69",
 							"uri": "https://nosgestesclimat.fr",
 							"nodeName": "https:\/\/nosgestesclimat.fr",
 							"method": "GET",
@@ -655,7 +671,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "92",
+							"id": "100",
 							"uri": "https://nosgestesclimat.fr/",
 							"nodeName": "https:\/\/nosgestesclimat.fr\/",
 							"method": "GET",
@@ -665,17 +681,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "98",
-							"uri": "https://nosgestesclimat.fr/accessibilite",
-							"nodeName": "https:\/\/nosgestesclimat.fr\/accessibilite",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "X-Powered-By: Next.js",
-							"otherinfo": ""
-						},
-						{
-							"id": "56",
+							"id": "53",
 							"uri": "https://nosgestesclimat.fr/app-crash",
 							"nodeName": "https:\/\/nosgestesclimat.fr\/app-crash",
 							"method": "GET",
@@ -685,7 +691,17 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "75",
+							"id": "103",
+							"uri": "https://nosgestesclimat.fr/budget",
+							"nodeName": "https:\/\/nosgestesclimat.fr\/budget",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "X-Powered-By: Next.js",
+							"otherinfo": ""
+						},
+						{
+							"id": "93",
 							"uri": "https://nosgestesclimat.fr/contact",
 							"nodeName": "https:\/\/nosgestesclimat.fr\/contact",
 							"method": "GET",
@@ -715,17 +731,7 @@
 					"desc": "<p>The web/application server is leaking version information via the \"Server\" HTTP response header. Access to such information may facilitate attackers identifying other vulnerabilities your web/application server is subject to.</p>",
 					"instances":[ 
 						{
-							"id": "12",
-							"uri": "https://nosgestesclimat.fr",
-							"nodeName": "https:\/\/nosgestesclimat.fr",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "nginx/1.28.3 (Ubuntu)",
-							"otherinfo": ""
-						},
-						{
-							"id": "5",
+							"id": "40",
 							"uri": "https://nosgestesclimat.fr/infos/",
 							"nodeName": "https:\/\/nosgestesclimat.fr\/infos\/",
 							"method": "GET",
@@ -735,7 +741,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "28",
+							"id": "37",
 							"uri": "https://nosgestesclimat.fr/partage/",
 							"nodeName": "https:\/\/nosgestesclimat.fr\/partage\/",
 							"method": "GET",
@@ -745,7 +751,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "1",
+							"id": "16",
 							"uri": "https://nosgestesclimat.fr/robots.txt",
 							"nodeName": "https:\/\/nosgestesclimat.fr\/robots.txt",
 							"method": "GET",
@@ -755,9 +761,19 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "10",
-							"uri": "https://nosgestesclimat.fr/sitemap.xml",
-							"nodeName": "https:\/\/nosgestesclimat.fr\/sitemap.xml",
+							"id": "25",
+							"uri": "https://nosgestesclimat.fr/simulation/",
+							"nodeName": "https:\/\/nosgestesclimat.fr\/simulation\/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "nginx/1.28.3 (Ubuntu)",
+							"otherinfo": ""
+						},
+						{
+							"id": "34",
+							"uri": "https://nosgestesclimat.fr/tutoriel/",
+							"nodeName": "https:\/\/nosgestesclimat.fr\/tutoriel\/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -772,7 +788,7 @@
 					"reference": "<p>https://httpd.apache.org/docs/current/mod/core.html#servertokens</p><p>https://learn.microsoft.com/en-us/previous-versions/msp-n-p/ff648552(v=pandp.10)</p><p>https://www.troyhunt.com/shhh-dont-let-your-response-headers/</p>",
 					"cweid": "497",
 					"wascid": "13",
-					"sourceid": "1"
+					"sourceid": "275"
 				},
 				{
 					"pluginid": "10035",
@@ -785,7 +801,37 @@
 					"desc": "<p>HTTP Strict Transport Security (HSTS) is a web security policy mechanism whereby a web server declares that complying user agents (such as a web browser) are to interact with it using only secure HTTPS connections (i.e. HTTP layered over TLS/SSL). HSTS is an IETF standards track protocol and is specified in RFC 6797.</p>",
 					"instances":[ 
 						{
-							"id": "2",
+							"id": "184",
+							"uri": "https://nosgestesclimat.fr/_static/cms/petit_logo_3x_f817f785ce.png",
+							"nodeName": "https:\/\/nosgestesclimat.fr\/_static\/cms\/petit_logo_3x_f817f785ce.png",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "178",
+							"uri": "https://nosgestesclimat.fr/favicon.png",
+							"nodeName": "https:\/\/nosgestesclimat.fr\/favicon.png",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "180",
+							"uri": "https://nosgestesclimat.fr/manifest.webmanifest",
+							"nodeName": "https:\/\/nosgestesclimat.fr\/manifest.webmanifest",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "17",
 							"uri": "https://nosgestesclimat.fr/robots.txt",
 							"nodeName": "https:\/\/nosgestesclimat.fr\/robots.txt",
 							"method": "GET",
@@ -795,7 +841,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "11",
+							"id": "71",
 							"uri": "https://nosgestesclimat.fr/sitemap.xml",
 							"nodeName": "https:\/\/nosgestesclimat.fr\/sitemap.xml",
 							"method": "GET",
@@ -805,14 +851,14 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "2",
+					"count": "5",
 					"systemic": false,
 					"solution": "<p>Ensure that your web server, application server, load balancer, etc. is configured to enforce Strict-Transport-Security.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://cheatsheetseries.owasp.org/cheatsheets/HTTP_Strict_Transport_Security_Cheat_Sheet.html</p><p>https://owasp.org/www-community/Security_Headers</p><p>https://en.wikipedia.org/wiki/HTTP_Strict_Transport_Security</p><p>https://caniuse.com/stricttransportsecurity</p><p>https://datatracker.ietf.org/doc/html/rfc6797</p>",
 					"cweid": "319",
 					"wascid": "15",
-					"sourceid": "6"
+					"sourceid": "5463"
 				},
 				{
 					"pluginid": "10096",
@@ -825,7 +871,7 @@
 					"desc": "<p>A timestamp was disclosed by the application/web server. - Unix</p>",
 					"instances":[ 
 						{
-							"id": "162",
+							"id": "156",
 							"uri": "https://nosgestesclimat.fr/documentation",
 							"nodeName": "https:\/\/nosgestesclimat.fr\/documentation",
 							"method": "GET",
@@ -835,7 +881,7 @@
 							"otherinfo": "1909015144, which evaluates to: 2030-06-30 01:59:04."
 						},
 						{
-							"id": "173",
+							"id": "176",
 							"uri": "https://nosgestesclimat.fr/en/documentation",
 							"nodeName": "https:\/\/nosgestesclimat.fr\/en\/documentation",
 							"method": "GET",
@@ -845,7 +891,7 @@
 							"otherinfo": "1909015144, which evaluates to: 2030-06-30 01:59:04."
 						},
 						{
-							"id": "164",
+							"id": "158",
 							"uri": "https://nosgestesclimat.fr/en/nos-relais",
 							"nodeName": "https:\/\/nosgestesclimat.fr\/en\/nos-relais",
 							"method": "GET",
@@ -855,7 +901,7 @@
 							"otherinfo": "1742572267, which evaluates to: 2025-03-21 15:51:07."
 						},
 						{
-							"id": "145",
+							"id": "143",
 							"uri": "https://nosgestesclimat.fr/nos-relais",
 							"nodeName": "https:\/\/nosgestesclimat.fr\/nos-relais",
 							"method": "GET",
@@ -865,7 +911,7 @@
 							"otherinfo": "1742572267, which evaluates to: 2025-03-21 15:51:07."
 						},
 						{
-							"id": "163",
+							"id": "160",
 							"uri": "https://nosgestesclimat.fr/questions",
 							"nodeName": "https:\/\/nosgestesclimat.fr\/questions",
 							"method": "GET",
@@ -882,7 +928,7 @@
 					"reference": "<p>https://cwe.mitre.org/data/definitions/200.html</p>",
 					"cweid": "497",
 					"wascid": "13",
-					"sourceid": "4011"
+					"sourceid": "2909"
 				},
 				{
 					"pluginid": "10021",
@@ -895,7 +941,7 @@
 					"desc": "<p>The Anti-MIME-Sniffing header X-Content-Type-Options was not set to 'nosniff'. This allows older versions of Internet Explorer and Chrome to perform MIME-sniffing on the response body, potentially causing the response body to be interpreted and displayed as a content type other than the declared content type. Current (early 2014) and legacy versions of Firefox will use the declared content type (if one is set), rather than performing MIME-sniffing.</p>",
 					"instances":[ 
 						{
-							"id": "13",
+							"id": "68",
 							"uri": "https://nosgestesclimat.fr",
 							"nodeName": "https:\/\/nosgestesclimat.fr",
 							"method": "GET",
@@ -905,7 +951,7 @@
 							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
 						},
 						{
-							"id": "55",
+							"id": "52",
 							"uri": "https://nosgestesclimat.fr/app-crash",
 							"nodeName": "https:\/\/nosgestesclimat.fr\/app-crash",
 							"method": "GET",
@@ -915,7 +961,7 @@
 							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
 						},
 						{
-							"id": "74",
+							"id": "92",
 							"uri": "https://nosgestesclimat.fr/contact",
 							"nodeName": "https:\/\/nosgestesclimat.fr\/contact",
 							"method": "GET",
@@ -925,7 +971,7 @@
 							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
 						},
 						{
-							"id": "3",
+							"id": "18",
 							"uri": "https://nosgestesclimat.fr/robots.txt",
 							"nodeName": "https:\/\/nosgestesclimat.fr\/robots.txt",
 							"method": "GET",
@@ -935,7 +981,7 @@
 							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
 						},
 						{
-							"id": "34",
+							"id": "76",
 							"uri": "https://nosgestesclimat.fr/sitemap.xml",
 							"nodeName": "https:\/\/nosgestesclimat.fr\/sitemap.xml",
 							"method": "GET",
@@ -965,7 +1011,7 @@
 					"desc": "<p>Base64 encoded data was disclosed by the application/web server. Note: in the interests of performance not all base64 strings in the response were analyzed individually, the entire response should be looked at by the analyst/security team/developer(s).</p>",
 					"instances":[ 
 						{
-							"id": "16",
+							"id": "26",
 							"uri": "https://nosgestesclimat.fr",
 							"nodeName": "https:\/\/nosgestesclimat.fr",
 							"method": "GET",
@@ -975,7 +1021,7 @@
 							"otherinfo": "\uFFFD\\x000f`<\uFFFD\uFFFD\uFFFD\uFFFD+\\x0008\uFFFD\uFFFD\n\uFFFD.JGH(\uFFFDz\uFFFDVs\u04640\uFFFD\uFFFD \uFFFDW"
 						},
 						{
-							"id": "93",
+							"id": "63",
 							"uri": "https://nosgestesclimat.fr/",
 							"nodeName": "https:\/\/nosgestesclimat.fr\/",
 							"method": "GET",
@@ -985,7 +1031,7 @@
 							"otherinfo": "\uFFFD\\x000f`<\uFFFD\uFFFD\uFFFD\uFFFD+\\x0008\uFFFD\uFFFD\n\uFFFD.JGH(\uFFFDz\uFFFDVs\u04640\uFFFD\uFFFD \uFFFDW"
 						},
 						{
-							"id": "99",
+							"id": "94",
 							"uri": "https://nosgestesclimat.fr/accessibilite",
 							"nodeName": "https:\/\/nosgestesclimat.fr\/accessibilite",
 							"method": "GET",
@@ -995,7 +1041,7 @@
 							"otherinfo": "\uFFFD\\x000f`<\uFFFD\uFFFD\uFFFD\uFFFD+\\x0008\uFFFD\uFFFD\n\uFFFD.JGH(\uFFFDz\uFFFDVs\u04640\uFFFD\uFFFD \uFFFDW"
 						},
 						{
-							"id": "57",
+							"id": "41",
 							"uri": "https://nosgestesclimat.fr/app-crash",
 							"nodeName": "https:\/\/nosgestesclimat.fr\/app-crash",
 							"method": "GET",
@@ -1005,7 +1051,7 @@
 							"otherinfo": "\uFFFD\uFFFD\uFFFDjy\uFFFD\uFFFD\uFFFDm\uFFFD\uFFFD\uFFFD\uFFFDv\uFFFD^\uFFFD\uFFFD\uFFFD\u060D\uFFFD\uFFFD\uFFFD%j\uFFFD\rjg"
 						},
 						{
-							"id": "123",
+							"id": "108",
 							"uri": "https://nosgestesclimat.fr/blog",
 							"nodeName": "https:\/\/nosgestesclimat.fr\/blog",
 							"method": "GET",
@@ -1015,7 +1061,7 @@
 							"otherinfo": "\uFFFD\\x000f`<\uFFFD\uFFFD\uFFFD\uFFFD+\\x0008\uFFFD\uFFFD\n\uFFFD.JGH(\uFFFDz\uFFFDVs\u04640\uFFFD\uFFFD \uFFFDW"
 						},
 						{
-							"id": "115",
+							"id": "81",
 							"uri": "https://nosgestesclimat.fr/budget",
 							"nodeName": "https:\/\/nosgestesclimat.fr\/budget",
 							"method": "GET",
@@ -1025,7 +1071,7 @@
 							"otherinfo": "\uFFFD\\x000f`<\uFFFD\uFFFD\uFFFD\uFFFD+\\x0008\uFFFD\uFFFD\n\uFFFD.JGH(\uFFFDz\uFFFDVs\u04640\uFFFD\uFFFD \uFFFDW"
 						},
 						{
-							"id": "107",
+							"id": "104",
 							"uri": "https://nosgestesclimat.fr/cgu",
 							"nodeName": "https:\/\/nosgestesclimat.fr\/cgu",
 							"method": "GET",
@@ -1035,7 +1081,7 @@
 							"otherinfo": "\uFFFD\\x000f`<\uFFFD\uFFFD\uFFFD\uFFFD+\\x0008\uFFFD\uFFFD\n\uFFFD.JGH(\uFFFDz\uFFFDVs\u04640\uFFFD\uFFFD \uFFFDW"
 						},
 						{
-							"id": "76",
+							"id": "73",
 							"uri": "https://nosgestesclimat.fr/contact",
 							"nodeName": "https:\/\/nosgestesclimat.fr\/contact",
 							"method": "GET",
@@ -1045,7 +1091,7 @@
 							"otherinfo": "\uFFFD\\x000f`<\uFFFD\uFFFD\uFFFD\uFFFD+\\x0008\uFFFD\uFFFD\n\uFFFD.JGH(\uFFFDz\uFFFDVs\u04640\uFFFD\uFFFD \uFFFDW"
 						},
 						{
-							"id": "129",
+							"id": "107",
 							"uri": "https://nosgestesclimat.fr/diffuser",
 							"nodeName": "https:\/\/nosgestesclimat.fr\/diffuser",
 							"method": "GET",
@@ -1055,9 +1101,9 @@
 							"otherinfo": "\uFFFD\\x000f`<\uFFFD\uFFFD\uFFFD\uFFFD+\\x0008\uFFFD\uFFFD\n\uFFFD.JGH(\uFFFDz\uFFFDVs\u04640\uFFFD\uFFFD \uFFFDW"
 						},
 						{
-							"id": "135",
-							"uri": "https://nosgestesclimat.fr/international",
-							"nodeName": "https:\/\/nosgestesclimat.fr\/international",
+							"id": "128",
+							"uri": "https://nosgestesclimat.fr/empreinte-carbone",
+							"nodeName": "https:\/\/nosgestesclimat.fr\/empreinte-carbone",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1065,7 +1111,7 @@
 							"otherinfo": "\uFFFD\\x000f`<\uFFFD\uFFFD\uFFFD\uFFFD+\\x0008\uFFFD\uFFFD\n\uFFFD.JGH(\uFFFDz\uFFFDVs\u04640\uFFFD\uFFFD \uFFFDW"
 						},
 						{
-							"id": "35",
+							"id": "1",
 							"uri": "https://nosgestesclimat.fr/sitemap.xml",
 							"nodeName": "https:\/\/nosgestesclimat.fr\/sitemap.xml",
 							"method": "GET",
@@ -1095,7 +1141,7 @@
 					"desc": "<p>The Content-Type header was either missing or empty.</p>",
 					"instances":[ 
 						{
-							"id": "148",
+							"id": "145",
 							"uri": "https://nosgestesclimat.fr/en/",
 							"nodeName": "https:\/\/nosgestesclimat.fr\/en\/",
 							"method": "GET",
@@ -1105,7 +1151,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "4",
+							"id": "39",
 							"uri": "https://nosgestesclimat.fr/infos/",
 							"nodeName": "https:\/\/nosgestesclimat.fr\/infos\/",
 							"method": "GET",
@@ -1115,7 +1161,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "27",
+							"id": "36",
 							"uri": "https://nosgestesclimat.fr/partage/",
 							"nodeName": "https:\/\/nosgestesclimat.fr\/partage\/",
 							"method": "GET",
@@ -1125,7 +1171,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "37",
+							"id": "24",
 							"uri": "https://nosgestesclimat.fr/simulation/",
 							"nodeName": "https:\/\/nosgestesclimat.fr\/simulation\/",
 							"method": "GET",
@@ -1135,7 +1181,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "43",
+							"id": "33",
 							"uri": "https://nosgestesclimat.fr/tutoriel/",
 							"nodeName": "https:\/\/nosgestesclimat.fr\/tutoriel\/",
 							"method": "GET",
@@ -1152,7 +1198,7 @@
 					"reference": "<p>https://learn.microsoft.com/en-us/previous-versions/windows/internet-explorer/ie-developer/compatibility/gg622941(v=vs.85)</p>",
 					"cweid": "345",
 					"wascid": "12",
-					"sourceid": "4451"
+					"sourceid": "4470"
 				},
 				{
 					"pluginid": "10109",
@@ -1165,7 +1211,7 @@
 					"desc": "<p>The application appears to be a modern web application. If you need to explore it automatically then the Client Spider may well be more effective than the standard one.</p>",
 					"instances":[ 
 						{
-							"id": "9",
+							"id": "62",
 							"uri": "https://nosgestesclimat.fr",
 							"nodeName": "https:\/\/nosgestesclimat.fr",
 							"method": "GET",
@@ -1175,7 +1221,7 @@
 							"otherinfo": "Links have been found with a target of '_self' - this is often used by modern frameworks to force a full page reload."
 						},
 						{
-							"id": "88",
+							"id": "89",
 							"uri": "https://nosgestesclimat.fr/",
 							"nodeName": "https:\/\/nosgestesclimat.fr\/",
 							"method": "GET",
@@ -1185,7 +1231,7 @@
 							"otherinfo": "Links have been found with a target of '_self' - this is often used by modern frameworks to force a full page reload."
 						},
 						{
-							"id": "90",
+							"id": "113",
 							"uri": "https://nosgestesclimat.fr/accessibilite",
 							"nodeName": "https:\/\/nosgestesclimat.fr\/accessibilite",
 							"method": "GET",
@@ -1195,9 +1241,9 @@
 							"otherinfo": "Links have been found with a target of '_self' - this is often used by modern frameworks to force a full page reload."
 						},
 						{
-							"id": "104",
-							"uri": "https://nosgestesclimat.fr/cgu",
-							"nodeName": "https:\/\/nosgestesclimat.fr\/cgu",
+							"id": "98",
+							"uri": "https://nosgestesclimat.fr/budget",
+							"nodeName": "https:\/\/nosgestesclimat.fr\/budget",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1205,7 +1251,7 @@
 							"otherinfo": "Links have been found with a target of '_self' - this is often used by modern frameworks to force a full page reload."
 						},
 						{
-							"id": "68",
+							"id": "88",
 							"uri": "https://nosgestesclimat.fr/contact",
 							"nodeName": "https:\/\/nosgestesclimat.fr\/contact",
 							"method": "GET",
@@ -1235,7 +1281,7 @@
 					"desc": "<p>The response contents are not storable by caching components such as proxy servers. If the response does not contain sensitive, personal or user-specific information, it may benefit from being stored and cached, to improve performance.</p>",
 					"instances":[ 
 						{
-							"id": "25",
+							"id": "27",
 							"uri": "https://nosgestesclimat.fr",
 							"nodeName": "https:\/\/nosgestesclimat.fr",
 							"method": "GET",
@@ -1245,7 +1291,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "53",
+							"id": "38",
 							"uri": "https://nosgestesclimat.fr/infos/",
 							"nodeName": "https:\/\/nosgestesclimat.fr\/infos\/",
 							"method": "GET",
@@ -1255,7 +1301,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "33",
+							"id": "35",
 							"uri": "https://nosgestesclimat.fr/partage/",
 							"nodeName": "https:\/\/nosgestesclimat.fr\/partage\/",
 							"method": "GET",
@@ -1265,7 +1311,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "39",
+							"id": "23",
 							"uri": "https://nosgestesclimat.fr/simulation/",
 							"nodeName": "https:\/\/nosgestesclimat.fr\/simulation\/",
 							"method": "GET",
@@ -1275,7 +1321,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "49",
+							"id": "32",
 							"uri": "https://nosgestesclimat.fr/tutoriel/",
 							"nodeName": "https:\/\/nosgestesclimat.fr\/tutoriel\/",
 							"method": "GET",
@@ -1305,7 +1351,7 @@
 					"desc": "<p>The cache-control header has not been set properly or is missing, allowing the browser and proxies to cache content. For static assets like css, js, or image files this might be intended, however, the resources should be reviewed to ensure that no sensitive content will be cached.</p>",
 					"instances":[ 
 						{
-							"id": "51",
+							"id": "48",
 							"uri": "https://nosgestesclimat.fr/app-crash",
 							"nodeName": "https:\/\/nosgestesclimat.fr\/app-crash",
 							"method": "GET",
@@ -1315,7 +1361,17 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "0",
+							"id": "179",
+							"uri": "https://nosgestesclimat.fr/manifest.webmanifest",
+							"nodeName": "https:\/\/nosgestesclimat.fr\/manifest.webmanifest",
+							"method": "GET",
+							"param": "cache-control",
+							"attack": "",
+							"evidence": "public, max-age=900",
+							"otherinfo": ""
+						},
+						{
+							"id": "15",
 							"uri": "https://nosgestesclimat.fr/robots.txt",
 							"nodeName": "https:\/\/nosgestesclimat.fr\/robots.txt",
 							"method": "GET",
@@ -1325,7 +1381,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "7",
+							"id": "61",
 							"uri": "https://nosgestesclimat.fr/sitemap.xml",
 							"nodeName": "https:\/\/nosgestesclimat.fr\/sitemap.xml",
 							"method": "GET",
@@ -1335,14 +1391,14 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "3",
+					"count": "4",
 					"systemic": false,
 					"solution": "<p>For secure content, ensure the cache-control HTTP header is set with \"no-cache, no-store, must-revalidate\". If an asset should be cached consider setting the directives \"public, max-age, immutable\".</p>",
 					"otherinfo": "",
 					"reference": "<p>https://cheatsheetseries.owasp.org/cheatsheets/Session_Management_Cheat_Sheet.html#web-content-caching</p><p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Cache-Control</p><p>https://grayduck.mn/2021/09/13/cache-control-recommendations/</p>",
 					"cweid": "525",
 					"wascid": "13",
-					"sourceid": "1160"
+					"sourceid": "302"
 				},
 				{
 					"pluginid": "90005",
@@ -1355,29 +1411,29 @@
 					"desc": "<p>Specifies how and where the data would be used. For instance, if the value is audio, then the requested resource must be audio data and not any other type of resource.</p>",
 					"instances":[ 
 						{
-							"id": "22",
-							"uri": "https://nosgestesclimat.fr",
-							"nodeName": "https:\/\/nosgestesclimat.fr",
-							"method": "GET",
-							"param": "Sec-Fetch-Dest",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"id": "31",
-							"uri": "https://nosgestesclimat.fr/partage/",
-							"nodeName": "https:\/\/nosgestesclimat.fr\/partage\/",
-							"method": "GET",
-							"param": "Sec-Fetch-Dest",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"id": "20",
+							"id": "7",
 							"uri": "https://nosgestesclimat.fr/robots.txt",
 							"nodeName": "https:\/\/nosgestesclimat.fr\/robots.txt",
+							"method": "GET",
+							"param": "Sec-Fetch-Dest",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "21",
+							"uri": "https://nosgestesclimat.fr/simulation/",
+							"nodeName": "https:\/\/nosgestesclimat.fr\/simulation\/",
+							"method": "GET",
+							"param": "Sec-Fetch-Dest",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "4",
+							"uri": "https://nosgestesclimat.fr/sitemap.xml",
+							"nodeName": "https:\/\/nosgestesclimat.fr\/sitemap.xml",
 							"method": "GET",
 							"param": "Sec-Fetch-Dest",
 							"attack": "",
@@ -1392,7 +1448,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Sec-Fetch-Dest</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "1"
+					"sourceid": "6"
 				},
 				{
 					"pluginid": "90005",
@@ -1405,29 +1461,29 @@
 					"desc": "<p>Allows to differentiate between requests for navigating between HTML pages and requests for loading resources like images, audio etc.</p>",
 					"instances":[ 
 						{
-							"id": "18",
-							"uri": "https://nosgestesclimat.fr",
-							"nodeName": "https:\/\/nosgestesclimat.fr",
-							"method": "GET",
-							"param": "Sec-Fetch-Mode",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"id": "30",
-							"uri": "https://nosgestesclimat.fr/partage/",
-							"nodeName": "https:\/\/nosgestesclimat.fr\/partage\/",
-							"method": "GET",
-							"param": "Sec-Fetch-Mode",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"id": "19",
+							"id": "5",
 							"uri": "https://nosgestesclimat.fr/robots.txt",
 							"nodeName": "https:\/\/nosgestesclimat.fr\/robots.txt",
+							"method": "GET",
+							"param": "Sec-Fetch-Mode",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "20",
+							"uri": "https://nosgestesclimat.fr/simulation/",
+							"nodeName": "https:\/\/nosgestesclimat.fr\/simulation\/",
+							"method": "GET",
+							"param": "Sec-Fetch-Mode",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "3",
+							"uri": "https://nosgestesclimat.fr/sitemap.xml",
+							"nodeName": "https:\/\/nosgestesclimat.fr\/sitemap.xml",
 							"method": "GET",
 							"param": "Sec-Fetch-Mode",
 							"attack": "",
@@ -1442,7 +1498,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Sec-Fetch-Mode</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "1"
+					"sourceid": "6"
 				},
 				{
 					"pluginid": "90005",
@@ -1455,29 +1511,29 @@
 					"desc": "<p>Specifies the relationship between request initiator's origin and target's origin.</p>",
 					"instances":[ 
 						{
-							"id": "17",
-							"uri": "https://nosgestesclimat.fr",
-							"nodeName": "https:\/\/nosgestesclimat.fr",
-							"method": "GET",
-							"param": "Sec-Fetch-Site",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"id": "29",
-							"uri": "https://nosgestesclimat.fr/partage/",
-							"nodeName": "https:\/\/nosgestesclimat.fr\/partage\/",
-							"method": "GET",
-							"param": "Sec-Fetch-Site",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"id": "15",
+							"id": "0",
 							"uri": "https://nosgestesclimat.fr/robots.txt",
 							"nodeName": "https:\/\/nosgestesclimat.fr\/robots.txt",
+							"method": "GET",
+							"param": "Sec-Fetch-Site",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "19",
+							"uri": "https://nosgestesclimat.fr/simulation/",
+							"nodeName": "https:\/\/nosgestesclimat.fr\/simulation\/",
+							"method": "GET",
+							"param": "Sec-Fetch-Site",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "2",
+							"uri": "https://nosgestesclimat.fr/sitemap.xml",
+							"nodeName": "https:\/\/nosgestesclimat.fr\/sitemap.xml",
 							"method": "GET",
 							"param": "Sec-Fetch-Site",
 							"attack": "",
@@ -1492,7 +1548,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Sec-Fetch-Site</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "1"
+					"sourceid": "6"
 				},
 				{
 					"pluginid": "90005",
@@ -1505,29 +1561,29 @@
 					"desc": "<p>Specifies if a navigation request was initiated by a user.</p>",
 					"instances":[ 
 						{
-							"id": "23",
-							"uri": "https://nosgestesclimat.fr",
-							"nodeName": "https:\/\/nosgestesclimat.fr",
-							"method": "GET",
-							"param": "Sec-Fetch-User",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"id": "32",
-							"uri": "https://nosgestesclimat.fr/partage/",
-							"nodeName": "https:\/\/nosgestesclimat.fr\/partage\/",
-							"method": "GET",
-							"param": "Sec-Fetch-User",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"id": "21",
+							"id": "8",
 							"uri": "https://nosgestesclimat.fr/robots.txt",
 							"nodeName": "https:\/\/nosgestesclimat.fr\/robots.txt",
+							"method": "GET",
+							"param": "Sec-Fetch-User",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "22",
+							"uri": "https://nosgestesclimat.fr/simulation/",
+							"nodeName": "https:\/\/nosgestesclimat.fr\/simulation\/",
+							"method": "GET",
+							"param": "Sec-Fetch-User",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "6",
+							"uri": "https://nosgestesclimat.fr/sitemap.xml",
+							"nodeName": "https:\/\/nosgestesclimat.fr\/sitemap.xml",
 							"method": "GET",
 							"param": "Sec-Fetch-User",
 							"attack": "",
@@ -1542,7 +1598,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Sec-Fetch-User</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "1"
+					"sourceid": "6"
 				},
 				{
 					"pluginid": "10049",
@@ -1555,7 +1611,7 @@
 					"desc": "<p>The response contents are storable by caching components such as proxy servers, and may be retrieved directly from the cache, rather than from the origin server by the caching servers, in response to similar requests from other users. If the response data is sensitive, personal or user-specific, this may result in sensitive information being leaked. In some cases, this may even result in a user gaining complete control of the session of another user, depending on the configuration of the caching components in use in their environment. This is primarily an issue where \"shared\" caching servers such as \"proxy\" caches are configured on the local network. This configuration is typically found in corporate or educational environments, for instance.</p>",
 					"instances":[ 
 						{
-							"id": "58",
+							"id": "42",
 							"uri": "https://nosgestesclimat.fr/app-crash",
 							"nodeName": "https:\/\/nosgestesclimat.fr\/app-crash",
 							"method": "GET",
@@ -1565,7 +1621,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "24",
+							"id": "9",
 							"uri": "https://nosgestesclimat.fr/robots.txt",
 							"nodeName": "https:\/\/nosgestesclimat.fr\/robots.txt",
 							"method": "GET",
@@ -1575,7 +1631,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "36",
+							"id": "10",
 							"uri": "https://nosgestesclimat.fr/sitemap.xml",
 							"nodeName": "https:\/\/nosgestesclimat.fr\/sitemap.xml",
 							"method": "GET",
@@ -1592,7 +1648,7 @@
 					"reference": "<p>https://datatracker.ietf.org/doc/html/rfc7234</p><p>https://datatracker.ietf.org/doc/html/rfc7231</p><p>https://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html</p>",
 					"cweid": "524",
 					"wascid": "13",
-					"sourceid": "1160"
+					"sourceid": "302"
 				}
 			]
 		}
