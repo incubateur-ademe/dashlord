@@ -57,7 +57,7 @@ jobs:
         run: |
          TAGS_INPUT=${{ github.event.inputs.tags }}
          echo "::set-output name=value::${TAGS_INPUT:-"production"}"
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v6.0.3
       - id: init
         uses: SocialGouv/dashlord-actions/init@20b2f87135667b379650473197967515e6ca85b8 # 1.46.1
         with:
@@ -81,7 +81,7 @@ jobs:
       matrix:
         sites: ${{ fromJson(needs.init.outputs.sites) }}
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v6.0.3
 
       - run: |
           mkdir scans
