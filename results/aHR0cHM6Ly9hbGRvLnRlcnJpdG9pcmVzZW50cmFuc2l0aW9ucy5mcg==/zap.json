@@ -1,8 +1,8 @@
 {
 	"@programName": "ZAP",
 	"@version": "2.17.0",
-	"@generated": "Sun, 1 Nov 2026 06:57:40",
-	"created": "2026-11-01T06:57:40.656090416Z",
+	"@generated": "Sun, 8 Nov 2026 07:30:29",
+	"created": "2026-11-08T07:30:29.527572372Z",
 	"insights":[
 		{
 			"level": "Info",
@@ -79,7 +79,7 @@
 					"desc": "<p>Content Security Policy (CSP) is an added layer of security that helps to detect and mitigate certain types of attacks, including Cross Site Scripting (XSS) and data injection attacks. These attacks are used for everything from data theft to site defacement or distribution of malware. CSP provides a set of standard HTTP headers that allow website owners to declare approved sources of content that browsers should be allowed to load on that page \u2014 covered types are JavaScript, CSS, HTML frames, fonts, images and embeddable objects such as Java applets, ActiveX, audio and video files.</p>",
 					"instances":[ 
 						{
-							"id": "9",
+							"id": "6",
 							"uri": "https://aldo.territoiresentransitions.fr",
 							"nodeName": "https:\/\/aldo.territoiresentransitions.fr",
 							"method": "GET",
@@ -89,7 +89,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "1",
+							"id": "0",
 							"uri": "https://aldo.territoiresentransitions.fr/sitemap.xml",
 							"nodeName": "https:\/\/aldo.territoiresentransitions.fr\/sitemap.xml",
 							"method": "GET",
@@ -106,7 +106,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/CSP</p><p>https://cheatsheetseries.owasp.org/cheatsheets/Content_Security_Policy_Cheat_Sheet.html</p><p>https://www.w3.org/TR/CSP/</p><p>https://w3c.github.io/webappsec-csp/</p><p>https://web.dev/articles/csp</p><p>https://caniuse.com/#feat=contentsecuritypolicy</p><p>https://content-security-policy.com/</p>",
 					"cweid": "693",
 					"wascid": "15",
-					"sourceid": "6"
+					"sourceid": "7"
 				},
 				{
 					"pluginid": "10020",
@@ -119,7 +119,7 @@
 					"desc": "<p>The response does not protect against 'ClickJacking' attacks. It should include either Content-Security-Policy with 'frame-ancestors' directive or X-Frame-Options.</p>",
 					"instances":[ 
 						{
-							"id": "4",
+							"id": "3",
 							"uri": "https://aldo.territoiresentransitions.fr",
 							"nodeName": "https:\/\/aldo.territoiresentransitions.fr",
 							"method": "GET",
@@ -136,87 +136,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/X-Frame-Options</p>",
 					"cweid": "1021",
 					"wascid": "15",
-					"sourceid": "6"
-				},
-				{
-					"pluginid": "90003",
-					"alertRef": "90003",
-					"alert": "Sub Resource Integrity Attribute Missing",
-					"name": "Sub Resource Integrity Attribute Missing",
-					"riskcode": "2",
-					"confidence": "3",
-					"riskdesc": "Medium (High)",
-					"desc": "<p>The integrity attribute is missing on a script or link tag served by an external server. The integrity tag prevents an attacker who have gained access to this server from injecting a malicious content.</p>",
-					"instances":[ 
-						{
-							"id": "16",
-							"uri": "https://aldo.territoiresentransitions.fr",
-							"nodeName": "https:\/\/aldo.territoiresentransitions.fr",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "<script src=\"https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js\"></script>",
-							"otherinfo": ""
-						},
-						{
-							"id": "6",
-							"uri": "https://aldo.territoiresentransitions.fr/sitemap.xml",
-							"nodeName": "https:\/\/aldo.territoiresentransitions.fr\/sitemap.xml",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "<script src=\"https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js\"></script>",
-							"otherinfo": ""
-						}
-					],
-					"count": "2",
-					"systemic": false,
-					"solution": "<p>Provide a valid integrity attribute to the tag.</p>",
-					"otherinfo": "",
-					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/Security/Defenses/Subresource_Integrity</p>",
-					"cweid": "345",
-					"wascid": "15",
-					"sourceid": "6"
-				},
-				{
-					"pluginid": "10017",
-					"alertRef": "10017",
-					"alert": "Cross-Domain JavaScript Source File Inclusion",
-					"name": "Cross-Domain JavaScript Source File Inclusion",
-					"riskcode": "1",
-					"confidence": "2",
-					"riskdesc": "Low (Medium)",
-					"desc": "<p>The page includes one or more script files from a third-party domain.</p>",
-					"instances":[ 
-						{
-							"id": "10",
-							"uri": "https://aldo.territoiresentransitions.fr",
-							"nodeName": "https:\/\/aldo.territoiresentransitions.fr",
-							"method": "GET",
-							"param": "https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js",
-							"attack": "",
-							"evidence": "<script src=\"https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js\"></script>",
-							"otherinfo": ""
-						},
-						{
-							"id": "2",
-							"uri": "https://aldo.territoiresentransitions.fr/sitemap.xml",
-							"nodeName": "https:\/\/aldo.territoiresentransitions.fr\/sitemap.xml",
-							"method": "GET",
-							"param": "https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js",
-							"attack": "",
-							"evidence": "<script src=\"https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js\"></script>",
-							"otherinfo": ""
-						}
-					],
-					"count": "2",
-					"systemic": false,
-					"solution": "<p>Ensure JavaScript source files are loaded from only trusted sources, and the sources can't be controlled by end users of the application.</p>",
-					"otherinfo": "",
-					"reference": "",
-					"cweid": "829",
-					"wascid": "15",
-					"sourceid": "6"
+					"sourceid": "7"
 				},
 				{
 					"pluginid": "90004",
@@ -229,7 +149,7 @@
 					"desc": "<p>Cross-Origin-Embedder-Policy header is a response header that prevents a document from loading any cross-origin resources that don't explicitly grant the document permission (using CORP or CORS).</p>",
 					"instances":[ 
 						{
-							"id": "27",
+							"id": "21",
 							"uri": "https://aldo.territoiresentransitions.fr",
 							"nodeName": "https:\/\/aldo.territoiresentransitions.fr",
 							"method": "GET",
@@ -246,7 +166,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Cross-Origin-Embedder-Policy</p>",
 					"cweid": "693",
 					"wascid": "14",
-					"sourceid": "6"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "90004",
@@ -259,7 +179,7 @@
 					"desc": "<p>Cross-Origin-Opener-Policy header is a response header that allows a site to control if others included documents share the same browsing context. Sharing the same browsing context with untrusted documents might lead to data leak.</p>",
 					"instances":[ 
 						{
-							"id": "28",
+							"id": "22",
 							"uri": "https://aldo.territoiresentransitions.fr",
 							"nodeName": "https:\/\/aldo.territoiresentransitions.fr",
 							"method": "GET",
@@ -276,7 +196,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Cross-Origin-Opener-Policy</p>",
 					"cweid": "693",
 					"wascid": "14",
-					"sourceid": "6"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "90004",
@@ -289,7 +209,7 @@
 					"desc": "<p>Cross-Origin-Resource-Policy header is an opt-in header designed to counter side-channels attacks like Spectre. Resource should be specifically set as shareable amongst different origins.</p>",
 					"instances":[ 
 						{
-							"id": "26",
+							"id": "20",
 							"uri": "https://aldo.territoiresentransitions.fr",
 							"nodeName": "https:\/\/aldo.territoiresentransitions.fr",
 							"method": "GET",
@@ -299,7 +219,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "46",
+							"id": "39",
 							"uri": "https://aldo.territoiresentransitions.fr/robots.txt",
 							"nodeName": "https:\/\/aldo.territoiresentransitions.fr\/robots.txt",
 							"method": "GET",
@@ -316,7 +236,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Cross-Origin-Embedder-Policy</p>",
 					"cweid": "693",
 					"wascid": "14",
-					"sourceid": "6"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "10063",
@@ -329,7 +249,7 @@
 					"desc": "<p>Permissions Policy Header is an added layer of security that helps to restrict from unauthorized access or usage of browser/client features by web resources. This policy ensures the user privacy by limiting or specifying the features of the browsers can be used by the web resources. Permissions Policy provides a set of standard HTTP headers that allow website owners to limit which features of browsers can be used by the page such as camera, microphone, location, full screen etc.</p>",
 					"instances":[ 
 						{
-							"id": "25",
+							"id": "19",
 							"uri": "https://aldo.territoiresentransitions.fr",
 							"nodeName": "https:\/\/aldo.territoiresentransitions.fr",
 							"method": "GET",
@@ -339,7 +259,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "49",
+							"id": "42",
 							"uri": "https://aldo.territoiresentransitions.fr/sitemap.xml",
 							"nodeName": "https:\/\/aldo.territoiresentransitions.fr\/sitemap.xml",
 							"method": "GET",
@@ -356,7 +276,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Permissions-Policy</p><p>https://developer.chrome.com/blog/feature-policy/</p><p>https://scotthelme.co.uk/a-new-security-header-feature-policy/</p><p>https://w3c.github.io/webappsec-feature-policy/</p><p>https://www.smashingmagazine.com/2018/12/feature-policy/</p>",
 					"cweid": "693",
 					"wascid": "15",
-					"sourceid": "6"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "10037",
@@ -369,7 +289,7 @@
 					"desc": "<p>The web/application server is leaking information via one or more \"X-Powered-By\" HTTP response headers. Access to such information may facilitate attackers identifying other frameworks/components your web application is reliant upon and the vulnerabilities such components may be subject to.</p>",
 					"instances":[ 
 						{
-							"id": "18",
+							"id": "12",
 							"uri": "https://aldo.territoiresentransitions.fr",
 							"nodeName": "https:\/\/aldo.territoiresentransitions.fr",
 							"method": "GET",
@@ -379,7 +299,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "3",
+							"id": "2",
 							"uri": "https://aldo.territoiresentransitions.fr/robots.txt",
 							"nodeName": "https:\/\/aldo.territoiresentransitions.fr\/robots.txt",
 							"method": "GET",
@@ -389,7 +309,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "7",
+							"id": "9",
 							"uri": "https://aldo.territoiresentransitions.fr/sitemap.xml",
 							"nodeName": "https:\/\/aldo.territoiresentransitions.fr\/sitemap.xml",
 							"method": "GET",
@@ -406,7 +326,7 @@
 					"reference": "<p>https://owasp.org/www-project-web-security-testing-guide/v42/4-Web_Application_Security_Testing/01-Information_Gathering/08-Fingerprint_Web_Application_Framework</p><p>https://www.troyhunt.com/shhh-dont-let-your-response-headers/</p>",
 					"cweid": "497",
 					"wascid": "13",
-					"sourceid": "6"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "10094",
@@ -419,54 +339,44 @@
 					"desc": "<p>Base64 encoded data was disclosed by the application/web server. Note: in the interests of performance not all base64 strings in the response were analyzed individually, the entire response should be looked at by the analyst/security team/developer(s).</p>",
 					"instances":[ 
 						{
-							"id": "30",
+							"id": "24",
 							"uri": "https://aldo.territoiresentransitions.fr",
 							"nodeName": "https:\/\/aldo.territoiresentransitions.fr",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "2B7or6GppfBBYuXt85WSQRw3YSo1R7BsygQXfY8vzJPxjSH4Tirm5jvGwKhusohwrXMNsoG61WEecgo",
-							"otherinfo": "\uFFFD\\x001e\u8BE1\uFFFD\uFFFD\uFFFDAb\uFFFD\uFFFD\uFFFDA\\x001c7a*5G\uFFFDl\uFFFD\\x0004\\x0017}\uFFFD/\u0313\uFFFD!\uFFFDN*\uFFFD\uFFFD;\uFFFD\uFFFD\uFFFDn\uFFFD\uFFFDp\uFFFDs\r\uFFFD\uFFFD\uFFFD\uFFFDa\\x001er\n"
+							"evidence": "2BBmYSxrU0nYJ1uwKmWCI07ibSX05iv3s5SEkYWez1p26H1GPMF598G",
+							"otherinfo": "\uFFFD\\x0010fa,kSI\uFFFD'[\uFFFD*e\uFFFD#N\uFFFDm%\uFFFD\uFFFD+\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFDZv\uFFFD}F<\uFFFDy\uFFFD\uFFFD"
 						},
 						{
-							"id": "19",
+							"id": "13",
 							"uri": "https://aldo.territoiresentransitions.fr",
 							"nodeName": "https:\/\/aldo.territoiresentransitions.fr",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "SKucVIHTX9hvXeNBfZwh4szLJyExOdNrIk3d1dNkoerEVyh8mRd4kSEb125GXlIJJAufa0bcqm",
-							"otherinfo": "H\uFFFD\uFFFDT\uFFFD\uFFFD_\uFFFDo]\uFFFDA}\uFFFD!\uFFFD\uFFFD\uFFFD'!19\uFFFDk\"M\uFFFD\uFFFD\uFFFDd\uFFFD\uFFFD\uFFFDW(|\uFFFD\\x0017x\uFFFD!\\x001b\uFFFDnF^R\t$\\x000b\uFFFDkF\u072A"
+							"evidence": "2BaBXtooRB428jvGYvCanO39CixMk80EZpJ1S1aLq7BLarPRzamO",
+							"otherinfo": "\uFFFD\\x0016\uFFFD^\uFFFD(D\\x001e6\uFFFD;\uFFFDb\uFFFD\uFFFD\uFFFD\n,L\uFFFD\uFFFD\\x0004f\uFFFDuKV\uFFFD\uFFFD\uFFFDKj\uFFFD\uFFFD\u0369\uFFFD"
 						},
 						{
 							"id": "40",
-							"uri": "https://aldo.territoiresentransitions.fr/robots.txt",
-							"nodeName": "https:\/\/aldo.territoiresentransitions.fr\/robots.txt",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "2FDGLcvUC1X2rlUeGtk31vYZXem3tu",
-							"otherinfo": "\uFFFDP\uFFFD-\uFFFD\uFFFD\\x000bU\uFFFD\uFFFDU\\x001e\\x001a\uFFFD7\uFFFD\uFFFD\\x0019]\u9DF6"
-						},
-						{
-							"id": "47",
 							"uri": "https://aldo.territoiresentransitions.fr/sitemap.xml",
 							"nodeName": "https:\/\/aldo.territoiresentransitions.fr\/sitemap.xml",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "XPNF1QVBj3Gy5VFxDGyNLg4nuVOvHrfDy35eIa7rCk7Gh1Su3Rqub6S4fauHDcx0pdvE6WDqRHF",
-							"otherinfo": "\\\uFFFDE\uFFFD\\x0005A\uFFFDq\uFFFD\uFFFDQq\\x000cl\uFFFD.\\x000e'\uFFFDS\uFFFD\\x001e\uFFFD\uFFFD\uFFFD~^!\uFFFD\uFFFD\nN\u0187T\uFFFD\uFFFD\\x001a\uFFFDo\uFFFD\uFFFD}\uFFFD\uFFFD\r\uFFFDt\uFFFD\uFFFD\uFFFD\uFFFD`\uFFFDDq"
+							"evidence": "2B2HnQW2MJIplOwiPYq5SOITjRLH9CyGpycX0bfTnIz4RgobHCcsnA4C9V6MBLdgQCGpsIoh1dplWYCkz5Rs4qFKxgVwesyg0u",
+							"otherinfo": "\uFFFD\\x001d\uFFFD\uFFFD\\x0005\uFFFD0\uFFFD)\uFFFD\uFFFD\"=\uFFFD\uFFFDH\uFFFD\\x0013\uFFFD\\x0012\uFFFD\uFFFD,\uFFFD\uFFFD'\\x0017\u0477\u04DC\uFFFD\uFFFDF\n\\x001b\\x001c',\uFFFD\\x000e\\x0002\uFFFD^\uFFFD\\x0004\uFFFD`@!\uFFFD\uFFFD\uFFFD!\uFFFD\uFFFDeY\uFFFD\uFFFD\u03D4l\uFFFDJ\uFFFD\\x0005pz\u0320\uFFFD"
 						}
 					],
-					"count": "4",
+					"count": "3",
 					"systemic": false,
 					"solution": "<p>Manually confirm that the Base64 data does not leak sensitive information, and that the data cannot be aggregated/used to exploit other vulnerabilities.</p>",
-					"otherinfo": "<p>\uFFFD\\x001e\u8BE1\uFFFD\uFFFD\uFFFDAb\uFFFD\uFFFD\uFFFDA\\x001c7a*5G\uFFFDl\uFFFD\\x0004\\x0017}\uFFFD/\u0313\uFFFD!\uFFFDN*\uFFFD\uFFFD;\uFFFD\uFFFD\uFFFDn\uFFFD\uFFFDp\uFFFDs\r\uFFFD\uFFFD\uFFFD\uFFFDa\\x001er</p><p></p>",
+					"otherinfo": "<p>\uFFFD\\x0010fa,kSI\uFFFD'[\uFFFD*e\uFFFD#N\uFFFDm%\uFFFD\uFFFD+\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFDZv\uFFFD}F<\uFFFDy\uFFFD\uFFFD</p>",
 					"reference": "<p>https://projects.webappsec.org/w/page/13246936/Information%20Leakage</p>",
 					"cweid": "319",
 					"wascid": "13",
-					"sourceid": "1"
+					"sourceid": "7"
 				},
 				{
 					"pluginid": "10027",
@@ -479,7 +389,7 @@
 					"desc": "<p>The response appears to contain suspicious comments which may help an attacker.</p>",
 					"instances":[ 
 						{
-							"id": "14",
+							"id": "10",
 							"uri": "https://aldo.territoiresentransitions.fr",
 							"nodeName": "https:\/\/aldo.territoiresentransitions.fr",
 							"method": "GET",
@@ -496,7 +406,7 @@
 					"reference": "",
 					"cweid": "615",
 					"wascid": "13",
-					"sourceid": "6"
+					"sourceid": "7"
 				},
 				{
 					"pluginid": "10015",
@@ -509,7 +419,7 @@
 					"desc": "<p>The cache-control header has not been set properly or is missing, allowing the browser and proxies to cache content. For static assets like css, js, or image files this might be intended, however, the resources should be reviewed to ensure that no sensitive content will be cached.</p>",
 					"instances":[ 
 						{
-							"id": "8",
+							"id": "5",
 							"uri": "https://aldo.territoiresentransitions.fr",
 							"nodeName": "https:\/\/aldo.territoiresentransitions.fr",
 							"method": "GET",
@@ -526,7 +436,7 @@
 					"reference": "<p>https://cheatsheetseries.owasp.org/cheatsheets/Session_Management_Cheat_Sheet.html#web-content-caching</p><p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Cache-Control</p><p>https://grayduck.mn/2021/09/13/cache-control-recommendations/</p>",
 					"cweid": "525",
 					"wascid": "13",
-					"sourceid": "6"
+					"sourceid": "7"
 				},
 				{
 					"pluginid": "90005",
@@ -539,7 +449,7 @@
 					"desc": "<p>Specifies how and where the data would be used. For instance, if the value is audio, then the requested resource must be audio data and not any other type of resource.</p>",
 					"instances":[ 
 						{
-							"id": "22",
+							"id": "16",
 							"uri": "https://aldo.territoiresentransitions.fr",
 							"nodeName": "https:\/\/aldo.territoiresentransitions.fr",
 							"method": "GET",
@@ -549,7 +459,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "43",
+							"id": "36",
 							"uri": "https://aldo.territoiresentransitions.fr/robots.txt",
 							"nodeName": "https:\/\/aldo.territoiresentransitions.fr\/robots.txt",
 							"method": "GET",
@@ -566,7 +476,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Sec-Fetch-Dest</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "6"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "90005",
@@ -579,7 +489,7 @@
 					"desc": "<p>Allows to differentiate between requests for navigating between HTML pages and requests for loading resources like images, audio etc.</p>",
 					"instances":[ 
 						{
-							"id": "21",
+							"id": "15",
 							"uri": "https://aldo.territoiresentransitions.fr",
 							"nodeName": "https:\/\/aldo.territoiresentransitions.fr",
 							"method": "GET",
@@ -589,7 +499,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "42",
+							"id": "35",
 							"uri": "https://aldo.territoiresentransitions.fr/robots.txt",
 							"nodeName": "https:\/\/aldo.territoiresentransitions.fr\/robots.txt",
 							"method": "GET",
@@ -606,7 +516,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Sec-Fetch-Mode</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "6"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "90005",
@@ -619,7 +529,7 @@
 					"desc": "<p>Specifies the relationship between request initiator's origin and target's origin.</p>",
 					"instances":[ 
 						{
-							"id": "20",
+							"id": "14",
 							"uri": "https://aldo.territoiresentransitions.fr",
 							"nodeName": "https:\/\/aldo.territoiresentransitions.fr",
 							"method": "GET",
@@ -629,7 +539,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "41",
+							"id": "34",
 							"uri": "https://aldo.territoiresentransitions.fr/robots.txt",
 							"nodeName": "https:\/\/aldo.territoiresentransitions.fr\/robots.txt",
 							"method": "GET",
@@ -646,7 +556,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Sec-Fetch-Site</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "6"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "90005",
@@ -659,7 +569,7 @@
 					"desc": "<p>Specifies if a navigation request was initiated by a user.</p>",
 					"instances":[ 
 						{
-							"id": "23",
+							"id": "17",
 							"uri": "https://aldo.territoiresentransitions.fr",
 							"nodeName": "https:\/\/aldo.territoiresentransitions.fr",
 							"method": "GET",
@@ -669,7 +579,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "44",
+							"id": "37",
 							"uri": "https://aldo.territoiresentransitions.fr/robots.txt",
 							"nodeName": "https:\/\/aldo.territoiresentransitions.fr\/robots.txt",
 							"method": "GET",
@@ -686,7 +596,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Sec-Fetch-User</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "6"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "10049",
@@ -699,7 +609,7 @@
 					"desc": "<p>The response contents are storable by caching components such as proxy servers, and may be retrieved directly from the cache, rather than from the origin server by the caching servers, in response to similar requests from other users. If the response data is sensitive, personal or user-specific, this may result in sensitive information being leaked. In some cases, this may even result in a user gaining complete control of the session of another user, depending on the configuration of the caching components in use in their environment. This is primarily an issue where \"shared\" caching servers such as \"proxy\" caches are configured on the local network. This configuration is typically found in corporate or educational environments, for instance.</p>",
 					"instances":[ 
 						{
-							"id": "24",
+							"id": "18",
 							"uri": "https://aldo.territoiresentransitions.fr",
 							"nodeName": "https:\/\/aldo.territoiresentransitions.fr",
 							"method": "GET",
@@ -709,7 +619,7 @@
 							"otherinfo": "In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234."
 						},
 						{
-							"id": "45",
+							"id": "38",
 							"uri": "https://aldo.territoiresentransitions.fr/robots.txt",
 							"nodeName": "https:\/\/aldo.territoiresentransitions.fr\/robots.txt",
 							"method": "GET",
@@ -719,7 +629,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "48",
+							"id": "41",
 							"uri": "https://aldo.territoiresentransitions.fr/sitemap.xml",
 							"nodeName": "https:\/\/aldo.territoiresentransitions.fr\/sitemap.xml",
 							"method": "GET",
@@ -736,7 +646,7 @@
 					"reference": "<p>https://datatracker.ietf.org/doc/html/rfc7234</p><p>https://datatracker.ietf.org/doc/html/rfc7231</p><p>https://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html</p>",
 					"cweid": "524",
 					"wascid": "13",
-					"sourceid": "6"
+					"sourceid": "1"
 				}
 			]
 		}
